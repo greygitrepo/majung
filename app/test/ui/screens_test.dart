@@ -1,27 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:majung/app_controller.dart';
 import 'package:majung/domain/geo.dart';
 import 'package:majung/services/location_service.dart';
 
+import '../fixtures.dart';
 import 'harness.dart';
 
 void main() {
   group('홈', () {
-    testWidgets('1차 범위 카테고리 두 개와 열린 곳 개수, 긴급 버튼', (tester) async {
+    testWidgets('1차 범위 카테고리 세 개와 열린 곳 개수, 긴급 버튼', (tester) async {
       await Harness().pump(tester);
       expect(find.text('밥 먹을 곳'), findsOneWidget);
       expect(find.text('잘 곳'), findsOneWidget);
+      expect(find.text('아플 때'), findsOneWidget);
       expect(find.text('씻을 곳 · 빨래'), findsNothing, reason: '1차 범위 밖');
       // 밥: 열린 급식소 + 오래된 급식소(같은 운영시간) = 2, 잠자리: 1
       expect(find.text('지금 열림 2곳 · 모두 3곳'), findsOneWidget);
       expect(find.text('지금 열림 1곳 · 모두 1곳'), findsOneWidget);
       expect(find.text('급할 때 전화하기'), findsOneWidget);
-      expect(find.text('가까운 순으로 보려면 위치를 정해 주세요'), findsOneWidget);
+      expect(find.text('서울 중구 기준'), findsOneWidget);
     });
 
-    testWidgets('저장된 기준 장소를 기억한다', (tester) async {
-      await Harness(savedLandmark: 'yeongdeungpo').pump(tester);
-      expect(find.text('영등포역 근처 기준'), findsOneWidget);
+    testWidgets('위치를 안 정했으면 먼저 정하라고 안내', (tester) async {
+      await Harness(savedRegion: null).pump(tester);
+      expect(find.text('어디 근처에서 찾을지 먼저 정해 주세요'), findsOneWidget);
+      expect(find.text('위치를 정하면 가까운 곳을 보여 드려요'), findsWidgets);
+      expect(find.textContaining('지금 열림'), findsNothing);
+    });
+
+    testWidgets('저장된 지역을 기억한다', (tester) async {
+      await Harness(savedRegion: '11560').pump(tester);
+      expect(find.text('서울 영등포구 기준'), findsOneWidget);
+    });
+
+    testWidgets('없어진 지역 코드는 무시한다', (tester) async {
+      await Harness(savedRegion: '99999').pump(tester);
+      expect(find.text('어디 근처에서 찾을지 먼저 정해 주세요'), findsOneWidget);
     });
 
     testWidgets('앱 시작 시 위치 권한을 묻지 않는다', (tester) async {
@@ -62,6 +77,79 @@ void main() {
       expect(find.text('정보가 오래됐을 수 있어요. 가기 전에 전화로 확인하세요.'), findsOneWidget);
     });
 
+    testWidgets('위치를 안 정했으면 전국 목록 대신 위치 정하기', (tester) async {
+      await Harness(savedRegion: null).pump(tester);
+      await tester.tap(find.byKey(const Key('group-meal')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('need-origin')), findsOneWidget);
+      expect(find.byKey(const Key('facility-meal-open')), findsNothing);
+      expect(find.byKey(const Key('toggle-map')), findsNothing);
+      await tester.tap(find.byKey(const Key('need-origin-pick')));
+      await tester.pumpAndSettle();
+      await tapVisible(tester, find.byKey(const Key('sido-서울')));
+      await tapVisible(tester, find.byKey(const Key('region-11140')));
+      expect(find.byKey(const Key('facility-meal-open')), findsOneWidget);
+    });
+
+    testWidgets('공공데이터 시간은 "지금 열림"으로 계산하지 않는다', (tester) async {
+      final unverified = facilityJson(
+        id: 'meal-public',
+        name: '확인 안 된 급식소',
+        verifiedBy: 'public_data',
+        hours: [],
+        hoursNote: '공공데이터 안내: 매일 11:30~13:00',
+      );
+      await Harness(facilities: [unverified]).pump(tester);
+      expect(find.text('지금 열림 0곳 · 모두 1곳'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('group-meal')));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('운영 시간 확인 필요', findRichText: true), findsOneWidget);
+      expect(find.textContaining('지금 열려 있어요', findRichText: true), findsNothing);
+      await tester.tap(find.text('자세히'));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('unverified-hours')), findsOneWidget);
+      expect(find.textContaining('실제와 다른 경우가 많아요'), findsOneWidget);
+      expect(find.text('공공데이터 안내: 매일 11:30~13:00'), findsOneWidget);
+    });
+
+    testWidgets('어르신 경로식당은 아래에 따로 묶는다', (tester) async {
+      final senior = facilityJson(id: 'meal-senior', name: '경로식당', audience: 'senior');
+      await Harness(facilities: [senior, mealClosed]).pump(tester);
+      await tester.tap(find.byKey(const Key('group-meal')));
+      await tester.pumpAndSettle();
+      await scrollTo(tester, find.byKey(const Key('facility-meal-senior')));
+      final sectionY = tester.getTopLeft(find.byKey(const Key('senior-section'))).dy;
+      expect(tester.getTopLeft(find.byKey(const Key('facility-meal-senior'))).dy, greaterThan(sectionY));
+      expect(find.textContaining('미리 등록해야'), findsOneWidget);
+    });
+
+    testWidgets('아플 때: 의료급여 안내, 무료 진료소가 보건소보다 먼저', (tester) async {
+      final free = facilityJson(
+          id: 'clinic-free', name: '무료진료소', category: 'clinic', subtype: 'free_clinic', lat: 37.5450, lng: 126.9710);
+      final health = facilityJson(
+          id: 'clinic-hc', name: '구 보건소', category: 'clinic', subtype: 'health_center', lat: 37.5600, lng: 126.9800);
+      await Harness(facilities: [health, free]).pump(tester);
+      await tapVisible(tester, find.byKey(const Key('group-clinic')));
+      expect(find.byKey(const Key('clinic-info')), findsOneWidget);
+      expect(find.textContaining('노숙인 의료급여증'), findsOneWidget);
+      await scrollTo(tester, find.byKey(const Key('facility-clinic-hc')));
+      expect(find.text('보건소 · 진료비가 싸요 (무료 아님)'), findsOneWidget);
+      await scrollTo(tester, find.byKey(const Key('facility-clinic-free')));
+      expect(find.text('무료 진료소'), findsOneWidget);
+      expect(
+        tester.getTopLeft(find.byKey(const Key('facility-clinic-free'))).dy,
+        lessThan(tester.getTopLeft(find.byKey(const Key('facility-clinic-hc'))).dy),
+      );
+    });
+
+    testWidgets('먼 곳은 걷는 시간 대신 거리만', (tester) async {
+      await Harness(facilities: [facilityJson(id: 'far', lat: 37.2, lng: 127.1)]).pump(tester);
+      await tester.tap(find.byKey(const Key('group-meal')));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('걸어서'), findsNothing);
+      expect(find.textContaining('여기서'), findsOneWidget);
+    });
+
     testWidgets('데이터가 없으면 안내', (tester) async {
       await Harness(facilities: []).pump(tester);
       await tester.tap(find.byKey(const Key('group-sleep')));
@@ -83,8 +171,8 @@ void main() {
   });
 
   group('기준 위치', () {
-    testWidgets('위치 거부 → 안내 문구, 랜드마크 선택 → 거리 표시', (tester) async {
-      final h = Harness(facilities: [mealOpen]);
+    testWidgets('위치 거부 → 안내 문구, 시도·시군구 선택 → 거리 표시', (tester) async {
+      final h = Harness(facilities: [mealOpen], savedRegion: null);
       await h.pump(tester);
       await tester.tap(find.byKey(const Key('origin-bar')));
       await tester.pumpAndSettle();
@@ -93,11 +181,19 @@ void main() {
       await tester.tap(find.byKey(const Key('use-gps')));
       await tester.pumpAndSettle();
       expect(h.location.requests, 1);
-      expect(find.text('위치를 쓸 수 없어요. 아래에서 가까운 곳을 골라 주세요.'), findsOneWidget);
+      expect(find.text('위치를 쓸 수 없어요. 아래에서 지역을 골라 주세요.'), findsOneWidget);
 
-      await tapVisible(tester, find.byKey(const Key('landmark-seoul_station')));
-      expect(find.text('서울역 근처 기준'), findsOneWidget);
-      expect(h.originStore.id, 'seoul_station');
+      // 전국 시도가 다 나온다 (서울만이 아님).
+      for (final sido in ['서울', '부산', '경기']) {
+        expect(find.byKey(Key('sido-$sido')), findsOneWidget);
+      }
+      await tapVisible(tester, find.byKey(const Key('sido-부산')));
+      expect(find.text('부산에서 고르세요'), findsOneWidget);
+      await tapVisible(tester, find.byKey(const Key('sido-back')));
+      await tapVisible(tester, find.byKey(const Key('sido-서울')));
+      await tapVisible(tester, find.byKey(const Key('region-11140')));
+      expect(find.text('서울 중구 기준'), findsOneWidget);
+      expect(h.originStore.code, '11140');
 
       await tester.tap(find.byKey(const Key('group-meal')));
       await tester.pumpAndSettle();
@@ -118,7 +214,7 @@ void main() {
     testWidgets('GPS 성공 → 내 위치 기준, 좌표는 저장하지 않음', (tester) async {
       final h = Harness(
         location: const LocationResult.success(GeoPoint(37.5550, 126.9710)),
-        savedLandmark: 'euljiro',
+        savedRegion: '26110',
       );
       await h.pump(tester);
       await tester.tap(find.byKey(const Key('origin-bar')));
@@ -126,7 +222,11 @@ void main() {
       await tester.tap(find.byKey(const Key('use-gps')));
       await tester.pumpAndSettle();
       expect(find.text('내 위치 기준'), findsOneWidget);
-      expect(h.originStore.id, isNull);
+      expect(h.originStore.code, isNull);
+      // 긴급 연락처 지역은 기기 안에서 가장 가까운 시군구로 정한다 (서울).
+      await tester.tap(find.byKey(const Key('emergency')));
+      await tester.pumpAndSettle();
+      expect(find.text('1600-9582'), findsOneWidget);
     });
   });
 
@@ -154,6 +254,16 @@ void main() {
       expect(h.launcher.dialed, ['02-111-1111']);
       await tapVisible(tester, find.byKey(const Key('detail-directions')), within: const Key('detail'));
       expect(h.launcher.directionsTo, ['열린 급식소']);
+    });
+
+    testWidgets('주소로 찾은 좌표는 대략적이라고 알린다', (tester) async {
+      await Harness(facilities: [facilityJson(id: 'g', geocoded: true)]).pump(tester);
+      await tester.tap(find.byKey(const Key('group-meal')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('자세히'));
+      await tester.pumpAndSettle();
+      await scrollTo(tester, find.byKey(const Key('geocoded-note')), within: const Key('detail'));
+      expect(find.text('지도 위치는 주소로 찾은 대략적인 위치예요.'), findsOneWidget);
     });
 
     testWidgets('신고 이메일이 없으면 신고 버튼 숨김, 있으면 표시', (tester) async {
@@ -191,20 +301,101 @@ void main() {
       expect(find.byKey(const Key('map-selected')), findsOneWidget);
       expect(find.text('© OpenStreetMap'), findsOneWidget);
     });
+
+    Future<void> openMap(WidgetTester tester) async {
+      await tester.tap(find.byKey(const Key('group-meal')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('toggle-map')));
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('지역 기준: "처음 위치로"는 위치를 다시 읽지 않는다', (tester) async {
+      final h = Harness(facilities: [mealOpen]);
+      await h.pump(tester);
+      await openMap(tester);
+      expect(find.text('처음 위치로'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('map-recenter')));
+      await tester.pumpAndSettle();
+      expect(h.location.requests, 0);
+      expect(h.controller.origin.kind, OriginKind.region);
+    });
+
+    testWidgets('GPS 기준: "내 위치로"는 위치를 한 번 새로 읽어 기준을 옮긴다', (tester) async {
+      const first = GeoPoint(37.5550, 126.9710);
+      const moved = GeoPoint(37.5600, 126.9800);
+      final h = Harness(facilities: [mealOpen], location: const LocationResult.success(first));
+      await h.pump(tester);
+      await h.controller.useGps();
+      await tester.pumpAndSettle();
+      await openMap(tester);
+      expect(find.text('내 위치로'), findsOneWidget);
+
+      h.location.result = const LocationResult.success(moved);
+      await tester.tap(find.byKey(const Key('map-recenter')));
+      await tester.pumpAndSettle();
+      expect(h.location.requests, 2);
+      expect(h.controller.origin.point, moved);
+      expect(find.byKey(const Key('map')), findsOneWidget);
+    });
+
+    testWidgets('GPS 기준: 위치를 못 읽으면 전 위치를 그대로 두고 알려 준다', (tester) async {
+      const first = GeoPoint(37.5550, 126.9710);
+      final h = Harness(facilities: [mealOpen], location: const LocationResult.success(first));
+      await h.pump(tester);
+      await h.controller.useGps();
+      await tester.pumpAndSettle();
+      await openMap(tester);
+
+      h.location.result = const LocationResult.failed(LocationFailure.serviceOff);
+      await tester.tap(find.byKey(const Key('map-recenter')));
+      await tester.pumpAndSettle();
+      expect(h.controller.origin.kind, OriginKind.gps);
+      expect(h.controller.origin.point, first);
+      expect(find.text('지금 위치를 찾지 못했어요. 전에 찾은 위치로 보여 드려요.'), findsOneWidget);
+    });
   });
 
-  testWidgets('긴급 전화: 노숙인 위기대응콜', (tester) async {
-    final h = Harness();
-    await h.pump(tester);
-    await tester.tap(find.byKey(const Key('emergency')));
-    await tester.pumpAndSettle();
-    expect(find.text('1600-9582'), findsOneWidget);
-    await tester.tap(find.byKey(const Key('call-1600-9582')));
-    expect(h.launcher.dialed, ['1600-9582']);
-    for (final n in ['129', '109', '120', '112', '119']) {
-      await tester.scrollUntilVisible(find.byKey(Key('call-$n')), 200, scrollable: find.byType(Scrollable).first);
-      expect(find.text(n), findsOneWidget);
+  group('긴급 전화', () {
+    Future<void> open(WidgetTester tester, Harness h) async {
+      await h.pump(tester);
+      await tester.tap(find.byKey(const Key('emergency')));
+      await tester.pumpAndSettle();
     }
+
+    Future<void> expectNumbers(WidgetTester tester, List<String> numbers) async {
+      for (final n in numbers) {
+        await tester.scrollUntilVisible(find.byKey(Key('call-$n')), 200, scrollable: find.byType(Scrollable).first);
+        expect(find.text(n), findsOneWidget);
+      }
+    }
+
+    testWidgets('서울: 노숙인 위기대응콜이 맨 위, 다산콜', (tester) async {
+      final h = Harness();
+      await open(tester, h);
+      expect(find.text('1600-9582'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('call-1600-9582')));
+      expect(h.launcher.dialed, ['1600-9582']);
+      await expectNumbers(tester, ['129', '109', '1577-0199', '02-120', '112', '119']);
+    });
+
+    testWidgets('부산: 서울 번호 없이 전국 공통 번호', (tester) async {
+      await open(tester, Harness(savedRegion: '26110'));
+      expect(find.byKey(const Key('call-1600-9582')), findsNothing);
+      await expectNumbers(tester, ['129', '109', '1577-0199', '112', '119']);
+      expect(find.byKey(const Key('call-02-120')), findsNothing);
+    });
+
+    testWidgets('경기: 경기도 콜센터', (tester) async {
+      await open(tester, Harness(savedRegion: '41111'));
+      await expectNumbers(tester, ['129', '031-120']);
+    });
+
+    testWidgets('위치 모름: 전국 공통 번호만', (tester) async {
+      await open(tester, Harness(savedRegion: null));
+      expect(find.textContaining('전국 어디서나'), findsOneWidget);
+      expect(find.byKey(const Key('call-1600-9582')), findsNothing);
+      await expectNumbers(tester, ['129', '112', '119']);
+    });
   });
 
   testWidgets('앱 정보: 민간 앱 안내, 개인정보, 출처', (tester) async {
@@ -226,6 +417,10 @@ void main() {
         await tapVisible(tester, find.byKey(const Key('facility-meal-open')));
         expect(find.byKey(const Key('detail')), findsOneWidget);
         await goBack(tester);
+        await goBack(tester);
+        await tester.drag(find.byType(Scrollable).hitTestable().first, const Offset(0, 2000));
+        await tester.pumpAndSettle();
+        await tapVisible(tester, find.byKey(const Key('group-clinic')));
         await goBack(tester);
         await tester.drag(find.byType(Scrollable).hitTestable().first, const Offset(0, 2000));
         await tester.pumpAndSettle();

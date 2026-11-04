@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Wed, 04 Nov 2026 05:55:28 GMT
+Server: Apache
+Expires: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Set-Cookie: JSESSIONID=ExqmU_ovs5VHCkyJZGfH51pYPxvyg6NM_wx-o84Z.portal11; path=/
+X-XSS-Protection: 1; mode=block
+Pragma: no-cache
+X-Frame-Options: DENY
+Content-Disposition: attachment; filename="충청북도_노숙인복지시설 현황_20260715.csv"
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Content-Length: 556
+Content-Type: application/octet-stream; charset=UTF-8
+

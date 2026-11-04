@@ -4,6 +4,7 @@ import 'package:majung/domain/dataset.dart';
 import 'package:majung/domain/facility.dart';
 import 'package:majung/domain/freshness.dart';
 import 'package:majung/domain/geo.dart';
+import 'package:majung/domain/opening_hours.dart';
 import 'package:majung/domain/ranking.dart';
 
 import '../fixtures.dart';
@@ -109,8 +110,33 @@ void main() {
     });
   });
 
+  group('Facility 확인 상태', () {
+    final now = DateTime(2026, 11, 2, 12); // 월 12:00, 점심 시간
+    test('사람이 확인한 시설만 지금 열림을 계산한다', () {
+      final official = Facility.fromJson(facilityJson());
+      final public = Facility.fromJson(facilityJson(verifiedBy: 'public_data'));
+      expect(official.hoursTrusted, isTrue);
+      expect(official.statusAt(now).isOpenNow, isTrue);
+      expect(public.hoursTrusted, isFalse, reason: '공공데이터 시간은 자주 틀린다 (decisions #16)');
+      expect(public.statusAt(now).state, OpenState.unknown);
+    });
+    test('새 필드: 시도, 대상, 진료 종류', () {
+      final f = Facility.fromJson(facilityJson(sido: '전남광주', audience: 'senior', subtype: 'health_center'));
+      expect(f.sido, '전남광주');
+      expect(f.audience, Audience.senior);
+      expect(f.clinicType, ClinicType.healthCenter);
+      final plain = Facility.fromJson(facilityJson(subtype: 'unknown-kind'));
+      expect(plain.audience, Audience.general);
+      expect(plain.clinicType, isNull);
+    });
+    test('verified_by: official', () {
+      expect(Facility.fromJson(facilityJson()).verifiedBy, VerifiedBy.official);
+    });
+  });
+
   group('rankFacilities', () {
     final now = DateTime(2026, 11, 2, 12); // 월 12:00
+    const seoulStation = GeoPoint(37.5547, 126.9707);
     final always = [
       {'days': ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'], 'open': '00:00', 'close': '24:00'},
     ];
@@ -121,27 +147,50 @@ void main() {
       facilityJson(id: 'closed-near', name: '닫힌가까운', hours: never, lat: 37.5548, lng: 126.9708),
       facilityJson(id: 'open-far', name: '열린먼', hours: always, lat: 37.5156, lng: 126.9073),
       facilityJson(id: 'open-near', name: '열린가까운', hours: always, lat: 37.5550, lng: 126.9710),
-      facilityJson(id: 'unknown', name: '모름', hours: []),
+      facilityJson(id: 'unknown', name: '모름', hours: [], lat: 37.5560, lng: 126.9720),
+      facilityJson(id: 'public-open', name: '공공데이터', hours: always, verifiedBy: 'public_data', lat: 37.5549, lng: 126.9709),
       facilityJson(id: 'expired-open', name: '오래된', hours: always, lastVerified: '2025-01-01'),
+      facilityJson(id: 'senior', name: '경로식당', hours: always, audience: 'senior'),
+      facilityJson(id: 'busan', name: '부산급식', hours: always, lat: 35.1151, lng: 129.0422, sido: '부산'),
       facilityJson(id: 'shelter', name: '쉼터', category: 'shelter', hours: always),
     ]));
 
-    test('열린 곳 → 닫힌 곳 → 모름 → 오래된 정보, 같은 묶음은 가까운 순', () {
-      final ranked = rankFacilities(ds, group: CategoryGroup.meal, now: now, origin: Landmark.seoulStation.point);
-      expect(ranked.map((r) => r.facility.id), ['open-near', 'open-far', 'closed-near', 'unknown', 'expired-open']);
-      expect(ranked.last.freshness, Freshness.expired);
+    List<String> ids(GeoPoint origin, {CategoryGroup group = CategoryGroup.meal}) =>
+        rankFacilities(ds, group: group, now: now, origin: origin).map((r) => r.facility.id).toList();
+
+    test('확인된 열린 곳 → 나머지 가까운 순 → 오래된 정보 → 어르신 경로식당', () {
+      expect(ids(seoulStation), ['open-near', 'open-far', 'closed-near', 'public-open', 'unknown', 'expired-open', 'senior']);
+      final ranked = rankFacilities(ds, group: CategoryGroup.meal, now: now, origin: seoulStation);
       expect(ranked.first.distance, lessThan(100));
+      expect(ranked.firstWhere((r) => r.facility.id == 'expired-open').freshness, Freshness.expired);
+    });
+
+    test('먼 지역(부산)은 가까운 곳이 충분하면 빠진다', () {
+      expect(ids(seoulStation), isNot(contains('busan')));
+    });
+
+    test('부산에서는 부산이 먼저, 가까운 곳이 모자라면 먼 곳으로 채운다', () {
+      final busan = ids(const GeoPoint(35.1000, 129.0300));
+      expect(busan.first, 'busan');
+      expect(busan.where((id) => id != 'senior').length, minNearbyCount);
     });
 
     test('카테고리 묶음으로 거른다', () {
-      final ranked = rankFacilities(ds, group: CategoryGroup.sleep, now: now);
-      expect(ranked.map((r) => r.facility.id), ['shelter']);
+      expect(ids(seoulStation, group: CategoryGroup.sleep), ['shelter']);
     });
 
-    test('기준 위치가 없으면 거리 없이 이름순', () {
-      final ranked = rankFacilities(ds, group: CategoryGroup.meal, now: now);
-      expect(ranked.first.distance, isNull);
-      expect(ranked.take(2).map((r) => r.facility.name), ['열린가까운', '열린먼']);
+    test('기준 위치가 없으면 빈 목록 (전국을 늘어놓지 않는다)', () {
+      expect(rankFacilities(ds, group: CategoryGroup.meal, now: now), isEmpty);
+    });
+
+    test('진료: 무료 진료소 → 입원 지원 → 보건소', () {
+      final clinics = Dataset.fromJson(datasetJson(facilities: [
+        facilityJson(id: 'hc', category: 'clinic', subtype: 'health_center', hours: [], lat: 37.5548, lng: 126.9708),
+        facilityJson(id: 'support', category: 'clinic', subtype: 'hospital_support', hours: [], lat: 37.56, lng: 126.98),
+        facilityJson(id: 'free', category: 'clinic', subtype: 'free_clinic', hours: [], lat: 37.50, lng: 126.90),
+      ]));
+      final ranked = rankFacilities(clinics, group: CategoryGroup.clinic, now: now, origin: seoulStation);
+      expect(ranked.map((r) => r.facility.id), ['free', 'support', 'hc']);
     });
   });
 }

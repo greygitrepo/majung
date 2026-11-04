@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="대경홈리스복지회">
+<meta name="description" content="대경홈리스복지회" />
+<meta name="robots" content="대구시 북구">
+<meta charset="utf-8">
+<meta property="og:type" content="website">
+ <meta property="og:title" content="대경홈리스복지회">
+ <meta property="og:description" content="대구시 북구">
+ <meta property="og:image" content="">
+ <meta property="og:url" content="대경홈리스복지회">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
+<title>오류안내 페이지 | 대경홈리스복지회</title>
+<link rel="stylesheet" href="http://www.dghomeless.or.kr/main/css/default.css"><link rel="stylesheet" href="http://www.dghomeless.or.kr/main/css/content.css">
+<!--[if lte IE 8]>
+<script src="http://www.dghomeless.or.kr/main/js/html5.js"></script>
+<![endif]-->
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "http://www.dghomeless.or.kr/main";
+var g5_bbs_url   = "http://www.dghomeless.or.kr/main/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+</script>
+<script src="http://www.dghomeless.or.kr/main/js/jquery-1.8.3.min.js"></script>
+<script src="http://www.dghomeless.or.kr/main/js/jquery.menu.js"></script>
+<script src="http://www.dghomeless.or.kr/main/js/common.js"></script>
+<script src="http://www.dghomeless.or.kr/main/js/wrest.js"></script>
+</head>
+<body>
+
+<script>
+alert("등록된 내용이 없습니다.");
+//document.location.href = "";
+//alert('history.back();');
+history.back();
+</script>
+
+<noscript>
+<div id="validation_check">
+    <h1>다음 항목에 오류가 있습니다.</h1>
+    <p class="cbg">
+        등록된 내용이 없습니다.    </p>
+        <div class="btn_confirm">
+        <a href="">돌아가기</a>
+    </div>
+    
+</div>
+</noscript>
+
+
+
+<!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+<!--[if lte IE 7]>
+<script>
+$(function() {
+    var $sv_use = $(".sv_use");
+    var count = $sv_use.length;
+
+    $sv_use.each(function() {
+        $(this).css("z-index", count);
+        $(this).css("position", "relative");
+        count = count - 1;
+    });
+});
+</script>
+<![endif]-->
+
+</body>
+</html>

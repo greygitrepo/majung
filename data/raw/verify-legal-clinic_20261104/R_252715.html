@@ -1,0 +1,1369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head></head>
+ <body>
+  <input type="hidden" id="lsNm" name="lsNm" value="의료급여법" /> 
+  <input type="hidden" id="lsId" name="lsId" value="001780" /> 
+  <input type="hidden" id="lsiSeq" name="lsiSeq" value="252715" /> 
+  <input type="hidden" id="ancYd" name="ancYd" value="20230718" /> 
+  <input type="hidden" id="efYd" name="efYd" value="20250719" /> 
+  <input type="hidden" id="ancNo" name="ancNo" value="19555" /> 
+  <input type="hidden" id="lsBdyChrCls" name="lsBdyChrCls" value="010202" /> 
+  <input type="hidden" id="lumIsConOrdin" value="Y" /> 
+  <input type="hidden" id="nwYnValue" value="Y" /> 
+  <input type="hidden" id="hstLnkDpYn" value="0" /> 
+  <style>
+.byl_pop ul li {
+	padding: 7px;
+	margin-left: 10px;
+}
+</style> 
+  <script type="text/javascript">
+$(document).ready(function(){
+	customResizePop(); // 본문 리사이즈
+	initEDotXPress('\uC758\uB8CC\uAE09\uC5EC\uBC95');
+});
+
+function customResizePop() {
+		// 본문 버튼 높이 만큼 제공한다. 13은 패딩값
+		var $contentHeight = $("#center").height() - ($('.body_top_area').height() + 13);
+		var $conTopHeight = $('#conTop').height() + 35;
+
+		var bdyValue = lsVO.bdyUpdValue.updateContentNm || 'lsBdy';
+		
+        //lsInfoP 가 열릴 때 본문은 무조건 조회 하기 때문에 조건문 밖에 위치 하도록 변경.
+		$('#viewwrapCenter').css('overflow-y', 'hidden');
+        $('#bodyContentTOP > #viewwrapCenter').height($contentHeight);
+        $('#conScroll').height($('#viewwrapCenter').height() - $conTopHeight);
+        
+        if (bdyValue == 'lsBdy') {
+			/* 본문에서는 법령명 고정 때문에 hidden 처리*/
+			$('#viewwrapCenter').css('overflow-y', 'hidden');
+			$('#bodyContentTOP > #viewwrapCenter').height($contentHeight);
+			if($('#viewwrapCenter2').height() != null || $('#viewwrapCenter2').height() == 0){
+				$('#bodyContentTOP > #viewwrapCenter2').height($contentHeight);
+				$('#conScroll').height($('#viewwrapCenter2').height() - $conTopHeight);
+				$('#viewwrapCenter2').css('overflow', 'hidden');
+			}
+			$('#bodyContent').css('width', 'inherit');
+		} else if (bdyValue == 'lsPtnThdCmp') {
+			lspttnThdCmpResize();
+		} else if (bdyValue == 'lumThdCmp') {
+			thdCmpNewScPResize();
+		} else if (bdyValue == 'lumThdCmpSc') {
+
+		} else if (bdyValue == 'thdCmpNew') {
+
+		} else if (bdyValue == 'lsOldAndNew') {				
+			// 신구법은 이전 이후 버튼 높이까지 마이너스 한다. 
+			$('#bodySideContent > #oldAndNewDiv').height(($contentHeight + $('#tmpWidth').height()-114));
+		} else if (bdyValue == 'lsRvsDocInfoR') {
+
+			$('#bodySideContent > #viewwrapCenter').height($contentHeight);
+			$('#conScroll').height($('#viewwrapCenter').height() - $conTopHeight);
+			$('#conTop').height($('.cont_top').height());
+			$('#rvsConScroll').height($('#viewwrapCenter').height() - $('#rvsConTop').height());
+			
+		} else {
+			$('#bodySideContent > #viewwrapCenter').height($contentHeight);
+		}
+}
+
+function fileLayer(temp){
+	var tempStr = $("#hwptext"+temp).attr("value");
+	if(tempStr.length > 32){
+ 		$("#hwptext"+temp).css("width", "80%").css("text-overflow", "ellipsis").css("overflow","hidden").css("white-space","nowrap");
+ 		$("#hwpxtext"+temp).css("width", "80%").css("text-overflow", "ellipsis").css("overflow","hidden").css("white-space","nowrap");
+ 		$("#pdftext"+temp).css("width", "80%").css("text-overflow", "ellipsis").css("overflow","hidden").css("white-space","nowrap");
+ 	}
+
+ 	$(".byl_pop").css("display","none");
+
+ 	//레이어높이값
+ 	var height = $("#fileSaveLayer"+temp).height();
+ 	//본문 제일 하단 위치값 
+	var pagePos = document.querySelector('#center');
+	pagePos = pagePos.getBoundingClientRect().bottom;
+	//레이어버튼위치값
+	var layPos =document.querySelector('#imgPos'+temp);
+	layPos = layPos.getBoundingClientRect().bottom;
+	var lay_pop = $('#fileSaveLayer'+temp);
+	var pos = $('#imgPos'+temp).position();
+	
+	if(pagePos > height+layPos){ //레이어가 잘리지 않을 때 
+		lay_pop.css('top', (pos.top)+25 + 'px');
+		lay_pop.css('left', '250px')
+	}else{ //레이어가 잘릴 때
+		lay_pop.css('top', ((pos.top)-height)+ 'px');
+		lay_pop.css('left', (pos.left)+25+'px');
+	}
+	document.getElementById("fileSaveLayer"+temp).style.display="block";
+}
+
+function copyToClipBoard(temp2){
+	var content = document.getElementById('textarea'+temp2);
+	content.select();
+	document.execCommand('copy');
+	alert("주소가 클립보드에 저장되었습니다.");
+	content.setSelectionRange(0,0);
+}
+
+function delLayer(temp){
+	document.getElementById("fileSaveLayer"+temp).style.display="none";
+}
+
+</script> 
+  <div id="contentBody" class="scr_ctrl"> 
+   <div id="sideCenter" class="cont_area"> 
+    <ul class="cont_icon"> 
+     <li><a><img alt="판" src="/LSW/images/button/btn_jostmdico.gif" />판례</a></li> 
+     <li><a><img alt="연" src="/LSW/images/button/btn_year3.gif" />연혁</a></li> 
+     <li><a><img alt="행" src="/LSW/images/button/btn_entrust3_2.gif" />위임행정규칙</a></li> 
+     <li><a><img alt="규" src="/LSW/images/button/btn_entrust4_2.gif" />규제</a></li> 
+     <li><a><img alt="한" src="/LSW/images/button/btn_oneviewIcon.gif" />한눈보기</a></li> 
+    </ul> 
+    <!-- 연혁법령 안내문구 --> 
+    <!-- 법령명 --> 
+    <div id="conTop" class="cont_top"> 
+     <a id="top"></a> 
+     <!-- 국민신문고 연결배너 출력 --> 
+     <h2> 의료급여법 </h2> 
+     <div class="ct_sub"> 
+      <span>[시행 2025. 7. 19.] [법률 제19555호, 2023. 7. 18., 타법개정]</span> 
+     </div> 
+    </div> 
+    <!-- 소관부처 --> 
+    <div id="conScroll" class="scr_area" style="overflow-y: auto;"> 
+     <div class="cont_subtit"> 
+      <p> <a title="팝업으로 이동" onclick="javascript:cptOfiPop('http://www.mohw.go.kr'); return false;" href="#AJAX" target="_blank"> <span title="http://www.mohw.go.kr" style="cursor: pointer;">보건복지부</span> (<span title="" style="cursor: pointer;">기초의료보장과</span>), 044-202-3088/3096 </a> </p> 
+     </div> 
+     <!-- 조문정보 --> 
+     <a name="J1:0" id="J1:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0001', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830139', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000100" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="1:0:000100:92830139" /> <span class="bl"><label for="Y000100"> 제1조(목적) </label> </span> 이 법은 생활이 어려운 사람에게 의료급여를 함으로써 국민보건의 향상과 사회복지의 증진에 이바지함을 목적으로 한다. </p>
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J2:0" id="J2:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0002', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830141', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000200" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="2:0:000200:92830141" /> <span class="bl"><label for="Y000200"> 제2조(정의) </label> </span> 이 법에서 사용하는 용어의 뜻은 다음과 같다. </p>
+       <p class="pty1_de2_1"> </p> 
+       <p class="pty1_de2h">1. “수급권자”란 이 법에 따라 의료급여를 받을 수 있는 자격을 가진 사람을 말한다. </p> 
+       <p class="pty1_de2h">2. “의료급여기관”이란 수급권자에 대한 진료ㆍ조제 또는 투약 등을 담당하는 의료기관 및 약국 등을 말한다. </p> 
+       <p class="pty1_de2h">3. “부양의무자”란 수급권자를 부양할 책임이 있는 사람으로서 수급권자의 1촌 직계혈족 및 그 배우자를 말한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J3:0" id="J3:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0003', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830143', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0003', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000300" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="3:0:000300:92830143" /> <span class="bl"><label for="Y000300"> 제3조(수급권자) </label> </span> ① 이 법에 따른 수급권자는 다음 각 호와 같다. <span class="sfon">&lt;개정 2014. 12. 30., 2015. 3. 27., 2023. 3. 4., 2023. 7. 18., 2023. 8. 8., 2024. 2. 13.&gt;</span> </p>
+       <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028608891','ALLJO','');" href="javascript:;">「국민기초생활 보장법」</a>에 따른 의료급여 수급자 </p> 
+       <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611955','ALLJO','');" href="javascript:;">「재해구호법」</a>에 따른 이재민으로서 보건복지부장관이 의료급여가 필요하다고 인정한 사람 </p> 
+       <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611961','ALLJO','');" href="javascript:;">「의사상자 등 예우 및 지원에 관한 법률」</a>에 따라 의료급여를 받는 사람 </p> 
+       <p class="pty1_de2h">4. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611963','ALLJO','');" href="javascript:;">「국내입양에 관한 특별법」</a>에 따라 입양된 18세 미만의 아동 </p> 
+       <p class="pty1_de2h">5. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028608887','ALLJO','');" href="javascript:;">「독립유공자예우에 관한 법률」</a>, <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028608889','ALLJO','');" href="javascript:;">「국가유공자 등 예우 및 지원에 관한 법률」</a> 및 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611967','ALLJO','');" href="javascript:;">「보훈보상대상자 지원에 관한 법률」</a>의 적용을 받고 있는 사람과 그 가족으로서 국가보훈부장관이 의료급여가 필요하다고 추천한 사람 중에서 보건복지부장관이 의료급여가 필요하다고 인정한 사람 </p> 
+       <p class="pty1_de2h">6. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611957','ALLJO','');" href="javascript:;">「무형유산의 보전 및 진흥에 관한 법률」</a>에 따라 지정된 국가무형유산의 보유자(명예보유자를 포함한다)와 그 가족으로서 국가유산청장이 의료급여가 필요하다고 추천한 사람 중에서 보건복지부장관이 의료급여가 필요하다고 인정한 사람 </p> 
+       <p class="pty1_de2h">7. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611959','ALLJO','');" href="javascript:;">「북한이탈주민의 보호 및 정착지원에 관한 법률」</a>의 적용을 받고 있는 사람과 그 가족으로서 보건복지부장관이 의료급여가 필요하다고 인정한 사람 </p> 
+       <p class="pty1_de2h">8. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611969','ALLJO','');" href="javascript:;">「5ㆍ18민주화운동 관련자 보상 등에 관한 법률」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611971','JO','');" href="javascript:;">제8조</a>에 따라 보상금등을 받은 사람과 그 가족으로서 보건복지부장관이 의료급여가 필요하다고 인정한 사람 </p> 
+       <p class="pty1_de2h">9. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611965','ALLJO','');" href="javascript:;">「노숙인 등의 복지 및 자립지원에 관한 법률」</a>에 따른 노숙인 등으로서 보건복지부장관이 의료급여가 필요하다고 인정한 사람 </p> 
+       <p class="pty1_de2h">10. 그 밖에 생활유지 능력이 없거나 생활이 어려운 사람으로서 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127522');" href="javascript:;">대통령령</a>으로 정하는 사람 </p> 
+       <p class="pty1_de2_1">② 제1항제2호 및 제5호부터 제9호까지의 규정에 따른 수급권자의 인정 기준 등에 관한 사항은 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link_not" onclick="javascript:joDelegatePop('252715','0003','00','010102','NOT','보건복지부장관이 정하는','11408');">보건복지부장관이 정하는</a> 바에 따른다. </p> 
+       <p class="pty1_de2_1">③ 제1항에 따른 수급권자에 대한 의료급여의 내용과 기준은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127523');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 구분하여 달리 정할 수 있다. </p> 
+       <p class="pty1_de2_1">④ 제1항에 따른 수급권자에 대한 의료급여의 개시일 등에 관하여 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127524');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J3:2" id="J3:2"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0003', '02' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830145', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000302" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="3:2:000302:92830145" /> <span class="bl"><label for="Y000302"> 제3조의2(난민에 대한 특례) </label> </span> <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611555','ALLJO','');" href="javascript:;">「난민법」</a>에 따른 난민인정자로서 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611557','ALLJO','');" href="javascript:;">「국민기초생활 보장법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611553','JO','');" href="javascript:;">제12조의3</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611559','JO','');" href="javascript:;">제2항</a>에 따른 의료급여 수급권자의 범위에 해당하는 사람은 수급권자로 본다. <span class="sfon">&lt;개정 2014. 12. 30.&gt;</span> </p>
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J3:3" id="J3:3"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0003', '03' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830147', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000303" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="3:3:000303:92830147" /> <span class="bl"><label for="Y000303"> 제3조의3(수급권자의 인정 절차 등) </label> </span> ① <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611577','JO','');" href="javascript:;">제3조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611579','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611581','JO','');" href="javascript:;">제2호부터 제10호</a>까지의 수급권자가 되려는 사람은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127525');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 특별자치시장ㆍ특별자치도지사ㆍ시장(특별자치도의 행정시장은 제외한다)ㆍ군수ㆍ구청장(구청장은 자치구의 구청장을 말하며, 이하 “시장ㆍ군수ㆍ구청장”이라 한다)에게 수급권자 인정 신청을 하여야 한다. </p>
+       <p class="pty1_de2_1">② 시장ㆍ군수ㆍ구청장은 제1항에 따른 신청인을 수급권자로 인정하는 것이 타당한지를 확인하기 위하여 필요한 경우 그 신청인에게 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611597','ALLJO','');" href="javascript:;">「국민기초생활 보장법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611583','JO','');" href="javascript:;">제21조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611599','JO','');" href="javascript:;">제3항</a> 각 호에 따른 자료 또는 정보의 제공에 동의한다는 서면을 제출하게 할 수 있다. </p> 
+       <p class="pty1_de2_1">③ 제1항의 신청에 따른 조사, 확인조사, 금융정보 등의 제공 등에 관하여는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611569','ALLJO','');" href="javascript:;">「국민기초생활 보장법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611589','JO','');" href="javascript:;">제22조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611575','JO','');" href="javascript:;">제23조</a> 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611595','JO','');" href="javascript:;">제23조의2</a>를 준용한다. </p> 
+       <p class="pty1_de2_1">④ 국가보훈부장관과 국가유산청장은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127526');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611561','JO','');" href="javascript:;">제3조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611563','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611585','JO','');" href="javascript:;">제5호</a> 및 <a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611565','JO','');" href="javascript:;">제6호</a>의 수급권자로 인정할 필요가 있는 사람을 추천하여 그 결과를 수급권자의 주소지를 관할하는 시장ㆍ군수ㆍ구청장에게 알려야 한다. 이 경우 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611561','JO','');" href="javascript:;">제3조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611563','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611585','JO','');" href="javascript:;">제5호</a> 및 <a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611565','JO','');" href="javascript:;">제6호</a>의 수급권자가 되려는 사람이 제1항에 따른 수급권자 인정 신청을 한 것으로 본다. <span class="sfon">&lt;개정 2023. 3. 4., 2024. 2. 13.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑤ 시장ㆍ군수ㆍ구청장은 제1항 및 제4항에 따라 인정 신청을 한 사람(<a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611571','JO','');" href="javascript:;">제3조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611573','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611591','JO','');" href="javascript:;">제3호</a> 및 <a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611593','JO','');" href="javascript:;">제4호</a>에 해당하는 사람은 제외한다) 중에서 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611567','JO','');" href="javascript:;">제3조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611587','JO','');" href="javascript:;">제2항</a>에 따른 수급권자의 인정 기준에 따라 수급권자를 정하여야 한다. </p> 
+       <p class="pty1_de2_1">⑥ 제1항부터 제5항까지에서 규정한 사항 외에 수급권자의 인정 절차 등에 관하여 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127527');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[본조신설 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J4:0" id="J4:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0004', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830149', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000400" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="4:0:000400:92830149" /> <span class="bl"><label for="Y000400"> 제4조(적용 배제) </label> </span> ① 수급권자가 업무 또는 공무로 생긴 질병ㆍ부상ㆍ재해로 다른 법령에 따른 급여나 보상(報償) 또는 보상(補償)을 받게 되는 경우에는 이 법에 따른 의료급여를 하지 아니한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p>
+       <p class="pty1_de2_1">② 수급권자가 다른 법령에 따라 국가나 지방자치단체 등으로부터 의료급여에 상당하는 급여 또는 비용을 받게 되는 경우에는 그 한도에서 이 법에 따른 의료급여를 하지 아니한다. <span class="sfon">&lt;신설 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J5:0" id="J5:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0005', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830151', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000500" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="5:0:000500:92830151" /> <span class="bl"><label for="Y000500"> 제5조(보장기관) </label> </span> ① 이 법에 따른 의료급여에 관한 업무는 수급권자의 거주지를 관할하는 특별시장ㆍ광역시장ㆍ도지사와 시장ㆍ군수ㆍ구청장이 한다. </p>
+       <p class="pty1_de2_1">② 제1항에도 불구하고 주거가 일정하지 아니한 수급권자에 대한 의료급여 업무는 그가 실제 거주하는 지역을 관할하는 시장ㆍ군수ㆍ구청장이 한다. </p> 
+       <p class="pty1_de2_1">③ 특별시장ㆍ광역시장ㆍ도지사 및 시장ㆍ군수ㆍ구청장은 수급권자의 건강 유지 및 증진을 위하여 필요한 사업을 실시하여야 한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J5:2" id="J5:2"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0005', '02' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830153', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0005', '02');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000502" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="5:2:000502:92830153" /> <span class="bl"><label for="Y000502"> 제5조의2(사례관리) </label> </span> ① 보건복지부장관, 특별시장ㆍ광역시장ㆍ도지사 및 시장ㆍ군수ㆍ구청장은 수급권자의 건강관리 능력 향상 및 합리적 의료이용 유도 등을 위하여 사례관리를 실시할 수 있다. </p>
+       <p class="pty1_de2_1">② 제1항에 따른 사례관리를 실시하기 위하여 특별시ㆍ광역시ㆍ특별자치시ㆍ도ㆍ특별자치도(이하 “시ㆍ도”라 한다) 및 시(특별자치도의 행정시를 제외한다. 이하 같다)ㆍ군ㆍ구(자치구를 말한다. 이하 같다)에 의료급여 관리사를 둔다. </p> 
+       <p class="pty1_de2_1">③ 보건복지부장관은 제1항에 따른 사례관리 사업의 전문적인 지원을 위하여 해당 업무를 공공 또는 민간 기관ㆍ단체 등에 위탁하여 실시할 수 있다. </p> 
+       <p class="pty1_de2_1">④ 제2항에 따른 의료급여 관리사의 자격ㆍ배치기준 등 운영에 관한 사항과 제3항에 따른 사례관리 사업의 지원 업무 위탁 실시 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127528');" href="javascript:;">보건복지부령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J6:0" id="J6:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0006', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830155', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000600" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="6:0:000600:92830155" /> <span class="bl"><label for="Y000600"> 제6조(의료급여심의위원회) </label> </span> ① 이 법에 따른 의료급여사업의 실시에 관한 사항을 심의하기 위하여 보건복지부, 시ㆍ도 및 시ㆍ군ㆍ구에 각각 의료급여심의위원회를 둔다. 다만, 시ㆍ도 및 시ㆍ군ㆍ구에 두는 의료급여심의위원회의 경우에는 그 기능을 담당하기에 적합한 다른 위원회가 있고 그 위원회의 위원이 제4항에 규정된 자격을 갖춘 경우 시ㆍ도 또는 시ㆍ군ㆍ구의 <a href="#AJAX" title="팝업으로 이동" class="delegatedOrdin_link" onclick="javascript:joDelegateOrdinPop('252715','001780','0006','00','010103','','조례로 각각 정하는');">조례</a>로 각각 정하는 바에 따라 그 위원회로 하여금 의료급여심의위원회의 기능을 수행하게 할 수 있다. </p>
+       <p class="pty1_de2_1">② 보건복지부에 두는 의료급여심의위원회(이하 “중앙의료급여심의위원회”라 한다)는 다음 각 호의 사항을 심의한다. </p> 
+       <p class="pty1_de2h">1. 의료급여사업의 기본방향 및 대책 수립에 관한 사항 </p> 
+       <p class="pty1_de2h">2. 의료급여의 기준 및 수가에 관한 사항 </p> 
+       <p class="pty1_de2h">3. 그 밖에 보건복지부장관 또는 위원장이 부의하는 사항 </p> 
+       <p class="pty1_de2_1">③ 중앙의료급여심의위원회는 위원장을 포함하여 15명 이내의 위원으로 구성하고 위원은 보건복지부장관이 다음 각 호의 어느 하나에 해당하는 사람 중에서 위촉ㆍ지명하며 위원장은 보건복지부차관으로 한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2h">1. 공익을 대표하는 사람(의료보장에 관한 전문가로서 대학의 조교수 이상인 사람 또는 연구기관의 연구원으로 재직 중인 사람) </p> 
+       <p class="pty1_de2h">2. 의약계를 대표하는 사람 및 사회복지계를 대표하는 사람 </p> 
+       <p class="pty1_de2h">3. 관계 행정기관 소속의 3급 이상 공무원 </p> 
+       <p class="pty1_de2_1">④ 제1항에 따른 시ㆍ도 및 시ㆍ군ㆍ구 의료급여심의위원회의 위원은 특별시장ㆍ광역시장ㆍ도지사 또는 시장ㆍ군수ㆍ구청장이 다음 각 호의 어느 하나에 해당하는 사람 중에서 위촉ㆍ지명하며 위원장은 해당 특별시장ㆍ광역시장ㆍ도지사 또는 시장ㆍ군수ㆍ구청장으로 한다. 다만, 제1항 단서에 따라 다른 위원회가 의료급여심의위원회의 기능을 대신하는 경우 위원장은 <a href="#AJAX" title="팝업으로 이동" class="delegatedOrdin_link" onclick="javascript:joDelegateOrdinPop('252715','001780','0006','00','010103','','조례로 정한다');">조례</a>로 정한다. </p> 
+       <p class="pty1_de2h">1. 의료보장에 관한 학식과 경험이 있는 사람 </p> 
+       <p class="pty1_de2h">2. 공익을 대표하는 사람 </p> 
+       <p class="pty1_de2h">3. 관계 행정기관 소속의 공무원 </p> 
+       <p class="pty1_de2_1">⑤ 제1항에 따른 의료급여심의위원회는 심의와 관련하여 필요한 경우 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611601','JO','');" href="javascript:;">제5조</a>에 따른 보장기관에 대하여 그 소속 공무원의 출석이나 자료의 제출을 요청할 수 있다. 이 경우 해당 보장기관은 정당한 사유가 없는 한 이에 응하여야 한다. </p> 
+       <p class="pty1_de2_1">⑥ 보건복지부와 시ㆍ도 및 시ㆍ군ㆍ구에 두는 의료급여심의위원회의 기능과 각 의료급여심의위원회의 구성ㆍ운영 등에 관하여 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127529');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J7:0" id="J7:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0007', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830157', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:joDelegatePop('252715', '0007', '00', '010102');return false; " style="text-decoration: none;" title="위임행정규칙 팝업으로 이동"> <img src="images/button/btn_entrust3_2.gif" alt="위임행정규칙버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000700" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="7:0:000700:92830157" /> <span class="bl"><label for="Y000700"> 제7조(의료급여의 내용 등) </label> </span> ① 이 법에 따른 수급권자의 질병ㆍ부상ㆍ출산 등에 대한 의료급여의 내용은 다음 각 호와 같다. </p>
+       <p class="pty1_de2h">1. 진찰ㆍ검사 </p> 
+       <p class="pty1_de2h">2. 약제(藥劑)ㆍ치료재료의 지급 </p> 
+       <p class="pty1_de2h">3. 처치ㆍ수술과 그 밖의 치료 </p> 
+       <p class="pty1_de2h">4. 예방ㆍ재활 </p> 
+       <p class="pty1_de2h">5. 입원 </p> 
+       <p class="pty1_de2h">6. 간호 </p> 
+       <p class="pty1_de2h">7. 이송과 그 밖의 의료목적 달성을 위한 조치 </p> 
+       <p class="pty1_de2_1">② 제1항에 따른 의료급여의 방법ㆍ절차ㆍ범위ㆍ한도 등 의료급여의 기준에 관하여는 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127530');" href="javascript:;">보건복지부령</a>으로 정하고, 의료수가기준과 그 계산방법 등에 관하여는 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('252715','0007','00','010102','DEG','보건복지부장관이 정한다','862');">보건복지부장관이 정한다</a>. </p> 
+       <p class="pty1_de2_1">③ 보건복지부장관은 제2항에 따라 의료급여의 기준을 정할 때에는 업무 또는 일상생활에 지장이 없는 질환 등 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127531');" href="javascript:;">보건복지부령</a>으로 정하는 사항은 의료급여 대상에서 제외할 수 있다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <div class="rule_area"> 
+        <div class="btn_rule"> 
+         <a href="javascript:viewDelegatedAdmRul('000700', '252715', '0007', '00', '010102')"><img id="delegatedAdmRul_img_000700" src="images/common/btn_rule_view.gif" title="위임행정규칙" alt="위임행정규칙" /></a> 
+        </div> 
+        <div id="delegated_000700" class="rule_box" style="display: none;"></div> 
+       </div> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J8:0" id="J8:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0008', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830159', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000800" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="8:0:000800:92830159" /> <span class="bl"><label for="Y000800"> 제8조(의료급여증) </label> </span> ① 시장ㆍ군수ㆍ구청장은 수급권자가 신청하는 경우 의료급여증을 발급하여야 한다. 다만, 부득이한 사유가 있는 경우에는 의료급여증을 갈음하여 의료급여증명서를 발급하거나 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127532');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 의료급여증을 발급하지 아니할 수 있다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p>
+       <p class="pty1_de2_1">② 수급권자가 의료급여를 받을 때에는 제1항의 의료급여증 또는 의료급여증명서를 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611909','JO','');" href="javascript:;">제9조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611907','JO','');" href="javascript:;">제1항</a>에 따른 의료급여기관(이하 “의료급여기관”이라 한다)에 제출하여야 한다. 다만, 천재지변이나 그 밖의 부득이한 사유가 있으면 그러하지 아니하다. </p> 
+       <p class="pty1_de2_1">③ 수급권자는 제2항 본문에도 불구하고 주민등록증(모바일 주민등록증을 포함한다), 운전면허증, 여권, 그 밖에 본인 여부를 확인할 수 있는 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127533');" href="javascript:;">보건복지부령</a>으로 정하는 신분증명서(이하 “신분증명서”라 한다)로 의료급여기관이 그 자격을 확인할 수 있으면 의료급여증 또는 의료급여증명서를 제출하지 아니할 수 있다. <span class="sfon">&lt;개정 2023. 12. 26.&gt;</span> </p> 
+       <p class="pty1_de2_1">④ 누구든지 의료급여증, 의료급여증명서 또는 신분증명서를 다른 사람에게 양도하거나 대여하여 의료급여를 받게 하여서는 아니 된다. <span class="sfon">&lt;신설 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑤ 누구든지 의료급여증, 의료급여증명서 또는 신분증명서를 양도 또는 대여받거나 그 밖에 이를 부정하게 사용하여 의료급여를 받아서는 아니 된다. <span class="sfon">&lt;신설 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑥ 제1항에 따른 의료급여증 및 의료급여증명서의 서식과 그 신청ㆍ발급 및 사용 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127534');" href="javascript:;">보건복지부령</a>으로 정한다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J9:0" id="J9:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0009', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830161', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0009', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000900" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="9:0:000900:92830161" /> <span class="bl"><label for="Y000900"> 제9조(의료급여기관) </label> </span> ① 의료급여는 다음 각 호의 의료급여기관에서 실시한다. 이 경우 보건복지부장관은 공익상 또는 국가시책상 의료급여기관으로 적합하지 아니하다고 인정할 때에는 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127535');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 의료급여기관에서 제외할 수 있다. <span class="sfon">&lt;개정 2019. 1. 15.&gt;</span> </p>
+       <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611621','ALLJO','');" href="javascript:;">「의료법」</a>에 따라 개설된 의료기관 </p> 
+       <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611603','ALLJO','');" href="javascript:;">「지역보건법」</a>에 따라 설치된 보건소ㆍ보건의료원 및 보건지소 </p> 
+       <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611609','ALLJO','');" href="javascript:;">「농어촌 등 보건의료를 위한 특별조치법」</a>에 따라 설치된 보건진료소 </p> 
+       <p class="pty1_de2h">4. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611619','ALLJO','');" href="javascript:;">「약사법」</a>에 따라 개설등록된 약국 및 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611613','ALLJO','');" href="javascript:;">같은 법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611631','JO','');" href="javascript:;">제91조</a>에 따라 설립된 한국희귀ㆍ필수의약품센터 </p> 
+       <p class="pty1_de2_1">② 의료급여기관은 다음 각 호와 같이 구분하되, 의료급여기관별 진료범위는 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127536');" href="javascript:;">보건복지부령</a>으로 정한다. </p> 
+       <p class="pty1_de2h">1. 제1차 의료급여기관 </p> 
+       <p class="pty1_de3">가. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611623','ALLJO','');" href="javascript:;">「의료법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611605','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611625','JO','');" href="javascript:;">제3항</a>에 따라 개설신고를 한 의료기관 <span class="sfon"></span></p> 
+       <p class="pty1_de3">나. 제1항제2호부터 제4호까지의 규정에 따른 의료급여기관 <span class="sfon"></span></p> 
+       <p class="pty1_de2h">2. 제2차 의료급여기관: <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611615','ALLJO','');" href="javascript:;">「의료법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611633','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611617','JO','');" href="javascript:;">제4항</a> 전단에 따라 개설허가를 받은 의료기관 </p> 
+       <p class="pty1_de2h">3. 제3차 의료급여기관: 제2차 의료급여기관 중에서 보건복지부장관이 지정하는 의료기관 </p> 
+       <p class="pty1_de2_1">③ 제1항 각 호에 따른 의료급여기관은 정당한 이유 없이 이 법에 따른 의료급여를 거부하지 못한다. </p> 
+       <p class="pty1_de2_1">④ 특별시장ㆍ광역시장ㆍ도지사 또는 시장ㆍ군수ㆍ구청장은 제1항 각 호에 따른 의료급여기관이 개설ㆍ설치되거나, 개설ㆍ설치된 의료급여기관의 신고ㆍ허가 및 등록 사항 등이 변경되었을 때에는 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127537');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 그 내용을 다음 각 호의 전문기관에 알려야 한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611611','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611629','JO','');" href="javascript:;">제2항</a>에 따라 의료급여에 든 비용(이하 “급여비용”이라 한다)의 심사ㆍ조정, 의료급여의 적정성 평가 및 급여 대상 여부의 확인 업무를 위탁받은 전문기관(이하 “급여비용심사기관”이라 한다) </p> 
+       <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611607','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611627','JO','');" href="javascript:;">제2항</a>에 따라 급여비용의 지급업무를 위탁받은 전문기관(이하 “급여비용지급기관”이라 한다) </p> 
+       <p class="pty1_de2_1">⑤ 제2항제3호에 따른 제3차 의료급여기관의 지정기준 및 지정절차 등에 관하여 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127538');" href="javascript:;">보건복지부령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J10:0" id="J10:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0010', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830163', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0010', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001000" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="10:0:001000:92830163" /> <span class="bl"><label for="Y001000"> 제10조(급여비용의 부담) </label> </span> 급여비용은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127539');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 그 전부 또는 일부를 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611635','JO','');" href="javascript:;">제25조</a>에 따른 의료급여기금에서 부담하되, 의료급여기금에서 일부를 부담하는 경우 그 나머지 비용은 본인이 부담한다. </p>
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J11:0" id="J11:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0011', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830165', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001100" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="11:0:001100:92830165" /> <span class="bl"><label for="Y001100"> 제11조(급여비용의 청구와 지급) </label> </span> ① 의료급여기관은 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611667','JO','');" href="javascript:;">제10조</a>에 따라 의료급여기금에서 부담하는 급여비용의 지급을 시장ㆍ군수ㆍ구청장에게 청구할 수 있다. 이 경우 제2항에 따른 심사청구는 시장ㆍ군수ㆍ구청장에 대한 급여비용의 청구로 본다. </p>
+       <p class="pty1_de2_1">② 제1항에 따라 급여비용을 청구하려는 의료급여기관은 급여비용심사기관에 급여비용의 심사청구를 하여야 하며, 심사청구를 받은 급여비용심사기관은 이를 심사한 후 지체 없이 그 내용을 시장ㆍ군수ㆍ구청장 및 의료급여기관에 알려야 한다. </p> 
+       <p class="pty1_de2_1">③ 제2항에 따라 심사의 내용을 통보받은 시장ㆍ군수ㆍ구청장은 지체 없이 그 내용에 따라 급여비용을 의료급여기관에 지급하여야 한다. 이 경우 수급권자가 이미 납부한 본인부담금(<a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611655','JO','');" href="javascript:;">제10조</a>에 따라 수급권자가 부담하여야 하는 급여비용을 말한다. 이하 같다)이 과다한 경우에는 의료급여기관에 지급할 금액에서 그 과다하게 납부된 금액을 공제하여 수급권자에게 반환하여야 한다. </p> 
+       <p class="pty1_de2_1">④ 시장ㆍ군수ㆍ구청장은 의료급여의 적정성 여부를 평가할 수 있고, 그 평가결과에 따라 급여비용을 가산 또는 감액 조정하여 지급한다. 이 경우 평가결과에 따른 급여비용의 가감지급의 기준은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127540');" href="javascript:;">보건복지부령</a>으로 정한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑤ 시장ㆍ군수ㆍ구청장은 제4항에 따른 적정성 평가결과를 공개할 수 있다. <span class="sfon">&lt;신설 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑥ 의료급여기관은 제2항에 따른 심사청구를 다음 각 호의 단체가 대행하게 할 수 있다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611637','ALLJO','');" href="javascript:;">「의료법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611639','JO','');" href="javascript:;">제28조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611663','JO','');" href="javascript:;">제1항</a>에 따른 의사회ㆍ치과의사회ㆍ한의사회ㆍ조산사회 또는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611665','JO','');" href="javascript:;">같은 조</a> <a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611649','JO','');" href="javascript:;">제6항</a>에 따라 신고한 각각의 지부 및 분회 </p> 
+       <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611645','ALLJO','');" href="javascript:;">「의료법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611647','JO','');" href="javascript:;">제52조</a>에 따른 의료기관단체 </p> 
+       <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611651','ALLJO','');" href="javascript:;">「약사법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611653','JO','');" href="javascript:;">제11조</a>에 따른 대한약사회 또는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611669','ALLJO','');" href="javascript:;">같은 법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611657','JO','');" href="javascript:;">제14조</a>에 따라 신고한 지부 및 분회 </p> 
+       <p class="pty1_de2_1">⑦ 제1항부터 제6항까지에서 규정한 사항 외에 급여비용의 청구, 심사, 지급 등의 방법 및 절차에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127541');" href="javascript:;">보건복지부령</a>으로 정한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑧ 시장ㆍ군수ㆍ구청장은 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611641','ALLJO','');" href="javascript:;">「산업재해보상보험법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611643','JO','');" href="javascript:;">제10조</a>에 따른 근로복지공단이 이 법에 따라 의료급여를 받을 수 있는 사람에게 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611659','ALLJO','');" href="javascript:;">「산업재해보상보험법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611661','JO','');" href="javascript:;">제40조</a>에 따른 요양급여를 지급한 후 그 지급결정이 취소된 경우로서 그 요양급여 비용을 청구하는 경우에는 그 요양급여가 이 법에 따라 실시할 수 있는 의료급여에 상당한 것으로 인정되면 그 의료급여에 해당하는 금액을 지급할 수 있다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J11:2" id="J11:2"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0011', '02' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830167', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0011', '02');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001102" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="11:2:001102:92830167" /> <span class="bl"><label for="Y001102"> 제11조의2(서류의 보존) </label> </span> ① 의료급여기관은 의료급여가 끝난 날부터 5년간 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127542');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611671','JO','');" href="javascript:;">제11조</a>에 따른 급여비용의 청구에 관한 서류를 보존하여야 한다. </p>
+       <p class="pty1_de2_1">② 제1항에도 불구하고 약국 등 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127543');" href="javascript:;">보건복지부령</a>으로 정하는 의료급여기관은 처방전을 급여비용을 청구한 날부터 3년간 보존하여야 한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J11:3" id="J11:3"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0011', '03' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830169', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0011', '03');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001103" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="11:3:001103:92830169" /> <span class="bl"><label for="Y001103"> 제11조의3(급여 대상 여부의 확인 등) </label> </span> ① 수급권자는 본인부담금 외에 부담한 비용이 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611675','JO','');" href="javascript:;">제7조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611673','JO','');" href="javascript:;">제3항</a>에 따라 의료급여의 대상에서 제외되는 사항에 해당하는 비용(이하 “비급여비용”이라 한다)인지에 대하여 급여비용심사기관에 확인을 요청할 수 있다. </p>
+       <p class="pty1_de2_1">② 제1항에 따라 확인을 요청받은 급여비용심사기관은 그 확인결과를 확인을 요청한 수급권자에게 알려야 하며, 확인을 요청한 비용이 급여비용에 해당하는 것으로 확인되었을 때에는 급여비용지급기관 및 관련 의료급여기관에도 각각 알려야 한다. </p> 
+       <p class="pty1_de2_1">③ 제2항에 따라 통보받은 의료급여기관은 과다 징수한 금액을 지체 없이 수급권자에게 반환하여야 한다. </p> 
+       <p class="pty1_de2_1">④ 급여비용지급기관은 제3항에도 불구하고 의료급여기관이 과다 징수한 금액을 반환하지 아니하면 그 의료급여기관에 지급할 급여비용에서 과다 징수한 금액을 공제하여 그 공제한 금액을 수급권자에게 지급할 수 있다. </p> 
+       <p class="pty1_de2_1">⑤ 제1항부터 제4항까지에 따른 확인 요청의 범위, 방법, 절차, 처리기간 등 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('182525');" href="javascript:;">보건복지부령</a>으로 정한다. <span class="sfon">&lt;신설 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J11:4" id="J11:4"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0011', '04' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830171', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0011', '04');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001104" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="11:4:001104:92830171" /> <span class="bl"><label for="Y001104"> 제11조의4(의료급여기관의 비용 청구에 관한 금지행위) </label> </span> 의료급여기관은 의료급여를 하기 전에 수급권자에게 본인부담금을 청구하거나 수급권자가 이 법에 따라 부담하여야 하는 비용과 비급여비용 외에 입원보증금 등 다른 명목의 비용을 청구하여서는 아니 된다. </p>
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J11:5" id="J11:5"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0011', '05' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830173', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001105" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="11:5:001105:92830173" /> <span class="bl"><label for="Y001105"> 제11조의5(급여비용의 지급 보류) </label> </span> ① <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611929','JO','');" href="javascript:;">제11조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611949','JO','');" href="javascript:;">제3항</a>에도 불구하고 시장ㆍ군수ㆍ구청장은 급여비용의 지급을 청구한 의료급여기관이 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611941','ALLJO','');" href="javascript:;">「의료법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611923','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611933','JO','');" href="javascript:;">제2항</a> 또는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611953','ALLJO','');" href="javascript:;">「약사법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611935','JO','');" href="javascript:;">제20조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611919','JO','');" href="javascript:;">제1항</a>을 위반하였다는 사실을 수사기관의 수사결과로 확인한 경우에는 해당 의료급여기관이 청구한 급여비용의 지급을 보류할 수 있다. 이 경우 급여비용 지급 보류 처분의 효력은 해당 의료급여기관이 그 처분 이후 청구하는 급여비용에 대해서도 미친다. <span class="sfon">&lt;개정 2025. 4. 22.&gt;</span> </p>
+       <p class="pty1_de2_1">② 시장ㆍ군수ㆍ구청장은 제1항에 따라 급여비용의 지급을 보류하기 전에 해당 의료급여기관에게 의견제출의 기회를 주어야 한다. </p> 
+       <p class="pty1_de2_1">③ 시장ㆍ군수ㆍ구청장은 의료급여기관이 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611947','ALLJO','');" href="javascript:;">「의료법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611939','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611921','JO','');" href="javascript:;">제2항</a> 또는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611927','ALLJO','');" href="javascript:;">「약사법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611945','JO','');" href="javascript:;">제20조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611915','JO','');" href="javascript:;">제1항</a>을 위반한 혐의에 대하여 법원에서 무죄 판결이 선고된 경우 그 선고 이후 실시한 의료급여에 한정하여 해당 의료급여기관이 청구하는 급여비용을 지급할 수 있다. 다만, 지급 후 유죄 판결이 선고되는 경우에는 제1항에 따라 지급하지 아니할 수 있다. <span class="sfon">&lt;신설 2025. 4. 22.&gt;</span> </p> 
+       <p class="pty1_de2_1">④ 법원의 무죄 판결이 확정되는 등 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('132688');" href="javascript:;">대통령령</a>으로 정하는 사유로 제1항에 따른 의료급여기관이 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611925','ALLJO','');" href="javascript:;">「의료법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611913','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611937','JO','');" href="javascript:;">제2항</a> 또는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611931','ALLJO','');" href="javascript:;">「약사법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611917','JO','');" href="javascript:;">제20조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611951','JO','');" href="javascript:;">제1항</a>을 위반한 혐의가 입증되지 아니한 경우에는 시장ㆍ군수ㆍ구청장은 지급 보류 처분을 취소하고, 지급 보류된 급여비용에 지급 보류된 기간 동안의 이자를 가산하여 해당 의료급여기관에 지급하여야 한다. 이 경우 이자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611943','ALLJO','');" href="javascript:;">「민법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611911','JO','');" href="javascript:;">제379조</a>에 따른 법정이율을 적용하여 계산한다. <span class="sfon">&lt;개정 2025. 4. 22.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑤ 제1항 및 제2항에 따른 지급 보류 절차 및 의견제출의 절차 등에 필요한 사항, 제4항에 따른 지급 보류된 급여비용 및 이자의 지급 절차 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('132689');" href="javascript:;">대통령령</a>으로 정한다. <span class="sfon">&lt;개정 2025. 4. 22.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[본조신설 2015. 12. 29.]<br />[2025. 4. 22. 법률 제20926호에 의하여 2024. 6. 27. 헌법재판소에서 헌법불합치 결정된 이 조 제1항을 개정함.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J12:0" id="J12:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0012', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830175', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:joDelegatePop('252715', '0012', '00', '010102');return false; " style="text-decoration: none;" title="위임행정규칙 팝업으로 이동"> <img src="images/button/btn_entrust3_2.gif" alt="위임행정규칙버튼" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0012', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001200" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="12:0:001200:92830175" /> <span class="bl"><label for="Y001200"> 제12조(요양비) </label> </span> ① 시장ㆍ군수ㆍ구청장은 수급권자가 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127544');" href="javascript:;">보건복지부령</a>으로 정하는 긴급하거나 그 밖의 부득이한 사유로 의료급여기관과 같은 기능을 수행하는 기관으로서 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127545');" href="javascript:;">보건복지부령</a>으로 정하는 기관(<a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611677','JO','');" href="javascript:;">제28조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611679','JO','');" href="javascript:;">제1항</a>에 따라 업무정지기간 중인 의료급여기관을 포함한다)에서 질병ㆍ부상ㆍ출산 등에 대하여 의료급여를 받거나 의료급여기관이 아닌 장소에서 출산을 하였을 때에는 그 의료급여에 상당하는 금액을 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127546');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 수급권자에게 요양비로 지급한다. </p>
+       <p class="pty1_de2_1">② 제1항에 따라 의료급여를 실시한 기관은 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('252715','0012','00','010102','DEG','보건복지부장관이 정하는','3214');">보건복지부장관이 정하는</a> 요양비명세서 또는 요양의 명세를 적은 영수증을 요양을 받은 사람에게 내주어야 하며, 요양을 받은 사람은 이를 시장ㆍ군수ㆍ구청장에게 제출하여야 한다. </p> 
+       <p class="pty1_de2_1">③ 제1항에 따른 요양비의 지급방법 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127547');" href="javascript:;">보건복지부령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <div class="rule_area"> 
+        <div class="btn_rule"> 
+         <a href="javascript:viewDelegatedAdmRul('001200', '252715', '0012', '00', '010102')"><img id="delegatedAdmRul_img_001200" src="images/common/btn_rule_view.gif" title="위임행정규칙" alt="위임행정규칙" /></a> 
+        </div> 
+        <div id="delegated_001200" class="rule_box" style="display: none;"></div> 
+       </div> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J12:2" id="J12:2"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0012', '02' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830177', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001202" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="12:2:001202:92830177" /> <span class="bl"><label for="Y001202"> 제12조의2(요양비등수급계좌) </label> </span> ① 시장ㆍ군수ㆍ구청장은 이 법에 따른 의료급여로 지급되는 현금(이하 “요양비등”이라 한다)을 받는 수급권자의 신청이 있는 경우에는 요양비등을 수급권자 명의의 지정된 계좌(이하 “요양비등수급계좌”라 한다)로 입금하여야 한다. 다만, 정보통신장애나 그 밖에 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('182527');" href="javascript:;">대통령령</a>으로 정하는 불가피한 사유로 요양비등수급계좌로 이체할 수 없을 때에는 직접 현금으로 지급하는 등 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('182529');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 요양비등을 지급할 수 있다. </p>
+       <p class="pty1_de2_1">② 요양비등수급계좌가 개설된 금융기관은 요양비등수급계좌에 요양비등만이 입금되도록 하고, 이를 관리하여야 한다. </p> 
+       <p class="pty1_de2_1">③ 제1항 및 제2항에 따른 요양비등수급계좌의 신청 방법ㆍ절차와 관리에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('182531');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[본조신설 2023. 3. 28.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J13:0" id="J13:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0013', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830179', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0013', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001300" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="13:0:001300:92830179" /> <span class="bl"><label for="Y001300"> 제13조(장애인 및 임산부에 대한 특례) </label> </span> ① 시장ㆍ군수ㆍ구청장은 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611681','ALLJO','');" href="javascript:;">「장애인복지법」</a>에 따라 등록한 장애인인 수급권자에게 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611683','ALLJO','');" href="javascript:;">「장애인ㆍ노인 등을 위한 보조기기 지원 및 활용촉진에 관한 법률」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611685','JO','');" href="javascript:;">제3조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611687','JO','');" href="javascript:;">제2호</a>에 따른 보조기기(이하 이 조에서 “보조기기”라 한다)에 대하여 급여를 실시할 수 있다. <span class="sfon">&lt;개정 2019. 4. 23.&gt;</span> </p>
+       <p class="pty1_de2_1">② 시장ㆍ군수ㆍ구청장은 임신한 수급권자가 임신기간 중 의료급여기관에서 받는 진료에 드는 비용(출산비용을 포함한다)에 대하여 추가급여를 실시할 수 있다. </p> 
+       <p class="pty1_de2_1">③ 제1항에 따른 보조기기 급여 및 제2항에 따른 추가급여의 방법ㆍ절차ㆍ범위ㆍ한도 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127548');" href="javascript:;">보건복지부령</a>으로 정한다. <span class="sfon">&lt;개정 2019. 4. 23.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J14:0" id="J14:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0014', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830181', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:joDelegatePop('252715', '0014', '00', '010102');return false; " style="text-decoration: none;" title="위임행정규칙 팝업으로 이동"> <img src="images/button/btn_entrust3_2.gif" alt="위임행정규칙버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001400" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="14:0:001400:92830181" /> <span class="bl"><label for="Y001400"> 제14조(건강검진) </label> </span> ① 시장ㆍ군수ㆍ구청장은 이 법에 따른 수급권자에 대하여 질병의 조기발견과 그에 따른 의료급여를 하기 위하여 건강검진을 할 수 있다. </p>
+       <p class="pty1_de2_1">② 제1항에 따른 건강검진의 대상ㆍ횟수ㆍ절차와 그 밖에 필요한 사항은 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('252715','0014','00','010102','DEG','보건복지부장관이 정한다','4072');">보건복지부장관이 정한다</a>. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <div class="rule_area"> 
+        <div class="btn_rule"> 
+         <a href="javascript:viewDelegatedAdmRul('001400', '252715', '0014', '00', '010102')"><img id="delegatedAdmRul_img_001400" src="images/common/btn_rule_view.gif" title="위임행정규칙" alt="위임행정규칙" /></a> 
+        </div> 
+        <div id="delegated_001400" class="rule_box" style="display: none;"></div> 
+       </div> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J15:0" id="J15:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0015', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830183', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:joDelegatePop('252715', '0015', '00', '010102');return false; " style="text-decoration: none;" title="위임행정규칙 팝업으로 이동"> <img src="images/button/btn_entrust3_2.gif" alt="위임행정규칙버튼" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0015', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001500" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="15:0:001500:92830183" /> <span class="bl"><label for="Y001500"> 제15조(의료급여의 제한) </label> </span> ① 시장ㆍ군수ㆍ구청장은 수급권자가 다음 각 호의 어느 하나에 해당하면 이 법에 따른 의료급여를 하지 아니한다. 다만, 보건복지부장관이 의료급여를 할 필요가 있다고 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('252715','0015','00','010102','DEG','인정하는','20069');">인정하는</a> 경우에는 그러하지 아니하다. </p>
+       <p class="pty1_de2h">1. 수급권자가 자신의 고의 또는 중대한 과실로 인한 범죄행위에 그 원인이 있거나 고의로 사고를 일으켜 의료급여가 필요하게 된 경우 </p> 
+       <p class="pty1_de2h">2. 수급권자가 정당한 이유 없이 이 법의 규정이나 의료급여기관의 진료에 관한 지시에 따르지 아니한 경우 </p> 
+       <p class="pty1_de2_1">② 의료급여기관은 수급권자가 제1항 각 호의 어느 하나에 해당하는 경우 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127549');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 수급권자의 거주지를 관할하는 시장ㆍ군수ㆍ구청장에게 알려야 한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <div class="rule_area"> 
+        <div class="btn_rule"> 
+         <a href="javascript:viewDelegatedAdmRul('001500', '252715', '0015', '00', '010102')"><img id="delegatedAdmRul_img_001500" src="images/common/btn_rule_view.gif" title="위임행정규칙" alt="위임행정규칙" /></a> 
+        </div> 
+        <div id="delegated_001500" class="rule_box" style="display: none;"></div> 
+       </div> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J16:0" id="J16:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0016', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830185', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0016', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001600" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="16:0:001600:92830185" /> <span class="bl"><label for="Y001600"> 제16조(의료급여의 변경) </label> </span> ① 시장ㆍ군수ㆍ구청장은 수급권자의 소득, 재산상황, 근로능력 등이 변동되었을 때에는 직권으로 또는 수급권자나 그 친족, 그 밖의 관계인의 신청을 받아 의료급여의 내용 등을 변경할 수 있다. </p>
+       <p class="pty1_de2_1">② 시장ㆍ군수ㆍ구청장은 제1항에 따라 의료급여의 내용 등을 변경하였을 때에는 서면으로 그 이유를 밝혀 수급권자에게 알려야 한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J17:0" id="J17:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0017', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830187', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001700" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="17:0:001700:92830187" /> <span class="bl"><label for="Y001700"> 제17조(의료급여의 중지 등) </label> </span> ① 시장ㆍ군수ㆍ구청장은 수급권자가 다음 각 호의 어느 하나에 해당하면 의료급여를 중지하여야 한다. </p>
+       <p class="pty1_de2h">1. 수급권자에 대한 의료급여가 필요 없게 된 경우 </p> 
+       <p class="pty1_de2h">2. 수급권자가 의료급여를 거부한 경우 </p> 
+       <p class="pty1_de2_1">② 시장ㆍ군수ㆍ구청장은 수급권자가 의료급여를 거부한 경우에는 수급권자가 속한 가구원 전부에 대하여 의료급여를 중지하여야 한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2_1">③ 시장ㆍ군수ㆍ구청장은 제1항에 따라 의료급여를 중지하였을 때에는 서면으로 그 이유를 밝혀 수급권자에게 알려야 한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J18:0" id="J18:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0018', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830189', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0018', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001800" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="18:0:001800:92830189" /> <span class="bl"><label for="Y001800"> 제18조(수급권의 보호) </label> </span> ① 의료급여를 받을 권리는 양도하거나 압류할 수 없다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p>
+       <p class="pty1_de2_1">② <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611689','JO','');" href="javascript:;">제12조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611691','JO','');" href="javascript:;">제1항</a>에 따라 요양비등수급계좌에 입금된 요양비등은 압류할 수 없다. <span class="sfon">&lt;신설 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J19:0" id="J19:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0019', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830191', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y001900" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="19:0:001900:92830191" /> <span class="bl"><label for="Y001900"> 제19조(구상권) </label> </span> ① 시장ㆍ군수ㆍ구청장은 제3자의 행위로 인하여 수급권자에게 의료급여를 한 경우에는 그 급여비용의 범위에서 제3자에게 손해배상을 청구할 권리를 얻는다. </p>
+       <p class="pty1_de2_1">② 제1항에 따라 의료급여를 받은 사람이 제3자로부터 이미 손해배상을 받은 경우에는 시장ㆍ군수ㆍ구청장은 그 배상액의 한도에서 의료급여를 하지 아니한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J20:0" id="J20:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0020', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830193', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002000" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="20:0:002000:92830193" /> <span class="bl"><label for="Y002000"> 제20조(급여비용의 대지급) </label> </span> ① <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611693','JO','');" href="javascript:;">제10조</a>에 따라 급여비용의 일부를 의료급여기금에서 부담하는 경우 그 나머지 급여비용(보건복지부장관이 정한 금액으로 한정한다)은 수급권자 또는 그 부양의무자의 신청을 받아 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611695','JO','');" href="javascript:;">제25조</a>에 따른 의료급여기금에서 대지급(代支給)할 수 있다. </p>
+       <p class="pty1_de2_1">② 제1항에 따른 대지급금의 신청 및 지급방법 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127550');" href="javascript:;">보건복지부령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J21:0" id="J21:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0021', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830195', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0021', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002100" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="21:0:002100:92830195" /> <span class="bl"><label for="Y002100"> 제21조(대지급금의 상환) </label> </span> ① <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611697','JO','');" href="javascript:;">제20조</a>에 따라 대지급금을 받은 사람(그 부양의무자를 포함한다. 이하 “상환의무자”라 한다)은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127551');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 대지급금을 그 거주지를 관할하는 시장ㆍ군수ㆍ구청장에게 상환하여야 한다. 이 경우 대지급금의 상환은 무이자로 한다. </p>
+       <p class="pty1_de2_1">② 상환의무자가 그 거주지를 다른 특별자치시ㆍ특별자치도ㆍ시ㆍ군ㆍ구로 이전하였을 때에는 대지급금을 새 거주지를 관할하는 시장ㆍ군수ㆍ구청장에게 상환하여야 한다. </p> 
+       <p class="pty1_de2_1">③ 제1항 및 제2항에 따라 대지급금을 상환받은 시장ㆍ군수ㆍ구청장은 이를 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611699','JO','');" href="javascript:;">제25조</a>에 따른 의료급여기금에 납입하여야 한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J22:0" id="J22:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0022', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830197', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002200" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="22:0:002200:92830197" /> <span class="bl"><label for="Y002200"> 제22조(대지급금의 독촉 등) </label> </span> ① 시장ㆍ군수ㆍ구청장은 상환의무자가 대지급금을 납부기한까지 상환하지 아니하면 납부기한이 지난 날부터 6개월 이내의 기간을 정하여 지체 없이 독촉장을 발급하여야 한다. </p>
+       <p class="pty1_de2_1">② 시장ㆍ군수ㆍ구청장은 상환의무자가 제1항에 따른 대지급금의 독촉을 받고도 상환하지 아니하면 대지급금을 지방세 체납처분의 예에 따라 징수할 수 있다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J23:0" id="J23:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0023', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830199', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002300" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="23:0:002300:92830199" /> <span class="bl"><label for="Y002300"> 제23조(부당이득의 징수) </label> </span> ① 시장ㆍ군수ㆍ구청장은 속임수나 그 밖의 부당한 방법으로 의료급여를 받은 사람(<a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611709','JO','');" href="javascript:;">제8조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611711','JO','');" href="javascript:;">제5항</a>을 위반하여 의료급여를 받은 사람을 포함한다. 이하 같다), <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611703','JO','');" href="javascript:;">제12조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611705','JO','');" href="javascript:;">제1항</a>에 따라 의료급여를 실시한 기관, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611717','JO','');" href="javascript:;">제13조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611719','JO','');" href="javascript:;">제1항</a>의 보조기기를 판매한 자 또는 급여비용을 받은 의료급여기관에 대하여는 그 급여 또는 급여비용에 상당하는 금액을 부당이득금으로 징수한다. <span class="sfon">&lt;개정 2023. 3. 28., 2024. 1. 23.&gt;</span> </p>
+       <p class="pty1_de2_1">② 시장ㆍ군수ㆍ구청장은 수급권자의 거짓 보고나 거짓 증명(<a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611725','JO','');" href="javascript:;">제8조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611737','JO','');" href="javascript:;">제4항</a>을 위반하여 의료급여증, 의료급여증명서 또는 신분증명서를 다른 사람에게 양도ㆍ대여하여 의료급여를 받게 하는 것을 포함한다)에 따라 의료급여가 실시된 경우 그 수급권자에게 의료급여를 받은 사람과 연대하여 제1항에 따른 부당이득금을 납부하게 할 수 있다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">③ 시장ㆍ군수ㆍ구청장은 의료급여기관, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611733','JO','');" href="javascript:;">제12조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611735','JO','');" href="javascript:;">제1항</a>에 따라 의료급여를 실시하는 기관 또는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611721','JO','');" href="javascript:;">제13조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611723','JO','');" href="javascript:;">제1항</a>의 보조기기를 판매하는 자와 의료급여를 받으려는 사람이 공모하여 속임수나 그 밖의 부당한 방법으로 제1항에 따른 의료급여가 이루어진 경우에는 해당 의료급여기관, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611733','JO','');" href="javascript:;">제12조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611735','JO','');" href="javascript:;">제1항</a>에 따라 의료급여를 실시한 기관 또는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611721','JO','');" href="javascript:;">제13조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611723','JO','');" href="javascript:;">제1항</a>의 보조기기를 판매한 자에 대하여 의료급여를 받은 사람과 연대하여 제1항의 부당이득금을 납부하게 할 수 있다. <span class="sfon">&lt;신설 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">④ 시장ㆍ군수ㆍ구청장은 제1항에 따라 속임수나 그 밖의 부당한 방법으로 급여비용을 받은 의료급여기관이 다음 각 호의 어느 하나에 해당하는 경우에는 해당 의료급여기관을 개설한 자에게 그 의료급여기관과 연대하여 제1항의 부당이득금을 납부하게 할 수 있다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611727','ALLJO','');" href="javascript:;">「의료법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611701','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611729','JO','');" href="javascript:;">제2항</a>을 위반하여 의료기관을 개설할 수 없는 자가 의료인의 면허나 의료법인 등의 명의를 대여받아 개설ㆍ운영하는 의료기관 </p> 
+       <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611713','ALLJO','');" href="javascript:;">「약사법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611731','JO','');" href="javascript:;">제20조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611715','JO','');" href="javascript:;">제1항</a>을 위반하여 약국을 개설할 수 없는 자가 약사 등의 면허를 대여받아 개설ㆍ운영하는 약국 </p> 
+       <p class="pty1_de2_1">⑤ 시장ㆍ군수ㆍ구청장은 의료급여기관이 속임수나 그 밖의 부정한 방법으로 수급권자로부터 급여비용을 받았을 때에는 그 의료급여기관으로부터 해당 급여비용을 징수하여 수급권자에게 지체 없이 지급하여야 한다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑥ 시장ㆍ군수ㆍ구청장은 제1항부터 제4항까지에 따른 부당이득금 납부의무자가 부당이득금을 내지 아니하면 기한을 정하여 독촉할 수 있다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑦ 시장ㆍ군수ㆍ구청장은 제6항에 따라 독촉을 할 때에는 10일 이상 15일 이내의 납부기한을 정하여 독촉장을 발급하여야 한다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑧ 시장ㆍ군수ㆍ구청장은 제6항에 따라 독촉을 받은 자가 그 납부기한까지 부당이득금을 내지 아니하면 지방세 체납처분의 예에 따라 징수할 수 있다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑨ 제1항부터 제4항까지에 따른 부당이득금 납부의무자는 그 거주지를 다른 특별자치시ㆍ특별자치도ㆍ시ㆍ군ㆍ구로 이전한 경우에는 부당이득금을 새 거주지를 관할하는 시장ㆍ군수ㆍ구청장에게 납부하여야 한다. <span class="sfon">&lt;개정 2017. 3. 21., 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑩ 제9항에 따라 부당이득금을 납부 받은 시장ㆍ군수ㆍ구청장은 이를 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611707','JO','');" href="javascript:;">제25조</a>에 따른 의료급여기금에 납입하여야 한다. <span class="sfon">&lt;신설 2017. 3. 21., 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J24:0" id="J24:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0024', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830201', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002400" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="24:0:002400:92830201" /> <span class="bl"><label for="Y002400"> 제24조(결손처분) </label> </span> 시장ㆍ군수ㆍ구청장은 다음 각 호의 어느 하나에 해당하는 사유가 있으면 특별자치시ㆍ특별자치도ㆍ시ㆍ군ㆍ구 의료급여 심의위원회의 심의를 거쳐 대지급금 및 부당이득금 등을 결손처분할 수 있다. </p>
+       <p class="pty1_de2_1"> </p> 
+       <p class="pty1_de2h">1. 체납처분이 끝나고 체납액에 충당될 배분금액이 그 체납액에 미치지 못하는 경우 </p> 
+       <p class="pty1_de2h">2. 해당 권리에 대한 소멸시효가 완성된 경우 </p> 
+       <p class="pty1_de2h">3. 그 밖에 징수할 가능성이 없다고 인정되는 경우로서 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127552');" href="javascript:;">대통령령</a>으로 정하는 경우 </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J25:0" id="J25:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0025', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830203', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002500" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="25:0:002500:92830203" /> <span class="bl"><label for="Y002500"> 제25조(의료급여기금의 설치 및 조성) </label> </span> ① 이 법에 따른 급여비용의 재원에 충당하기 위하여 시ㆍ도에 의료급여기금(이하 “기금”이라 한다)을 설치한다. </p>
+       <p class="pty1_de2_1">② 기금은 다음 각 호의 재원으로 조성한다. </p> 
+       <p class="pty1_de2h">1. 국고보조금 </p> 
+       <p class="pty1_de2h">2. 지방자치단체의 출연금 </p> 
+       <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611743','JO','');" href="javascript:;">제21조</a>에 따라 상환받은 대지급금 </p> 
+       <p class="pty1_de2h">4. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611739','JO','');" href="javascript:;">제23조</a>에 따라 징수한 부당이득금 </p> 
+       <p class="pty1_de2h">5. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611745','JO','');" href="javascript:;">제29조</a>에 따라 징수한 과징금 </p> 
+       <p class="pty1_de2h">6. 기금의 결산상 잉여금 및 그 밖의 수입금 </p> 
+       <p class="pty1_de2_1">③ 국가와 지방자치단체는 기금운영에 필요한 충분한 예산을 확보하여야 한다. </p> 
+       <p class="pty1_de2_1">④ 제2항제1호의 국고보조금의 비율은 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611741','ALLJO','');" href="javascript:;">「보조금 관리에 관한 법률」</a> 및 관계 법령에서 정하는 바에 따른다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J26:0" id="J26:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0026', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830205', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002600" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="26:0:002600:92830205" /> <span class="bl"><label for="Y002600"> 제26조(기금의 관리 및 운용) </label> </span> ① 기금은 일반회계와 구분하여 별도의 계정을 설정하여 관리하여야 한다. </p>
+       <p class="pty1_de2_1">② 기금은 급여비용, 대지급에 드는 비용, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611747','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611749','JO','');" href="javascript:;">제2항</a>에 따른 업무 위탁에 드는 비용 또는 그 밖의 의료급여 업무에 직접 드는 비용으로서 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127553');" href="javascript:;">보건복지부령</a>으로 정하는 비용에만 사용하여야 한다. </p> 
+       <p class="pty1_de2_1">③ 특별시장ㆍ광역시장ㆍ특별자치시장ㆍ도지사ㆍ특별자치도지사(이하 “시ㆍ도지사”라 한다)는 기금에 여유자금이 있을 때에는 다음 각 호의 방법으로 기금을 운용할 수 있다. </p> 
+       <p class="pty1_de2h">1. 금융기관 또는 체신관서에의 예치 </p> 
+       <p class="pty1_de2h">2. 국채ㆍ공채의 매입 </p> 
+       <p class="pty1_de2_1">④ 이 법에서 정한 사항 외에 기금의 관리ㆍ운용에 관하여 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127554');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 해당 지방자치단체의 <a href="#AJAX" title="팝업으로 이동" class="delegatedOrdin_link" onclick="javascript:joDelegateOrdinPop('252715','001780','0026','00','010103','','조례로');">조례</a>로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J27:0" id="J27:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0027', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830207', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002700" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="27:0:002700:92830207" /> <span class="bl"><label for="Y002700"> 제27조(급여비용의 예탁) </label> </span> ① <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611755','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611757','JO','');" href="javascript:;">제2항</a>에 따라 급여비용의 지급업무가 위탁된 경우 시ㆍ도지사는 기금에서 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127555');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 추정급여비용을 급여비용지급기관에 예탁하여야 한다. </p>
+       <p class="pty1_de2_1">② 시ㆍ도지사는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611751','JO','');" href="javascript:;">제25조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611759','JO','');" href="javascript:;">제2항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611761','JO','');" href="javascript:;">제2호</a>에 따른 지방자치단체의 출연금 예산이 성립되지 못한 경우 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611763','ALLJO','');" href="javascript:;">「지방재정법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611753','JO','');" href="javascript:;">제36조</a>에도 불구하고 국고보조금은 즉시 급여비용지급기관에 예탁하여야 한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J28:0" id="J28:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0028', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830209', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0028', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002800" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="28:0:002800:92830209" /> <span class="bl"><label for="Y002800"> 제28조(의료급여기관의 업무정지 등) </label> </span> ① 보건복지부장관은 의료급여기관이 다음 각 호의 어느 하나에 해당하면 1년의 범위에서 기간을 정하여 의료급여기관의 업무정지를 명할 수 있다. </p>
+       <p class="pty1_de2h">1. 속임수나 그 밖의 부당한 방법으로 수급권자, 부양의무자 또는 시장ㆍ군수ㆍ구청장에게 급여비용을 부담하게 한 경우 </p> 
+       <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611769','JO','');" href="javascript:;">제11조의4</a>를 위반하여 본인부담금을 미리 청구하거나 입원보증금 등 다른 명목의 비용을 청구한 경우 </p> 
+       <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611765','JO','');" href="javascript:;">제32조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611767','JO','');" href="javascript:;">제2항</a>에 따른 보고 또는 서류제출을 하지 아니하거나 거짓 보고를 하거나 거짓 서류를 제출하거나 소속 공무원의 질문 및 검사를 거부ㆍ방해 또는 기피한 경우 </p> 
+       <p class="pty1_de2_1">② 보건복지부장관은 제3차 의료급여기관이 제1항 각 호의 어느 하나에 해당하면 그 지정을 취소할 수 있다. </p> 
+       <p class="pty1_de2_1">③ 보건복지부장관은 제2항에 따라 지정취소처분을 받은 제3차 의료급여기관을 그 지정을 취소한 날부터 1년 이내에는 제3차 의료급여기관으로 다시 지정할 수 없다. </p> 
+       <p class="pty1_de2_1">④ 제1항에 따라 업무정지처분을 받은 자는 해당 업무정지기간 중에는 의료급여를 하지 못한다. </p> 
+       <p class="pty1_de2_1">⑤ 보건복지부장관은 제1항 및 제2항에 따른 처분을 한 경우에는 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127556');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 그 사실을 급여비용심사기관 및 급여비용지급기관에 알려야 한다. </p> 
+       <p class="pty1_de2_1">⑥ 제1항에 따른 업무정지처분의 효과는 그 처분이 확정된 의료급여기관을 양수한 자 또는 합병 후 존속하는 법인이나 합병으로 설립된 법인에 승계되고, 업무정지처분의 절차가 진행 중인 때에는 양수인 또는 합병 후 존속하는 법인이나 합병으로 설립되는 법인에 대하여 그 절차를 계속 진행할 수 있다. 다만, 양수인 또는 합병 후 존속하는 법인이나 합병으로 설립되는 법인이 그 처분 또는 위반사실을 알지 못하였음을 증명하는 경우에는 그러하지 아니하다. </p> 
+       <p class="pty1_de2_1">⑦ 제1항에 따른 업무정지처분을 받았거나 업무정지처분 절차가 진행 중인 자는 행정처분을 받은 사실 또는 행정처분 절차가 진행 중인 사실을 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127557');" href="javascript:;">보건복지부령</a>으로 정하는 바에 따라 양수인 또는 합병 후 존속하는 법인이나 합병으로 설립된 법인에 지체 없이 알려야 한다. </p> 
+       <p class="pty1_de2_1">⑧ 제1항 및 제2항에 따른 행정처분의 기준 등은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127558');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J29:0" id="J29:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0029', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830211', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0029', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002900" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="29:0:002900:92830211" /> <span class="bl"><label for="Y002900"> 제29조(과징금 등) </label> </span> ① 보건복지부장관은 의료급여기관이 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611781','JO','');" href="javascript:;">제28조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611783','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611777','JO','');" href="javascript:;">제1호</a>에 해당하여 업무정지처분을 하여야 하는 경우로서 그 업무정지처분이 수급권자에게 심한 불편을 주거나 그 밖의 특별한 사유가 있다고 인정되면 그 업무정지처분을 갈음하여 속임수나 그 밖의 부당한 방법으로 부담하게 한 급여비용의 5배 이하의 금액을 과징금으로 부과ㆍ징수할 수 있다. 이 경우 보건복지부장관은 12개월의 범위에서 분할 납부를 하게 할 수 있다. </p>
+       <p class="pty1_de2_1">② 보건복지부장관은 제1항에 따른 과징금을 납부하여야 할 자가 납부기한까지 내지 아니하면 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('132690');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 제1항에 따른 과징금 부과 처분을 취소하고 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611773','JO','');" href="javascript:;">제28조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611775','JO','');" href="javascript:;">제1항</a>에 따른 업무정지 처분을 하거나 국세 체납처분의 예에 따라 징수할 수 있고, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611779','JO','');" href="javascript:;">제33조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611771','JO','');" href="javascript:;">제1항</a>에 따라 과징금 징수에 관한 권한이 시ㆍ도지사에게 위임된 경우에는 시ㆍ도지사가 지방세 체납처분의 예에 따라 징수할 수 있다. 이 경우 의료급여기관의 폐업 등으로 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611773','JO','');" href="javascript:;">제28조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611775','JO','');" href="javascript:;">제1항</a>에 따른 업무정지 처분을 할 수 없으면 국세 체납처분 또는 지방세 체납처분의 예에 따라 징수한다. <span class="sfon">&lt;개정 2016. 2. 3.&gt;</span> </p> 
+       <p class="pty1_de2_1">③ 보건복지부장관은 과징금을 징수하기 위하여 필요하면 다음 각 호의 사항을 적은 문서로 관할 세무관서의 장 또는 지방자치단체의 장에게 과세정보의 제공을 요청할 수 있다. </p> 
+       <p class="pty1_de2h">1. 납세자의 인적사항 </p> 
+       <p class="pty1_de2h">2. 사용목적 </p> 
+       <p class="pty1_de2h">3. 과징금 부과 사유 및 부과 기준 </p> 
+       <p class="pty1_de2_1">④ 제1항에 따른 과징금을 부과하는 위반행위의 종류, 위반 정도 등에 따른 과징금의 금액과 그 밖에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127559');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J29:2" id="J29:2"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0029', '02' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0029', '02');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002902" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="29:2:002902:92830213" /> <span class="bl"><label for="Y002902"> 제29조의2(제조업자등의 금지행위 등) </label> </span> ① <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611789','ALLJO','');" href="javascript:;">「약사법」</a>에 따른 의약품의 제조업자ㆍ위탁제조판매업자ㆍ수입자ㆍ판매업자 및 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611787','ALLJO','');" href="javascript:;">「의료기기법」</a>에 따른 의료기기 제조업자ㆍ수입업자ㆍ수리업자ㆍ판매업자ㆍ임대업자(이하 이 조에서 “제조업자등”이라 한다)는 약제ㆍ치료재료와 관련하여 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611785','JO','');" href="javascript:;">제7조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611795','JO','');" href="javascript:;">제2항</a>에 따른 의료급여의 범위 및 의료수가를 계산할 때에 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611791','JO','');" href="javascript:;">제28조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611797','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1028611793','JO','');" href="javascript:;">제1호</a>에 따른 의료급여기관의 위반행위에 개입하거나 거짓 자료를 제출하여 약제ㆍ치료재료의 가격 한도나 판매가격을 높이는 등 속임수나 그 밖에 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127560');" href="javascript:;">보건복지부령</a>으로 정하는 부당한 방법으로 기금에 손실을 주는 행위를 하여서는 아니 된다. </p>
+       <p class="pty1_de2_1">② 보건복지부장관은 제조업자등이 제1항을 위반한 사실이 있는지를 확인하기 위하여 그 제조업자등에게 관련 서류의 제출을 명하거나 소속 공무원으로 하여금 관계인에게 질문을 하게 하거나 관계 서류를 검사하게 하는 등 필요한 조사를 할 수 있다. 이 경우 소속 공무원은 그 권한을 표시하는 증표를 지니고 이를 관계인에게 보여주어야 한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[본조신설 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J29:3" id="J29:3"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0029', '03' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830215', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y002903" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="29:3:002903:92830215" /> <span class="bl"><label for="Y002903"> 제29조의3(위반사실의 공표) </label> </span> ① 보건복지부장관은 관련 서류의 위조ㆍ변조로 의료급여비용을 거짓으로 청구하여 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611799','JO','');" href="javascript:;">제28조</a> 또는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611801','JO','');" href="javascript:;">제29조</a>에 따른 행정처분을 받은 의료급여기관이 다음 각 호의 어느 하나에 해당하는 경우 제2항의 의료급여공표심의위원회의 심의를 거쳐 그 위반 행위, 처분 내용, 해당 의료급여기관의 명칭ㆍ주소 및 대표자 성명, 그 밖에 다른 의료급여기관과의 구별에 필요한 사항으로서 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('182533');" href="javascript:;">대통령령</a>으로 정하는 사항을 공표할 수 있다. 이 경우 공표 여부를 결정할 때에는 그 위반행위의 동기, 정도, 횟수 및 결과 등을 고려하여야 한다. </p>
+       <p class="pty1_de2h">1. 거짓으로 청구한 금액이 1천500만원 이상인 경우 </p> 
+       <p class="pty1_de2h">2. 의료급여비용 총액 중 거짓으로 청구한 금액의 비율이 100분의 20 이상인 경우 </p> 
+       <p class="pty1_de2_1">② 보건복지부장관은 제1항에 따른 공표 여부 등을 심의하기 위하여 의료급여공표심의위원회(이하 이 조에서 “공표심의위원회”라 한다)를 설치ㆍ운영하여야 한다. </p> 
+       <p class="pty1_de2_1">③ 공표심의위원회는 공표 심의 대상자에게 심의 사실 및 내용을 알려 대상자가 소명자료를 제출하거나 출석하여 의견을 진술할 기회를 주어야 하고, 심의과정에서 이를 고려하여야 한다. </p> 
+       <p class="pty1_de2_1">④ 그 밖에 공표의 절차ㆍ방법, 공표심의위원회의 구성ㆍ운영 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('182537');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[본조신설 2023. 3. 28.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J30:0" id="J30:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0030', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830217', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0030', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003000" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="30:0:003000:92830217" /> <span class="bl"><label for="Y003000"> 제30조(이의신청 등) </label> </span> ① 수급권자의 자격, 의료급여 및 급여비용에 대한 시장ㆍ군수ㆍ구청장의 처분에 이의가 있는 자는 시장ㆍ군수ㆍ구청장에게 이의신청을 할 수 있다. </p>
+       <p class="pty1_de2_1">② 급여비용의 심사ㆍ조정, 의료급여의 적정성 평가 및 급여 대상 여부의 확인에 관한 급여비용심사기관의 처분에 이의가 있는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611805','JO','');" href="javascript:;">제5조</a>에 따른 보장기관, 의료급여기관 또는 수급권자는 급여비용심사기관에 이의신청을 할 수 있다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2_1">③ 제1항 및 제2항에 따른 이의신청은 처분이 있음을 안 날부터 90일 이내에 문서(전자문서를 포함한다)로 하여야 하며, 처분이 있은 날부터 180일이 지나면 제기하지 못한다. 다만, 정당한 사유에 따라 그 기간에 이의신청을 할 수 없었음을 소명한 경우에는 그러하지 아니하다. </p> 
+       <p class="pty1_de2_1">④ 제3항 본문에도 불구하고 의료급여기관이 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611803','JO','');" href="javascript:;">제11조의3</a>에 따른 급여비용심사기관의 확인에 대하여 이의신청을 하려면 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611807','JO','');" href="javascript:;">같은 조</a> <a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611809','JO','');" href="javascript:;">제2항</a>에 따라 통보받은 날부터 30일 이내에 하여야 한다. </p> 
+       <p class="pty1_de2_1">⑤ 제1항부터 제4항까지에서 규정한 사항 외에 이의신청의 방법, 이의신청에 대한 결정 및 결정의 통지 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127561');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J30:2" id="J30:2"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0030', '02' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003002" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="30:2:003002:92830219" /> <span class="bl"><label for="Y003002"> 제30조의2(심판청구) </label> </span> ① <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611811','JO','');" href="javascript:;">제30조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611821','JO','');" href="javascript:;">제2항</a>에 따른 급여비용심사기관의 이의신청에 대한 결정에 불복이 있는 자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611825','ALLJO','');" href="javascript:;">「국민건강보험법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611819','JO','');" href="javascript:;">제89조</a>에 따른 건강보험분쟁조정위원회에 심판청구를 할 수 있다. 이 경우 심판청구의 제기기간 및 제기방법에 관하여는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611823','JO','');" href="javascript:;">제30조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611817','JO','');" href="javascript:;">제3항</a>을 준용한다. </p>
+       <p class="pty1_de2_1">② 제1항에 따라 심판청구를 하려는 자는 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127562');" href="javascript:;">대통령령</a>으로 정하는 심판청구서를 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611813','JO','');" href="javascript:;">제30조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611815','JO','');" href="javascript:;">제2항</a>에 따른 처분을 행한 급여비용심사기관에 제출하거나 제1항에 따른 건강보험분쟁조정위원회에 제출하여야 한다. </p> 
+       <p class="pty1_de2_1">③ 제1항 및 제2항에서 규정한 사항 외에 심판청구의 절차ㆍ방법ㆍ결정 및 그 결정의 통지 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127563');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[본조신설 2014. 1. 28.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J31:0" id="J31:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0031', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830221', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0031', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003100" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="31:0:003100:92830221" /> <span class="bl"><label for="Y003100"> 제31조(소멸시효) </label> </span> ① 다음 각 호의 권리는 3년간 행사하지 아니하면 소멸시효가 완성된다. </p>
+       <p class="pty1_de2h">1. 의료급여를 받을 권리 </p> 
+       <p class="pty1_de2h">2. 급여비용을 받을 권리 </p> 
+       <p class="pty1_de2h">3. 대지급금을 상환받을 권리 </p> 
+       <p class="pty1_de2_1">② 제1항에 따른 시효는 다음 각 호의 어느 하나에 해당하는 사유로 중단된다. </p> 
+       <p class="pty1_de2h">1. 급여비용의 청구 </p> 
+       <p class="pty1_de2h">2. 대지급금에 대한 납입의 고지 및 독촉 </p> 
+       <p class="pty1_de2_1">③ 소멸시효 및 시효중단에 관하여 이 법에서 정한 사항 외에는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611827','ALLJO','');" href="javascript:;">「민법」</a>에 따른다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J32:0" id="J32:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0032', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830223', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0032', '00');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003200" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="32:0:003200:92830223" /> <span class="bl"><label for="Y003200"> 제32조(보고 및 검사) </label> </span> ① 보건복지부장관 및 시ㆍ도지사는 필요한 경우에는 기금의 관리ㆍ운용 및 의료급여와 관련된 사항에 관하여 시ㆍ도 및 시ㆍ군ㆍ구를 지도ㆍ감독하거나 필요한 보고를 하게 할 수 있다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p>
+       <p class="pty1_de2_1">② 보건복지부장관은 의료급여기관(<a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611905','JO','');" href="javascript:;">제12조</a>에 따라 의료급여를 실시한 기관을 포함한다) 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611903','JO','');" href="javascript:;">제11조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611901','JO','');" href="javascript:;">제6항</a>에 따라 급여비용의 심사청구를 대행하는 단체(이하 “대행청구단체”라 한다)에 대하여 진료ㆍ약제의 지급 등 의료급여에 관한 보고 또는 관계 서류의 제출을 명하거나 소속 공무원으로 하여금 질문을 하게 하거나 관계 서류를 검사하게 할 수 있다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2_1">③ 보건복지부장관, 시ㆍ도지사 또는 시장ㆍ군수ㆍ구청장은 의료급여를 받는 사람에게 그 의료급여의 내용에 관하여 보고하게 하거나 소속 공무원으로 하여금 질문하게 할 수 있다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2_1">④ 보건복지부장관은 제2항 및 제3항에 따른 보고ㆍ질문 또는 검사업무를 효율적으로 수행하기 위하여 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('188811');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611895','ALLJO','');" href="javascript:;">「국민건강보험법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611899','JO','');" href="javascript:;">제62조</a>에 따른 건강보험심사평가원으로 하여금 업무를 지원하게 할 수 있다. <span class="sfon">&lt;신설 2024. 1. 16.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑤ 제2항 및 제3항에 따라 질문 또는 조사를 하는 소속 공무원은 그 권한을 표시하는 증표 및 조사기간, 조사범위, 조사담당자, 관계 법령 등 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('124508');" href="javascript:;">보건복지부령</a>으로 정하는 사항이 기재된 서류를 지니고 이를 관계인에게 보여주어야 한다. <span class="sfon">&lt;개정 2016. 2. 3., 2024. 1. 16.&gt;</span> </p> 
+       <p class="pty1_de2_1">⑥ 제2항 및 제3항에 따른 질문 또는 조사의 내용ㆍ절차ㆍ방법 등에 관하여 이 법에서 정하는 사항을 제외하고는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611897','ALLJO','');" href="javascript:;">「행정조사기본법」</a>에서 정하는 바를 따른다. <span class="sfon">&lt;신설 2016. 2. 3., 2024. 1. 16.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J32:2" id="J32:2"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0032', '02' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830225', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+       <li><a href="javascript:;" onclick="javascript:openCtlInfoList('252715', '001780', '0032', '02');return false;" style="text-decoration: none;" title="관련규정 팝업으로 이동"> <img src="images/button/btn_entrust4_2.gif" alt="관련규제버튼" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003202" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="32:2:003202:92830225" /> <span class="bl"><label for="Y003202"> 제32조의2(자료의 제공) </label> </span> ① 시ㆍ도지사, 시장ㆍ군수ㆍ구청장, 급여비용심사기관 및 급여비용지급기관은 국가, 지방자치단체, 의료급여기관 또는 그 밖의 공공단체 등에 대하여 의료급여사업을 위하여 필요한 자료를 요청할 수 있다. 이 경우 요청받은 자는 성실히 자료를 제공하여야 한다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p>
+       <p class="pty1_de2_1">② 급여비용심사기관은 의료급여기관에 대하여 급여비용의 심사ㆍ조정, 의료급여의 적정성 평가 및 급여 대상 여부의 확인을 위하여 필요한 자료를 요청할 수 있다. 이 경우 자료의 제공을 요청받은 의료급여기관은 특별한 사유가 없으면 그 요청에 따라야 한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2_1">③ 제1항 및 제2항에 따라 국가, 지방자치단체, 의료급여기관 또는 그 밖의 공공단체 등이 시ㆍ도지사, 시장ㆍ군수ㆍ구청장, 급여비용심사기관 및 급여비용지급기관에 제공하는 자료에 대하여는 사용료와 수수료 등을 면제한다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[본조신설 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J32:3" id="J32:3"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0032', '03' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830227', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003203" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="32:3:003203:92830227" /> <span class="bl"><label for="Y003203"> 제32조의3(포상금 및 장려금의 지급) </label> </span> ① 시장ㆍ군수ㆍ구청장은 다음 각 호의 어느 하나에 해당하는 자를 신고한 사람에 대하여 포상금을 지급할 수 있다. <span class="sfon">&lt;개정 2023. 3. 28.&gt;</span> </p>
+       <p class="pty1_de2h">1. 속임수나 그 밖의 부당한 방법으로 의료급여를 받은 사람 </p> 
+       <p class="pty1_de2h">2. 속임수나 그 밖의 부당한 방법으로 다른 사람이 의료급여를 받도록 한 자 </p> 
+       <p class="pty1_de2h">3. 속임수나 그 밖의 부당한 방법으로 급여비용을 받은 의료급여기관 또는 급여비용을 받은 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611831','JO','');" href="javascript:;">제12조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611833','JO','');" href="javascript:;">제1항</a>에 따라 의료급여를 실시한 기관 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611829','JO','');" href="javascript:;">제13조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611835','JO','');" href="javascript:;">제1항</a>의 보조기기를 판매한 자 </p> 
+       <p class="pty1_de2_1">② 시장ㆍ군수ㆍ구청장은 의료급여 재정을 효율적으로 운영하는 데에 이바지한 의료급여기관에 대하여 장려금을 지급할 수 있다. </p> 
+       <p class="pty1_de2_1">③ 제1항 및 제2항에 따른 포상금과 장려금의 지급 기준과 범위, 절차 및 방법 등에 필요한 사항은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127564');" href="javascript:;">대통령령</a>으로 정한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[본조신설 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J33:0" id="J33:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0033', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830229', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003300" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="33:0:003300:92830229" /> <span class="bl"><label for="Y003300"> 제33조(권한의 위임 및 위탁) </label> </span> ① 이 법에 따른 보건복지부장관의 권한은 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127565');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 그 일부를 시ㆍ도지사에게 위임할 수 있다. </p>
+       <p class="pty1_de2_1">② 이 법에 따른 시장ㆍ군수ㆍ구청장의 업무 중 수급권자의 관리, 급여비용의 심사ㆍ조정, 의료급여의 적정성 평가, 급여 대상 여부의 확인 및 급여비용의 지급 업무 등 의료급여에 관한 업무는 그 일부를 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127566');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 관계 전문기관에 위탁할 수 있다. 이 경우 위탁에 드는 비용은 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link_not" onclick="javascript:joDelegatePop('252715','0033','00','010102','NOT','보건복지부장관이 정하는','27711');">보건복지부장관이 정하는</a> 바에 따라 기금에서 부담한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J34:0" id="J34:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0034', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830231', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003400" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="34:0:003400:92830231" /> <span class="bl"><label for="Y003400"> 제34조(끝수 및 소액의 처리) </label> </span> ① 의료급여에 관한 비용을 계산할 때 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611837','ALLJO','');" href="javascript:;">「국고금 관리법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611839','JO','');" href="javascript:;">제47조</a>에 따른 끝수는 계산하지 아니한다. </p>
+       <p class="pty1_de2_1">② 특별시장ㆍ광역시장ㆍ도지사 및 시장ㆍ군수ㆍ구청장은 징수ㆍ지급 또는 반환하여야 할 금액이 건당 2천원 미만인 경우에는 이를 징수ㆍ지급 또는 반환하지 아니한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J35:0" id="J35:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0035', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830233', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003500" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="35:0:003500:92830233" /> <span class="bl"><label for="Y003500"> 제35조(벌칙) </label> </span> ① <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611873','JO','');" href="javascript:;">제3조의3</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611845','JO','');" href="javascript:;">제3항</a>에 따라 준용되는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611867','ALLJO','');" href="javascript:;">「국민기초생활 보장법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611841','JO','');" href="javascript:;">제23조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611869','JO','');" href="javascript:;">제6항</a>을 위반하여 금융정보ㆍ신용정보 또는 보험정보를 사용ㆍ제공 또는 누설한 사람은 5년 이하의 징역 또는 5천만원 이하의 벌금에 처한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p>
+       <p class="pty1_de2_1">② 삭제 <span class="sfon">&lt;2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2_1">③ 다음 각 호의 어느 하나에 해당하는 사람은 3년 이하의 징역 또는 3천만원 이하의 벌금에 처한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611843','JO','');" href="javascript:;">제3조의3</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611871','JO','');" href="javascript:;">제3항</a>에 따라 준용되는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611861','ALLJO','');" href="javascript:;">「국민기초생활 보장법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611863','JO','');" href="javascript:;">제22조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611879','JO','');" href="javascript:;">제6항</a>(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1028611851','ALLJO','');" href="javascript:;">같은 법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611853','JO','');" href="javascript:;">제23조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611855','JO','');" href="javascript:;">제2항</a>에서 준용하는 경우를 포함한다)을 위반하여 정보 또는 자료를 사용하거나 제공한 사람 </p> 
+       <p class="pty1_de2h">2. 삭제 <span class="sfon">&lt;2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2h">3. 대행청구단체의 종사자로서 거짓이나 그 밖의 부정한 방법으로 급여비용을 청구한 자 </p> 
+       <p class="pty1_de2_1">④ 다음 각 호의 어느 하나에 해당하는 자는 1년 이하의 징역 또는 1천만원 이하의 벌금에 처한다. <span class="sfon">&lt;개정 2017. 3. 21.&gt;</span> </p> 
+       <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611857','JO','');" href="javascript:;">제9조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611859','JO','');" href="javascript:;">제3항</a>을 위반하여 정당한 이유 없이 이 법에 따른 의료급여를 거부한 자 </p> 
+       <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611847','JO','');" href="javascript:;">제11조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611849','JO','');" href="javascript:;">제6항</a>에 따른 대행청구단체가 아닌 자로 하여금 급여비용의 심사청구를 대행하게 한 자 </p> 
+       <p class="pty1_de2h">3. 속임수나 그 밖의 부정한 방법으로 의료급여를 받은 자 또는 제3자로 하여금 의료급여를 받게 한 자 </p> 
+       <p class="pty1_de2h">4. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611875','JO','');" href="javascript:;">제28조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611877','JO','');" href="javascript:;">제4항</a>을 위반하여 업무정지기간 중에 의료급여를 한 의료급여기관의 개설자 </p> 
+       <p class="pty1_de2_1">⑤ 정당한 이유 없이 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611881','JO','');" href="javascript:;">제32조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611865','JO','');" href="javascript:;">제2항</a>에 따른 보고 또는 서류제출을 하지 아니하거나 거짓으로 보고하거나 거짓 자료를 제출하거나 검사를 거부ㆍ방해 또는 기피한 사람은 1천만원 이하의 벌금에 처한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J36:0" id="J36:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0036', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830235', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003600" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="36:0:003600:92830235" /> <span class="bl"><label for="Y003600"> 제36조(양벌규정) </label> </span> 법인의 대표자나 법인 또는 개인의 대리인, 사용인, 그 밖의 종업원이 그 법인 또는 개인의 업무에 관하여 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611883','JO','');" href="javascript:;">제35조</a>의 위반행위를 하면 그 행위자를 벌하는 외에 그 법인 또는 개인에게도 해당 조문의 벌금형을 과(科)한다. 다만, 법인 또는 개인이 그 위반행위를 방지하기 위하여 해당 업무에 관하여 상당한 주의와 감독을 게을리하지 아니한 경우에는 그러하지 아니하다. </p>
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J37:0" id="J37:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('252715', '0037', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '001780', '252715', '92830237', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y003700" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="37:0:003700:92830237" /> <span class="bl"><label for="Y003700"> 제37조(과태료) </label> </span> ① <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611891','JO','');" href="javascript:;">제28조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611893','JO','');" href="javascript:;">제7항</a>을 위반하여 행정처분을 받은 사실 또는 행정처분 절차가 진행 중인 사실을 양수인 또는 합병 후 존속하는 법인이나 합병으로 설립된 법인에 알리지 아니한 자에게는 500만원 이하의 과태료를 부과한다. </p>
+       <p class="pty1_de2_1">② 다음 각 호의 어느 하나에 해당하는 자에게는 100만원 이하의 과태료를 부과한다. </p> 
+       <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611885','JO','');" href="javascript:;">제11조의2</a>에 따른 서류보존의무를 위반한 자 </p> 
+       <p class="pty1_de2h">2. 정당한 사유 없이 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1028611887','JO','');" href="javascript:;">제29조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1028611889','JO','');" href="javascript:;">제2항</a>에 따른 서류제출을 하지 아니하거나 거짓 서류를 제출하거나 질문에 대하여 진술을 거부하거나 거짓으로 진술하거나 검사 등 조사를 거부ㆍ방해ㆍ기피한 자 </p> 
+       <p class="pty1_de2_1">③ 제1항 및 제2항에 따른 과태료는 <a title="팝업으로 이동" class="link" onclick="javascript:fncLsPttnLinkPop('127567');" href="javascript:;">대통령령</a>으로 정하는 바에 따라 보건복지부장관이 부과ㆍ징수한다. </p> 
+       <p class="pty1_de2"> <span class="sfon">[전문개정 2013. 6. 12.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <!-- 조문정보 --> 
+     <!-- 부칙 영역 끝 --> 
+     <br /> 
+     <div id="arDivArea"> 
+      <a name="arArea"></a> 
+      <a name="J11600845" id="J11600845"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11600845','<법률 제6474호, 2001. 5. 24.>'); return false;" href="#AJAX"> <img id="ar11600845btn" style="vertical-align: middle;" alt="부칙 <법률 제6474호, 2001. 5. 24.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11600845" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제6474호, 2001. 5. 24.>체크박스 " value="11600845" /> <a class="nun" onclick="javascript:arView('ar11600845','<법률 제6474호, 2001. 5. 24.>'); return false;" href="#AJAX"> <label for="chk11600845"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제6474호, 2001. 5. 24.&gt;</span> </a> <a class="nun" onclick="javascript:arView('ar11600845','<법률 제6474호, 2001. 5. 24.>');return false;" href="#AJAX"> <img id="ar11600845MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제6474호, 2001. 5. 24.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조 (시행일)</span> 이 법은 2001년 10월 1일부터 시행한다.</p>
+       <div id="ar11600845">
+        <p class="pty3_dep1"><span class="bl">제2조 (의료보호대상자에 관한 경과조치)</span> 이 법 시행 당시 종전의 규정에 의한 의료보호대상자는 제3조의 개정규정에 의한 수급권자로 본다.</p>
+        <p class="pty3_dep1"><span class="bl">제3조 (의료보호심의위원회에 관한 경과조치)</span> 이 법 시행 당시 종전의 규정에 의한 의료보호심의위원회는 제6조의 개정규정에 의한 의료급여심의위원회로 본다.</p>
+        <p class="pty3_dep1"><span class="bl">제4조 (의료보장증에 관한 경과조치)</span> 이 법 시행 당시 종전의 규정에 따라 발급받은 의료보장증은 제8조의 개정규정에 따라 발급받은 의료급여증으로 본다.</p>
+        <p class="pty3_dep1"><span class="bl">제5조 (의료보호진료기관에 관한 경과조치)</span> 이 법 시행 당시 종전의 규정에 의한 의료보호진료기관은 제9조의 개정규정에 의한 의료급여기관으로 본다.</p>
+        <p class="pty3_dep1"><span class="bl">제6조 (보호비용에 관한 경과조치)</span> 이 법 시행 당시 종전의 규정에 의한 보호비용은 제10조의 개정규정에 의한 급여비용으로 본다.</p>
+        <p class="pty3_dep1"><span class="bl">제7조 (의료보호기금에 관한 경과조치)</span> 이 법 시행 당시 종전의 규정에 의한 의료보호기금은 제25조의 개정규정에 의한 의료급여기금으로 본다.</p>
+        <p class="pty3_dep1"><span class="bl">제8조 (지정취소된 의료보호진료기관에 관한 경과조치)</span> 법률 제5853호 의료보호법중개정법률 시행 당시 종전의 규정에 따라 지정취소된 의료보호진료기관중 재지정의 제한기간이 끝나지 아니한 진료기관은 동법 제24조의 규정에 따라 그 남은 기간동안 의료보호에 관한 업무의 정지처분을 받은 것으로 본다.</p>
+        <p class="pty3_dep1"><span class="bl">제9조 (지정취소 등에 관한 경과조치)</span> 법률 제5853호 의료보호법중개정법률 시행 당시 지정취소ㆍ면허자격정지ㆍ과태료 또는 부당이득금에 관한 처분을 하기 위하여 절차가 진행중인 자에 대한 처분은 동법 시행전의 규정에 의한다.</p>
+        <p class="pty3_dep1"><span class="bl">제10조 (과태료 등에 관한 경과조치)</span> 이 법 시행 당시 종전의 규정에 따라 부과된 과태료 및 부당이득금의 징수에 관하여는 종전의 규정에 의한다.</p>
+        <p class="pty3_dep1"><span class="bl">제11조 (벌칙에 관한 경과조치)</span> 이 법 시행전의 행위에 대한 벌칙의 적용에 있어서는 종전의 규정에 의한다.</p>
+        <p class="pty3_dep1"><span class="bl">제12조 (다른 법률의 개정)</span> ①국민건강보험법중 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제5조제1항제1호를 다음과 같이 한다.</p>
+        <p class="pty3_dep2"> 1. 의료급여법에 따라 의료급여를 받는 자(이하 “수급권자”라 한다)</p>
+        <p class="pty3_dep2"> 제7조제1항제1호 및 제9조제1항제5호중 “의료보호대상자”를 각각 “수급권자”로 한다.</p>
+        <p class="pty3_dep2"> ②의사상자예우에관한법률중 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제9조의 제목 “(의료보호)”를 “(의료급여)”로 하고, 동조제1항중 “의료보호법”을 “의료급여법”으로, “의료보호”를 “의료급여”로 하며, 동조제2항중 “의료보호”를 “의료급여”로 한다.</p>
+        <p class="pty3_dep2"> ③북한이탈주민의보호및정착지원에관한법률중 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제25조의 제목 “(의료보호)”를 “(의료급여)”로 하고, 동조 본문중 “의료보호법”을 “의료급여법”으로, “의료보호”를 “의료급여”로 한다.</p>
+        <p class="pty3_dep1"><span class="bl">제13조 (다른 법령과의 관계)</span> 이 법 시행 당시 다른 법령에서 종전의 의료보호법 또는 그 규정을 인용하고 있는 경우에 이 법중 그에 해당하는 규정이 있는 때에는 종전의 규정에 갈음하여 이 법 또는 이 법의 해당 규정을 인용한 것으로 본다.</p>
+       </div> 
+      </div> 
+      <a name="J11600847" id="J11600847"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11600847btn" style="vertical-align: middle;" alt="부칙<법률 제6758호, 2002. 12. 5.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11600847" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제6758호, 2002. 12. 5.>체크박스 " value="11600847" /> <a class="nun" onclick="javascript:arView('ar11600847','<법률 제6758호, 2002. 12. 5.>'); return false;" href="#AJAX"> <label for="chk11600847"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제6758호, 2002. 12. 5.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11600849" id="J11600849"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11600849btn" style="vertical-align: middle;" alt="부칙<법률 제6875호, 2003. 5. 15.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11600849" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제6875호, 2003. 5. 15.>체크박스 " value="11600849" /> <a class="nun" onclick="javascript:arView('ar11600849','<법률 제6875호, 2003. 5. 15.>'); return false;" href="#AJAX"> <label for="chk11600849"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제6875호, 2003. 5. 15.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11600851" id="J11600851"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11600851btn" style="vertical-align: middle;" alt="부칙<법률 제7182호, 2004. 3. 5.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11600851" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제7182호, 2004. 3. 5.>체크박스 " value="11600851" /> <a class="nun" onclick="javascript:arView('ar11600851','<법률 제7182호, 2004. 3. 5.>'); return false;" href="#AJAX"> <label for="chk11600851"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제7182호, 2004. 3. 5.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">①(시행일) 이 법은 2005년 1월 1일부터 시행한다. </p>
+       <p class="pty3_dep1">②(수급권자에 관한 적용례) 이 법 시행전에 이미 입양촉진및절차에관한특례법에 의하여 국내에 입양된 아동에 대하여도 제3조제1항제4호의 개정규정을 적용한다.</p> 
+      </div> 
+      <a name="J11600853" id="J11600853"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11600853','<법률 제7347호, 2005. 1. 27.>'); return false;" href="#AJAX"> <img id="ar11600853btn" style="vertical-align: middle;" alt="부칙 <법률 제7347호, 2005. 1. 27.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11600853" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제7347호, 2005. 1. 27.>체크박스 " value="11600853" /> <a class="nun" onclick="javascript:arView('ar11600853','<법률 제7347호, 2005. 1. 27.>'); return false;" href="#AJAX"> <label for="chk11600853"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제7347호, 2005. 1. 27.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('국고금관리법', '20050127', '07347');" href="#AJAX"> <span class="sfon">(국고금관리법) </span> </a> <a class="nun" onclick="javascript:arView('ar11600853','<법률 제7347호, 2005. 1. 27.>');return false;" href="#AJAX"> <img id="ar11600853MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제7347호, 2005. 1. 27.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조 (시행일)</span> 이 법은 2005년 7월 1일부터 시행한다.</p>
+       <div id="ar11600853">
+        <p class="pty3_dep1"><span class="bl">제2조 및 제3조</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제4조 (다른 법률의 개정)</span> ①내지 ⑥생략</p>
+        <p class="pty3_dep2"> ⑦의료급여법중 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제34조중 “국고금단수계산법 제1조의 규정에 의한 단수”를 “국고금관리법 제47조의 규정에 의한 단수”로 한다.</p>
+       </div> 
+      </div> 
+      <a name="J11600855" id="J11600855"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11600855btn" style="vertical-align: middle;" alt="부칙<법률 제7736호, 2005. 12. 23.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11600855" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제7736호, 2005. 12. 23.>체크박스 " value="11600855" /> <a class="nun" onclick="javascript:arView('ar11600855','<법률 제7736호, 2005. 12. 23.>'); return false;" href="#AJAX"> <label for="chk11600855"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제7736호, 2005. 12. 23.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포 후 3월이 경과한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11600857" id="J11600857"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11600857btn" style="vertical-align: middle;" alt="부칙<법률 제8036호, 2006. 10. 4.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11600857" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제8036호, 2006. 10. 4.>체크박스 " value="11600857" /> <a class="nun" onclick="javascript:arView('ar11600857','<법률 제8036호, 2006. 10. 4.>'); return false;" href="#AJAX"> <label for="chk11600857"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제8036호, 2006. 10. 4.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11600859" id="J11600859"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11600859btn" style="vertical-align: middle;" alt="부칙<법률 제8114호, 2006. 12. 28.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11600859" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제8114호, 2006. 12. 28.>체크박스 " value="11600859" /> <a class="nun" onclick="javascript:arView('ar11600859','<법률 제8114호, 2006. 12. 28.>'); return false;" href="#AJAX"> <label for="chk11600859"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제8114호, 2006. 12. 28.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">①(시행일) 이 법은 공포 후 3개월이 경과한 날부터 시행한다.</p>
+       <p class="pty3_dep1">②(급여의 제한 완화에 관한 적용례) 제15조제1항제2호의 개정규정은 이 법 시행 후 최초로 행하는 의료급여부터 적용한다.</p> 
+      </div> 
+      <a name="J11600861" id="J11600861"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11600861','<법률 제8609호, 2007. 8. 3.>'); return false;" href="#AJAX"> <img id="ar11600861btn" style="vertical-align: middle;" alt="부칙 <법률 제8609호, 2007. 8. 3.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11600861" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제8609호, 2007. 8. 3.>체크박스 " value="11600861" /> <a class="nun" onclick="javascript:arView('ar11600861','<법률 제8609호, 2007. 8. 3.>'); return false;" href="#AJAX"> <label for="chk11600861"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제8609호, 2007. 8. 3.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('의사상자 등 예우 및 지원에 관한 법률', '20070803', '08609');" href="#AJAX"> <span class="sfon">(의사상자 등 예우 및 지원에 관한 법률) </span> </a> <a class="nun" onclick="javascript:arView('ar11600861','<법률 제8609호, 2007. 8. 3.>');return false;" href="#AJAX"> <img id="ar11600861MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제8609호, 2007. 8. 3.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조 (시행일)</span> 이 법은 공포 후 6개월이 경과한 날부터 시행한다. &lt;단서 생략&gt;</p>
+       <div id="ar11600861">
+        <p class="pty3_dep1"><span class="bl">제2조부터 제5조까지</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제6조 (다른 법률의 개정)</span> ① 생략</p>
+        <p class="pty3_dep2"> ② 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제3호를 다음과 같이 한다.</p>
+        <p class="pty3_dep2"> 3. 「의사상자 등 예우 및 지원에 관한 법률」에 따른 의상자 및 의사자유족</p>
+        <p class="pty3_dep1"><span class="bl">제7조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11600863" id="J11600863"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11600863','<법률 제8694호, 2007. 12. 14.>'); return false;" href="#AJAX"> <img id="ar11600863btn" style="vertical-align: middle;" alt="부칙 <법률 제8694호, 2007. 12. 14.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11600863" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제8694호, 2007. 12. 14.>체크박스 " value="11600863" /> <a class="nun" onclick="javascript:arView('ar11600863','<법률 제8694호, 2007. 12. 14.>'); return false;" href="#AJAX"> <label for="chk11600863"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제8694호, 2007. 12. 14.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('산업재해보상보험법', '20071214', '08694');" href="#AJAX"> <span class="sfon">(산업재해보상보험법) </span> </a> <a class="nun" onclick="javascript:arView('ar11600863','<법률 제8694호, 2007. 12. 14.>');return false;" href="#AJAX"> <img id="ar11600863MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제8694호, 2007. 12. 14.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조 (시행일)</span> 이 법은 2008년 7월 1일부터 시행한다. &lt;단서 생략&gt;</p>
+       <div id="ar11600863">
+        <p class="pty3_dep1"><span class="bl">제2조부터 제24조까지</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제25조 (다른 법률의 개정)</span> ① 부터 ⑦ 까지 생략</p>
+        <p class="pty3_dep2"> ⑧ 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제11조에 제8항을 다음과 같이 신설한다.</p>
+        <p class="pty3_dep2"> ⑧ 시장ㆍ군수ㆍ구청장은 「산업재해보상보험법」 제10조에 따른 근로복지공단이 이 법에 따라 의료급여를 받을 수 있는 자에게 「산업재해보상보험법」 제40조에 따른 요양급여를 지급한 후 그 지급결정이 취소된 경우로서 그 요양급여의 비용을 청구하는 경우에는 그 요양급여가 이 법에 따라 실시할 수 있는 의료급여에 상당한 것으로 인정되면 그 의료급여에 해당하는 금액을 지급할 수 있다.</p>
+        <p class="pty3_dep2"> ⑨ 및 ⑩ 생략</p>
+        <p class="pty3_dep1"><span class="bl">제26조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11600865" id="J11600865"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11600865','<법률 제8852호, 2008. 2. 29.>'); return false;" href="#AJAX"> <img id="ar11600865btn" style="vertical-align: middle;" alt="부칙 <법률 제8852호, 2008. 2. 29.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11600865" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제8852호, 2008. 2. 29.>체크박스 " value="11600865" /> <a class="nun" onclick="javascript:arView('ar11600865','<법률 제8852호, 2008. 2. 29.>'); return false;" href="#AJAX"> <label for="chk11600865"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제8852호, 2008. 2. 29.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('정부조직법', '20080229', '08852');" href="#AJAX"> <span class="sfon">(정부조직법) </span> </a> <a class="nun" onclick="javascript:arView('ar11600865','<법률 제8852호, 2008. 2. 29.>');return false;" href="#AJAX"> <img id="ar11600865MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제8852호, 2008. 2. 29.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조 (시행일)</span> 이 법은 공포한 날부터 시행한다. 다만, ㆍㆍㆍ&lt;생략&gt;ㆍㆍㆍ 부칙 제6조에 따라 개정되는 법률 중 이 법의 시행 전에 공포되었으나 시행일이 도래하지 아니한 법률을 개정한 부분은 각각 해당 법률의 시행일부터 시행한다.</p>
+       <div id="ar11600865">
+        <p class="pty3_dep1"><span class="bl">제2조부터 제5조까지</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제6조 (다른 법률의 개정)</span> ① 부터 &lt;479&gt; 까지 생략</p>
+        <p class="pty3_dep2"> &lt;480&gt; 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제5호부터 제8호까지, 제6조제2항제3호ㆍ제3항 각 호 외의 부분, 제7조제2항ㆍ제3항, 제9조제1항 각 호 외의 부분 후단ㆍ제2항제3호, 제12조제2항, 제14조제2항, 제15조제1항 각 호 외의 부분 단서, 제20조제1항, 제28조제1항 각 호 외의 부분ㆍ제2항ㆍ제3항ㆍ제5항, 제29조제1항ㆍ제3항 본문, 제32조제1항부터 제3항까지, 제33조제1항ㆍ제2항 후단, 제37조제2항부터 제4항까지 중 “보건복지부장관”을 각각 “보건복지가족부장관”으로 한다.</p>
+        <p class="pty3_dep2"> 제6조제1항 본문ㆍ제2항 각 호 외의 부분ㆍ제6항 중 “보건복지부”를 각각 “보건복지가족부”로 한다.</p>
+        <p class="pty3_dep2"> 제6조제3항 각 호 외의 부분 중 “보건복지부차관”을 “보건복지가족부차관”으로 한다. </p>
+        <p class="pty3_dep2"> 제7조제2항ㆍ제3항, 제8조제4항, 제9조제2항 각 호 외의 부분ㆍ제4항 각 호 외의 부분ㆍ제5항, 제11조제4항 후단ㆍ제5항, 제11조의2제1항ㆍ제2항, 제12조제1항ㆍ제3항, 제13조제2항, 제20조제2항, 제21조제1항 전단, 제26조제2항ㆍ제4항, 제27조제1항, 제28조제5항ㆍ제6항, 제29조제2항 중 “보건복지부령”을 각각 “보건복지가족부령”으로 한다. </p>
+        <p class="pty3_dep2"> &lt;481&gt; 부터 &lt;760&gt; 까지 생략</p>
+        <p class="pty3_dep1"><span class="bl">제7조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11600867" id="J11600867"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11600867','<법률 제9932호,  2010. 1. 18.>'); return false;" href="#AJAX"> <img id="ar11600867btn" style="vertical-align: middle;" alt="부칙 <법률 제9932호,  2010. 1. 18.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11600867" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제9932호,  2010. 1. 18.>체크박스 " value="11600867" /> <a class="nun" onclick="javascript:arView('ar11600867','<법률 제9932호,  2010. 1. 18.>'); return false;" href="#AJAX"> <label for="chk11600867"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제9932호, 2010. 1. 18.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('정부조직법', '20100118', '09932');" href="#AJAX"> <span class="sfon">(정부조직법) </span> </a> <a class="nun" onclick="javascript:arView('ar11600867','<법률 제9932호,  2010. 1. 18.>');return false;" href="#AJAX"> <img id="ar11600867MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제9932호,  2010. 1. 18.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 2개월이 경과한 날부터 시행한다. &lt;단서 생략&gt;</p>
+       <div id="ar11600867">
+        <p class="pty3_dep1"><span class="bl">제2조 및 제3조</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제4조(다른 법률의 개정)</span> ① 부터 &lt;91&gt; 까지 생략</p>
+        <p class="pty3_dep2"> &lt;92&gt; 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제5호부터 제8호까지, 제6조제2항제3호ㆍ제3항 각 호 외의 부분, 제7조제2항ㆍ제3항, 제9조제1항 각 호 외의 부분 후단ㆍ제2항제3호, 제12조제2항, 제14조제2항, 제15조제1항 각 호 외의 부분 단서, 제20조제1항, 제28조제1항 각 호 외의 부분ㆍ제2항ㆍ제3항ㆍ제5항, 제29조제1항ㆍ제3항 본문, 제32조제1항부터 제3항까지, 제33조제1항ㆍ제2항 후단, 제37조제2항부터 제4항까지 중 “보건복지가족부장관”을 각각 “보건복지부장관”으로 한다.</p>
+        <p class="pty3_dep2"> 제6조제1항 본문ㆍ제2항 각 호 외의 부분ㆍ제6항 중 “보건복지가족부”를 각각 “보건복지부”로 한다.</p>
+        <p class="pty3_dep2"> 제6조제3항 각 호 외의 부분 중 “보건복지가족부차관”을 “보건복지부차관”으로 한다. </p>
+        <p class="pty3_dep2"> 제7조제2항ㆍ제3항, 제8조제4항, 제9조제2항 각 호 외의 부분ㆍ제4항 각 호 외의 부분ㆍ제5항, 제11조제4항 후단ㆍ제5항, 제11조의2제1항ㆍ제2항, 제12조제1항ㆍ제3항, 제13조제2항, 제20조제2항, 제21조제1항 전단, 제26조제2항ㆍ제4항, 제27조제1항, 제28조제5항ㆍ제6항, 제29조제2항 중 “보건복지가족부령”을 각각 “보건복지부령”으로 한다. </p>
+        <p class="pty3_dep2"> &lt;93&gt; 부터 &lt;137&gt; 까지 생략</p>
+        <p class="pty3_dep1"><span class="bl">제5조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11600869" id="J11600869"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11600869btn" style="vertical-align: middle;" alt="부칙<법률 제10514호, 2011. 3. 30.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11600869" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제10514호, 2011. 3. 30.>체크박스 " value="11600869" /> <a class="nun" onclick="javascript:arView('ar11600869','<법률 제10514호, 2011. 3. 30.>'); return false;" href="#AJAX"> <label for="chk11600869"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제10514호, 2011. 3. 30.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포 후 3개월이 경과한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11600871" id="J11600871"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11600871','<법률 제10784호,  2011. 6. 7.>'); return false;" href="#AJAX"> <img id="ar11600871btn" style="vertical-align: middle;" alt="부칙 <법률 제10784호,  2011. 6. 7.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11600871" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제10784호,  2011. 6. 7.>체크박스 " value="11600871" /> <a class="nun" onclick="javascript:arView('ar11600871','<법률 제10784호,  2011. 6. 7.>'); return false;" href="#AJAX"> <label for="chk11600871"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제10784호, 2011. 6. 7.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('노숙인 등의 복지 및 자립지원에 관한 법률', '20110607', '10784');" href="#AJAX"> <span class="sfon">(노숙인 등의 복지 및 자립지원에 관한 법률) </span> </a> <a class="nun" onclick="javascript:arView('ar11600871','<법률 제10784호,  2011. 6. 7.>');return false;" href="#AJAX"> <img id="ar11600871MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제10784호,  2011. 6. 7.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 1년이 경과한 날부터 시행한다.</p>
+       <div id="ar11600871">
+        <p class="pty3_dep1"><span class="bl">제2조</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제3조(다른 법률의 개정)</span> ① 생략</p>
+        <p class="pty3_dep2"> ② 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제9호를 제10호로 하고, 같은 항에 제9호를 다음과 같이 신설한다.</p>
+        <p class="pty3_dep2"> 9. 「노숙인 등의 복지 및 자립지원에 관한 법률」에 따른 노숙인 등</p>
+       </div> 
+      </div> 
+      <a name="J11601033" id="J11601033"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601033','<법률 제10788호,  2011. 6. 7.>'); return false;" href="#AJAX"> <img id="ar11601033btn" style="vertical-align: middle;" alt="부칙 <법률 제10788호,  2011. 6. 7.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601033" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제10788호,  2011. 6. 7.>체크박스 " value="11601033" /> <a class="nun" onclick="javascript:arView('ar11601033','<법률 제10788호,  2011. 6. 7.>'); return false;" href="#AJAX"> <label for="chk11601033"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제10788호, 2011. 6. 7.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('약사법', '20110607', '10788');" href="#AJAX"> <span class="sfon">(약사법) </span> </a> <a class="nun" onclick="javascript:arView('ar11601033','<법률 제10788호,  2011. 6. 7.>');return false;" href="#AJAX"> <img id="ar11601033MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제10788호,  2011. 6. 7.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> ① 이 법은 공포 후 1년이 경과한 날부터 시행한다.</p>
+       <div id="ar11601033">
+        <p class="pty3_dep2"> ② 및 ③ 생략</p>
+        <p class="pty3_dep1"><span class="bl">제2조부터 제9조까지</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제10조(다른 법률의 개정)</span> ① 생략</p>
+        <p class="pty3_dep2"> ② 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제9조제1항제4호 및 같은 조 제2항제1호라목 중 “동법 제72조의12의 규정에 따라”를 각각 “같은 법 제91조에 따라”로 한다.</p>
+        <p class="pty3_dep1"><span class="bl">제11조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601035" id="J11601035"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601035','<법률 제11007호,  2011. 8. 4.>'); return false;" href="#AJAX"> <img id="ar11601035btn" style="vertical-align: middle;" alt="부칙 <법률 제11007호,  2011. 8. 4.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601035" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제11007호,  2011. 8. 4.>체크박스 " value="11601035" /> <a class="nun" onclick="javascript:arView('ar11601035','<법률 제11007호,  2011. 8. 4.>'); return false;" href="#AJAX"> <label for="chk11601035"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제11007호, 2011. 8. 4.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('입양특례법', '20110804', '11007');" href="#AJAX"> <span class="sfon">(입양특례법) </span> </a> <a class="nun" onclick="javascript:arView('ar11601035','<법률 제11007호,  2011. 8. 4.>');return false;" href="#AJAX"> <img id="ar11601035MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제11007호,  2011. 8. 4.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 1년이 경과한 날부터 시행한다.</p>
+       <div id="ar11601035">
+        <p class="pty3_dep1"><span class="bl">제2조</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제3조(다른 법률의 개정)</span> ① 및 ② 생략</p>
+        <p class="pty3_dep2"> ③ 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제4호를 다음과 같이 한다.</p>
+        <p class="pty3_dep2"> 4. 「입양특례법」에 따라 국내에 입양된 18세 미만의 아동</p>
+        <p class="pty3_dep2"> ④ 생략</p>
+        <p class="pty3_dep1"><span class="bl">제4조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601037" id="J11601037"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601037','<법률 제11042호,  2011. 9. 15.>'); return false;" href="#AJAX"> <img id="ar11601037btn" style="vertical-align: middle;" alt="부칙 <법률 제11042호,  2011. 9. 15.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601037" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제11042호,  2011. 9. 15.>체크박스 " value="11601037" /> <a class="nun" onclick="javascript:arView('ar11601037','<법률 제11042호,  2011. 9. 15.>'); return false;" href="#AJAX"> <label for="chk11601037"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제11042호, 2011. 9. 15.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('보훈보상대상자 지원에 관한 법률', '20110915', '11042');" href="#AJAX"> <span class="sfon">(보훈보상대상자 지원에 관한 법률) </span> </a> <a class="nun" onclick="javascript:arView('ar11601037','<법률 제11042호,  2011. 9. 15.>');return false;" href="#AJAX"> <img id="ar11601037MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제11042호,  2011. 9. 15.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 2012년 7월 1일부터 시행한다.</p>
+       <div id="ar11601037">
+        <p class="pty3_dep1"><span class="bl">제2조(다른 법률의 개정)</span> ①부터 ⑱까지 생략</p>
+        <p class="pty3_dep2"> ⑲ 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제5호 중 “「독립유공자예우에 관한 법률」 및 「국가유공자 등 예우 및 지원에 관한 법률」”을 “「독립유공자예우에 관한 법률」, 「국가유공자 등 예우 및 지원에 관한 법률」 및 「보훈보상대상자 지원에 관한 법률」”로 한다.</p>
+        <p class="pty3_dep2"> ⑳부터 ㉗까지 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601039" id="J11601039"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601039','<법률 제11298호,  2012. 2. 10.>'); return false;" href="#AJAX"> <img id="ar11601039btn" style="vertical-align: middle;" alt="부칙 <법률 제11298호,  2012. 2. 10.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601039" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제11298호,  2012. 2. 10.>체크박스 " value="11601039" /> <a class="nun" onclick="javascript:arView('ar11601039','<법률 제11298호,  2012. 2. 10.>'); return false;" href="#AJAX"> <label for="chk11601039"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제11298호, 2012. 2. 10.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('난민법', '20120210', '11298');" href="#AJAX"> <span class="sfon">(난민법) </span> </a> <a class="nun" onclick="javascript:arView('ar11601039','<법률 제11298호,  2012. 2. 10.>');return false;" href="#AJAX"> <img id="ar11601039MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제11298호,  2012. 2. 10.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 2013년 7월 1일부터 시행한다.</p>
+       <div id="ar11601039">
+        <p class="pty3_dep1"><span class="bl">제2조</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제3조(다른 법률의 개정)</span> ① 생략</p>
+        <p class="pty3_dep2"> ② 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조의2 중 “「출입국관리법」 제76조의2의 규정에 따라 난민의 지위를 인정받은 자”를 “「난민법」에 따른 난민인정자”로 한다.</p>
+        <p class="pty3_dep2"> ③ 및 ④ 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601041" id="J11601041"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601041','<법률 제11878호, 2013. 6. 12.>'); return false;" href="#AJAX"> <img id="ar11601041btn" style="vertical-align: middle;" alt="부칙 <법률 제11878호, 2013. 6. 12.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601041" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제11878호, 2013. 6. 12.>체크박스 " value="11601041" /> <a class="nun" onclick="javascript:arView('ar11601041','<법률 제11878호, 2013. 6. 12.>'); return false;" href="#AJAX"> <label for="chk11601041"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제11878호, 2013. 6. 12.&gt;</span> </a> <a class="nun" onclick="javascript:arView('ar11601041','<법률 제11878호, 2013. 6. 12.>');return false;" href="#AJAX"> <img id="ar11601041MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제11878호, 2013. 6. 12.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포한 날부터 시행한다. 다만, 제3조의2의 개정규정은 2013년 7월 1일부터 시행하고, 제3조의3, 제8조, 제28조제6항ㆍ제7항, 제29조, 제29조의2, 제32조의3, 제35조제1항ㆍ제3항 및 제37조제1항ㆍ제3항의 개정규정은 공포 후 6개월이 경과한 날부터 시행한다.</p>
+       <div id="ar11601041">
+        <p class="pty3_dep1"><span class="bl">제2조(수급권자 인정 신청에 관한 적용례)</span> 제3조의3제1항 및 제2항의 개정규정은 같은 개정규정 시행 후 최초로 수급권자 인정 신청을 하는 사람부터 적용한다.</p>
+        <p class="pty3_dep1"><span class="bl">제3조(의료급여기관의 부당이득 징수에 관한 적용례)</span> 제23조제3항의 개정규정은 이 법 시행 후 최초로 부당이득을 징수하는 경우부터 적용한다.</p>
+        <p class="pty3_dep1"><span class="bl">제4조(행정처분의 효과 승계에 관한 적용례)</span> 제28조제6항 및 제7항의 개정규정은 같은 개정규정 시행 후 최초로 의료급여기관을 양수하거나 합병 후 존속하는 법인이나 합병으로 설립되는 법인부터 적용한다.</p>
+        <p class="pty3_dep1"><span class="bl">제5조(이의신청기간에 관한 적용례)</span> ① 제30조제3항 본문의 개정규정(전자문서에 관한 사항은 제외한다)은 이 법 시행 후 최초로 한 처분부터 적용한다.</p>
+        <p class="pty3_dep2"> ② 제30조제4항의 개정규정은 이 법 시행 후 최초로 받은 통보부터 적용한다.</p>
+        <p class="pty3_dep1"><span class="bl">제6조(포상금 지급에 관한 적용례)</span> 제32조의3제1항의 개정규정은 같은 개정규정 시행 후 최초로 의료급여기관이 속임수나 그 밖의 부당한 방법으로 급여비용을 받은 것에 대하여 신고를 한 사람부터 적용한다.</p>
+        <p class="pty3_dep1"><span class="bl">제7조(소액처리에 관한 적용례)</span> 제34조제2항의 개정규정은 이 법 시행 후 최초로 징수ㆍ지급 또는 반환하여야 할 금액이 건당 2천원 미만인 경우부터 적용한다.</p>
+        <p class="pty3_dep1"><span class="bl">제8조(의료급여증에 관한 경과조치)</span> 제8조의 개정규정 시행 당시 종전의 규정에 따른 의료급여증은 그 의료급여증의 유효기간 동안 효력을 가진다.</p>
+       </div> 
+      </div> 
+      <a name="J11601043" id="J11601043"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601043','<법률 제12362호, 2014. 1. 28.>'); return false;" href="#AJAX"> <img id="ar11601043btn" style="vertical-align: middle;" alt="부칙 <법률 제12362호, 2014. 1. 28.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601043" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제12362호, 2014. 1. 28.>체크박스 " value="11601043" /> <a class="nun" onclick="javascript:arView('ar11601043','<법률 제12362호, 2014. 1. 28.>'); return false;" href="#AJAX"> <label for="chk11601043"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제12362호, 2014. 1. 28.&gt;</span> </a> <a class="nun" onclick="javascript:arView('ar11601043','<법률 제12362호, 2014. 1. 28.>');return false;" href="#AJAX"> <img id="ar11601043MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제12362호, 2014. 1. 28.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 6개월이 경과한 날부터 시행한다.</p>
+       <div id="ar11601043">
+        <p class="pty3_dep1"><span class="bl">제2조(심판청구에 관한 적용례)</span> 제30조의2의 개정규정은 이 법 시행 후 급여비용심사기관이 최초로 이의신청의 결정을 한 경우부터 적용한다.</p>
+       </div> 
+      </div> 
+      <a name="J11601045" id="J11601045"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601045','<법률 제12933호,  2014. 12. 30.>'); return false;" href="#AJAX"> <img id="ar11601045btn" style="vertical-align: middle;" alt="부칙 <법률 제12933호,  2014. 12. 30.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601045" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제12933호,  2014. 12. 30.>체크박스 " value="11601045" /> <a class="nun" onclick="javascript:arView('ar11601045','<법률 제12933호,  2014. 12. 30.>'); return false;" href="#AJAX"> <label for="chk11601045"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제12933호, 2014. 12. 30.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('국민기초생활 보장법', '20141230', '12933');" href="#AJAX"> <span class="sfon">(국민기초생활 보장법) </span> </a> <a class="nun" onclick="javascript:arView('ar11601045','<법률 제12933호,  2014. 12. 30.>');return false;" href="#AJAX"> <img id="ar11601045MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제12933호,  2014. 12. 30.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 6개월이 경과한 날부터 시행한다. &lt;단서 생략&gt;</p>
+       <div id="ar11601045">
+        <p class="pty3_dep1"><span class="bl">제2조부터 제6조까지</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제7조(다른 법률의 개정)</span> ① 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제1호 중 “「국민기초생활 보장법」에 따른 수급자”를 “「국민기초생활 보장법」에 따른 의료급여 수급자”로 한다.</p>
+        <p class="pty3_dep2"> 제3조의2 중 “「국민기초생활 보장법」 제5조의 수급권자”를 “「국민기초생활 보장법」 제12조의3제2항에 따른 의료급여 수급권자”로 한다.</p>
+        <p class="pty3_dep2"> ② 및 ③ 생략</p>
+        <p class="pty3_dep1"><span class="bl">제8조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601047" id="J11601047"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601047','<법률 제13248호,  2015. 3. 27.>'); return false;" href="#AJAX"> <img id="ar11601047btn" style="vertical-align: middle;" alt="부칙 <법률 제13248호,  2015. 3. 27.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601047" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제13248호,  2015. 3. 27.>체크박스 " value="11601047" /> <a class="nun" onclick="javascript:arView('ar11601047','<법률 제13248호,  2015. 3. 27.>'); return false;" href="#AJAX"> <label for="chk11601047"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제13248호, 2015. 3. 27.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('무형문화재 보전 및 진흥에 관한 법률', '20150327', '13248');" href="#AJAX"> <span class="sfon">(무형문화재 보전 및 진흥에 관한 법률) </span> </a> <a class="nun" onclick="javascript:arView('ar11601047','<법률 제13248호,  2015. 3. 27.>');return false;" href="#AJAX"> <img id="ar11601047MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제13248호,  2015. 3. 27.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 1년이 경과한 날부터 시행한다.</p>
+       <div id="ar11601047">
+        <p class="pty3_dep1"><span class="bl">제2조부터 제5조까지</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제6조(다른 법률의 개정)</span> ① 생략</p>
+        <p class="pty3_dep2"> ② 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제6호 중 “「문화재보호법」에 따라 지정된 중요무형문화재의 보유자(명예보유자를 포함한다)”를 “「무형문화재 보전 및 진흥에 관한 법률」에 따라 지정된 국가무형문화재의 보유자(명예보유자를 포함한다)”로 한다.</p>
+        <p class="pty3_dep2"> ③부터 ⑧까지 생략</p>
+        <p class="pty3_dep1"><span class="bl">제7조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601049" id="J11601049"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11601049btn" style="vertical-align: middle;" alt="부칙<법률 제13657호, 2015. 12. 29.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11601049" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제13657호, 2015. 12. 29.>체크박스 " value="11601049" /> <a class="nun" onclick="javascript:arView('ar11601049','<법률 제13657호, 2015. 12. 29.>'); return false;" href="#AJAX"> <label for="chk11601049"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제13657호, 2015. 12. 29.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포 후 6개월이 경과한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11601051" id="J11601051"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11601051btn" style="vertical-align: middle;" alt="부칙<법률 제14003호, 2016. 2. 3.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11601051" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제14003호, 2016. 2. 3.>체크박스 " value="11601051" /> <a class="nun" onclick="javascript:arView('ar11601051','<법률 제14003호, 2016. 2. 3.>'); return false;" href="#AJAX"> <label for="chk11601051"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제14003호, 2016. 2. 3.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포 후 6개월이 경과한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11601053" id="J11601053"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601053','<법률 제14697호, 2017. 3. 21.>'); return false;" href="#AJAX"> <img id="ar11601053btn" style="vertical-align: middle;" alt="부칙 <법률 제14697호, 2017. 3. 21.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601053" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제14697호, 2017. 3. 21.>체크박스 " value="11601053" /> <a class="nun" onclick="javascript:arView('ar11601053','<법률 제14697호, 2017. 3. 21.>'); return false;" href="#AJAX"> <label for="chk11601053"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제14697호, 2017. 3. 21.&gt;</span> </a> <a class="nun" onclick="javascript:arView('ar11601053','<법률 제14697호, 2017. 3. 21.>');return false;" href="#AJAX"> <img id="ar11601053MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제14697호, 2017. 3. 21.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 6개월이 경과한 날부터 시행한다.</p>
+       <div id="ar11601053">
+        <p class="pty3_dep1"><span class="bl">제2조(이의신청에 관한 적용례)</span> 제30조제2항의 개정규정은 이 법 시행 후 최초로 급여비용심사기관이 처분을 하는 것부터 적용한다.</p>
+       </div> 
+      </div> 
+      <a name="J11601055" id="J11601055"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11601055btn" style="vertical-align: middle;" alt="부칙<법률 제16253호, 2019. 1. 15.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11601055" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제16253호, 2019. 1. 15.>체크박스 " value="11601055" /> <a class="nun" onclick="javascript:arView('ar11601055','<법률 제16253호, 2019. 1. 15.>'); return false;" href="#AJAX"> <label for="chk11601055"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제16253호, 2019. 1. 15.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11601057" id="J11601057"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11601057btn" style="vertical-align: middle;" alt="부칙<법률 제16374호, 2019. 4. 23.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11601057" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제16374호, 2019. 4. 23.>체크박스 " value="11601057" /> <a class="nun" onclick="javascript:arView('ar11601057','<법률 제16374호, 2019. 4. 23.>'); return false;" href="#AJAX"> <label for="chk11601057"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제16374호, 2019. 4. 23.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포 후 6개월이 경과한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11601059" id="J11601059"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601059','<법률 제19228호,  2023. 3. 4.>'); return false;" href="#AJAX"> <img id="ar11601059btn" style="vertical-align: middle;" alt="부칙 <법률 제19228호,  2023. 3. 4.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601059" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제19228호,  2023. 3. 4.>체크박스 " value="11601059" /> <a class="nun" onclick="javascript:arView('ar11601059','<법률 제19228호,  2023. 3. 4.>'); return false;" href="#AJAX"> <label for="chk11601059"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제19228호, 2023. 3. 4.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('정부조직법', '20230304', '19228');" href="#AJAX"> <span class="sfon">(정부조직법) </span> </a> <a class="nun" onclick="javascript:arView('ar11601059','<법률 제19228호,  2023. 3. 4.>');return false;" href="#AJAX"> <img id="ar11601059MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제19228호,  2023. 3. 4.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 3개월이 경과한 날부터 시행한다. 다만, 부칙 제7조에 따라 개정되는 법률 중 이 법 시행 전에 공포되었으나 시행일이 도래하지 아니한 법률을 개정한 부분은 각각 해당 법률의 시행일부터 시행한다.</p>
+       <div id="ar11601059">
+        <p class="pty3_dep1"><span class="bl">제2조부터 제6조까지</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제7조(다른 법률의 개정)</span> ①부터 ㉓까지 생략</p>
+        <p class="pty3_dep2"> ㉔ 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제5호 및 제3조의3제4항 전단 중 “국가보훈처장”을 각각 “국가보훈부장관”으로 한다. </p>
+        <p class="pty3_dep2"> ㉕부터 ㊻까지 생략</p>
+        <p class="pty3_dep1"><span class="bl">제8조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601061" id="J11601061"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601061','<법률 제19297호,  2023. 3. 28.>'); return false;" href="#AJAX"> <img id="ar11601061btn" style="vertical-align: middle;" alt="부칙 <법률 제19297호,  2023. 3. 28.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601061" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제19297호,  2023. 3. 28.>체크박스 " value="11601061" /> <a class="nun" onclick="javascript:arView('ar11601061','<법률 제19297호,  2023. 3. 28.>'); return false;" href="#AJAX"> <label for="chk11601061"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제19297호, 2023. 3. 28.&gt;</span> </a> <a class="nun" onclick="javascript:arView('ar11601061','<법률 제19297호,  2023. 3. 28.>');return false;" href="#AJAX"> <img id="ar11601061MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제19297호,  2023. 3. 28.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 6개월이 경과한 날부터 시행한다.</p>
+       <div id="ar11601061">
+        <p class="pty3_dep1"><span class="bl">제2조(부당이득 징수 등에 관한 적용례)</span> 제23조제1항부터 제3항까지의 개정규정은 이 법 시행 이후 지급 또는 실시되는 의료급여부터 적용한다.</p>
+        <p class="pty3_dep1"><span class="bl">제3조(위반사실의 공표에 관한 적용례)</span> 제29조의3의 개정규정은 이 법 시행 이후 위반행위를 하여 제28조 또는 제29조에 따른 처분을 받은 경우부터 적용한다.</p>
+        <p class="pty3_dep1"><span class="bl">제4조(포상금 지급에 관한 적용례)</span> 제32조의3제1항의 개정규정은 이 법 시행 이후 속임수나 그 밖의 부당한 방법으로 의료급여를 받은 사람 및 받도록 한 자와 속임수나 그 밖의 부당한 방법으로 급여비용을 받은 제12조제1항에 따라 의료급여를 실시한 기관 및 제13조제1항의 보조기기를 판매한 자를 신고하는 경우부터 적용한다.</p>
+       </div> 
+      </div> 
+      <a name="J11601063" id="J11601063"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601063','<법률 제19555호,  2023. 7. 18.>'); return false;" href="#AJAX"> <img id="ar11601063btn" style="vertical-align: middle;" alt="부칙 <법률 제19555호,  2023. 7. 18.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601063" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제19555호,  2023. 7. 18.>체크박스 " value="11601063" /> <a class="nun" onclick="javascript:arView('ar11601063','<법률 제19555호,  2023. 7. 18.>'); return false;" href="#AJAX"> <label for="chk11601063"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제19555호, 2023. 7. 18.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('국내입양에 관한 특별법', '20230718', '19555');" href="#AJAX"> <span class="sfon">(국내입양에 관한 특별법) </span> </a> <a class="nun" onclick="javascript:arView('ar11601063','<법률 제19555호,  2023. 7. 18.>');return false;" href="#AJAX"> <img id="ar11601063MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제19555호,  2023. 7. 18.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 2년이 경과한 날부터 시행한다.</p>
+       <div id="ar11601063">
+        <p class="pty3_dep1"><span class="bl">제2조부터 제17조까지</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제18조(다른 법률의 개정)</span> ①부터 ④까지 생략</p>
+        <p class="pty3_dep2"> ⑤ 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제4호 중 “「입양특례법」에 따라 국내에 입양된”을 “「국내입양에 관한 특별법」에 따라 입양된”으로 한다.</p>
+        <p class="pty3_dep2"> ⑥부터 ⑧까지 생략</p>
+        <p class="pty3_dep1"><span class="bl">제19조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601065" id="J11601065"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601065','<법률 제19588호,  2023. 8. 8.>'); return false;" href="#AJAX"> <img id="ar11601065btn" style="vertical-align: middle;" alt="부칙 <법률 제19588호,  2023. 8. 8.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601065" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제19588호,  2023. 8. 8.>체크박스 " value="11601065" /> <a class="nun" onclick="javascript:arView('ar11601065','<법률 제19588호,  2023. 8. 8.>'); return false;" href="#AJAX"> <label for="chk11601065"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제19588호, 2023. 8. 8.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('무형유산의 보전 및 진흥에 관한 법률', '20230808', '19588');" href="#AJAX"> <span class="sfon">(무형유산의 보전 및 진흥에 관한 법률) </span> </a> <a class="nun" onclick="javascript:arView('ar11601065','<법률 제19588호,  2023. 8. 8.>');return false;" href="#AJAX"> <img id="ar11601065MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제19588호,  2023. 8. 8.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 2024년 5월 17일부터 시행한다.</p>
+       <div id="ar11601065">
+        <p class="pty3_dep1"><span class="bl">제2조부터 제6조까지</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제7조(다른 법률의 개정)</span> ① 생략</p>
+        <p class="pty3_dep2"> ② 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제6호 중 “「무형문화재 보전 및 진흥에 관한 법률」”을 “「무형유산의 보전 및 진흥에 관한 법률」”로, “국가무형문화재”를 “국가무형유산”으로 한다.</p>
+        <p class="pty3_dep2"> ③부터 ⑦까지 생략</p>
+        <p class="pty3_dep1"><span class="bl">제8조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601067" id="J11601067"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601067','<법률 제19841호,  2023. 12. 26.>'); return false;" href="#AJAX"> <img id="ar11601067btn" style="vertical-align: middle;" alt="부칙 <법률 제19841호,  2023. 12. 26.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601067" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제19841호,  2023. 12. 26.>체크박스 " value="11601067" /> <a class="nun" onclick="javascript:arView('ar11601067','<법률 제19841호,  2023. 12. 26.>'); return false;" href="#AJAX"> <label for="chk11601067"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제19841호, 2023. 12. 26.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('주민등록법', '20231226', '19841');" href="#AJAX"> <span class="sfon">(주민등록법) </span> </a> <a class="nun" onclick="javascript:arView('ar11601067','<법률 제19841호,  2023. 12. 26.>');return false;" href="#AJAX"> <img id="ar11601067MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제19841호,  2023. 12. 26.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 공포 후 1년이 경과한 날부터 시행한다. &lt;단서 생략&gt;</p>
+       <div id="ar11601067">
+        <p class="pty3_dep1"><span class="bl">제2조</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제3조(다른 법률의 개정)</span> ①부터 ⑧까지 생략</p>
+        <p class="pty3_dep2"> ⑨ 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제8조제3항 중 “주민등록증”을 “주민등록증(모바일 주민등록증을 포함한다)”으로 한다.</p>
+        <p class="pty3_dep2"> ⑩부터 ⑬까지 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601069" id="J11601069"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11601069btn" style="vertical-align: middle;" alt="부칙<법률 제20035호,  2024. 1. 16.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11601069" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제20035호,  2024. 1. 16.>체크박스 " value="11601069" /> <a class="nun" onclick="javascript:arView('ar11601069','<법률 제20035호,  2024. 1. 16.>'); return false;" href="#AJAX"> <label for="chk11601069"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제20035호, 2024. 1. 16.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포 후 6개월이 경과한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11601071" id="J11601071"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar11601071btn" style="vertical-align: middle;" alt="부칙<법률 제20104호,  2024. 1. 23.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk11601071" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제20104호,  2024. 1. 23.>체크박스 " value="11601071" /> <a class="nun" onclick="javascript:arView('ar11601071','<법률 제20104호,  2024. 1. 23.>'); return false;" href="#AJAX"> <label for="chk11601071"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제20104호, 2024. 1. 23.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 공포한 날부터 시행한다.</p> 
+      </div> 
+      <a name="J11601073" id="J11601073"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601073','<법률 제20309호,  2024. 2. 13.>'); return false;" href="#AJAX"> <img id="ar11601073btn" style="vertical-align: middle;" alt="부칙 <법률 제20309호,  2024. 2. 13.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601073" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제20309호,  2024. 2. 13.>체크박스 " value="11601073" /> <a class="nun" onclick="javascript:arView('ar11601073','<법률 제20309호,  2024. 2. 13.>'); return false;" href="#AJAX"> <label for="chk11601073"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제20309호, 2024. 2. 13.&gt;</span> </a> <a class="nun" onclick="javascript:fncArLawPop('정부조직법', '20240213', '20309');" href="#AJAX"> <span class="sfon">(정부조직법) </span> </a> <a class="nun" onclick="javascript:arView('ar11601073','<법률 제20309호,  2024. 2. 13.>');return false;" href="#AJAX"> <img id="ar11601073MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제20309호,  2024. 2. 13.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 2024년 5월 17일부터 시행한다. 다만, 부칙 제4조에 따라 개정되는 법률 중 이 법 시행 전에 공포되었으나 시행일이 도래하지 아니한 법률을 개정한 부분은 각각 해당 법률의 시행일부터 시행한다.</p>
+       <div id="ar11601073">
+        <p class="pty3_dep1"><span class="bl">제2조 및 제3조</span> 생략</p>
+        <p class="pty3_dep1"><span class="bl">제4조(다른 법률의 개정)</span> ①부터 ㉔까지 생략</p>
+        <p class="pty3_dep2"> ㉕ 의료급여법 일부를 다음과 같이 개정한다.</p>
+        <p class="pty3_dep2"> 제3조제1항제6호 및 제3조의3제4항 전단 중 “문화재청장”을 각각 “국가유산청장”으로 한다.</p>
+        <p class="pty3_dep2"> ㉖부터 ㉝까지 생략</p>
+        <p class="pty3_dep1"><span class="bl">제5조</span> 생략</p>
+       </div> 
+      </div> 
+      <a name="J11601075" id="J11601075"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar11601075','<법률 제20926호,  2025. 4. 22.>'); return false;" href="#AJAX"> <img id="ar11601075btn" style="vertical-align: middle;" alt="부칙 <법률 제20926호,  2025. 4. 22.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk11601075" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제20926호,  2025. 4. 22.>체크박스 " value="11601075" /> <a class="nun" onclick="javascript:arView('ar11601075','<법률 제20926호,  2025. 4. 22.>'); return false;" href="#AJAX"> <label for="chk11601075"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제20926호, 2025. 4. 22.&gt;</span> </a> <a class="nun" onclick="javascript:arView('ar11601075','<법률 제20926호,  2025. 4. 22.>');return false;" href="#AJAX"> <img id="ar11601075MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제20926호,  2025. 4. 22.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 2025년 7월 1일부터 시행한다.</p>
+       <div id="ar11601075">
+        <p class="pty3_dep1"><span class="bl">제2조(무죄 판결 선고에 따른 급여비용의 지급에 관한 적용례)</span> 제11조의5제3항의 개정규정은 이 법 시행 전에 법원에서 무죄 판결이 선고되어 이 법 시행일까지 그 판결이 확정되지 아니한 경우에도 적용한다.</p>
+       </div> 
+      </div> 
+     </div> 
+     <!-- 부칙 영역 끝 --> 
+     <!-- 별표 서식 시작 --> 
+     <!-- 별표 서식 끝 --> 
+    </div> 
+   </div> 
+  </div> 
+ </body>
+</html>

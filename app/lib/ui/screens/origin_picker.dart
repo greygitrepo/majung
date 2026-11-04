@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/geo.dart';
+import '../../domain/region.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/location_service.dart';
-import '../format.dart';
 import '../scope.dart';
 
 Future<void> showOriginPicker(BuildContext context) => showModalBottomSheet<void>(
@@ -14,8 +13,23 @@ Future<void> showOriginPicker(BuildContext context) => showModalBottomSheet<void
     );
 
 /// 위치 권한은 여기서 "지금 내 위치 쓰기"를 누를 때만 요청한다(앱 시작 시 요청하지 않음).
-class OriginPicker extends StatelessWidget {
+/// 권한이 없어도 시·도 → 시·군·구를 골라 전국 어디서나 쓸 수 있다.
+class OriginPicker extends StatefulWidget {
   const OriginPicker({super.key});
+
+  @override
+  State<OriginPicker> createState() => _OriginPickerState();
+}
+
+class _OriginPickerState extends State<OriginPicker> {
+  String? _sido;
+
+  @override
+  void initState() {
+    super.initState();
+    // 이미 고른 지역이 있으면 그 시·도의 시·군·구부터 보여 준다.
+    _sido = AppScope.read(context).controller.origin.region?.sido;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,17 +83,39 @@ class OriginPicker extends StatelessWidget {
             const SizedBox(height: 24),
             Text(l.pickerOr, style: theme.textTheme.titleMedium),
             const SizedBox(height: 8),
-            for (final m in Landmark.all) ...[
-              OutlinedButton(
-                key: Key('landmark-${m.id}'),
-                onPressed: () async {
-                  final navigator = Navigator.of(context);
-                  await c.useLandmark(m);
-                  navigator.pop();
-                },
-                child: Text(landmarkName(l, m)),
+            if (c.regions.isEmpty)
+              Text(l.pickerNoRegions, style: theme.textTheme.bodyLarge)
+            else if (_sido == null)
+              for (final sido in c.regions.sidos) ...[
+                OutlinedButton(
+                  key: Key('sido-$sido'),
+                  onPressed: () => setState(() => _sido = sido),
+                  child: Text(sido),
+                ),
+                const SizedBox(height: 10),
+              ]
+            else ...[
+              Text(l.pickerSigungu(_sido!), style: theme.textTheme.titleLarge),
+              const SizedBox(height: 8),
+              TextButton.icon(
+                key: const Key('sido-back'),
+                onPressed: () => setState(() => _sido = null),
+                icon: const Icon(Icons.arrow_back),
+                label: Text(l.pickerBack),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
+              for (final Region r in c.regions.inSido(_sido!)) ...[
+                OutlinedButton(
+                  key: Key('region-${r.code}'),
+                  onPressed: () async {
+                    final navigator = Navigator.of(context);
+                    await c.useRegion(r);
+                    navigator.pop();
+                  },
+                  child: Text(r.sigungu),
+                ),
+                const SizedBox(height: 10),
+              ],
             ],
           ],
         ),

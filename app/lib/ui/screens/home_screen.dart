@@ -60,7 +60,9 @@ class HomeScreen extends StatelessWidget {
                     icon: groupIcon(group),
                     title: groupTitle(l, group),
                     subtitle: groupSubtitle(l, group),
-                    footnote: l.openCount(c.openCount(group), c.ranked(group).length),
+                    footnote: c.origin.point == null
+                        ? l.homeNeedOrigin
+                        : l.openCount(c.openCount(group), c.ranked(group).length),
                     onTap: () =>
                         Navigator.of(context).push(MaterialPageRoute(builder: (_) => ListScreen(group: group))),
                   ),
@@ -88,7 +90,7 @@ class OriginBar extends StatelessWidget {
     final text = switch (c.origin.kind) {
       OriginKind.none => l.originNone,
       OriginKind.gps => l.originGps,
-      OriginKind.landmark => l.originLandmark(landmarkName(l, c.origin.landmark!)),
+      OriginKind.region => l.originRegion(c.origin.region!.label),
     };
     return Material(
       color: scheme.secondaryContainer,

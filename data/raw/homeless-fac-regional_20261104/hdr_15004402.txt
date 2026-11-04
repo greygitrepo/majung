@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Wed, 04 Nov 2026 05:55:30 GMT
+Server: Apache
+Expires: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Set-Cookie: JSESSIONID=0jTrQcqASi84Im5YOFCN9n6mEpyym-3qFQamjRiI.portal11; path=/
+X-XSS-Protection: 1; mode=block
+Pragma: no-cache
+X-Frame-Options: DENY
+Content-Disposition: attachment; filename="보건복지부_노숙인 생활시설 수 및 생활인원 현황_시도별_20241231.csv"
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Content-Length: 8606
+Content-Type: application/octet-stream; charset=UTF-8
+

@@ -1,0 +1,4531 @@
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="무료의료지원기관현황">
+	<meta property="og:description" content="무료의료지원기관현황 | 대구광역시 분야별 여성&가족&교육">
+	<meta property="og:url" content="http://daegu.go.kr/woman/index.do">
+	<title>무료의료지원기관현황 | 대구광역시 분야별 여성&가족&교육</title>
+	<link rel="stylesheet" type="text/css" href="/cmsh/daegu.go.kr/css/base.css?ver=20220630">
+	<link rel="stylesheet" type="text/css" href="/cmsh/daegu.go.kr/css/icss.css?ver=20220630">
+	<link rel="stylesheet" type="text/css" href="/cmsh/daegu.go.kr/css/common.css?ver=20250513">
+	<link rel="stylesheet" type="text/css" href="/cmsh/daegu.go.kr/css/board.css?ver=20220630">
+	<link rel="stylesheet" type="text/css" href="/cmsh/daegu.go.kr/part/css/layout_2023.css?ver=20220630">
+	<link rel="stylesheet" type="text/css" href="/cmsh/daegu.go.kr/woman/css/layout.css?ver=20220630">
+	<link rel="stylesheet" type="text/css" href="/cmsh/daegu.go.kr/woman/css/content.css?ver=20220630">
+
+	<!-- 동영상 솔루션 플레이어-->
+	<link href="/plugins/TransAct/css/video-js.css" rel="stylesheet" type="text/css">
+
+	<!--         <link href="/plugins/TransAct/css/video-speed.css" rel="stylesheet" type="text/css"> -->
+	
+
+	
+	<link rel="stylesheet" href="/plugins/TransAct/uploader/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="/cmsh/daegu.go.kr/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/plugins/TransAct/uploader/browserplus-min.js"></script>
+	<script type="text/javascript" src="/plugins/TransAct/uploader/plupload.js"></script>
+	<script type="text/javascript" src="/plugins/TransAct/uploader/plupload.flash.js"></script>
+	<script type="text/javascript" src="/plugins/TransAct/uploader/plupload.browserplus.js"></script>
+	<script type="text/javascript" src="/plugins/TransAct/uploader/plupload.html5.js"></script>
+	<script type="text/javascript" src="/plugins/TransAct/uploader/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+	
+
+	<!-- 		<script type="text/javascript" src="/cmsh/daegu.go.kr/js/jquery-1.12.2.min.js"></script> -->
+	<script type="text/javascript" src="/cmsh/daegu.go.kr/js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="/cmsh/daegu.go.kr/js/base.js"></script>
+	<script type="text/javascript" src="/cmsh/daegu.go.kr/part/js/common_2023.js"></script>
+	<script type="text/javascript" src="/cmsh/daegu.go.kr/woman/js/common.js"></script>
+	
+	
+	
+	
+</head>
+<body data-type-part="woman" class="c00050107" data-menu-idtop="00000408" data-menu-idup="00050102" data-menu-type="00050107">
+	<div id="wrap">
+		<!-- header -->
+		
+
+
+
+
+
+
+
+
+
+
+
+<div id="accessibility"><a href="#content">본문 바로가기</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/cmsh/daegu.go.kr/sf-1/search/ko/js/search.js?ver=20220608"></script><!--  검색관련 js -->
+<script type="text/javascript">
+$(document).ready(function() {
+    getPopkeyword('D');
+	// 내가 찾은 검색어
+});
+
+function getPopkeyword(range) {
+    var rank_no = 1;
+    var target      = "popword";
+    var range       = range;
+    var collection  = "_KO_ALL_";
+    var datatype   = "text";
+    $.ajax({
+      type: "POST",
+      url: "/sf-1/search/web/ko/popword/popword.jsp",
+      dataType: datatype,
+      data: { "target" : target, "range" : range, "collection" : collection , "datatype" : datatype },
+      success: function(text) {
+     text = trim(text);
+     var xml = $.parseXML(text);
+
+        var str = "<span class='tit'><span class='sprh_com'></span>인기검색어</span>";
+            $(xml).find("Query").each(function(){
+                if(rank_no < 6){
+                    //str += "    <a href='#' onclick=\"doKeyword2022('" + $(this).text().replace(/ /g,"^Space") + "');\"><span class='keyword'>"+ $(this).text()+ "</span></a>";
+					str += "    <a href='#' onclick=\"searchForm.query.value='" + $(this).text().replace(/ /g,"") + "';doSearchForm();\"><span class='keyword'>"+ $(this).text()+ "</span></a>";
+                }
+                rank_no++;
+            });
+        $("#popword").html(str);
+      }
+    });
+    //선택시 인기겁색어 탭 클래스 변경처리 부분 tab tab01 active
+}
+
+</script>
+<script type="text/javascript">
+/*
+ * 날짜포맷에 맞는지 검사
+ */
+function isDateFormat(d) {
+    var df = /[0-9]{4}.[0-9]{2}.[0-9]{2}/;
+    return d.match(df);
+}
+
+/*
+ * 윤년여부 검사
+ */
+function isLeaf(year) {
+    var leaf = false;
+
+    if(year % 4 == 0) {
+        leaf = true;
+
+        if(year % 100 == 0) {
+            leaf = false;
+        }
+
+        if(year % 400 == 0) {
+            leaf = true;
+        }
+    }
+
+    return leaf;
+}
+
+/*
+ * 날짜가 유효한지 검사
+ */
+function isValidDate(d) {
+    // 포맷에 안맞으면 false리턴
+    if(!isDateFormat(d)) {
+        return false;
+    }
+
+    var month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    var dateToken = d.split('.');
+    var year = Number(dateToken[0]);
+    var month = Number(dateToken[1]);
+    var day = Number(dateToken[2]);
+
+    // 날짜가 0이면 false
+    if(day == 0) {
+        return false;
+    }
+
+    var isValid = false;
+
+    // 윤년일때
+    if(isLeaf(year)) {
+        if(month == 2) {
+            if(day <= month_day[month-1] + 1) {
+                isValid = true;
+            }
+        } else {
+            if(day <= month_day[month-1]) {
+                isValid = true;
+            }
+        }
+    } else {
+        if(day <= month_day[month-1]) {
+            isValid = true;
+        }
+    }
+
+    return isValid;
+}
+
+function checkDate(){
+
+    var ret_flag = false;
+
+	var startDate=document.getElementById('startDate').value;
+	var endDate=document.getElementById('endDate').value;
+
+	if(startDate != "" || endDate != ""){
+		var start_ret = isValidDate(startDate);
+		if(!start_ret){
+			alert("시작 날자를 올바른 형식으로 입력해 주세요.");
+			document.getElementById('startDate').focus();
+			return false;
+		}
+		var end_ret =  isValidDate(endDate);
+		if(!end_ret){
+			alert("끝 날자를 올바른 형식으로 입력해 주세요.");
+			document.getElementById('endDate').focus();
+			return false;
+		}
+		if(start_ret && end_ret){
+          var temp_startDate = startDate.substr(0,4) + startDate.substr(5,2) + startDate.substr(8,2);
+          var temp_endDate   = endDate.substr(0,4) + endDate.substr(5,2) + endDate.substr(8,2);
+			  temp_startDate = Number(temp_startDate);
+			  temp_endDate = Number(temp_endDate);
+
+		  if(temp_startDate > temp_endDate){
+			alert("날자 기간이 올바른 형식이 아닙니다.");
+			document.getElementById('startDate').focus();
+			return false;
+		  }
+
+		  ret_flag = true;
+		}
+	}else{
+		ret_flag = true;
+	}
+	return ret_flag;
+}
+
+</script>
+
+<script type="text/javascript">
+	function doSearchFormChk(){
+		searchForm.query.value=$("#s_word_ly").val();
+		doSearchForm();
+	}
+</script>
+
+
+	<!-- 분야별 홈페이지 공통 사용 -->
+	<div id="header2023">
+		<div class="header_egov_area">
+				<div class="inr">이 누리집은 대한민국 공식 전자정부 누리집입니다.</div>
+			</div>
+	
+			<!-- GNB_wrap -->
+			<div class="inr">
+				<div class="logo">
+					
+
+					<a href="https://www.daegu.go.kr/index.do">대구광역시 DAEGU METROPOLITAN CITY</a>
+					<span class="pc">변화와 성장 더 나은 내일</span>
+				
+				</div>
+				<!-- GNB -->
+				<div class="gnb_wrap">
+					
+					<ul id="gnb">
+						<li>
+<a href="/index.do?menu_id=00000031"><span>민원&middot;소통&middot;참여</span></a>
+<div>	
+<ul>
+	<li><a href="/index.do?menu_id=00000032">민원실 안내</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00000161">종합민원실안내</a>
+				<ul>
+					<li><a href="/index.do?menu_id=00000171">민원실안내</a></li>
+					<li><a href="/index.do?menu_id=00000162">상담실 운영안내</a></li>
+					<li><a href="/index.do?menu_id=00000172">어디서나민원창구</a></li>
+					<li><a href="/index.do?menu_id=00000173">무인민원발급기</a></li>
+					<li><a href="/index.do?menu_id=00000174">수수료안내</a></li>
+					<li><a href="/index.do?menu_id=00000175">구술전화민원현황</a></li>
+					<li><a href="/index.do?menu_id=00050241">여권안내</a></li>
+					<li><a href="/index.do?menu_id=00050242">자격증재교부</a></li>
+					<li><a href="https://minwon.daegu.go.kr/cvpl/cffdn"  target="_blank" title="새창">민원서류발급(민원편람)</a></li>
+				</ul>
+			</li>
+			<li><a href="/index.do?menu_id=00933680">복합민원상담 사전예약</a></li>
+			<li><a href="/index.do?menu_id=00000163">민원행정제도</a></li>
+			<li><a href="/index.do?menu_id=00000166">환경신문고</a></li>
+			<li><a href="/index.do?menu_id=00000169">정보통신공사업 민원안내</a>
+				<ul>
+					<li><a href="/index.do?menu_id=00000183">등록신청</a></li>
+					<li><a href="/index.do?menu_id=00000185">양도/법인합병신고</a></li>
+					<li><a href="/index.do?menu_id=00000186">폐업신고</a></li>
+					<li><a href="/index.do?menu_id=00000187">등록증 및 수첩재교부신청</a></li>
+					<li><a href="/index.do?menu_id=00000188">관련기관안내</a></li>
+					<li><a href="/index.do?menu_id=00936331">상속신고</a></li>
+				</ul>
+			</li>
+			<li><a href="/index.do?menu_id=00000721">자가전기통신설비 민원안내</a></li>
+			<li><a href="http://www.gov.kr" target="_blank" title="새창">정부24</a></li>
+			<li><a href="/index.do?menu_id=00000198">110화상/수화/채팅상담</a></li>
+			<li><a href="/index.do?menu_id=00935400">민생침해 상담안내</a>
+				<ul>
+					<li><a href="/index.do?menu_id=00935441">민생토닥토닥</a></li>
+					<li><a href="/index.do?menu_id=00935401">상가임대차 상담안내</a></li>
+					<li><a href="/index.do?menu_id=00935432">대부 피해 상담안내</a></li>
+					<li><a href="/index.do?menu_id=00935433">다단계 피해 상담안내</a></li>
+					<li><a href="/index.do?menu_id=00935434">상조 피해 상담안내</a></li>
+					<li><a href="/index.do?menu_id=00935477">민생안정을 위한 현장상담 안내</a></li>
+					<li><a href="/index.do?menu_id=00935478">민생토닥토닥 상담사례</a></li>
+				</ul>
+			</li>
+			<li><a href="/index.do?menu_id=00936320">감리원 배치신고 민원안내</a></li>
+		</ul>
+	</li>
+	<li><a href="/index.do?menu_id=00000207">두드리소(민원신청)</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00000208">두드리소란</a></li>
+			<li><a href="http://dudeuriso.daegu.go.kr/vocRqr/pbl/list.do"  target="_blank" title="새창">민원신청</a></li>
+			<li><a href="https://talk.daegu.go.kr/index.do?menu_id=00000211"  target="_blank" title="새창">제안(토크대구)</a></li>
+			<li><a href="http://dudeuriso.daegu.go.kr/gdRqr/stl/guide.do"  target="_blank" title="새창">찾아가는 민원</a></li>
+		</ul>
+	</li>
+	<li><a href="https://dudeuriso.daegu.go.kr/vocRqr/mayor/view.do" target="_blank"  title="새 창">시장에게 바란다</a></li>
+	<li><a href="https://www.daegu.go.kr/120/index.do" target="_blank"  title="새 창">120달구벌콜센터</a></li>
+	<li><a href="/index.do?menu_id=00936130">사이버추모관</a></li>
+	<li><a href="https://www.safetyreport.go.kr/api?apiKey=62700006LZCM2ALSYETF2HGYU33"  target="_blank" title="새창">안전신문고</a></li>
+	<!-- <li><a href="/index.do?menu_id=00933420">대구시민원탁회의</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00933421">원탁회의 소개</a></li>
+			<li><a href="/index.do?menu_id=00933422">원탁회의 운영</a></li>
+			<li><a href="/index.do?menu_id=00933423">원탁회의 효과</a></li>
+			<li><a href="http://ebook.daegu.go.kr/Viewer/0QBIOYYMMP5K" target="_blank">시민원탁회의 백서</a></li>
+		</ul>
+	</li> -->
+	<li><a href="/index.do?menu_id=00935090">공익제보</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00935091">공익제보란?</a></li>
+			<li><a href="/index.do?menu_id=00935092">공익제보자 보호 및 보상 제도</a></li>
+			<li><a href="/index.do?menu_id=00935093">공익제보 방법 및 서식</a></li>
+			<li><a href="/index.do?menu_id=00935094">공익제보 처리 흐름</a></li>
+		</ul>
+	</li>
+	<li><a href="/index.do?menu_id=00938110">공공재정 부정청구 신고</a></li>
+	<li><a href="/index.do?menu_id=00935150">공직비리 익명신고</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00935151">익명신고(레드휘슬)란? </a></li>
+			<li><a href="https://www.redwhistle.org/report/reportNew.asp?organ=480&RType=1"  target="_blank" title="새창">신고하기</a></li>
+		</ul>
+	</li>
+	<li><a href="/index.do?menu_id=00933234">복지 및 인권옴부즈만</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00933235">복지 및 인권옴부즈만 소개</a>
+				<ul>
+					<li><a href="/index.do?menu_id=00933310">옴부즈만 제도</a></li>
+					<li><a href="/index.do?menu_id=00933300">도입</a></li>
+					<li><a href="/index.do?menu_id=00933301">직무</a></li>
+					<li><a href="/index.do?menu_id=00933700">조직</a></li>
+				</ul>
+			</li>
+			<li><a href="/index.do?menu_id=00933312">복지 및 인권옴부즈만 이용안내</a>
+				<ul>
+					<li><a href="/index.do?menu_id=00933313">신청방법 및 양식</a></li>
+					<li><a href="/index.do?menu_id=00933314">고충민원처리 흐름도</a></li>
+				</ul>
+			</li>
+			<li><a href="http://dudeuriso.daegu.go.kr/vocRqr/obsm/view.do"  target="_blank" title="새창">복지 및 인권 관련 고충민원 접수</a></li>
+			<li><a href="/index.do?menu_id=00933316">복지 및 인권옴부즈만 운영보고서</a></li>
+			<li><a href="/index.do?menu_id=00933317">복지 및 인권옴부즈만 민원 사례</a></li>
+		</ul>
+	</li>
+	<li><a href="/index.do?menu_id=00000159">행정서비스 헌장</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00000214">헌장전문</a></li>
+			<li><a href="/index.do?menu_id=00000215">공통이행기준</a></li>
+			<li><a href="/index.do?menu_id=00000204">분야별이행기준</a></li>
+		</ul>
+	</li>
+	<li><a href="/index.do?menu_id=00935901">대구시민헌장</a></li>
+	<li><a href="/index.do?menu_id=00000160">행복민원배심원제</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00000205">행복민원배심원제</a></li>
+			<li><a href="/index.do?menu_id=00000206">운영절차</a></li>
+			<li><a href="/index.do?menu_id=00000216">행복민원배심원제의 장점</a></li>
+		</ul>
+	</li>
+	<li><a href="/index.do?menu_id=00000217">시민 참여</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00933631">자유게시판</a></li>
+			<li><a href="/index.do?menu_id=00000219">칭찬합시다</a></li>
+			<li><a href="/index.do?menu_id=00000221">시민 생활안전 지킴이</a></li>
+			<li><a href="/monitor"  target="_blank" title="새창">시민모니터단</a></li>
+			<li><a href="/index.do?menu_id=00800410">이벤트</a></li>
+		</ul>
+	</li>
+	<li><a href="/index.do?menu_id=00000222">지방분권</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00000722">지방분권이 뭔가요?</a></li>
+			<li><a href="/index.do?menu_id=00000224">지방분권 발자취</a></li>
+			<li><a href="/index.do?menu_id=00000723">지방분권, 더 알고 싶어요</a></li>
+			<li><a href="/index.do?menu_id=00000724">지방분권, 함께 해요!</a></li>
+			<li><a href="/index.do?menu_id=00932974">대학생 홍보단</a></li>
+			<li><a href="/index.do?menu_id=00932975">지방분권 기사</a></li>
+			<li><a href="/index.do?menu_id=00935153">지방분권 UCC 공모전 수상작</a></li>
+		</ul>
+	</li>
+	<li><a href="/index.do?menu_id=00000311">정책토론</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00000312">정책포럼</a></li>
+			<li><a href="/index.do?menu_id=00000314">전자공청회</a></li>
+			<li><a href="/index.do?menu_id=00933128">설문조사</a></li>
+		</ul>
+	</li>
+	<li><a href="https://talk.daegu.go.kr/index.do?menu_id=00000503"  target="_blank" title="새창">제안/설문/투표</a></li>
+	<li><a href="/index.do?menu_id=00941190">대구경북행정통합</a>
+		<ul>
+			<li><a href="/index.do?menu_id=00941142">소통게시판</a></li>
+			<li><a href="/index.do?menu_id=00941191">통합자료실</a></li>
+		</ul>
+	</li>
+	<!--  -->
+</ul>
+</div>
+			
+				
+			</li>
+			<li>
+<a href="/index.do?menu_id=00000001"><span>정보공개</span></a>
+<div>	
+	<ul>
+		<li><a href="/index.do?menu_id=00000093">비공개 대상정보 세부기준</a></li>
+		<li><a href="/index.do?menu_id=00941100">사전정보공개</a></li>
+		<li><a href="/index.do?menu_id=00000084">업무추진비</a></li>
+		<li><a href="/index.do?menu_id=00937532">위원회정보</a></li>
+		<li>
+			<a href="/index.do?menu_id=00936151">정보목록</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00935750">2014년 3월 이후 정보목록</a></li>
+				<li><a href="/index.do?menu_id=00936150">2014년 2월 이전 정보목록</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00941110">정보공개청구</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00000081">정보공개제도 안내</a></li>
+				<li><a href="http://www.open.go.kr/rqestMlrd/rqestReg/rqestRegWritingForm.do" target="_blank" title="새 창">정보공개접수</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00933831">정책실명제</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00933832">정책실명제 소개</a></li>
+				<li><a href="/index.do?menu_id=00935341">시민신청실명제</a></li>
+				<li><a href="/index.do?menu_id=00933833">정책실명 공개자료</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000853">알림정보</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00000854">공지사항</a></li>
+				<li><a href="https://minwon.daegu.go.kr/pssrp/list"  target="_blank" title="새창">공모모집</a></li>
+				<li><a href="/index.do?menu_id=00000855">고시공고</a></li>
+				<li><a href="https://www.elis.go.kr/lgsltntc/lgsltNtcList?ctpvSggCd=27000"  target="_blank" title="새창">입법예고</a></li>
+				<li><a href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=27"  target="_blank" title="새창">공보</a></li>
+				<li><a href="/index.do?menu_id=00937850">시정새소식</a></li>
+				<li><a href="/index.do?menu_id=00937930">카드뉴스</a>
+					<ul>
+						<!-- <li><a href="/index.do?menu_id=00937941">내 삶이 더 좋아지는 대구</a></li> -->
+						<li><a href="/index.do?menu_id=00937790">피플人대구</a></li>
+						<li><a href="/index.do?menu_id=00937942">금요뉴스</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000233">통합자료실</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00000237">백서</a>
+					<ul>
+						<li><a href="/index.do?menu_id=00000238">시정백서</a></li>
+						<li><a href="/index.do?menu_id=00000239">환경백서</a></li>
+						<li><a href="/index.do?menu_id=00000240">지하철백서</a></li>
+					</ul>
+				</li>
+				<li><a href="/index.do?menu_id=00002214">분야별자료실</a></li>
+				<li><a href="/index.do?menu_id=00000241">조직운영 핵심지표</a></li>
+				<li><a href="http://lib.daegu.go.kr/"  target="_blank" title="새창">작은도서관</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00937333">공공저작물</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00050251">공공저작물 이용안내</a></li>
+				<li><a href="/index.do?menu_id=00937334">공공저작물 자료실</a>
+					<ul>
+						<li><a href="/index.do?menu_id=00937350">대구광역시</a></li>
+						<li><a href="http://www.jung.daegu.kr/new/pages/cyber/page.html?mc=1607"  target="_blank" title="새창">중구</a></li>
+						<li><a href="https://dong.daegu.kr/main/page.htm?mnu_uid=3723&"  target="_blank" title="새창">동구</a></li>
+						<li><a href="https://www.dgs.go.kr/dgs/info/page.php?mnu_uid=1283981"  target="_blank" title="새창">서구</a></li>
+						<li><a href="http://nam.daegu.kr/index.do?menu_id=00203970"  target="_blank" title="새창">남구</a></li>
+						<li><a href="https://www.buk.daegu.kr/index.do?menu_id=00001823"  target="_blank" title="새창">북구</a></li>
+						<li><a href="http://www.suseong.kr/index.do?menu_id=00040678"  target="_blank" title="새창">수성구</a></li>
+						<li><a href="https://dalseo.daegu.kr/index.do?menu_id=00002483"  target="_blank" title="새창">달서구</a></li>
+						<li><a href="https://www.dalseong.daegu.kr/index.do?menu_id=00003041"  target="_blank" title="새창">달성군</a></li>
+						<li><a href="https://www.kogl.or.kr/index.do"  target="_blank" title="새창">공공누리</a></li>
+						<li><a href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=5"  target="_blank" title="새창">대구사진</a></li>
+						<li><a href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=16"  target="_blank" title="새창">대구영상</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000021">공공데이터개방</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00000111">공공데이터 통합검색</a></li>
+				<li><a href="http://www.data.go.kr/tcs/dor/insertDataOfferReqstProcssView.do"  target="_blank" title="새창">공공데이터 제공신청</a></li>
+				<li><a href="http://open.eais.go.kr"  target="_blank" title="새창">건축데이터개방</a></li>
+				<li><a href="http://www.localdata.kr/index.jsp"  target="_blank" title="새창">지방자치단체 업종별 데이터개방</a></li>
+				<li><a href="http://ebook.daegu.go.kr/Viewer/NH1BQ3S6W338"  target="_blank" title="새창">공공데이터 활용 사례집</a></li>
+				<li><a href="/index.do?menu_id=90936950">공공데이터 오류신고</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000041">계약정보</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00000129">발주계획</a>
+					<ul>
+						<li><a href="/index.do?menu_id=00933731">조달청발주계획</a></li>
+						<li><a href="/index.do?menu_id=00933732">연간발주계획</a></li>
+					</ul>
+				</li>
+				<li><a href="/index.do?menu_id=00000130">입찰정보</a></li>
+				<li><a href="/index.do?menu_id=00936650">계약정보공개</a>
+					<ul>
+						<li><a href="/index.do?menu_id=00936652">대구광역시</a></li>
+						<li><a href="/index.do?menu_id=00936657">동구</a></li>
+						<li><a href="/index.do?menu_id=00936658">서구</a></li>
+						<li><a href="/index.do?menu_id=00936659">북구</a></li>
+						<li><a href="http://www.jung.daegu.kr/new/pages/administration/page.html?mc=0203"  target="_blank" title="새창">중구</a></li>
+						<li><a href="http://nam.daegu.kr/index.do?menu_id=00001334"  target="_blank" title="새창">남구</a></li>
+						<li><a href="https://www.suseong.kr/index.do?menu_id=00000462"  target="_blank" title="새창">수성구</a></li>
+						<li><a href="https://www.dalseo.daegu.kr/index.do?menu_id=10000210"  target="_blank" title="새창">달서구</a></li>
+						<li><a href="http://dalseong.daegu.kr/index.do?menu_id=00002500"  target="_blank" title="새창">달성군</a></li>
+					</ul>
+				</li>
+				<li><a href="/index.do?menu_id=00936651">대금지급</a>
+					<ul>
+						<li><a href="/index.do?menu_id=00936677">대구광역시</a></li>
+						<li><a href="/index.do?menu_id=00936678">동구</a></li>
+						<li><a href="/index.do?menu_id=00936679">서구</a></li>
+						<li><a href="/index.do?menu_id=00936680">북구</a></li>
+						<li><a href="http://www.jung.daegu.kr/new/pages/administration/page.html?mc=2144"  target="_blank" title="새창">중구</a></li>
+						<li><a href="http://nam.daegu.kr/index.do?menu_id=00001338"  target="_blank" title="새창">남구</a></li>
+						<li><a href="https://www.suseong.kr/index.do?menu_id=00000467"  target="_blank" title="새창">수성구</a></li>
+						<li><a href="https://www.dalseo.daegu.kr/index.do?menu_id=10000215"  target="_blank" title="새창">달서구</a></li>
+						<li><a href="http://dalseong.daegu.kr/index.do?menu_id=00002504"  target="_blank" title="새창">달성군</a></li>
+					</ul>
+				</li>
+				<li><a href="/index.do?menu_id=00000133">관련정보</a>
+					<ul>
+						<li><a href="/index.do?menu_id=00000147">계약서식</a></li>
+						<li><a href="/index.do?menu_id=00000148">관련사이트</a></li>
+					</ul>
+				</li>
+				<li><a href="/index.do?menu_id=00933630">계약정보 공지사항</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000087">감사정보</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00935430">감사계획공개</a></li>
+				<li><a href="/index.do?menu_id=00000151">감사결과공개</a></li>
+				<li><a href="/index.do?menu_id=00937280">사전 컨설팅감사</a>
+					<ul>
+						<li><a href="/index.do?menu_id=00937270">사전 컨설팅감사 안내</a></li>
+						<li><a href="/index.do?menu_id=00937260">사전 컨설팅감사 사례</a></li>
+					</ul>
+				</li>
+				<li><a href="/index.do?menu_id=00001991">시민감사관이란</a></li>
+				<li><a href="/index.do?menu_id=00933990">시민감사관의방</a></li>
+				<li><a href="/index.do?menu_id=00000149">청탁금지법</a></li>
+				<li><a href="/index.do?menu_id=00000150">청렴자료실</a></li>
+				<li><a href="/index.do?menu_id=00933440">청탁금지법 FAQ</a></li>
+				<li><a href="http://www.daegu.go.kr/kimLaw/search_main.jsp"  target="_blank" title="새창">청탁금지법 Q&A 사례검색</a></li>
+				<li><a href="/index.do?menu_id=00935970">계약심사 및 일상감사 자료실</a></li>
+				<li><a href="/index.do?menu_id=00936343">민간위탁사무 감사결과</a></li>
+				<li><a href="/index.do?menu_id=00936970">공직자윤리</a></li>
+			</ul>
+		</li>
+		<li><a href="http://stat.daegu.go.kr/main/main.do"  target="_blank" title="새창">통계정보</a></li>
+	</ul>
+</div>
+			
+				
+			</li>
+			<li>
+
+<a href="/index.do?menu_id=00941380"><span>대구소개</span></a>
+<div>	
+	<ul>
+		
+		<li><a href="/index.do?menu_id=00941380">시정비전</a></li>
+
+		<li><a href="/index.do?menu_id=00000246">시청안내</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00000247">시청사안내</a></li>
+				<li><a href="/index.do?menu_id=00937430">전화번호안내</a></li>
+				<li><a href="/index.do?menu_id=00000248">행정조직도</a></li>
+				<li><a href="/index.do?menu_id=00000251">찾아오시는길</a></li>
+				<li><a href="/index.do?menu_id=00938180">출자출연기관</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000252">일반현황</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00000253">행정구역</a></li>
+				<li><a href="/index.do?menu_id=00936760">행정복지센터현황</a></li>
+				<li><a href="/index.do?menu_id=00000254">시정현황</a></li>
+				<li><a href="http://gis.go.kr"  target="_blank" title="새창">대구 지도포털</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00939790" >대구의 상징물(지정)</a>
+				<ul>
+				<li><a href="/index.do?menu_id=00000271">심벌 및 로고</a></li>
+				<li><a href="/index.do?menu_id=00000272">시조/시목/시화</a></li>
+				</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000269">대구의 상징</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00000273">대구시민의 노래</a></li>
+				<li><a href="/index.do?menu_id=00936490">도달쑤(수달) 캐릭터</a></li>
+				
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000270">스토리인대구</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00050248">대구스토리텔링 </a></li>
+				<li><a href="/index.do?menu_id=00938240"> 대구 이중 매력에 빠지다</a></li>
+				<li><a href="http://ebook.daegu.go.kr/Viewer/YTOYHEL2BUBL/230"  target="_blank" title="새창">대구인포그래픽 20선<span class="blank"> 새창</span></a></li>
+				<li><a href="/index.do?menu_id=00934131">도시브랜드 웹툰</a></li>
+				<li><a href="/index.do?menu_id=00936300">도시브랜드웹툰(동영상)</a></li>
+				<li><a href="/index.do?menu_id=00936540">대구 도로명 유래 웹툰</a></li>
+				<li><a href="/index.do?menu_id=00937700">대구 도로명 유래 웹툰(동영상)</a></li>
+				<li><a href="/index.do?menu_id=00937790">피플人대구</a></li>
+				<li><a href="/index.do?menu_id=00938694">MBTI별 친환경실천 유형</a></li>
+				<li><a href="/index.do?menu_id=00936752">알기쉬운 주민참여예산제</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000263">역사</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00000264">역사</a></li>
+				<li><a href="/index.do?menu_id=00000265">연표</a></li>
+				<li><a href="/index.do?menu_id=00000266">지명유래</a></li>
+				<li><a href="/index.do?menu_id=00000267">대구시사</a></li>
+				<li><a href="/index.do?menu_id=00935141">대구사료총서</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00000225">대구광역시뉴스룸</a>
+			<ul>
+				<li><a href="http://info.daegu.go.kr"  target="_blank" title="새창">대구광역시뉴스룸</a></li>
+				<li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/25/1"  target="_blank" title="새창">시정홍보책자</a></li>
+				<li><a href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=16"  target="_blank" title="새창">대구영상</a></li>
+			</ul>
+		</li>
+		<li><a href="/index.do?menu_id=00933611">교류도시</a>
+			<ul>
+				<li><a href="/index.do?menu_id=00937760">연도별 교류현황</a></li>
+				<li><a href="/index.do?menu_id=00933612">교류도시</a></li>
+				<li><a href="/index.do?menu_id=00938441">교류도시 웹영상전</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+			
+				
+			</li>
+						<li>
+							<a href="/cts/index.do">분야별정보</a>
+							<div>
+								<ul>
+									<li><a href="/cts/index.do">문화&middot;관광&middot;체육</a></li>
+									<li><a href="/tra/index.do">교통</a></li>
+									<li><a href="/welf/index.do">복지</a></li>
+									<li><a href="/woman/index.do">여성&middot;가족&middot;교육</a></li>
+									<li><a href="/health/index.do">건강&middot;보건&middot;위생</a></li>
+									<li><a href="/eco/index.do">산업&middot;경제</a></li>
+									<li><a href="/env/index.do">환경</a></li>
+									<li><a href="/safety/index.do">소방&middot;안전</a></li>
+									<li><a href="/build/index.do">도시&middot;주택&middot;건설</a></li>
+									<li><a href="/public/index.do">행정&middot;재정&middot;세정</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+					<div class="gnb_bg"></div>
+				</div>
+				<!-- // GNB -->
+				<form id="searchForm" name="searchForm" onsubmit="return checkDate();" action="/sf-1/search/web/ko/search_page.jsp" method="post">
+					<input type="hidden" id="startCount" name="startCount" value="0">
+					<input type="hidden" id="collection" name="collection" value="ALL">
+				<div class="util_area">
+				<!-- 로그인 -->
+					<div class="my_area cssSelect">
+						
+						<button type="button">로그인</button>
+						<div class="lst">
+							<ul>
+								<!-- <li><a href="/index.do">홈</a></li>
+								<li><a href="index.do?menu_id=00936100">사이트맵</a></li> -->
+								<li><a href="/icms/login/IcmsLoginUsr.do">로그인</a></li>
+								<li><a href="/front/customMember/join.do">회원가입</a></li>
+								
+							</ul>
+						</div>
+						
+						
+					</div>
+					<!-- 코로나현황 -->
+					<!-- <a href="http://covid19.daegu.go.kr/index.html" class="covid">코로나현황</a> -->
+					<!-- 외국어 -->
+					<div class="lang_area cssSelect">
+						<button type="button">ENG</button>
+						<div class="lst">
+							<ul>
+								<li><a href="/english/index.do">English</a></li>
+								<li><a href="/chinese/index.do">简体中文</a></li>
+								<li><a href="/big5chinese/index.do">繁體中文</a></li>
+								<li><a href="/japanese/index.do">日本語</a></li>
+								<li><a href="/arabic/index.do">Arabic</a></li>
+							</ul>
+						</div>
+					</div>
+				
+				<!-- 검색 -->
+				<div class="srch_box">
+					
+					<input type="hidden" id="range" name="range" value="">
+					<div class="word">
+						<input title="검색어" name="query" id="query" type="text" value="" onkeypress="javascript:pressCheck((event),this);" autocomplete="off">
+					</div>
+					<span class="btn_srch"><input type="submit" value="검색" onclick="javascript:doSearch();"></span>
+				</div>
+				<!-- // 검색 -->
+					
+					
+					<!-- 상세검색 -->
+					<div class="totalsrch_area">
+						<button type="button" class="btn_srch">상세검색</button>
+						<div class="srch_wrap">
+							<div class="inr">
+								
+									<div class="srch_area">
+										<div class="inr">
+											<span class="select">
+												통합검색
+											</span>
+											<span class="inp_word"><input type="text" id="s_word_ly" name="query2" title="검색어"><label for="s_word_ly">찾고 싶은 검색어를 입력하세요</label></span>
+
+											
+											<button type="submit" class="btn_srch"  onclick="searchForm.query.value=$('#s_word_ly').val(); doSearchForm();"><span class="sprh_com">검색</span></button>
+										</div>
+										<div class="hotkeyword_wrap" id="popword">
+										</div>
+									</div>
+									<div class="detail_srch">
+										<h2 class="tit_detail"><span class="sprh_com"></span>상세검색</h2>
+										<div class="date_srch">
+											<div class="form_group">
+												<label for="s_area" class="tit_label">검색범위</label>
+												<select name="searchField" id="s_area">
+													<option value="ALL">전체</option>
+													<option value="TITLE">제목</option>
+													<option value="CONTENTS">내용</option>
+												</select>
+											</div>
+											<div class="form_group">
+												<label for="startDate" class="tit_label">검색기간</label>
+												<div class="inp_date">
+													<input type="text" style="font-size:12px" class="date_s" id="startDate" name="startDate" title="검색시작일 ex)2016.01.01" placeholder="ex)2016.01.01">
+													<span class="dash">~</span>
+													<input type="text" style="font-size:12px" class="date_e" id="endDate" name="endDate" title="검색종료일 ex)2016.11.11" placeholder="ex)2016.11.11">
+												</div>
+											</div>
+											<div class="form_group align_area">
+												<span class="tit_label">정렬방식</span>
+												<input type="radio" name="sort" id="a1" value="RANK" title="정확도">
+												<label for="a1">정확도</label>
+												<input type="radio" name="sort" id="a2" value="DATE" title="최신순">
+												<label for="a2">최신순</label>
+											</div>
+										</div>
+										<div class="part_srch">
+											<h3 class="tit_topic">분야별토픽</h3>
+											<ul class="lst_topic tab01">
+												<li class="tab01"><a href="#" class="on">참여,소통</a>
+													<div>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=공유">공유</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=아파트">아파트</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=추천">추천</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=주민">주민</a>
+													</div>
+												</li>
+												<li class="tab02"><a href="#">뉴스,소식</a>
+													<div>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=뉴스">뉴스</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=사진">사진</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=소식">소식</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=채용">채용</a>
+													</div>
+												</li>
+												<li class="tab03"><a href="#">정보공개</a>
+													<div>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=정보공개">정보공개</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=행정">행정</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=재정">재정</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=청구">청구</a>
+													</div>
+												</li>
+												<li class="tab04"><a href="#">전자민원</a>
+													<div>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=민원봉사실">민원봉사실</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=분야별민원">분야별민원</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=민원발급">민원발급</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=상담">상담</a>
+													</div>
+												</li>
+												<li class="tab05"><a href="#">분야별정보</a>
+													<div>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=복지">복지</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=경제">경제</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=부동산">부동산</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=교통">교통</a>
+													</div>
+												</li>
+												<li class="tab06"><a href="#">대구시소개</a>
+													<div>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=장학회">장학회</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=후훤">후훤</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=소개">소개</a>
+														<a href="/sf-1/search/web/ko/search_page.jsp?query=대구">대구</a>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								<div class="btn_close">
+									<button><span class="sprh_com"></span>닫기</button>
+								</div>
+							</div>
+						</div>
+						<div class="bg"></div>
+					</div>
+					<!-- // 상세검색 -->
+					<!-- 사이트맵 -->
+					<a href="/index.do?menu_id=00936100" class="btn_sitemap">전체메뉴</a>
+				</div>
+				</form>
+			</div>
+			<!-- // GNB_wrap -->
+			<!-- 모바일 Wholeview -->
+			
+
+
+
+
+
+
+
+
+
+
+<nav class="wholeview_wrap ">
+<h2 class="hidden">전체메뉴</h2>
+<button type="button" aria-controls="wholeview" aria-expanded="false" class="btn_wv open">전체메뉴</button>
+<div id="wholeview">
+	<!-- head -->
+	<div class="head">
+		<button type="button" aria-controls="wholeview" aria-expanded="false" class="btn_wv close">전체메뉴 닫기</button>
+		<ul class="area_wv_util">
+			
+				<li class="h_login"><a href="/icms/login/IcmsLoginUsr.do">로그인</a></li>
+				<li class="h_login"><a href="/front/customMember/join.do">회원가입</a></li>
+			
+			
+			<!-- <li class="h_home"><a href="/mobile/">Home</a></li> -->
+		</ul>
+	</div>
+	<!-- // head -->
+	<!-- 전체메뉴 -->
+	
+	<ul class="nav">
+		
+		<li>
+			<a href="/index.do?menu_id=00000031"><span>민원&middot;소통&middot;참여</span></a>
+			<div>	
+				<ul>
+					<li><a href="/index.do?menu_id=00000032">민원실 안내</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000161">종합민원실안내</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00000171">민원실안내</a></li>
+									<li><a href="/index.do?menu_id=00000162">상담실 운영안내</a></li>
+									<li><a href="/index.do?menu_id=00000173">무인민원발급기</a></li>
+									<li><a href="/index.do?menu_id=00000172">어디서나민원창구</a></li>
+									<li><a href="/index.do?menu_id=00000174">수수료 및 수수료 감면안내</a></li>
+									<li><a href="/index.do?menu_id=00000175">구술전화민원현황</a></li>
+									<li><a href="/index.do?menu_id=00050241">여권안내</a></li>
+									<li><a href="/index.do?menu_id=00050242">자격증 재교부</a></li>
+									<li><a href="https://minwon.daegu.go.kr/cvpl/cffdn" target="_blank" title="새 창">민원서류발급(민원편람)</a></li>
+								</ul>
+							</li>
+							<li><a href="/index.do?menu_id=00933680">복합민원상담 사전예약</a></li>
+							<li><a href="/index.do?menu_id=00000163">민원행정제도</a></li>
+							<li><a href="/index.do?menu_id=00000166">환경신문고</a></li>
+							<li><a href="/index.do?menu_id=00000169">정보통신공사업 민원안내</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00000183">등록신청</a></li>
+									<li><a href="/index.do?menu_id=00000185">양도/법인합병신고</a></li>
+									<li><a href="/index.do?menu_id=00000186">폐업신고</a></li>
+									<li><a href="/index.do?menu_id=00000187">등록증 및 수첩재교부신청</a></li>
+									<li><a href="/index.do?menu_id=00000188">관련기관안내</a></li>
+									<li><a href="/index.do?menu_id=00936331">상속신고</a></li>
+								</ul>
+							</li>
+							<li><a href="/index.do?menu_id=00000721">자가전기통신설비 민원안내</a></li>
+							<li><a href="/index.do?menu_id=00936320">감리원 배치신고 민원안내</a></li>
+							<li><a href="http://www.gov.kr" target="_blank"  title="새 창">정부24</a></li>
+							<li><a href="/index.do?menu_id=00000198">110화상/수화/채팅상담</a></li>
+							<li><a href="/index.do?menu_id=00935400">민생침해 상담안내</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00935441">민생토닥토닥</a></li>
+									<li><a href="/index.do?menu_id=00935401">상가임대차 상담안내</a></li>
+									<li><a href="/index.do?menu_id=00935432">대부 피해 상담안내</a></li>
+									<li><a href="/index.do?menu_id=00935433">다단계 피해 상담안내</a></li>
+									<li><a href="/index.do?menu_id=00935434">상조 피해 상담안내</a></li>
+									<li><a href="/index.do?menu_id=00935478">민생토닥토닥 상담사례</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000207">두드리소(민원신청)</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000208">두드리소란</a></li>
+							<li><a href="https://dudeuriso.daegu.go.kr/vocRqr/rqs/step01.do" target="_blank"  title="새 창">민원신청</a></li>
+							<li><a href="http://dudeuriso.daegu.go.kr/gdRqr/stl/guide.do" target="_blank"  title="새 창">찾아가는 민원</a></li>
+						</ul>
+					</li>
+					<li><a href="https://dudeuriso.daegu.go.kr/vocRqr/mayor/view.do" target="_blank"  title="새 창">시장에게 바란다</a></li>
+					<li><a href="https://www.daegu.go.kr/120/index.do" target="_blank"  title="새 창">120달구벌콜센터</a></li>
+					<li><a href="/index.do?menu_id=00936130">사이버추모관</a></li>
+					<li><a href="https://www.safetyreport.go.kr/api?apiKey=62700006LZCM2ALSYETF2HGYU33" target="_blank"  title="새 창">안전신문고</a></li>
+					<!-- 	<li><a href="/index.do?menu_id=00933420">대구시민원탁회의</a>
+					<ul>
+						<li><a href="/index.do?menu_id=00933421">원탁회의 소개</a></li>
+						<li><a href="/index.do?menu_id=00933422">원탁회의 운영</a></li>
+						<li><a href="/index.do?menu_id=00933423">원탁회의 효과</a></li>
+						<li><a href="http://ebook.daegu.go.kr/Viewer/0QBIOYYMMP5K" target="_blank">시민원탁회의 백서</a></li>
+					</ul>
+					</li> -->
+					<li><a href="/index.do?menu_id=00935090">공익제보</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00935091">공익제보란?</a></li>
+							<li><a href="/index.do?menu_id=00935092">공익제보자 보호 및 보상 제도</a></li>
+							<li><a href="/index.do?menu_id=00935093">공익제보 방법 및 서식</a></li>
+							<li><a href="/index.do?menu_id=00935094">공익제보 처리 흐름</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00938110">공공재정 부정청구 신고</a></li>
+					<li><a href="/index.do?menu_id=00935150">공직비리 익명신고</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00935151">익명신고(레드휘슬)란? </a></li>
+							<li><a href="/index.do?menu_id=00940850">갑질신고 안심변호사 제도</a></li>
+							<li><a href="https://www.redwhistle.org/report/reportNew.asp?organ=480&RType=1" target="_blank"  title="새 창">신고하기</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00933234">복지 및 인권옴부즈만</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00933235">복지 및 인권옴부즈만 소개</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00933310">옴부즈만 제도</a></li>
+									<li><a href="/index.do?menu_id=00933300">도입</a></li>
+									<li><a href="/index.do?menu_id=00933301">직무</a></li>
+									<li><a href="/index.do?menu_id=00933700">조직</a></li>
+								</ul>
+							</li>
+							<li><a href="/index.do?menu_id=00933312">복지 및 인권옴부즈만 이용안내</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00933313">신청방법 및 양식</a></li>
+									<li><a href="/index.do?menu_id=00933314">고충민원처리 흐름도</a></li>
+								</ul>
+							</li>
+							<li><a href="http://dudeuriso.daegu.go.kr/vocRqr/obsm/view.do" target="_blank"  title="새 창">복지 및 인권 관련 고충민원 접수</a></li>
+							<li><a href="/index.do?menu_id=00933316">복지 및 인권옴부즈만 운영보고서</a></li>
+							<li><a href="/index.do?menu_id=00933317">복지 및 인권옴부즈만 민원 사례</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000159">행정서비스 헌장</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000214">헌장전문</a></li>
+							<li><a href="/index.do?menu_id=00000215">공통이행기준</a></li>
+							<li><a href="/index.do?menu_id=00000204">분야별이행기준</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00935901">대구시민헌장</a></li>
+					<li><a href="/index.do?menu_id=00000160">행복민원배심원제</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000205">행복민원배심원제</a></li>
+							<li><a href="/index.do?menu_id=00000206">운영절차</a></li>
+							<li><a href="/index.do?menu_id=00000216">행복민원배심원제의 장점</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000217">시민 참여</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00933631">자유게시판</a></li>
+							<li><a href="/index.do?menu_id=00000219">칭찬합시다</a></li>
+							<li><a href="/index.do?menu_id=00000221">시민 생활안전 지킴이</a></li>
+							<li><a href="/index.do?menu_id=00941370">무더위쉼터 버스 운영제안</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000222">지방분권</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000722">지방분권이 뭔가요?</a></li>
+							<li><a href="/index.do?menu_id=00000224">지방분권 발자취</a></li>
+							<li><a href="/index.do?menu_id=00000723">지방분권, 더 알고 싶어요</a></li>
+							<li><a href="/index.do?menu_id=00935153">지방분권 UCC 공모전 수상작</a></li>
+							<li><a href="/index.do?menu_id=00000724">지방분권, 함께 해요!</a></li>
+							<li><a href="/index.do?menu_id=00932975">지방분권 기사</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000311">정책토론</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000312">정책포럼</a></li>
+							<li><a href="/index.do?menu_id=00000314">전자공청회</a></li>
+							<li><a href="/index.do?menu_id=00933128">설문조사</a></li>
+						</ul>
+					</li>
+					<li><a href="https://talk.daegu.go.kr/index.do?menu_id=00000503" target="_blank"  title="새 창">제안/설문/투표</a></li>
+					<li><a href="/index.do?menu_id=00941190">대구경북행정통합</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00941142">소통게시판</a></li>
+							<li><a href="/index.do?menu_id=00941191">통합자료실</a></li>
+						</ul>
+					</li>
+					<!--  -->
+				</ul>
+			</div>
+		</li>
+	
+	
+		<li>
+			<a href="/index.do?menu_id=00000001"><span>정보공개</span></a>
+			<div>	
+				<ul>
+					<li><a href="/index.do?menu_id=00000093">비공개 대상정보 세부기준</a></li>
+					<li><a href="/index.do?menu_id=00941100">사전공개정보</a></li>
+					<li><a href="/index.do?menu_id=00000084">업무추진비</a></li>
+					<li><a href="/index.do?menu_id=00937531">위원회정보</a></li>
+					<li>
+						<a href="/index.do?menu_id=00936151">정보목록</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00935750">2014년 3월 이후 정보목록</a></li>
+							<li><a href="/index.do?menu_id=00936150">2014년 2월 이전 정보목록</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00941110">정보공개청구</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000081">정보공개제도 안내</a></li>
+							<li><a href="http://www.open.go.kr/rqestMlrd/rqestReg/rqestRegWritingForm.do" target="_blank" title="새 창">정보공개접수</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00933831">정책실명제</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00933832">정책실명제 소개</a></li>
+							<li><a href="/index.do?menu_id=00935341">시민신청실명제</a></li>
+							<li><a href="/index.do?menu_id=00933833">정책실명 공개자료</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000853">알림정보</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000854">공지사항</a></li>
+							<li><a href="/index.do?menu_id=00940170">고시공고</a></li>
+							<li><a href="https://minwon.daegu.go.kr/pssrp/list" target="_blank"  title="새 창">공모모집</a></li>
+							<li><a href="https://www.elis.go.kr/lgsltntc/lgsltNtcList?ctpvSggCd=27000" target="_blank"  title="새 창">입법예고</a></li>
+							<li><a href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=27" target="_blank"  title="새 창">공보</a></li>
+							<!--  -->
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000233">통합자료실</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000237">백서</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00000238">시정백서</a></li>
+									<li><a href="/index.do?menu_id=00000239">환경백서</a></li>
+									<li><a href="/index.do?menu_id=00000240">지하철백서</a></li>
+								</ul>
+							</li>
+							<li><a href="/index.do?menu_id=00002214">분야별자료실</a></li>
+							<li><a href="http://lib.daegu.go.kr/" target="_blank"  title="새 창">시청 작은도서관</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00937333">공공저작물</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00050251">공공저작물 이용안내</a></li>
+							<li><a href="/index.do?menu_id=00937334">공공저작물 자료실</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00937350">대구광역시</a></li>
+									<li><a href="http://www.jung.daegu.kr/new/pages/cyber/page.html?mc=1607" target="_blank"  title="새 창">중구</a></li>
+									<li><a href="https://dong.daegu.kr/main/page.htm?mnu_uid=3723&"  target="_blank"  title="새 창">동구</a></li>
+									<li><a href="https://www.dgs.go.kr/dgs/info/page.php?mnu_uid=1283981"  target="_blank"  title="새 창">서구</a></li>
+									<li><a href="http://nam.daegu.kr/index.do?menu_id=00203970"  target="_blank"  title="새 창">남구</a></li>
+									<li><a href="https://www.buk.daegu.kr/index.do?menu_id=00001823"  target="_blank"  title="새 창">북구</a></li>
+									<li><a href="http://www.suseong.kr/index.do?menu_id=00040678"  target="_blank"  title="새 창">수성구</a></li>
+									<li><a href="https://dalseo.daegu.kr/index.do?menu_id=00002483"  target="_blank"  title="새 창">달서구</a></li>
+									<li><a href="https://www.dalseong.daegu.kr/index.do?menu_id=00003041"  target="_blank"  title="새 창">달성군</a></li>
+									<li><a href="https://www.kogl.or.kr/index.do"  target="_blank"  title="새 창">공공누리</a></li>
+									<li><a href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=5"  target="_blank"  title="새 창">대구사진</a></li>
+									<li><a href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=16"  target="_blank"  title="새 창">대구영상</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000021">공공데이터개방</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000111">공공데이터 통합검색</a></li>
+							<li><a href="http://www.data.go.kr/tcs/dor/insertDataOfferReqstProcssView.do"  target="_blank"  title="새 창">공공데이터 제공신청</a></li>
+							<li><a href="http://open.eais.go.kr"  target="_blank"  title="새 창">건축데이터개방</a></li>
+							<li><a href="http://www.localdata.kr/index.jsp"  target="_blank"  title="새 창">지방자치단체 업종별 데이터개방</a></li>
+							<li><a href="https://data.daegu.go.kr/open/caseAnalysis/dataUseCase.do"  target="_blank"  title="새 창">공공데이터 활용 사례집</a></li>
+							<li><a href="https://data.daegu.go.kr/open/caseAnalysis/startupContestList.do"  target="_blank"  title="새 창">공공데이터 창업경진대회</a></li>
+							<li><a href="http://www.data.go.kr/bbs/rcr/selectRecsroomList.do"  target="_blank"  title="새 창">데이터 소식</a></li>
+							<li><a href="https://data.daegu.go.kr/open/bigData/introduce.do"  target="_blank"  title="새 창">빅데이터활용센터</a></li>
+							<li><a href="https://data.daegu.go.kr/open/main.do"  target="_blank"  title="새 창">D-데이터 허브</a></li>
+							<li><a href="https://talk.daegu.go.kr/spurl.do?mv=00001100"  target="_blank"  title="새 창">공공데이터 상시 수요조사</a></li>
+<!-- 							<li><a href="/index.do?menu_id=90936950">공공데이터 오류신고</a></li> -->
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000041">계약정보</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000129">발주계획</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00933731">조달청발주계획</a></li>
+									<li><a href="/index.do?menu_id=00933732">연간발주계획</a></li>
+								</ul>
+							</li>
+							<li><a href="/index.do?menu_id=00000130">입찰정보</a>
+							
+							</li>
+							<li><a href="/index.do?menu_id=00936650">계약정보공개</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00936652">대구광역시</a></li>
+									<li><a href="/index.do?menu_id=00936657">동구</a></li>
+									<li><a href="/index.do?menu_id=00936658">서구</a></li>
+									<li><a href="/index.do?menu_id=00936659">북구</a></li>
+									<li><a href="http://www.jung.daegu.kr/new/pages/administration/page.html?mc=0203"  target="_blank"  title="새 창">중구</a></li>
+									<li><a href="http://nam.daegu.kr/index.do?menu_id=00001334"  target="_blank"  title="새 창">남구</a></li>
+									<li><a href="https://www.suseong.kr/index.do?menu_id=00000462"  target="_blank"  title="새 창">수성구</a></li>
+									<li><a href="https://www.dalseo.daegu.kr/index.do?menu_id=10000210"  target="_blank"  title="새 창">달서구</a></li>
+									<li><a href="http://dalseong.daegu.kr/index.do?menu_id=00002500"  target="_blank"  title="새 창">달성군</a></li>
+								</ul>
+							</li>
+							<li><a href="/index.do?menu_id=00936651">대금지급</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00936677">대구광역시</a></li>
+									<li><a href="/index.do?menu_id=00936678">동구</a></li>
+									<li><a href="/index.do?menu_id=00936679">서구</a></li>
+									<li><a href="/index.do?menu_id=00936680">북구</a></li>
+									<li><a href="http://www.jung.daegu.kr/new/pages/administration/page.html?mc=2144"  target="_blank"  title="새 창">중구</a></li>
+									<li><a href="http://nam.daegu.kr/index.do?menu_id=00001338"  target="_blank"  title="새 창">남구</a></li>
+									<li><a href="https://www.suseong.kr/index.do?menu_id=00000467"  target="_blank"  title="새 창">수성구</a></li>
+									<li><a href="https://www.dalseo.daegu.kr/index.do?menu_id=10000215"  target="_blank"  title="새 창">달서구</a></li>
+									<li><a href="http://dalseong.daegu.kr/index.do?menu_id=00002504"  target="_blank"  title="새 창">달성군</a></li>
+								</ul>
+							</li>
+							<li><a href="/index.do?menu_id=00000133">관련정보</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00000147">계약서식</a></li>
+									<li><a href="/index.do?menu_id=00000148">관련사이트</a></li>
+								</ul>
+							</li>
+							<li><a href="/index.do?menu_id=00933630">계약정보 공지사항</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000087">감사정보</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00935430">감사계획공개</a></li>
+							<li><a href="/index.do?menu_id=00000151">감사결과공개</a></li>
+							<li><a href="/index.do?menu_id=00937280">사전 컨설팅감사</a>
+								<ul>
+									<li><a href="/index.do?menu_id=00937270">사전 컨설팅감사 안내</a></li>
+									<li><a href="/index.do?menu_id=00937260">사전 컨설팅감사 사례</a></li>
+								</ul>
+							</li>
+							<li><a href="/index.do?menu_id=00001991">시민감사관이란</a></li>
+							<li><a href="/index.do?menu_id=00933990">시민감사관의방</a></li>
+							<li><a href="/index.do?menu_id=00000149">청탁금지법</a></li>
+							<li><a href="/index.do?menu_id=00000150">청렴자료실</a></li>
+							<li><a href="/index.do?menu_id=00933440">청탁금지법 FAQ</a></li>
+							<li><a href="http://www.daegu.go.kr/kimLaw/search_main.jsp"  target="_blank"  title="새 창">청탁금지법 Q&A 사례검색</a></li>
+							<li><a href="/index.do?menu_id=00935970">계약심사 및 일상감사 자료실</a></li>
+							<li><a href="/index.do?menu_id=00936343">민간위탁사무 감사결과</a></li>
+							<li><a href="/index.do?menu_id=00936970">공직자윤리</a></li>
+							<li><a href="/index.do?menu_id=00940260">공공기관 위탁&middot;대행</a></li>
+						</ul>
+					</li>
+					<li><a href="http://stat.daegu.go.kr"  target="_blank"  title="새 창">통계정보</a></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/index.do?menu_id=00941380"><span>대구소개</span></a>
+			<div>	
+				<ul>
+					
+					<li><a href="/index.do?menu_id=00941380">시정비전</a></li>
+					<li><a href="/index.do?menu_id=00000246">시청안내</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000247">시청사안내</a></li>
+							<li><a href="/index.do?menu_id=00937430">전화번호안내</a></li>
+							<li><a href="/index.do?menu_id=00000248">행정조직도</a></li>
+							<li><a href="/index.do?menu_id=00000251">찾아오시는길</a></li>
+							<li><a href="/index.do?menu_id=00938711">자치구·군</a></li>
+							<li><a href="/index.do?menu_id=00938180">출자출연기관</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000252">일반현황</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000253">행정구역</a></li>
+							<li><a href="/index.do?menu_id=00936760">행정복지센터현황</a></li>
+							<li><a href="/index.do?menu_id=00000254">시정현황</a></li>
+							<li><a href="http://gis.go.kr"  target="_blank"  title="새 창">대구 지도포털</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00939790" >대구의 상징물(지정)</a>
+							<ul>
+							<li><a href="/index.do?menu_id=00000271">심벌 및 로고</a></li>
+							<li><a href="/index.do?menu_id=00000272">시조/시목/시화</a></li>
+							</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000269">대구의 상징</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000273">대구시민의 노래</a></li>
+							<li><a href="/index.do?menu_id=00936490">도달쑤(수달) 캐릭터</a></li>
+							<!--  -->
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000270">스토리인대구</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00050248">대구스토리텔링 </a></li>
+							<li><a href="/index.do?menu_id=00938240"> 대구 이중 매력에 빠지다</a></li>
+							<li><a href="http://ebook.daegu.go.kr/Viewer/YTOYHEL2BUBL/230"  target="_blank"  title="새 창">대구인포그래픽 20선</a></li>
+							<!--  -->
+							<li><a href="/index.do?menu_id=00936540">대구 도로명 유래 웹툰</a></li>
+							<li><a href="/index.do?menu_id=00937700">주소정보 홍보 동영상</a></li>
+							<li><a href="/index.do?menu_id=00937790">피플人대구</a></li>
+							<!-- <li><a href="/index.do?menu_id=00936752">알기쉬운 주민참여예산제</a></li> -->
+							<li><a href="/index.do?menu_id=00938694">MBTI별 친환경실천 유형</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000263">역사</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00000264">역사</a></li>
+							<li><a href="/index.do?menu_id=00000265">연표</a></li>
+							<li><a href="/index.do?menu_id=00000266">지명유래</a></li>
+							<li><a href="/index.do?menu_id=00000267">대구시사</a></li>
+							<li><a href="/index.do?menu_id=00940250">대구역사총서</a></li>
+							<li><a href="/index.do?menu_id=00940290">대구사료총서</a></li>
+							<li><a href="/index.do?menu_id=00935141">대구역사자료</a></li>
+							<li><a href="https://www.grandculture.net/daegu" target="_blank" title="새 창">대구역사문화대전</a></li>
+							<li><a href="/index.do?menu_id=00940980">역대 대구시장</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00000225">대구광역시뉴스룸</a>
+						<ul>
+							<li><a href="http://info.daegu.go.kr"  target="_blank"  title="새 창">대구광역시뉴스룸</a></li>
+							<li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/25/1"  target="_blank"  title="새 창">시정홍보책자</a></li>
+							<li><a href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=16"  target="_blank"  title="새 창">대구영상</a></li>
+						</ul>
+					</li>
+					<li><a href="/index.do?menu_id=00933611">교류도시</a>
+						<ul>
+							<li><a href="/index.do?menu_id=00937760">연도별 교류현황</a></li>
+							<li><a href="/index.do?menu_id=00933612">교류도시</a></li>
+							<!-- <li><a href="/index.do?menu_id=00938441">교류도시 웹영상전</a></li> -->
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</li>
+		
+		<li class="nav_part">
+			<a href="/cts/index.do">분야별정보</a>
+			<div>
+				<ul>
+					<li>
+						<a href="/cts/index.do">문화&middot;관광&middot;체육</a>
+						<ul>
+							<li> 
+								<a href="/cts/index.do?menu_id=00000857"><span>문화/관광/체육 소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/cts/index.do?menu_id=00000864">공지사항</a></li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/9/1" target="_blank" title="새 창">전자책</a></li> -->
+										<li><a href="/cts/index.do?menu_id=00000869">동영상</a></li>
+										<li><a href="/cts/index.do?menu_id=00000870">자료실</a></li>
+										<li><a href="/cts/index.do?menu_id=00000872">관련 누리집</a></li>
+									</ul>
+								</div>
+							</li>
+							<li> 								
+								<a href="/cts/index.do?menu_id=00000858"><span>관광</span></a>
+								<div>	
+									<ul>
+										<li>
+											<a href="/cts/index.do?menu_id=00800248">대구관광</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00800250">대구관광안내</a></li>
+												<li><a href="/cts/index.do?menu_id=00800251">대구시티투어</a></li>
+												<li><a href="/cts/index.do?menu_id=00800252">의료관광</a></li>
+												<li><a href="/cts/index.do?menu_id=00800253">더굿나잇</a></li>
+												<li><a href="/cts/index.do?menu_id=00800254">대구푸드</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="/cts/index.do?menu_id=00000874">걷기코스</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00000875">팔공산올레</a></li>
+												<li><a href="/cts/index.do?menu_id=00000884">팔공산왕건길</a></li>
+												<li><a href="/cts/index.do?menu_id=00000885">팔공산녹색길</a></li>
+												<li><a href="/cts/index.do?menu_id=00000886">강정보녹색길</a></li>
+												<li><a href="/cts/index.do?menu_id=00000887">달성보녹색길</a></li>
+												<li><a href="/cts/index.do?menu_id=00000888">앞산자락길</a></li>
+												<li><a href="/cts/index.do?menu_id=00000889">모명재누리길</a></li>
+												<li><a href="/cts/index.do?menu_id=00000890">쌍룡녹색길</a></li>
+												<li><a href="/cts/index.do?menu_id=00934000">대구 둘레길</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="/cts/index.do?menu_id=00000891">자전거투어</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00000892">시내투어코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000893">신천둔치 및 금호강코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000894">동촌유원지 금호강 코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000895">달성습지 코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000896">불로 지묘동 코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000897">평광동 옻골코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000898">시지코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000899">육신사코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000900">남평문씨세거지코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000902">남지장사 코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000901">용연사 및 수목원 코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000903">팔공산순회코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000904">신동재 코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000905">헐티재 코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000906">한티재 코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000907">진밭골욱수골코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000908">와룡산코스</a></li>
+												<li><a href="/cts/index.do?menu_id=00000909">팔공산녹색길</a></li>
+												<li><a href="/cts/index.do?menu_id=00000910">낙동강자전거길</a></li>
+												<li><a href="/cts/index.do?menu_id=00000911">금호강자전거길</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li> 
+								<a href="/cts/index.do?menu_id=00000860"><span>수목원</span></a>
+								<div>	
+									<ul>
+										<li>
+											<a href="/cts/index.do?menu_id=00000950">수목원 안내</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00000951">수목원이란?</a></li>
+												<li><a href="/cts/index.do?menu_id=00000954">수목원과 공원의 차이점</a></li>
+												<li><a href="/cts/index.do?menu_id=00000955">조성목적 및 연혁</a></li>
+												<li><a href="/cts/index.do?menu_id=00000956">조성과정</a></li>
+											</ul>
+										</li>
+										<li><a href="/cts/index.do?menu_id=00000957">산림문화전시관</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00000958">개요</a></li>
+												<li><a href="/cts/index.do?menu_id=00000959">전시실안내</a></li>
+												<li><a href="/cts/index.do?menu_id=00000964">전시실배치도</a></li>
+											</ul>
+										</li>
+										<li><a href="/cts/index.do?menu_id=00938490">목재문화체험장</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00938491">체험관소개</a></li>
+												<li><a href="/cts/index.do?menu_id=00938492">체험프로그램  안내</a></li>
+												<li><a href="/cts/index.do?menu_id=00938500">시설안내</a></li>
+											</ul>
+										</li>
+										<li><a href="/cts/index.do?menu_id=00000966">교육내용</a></li>
+										<li><a href="/cts/index.do?menu_id=00000967">연구내용</a></li>
+										<li><a href="/cts/index.do?menu_id=00933920">양묘화훼</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00933921">양묘</a>
+													<ul>
+														<li><a href="/cts/index.do?menu_id=00933923">생산 목적 및 현황</a></li>
+														<li><a href="/cts/index.do?menu_id=00933924">생산 수종</a></li>
+													</ul>
+												</li>
+												<li><a href="/cts/index.do?menu_id=00933930">화훼</a>
+													<ul>
+														<li><a href="/cts/index.do?menu_id=00933931">생산 목적 및 현황</a></li>
+														<li><a href="/cts/index.do?menu_id=00933932">계절별 생산수종</a></li>
+														<li><a href="/cts/index.do?menu_id=00933937">국화전시회</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/cts/index.do?menu_id=00000861"><span>체육시설</span></a>
+								<div>
+									<ul>
+										<li><a href="/cts/index.do?menu_id=00000977">체육시설관리사무소</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00002202">관리사무소 업무 및 연락처</a></li>
+											</ul>
+										</li>
+										<li><a href="/cts/index.do?menu_id=00933129">시설현황</a></li>
+										<li><a href="/cts/index.do?menu_id=00933071">찾아오시는길</a></li>
+										<li><a href="/cts/index.do?menu_id=00000979">대관안내</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00800281">대관안내</a></li>
+												<li><a href="https://yeyak.daegu.go.kr/index.do?menu_id=00004712"  target="_blank"  title="새 창">대관예약</a></li>
+											</ul>
+										</li>
+										<li><a href="/cts/index.do?menu_id=00940300">공공체육시설설</a>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/cts/index.do?menu_id=00000862"><span>축제·행사/공연·전시</span></a>
+								<div>
+									<ul>
+										<li><a href="http://www.dgfc.or.kr/event/pf/list"  target="_blank"  title="새 창">공연전시 정보</a></li>
+										<li><a href="/cts/index.do?menu_id=00000984">시설안내</a></li>
+										<li><a href="/cts/index.do?menu_id=00936410">월간대구문화</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/cts/index.do?menu_id=00000863"><span>체험·관광·교육</span></a>
+								<div>
+									<ul>
+										<li><a href="/cts/index.do?menu_id=00000999">숲해설사 신청</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00855272">두류공원 숲해설사</a></li>
+												<li><a href="/cts/index.do?menu_id=00855273">앞산공원 숲해설사</a></li>
+												<li><a href="/cts/index.do?menu_id=00934980">팔공산 숲해설사</a></li>
+												<li><a href="/cts/index.do?menu_id=00935360">수목원 숲해설</a></li>
+											</ul>
+										</li>
+										<li><a href="https://yeyak.daegu.go.kr/index.do?menu_id=00007885"  target="_blank"  title="새 창">수목원 견학신청</a></li>
+										<li><a href="https://yeyak.daegu.go.kr/index.do?menu_id=00004712"  target="_blank"  title="새 창">체육시설 대관예약</a></li>
+										<li><a href="/cts/index.do?menu_id=00935301">스마트광통신센터 홍보관</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00935302">스마트 광통신센터 소개</a></li>
+												<li><a href="/cts/index.do?menu_id=00935320">홍보관 체험신청</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/cts/index.do?menu_id=00938880"><span>도시관리본부</span></a>
+								<div>	
+									<ul>
+										<li><a href="/cts/index.do?menu_id=00938881"   target="_blank"  title="새 창">시설안전관리부</a></li>
+										<li><a href="/cts/index.do?menu_id=00938882"   target="_blank"  title="새 창">체육시설관리부</a></li>
+										<li><a href="/cts/index.do?menu_id=00938883">도시공원관리부</a>
+											<ul>
+												<li><a href="/cts/index.do?menu_id=00938884"   target="_blank"  title="새 창">앞산공원</a></li>
+												<li><a href="/cts/index.do?menu_id=00938885"   target="_blank"  title="새 창">두류공원</a></li>
+												<li><a href="/cts/index.do?menu_id=00938892"   target="_blank"  title="새 창">달성공원</a></li>
+												<li><a href="/cts/index.do?menu_id=00938886"   target="_blank"  title="새 창">수목원</a></li>
+											</ul>
+										</li>
+										
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>	
+					<li><a href="/tra/index.do">교통</a>
+						<ul>
+							<li><a href="/tra/index.do?menu_id=00000331"><span>교통소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/tra/index.do?menu_id=00000336">공지사항</a></li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/10/1" target="_blank" title="새 창">전자책</a></li> -->
+										<!--  -->
+										<li><a href="/tra/index.do?menu_id=00000342">자료실</a></li>
+										<li><a href="/tra/index.do?menu_id=00000344">관련누리집</a></li>
+										<li><a href="/tra/index.do?menu_id=00937720">안전속도5030</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/tra/index.do?menu_id=00000332"><span>대중교통</span></a>
+								<div>
+									<ul>
+										<li><a href="/tra/index.do?menu_id=00000348">버스</a>
+											<ul>
+												<li><a href="/tra/index.do?menu_id=00000353">시내버스</a></li>
+												<li><a href="/tra/index.do?menu_id=00940400">시내버스 모니터</a></li>
+											</ul>
+										</li>
+										<li><a href="/tra/index.do?menu_id=00000349">택시</a></li>
+										<li><a href="/tra/index.do?menu_id=00000350">렌터카</a></li>
+										<li><a href="/tra/index.do?menu_id=00000351">도시철도</a></li>
+										<li><a href="/tra/index.do?menu_id=00000352">도로교통정보</a>
+											<ul>
+												<li><a href="http://car.daegu.go.kr/"  target="_blank"  title="새 창">실시간교통정보안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00000357">버스전용차로제</a></li>
+												<li><a href="/tra/index.do?menu_id=00000358">대중교통분실물안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00937960">대중교통전용지구</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="/tra/index.do?menu_id=00941340">버스전용차로제</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/tra/index.do?menu_id=00000333"><span>광역교통</span></a>
+								<div>
+									<ul>
+										<li><a href="/tra/index.do?menu_id=00000365">버스정보</a>
+											<ul>
+												<li><a href="/tra/index.do?menu_id=00001766"> 고속/시외버스</a></li>
+											</ul>
+										</li>
+										<li><a href="/tra/index.do?menu_id=00000366">철도정보</a></li>
+										<li><a href="/tra/index.do?menu_id=00000367">항공정보</a>
+											<ul>
+												<li><a href="/tra/index.do?menu_id=00932894">운항 정보</a></li>
+											</ul>
+										</li>
+										<li><a href="/tra/index.do?menu_id=00932896">대구경북 통합신공항</a>
+											<ul>
+												<li><a href="/tra/index.do?menu_id=00932897">일반현황</a></li>
+												<li><a href="/tra/index.do?menu_id=00932898">이전사업</a></li>
+												<li><a href="/tra/index.do?menu_id=00932899">종전부지개발</a></li>
+												<li><a href="/tra/index.do?menu_id=00933194">정보마당</a></li>
+											</ul>
+										</li>
+										<li><a href="/tra/index.do?menu_id=00932984">동대구역복합환승센터</a></li>
+										<li><a href="/tra/index.do?menu_id=00941670">광역교통시설부담금</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/tra/index.do?menu_id=00000334"><span>녹색교통</span></a>
+								<div>
+									<ul>
+										<li><a href="/tra/index.do?menu_id=00000368">자전거 정보</a></li>
+										<li><a href="/tra/index.do?menu_id=00000369">교통약자정보</a></li>
+										<li><a href="/tra/index.do?menu_id=00000370">녹색교통</a></li>
+										<li><a href="/tra/index.do?menu_id=00937240">개인형 이동장치</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/tra/index.do?menu_id=00000334"><span>주차정보</span></a>
+								<div>
+									<ul>
+										<li><a href="/tra/index.do?menu_id=00936411">바른주차안내 문자알림서비스</a></li>
+										<li><a href="https://pis.daegu.go.kr" target="_blank" title="새 창">통합주차정보시스템</a></li>
+										<li><a href="https://dgparking.or.kr" target="_blank" title="새 창">공영주차장 주차포털서비스</a></li>
+										<li><a href="/tra/index.do?menu_id=00941220">주차장 개방 공유사업</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/tra/index.do?menu_id=00000335"><span>민원/정보</span></a>
+								<div>
+									<ul>
+										<li><a href="/tra/index.do?menu_id=00933850">차량등록사업소안내</a>
+											<ul>
+												<li><a href="/tra/index.do?menu_id=00935240">연혁</a></li>
+												<li><a href="/tra/index.do?menu_id=00933851">민원분소안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00933852">찾아오시는 길</a></li>
+											</ul>
+										</li>
+										<li><a href="/tra/index.do?menu_id=00000381">자동차등록안내</a></li>
+										<li><a href="/tra/index.do?menu_id=00000382">건설기계등록안내</a></li>
+										<li><a href="/tra/index.do?menu_id=00000384">세무안내</a>
+											<ul>
+												<li><a href="/tra/index.do?menu_id=00000388">취득세 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00933835">시가표준액 산출안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00000389">등록면허세 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00000390">감면혜택 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00933682">기업지원내용 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00933834">도시철도채권 안내</a></li>
+											</ul>
+										</li>
+										<li><a href="/tra/index.do?menu_id=00000385">과태료안내</a>
+											<ul>
+												<li><a href="/tra/index.do?menu_id=00000392">과태료의 종류 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00000393">과태료부과 사전처분통지 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00000394">과태료부과 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00000395">과태료 이의신청 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00000364">과적차량지도 단속 홍보</a></li>
+												<li><a href="/tra/index.do?menu_id=00000396">과태료 체납에 따른 체납처분 안내</a></li>
+											</ul>
+										</li>
+										<li><a href="/tra/index.do?menu_id=00000386">정보안내</a>
+											<ul>
+												<li><a href="/tra/index.do?menu_id=00000397">차량법규 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00000398">자동차/건설기계 등록현황</a></li>
+												<li><a href="/tra/index.do?menu_id=00000399">유관기관 안내</a></li>
+												<li><a href="/tra/index.do?menu_id=00000400">자동차 검사소 및 폐차장 안내</a></li>
+											</ul>
+										</li>
+										<li><a href="/tra/index.do?menu_id=00941150">등록서식 안내(작성예시 QR코드포함)</a>
+											<ul>
+												<li><a href="/tra/index.do?menu_id=00941150">자동차등록관련 서식</a></li>
+												<li><a href="/tra/index.do?menu_id=00933592">건설기계등록관련 서식</a></li>
+											</ul>
+										</li>
+										<li><a href="/tra/index.do?menu_id=00000387">자주묻는질문</a></li>
+										<li><a href="/tra/index.do?menu_id=00936411">바른주차안내 문자알림서비스</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/welf/index.do">복지</a>
+						<ul>
+							<li><a href="/welf/index.do?menu_id=00000401"><span>복지소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/welf/index.do?menu_id=00000470">공지사항</a></li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/18/1" target="_blank" title="새 창">전자책</a></li> -->
+										<!--  -->
+										<li><a href="/welf/index.do?menu_id=00000479">관련누리집</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/welf/index.do?menu_id=00000402"><span>저소득시민</span></a>
+								<div>
+									<ul>
+										<li><a href="/welf/index.do?menu_id=00000480">국민기초생활보장</a>
+											<ul>
+												<li><a href="/welf/index.do?menu_id=00000691">수급자 선정기준</a></li>
+												<li><a href="/welf/index.do?menu_id=00000692">급여의 신청</a></li>
+												<li><a href="/welf/index.do?menu_id=00000693">각종 급여의 실시</a></li>
+												<li><a href="/welf/index.do?menu_id=00000694">수급자 현황</a></li>
+											</ul>
+										</li>
+										<!--  -->
+										<li><a href="/welf/index.do?menu_id=00000484">긴급복지지원</a></li>
+										<li><a href="/welf/index.do?menu_id=00000486">자활지원사업</a></li>
+										<li><a href="/welf/index.do?menu_id=00000487">사회복지시설</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/welf/index.do?menu_id=00000403"><span>어르신</span></a>
+								<div>
+									<ul>
+										<li><a href="/welf/index.do?menu_id=00000488">어르신정책사업</a>
+											<ul>
+												<li><a href="/welf/index.do?menu_id=00933960">일반현황</a></li>
+												<li><a href="/welf/index.do?menu_id=00000491">기초연금지급</a></li>
+												<li><a href="/welf/index.do?menu_id=00000494">노인사회활동 지원사업</a></li>
+												<li><a href="/welf/index.do?menu_id=00000495">노인맞춤돌봄서비스</a></li>
+												<li><a href="/welf/index.do?menu_id=00000492">노인급식지원사업</a></li>
+												<li><a href="/welf/index.do?menu_id=00000497">노인장기요양보험제도</a></li>
+												<li><a href="/welf/index.do?menu_id=00000498">요양보호사</a></li>
+											</ul>
+										</li>
+										<li><a href="/welf/index.do?menu_id=00933963">어르신복지 시설</a>
+											<ul>
+												<li><a href="/welf/index.do?menu_id=00933964">노인여가복지시설</a></li>
+												<li><a href="/welf/index.do?menu_id=00933965">노인생활시설</a></li>
+												<li><a href="/welf/index.do?menu_id=00933972">기억돌봄학교</a></li>
+												<li><a href="/welf/index.do?menu_id=00933961">재가노인돌봄센터</a></li>
+												<li><a href="/welf/index.do?menu_id=00000493">노인보호전문기관</a></li>
+											</ul>
+
+										</li>
+										<li><a href="/welf/index.do?menu_id=00000538">장묘시설현황</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/welf/index.do?menu_id=00000404"><span>장애인</span></a>
+								<div>
+									<ul>
+										<li><a href="/welf/index.do?menu_id=00000500">장애인지원제도</a>
+											<ul>
+												<li><a href="/welf/index.do?menu_id=00000503">연금&middot;수당</a></li>
+												<li><a href="/welf/index.do?menu_id=00000504">교육</a></li>
+												<li><a href="/welf/index.do?menu_id=00000505">의료 및 재활지원</a></li>
+												<li><a href="/welf/index.do?menu_id=00000506">활동지원 등 서비스</a></li>
+												<li><a href="/welf/index.do?menu_id=00000507">일자리 융자지원</a></li>
+												<li><a href="/welf/index.do?menu_id=00000508">공공요금 면제(감면&middot;할인)</a></li>
+												<li><a href="/welf/index.do?menu_id=00000509">세제혜택</a></li>
+												<li><a href="/welf/index.do?menu_id=00001005">지역사회복지사업(재활시설)및 기타</a></li>
+												<li><a href="/welf/index.do?menu_id=00935931">보조기기수리업체</a></li>
+												<li><a href="/welf/index.do?menu_id=00936613">전동휠체어 급속충전기 설치장소</a></li>
+											</ul>
+										</li>
+										<li><a href="/welf/index.do?menu_id=00000501">등록절차안내</a>
+											<ul>
+												<li><a href="/welf/index.do?menu_id=00000510">장애인등록대상 및 절차</a></li>
+												<li><a href="/welf/index.do?menu_id=00000513">장애인등록심사 구비서류</a></li>
+											</ul>
+										</li>
+										<li><a href="/welf/index.do?menu_id=00000502">장애인 사업 안내</a>
+											<ul>
+												<li><a href="/welf/index.do?menu_id=00000529">법인&amp;단체</a></li>
+												<li><a href="/welf/index.do?menu_id=00000530">바우처사업 안내</a></li>
+											</ul>
+										</li>
+										<li><a href="/welf/index.do?menu_id=00938746">장애인복지시설</a></li>
+										<li><a href="/welf/index.do?menu_id=00939420">장애인 공동주택 특별공급</a></li>
+										<li><a href="/welf/index.do?menu_id=00940032">정보통신보조기기 보급사업</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/welf/index.do?menu_id=00000405"><span>복지정보</span></a>
+								<div>
+									<ul>
+										<li><a href="/welf/index.do?menu_id=00933144">사랑의 그린PC 보급</a></li>
+										<li><a href="/welf/index.do?menu_id=00000539">무연고 분묘 처리</a></li>
+										<li><a href="/welf/index.do?menu_id=00941120">공영장례 부고 알림</a></li>
+										<li><a href="/welf/index.do?menu_id=00937310">지역자율형 사회서비스 투자사업</a></li>
+										<li><a href="/welf/index.do?menu_id=00940420">디지털배움터</a></li>
+									</ul>
+								</div>
+							</li>
+							
+						</ul>
+					</li>
+					<li><a href="/woman/index.do">여성&middot;가족&middot;교육</a>
+						<ul>
+							<li><a href="/woman/index.do?menu_id=00000406"><span>여성/가족/교육 소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/woman/index.do?menu_id=00000540">공지사항</a></li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/11/1" target="_blank" title="새 창">전자책</a></li> -->
+										<li><a href="/woman/index.do?menu_id=00000545">동영상</a></li>
+										<li><a href="/woman/index.do?menu_id=00000546">자료실</a></li>
+										<li><a href="/woman/index.do?menu_id=00000549">관련누리집</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/woman/index.do?menu_id=00000407"><span>여성</span></a>
+								<div>
+									<ul>
+										<li><a href="/woman/index.do?menu_id=00000550">여성정책</a>
+											<ul>
+												<li><a href="/woman/index.do?menu_id=00000560">여건분석 및 개선방향</a></li>
+												<li><a href="/woman/index.do?menu_id=00000561">통계로 보는 대구 여성의 삶</a></li>
+												<li><a href="/woman/index.do?menu_id=00050050">2022시책방향</a></li>
+												<li><a href="/woman/index.do?menu_id=00050051">주요여성 가족정책</a></li>
+											</ul>
+										</li>
+										<li><a href="/woman/index.do?menu_id=00000551">대구여성가족재단</a>
+											<ul>
+												<li><a href="/woman/index.do?menu_id=00050052">재단기본현황</a></li>
+												<li><a href="/woman/index.do?menu_id=00050053">주요연구현황</a></li>
+											</ul>
+										</li>
+										<li><a href="/woman/index.do?menu_id=00000552">양성평등지원</a>
+											<ul>
+												<li><a href="/woman/index.do?menu_id=00050054">양성평등주간 기념행사</a></li>
+												<li><a href="/woman/index.do?menu_id=00050060">여성UP엑스포</a></li>
+												<li><a href="/woman/index.do?menu_id=00050055">여성행복위원회 운영</a></li>
+												<li><a href="/woman/index.do?menu_id=00050056">대구광역시 여성대상</a></li>
+												<li><a href="/woman/index.do?menu_id=00050063">여성인재등록</a></li>
+												<li><a href="/woman/index.do?menu_id=00050064">위원회 성별 대표성 제고</a></li>
+												<li><a href="/woman/index.do?menu_id=00050066">여성단체활동 프로그램 지원</a></li>
+												<li><a href="/woman/index.do?menu_id=00050071">성별영향평가</a></li>
+												<li><a href="/woman/index.do?menu_id=00050074">지역성평등지수</a></li>
+											</ul>
+										</li>
+										<li><a href="/woman/index.do?menu_id=00000553">여성경제활동지원</a>
+											<ul>
+												<li><a href="/woman/index.do?menu_id=00050079">여성인력개발센터</a></li>
+												<li><a href="/woman/index.do?menu_id=00050080">여성새로일하기센터</a></li>
+												<li><a href="/woman/index.do?menu_id=00050081">여성일자리 발굴 활동</a></li>
+												<li><a href="/woman/index.do?menu_id=00050082">여성교육기관 현황</a></li>
+											</ul>
+										</li>
+										<li><a href="/woman/index.do?menu_id=00000554">여성친화도시</a>
+											<ul>
+												<li><a href="/woman/index.do?menu_id=00050083">여성친화도시조성</a></li>
+												<li><a href="/woman/index.do?menu_id=00050087">스마트안심택배함</a></li>
+											</ul>
+										</li>
+										<li><a href="/woman/index.do?menu_id=00000556">여성복지기관(시설)</a>
+											<ul>
+												<li><a href="/woman/index.do?menu_id=00050088">여성관계기관 및 여성단체</a></li>
+												<li><a href="/woman/index.do?menu_id=00050089">한부모가족복지시설</a></li>
+												<li><a href="/woman/index.do?menu_id=00050090">위기전화서비스기관</a></li>
+												<li><a href="/woman/index.do?menu_id=00050092">요보호여성 발생예방 및 지원</a></li>
+												<li><a href="/woman/index.do?menu_id=00050093">여성폭력상담기관</a></li>
+												<li><a href="/woman/index.do?menu_id=00000555">일본군 '위안부'역사관</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/woman/index.do?menu_id=00000408"><span>가족/다문화</span></a>
+								<div>
+									<ul>
+										<li> <a href="/woman/index.do?menu_id=00000562">가족지원제도</a>
+											<ul>
+												<li> <a href="/woman/index.do?menu_id=00000565">가족센터</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00933196">개요</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00933197">아이돌봄 지원사업 운영</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00933198">공동육아나눔터 운영</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00000566">한부모가족지원</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050095">한부모가족사업</a> </li>
+														<li> <a href="https://www.mogef.go.kr/html/ebook/cs_opf_f999/2026/ecatalog5.html" target="_blank" title="새 창">한부모가족 복지서비스 안내</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050097">한부모가족 복지시설 운영 및 지원</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00939870">청소년부모 아동양육비</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00939230">청소년부모 아동양육비 사업 안내</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00939220">청소년부모 아동양육비 지원 사업</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00000567">취약위기 가족지원</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00000569">대구일생활균형지원</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050099">가족친화인증 추진</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050101">기업상생협력 네트워크</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00934830">일생활균형지원센터</a> </li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li> <a href="/woman/index.do?menu_id=00000563">다문화가족 지원제도</a>
+											<ul>
+												<li> <a href="/woman/index.do?menu_id=00050102">외국인주민 지원</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050103">지원조례</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050104">생활안내책자</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050106">외국인주민 지원사업</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050105">외국인주민 현황</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050107">무료의료지원기관현황</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00050109">다문화가족  지원</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050110">다문화가족현황</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050117">다문화 지원시설 현황</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00936310">특성화사업</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050116">위기다문화가족 지원</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050115">교육지원</a> </li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/woman/index.do?menu_id=00000409"><span>어린이</span></a>
+								<div>
+									<ul>
+										<li> <a href="/woman/index.do?menu_id=00934300">출산지원/다자녀지원</a> </li>
+										<li class=""> <a href="/woman/index.do?menu_id=00000572" class="">보육</a>
+											<ul>
+												<li> <a href="/woman/index.do?menu_id=00050120">어린이집 시설현황</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050121">보육료 등 수납한도액</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050122">보육료 지원</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050123">가정양육수당 지원</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00938422">부모급여 지원</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050126">평가인증제도</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050127">보육교직원양성및보수교육</a> </li>
+												<li> <a href="http://daegu.childcare.go.kr/ccef/main.jsp" target="_blank" title="새 창">대구육아종합지원센터</a> </li>
+											</ul>
+										</li>
+										<li> <a href="/woman/index.do?menu_id=00000573">아동</a>
+											<ul>
+												<li> <a href="/woman/index.do?menu_id=00050129">아동복지시설</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050130">아동복지시설 현황</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050131">공동생활가정 현황</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050132">지역아동센터 운영 및 현황</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00050133">가정위탁지원</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050134">개요</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050135">가정위탁보호 절차</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00939670">자립준비청년 지원</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050138">드림스타트사업</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050136">입양사업</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050137">아동발달지원계좌</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050139">아동학대</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050140">아동보호전문기관 운영</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050270">학대피해아동 쉼터 운영</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050141">아동학대 사건 업무 처리도</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00050142">결연기관운영</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050143">아동급식지원</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00938860">다함께돌봄센터</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00939650">아동친화도시,대구</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00939651">아동친화도시</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00939660">아동의 권리</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00939661">유엔아동권리협약</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00939662">아동, 청소년 참여기구</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00939663">아동권리지킴이</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00938900">대구시 아동친화예산</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00941070">아동보호구역 현황</a> </li>
+											</ul>
+										</li>
+									</ul>
+
+								</div>
+							</li>
+							<li><a href="/woman/index.do?menu_id=00000410"><span>청소년</span></a>
+								<div>
+									<ul>
+										<li><a href="/woman/index.do?menu_id=00000577">청소년 관련법령</a></li>
+										<li><a href="/woman/index.do?menu_id=00000578">청소년 인구현황</a></li>
+										<li><a href="/woman/index.do?menu_id=00000579">청소년 시설현황</a>
+											<ul>
+												<li><a href="/woman/index.do?menu_id=00050144">청소년 수련시설</a></li>
+												<li><a href="/woman/index.do?menu_id=00050145">청소년 보호 및 복지 시설</a></li>
+												<li><a href="/woman/index.do?menu_id=00050146">청소년 단체</a></li>
+												<li><a href="/woman/index.do?menu_id=00050147">청소년 특화시설</a></li>
+											</ul>
+										</li>
+										<li><a href="/woman/index.do?menu_id=00939880">고등학교 입학축하금 지원사업 알림서비스</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/woman/index.do?menu_id=00000421"><span>교육/공연/체험</span></a>
+								<div>
+									<ul>
+										<li> <a href="/woman/index.do?menu_id=00000593">종합복지회관</a>
+											<ul>
+												<li> <a href="/woman/index.do?menu_id=00050167">회관 소개</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050169">일반 및 시설현황</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050170">찾아오시는 길</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00050171">강좌안내</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050187">대관시설 이용안내</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050188">상담안내</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050201">일반시민상담</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050202">아동청소년상담</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00933808">공지사항</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00933809">자료실</a> </li>
+											</ul>
+										</li>
+										<li> <a href="/woman/index.do?menu_id=00000594">여성회관</a>
+											<ul>
+												<li> <a href="/woman/index.do?menu_id=00050203">회관 소개</a>
+													<ul>
+														<li> <a href="http://ebook.daegu.go.kr/Viewer/AKQS1N0R5SFS" target="_blank" title="새 창">여성회관 소개책자</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050205">업무 및 시설현황</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050206">찾아오시는 길</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00933733">셔틀버스 노선안내</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00050207">강좌안내</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050208">모집안내</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050209">교육강좌안내</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00938012">취·창업 지원 안내</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00938013">대구여성새로일하기 센터</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00938014">창업보육센터</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00050216">다양한 활동들</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00933810">공지사항</a> </li>
+											</ul>
+										</li>
+										<li> <a href="/woman/index.do?menu_id=00000592">동부여성문화회관</a>
+											<ul>
+												<li> <a href="/woman/index.do?menu_id=00050148">회관 소개</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050150">업무 및 시설현황</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050151">찾아오시는 길</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00050165">동아리 소개</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050152"> 강좌안내</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050153">모집안내</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050154">교육강좌안내</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00050159">수영강습안내</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050160">대관 안내</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050161">자원봉사활동</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00050162">문화예술단 운영</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00050163">대구여성오케스트라</a> </li>
+														<li> <a href="/woman/index.do?menu_id=00050164">대구레이디스싱어즈</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00050166">심리상담실 안내</a>
+													<ul>
+														<li> <a href="/woman/index.do?menu_id=00800010">상담활동</a> </li>
+													</ul>
+												</li>
+												<li> <a href="/woman/index.do?menu_id=00933812">공지사항</a> </li>
+												<li> <a href="/woman/index.do?menu_id=00933813">자료실</a> </li>
+											</ul>
+										</li>
+										<li> <a href="https://dcw.daegu.go.kr/ko/page/main.do" target="_blank" title="새 창">대구어린이세상</a> </li>
+										<li> <a href="https://www.dww.kr" target="_blank" title="새 창">와글와글아이세상</a> </li>
+										<li> <a href="/woman/index.do?menu_id=00933355">대구교육</a>
+											<ul>
+												<li> <a href="https://study.daegu.kr/" target="_blank" title="새 창">평생교육</a> </li>
+												<li> <a href="http://www.dge.go.kr/main/ad/ed/view/selectEdcStatsView.do?mi=1792" target="_blank" title="새 창">교육통계 </a> </li>
+												<li> <a href="/woman/index.do?menu_id=00933699">도서관현황</a> </li>
+											</ul>
+										</li>
+										<li> <a href="/woman/index.do?menu_id=00941270">AI디지털배움터</a> </li>
+									</ul>
+
+								</div>
+							</li>
+							<li><a href="/woman/index.do?menu_id=00000422"><span>1366대구센터</span></a>
+								<div>
+									<ul>
+										<li><a href="/woman/index.do?menu_id=00050237">센터소개</a>
+											<ul>
+												<li><a href="/woman/index.do?menu_id=00800240">대구1366센터소개</a></li>
+												<li><a href="/woman/index.do?menu_id=00800241">연혁</a></li>
+												<li><a href="/woman/index.do?menu_id=00800242">운영체계</a></li>
+												<li><a href="/woman/index.do?menu_id=00800243">찾아오시는길</a></li>
+											</ul>
+										</li>
+										<li><a href="/woman/index.do?menu_id=00800245">상담안내</a></li>
+										<li><a href="/woman/index.do?menu_id=00932694">상담신청</a></li>
+										<li><a href="/woman/index.do?menu_id=00000609">FAQ</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/health/index.do">건강&middot;보건&middot;위생</a>
+						<ul>
+							<li><a href="/health/index.do?menu_id=00000423"><span>건강소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/health/index.do?menu_id=00000621">공지사항</a></li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/12/1" target="_blank" title="새 창">전자책</a></li> -->
+										<li><a href="/health/index.do?menu_id=00000626">동영상</a></li>
+										<li><a href="/health/index.do?menu_id=00000627">자료실</a></li>
+										<li><a href="/health/index.do?menu_id=00000630">관련누리집</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/health/index.do?menu_id=00000424"><span>건강생활정보</span></a>
+								<div>
+									<ul>
+										<li><a href="/health/index.do?menu_id=00001013">건강증진</a>
+											<ul>
+												<li><a href="/health/index.do?menu_id=00000640">건강생활정보</a></li>
+												<li><a href="/health/index.do?menu_id=00000631">금연환경</a></li>
+												<li><a href="/health/index.do?menu_id=00000641">암관리</a></li>
+												<li><a href="/health/index.do?menu_id=00000632">심뇌혈관질환</a></li>
+												<li><a href="/health/index.do?menu_id=00000642">법정감염병 안내</a></li>
+												<li><a href="/health/index.do?menu_id=00000643">예방접종안내</a></li>
+											</ul>
+										</li>
+										<li><a href="/health/index.do?menu_id=00940291">임신 전 건강관리 지원</a></li>
+										<li><a href="/health/index.do?menu_id=00000644">임산부 건강관리</a></li>
+										<li><a href="/health/index.do?menu_id=00000635">영유아 건강지원</a></li>
+										<li><a href="/health/index.do?menu_id=00000636">희귀질환자 의료비 지원 안내</a></li>
+										<li><a href="https://nip.kdca.go.kr/irgd/index.html"  target="_blank"  title="새 창">예방접종 지정기관</a></li>
+										<li><a href="/health/index.do?menu_id=00000638">심폐소생술</a></li>
+										<li><a href="/health/index.do?menu_id=00935800">지역사회건강조사</a></li>
+										<li><a href="/health/index.do?menu_id=00938660">어린이 건강지원</a>
+											<ul>
+												<li><a href="/health/index.do?menu_id=00938663">초등학생 치과주치의</a></li>
+											</ul>
+										</li>
+										<li><a href="/health/index.do?menu_id=00938650">어르신 건강지원</a></li>
+										<li><a href="/health/index.do?menu_id=00938661">장애인 건강지원</a>
+											<ul>
+												<li><a href="/health/index.do?menu_id=00938664">지역사회중심재활사업</a></li>
+												<li><a href="/health/index.do?menu_id=00938662">권역장애인구강진료센터 운영</a></li>
+												<li><a href="/health/index.do?menu_id=00938960">대구지역장애인보건의료센터</a></li>
+											</ul>
+										</li>
+										<li><a href="/health/index.do?menu_id=00940140" class="">공공보건의료 정보</a>
+											<ul>
+												<li><a href="/health/index.do?menu_id=00935821">공공보건의료기관 협의체</a></li>
+												<li><a href="/health/index.do?menu_id=00940141">교육일정</a></li>
+												<li><a href="/health/index.do?menu_id=00940142">행사일정</a></li>
+												<li><a href="/health/index.do?menu_id=00940143">카드뉴스</a></li>
+											</ul>
+										</li>
+										<li><a href="/health/index.do?menu_id=00940340">전 국민 마음투자 지원</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/health/index.do?menu_id=00000425"><span>의료기관안내</span></a>
+								<div>
+									<ul>
+										<li><a href="/health/index.do?menu_id=00001038">의료기관현황</a></li>
+										<li><a href="/health/index.do?menu_id=00001040">보건소안내</a></li>
+										<li><a href="/health/index.do?menu_id=00933174">응급의료기관 등 현황</a></li>
+										<li><a href="http://www.kdca.go.kr/index.es?sid=a2"  target="_blank"  title="새 창">예방접종 지정기관</a></li>
+										<li><a href="http://www.e-gen.or.kr/nemc/main.do"  target="_blank"  title="새 창">응급의료정보제공</a></li>
+										<li><a href="/health/index.do?menu_id=00933130">건강보험 거짓청구 요양기관 명단 공표</a></li>
+										<li><a href="/health/index.do?menu_id=00936060">소아 야간&middot;휴일 진료기관</a></li>
+										<li><a href="https://www.hira.or.kr/npay/index.do?pgmid=HIRAA030009000000&WT.gnb=%EB%B9%84%EA%B8%89%EC%97%AC%EC%A7%84%EB%A3%8C%EB%B9%84%EC%A0%95%EB%B3%B4#app%2Fra%2FnpayIntro"  target="_blank"  title="새 창">비급여 진료 정보</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/health/index.do?menu_id=00933126"><span>의약품 정보방</span></a>
+								<div>
+									<ul>
+										<li><a href="/health/index.do?menu_id=00933164">심야자정약국운영현황</a></li>
+										<li><a href="http://www.e-gen.or.kr/egen/search_pharmacy.do"  target="_blank"  title="새 창">휴일근무약국</a></li>
+										<li><a href="/health/index.do?menu_id=00933168">안전상비의약품 목록 안내</a></li>
+										<!-- <li><a href="/health/index.do?menu_id=00933171">마약류 양도승인절차</a></li> -->
+										<li><a href="/health/index.do?menu_id=00933172">마약류 중독자 치료보호안내</a></li>
+										<li><a href="/health/index.do?menu_id=00933173">자율점검제 안내</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/health/index.do?menu_id=00000426"><span>민원 체험 교육</span></a>
+								<div>
+									<ul>
+										<!-- 	<li><a href="/health/index.do?menu_id=00001052">보건환경연구원 검사안내</a>
+										<ul>
+											<li><a href="/health/index.do?menu_id=00001364">검사의뢰절차</a></li>
+											<li><a href="/health/index.do?menu_id=00001054">검사수수료</a></li>
+											<li><a href="/cmsh/daegu.go.kr/health/file/2021_test_submission.hwp"  target="_blank"  title="새 창">시험의뢰서 양식 내려받기</a></li>
+										</ul>
+										</li> -->
+										<li><a href="/health/index.do?menu_id=00001088">안마사 자격증 교부</a></li>
+										<li><a href="https://www.k-medi.or.kr/index.do"  target="_blank"  title="새 창">의료분쟁 조정신청</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/health/index.do?menu_id=00935410"><span>위생</span></a>
+								<div>
+									<ul>
+										<li><a href="/health/index.do?menu_id=00935411">어린이 급식관리지원 센터</a></li>
+										<li><a href="/health/index.do?menu_id=00935412">국가안전대진단</a></li>
+										<li><a href="/health/index.do?menu_id=00935413">재난취약시설 의무보험 가입</a></li>
+										<li><a href="/health/index.do?menu_id=00935414">HACCP</a></li>
+										<li><a href="/health/index.do?menu_id=00935416">식중독 예방</a></li>
+										<li><a href="/health/index.do?menu_id=00935417">대구음식 브랜드</a></li>
+										<li><a href="/health/index.do?menu_id=00935418">식품진흥기금 융자사업 안내</a></li>
+										<li><a href="/health/index.do?menu_id=00935419">음식점 위생등급제</a></li>
+										<li><a href="/health/index.do?menu_id=00935420">음식문화개선</a></li>
+										<li><a href="/health/index.do?menu_id=00935421">나트륨 줄이기</a></li>
+										<li><a href="/health/index.do?menu_id=00935422">위생업소 안내</a></li>
+										<li><a href="/health/index.do?menu_id=00935415">위생업소 지도·점검</a></li>
+										<li><a href="/health/index.do?menu_id=00938910">대구우수식품</a></li>
+									</ul>
+								</div>
+							</li>
+							
+							<li><a href="/health/index.do?menu_id=00939301"><span>감염병</span></a>
+								<div>
+									<ul>
+										<li><a href="/health/index.do?menu_id=00940020">감염병소식</a>
+											<ul>
+												<li> <a href="/health/index.do?menu_id=00940021">감염병 주요뉴스</a> </li>
+												<li><a href="https://daegucidcp.kr/infection/newsletter.html"  target="_blank"  title="새 창">주간 감염병 소식지</a></li>
+											</ul>
+											</li>
+											<li><a href="/health/index.do?menu_id=00940023">감염병 관리</a>
+												<ul>
+													<li><a href="/health/index.do?menu_id=00000642">법정감염병 안내</a></li>
+													<li><a href="/health/index.do?menu_id=00940024">코로나19</a></li>
+												</ul>
+												</li>
+												<li><a href="/health/index.do?menu_id=00940025">해외 감염병</a>
+													<ul>
+													<li><a href="/health/index.do?menu_id=00939710">해외감염병NOW</a></li>
+													<li><a href="/health/index.do?menu_id=00940026">해외여행 시 예방수칙</a></li>
+													</ul>
+													</li>
+													<li><a href="/health/index.do?menu_id=00000643">백신예방접종</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/eco/index.do">산업&middot;경제</a>
+						<ul>
+							<li><a href="/eco/index.do?menu_id=00000427"><span>산업/경제 소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/eco/index.do?menu_id=00001043">공지사항</a></li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/13/1" target="_blank" title="새 창">전자책</a></li> -->
+										<li><a href="/eco/index.do?menu_id=00001048">동영상</a></li>
+										<li><a href="/eco/index.do?menu_id=00001049">자료실</a></li>
+										<li><a href="/eco/index.do?menu_id=00001053">관련누리집</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/eco/index.do?menu_id=00000428"><span>생활정보</span></a>
+								<div>
+									<ul>
+										<li><a href="/eco/index.do?menu_id=00001056">물가동향</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00932844">소비자물가</a></li>
+												<li><a href="/eco/index.do?menu_id=00001063">가격동향</a></li>
+												<li><a href="https://at.agromarket.kr/index.do"  target="_blank"  title="새 창">도매시장통합정보</a></li>
+												<li><a href="https://kostat.go.kr/ardb/"  target="_blank"  title="새 창">동북지방통계청</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001068">전통시장안내</a>
+											<ul>
+												<li><a href="http://www.sbiz.or.kr/sijangtong/nation/sijang/readSijangList.do?menu_id=010100"  target="_blank"  title="새 창">전통시장찾기</a></li>
+												<li><a href="/eco/index.do?menu_id=00001070">전통시장 지원</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001076">소비자보호</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001079">소비자상담</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001863">서민금융종합지원</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/eco/index.do?menu_id=00000429"><span>기업정보</span></a>
+								<div>
+									<ul>
+										<li><a href="/eco/index.do?menu_id=00001082">투자환경</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00938690">투자매력</a></li>
+												<!-- 	<li><a href="https://www.investkorea.org/dg-kr/index.do"  target="_blank"  title="새 창">외국인투자안내</a></li> -->
+												<li><a href="/eco/index.do?menu_id=00001101">지원제도</a></li>
+												<!-- 	<li><a href="http://modooground.com/vr/client21/dg/investing/"  target="_blank"  title="새 창">투자입지</a></li> -->
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001084">원스톱기업지원</a></li>
+										<li><a href="/eco/index.do?menu_id=00001085">국제통상</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001107">대구시통상시책방향</a></li>
+												<li><a href="http://trade.daegu.go.kr/"  target="_blank"  title="새 창">수출지원시스템</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001089">지역기업 우수제품</a></li>
+										<li><a href="/eco/index.do?menu_id=00933632">사회적경제 기업 </a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00934250">사회적경제 기업</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/eco/index.do?menu_id=00000430"><span>산업정보</span></a>
+								<div>
+									<ul>
+										<li><a href="/eco/index.do?menu_id=00001124">첨단산업단지</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001126">대구국가산업단지</a></li>
+												<li><a href="/eco/index.do?menu_id=00001127">성서5차첨단산업단지</a></li>
+												<li><a href="/eco/index.do?menu_id=00001128">대구테크노폴리스</a></li>
+												<li><a href="/eco/index.do?menu_id=00001140">대구경북첨단의료복합단지</a></li>
+												<li><a href="/eco/index.do?menu_id=00001142">대구연구개발특구</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001143">지역산업현황</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001144">산업현황</a></li>
+												<li><a href="/eco/index.do?menu_id=00001145">외국인투자현황</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001148">대구산업단지현황</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001149">산업단지현황</a></li>
+												<!--li><a href="/eco/index.do?menu_id=00001150">공장설립지원센터</a></li-->
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00933468">에너지산업현황</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00933470">에너지산업 통계</a></li>
+												<li><a href="/eco/index.do?menu_id=00933471">에너지정책</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/eco/index.do?menu_id=00000431"><span>대구혁신도시</span></a>
+								<div>
+									<ul>
+										<li><a href="/eco/index.do?menu_id=00001151">혁신도시</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001160">사업개요</a></li>
+												<li><a href="/eco/index.do?menu_id=00001161">비전목표</a></li>
+												<li><a href="/eco/index.do?menu_id=00001162">추진상황</a></li>
+												<li><a href="/eco/index.do?menu_id=00001163">기대효과</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001154">사업개발계획</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001169">토지이용계획</a></li>
+												<li><a href="/eco/index.do?menu_id=00001170">주택 및 인구배분 계획</a></li>
+												<li><a href="/eco/index.do?menu_id=00001171">공원/녹지 계획</a></li>
+												<li><a href="/eco/index.do?menu_id=00001172">도시지원시설</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001158">공동주택 공급현황</a></li>
+										<li><a href="/eco/index.do?menu_id=00001159">이전공공기관현황</a></li>
+										<li><a href="/eco/index.do?menu_id=00934870">정보마당</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00934871">공지사항</a></li>
+												<li><a href="/eco/index.do?menu_id=00934872">혁신도시 자료실</a></li>
+												<li><a href="/eco/index.do?menu_id=00934873">사이버홍보관(포토갤러리)</a></li>
+												<li><a href="/eco/index.do?menu_id=00934875">관련사이트</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/eco/index.do?menu_id=00000432"><span>농정정보</span></a>
+								<div>
+									<ul>
+										<li><a href="/eco/index.do?menu_id=00001175">농정정보</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001179">대구의 농업</a></li>
+												<li><a href="https://www.enviagro.go.kr/portal/content/html/info/certSys.jsp" target="_blank"  title="새 창">친환경농산물 인증제도 안내</a></li>
+												<li><a href="https://www.animal.go.kr/front/awtis/public/publicList.do?menuNo=1000000055"  target="_blank"  title="새 창">유기 유실동물 구조</a></li>
+												<li><a href="/eco/index.do?menu_id=00001182">가축전염병 발생현황</a></li>
+												<li><a href="/eco/index.do?menu_id=00001183">가축인공수정사 면허증 안내</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001176">농업기술센터</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001184">농업기술센터 소개</a></li>
+												<li><a href="/eco/index.do?menu_id=00933005">대구의 농업</a></li>
+												<li><a href="/eco/index.do?menu_id=00001192">농촌지도사업</a></li>
+												<li><a href="/eco/index.do?menu_id=00933684">교육안내</a></li>
+												<li><a href="/eco/index.do?menu_id=00933004">농기계임대사업</a></li>
+												<li><a href="/eco/index.do?menu_id=00001193">센터시설안내</a></li>
+												<li><a href="/eco/index.do?menu_id=00935891">공지사항</a></li>
+												<li><a href="/eco/index.do?menu_id=00934470">농업기술정보</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001177">농수산물도매시장</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00937621">공지사항</a></li>
+												<li><a href="/eco/index.do?menu_id=00001204">설립목적 및 연혁</a></li>
+												<li><a href="/eco/index.do?menu_id=00001205">도매시장</a></li>
+												<li><a href="/eco/index.do?menu_id=00001206">유통종사자</a></li>
+												<li><a href="/eco/index.do?menu_id=00001207">실시간경락정보</a></li>
+												<li><a href="/eco/index.do?menu_id=00933124">경락가격정보</a></li>
+												<li><a href="/eco/index.do?menu_id=00933125">거래물량정보</a></li>
+												<li><a href="/eco/index.do?menu_id=00001208">유통정보</a></li>
+												<li><a href="/eco/index.do?menu_id=00001209">안전성검사</a></li>
+												<li><a href="/eco/index.do?menu_id=00933424">안전성검사결과</a></li>
+												<li><a href="/eco/index.do?menu_id=00934860">도매법인공시</a></li>
+											</ul>
+										</li>
+										<!-- 	<li><a href="/eco/index.do?menu_id=00001178">동물위생시험소</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00001211">동물방역</a></li>
+												<li><a href="/eco/index.do?menu_id=00001212">축산물 분석</a></li>
+												<li><a href="/eco/index.do?menu_id=00001213">축산물 위생</a></li>
+											</ul>
+										</li> -->
+										<li><a href="/eco/index.do?menu_id=00937715">도시농업</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/eco/index.do?menu_id=00000433"><span>창업/취업</span></a>
+								<div>
+									<ul>
+										<li><a href="/eco/index.do?menu_id=00001214">시험정보(채용)</a>
+											<ul>
+												<li><a href="/eco/index.do?menu_id=00936470">공채/경채 공무원</a></li>
+												<li><a href="/eco/index.do?menu_id=00936471">임기제/별정직 공무원</a></li>
+												<li><a href="/eco/index.do?menu_id=00937500">청원경찰</a></li>
+												<li><a href="/eco/index.do?menu_id=00936472">개방형직위</a></li>
+												<li><a href="/eco/index.do?menu_id=00001224">성적조회</a></li>
+												<li><a href="/eco/index.do?menu_id=00001226">수렵면허시험</a></li>
+												<li><a href="/eco/index.do?menu_id=00935260">시험통계</a></li>
+												<li><a href="/eco/index.do?menu_id=00936841">공무직근로자</a></li>
+											</ul>
+										</li>
+										<li><a href="/eco/index.do?menu_id=00001215">기간제 및  타기관 채용소식</a></li>
+										<li><a href="https://dgjob.daegu.go.kr/"  target="_blank"  title="새 창">일자리정보</a></li>
+										<li><a href="/eco/index.do?menu_id=00001866">여성창업보육센터</a></li>
+										<li><a href="/eco/index.do?menu_id=00001867">여성취업정보</a></li>
+										<li><a href="http://startup.daegu.go.kr/"  target="_blank"  title="새 창">창업허브(기술창업정보)</a></li>
+										<li><a href="/YouthPolicy/index.do"  target="_blank"  title="새 창">청년정책</a></li>
+										<li><a href="/eco/index.do?menu_id=00938230">대구 지역주도형 청년일자리사업</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/eco/index.do?menu_id=00000434"><span>민원</span></a>
+								<div>
+									<ul>
+										<li><a href="/eco/index.do?menu_id=00001227">소비자 상담신청</a></li>
+										<!--  -->
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/env/index.do">환경</a>
+						<ul>
+							<li><a href="/env/index.do?menu_id=00000436"><span>환경소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/env/index.do?menu_id=00001230">공지사항</a></li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/14/1" target="_blank" title="새 창">전자책</a></li> -->
+										<li><a href="/env/index.do?menu_id=00001235">동영상</a></li>
+										<li><a href="/env/index.do?menu_id=00001236">자료실</a></li>
+										<li><a href="/env/index.do?menu_id=00001239">관련누리집</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/env/index.do?menu_id=00000437"><span>산림 &middot; 녹지</span></a>
+								<div>
+									<ul>
+										<li><a href="/env/index.do?menu_id=00001240">추진시책</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00001246">도시숲 조성</a></li>
+												<li><a href="/env/index.do?menu_id=00001247">시민참여도시녹화운동</a></li>
+												<li><a href="/env/index.do?menu_id=00001248">가로수 조성 및 관리</a></li>
+											</ul>
+										</li>
+										<li><a href="/env/index.do?menu_id=00001241">푸른 대구 가꾸기</a></li>
+										<li><a href="/env/index.do?menu_id=00001242">산림재해예방</a></li>
+										<li><a href="/env/index.do?menu_id=00001243">산림녹화 및 산림휴양공간조성</a></li>
+										<li><a href="/env/index.do?menu_id=00001244">야생생물 보호</a></li>
+										<li><a href="/env/index.do?menu_id=00001245">야생동물 구조·치료기관</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/env/index.do?menu_id=00000859"><span>공원</span></a>
+								<div>
+									<ul>
+										<li><a href="/env/index.do?menu_id=00936061">팔공산</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00000912">팔공산자연공원</a></li>
+											</ul>
+										</li>
+										<li><a href="/env/index.do?menu_id=00936062">도시공원</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00000924">달성공원</a></li>
+												<li><a href="/env/index.do?menu_id=00000933">앞산공원</a></li>
+												<li><a href="/env/index.do?menu_id=00000940">두류공원</a></li>
+												<li><a href="/env/index.do?menu_id=00936090">포토갤러리</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/env/index.do?menu_id=00000438"><span>물</span></a>
+								<div>
+									<ul>
+										<li><a href="/env/index.do?menu_id=00001249">지역별 수질정보</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00001258">수질 환경기준</a></li>
+											</ul>
+										</li>
+										<li><a href="/env/index.do?menu_id=00001250">물환경 정책 및 현황</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00001263">낙동강, 금호강, 위천의 유래</a></li>
+												<li><a href="/env/index.do?menu_id=00937650">수질오염총량관리</a></li>
+											</ul>
+										</li>
+										<li><a href="/env/index.do?menu_id=00001251">하수처리</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00001275">하수도 현황</a></li>
+												<li><a href="/env/index.do?menu_id=00001277">하수처리장 현황</a></li>
+												<li><a href="/env/index.do?menu_id=00001871">하수도요금산정기준</a></li>
+												<li><a href="/env/index.do?menu_id=00001872">하수도원가정보</a></li>
+												<li><a href="/env/index.do?menu_id=00001873">소중한물 올바르게사용합시다</a></li>
+											</ul>
+										</li>
+										<li><a href="/env/index.do?menu_id=00001252">환경분야검사(수질)</a></li>
+										<li><a href="/env/index.do?menu_id=00001254">물산업허브</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00001296">국가 물산업 클러스터</a></li>
+												<li><a href="/env/index.do?menu_id=00001298">물산업 육성 추진전략</a></li>
+											</ul>
+										</li>
+										<li><a href="/env/index.do?menu_id=00938540">먹는물 관련 영업자 위반 현황</a></li>
+										<li><a href="/env/index.do?menu_id=00939991">하수관거 BTL사업 </a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00939992">임대형민간투자사업(BTL)이란?</a></li>
+												<li><a href="/env/index.do?menu_id=00939993">달서천 1구역 BTL</a></li>
+												<li><a href="/env/index.do?menu_id=00941180">달서천 2~4구역 BTL</a></li>
+												<li><a href="/env/index.do?menu_id=00939994">주민참여마당</a></li>
+											</ul>
+										</li>
+										<li><a href="/env/index.do?menu_id=00940310">수돗물 품질보고서</a></li>
+										<li><a href="/env/index.do?menu_id=00940390">신천 시민지킴이단 </a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00940391">신천 시민지킴이단 소개</a></li>
+												<li><a href="/env/index.do?menu_id=00940392">신천 시민지킴이단 활동</a></li>
+											</ul>
+										</li>
+										<li><a href="http://www.daegu.go.kr/daeguPolicy/10/index.html" target="_blank" title="새 창">신천프로젝트사업</a></li>
+										<li><a href="/env/index.do?menu_id=00941410">취수원 소통마당 </a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00941420">대구 취수원 개선 추진현황</a></li>
+												<li><a href="/env/index.do?menu_id=00941430">취수원 소통마당</a></li>
+												<li><a href="/env/index.do?menu_id=00941440">시민의견 게시판</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/env/index.do?menu_id=00940353"><span>대기</span></a>
+								<ul>
+									<li><a href="/env/index.do?menu_id=00001300">대기오염도현황</a></li>
+									<li><a href="http://air.daegu.go.kr/open_content/ko/index.do" target="_blank" title="새 창">실시간 대기정보</a></li>
+									<li><a href="/env/index.do?menu_id=00001303">대기오염 예/경보알림</a></li>
+									<li><a href="/env/index.do?menu_id=00001310">환경분야검사(대기)</a></li>
+									<!--  -->
+									<li><a href="/env/index.do?menu_id=00939690">노후자동차 조기폐차 지원</a></li>
+									<li><a href="/env/index.do?menu_id=00936714">배출가스 5등급차량 운행제한</a></li>
+									<li><a href="/env/index.do?menu_id=00938280">운행경유차 매연저감장치 부착지원사업</a></li>
+									<li><a href="/env/index.do?menu_id=00938281">액화석유가스(LPG)차 전환 지원사업</a></li>
+									<li><a href="/env/index.do?menu_id=00938440">클린로드 운영</a></li>
+									<li><a href="/env/index.do?menu_id=00939860">친환경차 민간 보급사업 알림서비스</a></li>
+									<li><a href="/env/index.do?menu_id=00940910">전기(수소)차 판매 승인 신청</a></li>
+									<li><a href="/env/index.do?menu_id=00940911">전기차 폐배터리 반납 신청</a></li>
+									<li><a href="/env/index.do?menu_id=00941140">전기차 충전시설 신고 및 책임보험 가입</a></li>
+									<!--  -->
+								</ul>
+							</li>
+
+							<li><a href="/env/index.do?menu_id=00000439"><span>탄소중립</span></a>
+								<div>
+									<ul>
+										<li><a href="/env/index.do?menu_id=00938050">탄소중립</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00937751">탄소중립이란?</a></li>
+												<li><a href="/env/index.do?menu_id=00938051">탄소중립 선도도시 대구</a></li>
+											</ul>
+										</li>
+										<li><a href="/env/index.do?menu_id=00001309">탄소중립포인트제(에너지)</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/env/index.do?menu_id=00000440"><span>자원재활용</span></a>
+								<div>
+									<ul>
+										<li><a href="/env/index.do?menu_id=00935630">폐기물처분부담금 제도</a></li>
+										<li><a href="/env/index.do?menu_id=00001319">분리수거 품목 및 배출요령</a></li>
+										<li><a href="/env/index.do?menu_id=00938311">투명페트병 분리배출</a></li>
+										<li><a href="/env/index.do?menu_id=00001320">음식물류폐기물 감량 및 자원화</a></li>
+										<li><a href="/env/index.do?menu_id=00001321">재활용품 판매센터현황</a></li>
+										<li><a href="/env/index.do?menu_id=00001322">생산자책임 재활용제도(EPR)</a></li>
+										<li><a href="/env/index.do?menu_id=00001323">빈병보증금 반환제도</a></li>
+										<li><a href="/env/index.do?menu_id=00001324">분리배출 표시제도</a></li>
+										<li><a href="/env/index.do?menu_id=00001325">쓰레기 봉투가격</a></li>
+										<li><a href="/env/index.do?menu_id=00001326">종량제봉투 이용안내</a></li>
+										<li><a href="/env/index.do?menu_id=00001328">1회용품 사용규제</a></li>
+										<li><a href="/env/index.do?menu_id=00001329">포장폐기물 감량화</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/env/index.do?menu_id=00932924"><span>폐기물매립</span></a>
+								<div>
+									<ul>
+										<li><a href="/env/index.do?menu_id=00932925">폐기물처리과정</a></li>
+										<li><a href="/env/index.do?menu_id=00932926">주요시책사업</a></li>
+										<li><a href="/env/index.do?menu_id=00932927">폐기물관련정보</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00932928">폐기물 관련사항</a></li>
+												<li><a href="/env/index.do?menu_id=00932929">쓰레기 썩는 기간</a></li>
+											</ul>
+										</li>
+										<li><a href="/env/index.do?menu_id=00936330">폐기물매립관련현황 </a></li>
+										<li><a href="/env/index.do?menu_id=00932930">견학안내</a></li>
+										<li><a href="/env/index.do?menu_id=00932931">생활체육시설안내</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/env/index.do?menu_id=00938060"><span>생활환경</span></a>
+								<div>
+									<ul>
+										<li><a href="/env/index.do?menu_id=00938061">빛공해 관리</a></li>
+										<li><a href="/env/index.do?menu_id=00938070">실내공기질 관리</a></li>
+										<li><a href="/env/index.do?menu_id=00938080">석면건축물 관리</a></li>
+										<li><a href="/env/index.do?menu_id=00938081">석면피해구제급여 지원</a></li>
+										<li><a href="/env/index.do?menu_id=00938082">녹색제품 구매</a></li>
+										<li><a href="/env/index.do?menu_id=00001981">환경분쟁조정피해구제위원회</a>
+											<ul>
+												<li><a href="/env/index.do?menu_id=00001982">위원회 소개</a></li>
+												<li><a href="/env/index.do?menu_id=00001983">환경분쟁조정제도 안내</a></li>
+												<li><a href="/env/index.do?menu_id=00001984">분쟁조정신청 안내</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/safety/index.do">소방&middot;안전</a>
+						<ul>
+							<li><a href="/safety/index.do?menu_id=00000452"><span>안전 소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/safety/index.do?menu_id=00001129">공지사항</a></li>
+										<li><a href="/safety/index.do?menu_id=00001130">재난안전일일상황</a></li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/15/1" target="_blank" title="새 창">전자책</a></li> -->
+										<li><a href="/safety/index.do?menu_id=00001135">동영상</a></li>
+										<li><a href="/safety/index.do?menu_id=00001136">자료실</a></li>
+										<li><a href="/safety/index.do?menu_id=00001141">관련누리집</a></li>
+										<li><a href="/safety/index.do?menu_id=00935932">대구시민안전보험</a>
+											<ul>
+												<li><a href="/safety/index.do?menu_id=00935933">시민안전보험 소개</a></li>
+												<li><a href="/safety/index.do?menu_id=00935934">시민안전보험 Q&amp;A</a></li>
+												<li><a href="/safety/index.do?menu_id=00935935">시민안전보험 용어해설</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/safety/index.do?menu_id=00000453"><span>재해/재난</span></a>
+								<div>
+									<ul>
+										<li><a href="/safety/index.do?menu_id=00933450">재난안전대책본부</a>
+											<ul>
+												<li><a href="/safety/index.do?menu_id=00933453">운영체계</a></li>
+												<li><a href="/safety/index.do?menu_id=00933454">주관부서</a></li>
+												<li><a href="/safety/index.do?menu_id=00933455">실무반</a></li>
+												<li><a href="/safety/index.do?menu_id=00933467">유관기관</a></li>
+											</ul>
+										</li>
+										<li><a href="/safety/index.do?menu_id=00934190">재난관리 체계</a>
+											<ul>
+												<li><a href="/safety/index.do?menu_id=00933452">국가재난안전관리체계</a></li>
+												<li><a href="/safety/index.do?menu_id=00933451">재난관리 표준절차</a></li>
+												<li><a href="/safety/index.do?menu_id=00800221">근무체계</a></li>
+											</ul>
+										</li>
+										<li><a href="/safety/index.do?menu_id=00001268">시민 행동 요령</a>
+											<ul>
+												<li><a href="/119/index.do?menu_id=00001555"  target="_blank"  title="새 창">화재/전기/가스사고</a></li>
+												<li><a href="/119/index.do?menu_id=00002145"  target="_blank"  title="새 창">응급조치</a></li>
+												<li><a href="/safety/index.do?menu_id=00001273">태풍과 호우</a></li>
+												<li><a href="/safety/index.do?menu_id=00934281">강풍</a></li>
+												<li><a href="/safety/index.do?menu_id=00001276">대설</a></li>
+												<li><a href="/safety/index.do?menu_id=00001278">한파</a></li>
+												<li><a href="/safety/index.do?menu_id=00001279">지진</a></li>
+												<li><a href="/safety/index.do?menu_id=00001280">황사</a></li>
+												<li><a href="/safety/index.do?menu_id=00001282">폭염</a></li>
+												<li><a href="/safety/index.do?menu_id=00934282">가뭄</a></li>
+												<li><a href="/safety/index.do?menu_id=00001284">산불</a></li>
+												<li><a href="/safety/index.do?menu_id=00934283">낙뢰</a></li>
+											</ul>
+										</li>
+										<li><a href="/safety/index.do?menu_id=00934270">재난안전시설</a>
+											<ul>
+												<li><a href="/safety/index.do?menu_id=00001253">재난안전관리대상시설</a></li>
+												<li><a href="/safety/index.do?menu_id=00934271">재난대피시설</a></li>
+											</ul>
+										</li>
+										<li><a href="https://www.safekorea.go.kr/idsiSFK/neo/main/main.html" target="_blank" title="새 창">국민재난안전포털</a></li>
+										<li><a href="https://www.mois.go.kr/frt/sub/a06/b11/safetyStep/screen.do" target="_blank" title="새 창">안전디딤돌 앱</a></li>
+										<li><a href="https://www.floodmap.go.kr/public/publicIntro.do" target="_blank" title="새 창">홍수위험지도(환경부)</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/safety/index.do?menu_id=00000454"><span>안전문화운동</span></a>
+								<div>
+									<ul>
+										<li><a href="/safety/index.do?menu_id=00001287">안전관리헌장</a></li>
+										<li><a href="/safety/index.do?menu_id=00001288">안전문화 정의</a></li>
+										<li><a href="/safety/index.do?menu_id=00001290">안전문화 필요성</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/safety/index.do?menu_id=00000455"><span>민방위안내</span></a>
+								<div>
+									<ul>
+										<li><a href="/safety/index.do?menu_id=00001294">훈련안내</a></li>
+										<li><a href="/safety/index.do?menu_id=00001295">편성 및 교육</a></li>
+										<li><a href="/safety/index.do?menu_id=00001297">민방위대 동원</a></li>
+										<li><a href="/safety/index.do?menu_id=00001299">비상대피/급수시설 현황</a></li>
+										<li><a href="/safety/index.do?menu_id=00001301">비상시 국민행동요령</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/safety/index.do?menu_id=00000456"><span>실시간정보</span></a>
+								<div>
+									<ul>
+										<li><a href="https://www.weather.go.kr/w/index.do"  target="_blank"  title="새 창">기상정보</a></li>
+										
+										<li><a href="http://car.daegu.go.kr/"  target="_blank"  title="새 창">교통정보</a></li>
+										<li><a href="/safety/index.do?menu_id=00934330">강우 정보</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/safety/index.do?menu_id=00000457"><span>시민생활안전지킴이</span></a>
+								<div>
+									<ul>
+										<li><a href="/safety/index.do?menu_id=00001316">시민생활안전지킴이</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/safety/index.do?menu_id=00940230"><span>중대재해예방</span></a>
+								<div>
+									<ul>
+										<li><a href="/safety/index.do?menu_id=00940231">중대재해처벌법 개요</a></li>
+										<!-- <li><a href="/safety/index.do?menu_id=00940232">대구시 안전보건 경영방침</a></li> -->
+										<li><a href="/safety/index.do?menu_id=00940233">중대재해예방 정보</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/build/index.do">도시주택&middot;건설</a>
+						<ul>
+							<li><a href="/build/index.do?menu_id=00000458"><span>도시주택/건설 소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/build/index.do?menu_id=00001332">공지사항</a></li>
+										<li><a href="/build/index.do?menu_id=00933692">계약관련 자료실</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00933693">계약관련법령</a></li>
+												<li><a href="/build/index.do?menu_id=00933694">계약관련서식</a></li>
+												<li><a href="/build/index.do?menu_id=00933695">기타자료실</a></li>
+											</ul>
+										</li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/16/1" target="_blank" title="새 창">전자책</a></li> -->
+										<li><a href="/build/index.do?menu_id=00001337">동영상</a></li>
+										<li><a href="/build/index.do?menu_id=00001338">자료실</a></li>
+										<li><a href="/build/index.do?menu_id=00001341">관련누리집</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/build/index.do?menu_id=00933127"><span>도시계획</span></a>
+								<div>
+									<ul>
+										<li><a href="/build/index.do?menu_id=00933154">광역도시계획</a></li>
+										<li><a href="/build/index.do?menu_id=00933155">도시기본계획</a></li>
+										<li><a href="/build/index.do?menu_id=00933156">도시관리계획</a></li>
+										<li><a href="/build/index.do?menu_id=00933157">도시계획정보</a></li>
+										<li><a href="/build/index.do?menu_id=00933159">도시계획현황통계</a></li>
+										<li><a href="/build/index.do?menu_id=00933900">도시계획 개요</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00933901">광역도시계획이란?</a></li>
+												<li><a href="/build/index.do?menu_id=00933902">도시기본계획이란?</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/build/index.do?menu_id=00000459"><span>토지/주택</span></a>
+								<div>
+									<ul>
+										<li><a href="/build/index.do?menu_id=00001342">부동산정보</a>
+											<ul>
+												<li><a href="https://www.dgs.go.kr/portal/oalp/search.do?mid=0205030200&amp;token=1741764186545" target="_blank" title="새 창">개별공시지가 열람</a></li>
+												<li><a href="/build/index.do?menu_id=00001344">토지거래허가제</a></li>
+												<li><a href="/build/index.do?menu_id=00001345">개별주택가격열람</a></li>
+												<li><a href="/build/index.do?menu_id=00001346">부동산중개업정보</a></li>
+												<li><a href="/build/index.do?menu_id=00936180">글로벌 부동산중개사무소</a></li>
+												<li><a href="/build/index.do?menu_id=00001347">부동산개발업등록</a></li>
+												<li><a href="/build/index.do?menu_id=00001348">조상 땅 찾기</a></li>
+												<li><a href="/build/index.do?menu_id=00001349">부동산종합증명서 발급 안내</a></li>
+												<li><a href="https://seereal.lh.or.kr/main.do" target="_blank" title="새 창">부동산정보조회</a></li>
+												<li><a href="/build/index.do?menu_id=00934790">지적공부 등록현황</a></li>
+												<li><a href="/build/index.do?menu_id=00935020">부동산 불법거래 신고센터</a></li>
+												<li><a href="/build/index.do?menu_id=00935780">지적통계연보</a></li>
+												<li><a href="/build/index.do?menu_id=00940080">전세사기피해지원</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="/build/index.do?menu_id=00940080">전세사기피해지원</a>
+										</li>
+										<li>
+											<a href="/build/index.do?menu_id=00941310">전세사기피해예방</a>
+										</li>
+										<!--  -->
+										<li><a href="/build/index.do?menu_id=00001355">도로명 주소</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00001356">도로명주소란</a></li>
+												<li><a href="/build/index.do?menu_id=00001357">도로명부여 및 안내시설물 현황</a></li>
+											</ul>
+										</li>
+										<li><a href="/build/index.do?menu_id=00936030">측량업관리</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00936031">측량업 현황</a></li>
+											</ul>
+										</li>
+										<li><a href="http://map.ngii.go.kr/ms/nmfpcInfo/nmfpcBeffat.do" target="_blank" title="새 창">지명사전</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/build/index.do?menu_id=00000461"><span>도시재생/정비</span></a>
+								<div>
+									<ul>
+										<li><a href="/build/index.do?menu_id=00935910">도시재생정책</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00935911">도시재생전략</a></li>
+												<li><a href="/build/index.do?menu_id=00935912">도시재생활성화지역</a></li>
+											</ul>
+										</li>
+										<li><a href="/build/index.do?menu_id=00935913">도시재생사업</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00935914">도시재생뉴딜사업</a></li>
+												<!--  -->
+												<li><a href="/build/index.do?menu_id=00935916">도시활력증진지역개발사업</a></li>
+												<li><a href="/build/index.do?menu_id=00935917">새뜰마을사업</a></li>
+											</ul>
+										</li>
+										<li><a href="/build/index.do?menu_id=00001363">도시정비사업</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00001811">도시 및 주거환경 정비사업</a></li>
+												<li><a href="/build/index.do?menu_id=00001812">도시주거환경정비 기본계획</a></li>
+											</ul>
+										</li>
+										<li><a href="/build/index.do?menu_id=00941710">노후계획도시정비사업</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/build/index.do?menu_id=00933841"><span>도시디자인</span></a>
+								<div>
+									<ul>
+										<li><a href="/build/index.do?menu_id=00933842">열린디자인</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00933843">일반자료실</a></li>
+												<li><a href="http://daeguview.daegu.go.kr"  target="_blank"  title="새 창">대구도시경관</a></li>
+											</ul>
+										</li>
+										<li><a href="/build/index.do?menu_id=00933846">경관계획</a></li>
+										<li><a href="/build/index.do?menu_id=00933847">도시디자인공모전</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00933848">공모전 안내</a></li>
+												<li><a href="/build/index.do?menu_id=00933849">공모전 자료</a></li>
+												<li><a href="/build/index.do?menu_id=00933860">공모전 문의</a></li>
+												<li><a href="/build/index.do?menu_id=00933861">수상작 갤러리</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/build/index.do?menu_id=00000463"><span>도로&middot;건설</span></a>
+								<div>
+									<ul>
+										<li><a href="/build/index.do?menu_id=00001358">일반건설</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00932864">사업총괄</a></li>
+												<li><a href="/build/index.do?menu_id=00932865">분야별 사업추진현황</a></li>
+												<li><a href="/build/index.do?menu_id=00934920">건설 관련업체 정보</a></li>
+											</ul>
+										</li>
+										<li><a href="/build/index.do?menu_id=00939980">공공 건설공사 부실시공 신고센터</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00939981">건설공사 부실시공 신고</a></li>
+												<li><a href="/build/index.do?menu_id=00939982">신고 포상금 지급 안내</a></li>
+											</ul>
+										</li>
+										<li><a href="/build/index.do?menu_id=00001360">도시철도건설</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00932915">기본계획</a></li>
+												<li><a href="/build/index.do?menu_id=00932916">건설현황</a></li>
+												<li><a href="/build/index.do?menu_id=00932964">도시철도노선도</a></li>
+											</ul>
+										</li>
+										<li><a href="/build/index.do?menu_id=00933600">시설안전관리사업소</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00933689">시설물 관리현황</a></li>
+												<li><a href="/build/index.do?menu_id=00933696">시설안전정보</a></li>
+												<li><a href="/build/index.do?menu_id=00935102">계약관련법령</a></li>
+												<li><a href="/build/index.do?menu_id=00935103">계약관련서식</a></li>
+												<li><a href="/build/index.do?menu_id=00935101">기타자료실</a></li>
+											</ul>
+										</li>
+										<li><a href="/build/index.do?menu_id=00940490">도로현황</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/build/index.do?menu_id=00936360"><span>스마트시티</span></a>
+								<div>
+									<ul>
+										<li><a href="/build/index.do?menu_id=00936361">비전목표</a></li>
+										<li><a href="/build/index.do?menu_id=00936362">추진상황</a></li>
+										<li><a href="/build/index.do?menu_id=00936400">수성알파시티</a>
+											<ul>
+												<li><a href="/build/index.do?menu_id=00936401">수성의료지구 스마트시티(수성알파시티) 조성사업</a></li>
+												<li><a href="/build/index.do?menu_id=00936402">수성알파시티 스마트도시서비스</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/build/index.do?menu_id=00938460"><span>기계설비관리</span></a>
+								<div>
+									<ul>
+										<li><a href="/build/index.do?menu_id=00938461">기계설비법 시행</a></li>
+										<li><a href="/build/index.do?menu_id=00938462">기계설비의 착공 전 확인 / 사용 전 검사</a></li>
+										<li><a href="/build/index.do?menu_id=00938463">기계설비 유지관리</a></li>
+										<li><a href="/build/index.do?menu_id=00938464">기계설비 성능점검업</a></li>
+										<li><a href="/build/index.do?menu_id=00938465">기계설비법 관련 문의처</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/public/index.do">행정&middot;재정&middot;세정</a>
+						<ul>
+							<li><a href="/public/index.do?menu_id=00000464"><span>행정/재정/세정 소식</span></a>
+								<div>
+									<ul>
+										<li><a href="/public/index.do?menu_id=00001366">공지사항</a></li>
+										<!-- <li><a href="http://ebook.daegu.go.kr/html/book/index/gallery/latest/17/1" target="_blank" title="새 창">전자책</a></li> -->
+										<li><a href="/public/index.do?menu_id=00001371">동영상</a></li>
+										<li><a href="/public/index.do?menu_id=00001372">자료실</a></li>
+										<li><a href="/public/index.do?menu_id=00001375">관련누리집</a></li>
+										<li><a href="/public/index.do?menu_id=00934040">시정주요업무계획</a></li>
+										<li><a href="/public/index.do?menu_id=00935063">용역현황 및 결과</a>
+											<ul>
+												<li><a href="/public/index.do?menu_id=00935061">용역사전심의결과</a></li>
+												<li><a href="/public/index.do?menu_id=00935060">용역발주통보서</a></li>
+												<li><a href="/public/index.do?menu_id=00935062">용역결과, 평가, 활용</a></li>
+											</ul>
+										</li>
+										<li><a href="/public/index.do?menu_id=00936141">대구시 신청사 건립</a>
+											<ul>
+												<li><a href="https://www.daegu.go.kr/daeguPolicy/8/index.html" target="_blank" title="새 창">신청사 건립 한눈에 보기</a></li>
+												<li><a href="/public/index.do?menu_id=00936142">일반현황</a>
+													<ul>
+														<li><a href="/public/index.do?menu_id=00936143">추진방향</a></li>
+														<li><a href="/public/index.do?menu_id=00936144">신청사 건립 필요성</a></li>
+														<li><a href="/public/index.do?menu_id=00936145">현 청사 현황</a></li>
+														<li><a href="/public/index.do?menu_id=00936146">추진경과</a></li>
+														<li><a href="/public/index.do?menu_id=00936147">추진일정</a></li>
+													</ul>
+												</li>
+												<li><a href="/public/index.do?menu_id=00938371">신청사 설계공모운영위원회</a>
+													<ul>
+														<li><a href="/public/index.do?menu_id=00938372">위원회 구성</a></li>
+														<li><a href="/public/index.do?menu_id=00938373">위원회 회의 진행</a></li>
+													</ul>
+												</li>
+												<li><a href="/public/index.do?menu_id=00936148">신청사건립추진공론화위원회</a>
+													<ul>
+														<li><a href="/public/index.do?menu_id=00936149">공론민주주의 개념</a></li>
+														<li><a href="/public/index.do?menu_id=00936170">위원회 구성</a></li>
+														<li><a href="/public/index.do?menu_id=00936171">위원회 회의결과</a></li>
+														<li><a href="/public/index.do?menu_id=00936173">전문연구단 운영</a></li>
+													</ul>
+												</li>
+												<li><a href="/public/index.do?menu_id=00936172">시민의견을 듣습니다.</a>
+													<ul>
+														<li><a href="/public/index.do?menu_id=00938370">시민상상단</a></li>
+														<li><a href="/public/index.do?menu_id=00936190">기본구상 수립을 위한 시민의견 조사(2019.6.7.~14.) 결과</a></li>
+														<li><a href="/public/index.do?menu_id=00936230">신청사 어린이 그림그리기 대회 (2019.7.13~14)</a></li>
+														<li><a href="/public/index.do?menu_id=00936290">시민설명회(2019.9.28)</a></li>
+													</ul>
+												</li>
+												<li><a href="/public/index.do?menu_id=00936332">신청사 건립 예정지 선정 추진</a>
+													<ul>
+														<li><a href="/public/index.do?menu_id=00936333">선정기준</a></li>
+														<li><a href="/public/index.do?menu_id=00936452">건립 예정지 선정</a></li>
+													</ul>
+												</li>
+												<li><a href="/public/index.do?menu_id=00936420">자료실</a></li>
+											</ul>
+										</li>
+										<li><a href="/public/index.do?menu_id=00938520">시정추진 우수부서</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/public/index.do?menu_id=00000465"><span>일반행정</span></a>
+								<div>
+									<ul>
+										<li><a href="/public/index.do?menu_id=00001376">시정운영계획</a></li>
+										<li><a href="/public/index.do?menu_id=00933074">조직운영 핵심지표</a>
+											<ul>
+														<li><a href="/public/index.do?menu_id=00941652">2026년</a></li>
+														<li><a href="/public/index.do?menu_id=00940970">2025년</a></li>
+														<li><a href="/public/index.do?menu_id=00940200">2024년</a></li>
+														<li><a href="/public/index.do?menu_id=00939680">2023년</a></li>
+														<li><a href="/public/index.do?menu_id=00938750">2022년</a></li>
+														<li><a href="/public/index.do?menu_id=00938560">2021년</a></li>
+														<li><a href="/public/index.do?menu_id=00937910">2020년</a></li>
+														<li><a href="/public/index.do?menu_id=00936751">2019년</a></li>
+														<li><a href="/public/index.do?menu_id=00936750">2018년</a></li>
+														<li><a href="/public/index.do?menu_id=00935720">2017년</a></li>
+														<li><a href="/public/index.do?menu_id=00934071">2016년</a></li>
+														<li><a href="/public/index.do?menu_id=00934070">2015년</a></li>
+														<li><a href="/public/index.do?menu_id=00937970">조직감사결과</a></li>
+											</ul>
+										</li>
+										<li><a href="http://stat.daegu.go.kr"  target="_blank"  title="새 창">대구통계</a></li>
+										<li><a href="/public/index.do?menu_id=00001383">우리지역을 빛낸 사람들</a>
+											<ul>
+												<li><a href="/public/index.do?menu_id=00001391">자랑스러운 시민상</a></li>
+												<li><a href="/public/index.do?menu_id=00001392">여성대상(舊 목련상)</a></li>
+												<li><a href="/public/index.do?menu_id=00001393">자원봉사대상</a></li>
+												<li><a href="/public/index.do?menu_id=00001394">문화상</a></li>
+												<li><a href="/public/index.do?menu_id=00001395">조경상</a></li>
+												<li><a href="/public/index.do?menu_id=00001396">중소기업대상</a></li>
+												<li><a href="/public/index.do?menu_id=00001397">노인복지대상</a></li>
+												<li><a href="/public/index.do?menu_id=00001398">장애인대상</a></li>
+												<li><a href="/public/index.do?menu_id=00938260">대구호국보훈대상</a></li>
+											</ul>
+										</li>
+										<li><a href="/public/index.do?menu_id=00001381">대외협력본부</a></li>
+										<li><a href="/public/index.do?menu_id=00001380">공무원 교육원</a>
+											<ul>
+												<li><a href="/public/index.do?menu_id=00002003">공무원교육원</a></li>
+												<li><a href="/public/index.do?menu_id=00935403">교육목표 및 중점추진과제</a></li>
+												<li><a href="/public/index.do?menu_id=00935404">연혁</a></li>
+												<li><a href="/public/index.do?menu_id=00935405">조직 및 업무</a></li>
+												<li><a href="/public/index.do?menu_id=00002004">시설안내</a></li>
+												<li><a href="/public/index.do?menu_id=00002005">찾아오시는 길</a></li>
+												<li><a href="/public/index.do?menu_id=00002006">집합 및 사이버 교육 안내</a></li>
+												<li><a href="/public/index.do?menu_id=00933740">집합교육과정 일정</a></li>
+												<li><a href="/public/index.do?menu_id=00002007">교육과정 안내</a></li>
+												<li><a href="/public/index.do?menu_id=00002009">학습자료실</a></li>
+												<li><a href="/public/index.do?menu_id=00002010">도서검색</a></li>
+												<li><a href="/public/index.do?menu_id=00935300">시·도·중앙교육훈련기관</a></li>
+												<li><a href="/public/index.do?menu_id=00934940">개인정보처리방침</a></li>
+											</ul>
+										</li>
+										<li><a href="https://www.gojobs.go.kr/mainIndex.do" target="_blank" title="새 창">인사교류</a></li>
+										<li><a href="/public/index.do?menu_id=00936210">적극행정</a>
+											<ul>
+												<li><a href="/public/index.do?menu_id=00936311">제도소개</a></li>
+												<li><a href="/public/index.do?menu_id=00936314">적극행정 국민추천</a></li>
+												<li><a href="/public/index.do?menu_id=00936315">소극행정 신고센터</a></li>
+												<li><a href="/public/index.do?menu_id=00936316">알림/소식</a></li>
+											</ul>
+										</li>
+										<li><a href="/public/index.do?menu_id=00937770">인사통계</a></li>
+										<li><a href="/public/index.do?menu_id=00939070">고향사랑기부제</a>
+												<ul>
+												<li><a href="/public/index.do?menu_id=00939810">제도소개</a></li>
+												<li><a href="/public/index.do?menu_id=00939890">홍보자료</a></li>
+												<li><a href="/public/index.do?menu_id=00939891">답례품 안내</a></li>
+												<li><a href="/public/index.do?menu_id=00939811">고향사랑 기부금 접수·운용 현황</a></li>
+												</ul>
+											</li>
+										<!-- <li><a href="/public/index.do?menu_id=00939960">다대구 이벤트 알림서비스</a></li> -->
+									</ul>
+								</div>
+							</li>
+							<li><a href="/public/index.do?menu_id=00000466"><span>규제개혁</span></a>
+								<div>
+									<ul>
+										<li><a href="/public/index.do?menu_id=00001399">규제개혁 안내</a></li>
+										<li><a href="/public/index.do?menu_id=00001400">규제개혁위원회</a></li>
+										<li><a href="/public/index.do?menu_id=00936120">규제개혁 법령정보</a>
+											<ul>
+												<li><a href="https://www.law.go.kr/lsSc.do?menuId=1&amp;subMenuId=15&amp;tabMenuId=81&amp;query=%ED%96%89%EC%A0%95%EA%B7%9C%EC%A0%9C%EA%B8%B0%EB%B3%B8%EB%B2%95#undefined" target="_blank" title="새 창">행정규제기본법</a></li>
+												<li><a href="https://www.law.go.kr/법령/행정규제기본법시행령" target="_blank" title="새 창">행정규제기본법 시행령</a></li>
+												<li><a href="https://www.law.go.kr/ordinSc.do?menuId=3&amp;subMenuId=27&amp;tabMenuId=139&amp;query=%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EA%B7%9C%EC%A0%9C%EA%B0%9C%ED%98%81%20%EC%9A%B4%EC%98%81" target="_blank" title="새 창">대구광역시 규제개혁 운영조례</a></li>
+												<li><a href="https://www.elis.go.kr/allalr/selectAlrBdtOne?alrNo=27000054002002&amp;histNo=001&amp;menuNm=main" target="_blank" title="새 창">대구광역시 규제 신고고객 보호서비스헌장 운영 규정</a></li>
+											</ul>
+										</li>
+										<li><a href="/public/index.do?menu_id=00936123">규제정보 검색</a>
+											<ul>
+												<li><a href="https://www.better.go.kr/zz.main.PortalMain.laf"  target="_blank"  title="새 창">규제정보포털</a></li>
+												<li><a href="http://www.rims.go.kr/"  target="_blank"  title="새 창">지자체규제정보시스템</a></li>
+											</ul>
+										</li>
+										<li><a href="/public/index.do?menu_id=00936111">규제개혁 사례집</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/public/index.do?menu_id=00000468"><span>자치법규</span></a>
+								<div>
+									<ul>
+										<li><a href="https://www.elis.go.kr/locgovalr/locgovClAlrList?ctpvSggCd=27000"  target="_blank"  title="새 창">자치법규검색</a></li>
+										<li><a href="https://www.elis.go.kr/lgsltntc/lgsltNtcList?ctpvSggCd=27000"  target="_blank"  title="새 창">입법예고</a></li>
+										<li><a href="/public/index.do?menu_id=00001411">자치법규 입법절차</a></li>
+										<li><a href="/public/index.do?menu_id=00001412">소청심사제도</a></li>
+										<li><a href="/public/index.do?menu_id=00001413">행정소송제도</a></li>
+										<li><a href="/public/index.do?menu_id=00001414">행정심판안내</a>
+											<ul>
+												<li><a href="/public/index.do?menu_id=00001416">대상과 종류</a></li>
+												<li><a href="/public/index.do?menu_id=00001417">처리절차</a></li>
+												<li><a href="/public/index.do?menu_id=00001418">재결과 효력</a></li>
+												<li><a href="/public/index.do?menu_id=00001419">집행 정지 제도</a></li>
+												<li><a href="/public/index.do?menu_id=00001420">검토 및 착안사항</a></li>
+												<li><a href="/public/index.do?menu_id=00935926">국선대리인 제도</a></li>
+												<li><a href="https://www.simpan.go.kr/nsph/sph320_1.do"  target="_blank"  title="새 창">온라인 행정심판 청구</a></li>
+											</ul>
+										</li>
+										<li><a href="/public/index.do?menu_id=00001424">생활법령정보</a></li>
+										<li><a href="/public/index.do?menu_id=00001426">법무자료실</a></li>
+										<li><a href="https://laiis.go.kr/lips/nya/lrn/localRegulationList.do"  target="_blank"  title="새 창">중앙부처 법령 유권해석</a></li>
+										<li><a href="https://www.law.go.kr/precSc.do?menuId=7&query="  target="_blank"  title="새 창">법제처의 판례･해석례등</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/public/index.do?menu_id=00000469"><span>재정&middot;계약정보</span></a>
+								<div>
+									<ul>
+										<li><a href="/public/index.do?menu_id=00001403">계약정보</a></li>
+										<li><a href="https://jumin.daegu.go.kr/budget/"  target="_blank"  title="새 창">대구살림통합공개</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/public/index.do?menu_id=00000467"><span>공유재산</span></a>
+								<div>
+									<ul>
+										<li><a href="/public/index.do?menu_id=00941200">공유재산현황</a></li>
+										<li><a href="/public/index.do?menu_id=00941202">시유재산매각대부안내</a></li>
+										<li><a href="/public/index.do?menu_id=00941204">영조물배상공제 안내</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="/public/index.do?menu_id=00932965"><span>세금정보</span></a>
+								<div>
+									<ul class="snb">
+										<li><a href="https://wetax.go.kr/main.do" target="_blank" title="새 창">위택스</a></li>
+										<li><a href="/public/index.do?menu_id=00001378">동전담 마을세무사</a>
+											<ul>
+												<li><a href="/public/index.do?menu_id=00001386">마을세무사란</a></li>
+												<li><a href="/public/index.do?menu_id=00001387"> 구군별 마을세무사 명단</a></li>
+											</ul>
+										</li>
+										<li><a href="/public/index.do?menu_id=00936614">지방세 납세자보호관</a>
+											<ul>
+												<li><a href="/public/index.do?menu_id=00935810">지방세 납세자보호관</a></li>
+												<li><a href="/public/index.do?menu_id=00936126">납세자권리헌장</a></li>
+												<li><a href="/public/index.do?menu_id=00936620">납세자보호관 업무추진 실적</a></li>
+											</ul>
+										</li>
+										<li><a href="https://www.wetax.go.kr/tcp/loi/J030501M01.do" target="_blank" title="새 창">고액상습체납자명단공개</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</li>
+			<!-- -->
+		</ul>
+		<script>
+			$(function(){
+				$("#wholeview .nav_part > div > ul > li > ul > li > div > ul").unwrap("div");
+			})
+		</script>
+		<!-- 전체메뉴 -->
+	</div>
+	<div class="dim_wv"></div>
+</nav>		
+			<!-- // 모바일 Wholeview -->
+		</div>
+
+<div id="header_part">
+	
+
+
+
+
+
+
+
+
+
+
+
+<div class="section_part">
+	<button class="part_open"></button>
+	<ul class="part_lst">
+		<li class="part_cts"><a href="/cts/index.do"><span>문화&middot;관광&middot;체육</span></a></li>
+		<li class="part_tra"><a href="/tra/index.do"><span>교통</span></a></li>
+		<li class="part_welf"><a href="/welf/index.do"><span>복지</span></a></li>
+		<li class="part_woman"><a href="/woman/index.do"><span>여성&middot;가족&middot;교육</span></a></li>
+		<li class="part_health"><a href="/health/index.do"><span>건강·보건·위생</span></a></li>
+		<li class="part_eco"><a href="/eco/index.do"><span>산업&middot;경제</span></a></li>
+		<li class="part_env"><a href="/env/index.do"><span>환경</span></a></li>
+		<li class="part_safety"><a href="/safety/index.do"><span>소방&middot;안전</span></a></li>
+		<li class="part_build"><a href="/build/index.do"><span>도시&middot;주택&middot;건설</span></a></li>
+		<li class="part_public"><a href="/public/index.do"><span>행정&middot;재정&middot;세정</span></a></li>
+	</ul>
+</div>
+	<div class="gnb_part_wrap">
+		<ul id="gnb_part">
+			<li>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/woman/index.do?menu_id=00000406"><span>여성/가족/교육 소식</span></a>
+
+<div>
+	
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00000540">공지사항</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000545">동영상</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000546">자료실</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000549">관련누리집</a>
+</li>
+</ul>
+
+</div>
+
+			</li>
+			<li>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/woman/index.do?menu_id=00000407"><span>여성</span></a>
+
+<div>
+	
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00000550">여성정책</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00000560">여건분석 및 개선방향</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000561">통계로 보는 대구 여성의 삶</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050050">2025 시책방향</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050051">주요여성 가족정책</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000552">양성평등지원</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050054">양성평등주간 기념행사</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050060">여성UP포럼</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050055">여성행복위원회 운영</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050056">대구광역시 여성대상</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050063">여성인재등록</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050064">위원회 성별 대표성 제고</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050066">여성단체활동 프로그램 지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050071">성별영향평가</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050074">지역성평등지수</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000553">여성경제활동지원</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050079">여성인력개발센터</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050080">여성새로일하기센터</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050081">여성일자리 발굴 활동</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050082">여성교육기관 현황</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000554">여성친화도시</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050083">여성친화도시조성</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050087">스마트 안심택배함</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000556">여성복지기관(시설)</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050088">여성관계기관 및 여성단체</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050089">한부모가족복지시설</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050090">위기전화서비스기관</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050092">위기여성 발생 예방 및 지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050093">여성폭력상담기관</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000555">일본군 '위안부'역사관</a>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+			</li>
+			<li>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/woman/index.do?menu_id=00000408"><span>가족/다문화</span></a>
+
+<div>
+	
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00000562">가족지원제도</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00000565">가족센터</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000566">한부모가족지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00939870">청소년부모 아동양육비</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000567">취약위기 가족지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000569">대구일생활균형지원</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000563">다문화가족 지원제도</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050102">외국인주민 지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050109">다문화가족  지원</a>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+			</li>
+			<li>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/woman/index.do?menu_id=00000409"><span>어린이</span></a>
+
+<div>
+	
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00934300">출산지원/다자녀지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000572">보육</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050120">어린이집 시설현황</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050121">보육료 등 수납한도액</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050122">보육료 지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050123">가정양육수당 지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00938422">부모급여 지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050126">평가인증제도</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050127">보육교직원양성및보수교육</a>
+</li>
+<li>
+    <a href="http://daegu.childcare.go.kr/ccef/main.jsp" target="_blank" title="새 창">대구육아종합지원센터</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000573">아동</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050129">아동복지시설</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050133">가정위탁지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00939670">자립준비청년 지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050138">드림스타트사업</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050136">입양사업</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050137">아동발달지원계좌</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050139">아동학대</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050142">결연기관운영</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050143">아동급식지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00938860">다함께돌봄센터</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00939650">아동친화도시,대구</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00941070">아동보호구역 현황</a>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+			</li>
+			<li>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/woman/index.do?menu_id=00000410"><span>청소년</span></a>
+
+<div>
+	
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00000577">청소년 관련법령</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000578">청소년 인구현황</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000579">청소년 시설현황</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050144">청소년 수련시설</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050145">청소년 보호 및 복지시설</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050146">청소년 단체</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050147">청소년 특화시설</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00939880">고등학교 입학축하금 지원사업 알림서비스</a>
+</li>
+</ul>
+
+</div>
+
+			</li>
+			<li>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/woman/index.do?menu_id=00000421"><span>교육/공연/체험</span></a>
+
+<div>
+	
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00000593">종합복지회관</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050167">회관 소개</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050171">강좌안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050187">대관시설 이용안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050188">상담안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00933808">공지사항</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00933809">자료실</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000594">여성회관</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050203">회관 소개</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050207">강좌안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00938012">취·창업 지원 안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050216">다양한 활동들</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00933810">공지사항</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000592">동부여성문화회관</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050148">회관 소개</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050165">동아리 소개</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050152"> 강좌안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050159">수영강습안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050160">대관 안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050161">자원봉사활동</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050162">문화예술단 운영</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050166">심리상담실 안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00933812">공지사항</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00933813">자료실</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="https://dcw.daegu.go.kr/ko/page/main.do" target="_blank" title="새 창">대구어린이세상</a>
+</li>
+<li>
+    <a href="https://www.dww.kr" target="_blank" title="새 창">와글와글아이세상</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00933355">대구교육</a>
+<ul>
+<li>
+    <a href="https://study.daegu.kr/" target="_blank" title="새 창">평생교육</a>
+</li>
+<li>
+    <a href="http://www.dge.go.kr/main/ad/ed/view/selectEdcStatsView.do?mi=1792" target="_blank" title="새 창">교육통계 </a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00933699">도서관현황</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00941270">AI디지털배움터</a>
+</li>
+</ul>
+
+</div>
+
+			</li>
+			<li>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/woman/index.do?menu_id=00000422"><span>1366대구센터</span></a>
+
+<div>
+	
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050237">센터소개</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00800240">대구1366센터소개</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00800241">연혁</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00800242">운영체계</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00800243">찾아오시는길</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00800245">상담안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00932694">상담신청</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000609">FAQ</a>
+</li>
+</ul>
+
+</div>
+
+			</li>
+		</ul>
+		<div class="part_gnb_bg"></div>
+	</div>
+</div>
+		<!--// header -->
+		<div id="container">
+			<div id="side">
+				
+
+
+
+
+
+
+
+
+
+
+<h2 class="snb_tit">가족/다문화</h2>
+<ul class='snb'>
+<li>
+    <a href="/woman/index.do?menu_id=00000562">가족지원제도</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00000565">가족센터</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00933196">개요</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00933197">아이돌봄 지원사업 운영</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00933198">공동육아나눔터 운영</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000566">한부모가족지원</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050095">한부모가족사업</a>
+</li>
+<li>
+    <a href="https://www.mogef.go.kr/html/ebook/cs_opf_f999/2026/ecatalog5.html" target="_blank" title="새 창">한부모가족 복지서비스 안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050097">한부모가족 복지시설 운영 및 지원</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00939870">청소년부모 아동양육비</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00939230">청소년부모 아동양육비 사업 안내</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00939220">청소년부모 아동양육비 지원 사업</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000567">취약위기 가족지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000569">대구일생활균형지원</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050099">가족친화인증 추진</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050101">기업상생협력 네트워크</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00934830">일생활균형지원센터</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00000563" class=on>다문화가족 지원제도</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050102" class=on>외국인주민 지원</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050103">지원조례</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050104">생활안내책자</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050106">외국인주민 지원사업</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050105">외국인주민 현황</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050107" class=on>무료의료지원기관현황</a>
+</li>
+</ul>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050109">다문화가족  지원</a>
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050110">다문화가족현황</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050117">다문화 지원시설 현황</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00936310">특성화사업</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050116">위기다문화가족 지원</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050115">교육지원</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+			</div>
+			<div id="content" class="cont_wrap">
+				
+
+
+
+
+
+
+
+
+
+
+
+<!-- 카카오 공유하기 플러그인 -->
+<!-- <script src="/cmsh/daegu.go.kr/mobile/js/kakao.min.js"></script> -->
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- <script src="/cmsh/daegu.go.kr/js/kakao.min.js"></script> -->
+<!-- <script type="text/javascript" src="/cmsh/daegu.go.kr/mobile/js/kakao.link.js"></script> -->
+<!-- <script type="text/javascript" src="/msaWiz/jquery-ui-1.11.2.js"></script> -->
+
+<div class="cont_head">
+	<!-- 모바일 이전 버튼 -->
+	<button type="button" class="btn_back" onClick="history.go(-1); return false;">이전</button>
+	<!-- 컨텐츠 제목 -->
+	<div class="cta">
+		
+		
+			<h2 class="title"><span>무료의료지원기관현황</span></h2>
+			
+				<!-- 컨텐츠 제목 형제 메뉴 -->
+				<div class="nav">
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/woman/index.do?menu_id=00050102"><span>외국인주민 지원</span></a>
+
+<div>
+	
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li>
+    <a href="/woman/index.do?menu_id=00050103">지원조례</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050104">생활안내책자</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050106">외국인주민 지원사업</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050105">외국인주민 현황</a>
+</li>
+<li>
+    <a href="/woman/index.do?menu_id=00050107">무료의료지원기관현황</a>
+</li>
+</ul>
+
+</div>
+
+				</div>
+			
+		
+	</div>
+	<div class="location_area">
+		<ol class="location">
+			
+
+
+
+
+
+
+
+
+
+
+<li class="home">홈</li>
+
+	<li  ><a href="index.do?menu_id=00000408" >가족/다문화</a></li>
+
+	<li  ><a href="index.do?menu_id=00000563" >다문화가족 지원제도</a></li>
+
+	<li  ><a href="index.do?menu_id=00050102" >외국인주민 지원</a></li>
+
+	<li class="current" ><a href="index.do?menu_id=00050107" >무료의료지원기관현황</a></li>
+	
+
+		</ol>							
+		<div class="util_area">
+			<button class="sprh_com btn_scrab" onclick="window.print()">인쇄</button>
+<!-- 			<button class="sprh_com btn_print" onclick="copy_to_clipboard();">스크랩</button> -->
+			<button class="sprh_com btn_zin" title="글자크게">글자크게</button>
+			<button class="sprh_com btn_zout" title="글자작게">글자작게</button>
+			<button class="sprh_com btn_fw_bold" title="굵은 글씨체">굵은 글씨체</button>
+			<button class="sprh_com btn_fw_normal" title="기본 글씨체">기본 글씨체</button>
+			<button class="sprh_com btn_botfont" onclick="openBrlViewer('무료의료지원기관현황')" title="점자뷰어 새창보기">점자뷰어 보기</button>
+			<button class="sprh_com btn_botfont_dw" onclick="exportBrl('brl', '무료의료지원기관현황')" title="전자점자파일 내려받기">전자점자파일 내려받기</button>
+			<a href="#" target="_blank" title="페이스북으로 공유 새창보기" class="sprh_com share btn_facebook">페이스북으로 공유</a>
+			<a href="#" target="_blank" title="트위터로 공유 새창보기" class="sprh_com share btn_twitter">트위터로 공유</a>
+			<a href="#" onclick="return false;" id="ktalk" target="_blank" title="새창" class="sprh_com btn_kakao_t">카카오톡 공유</a> 
+			<button onclick="share()" id="blog" title="새창" class="sprh_com btn_blog">네이버 블로그 공유</button>
+			<!---->
+		</div>
+		<script type="text/javascript">
+			$(".cont_head .util_area a.share").on("click",function(event){
+			    return false;
+			});
+		</script>
+	</div>
+</div>
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+    var curURL = location.href; 
+    var curTitle = document.getElementsByTagName("TITLE")[0].text;
+	
+    Kakao.init('943c9a9f2d4ba6351945287171e4a47d'); 
+
+	Kakao.Link.createDefaultButton({
+		container: '#ktalk',
+		objectType: 'feed',
+		content: {
+			title: curTitle,
+			//description: curTitle,
+			imageUrl: 'https://www.daegu.go.kr/cmsh/daegu.go.kr/images/common/kakao_slogan.jpg',
+			link: {
+				webUrl: curURL,
+				mobileWebUrl: curURL
+			}
+		},
+
+		buttons: [
+			{
+				title: curTitle,
+				link: {
+					mobileWebUrl: curURL,
+					webUrl: curURL
+				}
+			}
+		]
+	});	
+
+	function share() {
+		var shareURL = "https://share.naver.com/web/shareView?url=" + document.location + "&title=" + curTitle;
+		window.open(shareURL,'win','width=640,height=480,toolbar=0,scrollbars=0,resizable=0')
+	}
+	var aa = 'index.do?menu_id=00050107';
+	console.log ("menu = "+aa)
+</script>
+				<div class="cont_body">
+					<!-- CMS Content -->
+					<div class="icss">
+						<!-- 탭그룹 -->
+						
+						<!--//탭그룹 -->
+						<!-- 컨텐츠 -->
+						
+							
+
+
+
+
+
+
+
+
+
+
+
+						
+						
+							
+
+
+
+
+
+
+
+
+
+
+<div class="w_medical"> 
+<h2>대구의료원 [보건복지부 무료 진료]</h2> 
+<div class="conBox clr"> 
+<div> 
+<p><img alt="대구의료원 전경" src="/cmsh/daegu.go.kr/woman/images/content/508_img01.jpg"></p> 
+<div> 
+<ul> 
+<li><strong>대상</strong> : 노숙인, 외국인 근로자 및 그 배우자와 자녀(만 18세 미만), 국적 취득 전 결혼이민자 및 그 자녀(만 18세 미만), 난민인정을 신청한 자 및 그 자녀(만 18세 미만)로서 각종 의료보장제도에 의해서 의료혜택을 받을 수 없는 자로 국내에 거주하는 외국인(노숙인의 경우 내국인)</li> 
+<li><strong>지원내용</strong> : 입원진료 및 당일 외래수술, 외래진료(입원 및 수술 진료와 연계되는 사전 외래진료 1회, 사후 외래진료 2회)</li> 
+<li><strong>지원비용</strong> : 총진료비 600만원/1회 범위 300만원 내(연간 지원횟수 제한없음)</li> 
+<li><strong>사업기관</strong> : 대구의료원(서구 평리로157)</li> 
+<li><strong>문의</strong> : 053-560-7375</li> 
+</ul> </div> </div> </div> 
+<h2>이주민 건강권 실현을 위한 동행</h2> 
+<div class="conBox"> 
+<ul> 
+<li><strong>대상</strong> : 미등록이주민</li> 
+<li><strong>지원내용</strong> : 동행공제회 가입자 대상, 매년 1회 무료건강검진 실시,  무료 의료통역 지원, 입원 및 수술환자 진료비 50% 부담(100만원 한도) 협력의료기관 협약</li> 
+<li><strong>장소</strong> : 대구 달서구 조암남로 38(2층)</li> 
+<li><strong>문의</strong> : 053-631-3507</li> 
+</ul> </div> 
+<h2>성서이주노동자 무료진료소</h2> 
+<div class="conBox"> 
+<ul> 
+<li><strong>대상</strong> : 미등록 외국인 근로자 등</li> 
+<li><strong>일시</strong> : 매주 수요일 19:30 ~ 21:30</li> 
+<li><strong>지원내용</strong> : 진료 및 투약, 2차 진료 의뢰서 발급</li> 
+<li><strong>장소</strong> : 대구광역시 달서구 성서로 72길 5, 4층</li> 
+<li><strong>문의</strong> : 053-585-6200</li> 
+</ul> </div> 
+<p><strong>※ 기관 사정에 따라 운영일정 및 지원내용 등은 변경될 수 있음.</strong></p> 
+<h2 style="margin-top: 0px;">가톨릭근로자회관 무료진료</h2> 
+<div class="conBox clr"> 
+<div> 
+<p><img alt="영남노동교육위원회 전경" src="/cmsh/daegu.go.kr/woman/images/content/508_img06.jpg"></p> 
+<div> 
+<ul> 
+<li><strong>대상</strong> : 외국인 근로자, 배우자 및 그 자녀 등</li> 
+<li><strong>일시</strong> : 매주 일요일 10~13시, 셋째 일요일 12~14시</li> 
+<li><strong>지원내용</strong> : 치과(매주 일요일), 내과(셋째 일요일)</li> 
+<li><strong>장소</strong> : 중구 중앙대로 77길 40</li> 
+<li><strong>문의</strong> : 053-253-1313</li> 
+</ul> </div> </div> </div> 
+<h2>대구이주민선교센터 무료진료</h2> 
+<div class="conBox clr"> 
+<div> 
+<p><img alt="대구이주민선교센터 전경" src="/cmsh/daegu.go.kr/woman/images/content/508_img07.jpg"></p> 
+<div> 
+<ul> 
+<li><strong>대상</strong> : 외국인 근로자, 배우자 및 그 자녀 등</li> 
+<li><strong>일시</strong> : 매주 첫째, 셋째 일요일 14~17시</li> 
+<li><strong>지원내용</strong> : 가정의학과, 한방진료</li> 
+<li><strong>장소</strong> : 평화교회(달성군 현풍읍 현풍중앙로 111, 2층)</li> 
+<li><strong>문의</strong> : 053-636-4171</li> 
+</ul> </div> </div> </div> 
+<h2>대구외국인근로자지원센터 무료진료</h2> 
+<div class="conBox"> 
+<ul> 
+<li><strong>대상</strong> : 미등록 외국인, 외국인 근로자, 배우자 및 그 자녀 등</li> 
+<li><strong>일시</strong> : 매주 일요일 15~17시, 셋째 일요일 10~12시</li> 
+<li><strong>지원내용</strong> : 한의진료, 종합무료진료, 치과진료(연2회), 무료이미용</li> 
+<li><strong>장소</strong> : 달성군 다사읍 달구벌대로 863, 8~9층</li> 
+<li><strong>문의</strong> : 053-654-9700</li> 
+<li><strong>상담전화</strong> 
+<ul> 
+<li>중국(654-9700 + 1)</li> 
+<li>베트남(654-9700 + 2),</li> 
+<li>인도네시아(654-9700 + 3)</li> 
+<li>필리핀(654-9700 + 4)</li> 
+<li>우즈베키스탄(654-9700 + 5)</li> 
+</ul> </li> 
+</ul> </div> 
+<h2>영남대학교 의료원</h2> 
+<div class="conBox"> 
+<ul> 
+<li><strong>대상</strong> : 저소득 다문화가족(기준중위소득 100% 이하)</li> 
+<li><strong>지원내용</strong> : 수술비, 입원비 등(최대 400만원 한도 내)</li> 
+<li><strong>장소</strong> : 남구 대명동 현충로 170</li> 
+<li><strong>문의</strong> : 053-620-4495</li> 
+</ul> </div> <!-- <h2>대구광역시 의사회 이주민진료소</h2>         <div class="conBox clr">             <div>                 <p><img alt="대구광역시 의사회 이주민진료소 전경" src="/cmsh/daegu.go.kr/woman/images/content/508_img04.jpg" /></p>                 <div>                     <ul>                         <li><strong>일시</strong> : 매월 첫째, 셋째, 다섯째주 일요일 14시~17시</li>                         <li><strong>장소</strong> : 의사회관 1층(북구 대현로 82)</li>                         <li><strong>내용</strong> : 무료진료, 건강검진 등</li>                         <li>※ 의사회 의료봉사단에서 운영</li>                         <li><strong>문의</strong> : 053-953-0033</li>                     </ul>                 </div>             </div>         </div> --><!--  <h2>다문화가족 행복지킴이 치료비 지원</h2>             <div class="conBox clr">                 <div>                     <p><img alt="영남대학교의료원 전경" src="/cmsh/daegu.go.kr/woman/images/content/508_img08.jpg" /></p>                     <div>                         <ul>                             <li><strong>지원대상</strong> : 다문화가족(수급자 및 기준중위소득 100%이하)</li>                             <li><strong>지원내용</strong> : 수술비, 입원비, 검사비, 기타층) 053-620-4495<br /> 1인당 최대 400만원</li>                             <li><strong>신청방법</strong> : 거주 동주민센터 또는 053-620-4495(영남대학교의료원)</li>                         </ul>                     </div>                 </div>             </div> --></div>
+
+						
+						
+							
+
+
+
+
+
+
+
+
+
+
+
+						
+						<!-- //컨텐츠 -->
+					</div>
+					<!-- // CMS Content -->
+					<!-- 관련이미지 표시 -->
+					
+						
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				</div>
+				<div class="cont_foot">
+					<!-- 공공누리 -->
+					
+					<!-- // 공공누리 -->
+
+					<!-- 담당자 만족도 표시 -->
+					
+
+
+
+
+
+
+
+
+
+
+
+	
+	<!-- 자료 담당자 -->
+	
+		
+		<div class="update">
+			<span>최근수정일</span>
+			 
+				
+				
+				
+					
+				  	2026.09.07 
+				
+					  	
+		  	
+		  	
+		</div>
+	
+	<div class="cont_manager">
+		
+			
+				<dl class="manager">
+					<dt>담당부서</dt>
+					<dd>성평등가족과</dd>
+				</dl>
+				<dl class="manager">
+					<dt>담당자</dt>
+					<dd>윤숙희</dd>
+				</dl>
+				<dl class="manager">
+					<dt>전화번호</dt>
+					<dd>
+						
+							
+								<a href="tel:053-803-6721" class="tel-link">053-803-6721</a>
+							
+							
+						
+					</dd>
+				</dl>
+			
+			
+			
+			
+
+		
+		<div class="qk_btn">
+			<ul>
+				<li><a href="/index.do?menu_id=00000248"><span>행정조직도</span></a></li>
+				
+				<li><a href="/index.do?menu_id=00000251"><span>찾아오시는길</span></a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- // 자료 담당자 -->
+
+	<!-- 컨텐츠 평가 -->
+	<div class="cont_rating">
+		<h2>현재페이지의 내용과 사용편의성에 만족하십니까?</h2>
+		<div class="inp_area">
+			<!-- <form id="" action="#" method="post"> -->
+				<fieldset>
+				<legend>사용편의성 만족도</legend>
+				<span>
+					<input type="radio" id="cmt1" value="5" name="satisfaction_chk" class="inp_rdo" />
+					<label for="cmt1">매우 만족</label>
+				</span>
+				<span>
+					<input type="radio" id="cmt2" value="4" name="satisfaction_chk" class="inp_rdo" />
+					<label for="cmt2">만족</label>
+				</span>
+				<span>
+					<input type="radio" id="cmt3" value="3" name="satisfaction_chk" class="inp_rdo" />
+					<label for="cmt3">보통</label>
+				</span>
+				<span>
+					<input type="radio" id="cmt4" value="2" name="satisfaction_chk" class="inp_rdo" />
+					<label for="cmt4">불만족</label>
+				</span>
+				<span>
+					<input type="radio" id="cmt5" value="1" name="satisfaction_chk" class="inp_rdo" />
+					<label for="cmt5">매우 불만족</label>
+				</span>
+				<input type="button" onclick="rate('DOMAINMSTR_000000000034','00050107');" value="평가하기" class="btn_rate" />
+				</fieldset>
+			<!-- </form> -->
+		</div>
+	</div>
+	<!-- // 컨텐츠 평가 -->
+	
+<script type="text/javascript">
+	function rate(domain_id,menu_id){
+		if($(':radio[name="satisfaction_chk"]:checked').val() == undefined){
+			alert("만족도를 체크해주시기 바랍니다.");
+			return;
+		}
+		console.log("?domain_id="+domain_id+"&menu_id="+menu_id+"&chk="+$(':radio[name="satisfaction_chk"]:checked').val());
+		$.ajax({
+			  type : "POST"
+			, data :  "domain_id="+domain_id+"&menu_id="+menu_id+"&chk="+$(':radio[name="satisfaction_chk"]:checked').val()
+			, url : "/icms_menu_satisfaction.do"
+			, success : function(data){
+				if(data =='ok' ){
+					alert("의견이 정상적으로 반영되었습니다. 감사합니다. ");
+				}else{
+					alert('이미 현재페이지의 평가를 하셨습니다.');
+				}
+			}
+			 , error : function(data, status, err){
+				//alert("서버와의 통신이 실패했습니다. 데이타 입력도중 에러가 발생하였습니다. 다시 한번 시도해 주시기 바랍니다.");
+				alert('이미 현재페이지의 평가를 하셨습니다.');
+				return;
+			} 
+		});
+		
+	}
+</script>
+<!-- //Cont_foot -->
+				</div>
+			</div>
+		</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+<!-- 카카오 공유하기 플러그인 -->
+<!-- <script src="/cmsh/daegu.go.kr/mobile/js/kakao.min.js"></script> -->
+<!-- <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script> -->
+<!-- <script type="text/javascript" src="/cmsh/daegu.go.kr/mobile/js/kakao.link.js"></script> -->
+
+
+<!-- PWA 적용 로직 -->
+ 
+	<!-- 아래는 유저로그인이 있는 경우에만 사용하는 로직임 -->
+	
+<!-- PWA 적용 로직 -->
+
+<!-- 전자점자 script -->
+    <script src="/EDotXPressHtml/js/edotxpress-html.min.js?t=20240709"></script>
+    <script src="/EDotXPressHtml/js/edotxpress-common.js?t=20240709"></script>
+    <script src="/EDotXPressHtml/js/edotxpress-config-daegu.js?t=20240709"></script>
+
+
+<div id="footer_part">
+	<div class="footer_t">
+		<ul class="lst_util">
+			<li><a href="/index.do?menu_id=00050250"><strong>개인정보처리방침</strong></a></li>
+			<li class="pc"><a href="/index.do?menu_id=00050251">저작권정책</a></li>
+			<li class="pc"><a href="/index.do?menu_id=00000214">행정서비스 헌장</a></li>
+			<li><a href="/index.do?menu_id=00000280">관련기관</a></li>
+			<li><a href="/index.do?menu_id=00000250">전화번호(FAX)안내</a></li>
+			<li class="pc"><a href="/index.do?menu_id=00933969" target="_blank" title="새창">공공앱소개</a></li>
+			<li class="pc"><a href="/index.do?menu_id=00000277">XML</a></li>
+			<li class="pc"><a href="/index.do?menu_id=00000251">찾아오시는 길</a></li>
+
+
+		</ul>
+		<ul class="lst_sns">
+			<li class="youtube"><a href="https://www.youtube.com/user/dgdachaeum" target="_blank" title="새창">대구시청 유튜브</a></li>
+			<li class="blog"><a href="http://blog.naver.com/daegu_news" target="_blank" title="새창">대구시청 블로그</a></li>
+			<li class="facebook"><a href="https://www.facebook.com/daegucity053" target="_blank" title="새창">대구시청 페이스북</a></li>
+			<li class="instagram"><a href="https://www.instagram.com/daegucity_official/" target="_blank" title="새창">대구시청 인스타그램</a></li>
+		</ul>
+	</div>
+	<div class="footer_b">
+		<div class="inr">
+			<div class="logo">DAEGU 대구광역시 DAEGU METROPOLITAN CITY</div>
+			<div class="copyright">
+				<p class="address"><span> 동인청사 : (우 41911) 대구광역시 중구 공평로 88 /</span><span>산격청사 :  (우 41542) 대구광역시 북구 연암로 40 / </span>
+				<span>전화번호 : <a href="tel:153-120" class="tel-link"><em class="tel">053-120</em></a></span></p>
+				<p class="copy">© DAEGU METROPOLITAN CITY ALL RIGHTS RESERVED.</p>
+			</div>
+			<div class="mark_area">
+				<!--  -->
+				<a href="https://www.daegu.go.kr/120/index.do" target="_blank" title="새창" class="wa"><span class="callcenter">120 달구벌콜센터</span></a>
+				<a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" target="_blank" title="새창" class="wa"><img src="/cmsh/daegu.go.kr/images/2021/common/img_wa.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)" title="새창"></a>
+			</div>
+		</div>
+	</div>
+	
+		<div class="skip_top"><a href="#wrap"><span class="sprh_com"></span>TOP</a></div>
+</div>
+	</div>
+</body>
+</html>

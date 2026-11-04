@@ -1,0 +1,2471 @@
+{
+ "swagger": "2.0",
+ "info": {
+  "description": "사회복지시설의 시설목록정보조회, 시설별 기본정보 조회, 시설별 행사정보, 시설별 구인정보, 시설종류코드조회, 시설통신요금관련(정보통신협회전용)를 제공해주는 데이터입니다.",
+  "version": "1.0.0",
+  "title": "한국사회보장정보원_사회복지시설정보서비스 현황"
+ },
+ "host": "apis.data.go.kr/B554287/sclWlfrFcltInfoInqirService2",
+ "basePath": "",
+ "schemes": [
+  "https",
+  "http"
+ ],
+ "paths": {
+  "/getFcltKindCodeInfoInqire2": {
+   "get": {
+    "responses": {
+     "200": {
+      "description": "성공",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "header": {
+         "type": "object",
+         "description": "header",
+         "properties": {
+          "resultCode": {
+           "type": "string",
+           "description": "결과코드",
+           "properties": {}
+          },
+          "resultMsg": {
+           "type": "string",
+           "description": "결과메시지",
+           "properties": {}
+          }
+         }
+        },
+        "body": {
+         "type": "object",
+         "description": "body",
+         "properties": {
+          "numOfRows": {
+           "type": "string",
+           "description": "한 페이지 결과 수",
+           "properties": {}
+          },
+          "pageNo": {
+           "type": "string",
+           "description": "페이지 번호",
+           "properties": {}
+          },
+          "totalCount": {
+           "type": "string",
+           "description": "총건수",
+           "properties": {}
+          },
+          "items": {
+           "type": "object",
+           "description": "items",
+           "properties": {
+            "item": {
+             "type": "object",
+             "description": "item",
+             "properties": {
+              "fcltKindCd": {
+               "type": "string",
+               "description": "시설종류코드",
+               "properties": {}
+              },
+              "sysDvsnCd": {
+               "type": "string",
+               "description": "시스템구분코드",
+               "properties": {}
+              },
+              "fcltUseRcpnNm": {
+               "type": "string",
+               "description": "시설사용대상자명",
+               "properties": {}
+              },
+              "fcltKindNm": {
+               "type": "string",
+               "description": "시설종류명",
+               "properties": {}
+              },
+              "fcltDtlKindNm": {
+               "type": "string",
+               "description": "시설상세종류명",
+               "properties": {}
+              },
+              "sggRptYn": {
+               "type": "string",
+               "description": "시군구보고여부",
+               "properties": {}
+              },
+              "fcltTyDvsn": {
+               "type": "string",
+               "description": "시설유형구분",
+               "properties": {}
+              },
+              "acntStdAccCdDvsn": {
+               "type": "string",
+               "description": "회계표준계정코드구분",
+               "properties": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "xml": {
+        "name": "response"
+       }
+      }
+     }
+    },
+    "tags": [
+     "API 목록"
+    ],
+    "summary": "시설종류코드 조회",
+    "description": "시설종류코드 조회 (해당 데이터는 사회복지시설정보시스템에 등록된 Data에 한하여 제공되는 자료입니다.)",
+    "operationId": "getFcltKindCodeInfoInqire2",
+    "consumes": [
+     "application/json"
+    ],
+    "produces": [
+     "application/xml"
+    ]
+   },
+   "parameters": [
+    {
+     "name": "serviceKey",
+     "description": "신청 시 발급받은 인증키",
+     "type": "string",
+     "required": true,
+     "in": "query"
+    },
+    {
+     "name": "numOfRows",
+     "description": "한 페이지 결과 수",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "pageNo",
+     "description": "페이지 번호",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltKindCd",
+     "description": "시설종류코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltKindNm",
+     "description": "시설종류명",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    }
+   ]
+  },
+  "/getFcltByJoInfo2": {
+   "get": {
+    "responses": {
+     "200": {
+      "description": "성공",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "header": {
+         "type": "object",
+         "description": "header",
+         "properties": {
+          "resultCode": {
+           "type": "string",
+           "description": "결과코드",
+           "properties": {}
+          },
+          "resultMsg": {
+           "type": "string",
+           "description": "결과메시지",
+           "properties": {}
+          }
+         }
+        },
+        "body": {
+         "type": "object",
+         "description": "body",
+         "properties": {
+          "numOfRows": {
+           "type": "string",
+           "description": "한 페이지 결과 수",
+           "properties": {}
+          },
+          "pageNo": {
+           "type": "string",
+           "description": "페이지 번호",
+           "properties": {}
+          },
+          "totalCount": {
+           "type": "string",
+           "description": "총건수",
+           "properties": {}
+          },
+          "items": {
+           "type": "object",
+           "description": "items",
+           "properties": {
+            "item": {
+             "type": "object",
+             "description": "item",
+             "properties": {
+              "fcltCd": {
+               "type": "string",
+               "description": "시설코드",
+               "properties": {}
+              },
+              "seq": {
+               "type": "string",
+               "description": "회차",
+               "properties": {}
+              },
+              "title": {
+               "type": "string",
+               "description": "제목",
+               "properties": {}
+              },
+              "useYn": {
+               "type": "string",
+               "description": "사용여부",
+               "properties": {}
+              },
+              "rcrtFld": {
+               "type": "string",
+               "description": "채용분야",
+               "properties": {}
+              },
+              "relateJssfc": {
+               "type": "string",
+               "description": "관련직종",
+               "properties": {}
+              },
+              "dtyCntn": {
+               "type": "string",
+               "description": "직무내용",
+               "properties": {}
+              },
+              "emplStle": {
+               "type": "string",
+               "description": "고용형태",
+               "properties": {}
+              },
+              "recruitNops": {
+               "type": "string",
+               "description": "모집인원",
+               "properties": {}
+              },
+              "sbmtPaper": {
+               "type": "string",
+               "description": "제출서류",
+               "properties": {}
+              },
+              "applyQlfc": {
+               "type": "string",
+               "description": "응시자격",
+               "properties": {}
+              },
+              "accpBgnDe": {
+               "type": "string",
+               "description": "접수시작일자",
+               "properties": {}
+              },
+              "accpClseDe": {
+               "type": "string",
+               "description": "접수마감일자",
+               "properties": {}
+              },
+              "wageCond": {
+               "type": "string",
+               "description": "임금조건",
+               "properties": {}
+              },
+              "carrCond": {
+               "type": "string",
+               "description": "경력조건",
+               "properties": {}
+              },
+              "lastSchcrrCd": {
+               "type": "string",
+               "description": "최종학력코드",
+               "properties": {}
+              },
+              "crgrNm": {
+               "type": "string",
+               "description": "담당자명",
+               "properties": {}
+              },
+              "crgrTelNo": {
+               "type": "string",
+               "description": "담당자전화번호",
+               "properties": {}
+              },
+              "crgrMailAddr": {
+               "type": "string",
+               "description": "담당자이메일주소",
+               "properties": {}
+              },
+              "faxNo": {
+               "type": "string",
+               "description": "팩스번호 ",
+               "properties": {}
+              },
+              "frgnAbltyCd": {
+               "type": "string",
+               "description": "외국어능력코드",
+               "properties": {}
+              },
+              "mtrscSpclcseRcrtHope": {
+               "type": "string",
+               "description": "병역특례채용희망",
+               "properties": {}
+              },
+              "pcCnjgAbltyCd": {
+               "type": "string",
+               "description": "PC활용능력코드",
+               "properties": {}
+              },
+              "etcGiveMtr": {
+               "type": "string",
+               "description": "기타우대사항",
+               "properties": {}
+              },
+              "slctMth": {
+               "type": "string",
+               "description": "전형방법",
+               "properties": {}
+              },
+              "paperSbmtMth": {
+               "type": "string",
+               "description": "서류제출방법",
+               "properties": {}
+              },
+              "wrkPrargRegn": {
+               "type": "string",
+               "description": "근무예정지",
+               "properties": {}
+              },
+              "wrkStle": {
+               "type": "string",
+               "description": "근무형태",
+               "properties": {}
+              },
+              "wrkBgnTm": {
+               "type": "string",
+               "description": "근무시작시간",
+               "properties": {}
+              },
+              "wrkEndTm": {
+               "type": "string",
+               "description": "근무종료시간",
+               "properties": {}
+              },
+              "htirSbscrbYn": {
+               "type": "string",
+               "description": "건강보험가입여부",
+               "properties": {}
+              },
+              "npnSbscrbYn": {
+               "type": "string",
+               "description": "국민연금가입여부",
+               "properties": {}
+              },
+              "emplInsrSbscrbYn": {
+               "type": "string",
+               "description": "고용보험가입여부",
+               "properties": {}
+              },
+              "rtpyDvsn": {
+               "type": "string",
+               "description": "퇴직금처리유형",
+               "properties": {}
+              },
+              "welfareBnft": {
+               "type": "string",
+               "description": "복리후생",
+               "properties": {}
+              },
+              "dpCvnFclt": {
+               "type": "string",
+               "description": "장애인편의시설",
+               "properties": {}
+              },
+              "etcMtr": {
+               "type": "string",
+               "description": "기타사항",
+               "properties": {}
+              },
+              "regPrsn": {
+               "type": "string",
+               "description": "등록자",
+               "properties": {}
+              },
+              "regPrsnId": {
+               "type": "string",
+               "description": "등록자ID",
+               "properties": {}
+              },
+              "regDt": {
+               "type": "string",
+               "description": "등록일자 ",
+               "properties": {}
+              },
+              "chgDt": {
+               "type": "string",
+               "description": "변경일자",
+               "properties": {}
+              },
+              "progrsSittn": {
+               "type": "string",
+               "description": "진행상태",
+               "properties": {}
+              },
+              "fcltNm": {
+               "type": "string",
+               "description": "시설이름",
+               "properties": {}
+              },
+              "bizno": {
+               "type": "string",
+               "description": "사업자등록번호",
+               "properties": {}
+              },
+              "rprsNm": {
+               "type": "string",
+               "description": "대표자이름",
+               "properties": {}
+              },
+              "homepageAddr": {
+               "type": "string",
+               "description": "홈페이지주소",
+               "properties": {}
+              },
+              "fcltZipcd": {
+               "type": "string",
+               "description": "우편번호",
+               "properties": {}
+              },
+              "fcltAddr": {
+               "type": "string",
+               "description": "주소",
+               "properties": {}
+              },
+              "fcltDtl_1Addr": {
+               "type": "string",
+               "description": "상세주소1",
+               "properties": {}
+              },
+              "fcltDtl_2Addr": {
+               "type": "string",
+               "description": "상세주소2",
+               "properties": {}
+              },
+              "fcltTelNo": {
+               "type": "string",
+               "description": "전화번호",
+               "properties": {}
+              },
+              "cfbNm": {
+               "type": "string",
+               "description": "업종명",
+               "properties": {}
+              },
+              "joinno": {
+               "type": "string",
+               "description": "구인등록번호",
+               "properties": {}
+              },
+              "urllnk": {
+               "type": "string",
+               "description": "상세보기URL",
+               "properties": {}
+              },
+              "wkJn": {
+               "type": "string",
+               "description": "고용형태코드",
+               "properties": {}
+              },
+              "wkMn": {
+               "type": "string",
+               "description": "임금유형코드",
+               "properties": {}
+              },
+              "wkDc": {
+               "type": "string",
+               "description": "임금결정방법코드",
+               "properties": {}
+              },
+              "wkWk": {
+               "type": "string",
+               "description": "근무형태코드",
+               "properties": {}
+              },
+              "wkSp": {
+               "type": "string",
+               "description": "전형방법코드",
+               "properties": {}
+              },
+              "wkSch": {
+               "type": "string",
+               "description": "학력코드",
+               "properties": {}
+              },
+              "wkRt": {
+               "type": "string",
+               "description": "퇴직금코드",
+               "properties": {}
+              },
+              "wrkPrargRegnCd": {
+               "type": "string",
+               "description": "지역코드",
+               "properties": {}
+              },
+              "rcrtFldCd": {
+               "type": "string",
+               "description": "직종코드",
+               "properties": {}
+              },
+              "rcptCloseTpCd": {
+               "type": "string",
+               "description": "접수마감여부",
+               "properties": {}
+              },
+              "emplySrvInstId": {
+               "type": "string",
+               "description": "직원서비스기관ID",
+               "properties": {}
+              },
+              "indstInsrSbscrbYn": {
+               "type": "string",
+               "description": "서비스기관산재보험가입여부",
+               "properties": {}
+              },
+              "srvInstId": {
+               "type": "string",
+               "description": "서비스기관ID",
+               "properties": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "xml": {
+        "name": "response"
+       }
+      }
+     }
+    },
+    "tags": [
+     "API 목록"
+    ],
+    "summary": "시설별 구인정보",
+    "description": "시설별 구인정보 (해당 데이터는 사회복지시설정보시스템에 등록된 Data에 한하여 제공되는 자료입니다.)",
+    "operationId": "getFcltByJoInfo2",
+    "consumes": [
+     "application/json"
+    ],
+    "produces": [
+     "application/xml"
+    ]
+   },
+   "parameters": [
+    {
+     "name": "serviceKey",
+     "description": "신청 시 발급받은 인증키",
+     "type": "string",
+     "required": true,
+     "in": "query"
+    },
+    {
+     "name": "numOfRows",
+     "description": "한 페이지 결과 수",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "pageNo",
+     "description": "페이지 번호",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltNm",
+     "description": "시설명",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltCd",
+     "description": "시설코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "srvInstId",
+     "description": "서비스기관ID",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    }
+   ]
+  },
+  "/getFcltByBassInfoInqire2": {
+   "get": {
+    "responses": {
+     "200": {
+      "description": "성공",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "header": {
+         "type": "object",
+         "description": "header",
+         "properties": {
+          "resultCode": {
+           "type": "string",
+           "description": "결과코드",
+           "properties": {}
+          },
+          "resultMsg": {
+           "type": "string",
+           "description": "결과메시지",
+           "properties": {}
+          }
+         }
+        },
+        "body": {
+         "type": "object",
+         "description": "body",
+         "properties": {
+          "numOfRows": {
+           "type": "string",
+           "description": "한 페이지 결과 수",
+           "properties": {}
+          },
+          "pageNo": {
+           "type": "string",
+           "description": "페이지 번호",
+           "properties": {}
+          },
+          "totalCount": {
+           "type": "string",
+           "description": "총건수",
+           "properties": {}
+          },
+          "items": {
+           "type": "object",
+           "description": "items",
+           "properties": {
+            "item": {
+             "type": "object",
+             "description": "item",
+             "properties": {
+              "fcltCd": {
+               "type": "string",
+               "description": "시설코드",
+               "properties": {}
+              },
+              "fcltNm": {
+               "type": "string",
+               "description": "시설명",
+               "properties": {}
+              },
+              "fcltEngNm": {
+               "type": "string",
+               "description": "시설영문명",
+               "properties": {}
+              },
+              "bizno": {
+               "type": "string",
+               "description": "사업자등록번호",
+               "properties": {}
+              },
+              "rprsNm": {
+               "type": "string",
+               "description": "대표자명",
+               "properties": {}
+              },
+              "homepageAddr": {
+               "type": "string",
+               "description": "홈페이지주소",
+               "properties": {}
+              },
+              "fcltMailAddr": {
+               "type": "string",
+               "description": "시설이메일주소",
+               "properties": {}
+              },
+              "fcltZipcd": {
+               "type": "string",
+               "description": "시설우편번호",
+               "properties": {}
+              },
+              "fcltAddr": {
+               "type": "string",
+               "description": "시설주소",
+               "properties": {}
+              },
+              "fcltDtl_1Addr": {
+               "type": "string",
+               "description": "시설상세1주소",
+               "properties": {}
+              },
+              "fcltDtl_2Addr": {
+               "type": "string",
+               "description": "시설상세2주소",
+               "properties": {}
+              },
+              "fcltEngAddr": {
+               "type": "string",
+               "description": "시설영문주소",
+               "properties": {}
+              },
+              "fcltEngDtlAddr": {
+               "type": "string",
+               "description": "시설영문상세주소",
+               "properties": {}
+              },
+              "fcltTelNo": {
+               "type": "string",
+               "description": "시설전화번호",
+               "properties": {}
+              },
+              "fcltTelNo2": {
+               "type": "string",
+               "description": "시설전화번호2",
+               "properties": {}
+              },
+              "faxNo": {
+               "type": "string",
+               "description": "팩스번호",
+               "properties": {}
+              },
+              "estbDe": {
+               "type": "string",
+               "description": "설립일자",
+               "properties": {}
+              },
+              "jrsdSggCd": {
+               "type": "string",
+               "description": "소관시군구코드",
+               "properties": {}
+              },
+              "cfbClCd": {
+               "type": "string",
+               "description": "업종분류코드",
+               "properties": {}
+              },
+              "fcltKindCd": {
+               "type": "string",
+               "description": "시설종류코드",
+               "properties": {}
+              },
+              "cprNm": {
+               "type": "string",
+               "description": "법인명",
+               "properties": {}
+              },
+              "srvInstId": {
+               "type": "string",
+               "description": "서비스기관ID",
+               "properties": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "xml": {
+        "name": "response"
+       }
+      }
+     }
+    },
+    "tags": [
+     "API 목록"
+    ],
+    "summary": "시설별 기본정보 조회",
+    "description": "시설별 기본정보 조회 (해당 데이터는 사회복지시설정보시스템에 등록된 Data에 한하여 제공되는 자료입니다.)",
+    "operationId": "getFcltByBassInfoInqire2",
+    "consumes": [
+     "application/json"
+    ],
+    "produces": [
+     "application/xml"
+    ]
+   },
+   "parameters": [
+    {
+     "name": "serviceKey",
+     "description": "신청 시 발급받은 인증키",
+     "type": "string",
+     "required": true,
+     "in": "query"
+    },
+    {
+     "name": "numOfRows",
+     "description": "한 페이지 결과 수",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "pageNo",
+     "description": "페이지 번호",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltNm",
+     "description": "시설명",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltCd",
+     "description": "시설코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltKindCd",
+     "description": "시설종류코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "jrsdSggCd",
+     "description": "소관시군구코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "srvInstId",
+     "description": "서비스기관ID",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    }
+   ]
+  },
+  "/getFcltListInfoInqire2": {
+   "get": {
+    "responses": {
+     "200": {
+      "description": "성공",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "header": {
+         "type": "object",
+         "description": "header",
+         "properties": {
+          "resultCode": {
+           "type": "string",
+           "description": "결과코드",
+           "properties": {}
+          },
+          "resultMsg": {
+           "type": "string",
+           "description": "결과메시지",
+           "properties": {}
+          }
+         }
+        },
+        "body": {
+         "type": "object",
+         "description": "body",
+         "properties": {
+          "numOfRows": {
+           "type": "string",
+           "description": "한 페이지 결과 수",
+           "properties": {}
+          },
+          "pageNo": {
+           "type": "string",
+           "description": "페이지 번호",
+           "properties": {}
+          },
+          "totalCount": {
+           "type": "string",
+           "description": "총건수",
+           "properties": {}
+          },
+          "items": {
+           "type": "object",
+           "description": "items",
+           "properties": {
+            "item": {
+             "type": "object",
+             "description": "item",
+             "properties": {
+              "fcltNm": {
+               "type": "string",
+               "description": "시설명",
+               "properties": {}
+              },
+              "fcltCd": {
+               "type": "string",
+               "description": "시설코드",
+               "properties": {}
+              },
+              "fcltKindNm": {
+               "type": "string",
+               "description": "시설종류명",
+               "properties": {}
+              },
+              "fcltKindCd": {
+               "type": "string",
+               "description": "시설종류코드",
+               "properties": {}
+              },
+              "jrsdSggNm": {
+               "type": "string",
+               "description": "소관시군구코드명",
+               "properties": {}
+              },
+              "jrsdSggCd": {
+               "type": "string",
+               "description": "소관시군구코드",
+               "properties": {}
+              },
+              "rprsNm": {
+               "type": "string",
+               "description": "대표자명",
+               "properties": {}
+              },
+              "srvInstId": {
+               "type": "string",
+               "description": "서비스기관ID",
+               "properties": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "xml": {
+        "name": "response"
+       }
+      }
+     }
+    },
+    "tags": [
+     "API 목록"
+    ],
+    "summary": "시설 목록정보 조회",
+    "description": "시설 목록정보 조회 (해당 데이터는 사회복지시설정보시스템에 등록된 Data에 한하여 제공되는 자료입니다.)",
+    "operationId": "getFcltListInfoInqire2",
+    "consumes": [
+     "application/json"
+    ],
+    "produces": [
+     "application/xml"
+    ]
+   },
+   "parameters": [
+    {
+     "name": "serviceKey",
+     "description": "신청 시 발급받은 인증키",
+     "type": "string",
+     "required": true,
+     "in": "query"
+    },
+    {
+     "name": "numOfRows",
+     "description": "한 페이지 결과 수",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "pageNo",
+     "description": "페이지 번호",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltNm",
+     "description": "시설명",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltCd",
+     "description": "시설코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltKindNm",
+     "description": "시설종류명",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltKindCd",
+     "description": "시설종류코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "jrsdSggNm",
+     "description": "소관시군구코드명",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "jrsdSggCd",
+     "description": "소관시군구코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "srvInstId",
+     "description": "서비스기관ID",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    }
+   ]
+  },
+  "/getFcltByEvntInfo2": {
+   "get": {
+    "responses": {
+     "200": {
+      "description": "성공",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "header": {
+         "type": "object",
+         "description": "header",
+         "properties": {
+          "resultCode": {
+           "type": "string",
+           "description": "결과코드",
+           "properties": {}
+          },
+          "resultMsg": {
+           "type": "string",
+           "description": "결과메시지",
+           "properties": {}
+          }
+         }
+        },
+        "body": {
+         "type": "object",
+         "description": "body",
+         "properties": {
+          "numOfRows": {
+           "type": "string",
+           "description": "한 페이지 결과 수",
+           "properties": {}
+          },
+          "pageNo": {
+           "type": "string",
+           "description": "페이지 번호",
+           "properties": {}
+          },
+          "totalCount": {
+           "type": "string",
+           "description": "총건수",
+           "properties": {}
+          },
+          "items": {
+           "type": "object",
+           "description": "items",
+           "properties": {
+            "item": {
+             "type": "object",
+             "description": "item",
+             "properties": {
+              "fcltNm": {
+               "type": "string",
+               "description": "시설명",
+               "properties": {}
+              },
+              "fcltCd": {
+               "type": "string",
+               "description": "시설코드",
+               "properties": {}
+              },
+              "fcltKindNm": {
+               "type": "string",
+               "description": "시설종류명",
+               "properties": {}
+              },
+              "fcltKindCd": {
+               "type": "string",
+               "description": "시설종류코드",
+               "properties": {}
+              },
+              "jrsdSggCd": {
+               "type": "string",
+               "description": "소관시군구코드",
+               "properties": {}
+              },
+              "jrsdSggNm": {
+               "type": "string",
+               "description": "소관시군구코드명",
+               "properties": {}
+              },
+              "seq": {
+               "type": "string",
+               "description": "회차",
+               "properties": {}
+              },
+              "evntCrgrNm": {
+               "type": "string",
+               "description": "행사담당자명",
+               "properties": {}
+              },
+              "evntPlc": {
+               "type": "string",
+               "description": "행사장소",
+               "properties": {}
+              },
+              "evntTelNo": {
+               "type": "string",
+               "description": "행사전화번호",
+               "properties": {}
+              },
+              "evntTrget": {
+               "type": "string",
+               "description": "행사대상",
+               "properties": {}
+              },
+              "evntTrgetCntn": {
+               "type": "string",
+               "description": "행사대상내용",
+               "properties": {}
+              },
+              "title": {
+               "type": "string",
+               "description": "제목",
+               "properties": {}
+              },
+              "cntn": {
+               "type": "string",
+               "description": "내용",
+               "properties": {}
+              },
+              "bgnDe": {
+               "type": "string",
+               "description": "시작일자",
+               "properties": {}
+              },
+              "endDe": {
+               "type": "string",
+               "description": "종료일자",
+               "properties": {}
+              },
+              "srvInstId": {
+               "type": "string",
+               "description": "서비스기관ID",
+               "properties": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "xml": {
+        "name": "response"
+       }
+      }
+     }
+    },
+    "tags": [
+     "API 목록"
+    ],
+    "summary": "시설별 행사정보",
+    "description": "시설별 행사정보 (해당 데이터는 사회복지시설정보시스템에 등록된 Data에 한하여 제공되는 자료입니다.)",
+    "operationId": "getFcltByEvntInfo2",
+    "consumes": [
+     "application/json"
+    ],
+    "produces": [
+     "application/xml"
+    ]
+   },
+   "parameters": [
+    {
+     "name": "serviceKey",
+     "description": "신청 시 발급받은 인증키",
+     "type": "string",
+     "required": true,
+     "in": "query"
+    },
+    {
+     "name": "numOfRows",
+     "description": "한 페이지 결과 수",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "pageNo",
+     "description": "페이지 번호",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltNm",
+     "description": "시설명",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltCd",
+     "description": "시설코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltKindaNm",
+     "description": "시설종류명",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltKindCd",
+     "description": "시설종류코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "jrsdSggNm",
+     "description": "소관시군구코드명",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "jrsdSggCd",
+     "description": "소관시군구코드",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "srvInstId",
+     "description": "서비스기관ID",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    }
+   ]
+  },
+  "/getNFcltBizInqire2": {
+   "get": {
+    "responses": {
+     "200": {
+      "description": "성공",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "header": {
+         "type": "object",
+         "description": "header",
+         "properties": {
+          "resultCode": {
+           "type": "string",
+           "description": "결과코드",
+           "properties": {}
+          },
+          "resultMsg": {
+           "type": "string",
+           "description": "결과메시지",
+           "properties": {}
+          }
+         }
+        },
+        "body": {
+         "type": "object",
+         "description": "body",
+         "properties": {
+          "numOfRows": {
+           "type": "string",
+           "description": "한 페이지 결과 수",
+           "properties": {}
+          },
+          "pageNo": {
+           "type": "string",
+           "description": "페이지 번호",
+           "properties": {}
+          },
+          "totalCount": {
+           "type": "string",
+           "description": "총건수",
+           "properties": {}
+          },
+          "items": {
+           "type": "object",
+           "description": "items",
+           "properties": {
+            "item": {
+             "type": "object",
+             "description": "item",
+             "properties": {
+              "fcltNm": {
+               "type": "string",
+               "description": "시설명",
+               "properties": {}
+              },
+              "fcltCd": {
+               "type": "string",
+               "description": "시설코드",
+               "properties": {}
+              },
+              "fcltKindNm": {
+               "type": "string",
+               "description": "시설종류명",
+               "properties": {}
+              },
+              "fcltKindCd": {
+               "type": "string",
+               "description": "시설종류코드",
+               "properties": {}
+              },
+              "certYn": {
+               "type": "string",
+               "description": "아동복지시설및장애인복지시설여부",
+               "properties": {}
+              },
+              "fcltStatus": {
+               "type": "string",
+               "description": "시설상태코드",
+               "properties": {}
+              },
+              "srvInstId": {
+               "type": "string",
+               "description": "서비스기관ID",
+               "properties": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "xml": {
+        "name": "response"
+       }
+      }
+     }
+    },
+    "tags": [
+     "API 목록"
+    ],
+    "summary": "시설통신요금관련(정보통신협회전용)",
+    "description": "시설통신요금관련(정보통신협회전용) (해당 데이터는 사회복지시설정보시스템에 등록된 Data에 한하여 제공되는 자료입니다.)",
+    "operationId": "getNFcltBizInqire2",
+    "consumes": [
+     "application/json"
+    ],
+    "produces": [
+     "application/xml"
+    ]
+   },
+   "parameters": [
+    {
+     "name": "serviceKey",
+     "description": "신청 시 발급받은 인증키",
+     "type": "string",
+     "required": true,
+     "in": "query"
+    },
+    {
+     "name": "pageNo",
+     "description": "페이지 번호",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "numOfRows",
+     "description": "한 페이지 결과 수",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "fcltBiz",
+     "description": "사업자번호",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    },
+    {
+     "name": "srvInstId",
+     "description": "서비스기관ID",
+     "type": "string",
+     "required": false,
+     "in": "query"
+    }
+   ]
+  }
+ },
+ "definitions": {
+  "getFcltKindCodeInfoInqire2_response": {
+   "type": "object",
+   "properties": {
+    "header": {
+     "type": "object",
+     "description": "header",
+     "properties": {
+      "resultCode": {
+       "type": "string",
+       "description": "결과코드"
+      },
+      "resultMsg": {
+       "type": "string",
+       "description": "결과메시지"
+      }
+     }
+    },
+    "body": {
+     "type": "object",
+     "description": "body",
+     "properties": {
+      "numOfRows": {
+       "type": "string",
+       "description": "한 페이지 결과 수"
+      },
+      "pageNo": {
+       "type": "string",
+       "description": "페이지 번호"
+      },
+      "totalCount": {
+       "type": "string",
+       "description": "총건수"
+      },
+      "items": {
+       "type": "object",
+       "description": "items",
+       "properties": {
+        "item": {
+         "type": "object",
+         "description": "item",
+         "properties": {
+          "fcltKindCd": {
+           "type": "string",
+           "description": "시설종류코드"
+          },
+          "sysDvsnCd": {
+           "type": "string",
+           "description": "시스템구분코드"
+          },
+          "fcltUseRcpnNm": {
+           "type": "string",
+           "description": "시설사용대상자명"
+          },
+          "fcltKindNm": {
+           "type": "string",
+           "description": "시설종류명"
+          },
+          "fcltDtlKindNm": {
+           "type": "string",
+           "description": "시설상세종류명"
+          },
+          "sggRptYn": {
+           "type": "string",
+           "description": "시군구보고여부"
+          },
+          "fcltTyDvsn": {
+           "type": "string",
+           "description": "시설유형구분"
+          },
+          "acntStdAccCdDvsn": {
+           "type": "string",
+           "description": "회계표준계정코드구분"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "getFcltByJoInfo2_response": {
+   "type": "object",
+   "properties": {
+    "header": {
+     "type": "object",
+     "description": "header",
+     "properties": {
+      "resultCode": {
+       "type": "string",
+       "description": "결과코드"
+      },
+      "resultMsg": {
+       "type": "string",
+       "description": "결과메시지"
+      }
+     }
+    },
+    "body": {
+     "type": "object",
+     "description": "body",
+     "properties": {
+      "numOfRows": {
+       "type": "string",
+       "description": "한 페이지 결과 수"
+      },
+      "pageNo": {
+       "type": "string",
+       "description": "페이지 번호"
+      },
+      "totalCount": {
+       "type": "string",
+       "description": "총건수"
+      },
+      "items": {
+       "type": "object",
+       "description": "items",
+       "properties": {
+        "item": {
+         "type": "object",
+         "description": "item",
+         "properties": {
+          "fcltCd": {
+           "type": "string",
+           "description": "시설코드"
+          },
+          "seq": {
+           "type": "string",
+           "description": "회차"
+          },
+          "title": {
+           "type": "string",
+           "description": "제목"
+          },
+          "useYn": {
+           "type": "string",
+           "description": "사용여부"
+          },
+          "rcrtFld": {
+           "type": "string",
+           "description": "채용분야"
+          },
+          "relateJssfc": {
+           "type": "string",
+           "description": "관련직종"
+          },
+          "dtyCntn": {
+           "type": "string",
+           "description": "직무내용"
+          },
+          "emplStle": {
+           "type": "string",
+           "description": "고용형태"
+          },
+          "recruitNops": {
+           "type": "string",
+           "description": "모집인원"
+          },
+          "sbmtPaper": {
+           "type": "string",
+           "description": "제출서류"
+          },
+          "applyQlfc": {
+           "type": "string",
+           "description": "응시자격"
+          },
+          "accpBgnDe": {
+           "type": "string",
+           "description": "접수시작일자"
+          },
+          "accpClseDe": {
+           "type": "string",
+           "description": "접수마감일자"
+          },
+          "wageCond": {
+           "type": "string",
+           "description": "임금조건"
+          },
+          "carrCond": {
+           "type": "string",
+           "description": "경력조건"
+          },
+          "lastSchcrrCd": {
+           "type": "string",
+           "description": "최종학력코드"
+          },
+          "crgrNm": {
+           "type": "string",
+           "description": "담당자명"
+          },
+          "crgrTelNo": {
+           "type": "string",
+           "description": "담당자전화번호"
+          },
+          "crgrMailAddr": {
+           "type": "string",
+           "description": "담당자이메일주소"
+          },
+          "faxNo": {
+           "type": "string",
+           "description": "팩스번호 "
+          },
+          "frgnAbltyCd": {
+           "type": "string",
+           "description": "외국어능력코드"
+          },
+          "mtrscSpclcseRcrtHope": {
+           "type": "string",
+           "description": "병역특례채용희망"
+          },
+          "pcCnjgAbltyCd": {
+           "type": "string",
+           "description": "PC활용능력코드"
+          },
+          "etcGiveMtr": {
+           "type": "string",
+           "description": "기타우대사항"
+          },
+          "slctMth": {
+           "type": "string",
+           "description": "전형방법"
+          },
+          "paperSbmtMth": {
+           "type": "string",
+           "description": "서류제출방법"
+          },
+          "wrkPrargRegn": {
+           "type": "string",
+           "description": "근무예정지"
+          },
+          "wrkStle": {
+           "type": "string",
+           "description": "근무형태"
+          },
+          "wrkBgnTm": {
+           "type": "string",
+           "description": "근무시작시간"
+          },
+          "wrkEndTm": {
+           "type": "string",
+           "description": "근무종료시간"
+          },
+          "htirSbscrbYn": {
+           "type": "string",
+           "description": "건강보험가입여부"
+          },
+          "npnSbscrbYn": {
+           "type": "string",
+           "description": "국민연금가입여부"
+          },
+          "emplInsrSbscrbYn": {
+           "type": "string",
+           "description": "고용보험가입여부"
+          },
+          "rtpyDvsn": {
+           "type": "string",
+           "description": "퇴직금처리유형"
+          },
+          "welfareBnft": {
+           "type": "string",
+           "description": "복리후생"
+          },
+          "dpCvnFclt": {
+           "type": "string",
+           "description": "장애인편의시설"
+          },
+          "etcMtr": {
+           "type": "string",
+           "description": "기타사항"
+          },
+          "regPrsn": {
+           "type": "string",
+           "description": "등록자"
+          },
+          "regPrsnId": {
+           "type": "string",
+           "description": "등록자ID"
+          },
+          "regDt": {
+           "type": "string",
+           "description": "등록일자 "
+          },
+          "chgDt": {
+           "type": "string",
+           "description": "변경일자"
+          },
+          "progrsSittn": {
+           "type": "string",
+           "description": "진행상태"
+          },
+          "fcltNm": {
+           "type": "string",
+           "description": "시설이름"
+          },
+          "bizno": {
+           "type": "string",
+           "description": "사업자등록번호"
+          },
+          "rprsNm": {
+           "type": "string",
+           "description": "대표자이름"
+          },
+          "homepageAddr": {
+           "type": "string",
+           "description": "홈페이지주소"
+          },
+          "fcltZipcd": {
+           "type": "string",
+           "description": "우편번호"
+          },
+          "fcltAddr": {
+           "type": "string",
+           "description": "주소"
+          },
+          "fcltDtl_1Addr": {
+           "type": "string",
+           "description": "상세주소1"
+          },
+          "fcltDtl_2Addr": {
+           "type": "string",
+           "description": "상세주소2"
+          },
+          "fcltTelNo": {
+           "type": "string",
+           "description": "전화번호"
+          },
+          "cfbNm": {
+           "type": "string",
+           "description": "업종명"
+          },
+          "joinno": {
+           "type": "string",
+           "description": "구인등록번호"
+          },
+          "urllnk": {
+           "type": "string",
+           "description": "상세보기URL"
+          },
+          "wkJn": {
+           "type": "string",
+           "description": "고용형태코드"
+          },
+          "wkMn": {
+           "type": "string",
+           "description": "임금유형코드"
+          },
+          "wkDc": {
+           "type": "string",
+           "description": "임금결정방법코드"
+          },
+          "wkWk": {
+           "type": "string",
+           "description": "근무형태코드"
+          },
+          "wkSp": {
+           "type": "string",
+           "description": "전형방법코드"
+          },
+          "wkSch": {
+           "type": "string",
+           "description": "학력코드"
+          },
+          "wkRt": {
+           "type": "string",
+           "description": "퇴직금코드"
+          },
+          "wrkPrargRegnCd": {
+           "type": "string",
+           "description": "지역코드"
+          },
+          "rcrtFldCd": {
+           "type": "string",
+           "description": "직종코드"
+          },
+          "rcptCloseTpCd": {
+           "type": "string",
+           "description": "접수마감여부"
+          },
+          "emplySrvInstId": {
+           "type": "string",
+           "description": "직원서비스기관ID"
+          },
+          "indstInsrSbscrbYn": {
+           "type": "string",
+           "description": "서비스기관산재보험가입여부"
+          },
+          "srvInstId": {
+           "type": "string",
+           "description": "서비스기관ID"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "getFcltByBassInfoInqire2_response": {
+   "type": "object",
+   "properties": {
+    "header": {
+     "type": "object",
+     "description": "header",
+     "properties": {
+      "resultCode": {
+       "type": "string",
+       "description": "결과코드"
+      },
+      "resultMsg": {
+       "type": "string",
+       "description": "결과메시지"
+      }
+     }
+    },
+    "body": {
+     "type": "object",
+     "description": "body",
+     "properties": {
+      "numOfRows": {
+       "type": "string",
+       "description": "한 페이지 결과 수"
+      },
+      "pageNo": {
+       "type": "string",
+       "description": "페이지 번호"
+      },
+      "totalCount": {
+       "type": "string",
+       "description": "총건수"
+      },
+      "items": {
+       "type": "object",
+       "description": "items",
+       "properties": {
+        "item": {
+         "type": "object",
+         "description": "item",
+         "properties": {
+          "fcltCd": {
+           "type": "string",
+           "description": "시설코드"
+          },
+          "fcltNm": {
+           "type": "string",
+           "description": "시설명"
+          },
+          "fcltEngNm": {
+           "type": "string",
+           "description": "시설영문명"
+          },
+          "bizno": {
+           "type": "string",
+           "description": "사업자등록번호"
+          },
+          "rprsNm": {
+           "type": "string",
+           "description": "대표자명"
+          },
+          "homepageAddr": {
+           "type": "string",
+           "description": "홈페이지주소"
+          },
+          "fcltMailAddr": {
+           "type": "string",
+           "description": "시설이메일주소"
+          },
+          "fcltZipcd": {
+           "type": "string",
+           "description": "시설우편번호"
+          },
+          "fcltAddr": {
+           "type": "string",
+           "description": "시설주소"
+          },
+          "fcltDtl_1Addr": {
+           "type": "string",
+           "description": "시설상세1주소"
+          },
+          "fcltDtl_2Addr": {
+           "type": "string",
+           "description": "시설상세2주소"
+          },
+          "fcltEngAddr": {
+           "type": "string",
+           "description": "시설영문주소"
+          },
+          "fcltEngDtlAddr": {
+           "type": "string",
+           "description": "시설영문상세주소"
+          },
+          "fcltTelNo": {
+           "type": "string",
+           "description": "시설전화번호"
+          },
+          "fcltTelNo2": {
+           "type": "string",
+           "description": "시설전화번호2"
+          },
+          "faxNo": {
+           "type": "string",
+           "description": "팩스번호"
+          },
+          "estbDe": {
+           "type": "string",
+           "description": "설립일자"
+          },
+          "jrsdSggCd": {
+           "type": "string",
+           "description": "소관시군구코드"
+          },
+          "cfbClCd": {
+           "type": "string",
+           "description": "업종분류코드"
+          },
+          "fcltKindCd": {
+           "type": "string",
+           "description": "시설종류코드"
+          },
+          "cprNm": {
+           "type": "string",
+           "description": "법인명"
+          },
+          "srvInstId": {
+           "type": "string",
+           "description": "서비스기관ID"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "getFcltListInfoInqire2_response": {
+   "type": "object",
+   "properties": {
+    "header": {
+     "type": "object",
+     "description": "header",
+     "properties": {
+      "resultCode": {
+       "type": "string",
+       "description": "결과코드"
+      },
+      "resultMsg": {
+       "type": "string",
+       "description": "결과메시지"
+      }
+     }
+    },
+    "body": {
+     "type": "object",
+     "description": "body",
+     "properties": {
+      "numOfRows": {
+       "type": "string",
+       "description": "한 페이지 결과 수"
+      },
+      "pageNo": {
+       "type": "string",
+       "description": "페이지 번호"
+      },
+      "totalCount": {
+       "type": "string",
+       "description": "총건수"
+      },
+      "items": {
+       "type": "object",
+       "description": "items",
+       "properties": {
+        "item": {
+         "type": "object",
+         "description": "item",
+         "properties": {
+          "fcltNm": {
+           "type": "string",
+           "description": "시설명"
+          },
+          "fcltCd": {
+           "type": "string",
+           "description": "시설코드"
+          },
+          "fcltKindNm": {
+           "type": "string",
+           "description": "시설종류명"
+          },
+          "fcltKindCd": {
+           "type": "string",
+           "description": "시설종류코드"
+          },
+          "jrsdSggNm": {
+           "type": "string",
+           "description": "소관시군구코드명"
+          },
+          "jrsdSggCd": {
+           "type": "string",
+           "description": "소관시군구코드"
+          },
+          "rprsNm": {
+           "type": "string",
+           "description": "대표자명"
+          },
+          "srvInstId": {
+           "type": "string",
+           "description": "서비스기관ID"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "getFcltByEvntInfo2_response": {
+   "type": "object",
+   "properties": {
+    "header": {
+     "type": "object",
+     "description": "header",
+     "properties": {
+      "resultCode": {
+       "type": "string",
+       "description": "결과코드"
+      },
+      "resultMsg": {
+       "type": "string",
+       "description": "결과메시지"
+      }
+     }
+    },
+    "body": {
+     "type": "object",
+     "description": "body",
+     "properties": {
+      "numOfRows": {
+       "type": "string",
+       "description": "한 페이지 결과 수"
+      },
+      "pageNo": {
+       "type": "string",
+       "description": "페이지 번호"
+      },
+      "totalCount": {
+       "type": "string",
+       "description": "총건수"
+      },
+      "items": {
+       "type": "object",
+       "description": "items",
+       "properties": {
+        "item": {
+         "type": "object",
+         "description": "item",
+         "properties": {
+          "fcltNm": {
+           "type": "string",
+           "description": "시설명"
+          },
+          "fcltCd": {
+           "type": "string",
+           "description": "시설코드"
+          },
+          "fcltKindNm": {
+           "type": "string",
+           "description": "시설종류명"
+          },
+          "fcltKindCd": {
+           "type": "string",
+           "description": "시설종류코드"
+          },
+          "jrsdSggCd": {
+           "type": "string",
+           "description": "소관시군구코드"
+          },
+          "jrsdSggNm": {
+           "type": "string",
+           "description": "소관시군구코드명"
+          },
+          "seq": {
+           "type": "string",
+           "description": "회차"
+          },
+          "evntCrgrNm": {
+           "type": "string",
+           "description": "행사담당자명"
+          },
+          "evntPlc": {
+           "type": "string",
+           "description": "행사장소"
+          },
+          "evntTelNo": {
+           "type": "string",
+           "description": "행사전화번호"
+          },
+          "evntTrget": {
+           "type": "string",
+           "description": "행사대상"
+          },
+          "evntTrgetCntn": {
+           "type": "string",
+           "description": "행사대상내용"
+          },
+          "title": {
+           "type": "string",
+           "description": "제목"
+          },
+          "cntn": {
+           "type": "string",
+           "description": "내용"
+          },
+          "bgnDe": {
+           "type": "string",
+           "description": "시작일자"
+          },
+          "endDe": {
+           "type": "string",
+           "description": "종료일자"
+          },
+          "srvInstId": {
+           "type": "string",
+           "description": "서비스기관ID"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "getNFcltBizInqire2_response": {
+   "type": "object",
+   "properties": {
+    "header": {
+     "type": "object",
+     "description": "header",
+     "properties": {
+      "resultCode": {
+       "type": "string",
+       "description": "결과코드"
+      },
+      "resultMsg": {
+       "type": "string",
+       "description": "결과메시지"
+      }
+     }
+    },
+    "body": {
+     "type": "object",
+     "description": "body",
+     "properties": {
+      "numOfRows": {
+       "type": "string",
+       "description": "한 페이지 결과 수"
+      },
+      "pageNo": {
+       "type": "string",
+       "description": "페이지 번호"
+      },
+      "totalCount": {
+       "type": "string",
+       "description": "총건수"
+      },
+      "items": {
+       "type": "object",
+       "description": "items",
+       "properties": {
+        "item": {
+         "type": "object",
+         "description": "item",
+         "properties": {
+          "fcltNm": {
+           "type": "string",
+           "description": "시설명"
+          },
+          "fcltCd": {
+           "type": "string",
+           "description": "시설코드"
+          },
+          "fcltKindNm": {
+           "type": "string",
+           "description": "시설종류명"
+          },
+          "fcltKindCd": {
+           "type": "string",
+           "description": "시설종류코드"
+          },
+          "certYn": {
+           "type": "string",
+           "description": "아동복지시설및장애인복지시설여부"
+          },
+          "fcltStatus": {
+           "type": "string",
+           "description": "시설상태코드"
+          },
+          "srvInstId": {
+           "type": "string",
+           "description": "서비스기관ID"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "swaggerOprtinVOs": [
+  {
+   "oprtinUrl": "https://ssis.go.kr/ssis-cbu/cmn/openapi/sclWlfrFcltInfoInqirService/getNFcltBizInqire.do",
+   "oprtinNm": "시설통신요금관련(정보통신협회전용)",
+   "oprtinDc": "시설통신요금관련(정보통신협회전용) (해당 데이터는 사회복지시설정보시스템에 등록된 Data에 한하여 제공되는 자료입니다.)",
+   "gwSvcNm": "getNFcltBizInqire2",
+   "operationId": "getNFcltBizInqire2",
+   "publicDataTyDetailCode": "PRDE02",
+   "reqList": [
+    {
+     "paramtrNm": "serviceKey",
+     "paramtrDc": "신청 시 발급받은 인증키",
+     "paramtrBassValue": "-",
+     "paramtrTy": "string",
+     "paramtrDivision": "필수",
+     "ck": true
+    },
+    {
+     "paramtrNm": "pageNo",
+     "paramtrDc": "페이지 번호",
+     "paramtrBassValue": "1",
+     "paramtrTy": "string",
+     "paramtrDivision": "옵션",
+     "ck": true
+    },
+    {
+     "paramtrNm": "numOfRows",
+     "paramtrDc": "한 페이지 결과 수",
+     "paramtrBassValue": "10",
+     "paramtrTy": "string",
+     "paramtrDivision": "옵션",
+     "ck": true
+    },
+    {
+     "paramtrNm": "fcltBiz",
+     "paramtrDc": "사업자번호",
+     "paramtrBassValue": "2048208589",
+     "paramtrTy": "string",
+     "paramtrDivision": "옵션",
+     "ck": true
+    },
+    {
+     "paramtrNm": "srvInstId",
+     "paramtrDc": "서비스기관ID",
+     "paramtrBassValue": "C0000007634",
+     "paramtrTy": "string",
+     "paramtrDivision": "옵션",
+     "ck": true
+    }
+   ],
+   "resList": [
+    {
+     "paramtrNm": "header",
+     "paramtrDc": "header",
+     "arrayYn": "N",
+     "paramtrDefNm": "#/definitions/oper-1-header",
+     "subDefNm": "oper-1-header",
+     "paramtrTy": "object",
+     "paramtrDivision": "필수",
+     "ck": true,
+     "subParam": [
+      {
+       "paramtrNm": "resultCode",
+       "paramtrDc": "결과코드",
+       "arrayYn": "N",
+       "paramtrDefNm": "",
+       "paramtrTy": "string",
+       "paramtrDivision": "필수",
+       "ck": true
+      },
+      {
+       "paramtrNm": "resultMsg",
+       "paramtrDc": "결과메시지",
+       "arrayYn": "N",
+       "paramtrDefNm": "",
+       "paramtrTy": "string",
+       "paramtrDivision": "필수",
+       "ck": true
+      }
+     ]
+    },
+    {
+     "paramtrNm": "body",
+     "paramtrDc": "body",
+     "arrayYn": "N",
+     "paramtrDefNm": "#/definitions/oper-1-body",
+     "subDefNm": "oper-1-body",
+     "paramtrTy": "object",
+     "paramtrDivision": "필수",
+     "ck": true,
+     "subParam": [
+      {
+       "paramtrNm": "numOfRows",
+       "paramtrDc": "한 페이지 결과 수",
+       "arrayYn": "N",
+       "paramtrDefNm": "",
+       "paramtrTy": "string",
+       "paramtrDivision": "필수",
+       "ck": true
+      },
+      {
+       "paramtrNm": "pageNo",
+       "paramtrDc": "페이지 번호",
+       "arrayYn": "N",
+       "paramtrDefNm": "",
+       "paramtrTy": "string",
+       "paramtrDivision": "필수",
+       "ck": true
+      },
+      {
+       "paramtrNm": "totalCount",
+       "paramtrDc": "총건수",
+       "arrayYn": "N",
+       "paramtrDefNm": "",
+       "paramtrTy": "string",
+       "paramtrDivision": "필수",
+       "ck": true
+      },
+      {
+       "paramtrNm": "items",
+       "paramtrDc": "items",
+       "arrayYn": "N",
+       "paramtrDefNm": "#/definitions/oper-1-items",
+       "subDefNm": "oper-1-items",
+       "paramtrTy": "object",
+       "paramtrDivision": "필수",
+       "ck": true,
+       "subParam": [
+        {
+         "paramtrNm": "item",
+         "paramtrDc": "item",
+         "arrayYn": "N",
+         "paramtrDefNm": "#/definitions/oper-1-item",
+         "subDefNm": "oper-1-item",
+         "paramtrTy": "object",
+         "paramtrDivision": "필수",
+         "ck": true,
+         "subParam": [
+          {
+           "paramtrNm": "fcltNm",
+           "paramtrDc": "시설명",
+           "arrayYn": "N",
+           "paramtrDefNm": "",
+           "paramtrTy": "string",
+           "paramtrDivision": "옵션",
+           "ck": true
+          },
+          {
+           "paramtrNm": "fcltCd",
+           "paramtrDc": "시설코드",
+           "arrayYn": "N",
+           "paramtrDefNm": "",
+           "paramtrTy": "string",
+           "paramtrDivision": "옵션",
+           "ck": true
+          },
+          {
+           "paramtrNm": "fcltKindNm",
+           "paramtrDc": "시설종류명",
+           "arrayYn": "N",
+           "paramtrDefNm": "",
+           "paramtrTy": "string",
+           "paramtrDivision": "옵션",
+           "ck": true
+          },
+          {
+           "paramtrNm": "fcltKindCd",
+           "paramtrDc": "시설종류코드",
+           "arrayYn": "N",
+           "paramtrDefNm": "",
+           "paramtrTy": "string",
+           "paramtrDivision": "옵션",
+           "ck": true
+          },
+          {
+           "paramtrNm": "certYn",
+           "paramtrDc": "아동복지시설및장애인복지시설여부",
+           "arrayYn": "N",
+           "paramtrDefNm": "",
+           "paramtrTy": "string",
+           "paramtrDivision": "옵션",
+           "ck": true
+          },
+          {
+           "paramtrNm": "fcltStatus",
+           "paramtrDc": "시설상태코드",
+           "arrayYn": "N",
+           "paramtrDefNm": "",
+           "paramtrTy": "string",
+           "paramtrDivision": "옵션",
+           "ck": true
+          },
+          {
+           "paramtrNm": "srvInstId",
+           "paramtrDc": "서비스기관ID",
+           "arrayYn": "N",
+           "paramtrDefNm": "",
+           "paramtrTy": "string",
+           "paramtrDivision": "옵션",
+           "ck": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

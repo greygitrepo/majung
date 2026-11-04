@@ -2,19 +2,27 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:majung/domain/freshness.dart';
 import 'package:majung/domain/geo.dart';
 
+// 테스트용 좌표 (대략값).
+const seoulStation = GeoPoint(37.5547, 126.9707);
+const yeongdeungpo = GeoPoint(37.5156, 126.9073);
+const busanStation = GeoPoint(35.1151, 129.0422);
+
 void main() {
   group('distanceMeters', () {
     test('같은 지점은 0', () {
-      expect(distanceMeters(Landmark.seoulStation.point, Landmark.seoulStation.point), 0);
+      expect(distanceMeters(seoulStation, seoulStation), 0);
     });
     test('서울역~영등포역은 약 7km', () {
-      final d = distanceMeters(Landmark.seoulStation.point, Landmark.yeongdeungpo.point);
+      final d = distanceMeters(seoulStation, yeongdeungpo);
       expect(d, inInclusiveRange(6500, 7500));
     });
     test('대칭', () {
-      final a = distanceMeters(Landmark.euljiro.point, Landmark.yongsan.point);
-      final b = distanceMeters(Landmark.yongsan.point, Landmark.euljiro.point);
+      final a = distanceMeters(seoulStation, busanStation);
+      final b = distanceMeters(busanStation, seoulStation);
       expect(a, closeTo(b, 0.001));
+    });
+    test('서울역~부산역은 약 325km', () {
+      expect(distanceMeters(seoulStation, busanStation), inInclusiveRange(310000, 340000));
     });
   });
 
@@ -39,14 +47,10 @@ void main() {
   });
 
   test('isInKorea', () {
-    expect(Landmark.seoulStation.point.isInKorea, isTrue);
+    expect(seoulStation.isInKorea, isTrue);
+    expect(const GeoPoint(33.25, 126.56).isInKorea, isTrue, reason: '서귀포');
     expect(const GeoPoint(0, 0).isInKorea, isFalse);
     expect(const GeoPoint(126.97, 37.55).isInKorea, isFalse, reason: '위도·경도 뒤바뀜');
-  });
-
-  test('Landmark.byId', () {
-    expect(Landmark.byId('euljiro'), Landmark.euljiro);
-    expect(Landmark.byId('nowhere'), isNull);
   });
 
   group('freshness', () {

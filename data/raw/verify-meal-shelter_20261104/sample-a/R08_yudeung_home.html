@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">  
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>유등노인복지관</title>
+<link rel="stylesheet" href="http://www.yudeung.or.kr/theme/yudeung/css/default.css?ver=2303229">
+<link rel="stylesheet" href="http://www.yudeung.or.kr/js/font-awesome/css/font-awesome.min.css?ver=2303229">
+<link rel="stylesheet" href="http://www.yudeung.or.kr/module/menu/skin/basic/style.css" />
+<link rel="stylesheet" href="http://www.yudeung.or.kr/theme/yudeung/skin/latest/pic_block/style.css?ver=2303229">
+<link rel="stylesheet" href="http://www.yudeung.or.kr/theme/yudeung/skin/latest/notice/style.css?ver=2303229">
+<link rel="stylesheet" href="http://www.yudeung.or.kr/module/spon/adm/css/admin_extend_spon.css?ver=2303229">
+<link rel="stylesheet" href="http://www.yudeung.or.kr/module/doc-issue/adm/css/admin_extend_doc_issue.css?ver=2303229">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css">
+<!--[if lte IE 8]>
+<script src="http://www.yudeung.or.kr/js/html5.js"></script>
+<![endif]-->
+	<link rel="stylesheet" href="http://www.yudeung.or.kr/theme/yudeung/css/main.css">
+	
+	
+<link rel="stylesheet" href="http://www.yudeung.or.kr/theme/yudeung/css/responsive.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js"></script>
+
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "http://www.yudeung.or.kr";
+var g5_bbs_url   = "http://www.yudeung.or.kr/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+</script>
+<script src="http://www.yudeung.or.kr/js/jquery-1.12.4.min.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/jquery-migrate-1.4.1.min.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/jquery.menu.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/common.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/theme/yudeung/js/theme.common.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/wrest.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/placeholders.min.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/module/menu/skin/basic/script.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/jquery.bxslider.js?ver=2605291"></script>
+</head>
+<body>
+
+<!-- 상단 시작 { -->
+
+
+<!-- 팝업레이어 시작 { -->
+<div id="hd_pop">
+    <h2>팝업레이어 알림</h2>
+
+<span class="sound_only">팝업레이어 알림이 없습니다.</span></div>
+
+<script>
+$(function() {
+    $(".hd_pops_reject").click(function() {
+        var id = $(this).attr('class').split(' ');
+        var ck_name = id[1];
+        var exp_time = parseInt(id[2]);
+        $("#"+id[1]).css("display", "none");
+        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+    });
+    $('.hd_pops_close').click(function() {
+        var idb = $(this).attr('class').split(' ');
+        $('#'+idb[1]).css('display','none');
+    });
+    $("#hd").css("z-index", 1000);
+});
+</script>
+<!-- } 팝업레이어 끝 --><!-- <a href="http://www.yudeung.or.kr"><img src="http://www.yudeung.or.kr/img/logo.png" alt="유등노인복지관"></a> -->
+
+
+
+
+<div class="tnbWrap wrap">
+    <div class="container">
+        <div class="left">
+            <a href="#" id="btnFavorite">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                  <path d="M8.55696 13.6975L12.707 16.2075C13.467 16.6675 14.397 15.9875 14.197 15.1275L13.097 10.4075L16.767 7.2275C17.437 6.6475 17.077 5.5475 16.197 5.4775L11.367 5.0675L9.47696 0.6075C9.13696 -0.2025 7.97696 -0.2025 7.63696 0.6075L5.74696 5.0575L0.916957 5.4675C0.0369575 5.5375 -0.323043 6.6375 0.346957 7.2175L4.01696 10.3975L2.91696 15.1175C2.71696 15.9775 3.64696 16.6575 4.40696 16.1975L8.55696 13.6975Z" fill="#1C6DA6" fill-opacity="0.3"/>
+                </svg>즐겨찾기 추가
+            </a>
+        </div>
+		<script>
+			document.getElementById('btnFavorite').addEventListener('click', function(e) {
+				e.preventDefault(); // 기본 링크 이동 방지
+				
+				// 사용자의 접속 OS 확인 (맥 vs 윈도우)
+				const userAgent = navigator.userAgent.toLowerCase();
+				const isMac = userAgent.indexOf('mac') !== -1;
+				const shortcutKey = isMac ? 'Command(⌘) + D' : 'Ctrl + D';
+				
+				// 어르신들이 이해하기 쉬운 친절한 안내 문구
+				alert(
+					"안전한 인터넷 환경을 위해 버튼 클릭만으로는 추가가 되지 않습니다.\n\n" +
+					"키보드에서 [ " + shortcutKey + " ] 버튼을 동시에 누르시면\n" +
+					"복지관 홈페이지를 즐겨찾기에 등록하실 수 있습니다."
+				);
+			});
+		</script>
+        <ul class="tnb">        
+                        <li><a href="http://www.yudeung.or.kr/bbs/register.php">회원가입</a></li>
+            <li><a href="http://www.yudeung.or.kr/bbs/login.php">로그인</a></li>
+                        <li>글자확대축소
+				<button type="button" id="fontSizePlus"><i class="fas fa-plus-circle"></i></button>
+				<button type="button" id="fontSizeMinus"><i class="fas fa-minus-circle"></i></button>
+			</li>
+        </ul>
+    </div>
+</div>
+
+<header class="header wrap">
+    <div class="container">
+        <h1 class="mLogo"><a href="http://www.yudeung.or.kr"><img src="http://www.yudeung.or.kr/theme/yudeung/img/m_logo.png" alt=""></a></h1>
+        <nav class="gnb">
+			<ul class="de1_ul">
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/document/인사말/" target="_self" class="de1_a m10">복지관소개</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/인사말/" target="_self" class="de2_a">인사말</a></li>
+						<li class="de2_li"><a href="/document/법인소개/" target="_self" class="de2_a">법인소개</a></li>
+						<li class="de2_li"><a href="/document/미션-및-비전/" target="_self" class="de2_a">미션 및 비전</a></li>
+						<li class="de2_li"><a href="/document/주요연혁/" target="_self" class="de2_a">주요연혁</a></li>
+						<li class="de2_li"><a href="/document/조직현황/" target="_self" class="de2_a">조직현황</a></li>
+						<li class="de2_li"><a href="/document/오시는길/" target="_self" class="de2_a">오시는길</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/document/회원가입/" target="_self" class="de1_a m20">이용안내</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/회원가입/" target="_self" class="de2_a">회원가입</a></li>
+						<li class="de2_li"><a href="/document/이용안내/" target="_self" class="de2_a">이용안내</a></li>
+						<li class="de2_li"><a href="/module/meal-plans/" target="_self" class="de2_a">경로식당</a></li>
+						<li class="de2_li"><a href="/module/wel-program/" target="_self" class="de2_a">프로그램 시간표</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/document/노년사회화교육/" target="_self" class="de1_a m30">사업안내</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/노년사회화교육/" target="_self" class="de2_a">노년사회화교육</a></li>
+						<li class="de2_li"><a href="/document/건강생활지원사업/" target="_self" class="de2_a">건강생활지원사업</a></li>
+						<li class="de2_li"><a href="/document/상담-및-정보제공사업/" target="_self" class="de2_a">상담 및 정보제공사업</a></li>
+						<li class="de2_li"><a href="/document/사회참여-및-권익증진사업/" target="_self" class="de2_a">사회참여 및 권익증진사업</a></li>
+						<li class="de2_li"><a href="/document/사례관리-및-지역사회돌봄사업/" target="_self" class="de2_a">사례관리 및 지역사회돌봄사업</a></li>
+						<li class="de2_li"><a href="/document/지역자원-조직화사업/" target="_self" class="de2_a">지역자원 조직화사업</a></li>
+						<li class="de2_li"><a href="/document/노인사회활동지원사업/" target="_self" class="de2_a">노인사회활동지원사업</a></li>
+						<li class="de2_li"><a href="/document/노인맞춤돌봄서비스사업/" target="_self" class="de2_a">노인맞춤돌봄서비스사업</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/document/후원안내/" target="_self" class="de1_a m40">후원 및 자원봉사</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/후원안내/" target="_self" class="de2_a">후원안내</a></li>
+						<li class="de2_li"><a href="/module/spon/" target="_self" class="de2_a">후원신청</a></li>
+						<li class="de2_li"><a href="/document/봉사안내/" target="_self" class="de2_a">봉사안내</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/notice" target="_self" class="de1_a m50">유등소식</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/notice" target="_self" class="de2_a">공지사항</a></li>
+						<li class="de2_li"><a href="/recruit" target="_self" class="de2_a">채용공고</a></li>
+						<li class="de2_li"><a href="/gallery" target="_self" class="de2_a">유등이야기</a></li>
+						<li class="de2_li"><a href="/newsletter" target="_self" class="de2_a">소식지</a></li>
+						<li class="de2_li"><a href="/media" target="_self" class="de2_a">언론보도</a></li>
+						<li class="de2_li"><a href="/free" target="_self" class="de2_a">자유게시판</a></li>
+						<li class="de2_li"><a href="/download" target="_self" class="de2_a">자료실</a></li>
+						<li class="de2_li"><a href="/module/doc-issue/" target="_self" class="de2_a">서류발급신청(직원용)</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/document/이용약관/" target="_self" class="de1_a m60">회원가입 및 약관안내</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/이용약관/" target="_self" class="de2_a">이용약관</a></li>
+						<li class="de2_li"><a href="/document/개인정보취급방침/" target="_self" class="de2_a">개인정보취급방침</a></li>
+						<li class="de2_li"><a href="/document/개인정보의 수집 및 이용목적/" target="_self" class="de2_a">개인정보의 수집 및 이용목적</a></li>
+						<li class="de2_li"><a href="/document/이메일무단수집거부/" target="_self" class="de2_a">이메일무단수집거부</a></li>
+						<li class="de2_li"><a href="/bbs/register.php" target="_self" class="de2_a">약관동의</a></li>
+						<li class="de2_li"><a href="/bbs/register_form.php" target="_self" class="de2_a">회원가입</a></li>
+						<li class="de2_li"><a href="/bbs/register_result.php" target="_self" class="de2_a">회원가입 완료</a></li>
+					</ul>
+	</li>
+	</ul>
+        </nav>
+		<div class="toggleBox">
+			<div class="Toggle02">
+				<label class="menu">
+					<input type="checkbox" checked>
+					<div>
+						<span></span>
+						<span></span>
+					</div>
+				</label>
+			</div>
+		</div>
+    </div>
+</header>
+<div class="all_gnb">
+	<div class="container">
+		<ul class="de1_ul">
+						<li class="de1_li g10"><!--  style="z-index:999" -->
+				<a href="/document/인사말/" target="_self" class="de1_a">복지관소개<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/인사말/" target="_self" class="de2_a">인사말</a></li>
+											<li class="de2_li"><a href="/document/법인소개/" target="_self" class="de2_a">법인소개</a></li>
+											<li class="de2_li"><a href="/document/미션-및-비전/" target="_self" class="de2_a">미션 및 비전</a></li>
+											<li class="de2_li"><a href="/document/주요연혁/" target="_self" class="de2_a">주요연혁</a></li>
+											<li class="de2_li"><a href="/document/조직현황/" target="_self" class="de2_a">조직현황</a></li>
+											<li class="de2_li"><a href="/document/오시는길/" target="_self" class="de2_a">오시는길</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g20"><!--  style="z-index:998" -->
+				<a href="/document/회원가입/" target="_self" class="de1_a">이용안내<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/회원가입/" target="_self" class="de2_a">회원가입</a></li>
+											<li class="de2_li"><a href="/document/이용안내/" target="_self" class="de2_a">이용안내</a></li>
+											<li class="de2_li"><a href="/module/meal-plans/" target="_self" class="de2_a">경로식당</a></li>
+											<li class="de2_li"><a href="/module/wel-program/" target="_self" class="de2_a">프로그램 시간표</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g30"><!--  style="z-index:997" -->
+				<a href="/document/노년사회화교육/" target="_self" class="de1_a">사업안내<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/노년사회화교육/" target="_self" class="de2_a">노년사회화교육</a></li>
+											<li class="de2_li"><a href="/document/건강생활지원사업/" target="_self" class="de2_a">건강생활지원사업</a></li>
+											<li class="de2_li"><a href="/document/상담-및-정보제공사업/" target="_self" class="de2_a">상담 및 정보제공사업</a></li>
+											<li class="de2_li"><a href="/document/사회참여-및-권익증진사업/" target="_self" class="de2_a">사회참여 및 권익증진사업</a></li>
+											<li class="de2_li"><a href="/document/사례관리-및-지역사회돌봄사업/" target="_self" class="de2_a">사례관리 및 지역사회돌봄사업</a></li>
+											<li class="de2_li"><a href="/document/지역자원-조직화사업/" target="_self" class="de2_a">지역자원 조직화사업</a></li>
+											<li class="de2_li"><a href="/document/노인사회활동지원사업/" target="_self" class="de2_a">노인사회활동지원사업</a></li>
+											<li class="de2_li"><a href="/document/노인맞춤돌봄서비스사업/" target="_self" class="de2_a">노인맞춤돌봄서비스사업</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g40"><!--  style="z-index:996" -->
+				<a href="/document/후원안내/" target="_self" class="de1_a">후원 및 자원봉사<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/후원안내/" target="_self" class="de2_a">후원안내</a></li>
+											<li class="de2_li"><a href="/module/spon/" target="_self" class="de2_a">후원신청</a></li>
+											<li class="de2_li"><a href="/document/봉사안내/" target="_self" class="de2_a">봉사안내</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g50"><!--  style="z-index:995" -->
+				<a href="/notice" target="_self" class="de1_a">유등소식<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/notice" target="_self" class="de2_a">공지사항</a></li>
+											<li class="de2_li"><a href="/recruit" target="_self" class="de2_a">채용공고</a></li>
+											<li class="de2_li"><a href="/gallery" target="_self" class="de2_a">유등이야기</a></li>
+											<li class="de2_li"><a href="/newsletter" target="_self" class="de2_a">소식지</a></li>
+											<li class="de2_li"><a href="/media" target="_self" class="de2_a">언론보도</a></li>
+											<li class="de2_li"><a href="/free" target="_self" class="de2_a">자유게시판</a></li>
+											<li class="de2_li"><a href="/download" target="_self" class="de2_a">자료실</a></li>
+											<li class="de2_li"><a href="/module/doc-issue/" target="_self" class="de2_a">서류발급신청(직원용)</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g60"><!--  style="z-index:994" -->
+				<a href="/document/이용약관/" target="_self" class="de1_a">회원가입 및 약관안내<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/이용약관/" target="_self" class="de2_a">이용약관</a></li>
+											<li class="de2_li"><a href="/document/개인정보취급방침/" target="_self" class="de2_a">개인정보취급방침</a></li>
+											<li class="de2_li"><a href="/document/개인정보의 수집 및 이용목적/" target="_self" class="de2_a">개인정보의 수집 및 이용목적</a></li>
+											<li class="de2_li"><a href="/document/이메일무단수집거부/" target="_self" class="de2_a">이메일무단수집거부</a></li>
+											<li class="de2_li"><a href="/bbs/register.php" target="_self" class="de2_a">약관동의</a></li>
+											<li class="de2_li"><a href="/bbs/register_form.php" target="_self" class="de2_a">회원가입</a></li>
+											<li class="de2_li"><a href="/bbs/register_result.php" target="_self" class="de2_a">회원가입 완료</a></li>
+					</ul>
+			</li>
+					</ul>
+	</div>
+</div>
+		
+
+<script>
+	$(document).ready(function(){
+		$('.header').on('click', '.Toggle02', function(e){
+			if ($(this).hasClass('show') == false) {
+				$(this).addClass('show');
+				$('.all_gnb').addClass('show').fadeIn();
+				$('.toggleOut').addClass('show');
+				$('body').addClass('show');
+				$('html').addClass('show');
+			} else {
+				$('.all_gnb').removeClass('show').fadeOut();
+				$('.toggleOut').removeClass('show');
+				$(this).removeClass('show');
+				$('body').removeClass('show');
+				$('html').removeClass('show');
+			}
+			e.preventDefault();
+		});
+		
+		$('.all_gnb').on('click', '.toggleOut', function(e){
+			if ($(this).hasClass('show') == false) {
+				$(this).addClass('show');
+				$('.all_gnb').addClass('show').fadeIn();
+				$('.Toggle02').addClass('show');
+				$('body').addClass('show');
+				$('html').addClass('show');
+			} else {
+				$('.all_gnb').removeClass('show').fadeOut();
+				$('.Toggle02').removeClass('show');
+				$(this).removeClass('show');
+				$('body').removeClass('show');
+				$('html').removeClass('show');
+			}
+			e.preventDefault();
+		});
+
+		$(window).resize(function(){ 
+            if (window.innerWidth > 992) {  
+                // PC 화면 (992px 초과)
+                // 1. 모바일용 클릭 이벤트 해제
+                $('.all_gnb').off('click', '.de1_a');
+                // 2. 모바일에서 클릭하며 생긴 클래스 초기화
+                $('.de1_li, .de1_a').removeClass('active');
+                // 3. slideUp/Down으로 적용된 인라인 스타일(display) 제거하여 강제로 보여줌
+                $('.de2_ul').css('display', '');
+                
+            } else {
+                // 모바일 화면 (992px 이하)
+                // off('click')을 먼저 써서 리사이즈 시 이벤트가 중복 바인딩 되는 것을 방지
+                $('.all_gnb').off('click', '.de1_a').on('click', '.de1_a', function(e){
+                    if ($(this).hasClass('active') == false) {
+                        $('.de1_li').removeClass('active');
+                        $('.de1_a').removeClass('active');
+                        $('.de2_ul').stop().slideUp(300);
+
+                        $(this).addClass('active');
+                        $(this).parent('.de1_li').addClass('active');
+                        $(this).parent('.de1_li').children('.de2_ul').stop().slideDown(300);
+                    } else {
+                        $(this).removeClass('active');
+                        $(this).parent('.de1_li').removeClass('active');
+                        $(this).parent('.de1_li').children('.de2_ul').stop().slideUp(300);
+                    }
+                    e.preventDefault();
+                });
+            }
+        }).resize();
+	});
+</script>
+
+
+
+<script>
+    $(document).ready(function(){
+        $(".gnb .de1_li").mouseover(function(){
+            $(this).addClass("active")
+            $(this).find(".de2_ul").addClass("active").stop().fadeIn();
+        });
+        $(".gnb .de1_li").mouseout(function(){
+            $(this).removeClass("active")
+            $(this).find(".de2_ul").removeClass("active").stop().fadeOut();
+        });
+    });
+</script>
+    
+<!-- } 상단 끝 -->
+
+
+<!-- 콘텐츠 시작 { -->
+
+<div class="visualWrap wrap">
+    <div class="swiper-wrapper">
+        <div class="visual01 visual swiper-slide">
+            <div class="container">
+                <div class="txtBox">
+                    <h2 class="tit">사랑과 나눔으로 행복해요 <strong>유등노인복지관</strong></h2>
+                    <p class="txt">품격 높은 대전노인복지를 최선을 다하는 복지관</p>
+                    <a href="/document/인사말/" class="more">자세히보기</a>
+                </div>
+            </div>
+        </div>
+        <div class="visual02 visual swiper-slide">
+            <div class="container">
+                <div class="txtBox">
+                    <h2 class="tit">사랑과 나눔으로 행복해요 <strong>유등노인복지관</strong></h2>
+                    <p class="txt">품격 높은 대전노인복지를 최선을 다하는 복지관</p>
+                    <a href="/document/인사말/" class="more">자세히보기</a>
+                </div>
+            </div>
+        </div>
+        <div class="visual03 visual swiper-slide">
+            <div class="container">
+                <div class="txtBox">
+                    <h2 class="tit">사랑과 나눔으로 행복해요 <strong>유등노인복지관</strong></h2>
+                    <p class="txt">품격 높은 대전노인복지를 최선을 다하는 복지관</p>
+                    <a href="/document/인사말/" class="more">자세히보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<script>
+    var swiper = new Swiper('.visualWrap', {
+        effect: 'fade',
+        loop: true,
+        centeredSlides: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script>
+
+<div class="section01 wrap">
+    <div class="div container">
+        <div class="sectionTit">
+            <h3 class="tit">사랑과 행복이 넘쳐나는 <strong>복지관</strong></h3>
+            <p class="txt">따뜻한 나눔과 맞춤형 복지서비스로, 모두가 함께 웃는 행복한 일상을 만들어갑니다.</p>
+        </div>
+        <ul class="iconBox">
+            <li>
+                <a href="/document/오시는길/">
+                    <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section01_icon01.svg" alt=""></i>
+                    <p class="txt">오시는길</p>
+                </a>
+            </li>
+            <li>
+                <a href="/document/회원가입/">
+                    <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section01_icon02.svg" alt=""></i>
+                    <p class="txt">이용안내</p>
+                </a>
+            </li>
+            <li>
+                <a href="/module/wel-program/">
+                    <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section01_icon03.svg" alt=""></i>
+                    <p class="txt">프로그램 시간표</p>
+                </a>
+            </li>
+            <li>
+                <a href="/document/노년사회화교육/">
+                    <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section01_icon04.svg" alt=""></i>
+                    <p class="txt">사업안내</p>
+                </a>
+            </li>
+            <li>
+                <a href="/document/후원안내/">
+                    <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section01_icon05.svg" alt=""></i>
+                    <p class="txt">후원 및 자원봉사</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="section02 wrap">
+    <div class="container">
+        <div class="sectionTit">
+            <h3 class="tit">복지관&nbsp;<strong class="green">소식</strong>
+                <a href="/gallery" class="plusMore">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <g clip-path="url(#clip0_28_124)">
+                        <path d="M1.14282 7.99997H7.99997M7.99997 7.99997H14.8571M7.99997 7.99997V1.14282M7.99997 7.99997V14.8571" stroke="#45AA40" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_28_124">
+                          <rect width="16" height="16" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                </a>
+            </h3>
+        </div>
+        <ul class="imgBoard">
+			<!--
+<li>
+	<a href="">
+		<figure><img src="http://www.yudeung.or.kr/theme/yudeung/img/photo_img01.png" alt=""></figure>
+		<figcaption>유등이야기 게시판 타이틀 영역입니다</figcaption>
+	</a>
+</li>
+-->
+	<li>
+		<a href="http://www.yudeung.or.kr/gallery/730" class="">
+			<figure><img src="http://www.yudeung.or.kr/data/editor/2611/thumb-70af397dd1728546cd7cacb01c42405c_1793685983_6896_338x290.jpg" alt="" ></figure>
+			<figcaption>치매 걱정 없는 도시 대전을 위한 2026…</figcaption>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/gallery/729" class="">
+			<figure><img src="http://www.yudeung.or.kr/data/editor/2611/thumb-70af397dd1728546cd7cacb01c42405c_1793682910_964_338x290.jpg" alt="" ></figure>
+			<figcaption>[이용자교육] 소비자교육</figcaption>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/gallery/728" class="">
+			<figure><img src="http://www.yudeung.or.kr/data/editor/2610/thumb-cea89100b281baf7da3f5b5cbc93af41_1793017668_5659_338x290.jpg" alt="" ></figure>
+			<figcaption>[맞춤돌봄] 2026 노인맞춤돌봄서비스 문…</figcaption>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/gallery/727" class="">
+			<figure><img src="http://www.yudeung.or.kr/data/editor/2610/thumb-8e73785b98c83dd7fed46dd33828b095_1792993056_3017_338x290.png" alt="" ></figure>
+			<figcaption>[노인일자리] 문화체험(역량활용사업 참여자…</figcaption>
+		</a>
+	</li>
+
+        </ul>
+        
+        <div class="tabBoard">
+            <div class="tabline">
+                <ul class="tab_btn">
+                    <li><a href="#tab01" class="tab active" data-url="/notice">공지사항</a></li>
+                    <li><a href="#tab02" class="tab" data-url="/recruit">채용공고</a></li>
+                    <li><a href="#tab03" class="tab" data-url="/newsletter">소식지</a></li>
+                    <li><a href="#tab04" class="tab" data-url="/media">언론보도</a></li>
+                    <li><a href="#tab05" class="tab" data-url="/free">자유게시판</a></li>
+                    <li><a href="#tab06" class="tab" data-url="/download">자료실</a></li>
+                </ul>
+                <a href="/notice" class="plusMore">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <g clip-path="url(#clip0_28_124)">
+                        <path d="M1.14282 7.99997H7.99997M7.99997 7.99997H14.8571M7.99997 7.99997V1.14282M7.99997 7.99997V14.8571" stroke="#45AA40" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_28_124">
+                          <rect width="16" height="16" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                </a>
+            </div>
+            
+			<div id="tab01" class="tab_content">
+				<!--
+<li>
+	<a href="">
+		<span class="label">공지사항</span>
+		<h4 class="tit">2026년 고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상</h4>
+		<p class="txt">고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상입니다. <br>어르신분들 생활속에서 자주 발생할 수 있는 안전사고들에 대비하고자 하는 영상이므로 많은 시청 부탁드리며, 항상 건강하십시오. 아래 영상 링크를 클릭하시면 시청이 가능하십니다</p>
+		<span class="date">2026-07-02</span>
+	</a>
+</li>
+-->
+<ul class="txtBoard">
+	<li>
+		<a href="http://yudeung.or.kr/notice/412">
+			<span class="label">공지사항</span>
+			<h4 class="tit">2026년 11월 혈당측정 접수</h4>
+			<p class="txt"></p>
+			<span class="date">2026-11-04</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://yudeung.or.kr/notice/411">
+			<span class="label">공지사항</span>
+			<h4 class="tit">외부보건교육 ' 시니어 구강건강교실' 접수…</h4>
+			<p class="txt"></p>
+			<span class="date">2026-10-26</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://yudeung.or.kr/notice/410">
+			<span class="label">공지사항</span>
+			<h4 class="tit">[모집] 2026년 11월 이미용 서비스 …</h4>
+			<p class="txt">2026년 11월 이미용 서비스 신청 안내입니다.이용자 어르신들의 많은 관심 부탁드립니다.</p>
+			<span class="date">2026-10-22</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://yudeung.or.kr/notice/409">
+			<span class="label">공지사항</span>
+			<h4 class="tit">2026년 치매예방 인지활동 '두뇌튼튼 운…</h4>
+			<p class="txt"></p>
+			<span class="date">2026-10-20</span>
+		</a>
+	</li>
+</ul>
+
+			</div> 
+			<div id="tab02" class="tab_content">
+				<!--
+<li>
+	<a href="">
+		<span class="label">공지사항</span>
+		<h4 class="tit">2026년 고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상</h4>
+		<p class="txt">고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상입니다. <br>어르신분들 생활속에서 자주 발생할 수 있는 안전사고들에 대비하고자 하는 영상이므로 많은 시청 부탁드리며, 항상 건강하십시오. 아래 영상 링크를 클릭하시면 시청이 가능하십니다</p>
+		<span class="date">2026-07-02</span>
+	</a>
+</li>
+-->
+<ul class="txtBoard">
+	<li>
+		<a href="http://www.yudeung.or.kr/recruit/75">
+			<span class="label">채용공고</span>
+			<h4 class="tit">2026년 시설관리인(정규직) 채용 3차 …</h4>
+			<p class="txt">안녕하십니까.2026년도 시설관리인(정규직) 채용 3차 재공고 면접시험에 응시해주신 모든 분들께 감사드립니다.아래와 같이 2026년 10월 27일 실시된 면접시험의 최종 합격자를 발표합니다.합격자 명단김○대(핸드폰번호 끝자리 3434)</p>
+			<span class="date">2026-10-28</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/recruit/74">
+			<span class="label">채용공고</span>
+			<h4 class="tit">2026년 시설관리인(정규직) 채용 3차 …</h4>
+			<p class="txt">시설관리인 서류심사 합격을 진심으로 축하드립니다.여러분의 노력이 결실을 맺게 되어 기쁘게 생각합니다.이름(핸드폰 뒷자리)신*중(7062)김*대(3434)서*수(2326)*추후 면접일정은 개별 통보 드리겠습니다.</p>
+			<span class="date">2026-10-14</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/recruit/73">
+			<span class="label">채용공고</span>
+			<h4 class="tit">[채용공고 제2026-006호] 시설관리인…</h4>
+			<p class="txt">유등노인복지관에서 시설관리인을 공개 모집하오니 유능한 분들의 많은 지원 바랍니다.</p>
+			<span class="date">2026-09-28</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/recruit/72">
+			<span class="label">채용공고</span>
+			<h4 class="tit">[채용공고 제2026-005호] (긴급) …</h4>
+			<p class="txt">유등노인복지관에서 시설관리인(정규직)을 공개 모집하오니 유능한 분들의 많은 지원 바랍니다.이메일 : yudeung17@nate.com</p>
+			<span class="date">2026-09-07</span>
+		</a>
+	</li>
+</ul>
+
+			</div> 
+			<div id="tab03" class="tab_content">
+				<!--
+<li>
+	<a href="">
+		<span class="label">공지사항</span>
+		<h4 class="tit">2026년 고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상</h4>
+		<p class="txt">고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상입니다. <br>어르신분들 생활속에서 자주 발생할 수 있는 안전사고들에 대비하고자 하는 영상이므로 많은 시청 부탁드리며, 항상 건강하십시오. 아래 영상 링크를 클릭하시면 시청이 가능하십니다</p>
+		<span class="date">2026-07-02</span>
+	</a>
+</li>
+-->
+<ul class="txtBoard">
+	<li>
+		<a href="http://www.yudeung.or.kr/newsletter/11">
+			<span class="label">소식지</span>
+			<h4 class="tit">2026년 상반기 모바일 소식지입니다♥</h4>
+			<p class="txt">2026년 상반기 모바일 소식지가 발행되었습니다.많은 관심과 공유 부탁드립니다.감사합니다.모바일 소식지 링크 : [유등의 현장 스케치]http://storysend.co.kr/bbs/board.php?bo_table=send_view&#038;amp;wr_id=16881</p>
+			<span class="date">2026-08-25</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/newsletter/1">
+			<span class="label">소식지</span>
+			<h4 class="tit">유등노인복지관 2022년도 1분기 소식지입…</h4>
+			<p class="txt">유등노인복지관 2022년도 1분기 소식지입니다.♥</p>
+			<span class="date">2022-11-22</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/newsletter/2">
+			<span class="label">소식지</span>
+			<h4 class="tit">유등노인복지관 2022년도 2분기 소식지입…</h4>
+			<p class="txt">유등노인복지관 2022년도 2분기 소식지입니다.♥</p>
+			<span class="date">2022-11-22</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/newsletter/3">
+			<span class="label">소식지</span>
+			<h4 class="tit">유등노인복지관 2022년도 3분기 소식지입…</h4>
+			<p class="txt">유등노인복지관 2022년도 3분기 소식지입니다.♥</p>
+			<span class="date">2022-11-22</span>
+		</a>
+	</li>
+</ul>
+
+			</div> 
+			<div id="tab04" class="tab_content">
+				<!--
+<li>
+	<a href="">
+		<span class="label">공지사항</span>
+		<h4 class="tit">2026년 고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상</h4>
+		<p class="txt">고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상입니다. <br>어르신분들 생활속에서 자주 발생할 수 있는 안전사고들에 대비하고자 하는 영상이므로 많은 시청 부탁드리며, 항상 건강하십시오. 아래 영상 링크를 클릭하시면 시청이 가능하십니다</p>
+		<span class="date">2026-07-02</span>
+	</a>
+</li>
+-->
+<ul class="txtBoard">
+	<li>
+		<a href="http://www.yudeung.or.kr/media/1">
+			<span class="label">언론보도</span>
+			<h4 class="tit">유등노인복지관, 노인맞춤돌봄서비스 '유등 …</h4>
+			<p class="txt">유등노인복지관(관장 박명래)은 8일 노인맞춤돌봄서비스 생활교육 영양교육의 일환으로 '유등, 김장하는 날'을 진행했다.이번 행사는 노인맞춤돌봄서비스 어르신들의 겨울철 식생활 안정과 경제적 부담감 완화를 위해 대상자 총 1030명에게 김장키트(4kg, 1,030상자)를 배분해 유등노인복지관 임직원과 생활지원사 64명이 어르신들과 함께 김장을 담그며 따뜻한 정을 나누는 시간을 보냈다.이번 행사에 참여한 박 모 어르신은 &#034;올해는 혼자 되어 김장은 기대하지도 않았는데 생활지원사와 함께 김장을 담글 수 있어 마음이 평안하고, 겨울철 내내 먹을 수 있는 든든한 양식이 생겨 복지관에 정말 감사하다&#034;고 말했다.박명래 관장은 &#034;이번 김장 행사를 통해 어르신들께서 겨울 한파와 어려운 경제 상황속에서도 건강한 겨울나기에 도움이 되기를 바란다”며 “앞으로도 복지사각지대가 발생하지 않도록 더욱 더 관심을 가지고 살피겠다&#034;고 말했다박 관장은 특히 “유등노인복지관은 노인맞춤돌봄서비스 사업 수행기관으로서 지역사회 내 일상생활 영위가 어려운 취약노인에게 맞춤형 돌봄 서비스를 제공해 안정적인 노후생활을 보장하고, 노인의 기능·건강 유지와 악화 예방을 위해 다양한 서비스(안전지원, 생활교육, 일상생활지원, 식료품·생활용품 지원 등)를 제공하고 있다”고 밝혔다.한성일 기자 hansung007@링크__javascript:__setmp(0);</p>
+			<span class="date">2024-01-08</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/media/2">
+			<span class="label">언론보도</span>
+			<h4 class="tit">[사진기사]유등, 김장하는날</h4>
+			<p class="txt">박명래 유등노인복지관장(오른쪽 세 번째)이 최근 노인맞춤돌봄서비스 생활교육 영양교육 일환으로 ‘유등, 김장하는 날’을 진행하며 김장을 하고 있다. 박 관장은 생활지원사 64명과 김치를 담그고 1030명에게 김치를 전달했다. 박 관장은 “어르신께서 겨울 한파와 어려운 경제 상황 속에도 건강한 겨울나기에 도움이 되기를 바라며 복지 사각지대가 발생하지 않도록 더욱더 관심을 가지고 살피겠다”라고 말했다. 유등노인복지관 제공출처 : 금강일보(https://www.ggilbo.com)링크__javascript:__setmp(0);</p>
+			<span class="date">2024-01-08</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/media/3">
+			<span class="label">언론보도</span>
+			<h4 class="tit">친구를 만나는 영화데이트</h4>
+			<p class="txt">유등노인복지관(관장 박명래) 노인맞춤돌봄서비스 사업팀은 12일 노인맞춤돌봄서비스 대상자 70명의 어르신을 대상으로 문화활동 ‘친구를 만나는 영화데이트’라는 제목으로 영화체험 행사를 가졌다.유등노인복지관은 급속한 고령인구 증가와 가족 돌봄 약화 현상 속에서 일상생활 영위가 어려운 취약 노인에게 적절한 돌봄서비스를 제공해 안정적인 노후생활 보장을 해드리고 있다. 또 노인의 기능·건강 유지와 악화 예방을 위해 돌봄이 필요한 만 65세 이상 국민기초생활수급자, 차상위계층, 기초연금수급자로서 유사 중복사업 자격에 해당되지 않는 자, 독거 · 조손 · 고령 부부 가구 노인, 신체적 기능 저하, 정신적 어려움 등으로 돌봄이 필요한 노인이나 고독사와 자살 위험이 높은 노인을 대상으로 노인맞춤돌봄서비스를 2020년부터 제공하고 있다.이번 영화 문화체험 활동은 부모와 자식 간의 끈끈한 정을 주제로 다룬 ‘3일의 휴가’라는 영화를 통해 문화활동을 하고 싶어도 건강과 상황이 허락되지 않는 어르신, 자녀들로부터 소외되고, 세상으로부터 단절된 어르신들에게 영화체험 기회를 제공하는 시간이 됐다. 항상 곁에서 어르신의 안위를 보살펴주는 자식 같은 생활지원사와 다른 참여자들과 자연스러운 사회적 관계도 형성하고, 상호작용 기회 확대를 통해 정서적으로 즐겁고 행복한 시간을 제공했다.이번 행사는 어르신들의 일신상의 안전을 확보하기 위해 어르신 한 분당 수행인력 한 명 즉, 1:1 매칭 형식으로 안전하게 진행했다.이날 영화데이트에 참가한 어르신들은 한 손에 팝콘을 들고 해맑은 모습으로 젊은 시절 영화관을 다니던 시절을 회고하며 즐거워했디. 영화 내용에 심취해 부모-자녀 간의 애틋한 사랑에 감동하고 눈물을 훔치기도 했다.영화데이트에 참가한 어르신들은 이구동성으로 &#034;오늘이 올 일 년 중에 가장 행복하고 좋은 날이다&#034;, &#034;내 인생에 영화관에 다 와보다니... 너무 고맙다&#034;, &#034;역시 영화는 텔레비전보다 영화관에서 보는 게 좋다&#034;, &#034;영화를 보며 친정엄마 생각이 나서 눈물이 났다&#034;, &#034;너무 감사하다&#034;고 말했다.박명래 관장은 행사 시작 전 어르신들에게 환영 인사와 안전에 대한 당부의 말씀을 전했다. 참가한 어르신들은 환한 웃음과 박수로 화답했다.박명래 관장은 “앞으로도 유등노인복지관은 어르신들의 고독사 예방과 존엄한 노후 삶의 영위를 위해 지역 내 공공 및 민간 네트워크를 활용해 지역사회 자원과의 적극적인 연계와 사회적 관계 형성을 통해 지속 가능한 상호 돌봄 체계를 구축하고자 한다”고 밝혔다.한성일 기자 hansung007@링크__javascript:__setmp(0);</p>
+			<span class="date">2024-01-08</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://www.yudeung.or.kr/media/4">
+			<span class="label">언론보도</span>
+			<h4 class="tit">유등노인복지관, 문화활동 ‘친구를 만나는 …</h4>
+			<p class="txt">[대전=데일리한국 선치영 기자] 유등노인복지관 노인맞춤돌봄서비스 사업에서는 노인맞춤돌봄서비스 대상자 70명의 어르신을 대상으로 문화활동 ‘친구를 만나는 영화데이트’라는 제목으로 영화체험을 진행했다고 13일 밝혔다.유등노인복지관에서는 급속한 고령인구 증가와 가족 돌봄의 약화 현상 속에서, 일상생활 영위가 어려운 취약 노인에게 적절한 돌봄서비스를 제공함으로써 안정적인 노후생활 보장과 노인의 기능·건강 유지 및 악화 예방을 위해 노인을 대상으로 노인맞춤돌봄서비스를 2020년부터 제공하고 있다.이번 영화 문화체험 활동은 부모와 자식 간의 끈끈한 정을 주제로 다룬 ‘3일의 휴가’라는 영화를 통해, 문화활동을 하고 싶어도 건강과 상황이 허락되지 않는 어르신, 자녀들로부터 소외되고, 세상으로부터 단절된 어르신들에게 영화체험의 기회를 제공했다.이날 영화데이트에 참가한 어르신들은 해맑은 모습으로 젊은 시절 영화관을 다니시던 시절을 회고하며 즐거워하기도 했고 영화 내용에 심취하셔서 부모-자녀 간의 애틋한 사랑에 감동하여 눈물을 훔치기도 했다.영화데이트에 참가한 어르신들은 “오늘이 올 일 년 중에 가장 행복하고 좋은 날 같다.”며 “내 인생에 영화관에 다 와보다니 너무 고맙다. 영화를 보며 친정엄마 생각이 나서 눈물이 났다. 너무 감사하다”고 입을 모았다.출처 : 데일리한국(https://daily.hankooki.com)링크__javascript:__setmp(0);</p>
+			<span class="date">2024-01-08</span>
+		</a>
+	</li>
+</ul>
+
+			</div> 
+			<div id="tab05" class="tab_content">
+				<!--
+<li>
+	<a href="">
+		<span class="label">공지사항</span>
+		<h4 class="tit">2026년 고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상</h4>
+		<p class="txt">고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상입니다. <br>어르신분들 생활속에서 자주 발생할 수 있는 안전사고들에 대비하고자 하는 영상이므로 많은 시청 부탁드리며, 항상 건강하십시오. 아래 영상 링크를 클릭하시면 시청이 가능하십니다</p>
+		<span class="date">2026-07-02</span>
+	</a>
+</li>
+-->
+<ul class="txtBoard">
+<li class="empty_li">게시물이 없습니다.</li>
+</ul>
+
+			</div> 
+			<div id="tab06" class="tab_content">
+				<!--
+<li>
+	<a href="">
+		<span class="label">공지사항</span>
+		<h4 class="tit">2026년 고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상</h4>
+		<p class="txt">고령자 승강기 안전사고 및 일상생활 안전사고 예방 교육 영상입니다. <br>어르신분들 생활속에서 자주 발생할 수 있는 안전사고들에 대비하고자 하는 영상이므로 많은 시청 부탁드리며, 항상 건강하십시오. 아래 영상 링크를 클릭하시면 시청이 가능하십니다</p>
+		<span class="date">2026-07-02</span>
+	</a>
+</li>
+-->
+<ul class="txtBoard">
+<li class="empty_li">게시물이 없습니다.</li>
+</ul>
+
+			</div> 
+			
+            
+        </div>
+    </div>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$(".tabBoard .tab_content").hide();
+		$(".tab_content:first").show();
+		$(".tabBoard .tab_btn .tab").click(function(){
+			var element = $(this);
+			var activeTab = $(this).attr("href");
+			var url = element.data('url');
+			
+			element.closest('.tabBoard').find(".tab").removeClass("active"); 
+			$(this).addClass("active");
+			
+			element.closest('.tabBoard').find(".tab_content").hide();
+			$(activeTab).fadeIn();
+			
+			element.closest('.tabBoard').find('.plusMore').attr('href', url);
+			
+			return false;
+		});
+	});
+</script>
+
+<div class="section03 wrap">
+    <div class="container">
+        <div class="sectionTit">
+            <div class="line">
+                <h3 class="tit"><strong class="green">사업안내</strong></h3>
+                <p class="txt">유등노인복지관의 다양한 프로그램을 확인하실 수 있습니다.</p>
+            </div>
+            <div class="arrowBox">
+                <a href="#;" class="arrow prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="16" viewBox="0 0 9 16" fill="none">
+                      <path d="M8.04257 0C8.17827 0 8.31713 0.0536563 8.42127 0.157797C8.62956 0.366078 8.62956 0.706906 8.42127 0.915187L1.29227 8.04734L8.31713 15.0722C8.52541 15.2805 8.52541 15.6213 8.31713 15.8296C8.10885 16.0379 7.76804 16.0379 7.55976 15.8296L0.156211 8.42606C-0.0520703 8.21778 -0.0520703 7.87694 0.156211 7.66866L7.6639 0.157813C7.76804 0.0536719 7.90687 3.125e-05 8.04259 3.125e-05L8.04257 0Z" fill="#AAAAAA"/>
+                    </svg>
+                </a>
+                <a href="#;" class="arrow next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="16" viewBox="0 0 9 16" fill="none">
+                      <path d="M0.534822 0C0.399118 0 0.260259 0.0536563 0.156118 0.157797C-0.0521631 0.366078 -0.0521631 0.706906 0.156118 0.915187L7.28512 8.04734L0.26026 15.0722C0.0519781 15.2805 0.0519781 15.6213 0.26026 15.8296C0.468541 16.0379 0.809354 16.0379 1.01763 15.8296L8.42118 8.42606C8.62946 8.21778 8.62946 7.87694 8.42118 7.66866L0.913495 0.157813C0.809354 0.0536719 0.670525 3.125e-05 0.534806 3.125e-05L0.534822 0Z" fill="#AAAAAA"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="right">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <a href="/document/노년사회화교육/">
+                        <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section03_icon01.svg" alt=""></i>
+                        <p class="txt">노년사회화교육</p>
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="/document/건강생활지원사업/">
+                        <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section03_icon02.svg" alt=""></i>
+                        <p class="txt">건강생활지원사업</p>
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="/document/상담-및-정보제공사업/">
+                        <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section03_icon03.svg" alt=""></i>
+                        <p class="txt">상담 및 정보제공사업</p>
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="/document/사회참여-및-권익증진사업/">
+                        <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section03_icon04.svg" alt=""></i>
+                        <p class="txt">사회참여 및 권익증진사업</p>
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="/document/사례관리-및-지역사회돌봄사업/">
+                        <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section03_icon05.svg" alt=""></i>
+                        <p class="txt">사례관리 및 지역사회돌봄사업</p>
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="/document/지역자원-조직화사업/">
+                        <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section03_icon06.svg" alt=""></i>
+                        <p class="txt">지역자원 조직화사업</p>
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="/document/노인사회활동지원사업/">
+                        <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section03_icon07.svg" alt=""></i>
+                        <p class="txt">노인사회활동지원사업</p>
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="/document/노인맞춤돌봄서비스사업/">
+                        <i><img src="http://www.yudeung.or.kr/theme/yudeung/img/section03_icon08.svg" alt=""></i>
+                        <p class="txt">노인맞춤돌봄서비스사업</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    var swiper = new Swiper('.section03 .right', {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        centeredSlides: false,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            prevEl: '.section03 .prev',
+            nextEl: '.section03 .next',
+        },
+		breakpoints: {
+			540: {
+				slidesPerView: 3,
+				spaceBetween: 10,
+			},
+			690: {
+				slidesPerView: 4,
+				spaceBetween: 10,
+			},
+		},
+    });
+</script>
+
+<div class="section04 wrap">
+    <div class="container">
+        <div class="box left">
+            <div class="titBox">
+                <h3 class="tit">후원 안내</h3>
+                <p class="txt">함께하는 사랑이 세상을 아름답게 만들어 갑니다</p>
+                <a href="/module/spon/" class="more">후원신청 바로가기
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                      <path d="M5.63617e-05 6.75268L6.05582 0.696913L0.865165 0.696913L0.820674 -0.000117055H7.2472V6.42641L6.55017 6.38191L6.55017 1.19126L0.494404 7.24702L5.63617e-05 6.75268Z" fill="#45AA40"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="box right">
+            <div class="titBox">
+                <h3 class="tit">자원봉사 안내</h3>
+                <p class="txt">여러분의 따뜻한 손길이 행복한 어르신 세상을 만듭니다</p>
+                <a href="/document/봉사안내/" class="more">자원봉사안내 바로가기
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                      <path d="M5.63617e-05 6.75268L6.05582 0.696913L0.865165 0.696913L0.820674 -0.000117055H7.2472V6.42641L6.55017 6.38191L6.55017 1.19126L0.494404 7.24702L5.63617e-05 6.75268Z" fill="#1C6DA6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section05 wrap">
+    <!--
+    <div class="map">
+        <div id="daumRoughmapContainer1784181036460" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+        <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>	
+        <script charset="UTF-8">
+            new daum.roughmap.Lander({
+                "timestamp" : "1784181036460",
+                "key" : "rbk8okp2x2y",
+                "mapWidth" : "960",
+                "mapHeight" : "700"
+            }).render();
+        </script>
+    </div>
+    -->
+    <div class="map kakao-map-wrap" id="kakaoMapWrap">
+        <button type="button" class="map-guide">지도를 사용하려면 클릭하세요</button>
+        <div class="map-blocker" aria-hidden="true"></div>
+    
+        <div id="daumRoughmapContainer1784181036460"
+             class="root_daum_roughmap root_daum_roughmap_landing"
+             style="width:100%;"></div>
+    
+        <script charset="UTF-8"
+                class="daum_roughmap_loader_script"
+                src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+    
+        <script charset="UTF-8">
+            new daum.roughmap.Lander({
+                "timestamp" : "1784181036460",
+                "key" : "rbk8okp2x2y",
+                "mapHeight" : "700"
+            }).render();
+    
+            window.addEventListener('load', function () {
+                var mapWrap = document.getElementById('kakaoMapWrap');
+                var guide = mapWrap.querySelector('.map-guide');
+    
+                guide.addEventListener('click', function () {
+                    mapWrap.classList.add('active');
+                });
+    
+                document.addEventListener('click', function (e) {
+                    if (!mapWrap.contains(e.target)) {
+                        mapWrap.classList.remove('active');
+                    }
+                });
+            });
+        </script>
+    </div>
+    <div class="right">
+        <h4 class="addr">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="34" viewBox="0 0 27 34" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 32.2995L14.6947 33.4997C14.538 33.6583 14.3516 33.7841 14.1465 33.87C13.9413 33.9558 13.7213 34 13.4992 34C13.277 34 13.057 33.9558 12.8518 33.87C12.6467 33.7841 12.4603 33.6583 12.3036 33.4997L12.2934 33.4878L12.2647 33.4589L12.1601 33.3518C11.5653 32.7345 10.9803 32.1077 10.4051 31.4716C8.96184 29.8774 7.57934 28.2284 6.26062 26.5281C4.75537 24.5731 3.21637 22.3632 2.04694 20.1804C0.902812 18.0401 0 15.7214 0 13.5998C0 5.88361 6.0615 0 13.5 0C20.9385 0 27 5.88361 27 13.5998C27 15.7214 26.0972 18.0401 24.9531 20.1787C23.7836 22.3649 22.2463 24.5731 20.7394 26.5281C18.8945 28.9066 16.9253 31.1844 14.8399 33.3518L14.7353 33.4589L14.7066 33.4878L14.6964 33.498L13.5 32.2995ZM13.5 18.6997C14.8427 18.6997 16.1303 18.1624 17.0797 17.206C18.0291 16.2496 18.5625 14.9524 18.5625 13.5998C18.5625 12.2472 18.0291 10.95 17.0797 9.99361C16.1303 9.03719 14.8427 8.49988 13.5 8.49988C12.1573 8.49988 10.8697 9.03719 9.92027 9.99361C8.97087 10.95 8.4375 12.2472 8.4375 13.5998C8.4375 14.9524 8.97087 16.2496 9.92027 17.206C10.8697 18.1624 12.1573 18.6997 13.5 18.6997Z" fill="#1C6DA6"/>
+            </svg>
+            대전광역시 서구 도솔로 182
+        </h4>
+        <dl class="info">
+            <dt>대표번호</dt>
+            <dd>042-528-0890~2</dd>
+        </dl>
+        <div class="timeBox">
+            <div class="label">이용안내</div>
+            <div class="flexBox">
+                <dl class="time">
+                    <dt>경로식당</dt>
+                    <dd><span>월~금</span>AM 11:30 ~ PM 13:00</dd>
+                </dl>
+                <dl class="time">
+                    <dt>건강증진실</dt>
+                    <dd><span>월~금</span>AM 09:00 ~ PM 18:00(16접수 마감)</dd>
+                </dl>
+                <dl class="time">
+                    <dt>체력단련실</dt>
+                    <dd><span>월~금</span>AM 09:30 ~ PM 18:00</dd>
+                </dl>
+                <dl class="time">
+                    <dt>취미교실</dt>
+                    <dd><span>월~금</span>AM 09:00 ~ PM 18:00</dd>
+                </dl>
+                <dl class="time">
+                    <dt>탁구대</dt>
+                    <dd><span>월~금</span>AM 09:30 ~ PM 18:00</dd>
+                </dl>
+            </div>
+        </div>			
+    </div>
+</div>
+
+<script>
+document.querySelector('.kakao-map-wrap .map-guide').addEventListener('click', function(){
+    this.closest('.kakao-map-wrap').classList.add('active');
+});
+</script>
+<script>
+setTimeout(function () {
+    const wrap = document.querySelector('.kakao-map-wrap');
+    if (!wrap) return;
+
+    wrap.querySelectorAll('.wrap_controllers, .cont, .border1, .border2, .border3, .border4')
+        .forEach(el => el.style.display = 'none');
+}, 700);
+</script>
+
+
+
+<!-- } 콘텐츠 끝 -->
+
+<!-- 하단 시작 { -->
+<footer class="footer wrap">
+    <div class="container">
+        <h1 class="fLogo"><a href=""><img src="http://www.yudeung.or.kr/theme/yudeung/img/m_logo.png" alt=""></a></h1>
+        <div class="fnbBox">
+            <ul class="fnb">
+                <li><a href="/document/이용약관/">이용약관</a></li>
+                <li><a href="/document/개인정보취급방침/">개인정보취급방침</a></li>
+                <!-- <li><a href="/document/개인정보의 수집 및 이용목적/">개인정보의 수집 및 이용목적</a></li> -->
+                <li><a href="/document/이메일무단수집거부/">이메일무단수집거부</a></li>
+            </ul>
+            <ul class="sns">
+                <li><a href="https://pf.kakao.com/_xjWLpj" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                  <path d="M8.99914 0C13.9706 0 18 3.22754 18 7.20999C18 11.1916 13.9706 14.4191 9 14.4191C8.5051 14.4182 8.01073 14.3858 7.51971 14.3222L3.74143 16.8618C3.312 17.0952 3.16029 17.0697 3.33686 16.498L4.10143 13.2581C1.63286 11.972 0 9.7434 0 7.20999C0 3.22842 4.02771 0 8.99914 0ZM14.064 7.09988L15.324 5.84551C15.3967 5.76791 15.4373 5.66435 15.4371 5.55662C15.437 5.4489 15.3962 5.34543 15.3233 5.26802C15.2504 5.1906 15.1512 5.14528 15.0464 5.14159C14.9416 5.13791 14.8396 5.17616 14.7617 5.24828L13.1091 6.892V5.53368C13.1091 5.42341 13.0665 5.31766 12.9906 5.23968C12.9148 5.16171 12.8119 5.11791 12.7046 5.11791C12.5973 5.11791 12.4944 5.16171 12.4185 5.23968C12.3426 5.31766 12.3 5.42341 12.3 5.53368V7.78609C12.2857 7.85045 12.2857 7.91728 12.3 7.98164V9.24923C12.3 9.3595 12.3426 9.46525 12.4185 9.54323C12.4944 9.6212 12.5973 9.665 12.7046 9.665C12.8119 9.665 12.9148 9.6212 12.9906 9.54323C13.0665 9.46525 13.1091 9.3595 13.1091 9.24923V8.04859L13.4751 7.68479L14.6991 9.47561C14.7297 9.52032 14.7685 9.55841 14.8134 9.5877C14.8583 9.61699 14.9084 9.6369 14.9607 9.64631C15.0131 9.65571 15.0668 9.65443 15.1187 9.64252C15.1705 9.63062 15.2196 9.60832 15.2631 9.57691C15.3066 9.54551 15.3437 9.5056 15.3722 9.45948C15.4007 9.41335 15.4201 9.36191 15.4292 9.30809C15.4384 9.25426 15.4371 9.19912 15.4256 9.14579C15.414 9.09247 15.3923 9.04201 15.3617 8.9973L14.064 7.09988ZM11.5286 8.7947H10.2771V5.54689C10.2724 5.44005 10.2277 5.33921 10.1524 5.26534C10.0771 5.19147 9.97708 5.15025 9.873 5.15025C9.76892 5.15025 9.66885 5.19147 9.59358 5.26534C9.51832 5.33921 9.47365 5.44005 9.46886 5.54689V9.21047C9.46886 9.4395 9.64886 9.62625 9.87257 9.62625H11.5286C11.6359 9.62625 11.7388 9.58244 11.8146 9.50447C11.8905 9.42649 11.9331 9.32074 11.9331 9.21047C11.9331 9.1002 11.8905 8.99445 11.8146 8.91647C11.7388 8.8385 11.6359 8.7947 11.5286 8.7947ZM6.50829 7.83366L7.10486 6.32912L7.65171 7.83278L6.50829 7.83366ZM8.67086 8.26264L8.67257 8.24855C8.67228 8.14382 8.63339 8.0431 8.56371 7.96667L7.66714 5.50021C7.62956 5.38267 7.55797 5.27972 7.46193 5.20511C7.3659 5.1305 7.25 5.08778 7.12971 5.08267C7.00866 5.08261 6.89041 5.12019 6.79052 5.19047C6.69063 5.26074 6.61375 5.36042 6.57 5.47642L5.14543 9.06601C5.10485 9.1681 5.1054 9.28258 5.14695 9.38426C5.1885 9.48593 5.26766 9.56648 5.367 9.60819C5.46634 9.64989 5.57774 9.64933 5.67667 9.60662C5.77561 9.56392 5.85399 9.48257 5.89457 9.38048L6.17914 8.66433H7.95343L8.20886 9.36903C8.22628 9.4217 8.25382 9.47025 8.28983 9.51179C8.32584 9.55333 8.3696 9.58702 8.41851 9.61086C8.46743 9.63471 8.5205 9.64822 8.57458 9.6506C8.62867 9.65298 8.68267 9.64418 8.73339 9.62473C8.78411 9.60527 8.83051 9.57555 8.86985 9.53732C8.90919 9.4991 8.94066 9.45315 8.9624 9.4022C8.98415 9.35125 8.99572 9.29634 8.99644 9.24071C8.99715 9.18507 8.987 9.12986 8.96657 9.07834L8.67086 8.26264ZM5.82257 5.5513C5.8228 5.49671 5.81252 5.44261 5.79232 5.39212C5.77212 5.34163 5.7424 5.29574 5.70488 5.25709C5.66736 5.21845 5.62277 5.18782 5.57368 5.16695C5.5246 5.14609 5.47198 5.13541 5.41886 5.13552H2.63743C2.53013 5.13552 2.42723 5.17933 2.35135 5.2573C2.27548 5.33527 2.23286 5.44103 2.23286 5.5513C2.23286 5.66157 2.27548 5.76732 2.35135 5.8453C2.42723 5.92327 2.53013 5.96707 2.63743 5.96707H3.63171V9.25804C3.63171 9.36831 3.67434 9.47406 3.75021 9.55204C3.82608 9.63001 3.92899 9.67381 4.03629 9.67381C4.14358 9.67381 4.24649 9.63001 4.32236 9.55204C4.39823 9.47406 4.44086 9.36831 4.44086 9.25804V5.96707H5.418C5.47119 5.96731 5.5239 5.95671 5.57309 5.9359C5.62228 5.91509 5.66697 5.88447 5.70458 5.84582C5.74219 5.80716 5.77199 5.76123 5.79224 5.71068C5.81249 5.66013 5.8228 5.60596 5.82257 5.5513Z" fill="#999999"/>
+                </svg></a></li>
+                <li><a href="https://www.facebook.com/yudeung17" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
+                  <path d="M10.5819 21.2599L10.5929 21.2579C10.6016 21.2593 10.6073 21.2653 10.6099 21.2759L10.6269 21.7029L10.6229 21.7199L10.6109 21.7359L10.5069 21.8099L10.4949 21.8139L10.4799 21.8099L10.3759 21.7359L10.3659 21.7229L10.3609 21.7029L10.3779 21.2749L10.3819 21.2649C10.3873 21.2583 10.3953 21.2566 10.4059 21.2599L10.4769 21.2949L10.4909 21.2989L10.5109 21.2949L10.5819 21.2599Z" fill="#999999"/>
+                  <path d="M10.8449 21.1469L10.8579 21.1449C10.8679 21.1476 10.8746 21.1549 10.8779 21.1669L10.9119 21.7809L10.9079 21.7949C10.9013 21.8036 10.8916 21.8063 10.8789 21.8029L10.6779 21.7099L10.6699 21.7029L10.6649 21.6909L10.6469 21.2609L10.6499 21.2499L10.6599 21.2399L10.8449 21.1469Z" fill="#999999"/>
+                  <path d="M10.1282 21.1445C10.1333 21.1434 10.1385 21.1443 10.1429 21.1469L10.3269 21.2389L10.3369 21.2489L10.3399 21.2609L10.3229 21.6909L10.3189 21.7019L10.3089 21.7099L10.1079 21.8029L10.0929 21.8049C10.0823 21.8009 10.0766 21.7929 10.0759 21.7809L10.1099 21.1669L10.1159 21.1529C10.1188 21.1487 10.1232 21.1456 10.1282 21.1445Z" fill="#999999"/>
+                  <path d="M11.5 19.888C16.311 19.164 20 15.013 20 10C20 4.477 15.523 0 10 0C4.477 0 0 4.477 0 10C0 15.013 3.689 19.165 8.5 19.888V13H7C6.60218 13 6.22064 12.842 5.93934 12.5607C5.65804 12.2794 5.5 11.8978 5.5 11.5C5.5 11.1022 5.65804 10.7206 5.93934 10.4393C6.22064 10.158 6.60218 10 7 10H8.5V8C8.5 7.07174 8.86875 6.1815 9.52513 5.52513C10.1815 4.86875 11.0717 4.5 12 4.5H12.5C12.8978 4.5 13.2794 4.65804 13.5607 4.93934C13.842 5.22064 14 5.60218 14 6C14 6.39782 13.842 6.77936 13.5607 7.06066C13.2794 7.34196 12.8978 7.5 12.5 7.5H12C11.8674 7.5 11.7402 7.55268 11.6464 7.64645C11.5527 7.74021 11.5 7.86739 11.5 8V10H13C13.3978 10 13.7794 10.158 14.0607 10.4393C14.342 10.7206 14.5 11.1022 14.5 11.5C14.5 11.8978 14.342 12.2794 14.0607 12.5607C13.7794 12.842 13.3978 13 13 13H11.5V19.888Z" fill="#999999"/>
+                </svg></a></li>
+                <li><a href="https://www.youtube.com/channel/UCunN7_Hax0_kxUcupos8IJA" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
+                  <path d="M8 10L13.19 7L8 4V10ZM19.56 2.17C19.69 2.64 19.78 3.27 19.84 4.07C19.91 4.87 19.94 5.56 19.94 6.16L20 7C20 9.19 19.84 10.8 19.56 11.83C19.31 12.73 18.73 13.31 17.83 13.56C17.36 13.69 16.5 13.78 15.18 13.84C13.88 13.91 12.69 13.94 11.59 13.94L10 14C5.81 14 3.2 13.84 2.17 13.56C1.27 13.31 0.69 12.73 0.44 11.83C0.31 11.36 0.22 10.73 0.16 9.93C0.0900001 9.13 0.0599999 8.44 0.0599999 7.84L0 7C0 4.81 0.16 3.2 0.44 2.17C0.69 1.27 1.27 0.69 2.17 0.44C2.64 0.31 3.5 0.22 4.82 0.16C6.12 0.0899998 7.31 0.0599999 8.41 0.0599999L10 0C14.19 0 16.8 0.16 17.83 0.44C18.73 0.69 19.31 1.27 19.56 2.17Z" fill="#999999"/>
+                </svg></a></li>
+            </ul>
+        </div>
+        <ul class="info">
+            <li><span>유등노인복지관</span><span>대표 : 박명래 관장</span><span>대표번호 : 042-528-0890~2</span><span>팩스번호 : 042-528-0893</li>
+            <li><span>이메일 : yudeung17@nate.com</span><span>통신판매업신고번호 : 제 2016-서울지역-1234호</span><span>주소 : 대전광역시 서구 도솔로 182</li>
+        </ul>
+        <p class="copyright">Copyright © yudeung.or.kr All Rights Reserved.</p>
+    </div>
+</footer>
+
+<div class="fixedBtn">
+	<ul>
+			<li class="green"><a href="http://www.yudeung.or.kr/bbs/register.php"><i class="fas fa-sign-in-alt"></i>회원가입</a></li>
+		<li class="blue"><a href="http://www.yudeung.or.kr/bbs/login.php"><i class="fas fa-unlock-alt"></i>로그인</a></li>
+		</ul>
+</div>
+
+<script>
+	var swiper = new Swiper('.programSlide .inner', {
+		slidesPerView: 1,
+		spaceBetween: 10,
+		loop: true,
+		navigation: {
+			nextEl: '.next',
+			prevEl: '.prev',
+		},
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false,
+		},
+		breakpoints: {
+			460: {
+				slidesPerView: 2,
+				spaceBetween: 10,
+			},
+			768: {
+				slidesPerView: 3,
+				spaceBetween: 10,
+			},
+			992: {
+				slidesPerView: 3,
+				spaceBetween: 10,
+			},
+			1500: {
+				slidesPerView: 3,
+				spaceBetween: 60,
+			},
+		},
+	});
+</script>
+
+
+
+<!-- } 하단 끝 -->
+
+<script>
+$(function() {
+    // 폰트 리사이즈 쿠키있으면 실행
+    font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+});
+</script>
+
+
+
+
+</body>
+</html>

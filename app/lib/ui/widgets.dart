@@ -120,8 +120,10 @@ class FacilityCard extends StatelessWidget {
               StatusLine(status: item.status, now: now),
               const SizedBox(height: 10),
               Text(f.name, style: theme.textTheme.titleLarge),
+              if (clinicTypeLabel(l, f.clinicType) case final kind?)
+                Text(kind, style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.primary)),
               const SizedBox(height: 4),
-              if (item.distance != null) _IconText(icon: Icons.directions_walk, text: walkText(l, item.distance!)),
+              if (item.distance != null) _IconText(icon: Icons.directions_walk, text: distanceText(l, item.distance!)),
               _IconText(icon: Icons.person, text: l.whoCanUse(f.eligibility ?? l.detailUnknownField)),
               if (item.freshness != Freshness.fresh) ...[
                 const SizedBox(height: 6),

@@ -141,10 +141,12 @@ class GroupColors extends ThemeExtension<GroupColors> {
       ? const GroupColors({
           CategoryGroup.meal: (bg: Color(0xFF4A2A1C), fg: Color(0xFFFFD9C2)),
           CategoryGroup.sleep: (bg: Color(0xFF2E2D4A), fg: Color(0xFFDCDBFF)),
+          CategoryGroup.clinic: (bg: Color(0xFF1F3A2A), fg: Color(0xFFCFEBD9)),
         })
       : const GroupColors({
           CategoryGroup.meal: (bg: Color(0xFFFCE3CF), fg: Color(0xFF9A4524)),
           CategoryGroup.sleep: (bg: Color(0xFFE6E4F4), fg: Color(0xFF4A4E8C)),
+          CategoryGroup.clinic: (bg: Color(0xFFE0F0E6), fg: Color(0xFF2F6B45)),
         });
 
   /// 아직 색을 정하지 않은 카테고리는 모래색.

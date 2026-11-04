@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Wed, 04 Nov 2026 05:55:27 GMT
+Server: Apache
+Expires: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Set-Cookie: JSESSIONID=xZExdegxEfc9FqNplnTr_U2Q2pTeAEYlqKiSftPF.portal21; path=/
+X-XSS-Protection: 1; mode=block
+Pragma: no-cache
+X-Frame-Options: DENY
+Content-Disposition: attachment; filename="경상북도_노숙인시설_20210915.csv"
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Content-Length: 372
+Content-Type: application/octet-stream; charset=UTF-8
+

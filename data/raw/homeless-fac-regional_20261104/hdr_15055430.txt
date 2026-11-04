@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Wed, 04 Nov 2026 05:55:29 GMT
+Server: Apache
+Expires: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Set-Cookie: JSESSIONID=sxu9cAvK_NXzQwZqBK1uEXZTH14x9WGuJCJO1J2v.portal21; path=/
+X-XSS-Protection: 1; mode=block
+Pragma: no-cache
+X-Frame-Options: DENY
+Content-Disposition: attachment; filename="서울특별시 서대문구_노숙인 시설 현황_20250717.csv"
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Content-Length: 553
+Content-Type: application/octet-stream; charset=UTF-8
+

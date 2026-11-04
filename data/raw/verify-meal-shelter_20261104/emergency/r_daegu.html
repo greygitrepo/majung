@@ -1,0 +1,524 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko" style="height:100%">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+		<!-- Content Security Policy 설정 -->
+		
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="120달구벌콜센터 메인">
+		<meta property="og:description" content="120달구벌콜센터 메인">
+		<meta property="og:image" content="https://www.daegu.go.kr/120/images/egovframework/dcall/main/umbr_na.png">
+		<meta property="og:url" content="https://www.daegu.go.kr/120/index.do">
+		
+		<title>120달구벌콜센터</title>
+		
+
+		<!-- library -->
+		
+<link type="text/css" rel="stylesheet" href="/120/css/egovframework/dcall/cmm/layout.css?ver=1">
+<link type="text/css" rel="stylesheet" href="/120/css/egovframework/dcall/cmm/ie-layout.css">
+<link type="text/css" rel="stylesheet" href="/120/css/egovframework/dcall/cmm/swiper-bundle.min.css">
+<link type="text/css" rel="stylesheet" href="/120/css/egovframework/dcall/cmm/aos.css">
+<link type="text/css" rel="stylesheet" href="/120/css/egovframework/dcall/cmm/layout_1360.css">
+<link type="text/css" rel="stylesheet" href="/120/css/egovframework/dcall/cmm/layout_780.css">
+<link type="text/css" rel="stylesheet" href="/120/css/egovframework/dcall/cmm/mCustomScrollbar.css">
+<link type="text/css" rel="stylesheet" href="/120/css/egovframework/dcall/cmm/jquery-ui.css">
+
+<!-- 공통 css -->
+<link type="text/css" rel="stylesheet" href="/120/css/egovframework/dcall/cmm/common.css">
+
+<script src="/120/js/egovframework/dcall/cmm/ie.js"></script>
+<script src="/120/js/egovframework/dcall/cmm/cryptoJS.js"></script>
+<script src="/120/js/egovframework/dcall/cmm/jquery-3.7.1.js"></script>
+<script src="/120/js/egovframework/dcall/cmm/jquery-migrate-1.4.1.min.js"></script>
+<!--<script src="/120/js/egovframework/dcall/cmm/aos.js"></script>-->
+<script src="/120/js/egovframework/dcall/cmm/publish.js"></script>
+<script src="/120/js/egovframework/dcall/cmm/jquery.mCustomScrollbar.js"></script>
+<script src="/120/js/egovframework/dcall/cmm/ui/1.14.1/jquery-ui.min.js"></script>
+<script src="/120/js/egovframework/dcall/cmm/jquery.number.min.js"></script>
+
+<!-- 공통 js -->
+<script src="/120/js/egovframework/dcall/cmm/common.js"></script>
+<script src="/120/js/egovframework/dcall/cmm/holidays.js"></script>
+
+
+		<!--  20250519 신규 수정 -->
+		<script src="/120/js/egovframework/dcall/main/script.js;jsessionid=272C26434AB92FFAA211A1EFB3B97827"></script>
+		
+	</head>
+	<body>
+<div id="popupOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9998;"></div>
+<!--
+<div id="popupBox" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); 
+     width:90%; max-width:600px; background:#fff; border-radius:10px; box-shadow:0 8px 30px rgba(0,0,0,0.5); 
+     overflow:hidden; z-index:9999; font-family: sans-serif;">
+
+	<div
+		style="background:#f8f9fa; padding:16px 20px; border-bottom:1px solid #ddd; font-weight:bold; font-size:1.15rem;">
+		공지사항
+	</div>
+
+	<div style="padding:24px 20px; line-height:1.6; color:#333; font-size:1.05rem;">
+		<strong>[알림] 120달구벌콜센터 홈페이지 작업에 따른 서비스 일시 중단 안내<br>[26.3.24(화) 18:00 ~ 24:00]</strong><br><br>
+		안전한 시스템 운영을 위한 홈페이지 네트워크 가상화 작업으로
+		<br>
+		웹서비스가 다음과 같이 일시 중단될 예정입니다.
+		<br>
+		서비스 이용에 참고하시기 바랍니다.
+		<br>
+		<br>
+		--- 아 래 ---
+		<br>
+		<br>
+		▣ 중단사유 : 홈페이지 네트워크 가상화 작업
+		<br>
+		▣ 중단시간 : 26.3.24(화) 18:00 ~ 24:00
+		<br>
+		▣ 중단업무 : 120달구벌콜센터 홈페이지 이용 불가
+		<br>
+		<br>
+		<h6 style='color:red;'>※작업 상황에 따라 중단시간은 변동될 수 있습니다.</h6>
+	</div>
+
+
+	<!-- 팝업 HTML과 footer는 그대로 유지 
+
+	<script>
+		// 쿠키 함수
+		function setCookie(name, value, days) {
+			var date = new Date();
+			date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+			var expires = "; expires=" + date.toUTCString();
+			document.cookie = name + "=" + (value || "") + expires + "; path=/";
+		}
+
+		function getCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for (var i = 0; i < ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) === ' ') c = c.substring(1);
+				if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+			}
+			return null;
+		}
+
+		// 숨길 기준 날짜 : 2026년 3월 24일 00:00 이후부터 팝업 완전 숨김
+		var HIDE_AFTER = new Date(2026, 2, 25);  // month 2 = 3월
+
+		function isPastHideDate() {
+			return new Date() >= HIDE_AFTER;
+		}
+
+		window.addEventListener('DOMContentLoaded', function () {
+			var overlay = document.getElementById('popupOverlay');
+			var box = document.getElementById('popupBox');
+			var closeBtn = document.getElementById('btnClose');
+			var chk = document.getElementById('chkNoShowToday');
+
+			// 요소가 없으면 아무것도 안 함 (에러 방지)
+			if (!overlay || !box || !closeBtn) {
+				console.warn("팝업 요소를 찾을 수 없음 → 스크립트 중단");
+				return;
+			}
+
+			// 이미 3월 24일 이후라면 → 무조건 표시 안 함
+			if (isPastHideDate()) {
+				consoleplog("3월 24일 이후 → 팝업 숨김");
+				return;
+			}
+
+			// 아직 기간 내 + 오늘 쿠키 없으면 표시
+			if (getCookie('noPopupToday') !== '1') {
+				console.log("팝업 표시");
+				overlay.style.display = 'block';
+				box.style.display = 'block';
+			} else {
+				console.log("쿠키 때문에 오늘은 표시 안 함");
+			}
+
+			// 닫기 버튼 이벤트 (한 번만 등록)
+			closeBtn.addEventListener('click', function () {
+				if (chk.checked) {
+					setCookie('noPopupToday', '1', 1);
+					console.log("오늘 하루 안 보기 설정됨");
+				}
+				overlay.style.display = 'none';
+				box.style.display = 'none';
+			});
+		});
+	</script>
+
+	<div style="padding:16px 20px; text-align:right; background:#f8f9fa; border-top:1px solid #eee;">
+		<label style="margin-right:16px; user-select:none; cursor:pointer;">
+			<input type="checkbox" id="chkNoShowToday" style="vertical-align:middle; margin-right:6px;">
+			오늘 하루 동안 보지 않기
+		</label>
+		<button id="btnClose"
+			style="padding:9px 18px; background:#6c757d; color:white; border:none; border-radius:6px; cursor:pointer;">
+			닫기
+		</button>
+	</div>
+</div>
+  -->
+		<!-- 본문 바로가기 링크 -->
+	    <a href="#main-content" class="skip-to-content">본문 바로가기</a>
+		
+		<!-- Top 메뉴 -->
+		
+
+
+
+
+
+
+<head>
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; ">
+	<meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:;;
+	 style-src * 'self' 'unsafe-inline' blob: data: gap:;
+	 script-src * 'self' 'https://*';
+	 object-src * 'self' blob: data: gap:;
+	 img-src * self 'unsafe-inline' blob: data: gap:;
+	 connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;
+	 base-uri 'self'">
+	 <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; ">
+</head>
+<header>	
+	<nav class="gnb-pc">
+		<div class="layout">
+						
+			<h1>
+				<a href="/120/index.do" aria-label="달구벌콜센터 홈페이지로 이동">
+				  <img src="/120/images/egovframework/dcall/common/logo.svg" alt="달구벌콜센터">
+				</a>
+			</h1>
+			  
+			<ul class="list" >
+				<li>
+					<a href="/120/guide/main.do"  >상담안내</a>
+					<div class="depth"   aria-hidden="true">
+						<div class="d-wrap">
+							<ul>
+								<li><a tabindex="0" href="/120/guide/main.do">이용 안내</a></li>
+								<li><a tabindex="0" href="/120/guide/ai.do">AI 상담</a></li>
+								<li><a tabindex="0" href="/120/guide/ars.do">보이는 ARS</a></li>
+								<li><a tabindex="0" href="/120/guide/message.do">문자 상담</a></li>
+								<li><a tabindex="0" href="/120/guide/language.do">외국어 상담</a></li>
+								<li><a tabindex="0" href="/120/guide/hand.do">수어 상담</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="/120/customer/notice.do"  >알림마당</a>
+					<div class="depth"   aria-hidden="true">
+						<div class="d-wrap">
+							<ul>
+								<li><a tabindex="0" href="/120/customer/notice.do">공지사항</a></li>
+								<li><a tabindex="0" href="/120/customer/press.do">언론보도/ 홍보</a></li>
+								<li><a tabindex="0" href="/120/customer/faq.do">자주묻는 질문</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="/120/community/praise.do"  >소통마당</a>
+					<div class="depth"  aria-hidden="true">
+						<div class="d-wrap">
+							<ul>
+								<li><a tabindex="0" href="/120/community/praise.do">칭찬합니다</a></li>
+								<li><a tabindex="0" href="/120/community/visit.do">콜센터 방문신청</a></li>
+								
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="/120/company/info.do"  >센터소개</a>
+					<div class="depth"  aria-hidden="true">
+						<div class="d-wrap">
+							<ul>
+								<li><a tabindex="0" href="/120/company/info.do">콜센터 소개</a></li>
+								<li><a tabindex="0" href="/120/company/history.do">연혁</a></li>
+								<li><a tabindex="0" href="/120/company/location.do">위치안내</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+
+		
+	</nav>
+	
+	<nav class="gnb-mb">
+		<div class="layout">
+
+			<h1>
+				<a href="/120/index.do" aria-label="달구벌콜센터 홈페이지로 이동">
+				  <img src="/120/images/egovframework/dcall/common/logo.svg" alt="달구벌콜센터">
+				</a>
+			</h1>
+			  
+			<a href="" class="menu"><span></span></a>
+		</div>
+		<div class="in">
+		
+			<ul class="list" >
+				<li class="click">
+					<a href="/120/guide/main.do"  >상담안내</a>
+					<div class="depth"   aria-hidden="true" >
+						<div class="d-wrap">
+							<ul>
+								<li><a tabindex="-1" href="/120/guide/main.do">이용 안내</a></li>
+								<li><a tabindex="-1" href="/120/guide/ai.do">AI 상담</a></li>
+								<li><a tabindex="-1" href="/120/guide/ars.do">보이는 ARS</a></li>
+								<li><a tabindex="-1" href="/120/guide/message.do">문자 상담</a></li>
+								<li><a tabindex="-1" href="/120/guide/language.do">외국어 상담</a></li>
+								<li><a tabindex="-1" href="/120/guide/hand.do">수어 상담</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="click">
+					<a href="/120/customer/notice.do"  >알림마당</a>
+					<div class="depth"  aria-hidden="true">
+						<div class="d-wrap">
+							<ul>
+								<li><a tabindex="-1" href="/120/customer/notice.do">공지사항</a></li>
+								<li><a tabindex="-1" href="/120/customer/press.do">언론보도/ 홍보</a></li>
+								<li><a tabindex="-1" href="/120/customer/faq.do">자주묻는 질문</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="click">
+					<a href="/120/community/praise.do"  >소통마당</a>
+					<div class="depth"  aria-hidden="true">
+						<div class="d-wrap">
+							<ul>
+								<li><a tabindex="-1" href="/120/community/praise.do">칭찬합니다</a></li>
+								<li><a tabindex="-1" href="/120/community/visit.do">콜센터 방문신청</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="click">
+					<a href="/120/company/info.do"  >센터소개</a>
+					<div class="depth"  aria-hidden="true">
+						<div class="d-wrap">
+							<ul>
+								<li><a tabindex="-1" href="/120/company/info.do">콜센터 소개</a></li>
+								<li><a tabindex="-1" href="/120/company/history.do">연혁</a></li>
+								<li><a tabindex="-1" href="/120/company/location.do">위치안내</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+	</nav>
+
+	
+
+	
+
+</header>
+
+
+
+
+
+		
+		<!-- 메인화면 Contents -->
+		<div id="main-content" class="main" role="main">
+			<div class="main-top">
+				<div class="layout">
+					<div class="coin2">
+						<img src="/120/images/egovframework/dcall/main/umbr.png" alt="">
+						<p class="slogan">"시민이 행복할 때까지"</p>
+					</div> 
+					<p class="b-tit"><span>대구시민의 소리에</span> 항상 귀기울이겠습니다.</p>
+					<!--<p class="b-tit" data-aos="zoom-in" data-aos-once="true" data-aos-delay="200"><span>대구시민의 소리에</span> 항상 귀기울이겠습니다.</p>-->
+					<!--효과
+					<div class="txt-area">
+						<ul>
+							<li class="list01" class="fade-animation">
+								<a href="/120/guide/main.do">전화 상담</a>
+							</li>
+							<li class="list02 fade-animation" style="animation-delay: 0.3s;">
+								<a href="/120/guide/ai.do">AI 상담</a>
+							</li>
+							<li class="list03 fade-animation" style="animation-delay: 0.4s;">
+								<a href="/120/guide/ars.do">보이는 ARS</a>
+							</li>
+							<li class="list04 fade-animation" style="animation-delay: 0.5s;">
+								<a href="/120/guide/message.do">문자 상담</a>
+							</li>
+							<li class="list05 fade-animation" style="animation-delay: 0.6s;">
+								<a href="/120/guide/language.do">외국어 상담</a>
+							</li>
+							<li class="list06 fade-animation" style="animation-delay: 0.7s;">
+								<a href="/120/guide/hand.do">수어 상담</a>
+							</li>
+						</ul>
+					</div>
+					-->
+					<div class="txt-area">
+						<ul>
+							<li class="list01" class="fade-animation">
+								<a href="/120/guide/main.do">전화 상담</a>
+							</li>
+							<li class="list02" class="fade-animation">
+								<a href="/120/guide/ai.do">AI 상담</a>
+							</li>
+							<li class="list03" class="fade-animation">
+								<a href="/120/guide/ars.do">보이는 ARS</a>
+							</li>
+							<li class="list04" class="fade-animation">
+								<a href="/120/guide/message.do">문자 상담</a>
+							</li>
+							<li class="list05" class="fade-animation">
+								<a href="/120/guide/language.do">외국어 상담</a>
+							</li>
+							<li class="list06" class="fade-animation">
+								<a href="/120/guide/hand.do">수어 상담</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			// 20250519 신규 수정 */
+			$(function(){
+				
+			});
+			function openPopup(id, url, width, height, position) {
+ 			//	alert("openPopup 체크");
+				
+				
+				
+				var w = 100;
+				var h = 100;
+				var _width="550"
+				var _height="200"
+				var cw = screen.availWidth;
+				var ch = screen.availHeight;
+				var ml = (cw - w) / 2;
+				var mt = (ch - h) / 2;
+				
+				var top = mt;
+				var left = ml;
+				
+				if (width != ""){
+					_width =  width;	
+				}else {
+					_width =ml;
+				}
+				if (height != ""){
+					_height =  height;
+				}else {
+					_height =mt;
+				}
+				
+				if(position != null && position != "") {
+					var positionArr = position.split(",");
+					
+					top = positionArr[0];
+					left = positionArr[1];
+				}
+				
+				var option = "titlebar=0, location=0, scrollbars=0, top=" + top + ", left=" + left + ", width="+_width+", height="+_height+"";
+				var popObj = window.open(url, id, option);
+				
+				return popObj;
+			}
+			// 20250519 신규 수정 끝 */
+			// AOS를 사용하는 브라우저 확인
+			//document.addEventListener("DOMContentLoaded", function() {
+			if (!document.documentMode) { // documentMode는 IE에서만 존재
+				AOS.init({
+					once: true,
+					duration: 1000,
+				});
+			} else {
+				// IE fallback 애니메이션 처리
+				document.querySelectorAll('.fade-animation').forEach((el, index) => {
+					setTimeout(() => {
+						el.style.opacity = '1';
+						el.style.transform = 'translateY(0)';
+					}, index * 300); // 지연 시간
+				});
+			}
+			//});
+		</script>
+		
+		<style>
+			.fade-animation {
+				opacity: 0;
+				transform: translateY(20px);
+				transition: all 0.5s ease-out;
+			}
+		
+			.fade-animation.ie-visible {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		</style>
+		
+		<!-- Bottom 메뉴 -->
+		
+
+<footer>
+      <div class="top">
+         <div class="layout">
+            <ul>
+               <li><a href="https://www.daegu.go.kr" target="_blank">대구시청</a></li>
+	      <li><a href="https://talk.daegu.go.kr/" target="_blank">토크대구</a></li>
+	      <li><a href="https://dudeuriso.daegu.go.kr/index.do" target="_blank">두드리소</a></li>
+	      <li><a href="https://www.daegu.go.kr/tra/index.do?menu_id=00000661" target="_blank">차량등록</a></li>
+	      <li><a href="https://cyber.dgwater.go.kr" target="_blank">상수도</a></li>
+	      <li><a href="https://businfo.daegu.go.kr" target="_blank">버스정보</a></li>
+            </ul>
+         </div>
+      </div>
+      <div class="middle">
+         <div class="layout">
+            <div class="footer-adr">
+               <div class="logo"><img src="/120/images/egovframework/dcall/common/daegu_logo.svg" alt="대구광역시"></div>
+               
+               <div class="daegu-adr">
+                  <ul>
+                     <li>120달구벌콜센터 (우 41542) 대구광역시 북구 연암로 40 산격청사 111동</li>
+                  </ul>
+                  <ul class="tel">
+                     <li>대표안내전화 : 053)120 (유료)</li>
+                     <li>Daegu Metropolitan City. All rights Reserved.</li>
+                  </ul>
+               </div>
+            </div>
+            <div class="daegu-term">
+               <ul class="daegu-term1">
+                  <li><a href="/120/company/term.do">개인정보처리방침</a></li>
+                  <li class="webmark"><img src="/120/images/egovframework/dcall/common/webmark.svg" alt="웹접근성품질인증마크"></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </footer>
+		
+	</body>
+</html>

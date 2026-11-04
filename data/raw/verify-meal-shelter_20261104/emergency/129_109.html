@@ -1,0 +1,2185 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+    
+
+
+<meta name="google-site-verification" content="Zzt158RIov5FXJZQ0FEka8-sDbuhiJl9NrV7F-B2fys" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-ua-compatible" content="IE=edge" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="보건복지상담센터" />
+<meta name="description" content="국번없이 129, 긴급복지, 복지지원, 자살, 알콜중독 등 복지 상담 서비스 제공" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="보건복지상담센터" />
+<meta property="og:description" content="국번없이 129, 긴급복지, 복지지원, 자살, 알콜중독 등 복지 상담 서비스 제공" />
+<meta property="og:image" content="https://www.129.go.kr/images/logo_metatag.jpg" />
+<meta property="og:url" content="https://www.129.go.kr" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="보건복지상담센터" />
+<meta name="twitter:description" content="국번없이 129, 긴급복지, 복지지원, 자살, 알콜중독 등 복지 상담 서비스 제공" />
+<meta name="twitter:image" content="https://www.129.go.kr/images/logo_metatag.jpg" />
+<meta name="twitter:domain" content="https://www.129.go.kr/" />
+<link rel="icon" type="image/png" href="/resources/images/favicon.png"/>
+
+<!-- Begin Css -->
+<!-- Font Imports -->
+
+
+<!-- Core Style -->
+<link rel="stylesheet" href="/resources/css/style.css" />
+
+<!-- Font Icons -->
+<link rel="stylesheet" href="/resources/css/font-icons.css" />
+
+<!-- Plugins/Components CSS -->
+<link rel="stylesheet" href="/resources/css/components/bs-select.css" />
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/resources/css/custom.css" />
+    <title>자살예방상담전화 | 보건복지상담센터 힘이되는 129</title>
+
+    <link rel="stylesheet" href="/resources/css/swiper.css" />
+    <link rel="stylesheet" href="/resources/css/components/bs-select.css" />
+</head>
+<body class="stretched adaptive-color-scheme is-expanded-menu block-misc-canvas-cursor">
+    <script src="/resources/js/app/darkModeCommon.js"></script>
+    <script>
+        
+    </script>
+
+	<div id="wrapper">
+        
+
+
+
+
+<link rel="stylesheet" href="/resources/css/header.css" />
+
+<div class="focus-in-wrap position-absolute w-100">
+	<ul>
+		<li><a href="#content-start" class="fw-bold"
+			id="mainContent-start">본문 바로가기</a></li>
+		<li><a href="#" class="fw-bold" onclick="fn_start_menu();">주메뉴
+				바로가기</a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	function fntopFlag() {
+		document.getElementById("top_flag").classList.toggle('on');
+
+		var topid = document.getElementById("chk_nuri");
+
+		let topBar = $("#top-bar");
+		let slider = $('#slider');
+		let width = Number(topBar.css('width').substring(0, topBar.css('width').length - 2));
+		let isPcWidth = width >= 1024;
+
+		if (topid.style.display === 'none' || topid.style.display === '') {
+			topid.style.display = 'block';
+			if (isPcWidth) {
+				slider.css('marginTop', topBar.css('height'));
+			}
+		} else {
+			topid.style.display = 'none';
+			if (isPcWidth) {
+				slider.css('marginTop', '-81px');
+			}
+		}
+	}
+</script>
+
+<style>
+
+/******* 20240523 전자정부누리집 S ******/
+.top_line_bnr {
+	background-color: #edf1f5;
+	position: relative;
+	z-index: 100;
+}
+
+.top_line_bnr.bnr_hide:after {
+	background: #cdd7e4;
+	content: "";
+	height: 1px;
+	left: 0;
+	position: absolute;
+	top: 32px;
+	width: 100%;
+}
+
+.top_link_wrap .inner, .chk_nuri_addr_bnr .inner {
+	max-width: 1500px;
+	margin: 0 auto;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.top_flag_wrap {
+	align-items: center;
+	color: #1d1d1d;
+	display: flex;
+	font-size: 15px;
+	line-height: 16px;
+	max-width: 1500px;
+	margin: 0 auto;
+}
+
+.top_flag_in {
+	font-size: 15px;
+	display: flex;
+	align-items: center;
+	margin: initial;
+}
+
+.top_flag_in img {
+	margin-right: 9px;
+	width: 24px;
+}
+
+.top_link_wrap {
+	padding: 8px 0;
+}
+
+.top_flag_info {
+	color: #003675;
+	cursor: pointer;
+	font-size: 14px;
+	margin-left: 18px;
+	padding-right: 20px;
+	position: relative;
+	border: 0;
+	background: none;
+}
+
+.top_flag_info:after {
+	background: url("../../resources/images/icon_arrow_bot.png") center/100%
+		auto no-repeat;
+	content: "";
+	height: 16px;
+	margin-top: -8px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transition: .4s ease-in-out;
+	width: 16px;
+}
+
+.top_flag_info.on:after {
+	transform: rotate(-180deg);
+}
+
+.top_flag_info span {
+	display: inline-block;
+	height: 0;
+	overflow: hidden;
+	text-indent: -20000px;
+	width: 0;
+}
+
+.chk_nuri_addr_bnr {
+	position: relative;
+	top: 0px;
+	left: 0;
+	background: #edf1f5;
+	border-top: 1px solid #cdd7e4;
+	display: none;
+	padding: 24px 0 15px;
+	z-index: 202
+}
+
+.chk_nuri_addr_bnr strong, .chk_nuri_addr_bnr p {
+	padding-left: 28px;
+}
+
+.chk_nuri_addr_bnr strong {
+	color: #1d1d1d;
+	display: inline-block;
+	font-size: 17px;
+	font-weight: 700;
+	line-height: 20px;
+	position: relative;
+}
+
+.chk_nuri_addr_bnr strong:before {
+	background: url("../../resources/images/icon_govt_1.png") center/12px
+		auto no-repeat #fff;
+	border-radius: 50%;
+	content: "";
+	left: 0;
+	height: 20px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+}
+
+.chk_nuri_addr_bnr p {
+	color: #555;
+	font-size: 15px;
+	margin-top: 16px;
+}
+
+.chk_nuri_addr_bnr p a {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 1px;
+	color: #1d1d1d;
+	padding: 15px 0;
+}
+
+.chk_nuri_addr_bnr p a:after {
+	content: "";
+	width: 16px;
+	height: 16px;
+	background: url("/kor/images/common/icon_info_modify.png") no-repeat;
+	background-size: contain;
+}
+
+@media all and (max-width:1200px) {
+	.top_link_wrap .inner, .chk_nuri_addr_bnr .inner {
+		padding: 0 17px;
+	}
+	.slider {
+	  padding-top: 0px;
+	  position: fixed; /*반응형처럼 작동*/
+	}
+}
+
+@media all and (max-width:640px) {
+	.top_link_wrap {
+		padding: 4px 0;
+	}
+	.top_flag_wrap, .top_flag_in {
+		font-size: 14px;
+	}
+	.top_flag_in img {
+		width: 18px;
+	}
+	.top_flag_info {
+		font-size: 13px;
+		margin-left: 10px;
+		padding-right: 16px;
+	}
+	.chk_nuri_addr_bnr {
+		padding: 24px 0 10px;
+	}
+	.chk_nuri_addr_bnr strong, .chk_nuri_addr_bnr p {
+		padding-left: 24px;
+	}
+	.chk_nuri_addr_bnr strong {
+		font-size: 15px;
+	}
+	.chk_nuri_addr_bnr strong:before {
+		background-size: 10px auto;
+		height: 16px;
+		width: 16px;
+	}
+	.chk_nuri_addr_bnr p {
+		font-size: 14px;
+		margin-top: 12px;
+	}
+	.chk_nuri_addr_bnr p a {
+		background-size: 14px auto;
+		padding: 16px 18px 16px 0;
+	}
+	.slider {
+	  padding-top: 0px;
+	  position: fixed; /*반응형처럼 작동*/
+	}
+}
+
+@media all and (max-width:580px) {
+	.top_flag_wrap {
+		display: block;
+	}
+	.top_flag_info {
+		padding: 3px 16px 5px 27px;
+		margin-left: 0;
+	}
+	.slider {
+	  padding-top: 0px;
+	  position: fixed; /*반응형처럼 작동*/
+	}
+}
+
+@media all and (max-width:390px) {
+	.top_link_wrap {
+		padding: 8px 0 2px 0;
+	}
+	.top_flag_in {
+		font-size: 13.5px;
+	}
+	.slider {
+	  padding-top: 0px;
+	  position: fixed; /*반응형처럼 작동*/
+	}
+}
+/******* 20240523 전자정부누리집 E ******/
+</style>
+
+<header id="header"
+	class="transparent-header floating-header header-size-md">
+	<div id="header-wrap">
+		<div id="top-bar" class="transparent-topbar">
+			<div>
+				<!--                 	<div class="row justify-content-start"> -->
+				<!--                 		<div class="col-12 col-md-auto"> -->
+				<!-- 전자정부표시 -->
+				<div class="top_line_bnr">
+					<div class="top_link_wrap">
+						<div class="inner">
+							<input type="hidden" name="isinternal3" value="N"> <input
+								type="hidden" name="isinternal2" value="N">
+							<div class="top_flag_wrap">
+								<p class="top_flag_in">
+									<img src="/resources/images/m_korea.png" alt="태극기">이
+									누리집은 대한민국 공식 전자정부 누리집입니다.
+								</p>
+<!-- 								<button class="top_flag_info" id="top_flag" -->
+<!-- 									onclick="fntopFlag();"> -->
+<!-- 									공식 누리집 확인방법 <span>열기</span> -->
+<!-- 								</button> -->
+							</div>
+						</div>
+					</div>
+					<div class="chk_nuri_addr_bnr" style="display: none;"
+						id="chk_nuri">
+						<div class="inner">
+							<strong>공식 누리집 주소 확인하기</strong>
+							<p>
+								go.kr 주소를 사용하는 누리집은 대한민국 정부기관이 관리하는 누리집입니다. <br> 이 밖에
+								or.kr 또는 .kr등 다른 도메인 주소를 사용하고 있다면 아래 URL에서 도메인 주소를 확인해 보세요. <br>
+								<a href="https://uiux.egovframe.go.kr/search.do"
+									target="_blank" title="새창">운영중인 공식 누리집보기</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<!--                 		</div> -->
+				<!--                 	</div> -->
+				
+			</div>
+		</div>
+
+		
+			<div id="top-bar" class="transparent-topbar">
+				<div>
+					<div class="row justify-content-end">
+						<div class="col-12 col-md-auto">
+							<div class="top-links top-links-109">
+								<ul class="top-links-container">
+									<li class="top-links-item"><a class="link link-4"
+										href="https://www.mohw.go.kr/"
+										target="_blank" title="새창-보건복지부 바로가기">보건복지부</a></li>
+									<li class="top-links-item"><a class="link link-4"
+										href="/index.do" title="보건복지상담센터 바로가기">보건복지상담센터</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+
+		<div class="container">
+			<div class="header-row">
+
+				<div id="logo" >
+					
+					
+						<a href="/109"> <img
+							class="logo-default logo-109 my-lg-0 my-md-4"
+							style="width: 100% !important; height: 40px !important;"
+							src="/resources/images/logo_109.svg"
+							alt="더이상 혼자가 아닙니다 당신 곁엔 자살예방상담전화 109 로고"> <img
+							class="logo-dark logo-109 my-lg-0 my-md-4"
+							style="width: 100% !important; height: 40px !important;"
+							src="/resources/images/logo_109_dark.svg"
+							alt="더이상 혼자가 아닙니다 당신 곁엔 자살예방상담전화 109 로고">
+						</a>
+					
+				</div>
+
+				<div class="primary-menu-trigger">
+					<button class="cnvs-hamburger" type="button" title="모바일 메뉴 열기">
+						<span class="cnvs-hamburger-box"><span
+							class="cnvs-hamburger-inner"></span></span>
+					</button>
+				</div>
+
+				<nav class="primary-menu border-0">
+
+					<ul class="menu-container justify-content-center">
+						
+							
+								
+							
+						
+							
+								
+									<li
+										class="menu-item mega-menu ">
+
+
+
+
+<!-- 												<a class="menu-link d-none d-lg-block" -->
+
+<!-- 												<a class="menu-link d-lg-none d-md-block" href="#"><div>자살예방상담전화</div></a> -->
+
+
+												<a class="menu-link d-none d-lg-block" href="/faq/faq06.do?searchConsultingKeyword=F01 ">
+													<div>
+														자살예방상담전화
+													</div></a>
+												<a class="menu-link d-lg-none d-md-block" href="#"><div>
+														자살예방상담전화
+													</div></a>
+
+
+										<div
+											class="mega-menu-content mega-menu-style-2 border-0 rounded">
+											<div class="container">
+												<div class="row">
+													<ul
+														class="sub-menu-container mega-menu-column col-lg-4 dark bg-cover bg-center bg-overlay-mask rounded-start overflow-hidden"
+														style="background-image: url(/resources/images/background/menu_bg03.jpg); --cnvs-bg-overlay-mask-opacity: 0.65;"
+														alt=" ">
+														<li class="menu-item">
+															<div class="widget px-3">
+																<h3 class="mb-2">
+																	자살예방상담전화
+																</h3>
+																<p class="mb-0">
+																	자살예방상담전화에서 제공하는 서비스 입니다.
+																</p>
+															</div>
+														</li>
+													</ul>
+													
+														
+													
+														
+													
+														
+													
+														
+															
+																<ul
+																	class="sub-menu-container mega-menu-column col border-start-0">
+																	<li class="menu-item mega-menu-title">
+																		<a class="menu-link" href="/faq/faq06.do?searchConsultingKeyword=F01 ">
+																			<div>
+																				자주하는 질문
+																			</div>
+																		</a>
+																		
+																			<ul class="sub-menu-container">
+																				
+																					
+																				
+																					
+																				
+																					
+																				
+																					
+																				
+																					
+																				
+																					
+																						
+																							<li class="menu-item">
+																								<a class="menu-link" href="/faq/faq06.do?searchConsultingKeyword=F01">
+																									<div>
+																										-
+																										자살예방
+																									</div>
+																								</a>
+																							</li>
+																						
+																					
+																				
+																			</ul>
+																		
+																	</li>
+																</ul>
+															
+														
+													
+														
+															
+														
+													
+														
+													
+												</div>
+											</div>
+										</div>
+									</li>
+								
+							
+						
+							
+								
+									<li
+										class="menu-item mega-menu ">
+
+
+
+
+<!-- 												<a class="menu-link d-none d-lg-block" -->
+
+<!-- 												<a class="menu-link d-lg-none d-md-block" href="#"><div>자살예방상담전화</div></a> -->
+
+
+												<a class="menu-link d-none d-lg-block" href="/etc/madlan ">
+													<div>
+														자살예방SNS상담 마들랜
+													</div></a>
+												<a class="menu-link d-lg-none d-md-block" href="#"><div>
+														자살예방SNS상담 마들랜
+													</div></a>
+
+
+										<div
+											class="mega-menu-content mega-menu-style-2 border-0 rounded">
+											<div class="container">
+												<div class="row">
+													<ul
+														class="sub-menu-container mega-menu-column col-lg-4 dark bg-cover bg-center bg-overlay-mask rounded-start overflow-hidden"
+														style="background-image: url(/resources/images/background/); --cnvs-bg-overlay-mask-opacity: 0.65;"
+														alt=" ">
+														<li class="menu-item">
+															<div class="widget px-3">
+																<h3 class="mb-2">
+																	자살예방SNS상담 마들랜
+																</h3>
+																<p class="mb-0">
+																	
+																</p>
+															</div>
+														</li>
+													</ul>
+													
+														
+													
+														
+													
+														
+													
+														
+															
+														
+													
+														
+															
+																<ul
+																	class="sub-menu-container mega-menu-column col border-start-0">
+																	<li class="menu-item mega-menu-title">
+																		<a class="menu-link" href="/etc/madlan ">
+																			<div>
+																				마들랜이란?
+																			</div>
+																		</a>
+																		
+																	</li>
+																</ul>
+															
+														
+													
+														
+													
+												</div>
+											</div>
+										</div>
+									</li>
+								
+							
+						
+							
+								
+							
+						
+							
+						
+							
+						
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+		<section id="slider" class="slider-element slider-parallax swiper_wrapper min-vh-90 include-header" data-autoplay="7000" data-speed="650" data-loop="true">
+			<div class="slider-inner">
+				<div class="swiper-container swiper-parent">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide dark">
+							<div class="container">
+								<div class="slider-caption slider-caption-center">
+									<h2 data-animate="fadeInUp" class="not-dark text-shadow">당신 곁엔 <span class="color">109</span><br>자살예방상담전화</h2>
+									<p class="d-none d-sm-block fw-bold not-dark text-shadow" data-animate="fadeInUp" data-delay="200">삶의 희망이 보이지 않을 땐 혼자 고민하지마세요!<br>더이상 혼자가 아닙니다.</p>
+								</div>
+							</div>
+							<div class="swiper-slide-bg" style="background-image: linear-gradient(rgba(255,255,255,.25) 0%, rgba(255,255,255,.3) 100%), url('/resources/images/background/109_bg01.jpg'); background-position: center top;"></div>
+						</div>
+					</div>
+					<div class="slider-arrow-left"><i class="uil uil-angle-left-b"></i></div>
+					<div class="slider-arrow-right"><i class="uil uil-angle-right-b"></i></div>
+					<div class="slide-number"><div class="slide-number-current"></div><span>/</span><div class="slide-number-total"></div></div>
+					<div class="swiper-pagination"></div>
+				</div>
+			</div>
+		</section>
+
+        
+
+
+
+
+
+<section id="content">
+    <div class="content-wrap pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-2">
+                    <h3 class="mb-3 fw-bolder">유관기관</h3>
+                </div>
+                <div class="col-12 col-md-10">
+                    <div class="owl-carousel events-carousel carousel-widget owl-loaded owl-drag position-relative" id="content-start" data-margin="20" data-pagi="false" data-items="1" data-items-lg="4" data-items-xl="4">
+                        <div class="owl-stage-outer institution">
+                            <div class="owl-stage mt-2" style="transform: translate3d(0px, 0px, 0px); transition: all 0.25s ease 0s; width: 1370px">
+                                <div class="owl-item" style="width: 254px; margin-right: 20px">
+                                    <div class="oc-item item-109">
+                                        <article class="entry">
+                                            <div class="grid-inner bg-contrast-0 row g-0 border-0 rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                <a href="https://www.lifeline.or.kr/business/opening_consult.php" target="_blank" title="생명의 전화 바로가기" class="d-block">
+                                                    <div class="col-12 pt-0">
+                                                        <div class="card d-block border-0 dark shadow-sm h-shadow shadow-ts p-2 pointer-hover" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.4)), url('/resources/images/background/109Card1.jpg') no-repeat top center / cover;" data-bs-theme="dark" alt=" ">
+                                                            <div class="card-body pointer-hover">
+                                                                <i class="h2 bi-heart-pulse pointer-hover"><span class="sr-only">생명의 전화</span></i>
+                                                                <h3 class="card-title h4 fw-bold mb-0 text-white pointer-hover">생명의 전화(1588-9191)</h3>
+                                                                <p class="card-text pointer-hover">
+                                                                    24시간 자살상담 및<br/>
+                                                                    사이버 상담
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="owl-item" style="width: 254px; margin-right: 20px">
+                                    <div class="oc-item item-109">
+                                        <article class="entry">
+                                            <div class="grid-inner bg-contrast-0 row g-0 border-0 rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                <a href="https://www.cyber1388.kr:447/" target="_blank" title="청소년 전화 바로가기" class="d-block">
+                                                    <div class="col-12 pt-0">
+                                                        <div class="card d-block border-0 dark shadow-sm h-shadow shadow-ts p-2 pointer-hover" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.4)), url('/resources/images/background/109Card2.jpg') no-repeat top center / cover;" data-bs-theme="dark" alt=" ">
+                                                            <div class="card-body pointer-hover">
+                                                                <i class="h2 bi-telephone pointer-hover"><span class="sr-only">정호년 전화</span></i>
+                                                                <h3 class="card-title h4 fw-bold mb-0 text-white pointer-hover">청소년 전화(1388)</h3>
+                                                                <p class="card-text pointer-hover">24시간 청소년 전화 상담 및 사이버 상담</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="owl-item" style="width: 254px; margin-right: 20px">
+                                    <div class="oc-item">
+                                        <article class="entry">
+                                            <div class="grid-inner bg-contrast-0 row g-0 border-0 rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                <div class="col-12 pt-0">
+                                                    <div class="card d-block border-0 dark shadow-sm h-shadow shadow-ts p-2 pointer-hover" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.4)), url('/resources/images/background/109Card3.jpg') no-repeat top center / cover;" data-bs-theme="dark" alt=" ">
+                                                        <div class="card-body pointer-hover">
+                                                            <i class="h2 bi-bandaid"><span class="sr-only">정신건강</span></i>
+                                                            <h3 class="card-title h4 fw-bold mb-0 text-white pointer-hover">정신건강 상담전화<br/>(1577-0199)</h3>
+                                                            <p class="card-text pointer-hover">24시간 정신건강 상담</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="owl-item" style="width: 254px; margin-right: 20px">
+                                    <div class="oc-item item-109">
+                                        <article class="entry">
+                                            <div class="grid-inner bg-contrast-0 row g-0 border-0 rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                <a href="https://www.kfsp.or.kr/web/helpSearch?pMENU_NO=221" target="_blank" class="d-block">
+                                                    <div class="col-12 pt-0">
+                                                        <div class="card d-block border-0 dark shadow-sm h-shadow shadow-ts p-2 pointer-hover" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.4)), url('/resources/images/background/109Card4.jpg') no-repeat top center / cover;" data-bs-theme="dark" alt=" ">
+                                                            <div class="card-body pointer-hover">
+                                                                <i class="h2 bi-house-heart pointer-hover"><span class="sr-only">복지센터</span></i>
+                                                                <h3 class="card-title h4 fw-bold mb-0 text-white pointer-hover">
+                                                                    지역보건소,<br/>
+                                                                    정신건강복지센터/<br/>
+                                                                    자살예방센터 검색
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="owl-item" style="width: 254px; margin-right: 20px">
+                                    <div class="oc-item item-109">
+                                        <article class="entry">
+                                            <div class="grid-inner bg-contrast-0 row g-0 border-0 rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                <a href="http://www.kfsp.org" target="_blank" title="한국생명존중희망재단(자살유가족 상담) 바로가기" class="d-block">
+                                                    <div class="col-12 pt-0">
+                                                        <div class="card d-block border-0 dark shadow-sm h-shadow shadow-ts p-2 pointer-hover" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.4)), url('/resources/images/background/109Card5.jpg') no-repeat top center / cover;" data-bs-theme="dark" alt=" ">
+                                                            <div class="card-body pointer-hover">
+                                                                <i class="h2 bi-telephone pointer-hover"><span class="sr-only">자살유가족 상담</span></i>
+                                                                <h3 class="card-title h4 fw-bold mb-0 text-white pointer-hover">한국생명존중<br/>희망재단<br/>(자살유가족 상담)</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-lg-none d-md-block carousel-slide-icon carousel-109-slide-icon">
+                            <div class="animated infinite leftRight">
+                                <img src="/resources/images/icons/slide-icon.png" class="light-img" title="메뉴 슬라이드 안내 아이콘" alt="메뉴 슬라이드 안내 아이콘" />
+                                <img src="/resources/images/icons/slide-icon_dark.png" class="dark-img" title="메뉴 슬라이드 안내 아이콘" alt="메뉴 슬라이드 안내 아이콘" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section my-0">
+            <div class="container" style="background-color: var(--cnvs-contrast-bg-offset);">
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        <h3 class="mb-3 fw-bolder">자주하는 질문</h3>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="accordion" id="FAQ">
+                            <div class="accordion-item bg-transparent border-0 border-bottom">
+                                
+                                    
+                                        <h2 class="accordion-header p-0 m-0">
+                                            <button class="accordion-button bg-transparent py-5" type="button" onclick="javascript:moveToSlide(0);" data-bs-toggle="collapse" data-bs-target="#FAQ1" aria-expanded="true" aria-controls="FAQ1">
+                                                <div>
+                                                    <span class="badge bg-success p-2 mb-2">자살예방</span>
+                                                    <h3 class="m-0 fw-bolder">Q<span>.</span> 자살예방 상담 내용에 대한 비밀이 보장되는지?</h3>
+                                                </div>
+                                            </button>
+                                        </h2>
+                                        <div id="FAQ1" class="accordion-collapse collapse show" data-bs-parent="#FAQ">
+                                            <div class="accordion-body py-4">
+                                                <div class="FAQ_A d-flex">
+                                                    <h3>A<span>.</span></h3>
+                                                    <p class="fs-5 ms-3 effect-blur"> <span style="letter-spacing: 0pt;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">○</span></span></span> <span style="letter-spacing: -0.2pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">자살예방상담전화</span></span></span><span style="letter-spacing: -0.2pt; font-weight: bold;"><span style="font-size: 13pt;"><span style="font-family: HCI Poppy;">(109)</span></span></span> <span style="letter-spacing: -0.2pt;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">또는 </span></span></span><span style="letter-spacing: -0.2pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">&ldquo;</span></span></span><span style="letter-spacing: -0.2pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">마들랜</span></span></span><span style="letter-spacing: -0.2pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">&rdquo; </span></span></span><span style="letter-spacing: -0.2pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">상담 과정</span></span></span><span style="letter-spacing: -0.2pt;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">에서 상담 내용은</span></span></span> <span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">기본적</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">으로 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">비밀</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">이 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">보장</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">됩니다</span></span><span style="letter-spacing: 0pt;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">. </span></span></span><br />
+&nbsp;<br />
+<span style="letter-spacing: 0pt;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">○</span></span></span> <span style="letter-spacing: -0.2pt;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">다만 상담 대상자가 위급한 경우 다른 기관 등으로 도움을 요청할</span></span></span> <span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">수 있습니다</span></span><span style="letter-spacing: 0pt;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">.</span></span></span>
+<div data-hjsonver="1.0" data-jsonlen="12978" id="hwpEditorBoardContent">&nbsp;</div>
+</p>
+                                                    <a href="/faq/faq06.do?ssn=15223&searchConsultingKeyword=F01">
+                                                        답변 보러가기
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    
+                                
+                            </div>
+                            <div class="accordion-item bg-transparent border-0 border-bottom">
+                                
+                                    
+                                        <h2 class="accordion-header p-0 m-0">
+                                            <button class="accordion-button bg-transparent py-5" type="button" onclick="javascript:moveToSlide(1);" data-bs-toggle="collapse" data-bs-target="#FAQ2" aria-expanded="false" aria-controls="FAQ2">
+                                                <div>
+                                                    <span class="badge bg-success p-2 mb-2">자살예방</span>
+                                                    <h3 class="m-0 fw-bolder">Q<span>.</span> 자살 예방 상담 후 별도의 후속 조치가 있는지?</h3>
+                                                </div>
+                                            </button>
+                                        </h2>
+                                        <div id="FAQ2" class="accordion-collapse collapse collapsed" data-bs-parent="#FAQ">
+                                            <div class="accordion-body py-4">
+                                                <div class="FAQ_A d-flex">
+                                                    <h3>A<span>.</span></h3>
+                                                    <p class="fs-5 ms-3 effect-blur"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">상담 과정에서 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">위험성이 높은 수준</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">이라고 판단되는 경우에는 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">본인 동의</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">를 받은 후 주소지 지역의 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">정신건강복지센터 또는 </span></span></span><span style="letter-spacing: -0.3pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">자살예방센터 등</span></span></span><span style="letter-spacing: -0.3pt;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">으로 </span></span></span><span style="letter-spacing: -0.3pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">연계</span></span></span><span style="letter-spacing: -0.3pt;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">되어</span></span></span><span style="letter-spacing: -0.3pt;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">, </span></span></span><span style="letter-spacing: -0.3pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">추가적인 대면상담</span></span></span><span style="letter-spacing: -0.3pt;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">과 </span></span></span><span style="letter-spacing: -0.3pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">사례 관리</span></span></span> <span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">서비스 등</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">을 받을 수 있습니다</span></span><span style="letter-spacing: 0pt;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">. </span></span></span>
+<div data-hjsonver="1.0" data-jsonlen="10612" id="hwpEditorBoardContent">&nbsp;</div>
+</p>
+                                                    <a href="/faq/faq06.do?ssn=15224&searchConsultingKeyword=F01">
+                                                        답변 보러가기
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    
+                                
+                            </div>
+                            <div class="accordion-item bg-transparent border-0 border-bottom">
+                                
+                                    
+                                        <h2 class="accordion-header p-0 m-0">
+                                            <button class="accordion-button bg-transparent py-5" type="button" onclick="javascript:moveToSlide(2);" data-bs-toggle="collapse" data-bs-target="#FAQ3" aria-expanded="false" aria-controls="FAQ3">
+                                                <div>
+                                                    <span class="badge bg-success p-2 mb-2">자살예방</span>
+                                                    <h3 class="m-0 fw-bolder">Q<span>.</span> 24년부터 기존의 정신건강상담전화(1577-0199) 등 다른 전화번호는 상담이 불가능한지? </h3>
+                                                </div>
+                                            </button>
+                                        </h2>
+                                        <div id="FAQ3" class="accordion-collapse collapse collapsed" data-bs-parent="#FAQ">
+                                            <div class="accordion-body py-4">
+                                                <div class="FAQ_A d-flex">
+                                                    <h3>A<span>.</span></h3>
+                                                    <p class="fs-5 ms-3 effect-blur">
+                                                        <span style="letter-spacing: 0pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">2024</span></span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">년</span></span></span><span style="letter-spacing: 0pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">1</span></span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">월</span></span></span><span style="letter-spacing: 0pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">1</span></span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">일</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">부터 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">자살예방상담</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">은 </span></span><span style="letter-spacing: 0pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">109</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">로 모두 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">통합</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">되었으며</span></span><span style="letter-spacing: 0pt;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">, </span></span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">정신건강상담전화</span></span></span><span style="letter-spacing: 0pt; font-weight: bold;"><span style="font-size: 13pt;"><span style="font-family: HCI Poppy;">(1577-0199)</span></span></span><span style="letter-spacing: 0pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">, </span></span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">청소년전화</span></span></span><span style="letter-spacing: 0pt; font-weight: bold;"><span style="font-size: 13pt;"><span style="font-family: HCI Poppy;">(1388)</span></span></span><span style="letter-spacing: 0pt; font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">, </span></span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">여성긴급전화</span></span></span><span style="letter-spacing: 0pt; font-weight: bold;"><span style="font-size: 13pt;"><span style="font-family: HCI Poppy;">(1366)</span></span></span> <span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">등</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">은 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">종전과 같이 본연</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">의 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">역할</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">에 따라 </span></span><span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">담당 분야 상담</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">을</span></span> <span style="font-weight: bold;"><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">수행</span></span></span><span style="font-size: 15pt;"><span style="font-family: 휴먼명조;">하고 있습니다</span></span><span style="letter-spacing: 0pt;"><span style="font-size: 15pt;"><span style="font-family: HCI Poppy;">.</span></span></span>
+<div data-hjsonver="1.0" data-jsonlen="9963" id="hwpEditorBoardContent">&nbsp;</div>
+
+                                                    </p>
+                                                    <a href="/faq/faq06.do?ssn=15221&searchConsultingKeyword=F01">
+                                                        답변 보러가기
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="swiper mySwiper rounded">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" style="background:url(/resources/images/background/109Bg01.jpg) no-repeat center center; background-size:cover;" alt=" "></div>
+                                <div class="swiper-slide" style="background:url(/resources/images/background/109Bg02.jpg) no-repeat center center; background-size:cover;" alt=" "></div>
+                                <div class="swiper-slide" style="background:url(/resources/images/background/109Bg03.jpg) no-repeat center center; background-size:cover;" alt=" "></div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recruitment py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        <h3 class="mt-2 mb-2 fw-bolder">채용정보</h3>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        
+                            
+                                <div class="owl-carousel events-carousel carousel-widget" data-margin="20" data-pagi="false" data-items="1" data-items-lg="4" data-items-xl="4">
+                                    
+                                        <div class="oc-item">
+                                            <article class="entry">
+                                                <a href="/news/news03_view.do?no=4410&searchConsultingKeyword=109" class="d-block">
+                                                    <div class="grid-inner bg-contrast-0 row g-0 border rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                        <div class="col-12 pt-0">
+                                                            <div class="card d-block border-0 shadow-sm h-shadow shadow-ts p-2" style="background-color: var(--cnvs-contrast-bg-offset);">
+                                                                <div class="card-body d-flex flex-column justify-content-end">
+                                                                    <div class="entry-title">
+                                                                        <span class="badge text-bg-success text-white mb-4">자살예방상담전화</span>
+                                                                        <h2 class="overflow-hidden" style="min-height: 54px; font-size: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">2026년 보건복지상담센터(129·109) 상담사(공무직) 채용 최종 합격자 공고</h2>
+                                                                    </div>
+                                                                    <div class="entry-content">
+                                                                        <p class="overflow-hidden mb-1" style="min-height: 53px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">【보건복지부 공고 제2026-788호】
+
+2026년 보건복지상담센터(129109) 상담사(공무직) 채용 최종 합격자 공고
+
+
+2026년도 보건복지상담센터 신입상담사(129109) 채용 최종 합격자를 다음과 같이 공고합니다. 
+
+
+2026년 10월 16일
+보 건 복 지 부 장 관</p>
+                                                                    </div>
+                                                                    <div class="entry-meta">
+                                                                        <ul>
+                                                                            <li class=""><i class="uil uil-schedule"><span class="sr-only">달력</span></i> 2026-10-16</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </article>
+                                        </div>
+                                    
+                                        <div class="oc-item">
+                                            <article class="entry">
+                                                <a href="/news/news03_view.do?no=4408&searchConsultingKeyword=109" class="d-block">
+                                                    <div class="grid-inner bg-contrast-0 row g-0 border rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                        <div class="col-12 pt-0">
+                                                            <div class="card d-block border-0 shadow-sm h-shadow shadow-ts p-2" style="background-color: var(--cnvs-contrast-bg-offset);">
+                                                                <div class="card-body d-flex flex-column justify-content-end">
+                                                                    <div class="entry-title">
+                                                                        <span class="badge text-bg-success text-white mb-4">자살예방상담전화</span>
+                                                                        <h2 class="overflow-hidden" style="min-height: 54px; font-size: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">보건복지상담센터(129·109) 상담사(공무직) 채용  서류전형 합격자 및 면접전형 시행계획 공고</h2>
+                                                                    </div>
+                                                                    <div class="entry-content">
+                                                                        <p class="overflow-hidden mb-1" style="min-height: 53px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">【보건복지부 공고 제2026-764호】
+
+보건복지상담센터(129109) 상담사(공무직) 채용
+서류전형 합격자 및 면접전형 시행계획 공고
+
+
+보건복지상담센터 신입상담사 채용을 위한 서류전형 합격자 및 면접전형 시행계획을 붙임과 같이 공고합니다.
+
+
+2026년 10월 2일
+보 건 복 지 부 장 관</p>
+                                                                    </div>
+                                                                    <div class="entry-meta">
+                                                                        <ul>
+                                                                            <li class=""><i class="uil uil-schedule"><span class="sr-only">달력</span></i> 2026-10-02</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </article>
+                                        </div>
+                                    
+                                        <div class="oc-item">
+                                            <article class="entry">
+                                                <a href="/news/news03_view.do?no=4406&searchConsultingKeyword=109" class="d-block">
+                                                    <div class="grid-inner bg-contrast-0 row g-0 border rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                        <div class="col-12 pt-0">
+                                                            <div class="card d-block border-0 shadow-sm h-shadow shadow-ts p-2" style="background-color: var(--cnvs-contrast-bg-offset);">
+                                                                <div class="card-body d-flex flex-column justify-content-end">
+                                                                    <div class="entry-title">
+                                                                        <span class="badge text-bg-success text-white mb-4">자살예방상담전화</span>
+                                                                        <h2 class="overflow-hidden" style="min-height: 54px; font-size: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">2026년 보건복지상담센터(129, 109) 신입상담사(공무직) 채용 공고 </h2>
+                                                                    </div>
+                                                                    <div class="entry-content">
+                                                                        <p class="overflow-hidden mb-1" style="min-height: 53px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">[보건복지부 공고 제2026-706호]
+
+보건복지상담센터(129109) 상담사(공무직) 채용 공고
+
+
+보건복지부 보건복지상담센터(129109)에서 함께 근무할 상담사를 다음과 같이
+모집하오니 유능한 인재들의 많은 응시 바랍니다.
+
+2026년 9월 7일
+
+보 건 복 지 부 장 관</p>
+                                                                    </div>
+                                                                    <div class="entry-meta">
+                                                                        <ul>
+                                                                            <li class=""><i class="uil uil-schedule"><span class="sr-only">달력</span></i> 2026-09-07</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </article>
+                                        </div>
+                                    
+                                        <div class="oc-item">
+                                            <article class="entry">
+                                                <a href="/news/news03_view.do?no=4404&searchConsultingKeyword=109" class="d-block">
+                                                    <div class="grid-inner bg-contrast-0 row g-0 border rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                        <div class="col-12 pt-0">
+                                                            <div class="card d-block border-0 shadow-sm h-shadow shadow-ts p-2" style="background-color: var(--cnvs-contrast-bg-offset);">
+                                                                <div class="card-body d-flex flex-column justify-content-end">
+                                                                    <div class="entry-title">
+                                                                        <span class="badge text-bg-success text-white mb-4">자살예방상담전화</span>
+                                                                        <h2 class="overflow-hidden" style="min-height: 54px; font-size: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">2026년 보건복지상담센터(109) 신입상담사 채용 최종 합격자 공고</h2>
+                                                                    </div>
+                                                                    <div class="entry-content">
+                                                                        <p class="overflow-hidden mb-1" style="min-height: 53px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">【보건복지부 공고 제2026-611호】
+
+2026년 보건복지상담센터(109) 신입상담사
+채용 최종 합격자 공고
+
+
+2026년도 보건복지상담센터(109) 신입상담사 채용 최종 합격자를 다음과 같이 공고합니다.
+
+
+2026년 7월 29일
+보 건 복 지 부 장 관</p>
+                                                                    </div>
+                                                                    <div class="entry-meta">
+                                                                        <ul>
+                                                                            <li class=""><i class="uil uil-schedule"><span class="sr-only">달력</span></i> 2026-07-29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </article>
+                                        </div>
+                                    
+                                        <div class="oc-item">
+                                            <article class="entry">
+                                                <a href="/news/news03_view.do?no=4402&searchConsultingKeyword=109" class="d-block">
+                                                    <div class="grid-inner bg-contrast-0 row g-0 border rounded-5 shadow-sm h-shadow all-ts h-translate-y-sm">
+                                                        <div class="col-12 pt-0">
+                                                            <div class="card d-block border-0 shadow-sm h-shadow shadow-ts p-2" style="background-color: var(--cnvs-contrast-bg-offset);">
+                                                                <div class="card-body d-flex flex-column justify-content-end">
+                                                                    <div class="entry-title">
+                                                                        <span class="badge text-bg-success text-white mb-4">자살예방상담전화</span>
+                                                                        <h2 class="overflow-hidden" style="min-height: 54px; font-size: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">보건복지상담센터 신입상담사(109) 채용 서류전형 합격자 및 면접전형 시행계획 공고</h2>
+                                                                    </div>
+                                                                    <div class="entry-content">
+                                                                        <p class="overflow-hidden mb-1" style="min-height: 53px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all">【보건복지부 공고 제2026-520호】
+
+보건복지상담센터 신입상담사(109) 채용
+서류전형 합격자 및 면접전형 시행계획 공고
+
+보건복지상담센터 신입상담사 채용을 위한 서류전형 합격자 및 면접전형 시행계획을 붙임과 같이 공고합니다.
+
+2026년 6월 24일
+보 건 복 지 부 장 관
+</p>
+                                                                    </div>
+                                                                    <div class="entry-meta">
+                                                                        <ul>
+                                                                            <li class=""><i class="uil uil-schedule"><span class="sr-only">달력</span></i> 2026-06-24</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </article>
+                                        </div>
+                                    
+                                </div>
+                            
+                            
+                        
+                        
+                            <div class="d-lg-none d-md-block carousel-slide-icon recruitment-109-slide-icon">
+                                <div class="animated infinite leftRight">
+                                    <img src="/resources/images/icons/slide-icon.png" class="light-img" title="메뉴 슬라이드 안내 아이콘" alt="메뉴 슬라이드 안내 아이콘" />
+                                    <img src="/resources/images/icons/slide-icon_dark.png" class="dark-img" title="메뉴 슬라이드 안내 아이콘" alt="메뉴 슬라이드 안내 아이콘" />
+                                </div>
+                            </div>
+                        
+                        <div class="d-flex justify-content-center">
+                            <a href="/news/news03.do?searchConsultingKeyword=109" class="button button-small button-rounded button-reveal text-center m-0"><i class="uil uil-search-plus"><span class="sr-only">상세보기</span></i><span>상세보기</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="promo parallax promo-dark promo-full mb-0 text-center dark">
+            <img src="/resources/images/background/109bg.jpg" class="parallax-bg" style="top:-200px; left:0px;" alt=" " title="109 배너 이미지" />
+            <div class="bg-overlay-bg gradient-dark op-06"></div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <h2 class="mb-2 fw-bold">당신곁엔 <span style="display:inline-block; vertical-align:baseline; font-size:34px; color:#fff;">109</span></h2>
+                        <p class="mb-0">24시간 자살예방상담전화 109<br/>삶의 희망이 보이지 않을 때 고민하지 말고 연락주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+
+
+
+
+<section id="footerBanner">
+    <div class="p-0 m-0">
+        <div class="content-wrap py-3">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div>
+                        <div id="oc-clients" class="owl-carousel image-carousel carousel-widget" data-margin="20" data-nav="false" data-pagi="false" data-rewind="true" data-lazyload="true" data-autoplay="4000" data-items-xs="3" data-items-sm="4" data-items-md="5" data-items-lg="6" data-items-xl="7">
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://www.ncrc.or.kr" target="_blank" title='새창-아동권리보장원 홈페이지'>
+                                        <img src="/upload/banner/data/logo_ncrc.svg" height="30" alt="아동권리보장원 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://www.k-medi.or.kr" target="_blank" title='새창-한국의료분쟁조정중재원 홈페이지'>
+                                        <img src="/upload/banner/data/logo_k-medi.png" height="30" alt="한국의료분쟁조정중재원 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://www.ssis.or.kr" target="_blank" title='새창-한국사회보장정보원 홈페이지'>
+                                        <img src="/upload/banner/data/logo_ssis.svg" height="30" alt="한국사회보장정보원 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://www.kfsp.or.kr" target="_blank" title='새창-한국생명존중희망재단 홈페이지'>
+                                        <img src="/upload/banner/data/logo_kfsp.svg" height="30" alt="한국생명존중희망재단 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://www.nhis.or.kr" target="_blank" title='새창-국민건강보험공단 홈페이지'>
+                                        <img src="/upload/banner/data/logo_nhis.svg" height="30" alt="국민건강보험공단 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://www.nps.or.kr" target="_blank" title='새창-국민연금공단 홈페이지'>
+                                        <img src="/upload/banner/data/logo_nps.svg" height="30" alt="국민연금공단 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://www.hira.or.kr" target="_blank" title='새창-건강보험심사평가원 홈페이지'>
+                                        <img src="/upload/banner/data/logo_hira.svg" height="30" alt="건강보험심사평가원 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://www.epeople.go.kr" target="_blank" title='새창-국민신문고 홈페이지'>
+                                        <img src="/upload/banner/data/logo_epeople.svg" height="30" alt="국민신문고 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://blog.bokjiro.go.kr" target="_blank" title='새창-복지마을 블로그 홈페이지'>
+                                        <img src="/upload/banner/data/logo_bokji_blog.svg" height="30" alt="복지마을 블로그 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://15774129.go.kr" target="_blank" title='새창-&#034;e하늘&#034;장사종합정보 홈페이지'>
+                                        <img src="/upload/banner/data/logo_15774129.svg" height="30" alt="&#034;e하늘&#034;장사종합정보 로고">
+                                    </a>
+                                </div>
+                            
+                                <div class="oc-item svg">
+                                    <a href="http://www.mohw.go.kr" target="_blank" title='새창-보건복지부 홈페이지'>
+                                        <img src="/upload/banner/data/logo_mohw.svg" height="30" alt="보건복지부 로고">
+                                    </a>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    <!-- 웹접근성 : 재생,정지 버튼말고 이전, 다음버튼이 추가되므로 배너 밑으로 위치 이동 -->
+                    <div>
+                        <div class="d-flex align-items-center justify-content-end play-pause-btn">
+                            <button class="btn btn-outline-secondary btn-sm me-2" onclick="banner_Play()"><i class="bi-play-fill"><span class="sr-only">재생</span></i></button>
+                            <button class="btn btn-outline-secondary btn-sm me-2" onclick="banner_Stop()"><i class="bi-pause-fill"><span class="sr-only">정지</span></i></button>
+                            <button class="btn btn-outline-secondary btn-sm me-2" onclick="banner_Prev()"><i class="bi-chevron-left"><span class="sr-only">이전</span></i></button>
+                            <button class="btn btn-outline-secondary btn-sm" onclick="banner_Next()"><i class="bi-chevron-right"><span class="sr-only">다음</span></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+    <div class="container">
+        <div class="footer-widgets-wrap align-items-stretch">
+            <div id="footerDropMenu" class="row col-mb-30">
+                <div class="col-6 col-lg-3 d-grid">
+                    <div class="btn-group dropup-center dropup">
+                        
+                            
+                                <button type="button" class="btn btn-sm dropdown-toggle dark" data-bs-toggle="dropdown" aria-expanded="false">
+                                   사업별 홈페이지
+                                </button>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                        <ul class="dropdown-menu scrollable-list">
+                            
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://basicpension.mohw.go.kr/" target="_blank" title='새창-기초연금 바로가기'>
+                                            기초연금
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.longtermcare.or.kr/npbs/indexr.jsp" target="_blank" title='새창-노인장기요양보험 바로가기'>
+                                            노인장기요양보험
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.socialservice.or.kr:444/" target="_blank" title='새창-사회서비스전자바우처 바로가기'>
+                                            사회서비스전자바우처
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="http://www.ehaneul.go.kr/" target="_blank" title='새창-"e하늘"장사종합정보 바로가기'>
+                                            &#034;e하늘&#034;장사종합정보
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="http://library.mohw.go.kr/" target="_blank" title='새창-보건복지부 자료실 바로가기'>
+                                            보건복지부 자료실
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.e-health.go.kr/" target="_blank" title='새창-공공보건포털 바로가기'>
+                                            공공보건포털
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="http://khiss.go.kr/" target="_blank" title='새창-보건산업통계 홈페이지 바로가기'>
+                                            보건산업통계 홈페이지
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://health.kdca.go.kr/healthinfo/" target="_blank" title='새창-국가건강정보포털 바로가기'>
+                                            국가건강정보포털
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.ncrc.or.kr/ncrc/cm/cntnts/cntntsView.do?mi=1027&cntntsId=1055" target="_blank" title='새창-드림스타트 바로가기'>
+                                            드림스타트
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://lic.mohw.go.kr/" target="_blank" title='새창-보건복지부 인·허가 민원신청 바로가기'>
+                                            보건복지부 인·허가 민원신청
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.ableservice.or.kr:8443/" target="_blank" title='새창-장애인사회활동지원 바로가기'>
+                                            장애인사회활동지원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.childcare.go.kr/" target="_blank" title='새창-임신육아종합포털 아이사랑 바로가기'>
+                                            임신육아종합포털 아이사랑
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.bokjiro.go.kr/ssis-tbu/index.do" target="_blank" title='새창-복지로 바로가기'>
+                                            복지로
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="http://www.ssc.go.kr/home/kor/main.do" target="_blank" title='새창-사회보장위원회 바로가기'>
+                                            사회보장위원회
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.mohw.go.kr/memorial/" target="_blank" title='새창-의사자추모관 바로가기'>
+                                            의사자추모관
+                                        </a>
+                                    </li>
+                                
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 d-grid">
+                    <div class="btn-group dropup-center dropup">
+                        
+                            
+                                <button type="button" class="btn btn-sm dropdown-toggle dark" data-bs-toggle="dropdown" aria-expanded="false">
+                                   소속기관 홈페이지
+                                </button>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                        <ul class="dropdown-menu scrollable-list">
+                            
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.kdca.go.kr/" target="_blank" title="새창-질병관리청 바로가기">
+                                            질병관리청
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.ncmh.go.kr/ncmh/main.do" target="_blank" title="새창-국립정신건강센터 바로가기">
+                                            국립정신건강센터
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.najumh.go.kr/main.do" target="_blank" title="새창-국립나주병원 바로가기">
+                                            국립나주병원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.bgnmh.go.kr/" target="_blank" title="새창-국립부곡병원 바로가기">
+                                            국립부곡병원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.cnmh.go.kr/" target="_blank" title="새창-국립춘천병원 바로가기">
+                                            국립춘천병원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.knmh.go.kr/" target="_blank" title="새창-국립공주병원 바로가기">
+                                            국립공주병원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.sorokdo.go.kr/sorokdo/main.do" target="_blank" title="새창-국립소록도병원 바로가기">
+                                            국립소록도병원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.nrc.go.kr/nrc/main.do" target="_blank" title="새창-국립재활원 바로가기">
+                                            국립재활원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.konos.go.kr/" target="_blank" title="새창-국립장기조직혈액관리원 바로가기">
+                                            국립장기조직혈액관리원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://osong.mohw.go.kr/index.jsp" target="_blank" title="새창-오송생명과학단지지원센터 바로가기">
+                                            오송생명과학단지지원센터
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.nmhc.go.kr/" target="_blank" title="새창-국립망향의동산관리원 바로가기">
+                                            국립망향의동산관리원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://simpan.go.kr/com/zz/999/main.do?cmnMenuCd=main" target="_blank" title="새창-건강보험분쟁조정위원회사무국 바로가기">
+                                            건강보험분쟁조정위원회사무국
+                                        </a>
+                                    </li>
+                                
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 d-grid">
+                    <div class="btn-group dropup-center dropup">
+                        
+                            
+                                <button type="button" class="btn btn-sm dropdown-toggle dark" data-bs-toggle="dropdown" aria-expanded="false">
+                                   관련기관 홈페이지
+                                </button>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                        <ul class="dropdown-menu scrollable-list">
+                            
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.nhis.or.kr/nhis/index.do" target="_blank" title="새창-국민건강보험공단 바로가기">
+                                            국민건강보험공단
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.hira.or.kr/main.do" target="_blank" title="새창-건강보험심사평가원 바로가기">
+                                            건강보험심사평가원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.nps.or.kr/jsppage/nps_gate.jsp" target="_blank" title="새창-국민연금공단 바로가기">
+                                            국민연금공단
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.khidi.or.kr/kps" target="_blank" title="새창-한국보건산업진흥원 바로가기">
+                                            한국보건산업진흥원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.kohi.or.kr/gateway.do" target="_blank" title="새창-한국보건복지인재원 바로가기">
+                                            한국보건복지인재원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="http://www.ssis.or.kr/index.do" target="_blank" title="새창-한국사회보장정보원 바로가기">
+                                            한국사회보장정보원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="http://www.kofih.org/" target="_blank" title="새창-한국국제보건의료재단 바로가기">
+                                            한국국제보건의료재단
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.bokji.net/" target="_blank" title="새창-한국사회복지협의회 바로가기">
+                                            한국사회복지협의회
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.nmc.or.kr/" target="_blank" title="새창-국립중앙의료원 바로가기">
+                                            국립중앙의료원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://kordi.or.kr/main.do" target="_blank" title="새창-한국노인인력개발원 바로가기">
+                                            한국노인인력개발원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.ncc.re.kr/" target="_blank" title="새창-국립암센터 바로가기">
+                                            국립암센터
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.koddi.or.kr/index.jsp" target="_blank" title="새창-(재)한국장애인개발원 바로가기">
+                                            (재)한국장애인개발원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.redcross.or.kr/main/main.do" target="_blank" title="새창-대한적십자사 바로가기">
+                                            대한적십자사
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.kcpi.or.kr/" target="_blank" title="새창-(재)한국보육진흥원 바로가기">
+                                            (재)한국보육진흥원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="http://www.kuksiwon.or.kr/index.do" target="_blank" title="새창-한국보건의료인국가시험원 바로가기">
+                                            한국보건의료인국가시험원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.khepi.or.kr/kps" target="_blank" title="새창-한국건강증진개발원 바로가기">
+                                            한국건강증진개발원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.k-medi.or.kr/web/index.do" target="_blank" title="새창-한국의료분쟁조정중재원 바로가기">
+                                            한국의료분쟁조정중재원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.neca.re.kr/index.do" target="_blank" title="새창-한국보건의료연구원 바로가기">
+                                            한국보건의료연구원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.kihasa.re.kr/" target="_blank" title="새창-한국보건사회연구원 바로가기">
+                                            한국보건사회연구원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.socialservice.or.kr:444/cmmn/index.do" target="_blank" title="새창-사회서비스바우처 바로가기">
+                                            사회서비스바우처
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://rikorea.or.kr/dodream/" target="_blank" title="새창-두드림 바로가기">
+                                            두드림
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.koiha.or.kr/web/kr/index.do" target="_blank" title="새창-의료기관평가인증원 바로가기">
+                                            의료기관평가인증원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://nikom.or.kr/nikom/index.do" target="_blank" title="새창-한국한의약진흥원 바로가기">
+                                            한국한의약진흥원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://oecdkorea.org/kor/default.asp?" target="_blank" title="새창-OECD대한민국정책포털 바로가기">
+                                            OECD대한민국정책포털
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.ncrc.or.kr/ncrc/main.do" target="_blank" title="새창-아동권리보장원 바로가기">
+                                            아동권리보장원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.koda1458.kr/home.do" target="_blank" title="새창-한국장기조직기증원 바로가기">
+                                            한국장기조직기증원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.kfcpi.or.kr/portal/home/main/main.do" target="_blank" title="새창-(재)한국장례문화진흥원 바로가기">
+                                            (재)한국장례문화진흥원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.kfsp.or.kr/web" target="_blank" title="새창-(재)한국생명존중희망재단 바로가기">
+                                            (재)한국생명존중희망재단
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.kbiohealth.kr/" target="_blank" title="새창-오송첨단의료산업진흥재단 바로가기">
+                                            오송첨단의료산업진흥재단
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.kmedihub.re.kr/" target="_blank" title="새창-대구경북첨단의료산업진흥재단 바로가기">
+                                            대구경북첨단의료산업진흥재단
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.nibp.kr/main" target="_blank" title="새창-국가생명윤리정책원 바로가기">
+                                            국가생명윤리정책원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://kptb.kr/" target="_blank" title="새창-한국공공조직은행 바로가기">
+                                            한국공공조직은행
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://kdissw.or.kr/" target="_blank" title="새창-한국자활복지개발원 바로가기">
+                                            한국자활복지개발원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://k-his.or.kr/" target="_blank" title="새창-(재)한국보건의료정보원 바로가기">
+                                            (재)한국보건의료정보원
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://kcpass.or.kr/mps" target="_blank" title="새창-사회서비스원 바로가기">
+                                            사회서비스원
+                                        </a>
+                                    </li>
+                                
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 d-grid">
+                    <div class="btn-group dropup-center dropup">
+                        
+                            
+                                <button type="button" class="btn btn-sm dropdown-toggle dark" data-bs-toggle="dropdown" aria-expanded="false">
+                                   관련국외기관 홈페이지
+                                </button>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                        <ul class="dropdown-menu scrollable-list">
+                            
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.who.int/" target="_blank" title="새창-세계보건기구 WHO 바로가기">
+                                            세계보건기구 WHO
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.who.int/europe/home?v=welcome" target="_blank" title="새창-세계보건기구 유럽지역 바로가기">
+                                            세계보건기구 유럽지역
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.unicef.org/" target="_blank" title="새창-국제아동구호기금 UNICEF 바로가기">
+                                            국제아동구호기금 UNICEF
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.hhs.gov/" target="_blank" title="새창-미국 보건복지부 바로가기">
+                                            미국 보건복지부
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.fda.gov/" target="_blank" title="새창-미국 식품의약국 바로가기">
+                                            미국 식품의약국
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.nlm.nih.gov/" target="_blank" title="새창-미국 의학도서관 바로가기">
+                                            미국 의학도서관
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://drugfree.org/" target="_blank" title="새창-약물중독 예방단체 바로가기">
+                                            약물중독 예방단체
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.cancer.org/" target="_blank" title="새창-미국 암협회 바로가기">
+                                            미국 암협회
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://childrenscancercenter.org/" target="_blank" title="새창-어린이암센터 바로가기">
+                                            어린이암센터
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.pop.org/" target="_blank" title="새창-미국 인구연구소 바로가기">
+                                            미국 인구연구소
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.ccsa.ca/" target="_blank" title="새창-캐나다 약물남용 센터 바로가기">
+                                            캐나다 약물남용 센터
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.mhlw.go.jp/index.html" target="_blank" title="새창-일본 후생노동성 바로가기">
+                                            일본 후생노동성
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.health.gov.au/" target="_blank" title="새창-호주 보건복지부 바로가기">
+                                            호주 보건복지부
+                                        </a>
+                                    </li>
+                                
+                            
+                                
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.mohw.gov.tw/mp-1.html" target="_blank" title="새창-대만 보건부 바로가기">
+                                            대만 보건부
+                                        </a>
+                                    </li>
+                                
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="copyrights">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto-2">
+                    <a href="https://www.mohw.go.kr/" target="_blank" title="새창">
+                        <img class="logo-default light-img" src="/resources/images/client/logo_mohw.svg" alt="보건복지부 로고" height="40">
+                        <img class="logo-default dark-img" src="/resources/images/client/logo_mohw_dark.svg" alt="보건복지부 로고" height="40">
+                    </a>
+                </div>
+                <div class="col d-flex justify-content-end order-lg-last">
+                    <a href="http://www.kdaa.or.kr" title="한국디지털접근성진흥원 홈페이지 바로가기_새창" target="_blank" title="새창">
+                        <img src="/resources/images/webwatch.png" alt="국가공인 정보통신접근성 품질인증마크" height="50">
+                    </a>
+                </div>
+                <nav class="col-11 col-lg-7 order-lg-2">
+                    <p class="mb-0">국번없이 <a class="text-reset" href="/counsel/counsel01.do#sectionRP5">(무료)129</a> / 평일 09:00 ~ 18:00<br/>긴급지원상담(긴급복지지원, 복지사각지대, 노인 및 아동학대, 정신건강 상담)은 24시</p>
+                    <div class="border-style-1"></div>
+                    <div class="d-flex align-items-center">
+                        <div class="pe-3">
+                            <a class="text-reset" href="/info/info01.do">시설&amp;단체정보</a>
+                        </div>
+                        <div class="pe-3">
+                            <a class="text-reset" href="/info/info02.do">관계법령</a>
+                        </div>
+                        <div>
+                            <a class="text-reset fw-bolder" href="https://www.mohw.go.kr/menu.es?mid=a10803010000" target="_blank" title="새창">개인정보처리방침</a>
+                        </div>
+                    </div>
+                    <span class="text-muted">
+                        Copyrights © By MOHW. All Rights Reserved.
+                    </span>
+                </nav>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+
+    
+
+
+
+
+<div class="quick-menu d-print-none">
+    
+    <div class="quick-box  call109 ">
+        <div class="quick-menus setting-menus">
+            <div class="setting quick-btn rounded d-flex align-items-center justify-content-center text-white" tabindex="0">
+                <i class="bi bi-gear-fill"><span class="sr-only">화면설정</span></i>
+            </div>
+            <ul class="quick rounded" id="quickMenus">
+                <li class="d-flex justify-content-between align-items-center">
+                    <p class="m-0 fw-bold">글자크기</p>
+                    <div class="d-flex">
+                        <button class="btn btn-primary social-icon me-2 p-0 rounded border-transparent text-white" onclick="javascript:fn_zoomIn();">
+                            <i class="bi bi-plus-lg"></i>
+                            <i class="bi bi-plus-lg"></i>
+                            <span class="sr-only">글자크기 확대</span>
+                        </button>
+                        <button class="btn btn-danger social-icon m-0 p-0 rounded border-transparent text-white" onclick="javascript:fn_zoomOut();">
+                            <i class="fa-solid fa-minus"></i>
+                            <i class="fa-solid fa-minus"></i>
+                            <span class="sr-only">글자크기 축소</span>
+                        </button>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center">
+                   <p class="m-0 fw-bold">다크모드</p>
+                   <div onclick="javascript:fn_colorType();">
+                       <button id="colorThem" type="button" class="btn btn-dark body-scheme-toggle mode-switcher text-white d-flex align-items-center justify-content-center" data-bodyclass-toggle="dark" data-add-class="btn-warning" data-remove-class="btn-dark" data-add-html="<i class='bi-brightness-high align-middle'></i><span class='sr-only'>라이트 모드</span>" data-remove-html="<i class='bi-moon-stars align-middle'></i><span class='sr-only'>다크 모드</span>">
+                          <span class="sr-only">화면 모드 전환</span>
+                       </button>
+                   </div>
+                </li>
+
+<!--                     <li class="d-flex justify-content-between align-items-center"> -->
+<!--                         <p class="m-0 fw-bold">온라인도움말</p> -->
+<!--                         <button class="btn social-icon m-0 p-0 rounded border-transparent text-white" style="background-color:var(--cnvs-themecolor)" data-bs-toggle="modal" data-bs-target="#helpModal"  onclick="javascript:fn_helpModal();"> -->
+<!--                             <i class="bi bi-question-lg"></i> -->
+<!--                             <i class="bi bi-question-lg"></i> -->
+<!--                             <span class="sr-only">온라인 도움말 열기</span> -->
+<!--                         </button> -->
+<!--                     </li> -->
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true"> -->
+<!--     <div class="modal-dialog modal-fullscreen"> -->
+<!--         <div class="modal-content border-0 bg-black bg-opacity-75" id="modalFullScreen"> -->
+<!--             <div class="modal-body d-flex flex-column align-items-center justify-content-center"> -->
+
+
+<!--             </div> -->
+<!--             <div class="modal-footer border-0 bg-danger d-flex align-items-center justify-content-center m-0 p-0" data-bs-toggle="modal" data-bs-target="#helpModal"> -->
+<!--                 <button type="button" class="fs-5 bg-transparent border-0 fw-bold center w-100 p-3 m-0 text-white" onclick="pointBtn()" data-dismiss="modal">닫기</button> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+<!-- </div> -->
+
+<div class="body-overlay"></div>
+
+
+
+<script>
+	function fn_openChatbotPop() {
+		var form = document.createElement('form');
+		var objs;
+		objs = document.createElement('input');
+		objs.setAttribute('type', 'hidden');
+		objs.setAttribute('name', 'bnrId');
+		objs.setAttribute('value', 'FQn3VTp9Jlr8spD');
+		form.appendChild(objs);
+		form.setAttribute('method', 'post');
+		form.setAttribute('action', 'https://chatbot.ips.go.kr/chatbotPop.ndo');
+		form.setAttribute('target', 'chatbot_popup');
+		document.body.appendChild(form);
+		window.open("", "chatbot_popup", "width=420, height=360");
+		form.submit();
+	}
+</script>
+    <div id="gotoTop" class="uil uil-angle-up" tabindex="0"><span class="sr-only">맨위로 이동</span></div>
+
+    
+
+
+
+
+<!--begin::Javascript-->
+<script src="/resources/js/plugins/functions.js"></script>
+<script src="/resources/js/plugins/jquery.js"></script>
+
+<script src="/resources/js/app/common.js"></script>
+
+    <script src="/resources/js/plugins/plugins.bootstrap.js" id="canvas-bootstrap-js"></script>
+    <script src="/resources/js/plugins/components/selectsplitter.js"></script>
+    <script src="/resources/js/plugins/components/bs-select.js"></script>
+    <script src="/resources/js/plugins/components/swiper.js"></script>
+
+    <script src="/resources/js/app/109MainCommon.js"></script>
+</body>
+</html>

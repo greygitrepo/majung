@@ -1,0 +1,8249 @@
+<!DOCTYPE html><html lang="ko">
+<head>
+<script src="//wcs.naver.net/wcslog.js"></script>
+
+<link rel="shortcut icon" href="/common/images/favicon.ico" type="image/x-ico">
+	<link rel="stylesheet" href="/common_2019/css/font.css" />
+  <script src="/common_2019/js/jquery-1.12.4.min.js"></script>
+    <script src="/common_2019/js/jquery.menu.min.js"></script>
+    <script src="/common_2019/js/jquery.easing.1.3.min.js"></script>
+    <script src="/common_2019/js/jquery.responsive.min.js"></script>
+    <script src="/common_2019/js/slick.min.js"></script>
+    <script src="/common_2019/js/slick.extensions.min.js"></script>
+    <script src="/common_2019/js/NeoVirtualKeyboard.min.js"></script>
+    <script src="/common_2019/js/jquery.rwdImageMaps.min.js"></script>
+    <script src="/common_2019/js/common.js"></script>
+
+<!-- AI 추가 -->
+<script>
+	let targetId = window.innerWidth > 1024 ? 'lang' : 'mobile-lang'; //원한 위치 id="앞 이름"로 추가
+	window.aiTranslatorConfig = {
+		chat_bot_id: 'ce841bbe-a941-43be-a837-30cd0fa69a8a',
+		select_user_name: 'ansan2025',
+		panelClass: 'lang',
+		targetElementId: targetId,
+		buttonText: 'LANGUAGE',
+		userImages: {
+			playImage: 'https://www.ansan.go.kr/site/www/nt_common/images/main/AI_images/play.png', // 재생 버튼 이미지 URL
+			pauseImage: 'https://www.ansan.go.kr/site/www/nt_common/images/main/AI_images/pause.png', // 일시정지 버튼 이미지 URL
+			loadingImage: 'https://www.ansan.go.kr/site/www/nt_common/images/main/AI_images/loading.png', // 로딩 이미지 URL
+			toolsImage: 'https://www.ansan.go.kr/site/www/nt_common/images/main/AI_images/tools.png' // 도구 버튼 이미지 URL
+		},
+		currentDomain: 'https://ansan.han.kr' // 2025.12.04 요청건
+	};
+</script>
+<script type='text/javascript' src='/common_2019/js/ai-translator.js'></script>
+	<link rel="stylesheet" href="/site/health/css/sub.css" />
+		<script src="/site/health/js/sub.js"></script>
+
+<script src="/common_2019/js/health/common.js"></script>
+<script src="/common_2019/js/health/jquery-3.7.1.min.js"></script>
+<script src="/common_2019/js/health/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/common_ntsys/css/print.css" media="print"><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="title" content="단원보건소에 오신걸 환영합니다." />
+	<meta name="description" content="안산 단원보건소 사이트입니다" />
+	<meta name="keywords" content="안산단원보건소 , 안산 단원보건소 " />
+	<title>단원보건소에 오신걸 환영합니다.</title>
+
+<script type="text/javascript">
+	$(function() {
+
+	});
+
+	function fnOpenPreview(file_id){
+
+		var param ={
+			"file_id" : file_id
+		}
+
+		$.ajax({
+			url : "/common/convertToHtmlAjax.do"
+			, data : param
+			, dataType : 'json'
+			, success: function(param){
+
+				if( param.resultStats.resultCode == "success"){
+					var resultMap = param.resultMap;
+					var url = "/common/sn3hcv_skin/doc.html?" + "fn=" + resultMap.fn + "&rs=" + resultMap.rs
+					window.open(url,"_target");
+				} else {
+					alert(param.resultStats.resultMsg);
+				}
+
+			}, error : function(jqXHR, textStatus, thrownError) {
+				ajaxJsonErrorAlert(jqXHR, textStatus, thrownError)
+				return false;
+			}
+		});
+	}
+</script>
+</head>
+
+
+<body id="sub01" class="sub">
+
+	<!-- top.do -->
+	
+
+
+
+
+
+
+
+
+
+
+<div class="skipnav">
+	<a href="#container" class="skip-main">본문내용 바로가기</a><!--메인페이지-->
+	<a href="#colgroup" class="skip-sub">본문내용 바로가기</a><!--서브페이지-->
+	<a href="#new-gnb">주메뉴 바로가기</a>
+</div>
+
+<!-- 웹 접근성 25.08월 수정 추가 시작-->
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		const skipNav = document.getElementById("skipNav");
+		if (document.getElementById("contents")) {
+			skipNav.setAttribute("href", "#contents");
+		} else {
+			skipNav.setAttribute("href", "#container");
+		}
+	});
+</script>
+<!-- 웹 접근성 25.08월 수정 추가 끝-->
+<script type="text/javascript">
+	function validateSearchForm() {
+		var query = document.getElementById('query').value.trim();
+
+		if (query === "") {
+			alert("검색어를 입력하여 주세요.");
+			document.getElementById('query').focus();
+			return false;
+		}
+
+		return true;
+	}
+</script>
+
+<div class="top-nuri">
+	<div class="inner">
+		<div class="nuri-con">
+			<img src="/site/snshealth/images/main/top_flag.png" alt="태극기">
+			<span>이 누리집은 대한민국 공식 전자정부 누리집입니다.</span>
+		</div>
+	</div>
+</div>
+
+<header id="header" class="new-hd">
+	<div class="htop">
+		<div class="inner">
+			<div class="htop-con">
+				<div class="htop-lf">
+					<ul>
+						<li class="on"><a href="/council/main/main.do" target="_blank" rel="noopener"><span>안산시의회</span></a></li>
+						
+						
+							
+							
+							
+								
+								
+									<li><a href="/danwongu/main/main.do" target="_blank" rel="noopener">단원구청</a></li>
+									<li><a href="/snshealth/main/main.do" target="_blank" rel="noopener">상록수보건소</a></li>
+								
+							
+						
+					</ul>
+				</div>
+				<div class="htop-rt">
+					<div class="htop-weat">
+						
+					</div>
+					<ul class="htop-sns">
+						
+							
+							
+							
+							
+								<li><a href="https://www.youtube.com/ansandreamtv" target="_blank" rel="noopener" title="새창열림"><img src="/site/health/images/main/snsicon_y.png" alt="유튜브"></a></li>
+								<li><a href="https://pf.kakao.com/_frbxkl" target="_blank" rel="noopener" title="새창열림"><img src="/site/health/images/main/snsicon_k.png" alt="카카오톡채널"></a></li>
+								<li><a href="https://www.instagram.com/ansancity/" target="_blank" rel="noopener" title="새창열림"><img src="/site/health/images/main/snsicon_i.png" alt="인스타그램"></a></li>
+								<li><a href="https://www.facebook.com/ansancity3" target="_blank" rel="noopener" title="새창열림"><img src="/site/health/images/main/snsicon_f.png" alt="페이스북"></a></li>
+								<li><a href="http://blog.naver.com/cityansan" target="_blank" rel="noopener" title="새창열림"><img src="/site/health/images/main/snsicon_b.png" alt="블로그" ></a></li>
+								<li><a href="https://twitter.com/ansancityhall" target="_blank" rel="noopener" title="새창열림"><img src="/site/health/images/main/snsicon_x.png" alt="엑스" ></a></li>
+							
+						
+						<div id="lang"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="hnavi-wrap">
+		<div class="inner">
+			<div class="hnavi-con">
+				<div class="logo-h1">
+					<!-- logo -->
+					<h1>
+						<a href="/health/main/main.do">
+							
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+									<img src="/site/health/images/common/logo.png" alt="단원보건소" />
+									<span>단원보건소</span>
+								
+								
+							
+						</a>
+					</h1>
+					<!-- //// logo -->
+				</div>
+				<!-- lnb -->
+				<div id="gnb-navi" class="gnb-wrap">
+					<div class="gnb-mtop">
+						<a href="#n" class="gnb-mclose"><img src="/site/health/images/main/gnb-mclose2.png" alt="메뉴닫기"></a>
+					</div>
+					<div id="new-gnb" class="gnb-menu">
+						<h2 class="blind">메뉴</h2>
+						<ul class="dep1">
+
+							
+								<li>
+									<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001632"
+									   >
+										<span>보건소소개</span>
+									</a>
+
+									
+										<div class="dep1-con">
+											<div class="dep-tit">
+												<p>보건소소개</p>
+												<span>살맛나는 생생도시 안산!</span>
+											</div>
+
+											<div class="dep1-in">
+												<ul class="dep2">
+
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001632"
+																   >
+																	<span>인사말</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001633"
+																   >
+																	<span>연혁 및 현황</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001634"
+																   >
+																	<span>보건행정서비스 헌장</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001634"
+																					   >
+																							보건정책 행정서비스 헌장
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001635"
+																					   >
+																							건강증진 행정서비스 헌장
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001636"
+																   >
+																	<span>조직 및 담당업무</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001637"
+																   >
+																	<span>층별안내</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001639"
+																   >
+																	<span>찾아오시는길</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001639"
+																					   >
+																							단원보건소
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="https://www.ansan.go.kr/www/common/cntnts/selectContents.do?cntnts_id=C0001384"
+																   target="_blank" rel="noopener">
+																	<span>개인정보처리방침</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+
+												</ul>
+											</div>
+										</div>
+									
+								</li>
+							
+								<li>
+									<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001643"
+									   >
+										<span>보건소사업안내</span>
+									</a>
+
+									
+										<div class="dep1-con">
+											<div class="dep-tit">
+												<p>보건소사업안내</p>
+												<span>살맛나는 생생도시 안산!</span>
+											</div>
+
+											<div class="dep1-in">
+												<ul class="dep2">
+
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001643"
+																   >
+																	<span>건강증진사업</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001643"
+																					   >
+																							금연·절주
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001644"
+																					   >
+																							금연클리닉
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001645"
+																					   >
+																							운동
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001646"
+																					   >
+																							영양
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001647"
+																					   >
+																							비만관리
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003015"
+																					   >
+																							모바일 헬스케어사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001649"
+																					   >
+																							건강체험관
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001650"
+																					   >
+																							지역사회건강조사
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001651"
+																					   >
+																							건강원스톱
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001652"
+																   >
+																	<span>고혈압/당뇨/고지혈증</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001652"
+																					   >
+																							조기발견 및 환자관리
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=c0002068"
+																   >
+																	<span>방문보건사업</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=c0002068"
+																					   >
+																							방문건강관리사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0002067"
+																					   >
+																							지역사회중심재활사업(CBR)
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001655"
+																   >
+																	<span>국가암관리사업</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001655"
+																					   >
+																							암 조기검진
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001656"
+																					   >
+																							재가암환자관리
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health04"
+																					   >
+																							사전연명의료의향서 등록
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001657"
+																   >
+																	<span>모자보건사업</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003028"
+																					   >
+																							온라인 출생신고
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001657"
+																					   >
+																							예비부부 및 신혼부부
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001658"
+																					   >
+																							임산부
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001659"
+																					   >
+																							영유아
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001660"
+																					   >
+																							청소년
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001661"
+																					   >
+																							영양플러스사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001662"
+																					   >
+																							출산장려 사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001663"
+																					   >
+																							고위험 임산부 의료비 지원사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001664"
+																					   >
+																							저소득층 기저귀, 조제분유 지원안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001722"
+																					   >
+																							맘편한 임신 원스톱 서비스
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001665"
+																   >
+																	<span>구강보건센터</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001665"
+																					   >
+																							치과진료사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001666"
+																					   >
+																							구강보건사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003001"
+																   >
+																	<span>감염병예방사업</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003001"
+																					   >
+																							감염병 분류
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003003"
+																					   >
+																							감염병 신고
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003004"
+																					   >
+																							생애주기별 주요감염병
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003005"
+																					   >
+																							감염병별 소독방법
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003006"
+																					   >
+																							결핵
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003007"
+																					   >
+																							성병
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003008"
+																					   >
+																							에이즈
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003009"
+																					   >
+																							간염(A,B,C,E)
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003010"
+																					   >
+																							모기매개감염병
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003011"
+																					   >
+																							진드기매개감염병
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003012"
+																					   >
+																							설치류매개감염병
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003013"
+																					   >
+																							방역
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003014"
+																					   >
+																							소독의무대상시설
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="https://www.kdca.go.kr/kdca/index.do"
+																					   target="_blank" rel="noopener">
+																							질병관리청
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="https://dportal.kdca.go.kr/pot/index.do"
+																					   target="_blank" rel="noopener">
+																							감염병포털
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="https://www.gidcc.or.kr/"
+																					   target="_blank" rel="noopener">
+																							경기도감염병관리지원단
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001687"
+																   >
+																	<span>의료비지원사업</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001687"
+																					   >
+																							희귀질환자
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001688"
+																					   >
+																							B형 수직감염
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001690"
+																					   >
+																							암환자의료비지원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001691"
+																					   >
+																							치매치료관리비
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001692"
+																					   >
+																							노인개안수술
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001693"
+																					   >
+																							노인 무릎인공관절수술 지원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001694"
+																   >
+																	<span>정신보건사업</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health01"
+																					   >
+																							안산시 정신건강복지센터 운영
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health03"
+																					   >
+																							안산시 중독관리통합지원센터 운영
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003016"
+																					   >
+																							정신건강 심리상담 바우처 사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001695"
+																   >
+																	<span>예방접종사업</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001695"
+																					   >
+																							어린이국가예방접종
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001696"
+																					   >
+																							영유아 선택예방접종
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001697"
+																					   >
+																							성인 및 유료예방접종
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001699"
+																   >
+																	<span>치매안심센터</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001699"
+																					   >
+																							치매조기검진사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001700"
+																					   >
+																							치매지원서비스사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001701"
+																					   >
+																							치매예방관리사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001702"
+																					   >
+																							치매환자 및 가족지원사업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001703"
+																					   >
+																							치매파트너 및 파트너플러스 양성
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003022"
+																   >
+																	<span>장기기증사업</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+
+												</ul>
+											</div>
+										</div>
+									
+								</li>
+							
+								<li>
+									<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001704"
+									   >
+										<span>진료 및 민원</span>
+									</a>
+
+									
+										<div class="dep1-con">
+											<div class="dep-tit">
+												<p>진료 및 민원</p>
+												<span>살맛나는 생생도시 안산!</span>
+											</div>
+
+											<div class="dep1-in">
+												<ul class="dep2">
+
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001704"
+																   >
+																	<span>진료안내</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001704"
+																					   >
+																							일반진료
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001705"
+																					   >
+																							치과진료
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001707"
+																					   >
+																							한의진료
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001709"
+																					   >
+																							물리치료
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001710"
+																   >
+																	<span>민원안내</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001710"
+																					   >
+																							제증명발급
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001711"
+																					   >
+																							각종검사
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="https://www.ansan.go.kr/health/common/cntnts/selectContents.do?cntnts_id=C0003017"
+																					   >
+																							검사예약안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001712"
+																					   >
+																							온라인민원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0130"
+																					   >
+																							인허가신고
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/publicHealth/healthSelfCheck/healSelfCheck.do"
+																					   >
+																							자율점검등록
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0131"
+																   >
+																	<span>민원서식</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+
+												</ul>
+											</div>
+										</div>
+									
+								</li>
+							
+								<li>
+									<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0132"
+									   >
+										<span>건강도시  정보마당</span>
+									</a>
+
+									
+										<div class="dep1-con">
+											<div class="dep-tit">
+												<p>건강도시  정보마당</p>
+												<span>살맛나는 생생도시 안산!</span>
+											</div>
+
+											<div class="dep1-in">
+												<ul class="dep2">
+
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+															<li>
+																<a href=""
+																   >
+																	<span>건강도시</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003023"
+																					   >
+																							건강도시란?
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003024"
+																					   >
+																							건강도시 안산
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003025"
+																					   >
+																							건강도시 만들기
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0132"
+																   >
+																	<span>지역보건의료계획</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0596"
+																   >
+																	<span>감염병정보</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0596"
+																					   >
+																							감염병정보
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=H0001"
+																					   >
+																							감염병 발생동향
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=all"
+																   >
+																	<span>관내의료기관</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=all"
+																					   >
+																							전체
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000052"
+																					   >
+																							병원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000053"
+																					   >
+																							종합병원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000054"
+																					   >
+																							의원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000055"
+																					   >
+																							한의원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000056"
+																					   >
+																							한방병원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000057"
+																					   >
+																							치과의원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000058"
+																					   >
+																							치과병원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000059"
+																					   >
+																							요양병원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000060"
+																					   >
+																							약국
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000062"
+																					   >
+																							소독업
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000063"
+																					   >
+																							기타
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0134&search_field=aditfield19&aditfield19=cw00000064"
+																					   >
+																							정신의료기관
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001714"
+																   >
+																	<span>거짓청구요양기관명단공표</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+
+												</ul>
+											</div>
+										</div>
+									
+								</li>
+							
+								<li>
+									<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0135"
+									   >
+										<span>열린광장</span>
+									</a>
+
+									
+										<div class="dep1-con">
+											<div class="dep-tit">
+												<p>열린광장</p>
+												<span>살맛나는 생생도시 안산!</span>
+											</div>
+
+											<div class="dep1-in">
+												<ul class="dep2">
+
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+															<li>
+																<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0135"
+																   >
+																	<span>공지사항</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0136"
+																   >
+																	<span>새소식</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0569"
+																   >
+																	<span>자동심장충격기 관리 및 교육신청</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003021"
+																					   >
+																							자동심장충격기 사용방법
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0003020"
+																					   >
+																							자동심장충격기 설치 현황
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0139"
+																					   >
+																							외부출장교육신청 및 장비대여신청
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/bbs/selectPageListBbs.do?bbs_code=B0565"
+																   >
+																	<span>방역소독</span>
+																</a>
+
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001720"
+																   >
+																	<span>Q&amp;A</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001720"
+																					   >
+																							Q&amp;A
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001721"
+																					   >
+																							나의민원
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+
+												</ul>
+											</div>
+										</div>
+									
+								</li>
+							
+								<li>
+									<a href="/health/common/cntnts/selectContents.do?cntnts_id=health07"
+									   >
+										<span>건강생활지원센터 <br> 및 보건지소</span>
+									</a>
+
+									
+										<div class="dep1-con">
+											<div class="dep-tit">
+												<p>건강생활지원센터 <br> 및 보건지소</p>
+												<span>살맛나는 생생도시 안산!</span>
+											</div>
+
+											<div class="dep1-in">
+												<ul class="dep2">
+
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=health07"
+																   >
+																	<span>안산서부건강생활지원센터</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health07"
+																					   >
+																							안산서부건강생활지원센터
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health05"
+																					   >
+																							보건사업안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health06"
+																					   >
+																							찾아오시는길
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=health08"
+																   >
+																	<span>원곡보건지소</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health08"
+																					   >
+																							지소안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health09"
+																					   >
+																							보건사업안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health10"
+																					   >
+																							찾아오시는길
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=health11"
+																   >
+																	<span>대부보건지소(상동어울림센터)</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health11"
+																					   >
+																							지소안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health12"
+																					   >
+																							보건사업안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health13"
+																					   >
+																							찾아오시는길
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=health14"
+																   >
+																	<span>남동보건진료소</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health14"
+																					   >
+																							진료소안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health15"
+																					   >
+																							보건사업안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health16"
+																					   >
+																							찾아오시는길
+																					</a>
+																				</li>
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+														
+															<li>
+																<a href="/health/common/cntnts/selectContents.do?cntnts_id=health17"
+																   >
+																	<span>풍도보건진료소</span>
+																</a>
+
+																
+																	<ul class="dep3">
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health17"
+																					   >
+																							진료소안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health18"
+																					   >
+																							보건사업안내
+																					</a>
+																				</li>
+																			
+																		
+																			
+																				<li>
+																					<a href="/health/common/cntnts/selectContents.do?cntnts_id=health19"
+																					   >
+																							찾아오시는길
+																					</a>
+																				</li>
+																			
+																		
+																	</ul>
+																
+
+															</li>
+														
+													
+
+												</ul>
+											</div>
+										</div>
+									
+								</li>
+							
+
+						</ul>
+					</div>
+				</div>
+				<div class="hnavi-rt">
+					<a href="#n" class="gnb-mbtn"><img src="/site/health/images/main/mobile_menu_btn.png" alt="메뉴 열기"></a>
+				</div>
+				<!-- //lnb -->
+			</div>
+		</div>
+	</div>
+	<div class="menu-overlay"></div>
+</header>
+<!-- //header -->
+<!-- // top.do -->
+
+	<!-- subVisual.do -->
+	
+
+
+
+
+
+
+
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript">
+
+//SNS 공유
+$(function(){
+
+	var url = '/health/common/cntnts/selectContents.do?cntnts_id=health08';
+	var url = document.location.href;
+
+	$(".share_content a").click(function(){
+
+	var elmId = $(this).attr("id");
+	var text ='지소안내';
+	var href = "";
+
+	if( elmId == "share_popup_twitter" || elmId == "share_popup_facebook" || elmId == "share_popup_band"){
+		if( elmId == "share_popup_twitter"){
+			href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url="+ encodeURIComponent(url);
+		} else if ( elmId == "share_popup_facebook"){
+			href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+		} else if ( elmId == "share_popup_band"){
+			href = "http://share.naver.com/web/shareView.nhn?url=" +  encodeURIComponent(url) + "&title=" + encodeURIComponent(text);
+		}
+		window.open(href, "blogShare", "width=400, height=450, scrollbars=yes, resizable=yes");
+	}else if(elmId == "share_popup_story"){
+		Kakao.Story.share({
+		  url: url,
+		  text: '지소안내'
+		});
+	}else if(elmId == "share_popup_kko"){
+		
+			
+			var imgUrl = 'https://www.ansan.go.kr/site/health/images/common/logo.png'
+			
+			
+		
+		Kakao.Link.sendDefault({
+			objectType: 'feed',
+			content: {
+			title: '지소안내',
+			description: '건강생활지원센터 <br> 및 보건지소 | 지소안내',
+			imageUrl: imgUrl,
+			link:	{
+					mobileWebUrl: url,
+					webUrl: url
+					}
+			},
+			buttons: [{
+				title: '자세히 보기',
+				link: {
+					mobileWebUrl: url,
+					webUrl: url
+					}
+				}]
+		});
+	}
+});
+
+});
+
+</script>
+	<!-- .sub_visual -->
+	<div class="sub_visual">
+		<div class="wrap">
+			<div class="innerbox clearfix">
+				<div class="side_title">
+					<p>건강생활지원센터 <br> 및 보건지소</p>
+				</div>
+				<div class="sub_title">
+					<h2>지소안내</h2><!-- 마지막차수 표출 -->
+				</div>
+				<!-- navi -->
+				<div class="path clearfix">
+					<ul class="clearfix">
+						<li class="home"><a href="/health/main/main.do">홈</a></li>
+						
+						
+							
+							
+								
+									
+									
+							<li><a href="/health/common/cntnts/selectContents.do?cntnts_id=health07">건강생활지원센터 <br> 및 보건지소</a></li>
+									
+								
+							
+						
+						
+						
+							
+							
+								
+									
+									
+							<li><a href="/health/common/cntnts/selectContents.do?cntnts_id=health08">원곡보건지소</a></li>
+									
+								
+							
+						
+						
+						
+							
+								
+									
+									
+									<li><a href="/health/common/cntnts/selectContents.do?cntnts_id=health08"><span>지소안내</span></a></li>
+									
+								
+							
+							
+							
+						
+						
+					</ul>
+					
+					
+					
+
+					
+						
+						
+							
+								
+							
+							
+						
+
+					
+						
+						
+							
+							
+								
+							
+						
+
+					
+						
+						
+							
+							
+								
+							
+						
+
+					
+						
+							
+						
+						
+							
+							
+								
+							
+						
+
+					
+
+					<!-- 최종 Title: 상세 여부에 따라 분기 -->
+					
+						
+						
+						
+							
+						
+					
+					
+					<script>
+						document.title = "지소안내 | 원곡보건지소 | 건강생활지원센터 <br> 및 보건지소 | 단원보건소 |";
+					</script>
+					<div class="addons">
+						<ul class="clearfix">
+							<li class="print"><button onclick="window.print();" class="print_button">인쇄</button></li>
+							<li class="share">
+								<div class="share_open"><button type="button">공유 열기</button></div>
+								<div class="share_content">
+									<a href="#" class="facebook" id="share_popup_facebook">페이스북</a>
+									<a href="#" class="twitter" id="share_popup_twitter">트위터</a>
+									<a href="#" class="blog" id="share_popup_band">블로그</a>
+									<a href="#" class="kko" id="share_popup_kko">카카오톡</a>
+									<a href="#" class="kkostory" id="share_popup_story">카카오스토리</a>
+									<div class="share_close"><button type="button">공유 닫기</button></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /navi -->
+			</div>
+		</div>
+	</div>
+	<!-- // .sub_visual --><!-- // subVisual.do -->
+
+	<div id="container">
+		<div class="wrap clearfix">
+		<!-- left.do -->
+		<script type="text/javascript">
+	function fnAlert() {
+		alert(" 코로나19 감염 확산 방지를 위하여 주민자치센터 프로그램 운영이 중지되었음을 알려드립니다.");
+	}
+</script>
+
+<script type="text/javascript">
+function fnAlert(){
+	alert(" 코로나19 감염 확산 방지를 위하여 주민자치센터 프로그램 운영이 중지되었음을 알려드립니다.")
+}
+
+
+</script>
+			<div class="side">
+				<div class="side_menu">
+					<nav class="menu menu_initialized state2" data-menu-type="4" style="">
+						<h2 class="skip" style="">좌측메뉴</h2>
+						<div class="depth depth1" data-menu-depth="1" style="">
+							<ul class="depth_list depth1_list" data-menu-list="1" style="">
+							<li class="depth_item depth1_item">
+									<a href="/health/common/cntnts/selectContents.do?cntnts_id=health07" class="depth_text depth1_text" data-menu-text="1" >안산서부건강생활지원센터</a>
+											<div class="depth depth2" data-menu-depth="2">
+										<ul class="depth_list depth2_list" data-menu-list="2">
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health07" class="depth_text depth2_text" data-menu-text="2" >안산서부건강생활지원센터</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health05" class="depth_text depth2_text" data-menu-text="2" >보건사업안내</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health06" class="depth_text depth2_text" data-menu-text="2" >찾아오시는길</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											</ul>
+									</div>
+									</li>
+								<li class="depth_item depth1_item">
+									<a href="/health/common/cntnts/selectContents.do?cntnts_id=health08" class="depth_text depth1_text spy" title="선택됨" data-menu-actived data-menu-text="1" >원곡보건지소</a>
+											<div class="depth depth2" data-menu-depth="2">
+										<ul class="depth_list depth2_list" data-menu-list="2">
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health08" class="depth_text depth2_text spy" title="선택됨" data-menu-actived data-menu-text="2" >지소안내</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health09" class="depth_text depth2_text" data-menu-text="2" >보건사업안내</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health10" class="depth_text depth2_text" data-menu-text="2" >찾아오시는길</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											</ul>
+									</div>
+									</li>
+								<li class="depth_item depth1_item">
+									<a href="/health/common/cntnts/selectContents.do?cntnts_id=health11" class="depth_text depth1_text" data-menu-text="1" >대부보건지소(상동어울림센터)</a>
+											<div class="depth depth2" data-menu-depth="2">
+										<ul class="depth_list depth2_list" data-menu-list="2">
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health11" class="depth_text depth2_text" data-menu-text="2" >지소안내</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health12" class="depth_text depth2_text" data-menu-text="2" >보건사업안내</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health13" class="depth_text depth2_text" data-menu-text="2" >찾아오시는길</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											</ul>
+									</div>
+									</li>
+								<li class="depth_item depth1_item">
+									<a href="/health/common/cntnts/selectContents.do?cntnts_id=health14" class="depth_text depth1_text" data-menu-text="1" >남동보건진료소</a>
+											<div class="depth depth2" data-menu-depth="2">
+										<ul class="depth_list depth2_list" data-menu-list="2">
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health14" class="depth_text depth2_text" data-menu-text="2" >진료소안내</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health15" class="depth_text depth2_text" data-menu-text="2" >보건사업안내</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health16" class="depth_text depth2_text" data-menu-text="2" >찾아오시는길</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											</ul>
+									</div>
+									</li>
+								<li class="depth_item depth1_item">
+									<a href="/health/common/cntnts/selectContents.do?cntnts_id=health17" class="depth_text depth1_text" data-menu-text="1" >풍도보건진료소</a>
+											<div class="depth depth2" data-menu-depth="2">
+										<ul class="depth_list depth2_list" data-menu-list="2">
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health17" class="depth_text depth2_text" data-menu-text="2" >진료소안내</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health18" class="depth_text depth2_text" data-menu-text="2" >보건사업안내</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											<li class="depth_item depth2_item" style="">
+												<a href="/health/common/cntnts/selectContents.do?cntnts_id=health19" class="depth_text depth2_text" data-menu-text="2" >찾아오시는길</a>
+													<!-- 4 depth -->
+												<!-- /4 depth -->
+											</li>
+											</ul>
+									</div>
+									</li>
+								</ul>
+						</div>
+					</nav>
+				</div>
+			</div><!-- // left.do -->
+			<main id="colgroup">
+				<article>
+				<!-- #contents -->
+				<div id="contents" class="cts">
+					<header class="sub_head">
+						<!--  탭 메뉴 -->
+						
+
+
+
+
+
+
+
+<style>
+/*코로나 상생 국민지원금*/
+.konacard_wrap{position:relative; margin-bottom:10px;}
+.konacard_wrap .inner{position:relative; padding:10px 50px; box-sizing: border-box;}
+.konacard_wrap .inner > ul li{position:relative; float:left; width:calc((100% - 30px)/2); height:90px; border: 1px #cdcfd7 solid; margin-top:10px; background: #fff; box-sizing: border-box; border-radius: 7px; margin-right:15px; transition: 0.5s;}
+.konacard_wrap .inner > ul li a{display: block; width:100%; height:100%; box-sizing: border-box; padding: 24px 25px 22px; }
+.konacard_wrap .inner > ul li a:hover{text-decoration: none; color:#0b3d6c;}
+.konacard_wrap .inner > ul li a:after{display: inline-block; height:100%; vertical-align: middle;}
+.konacard_wrap .inner > ul li .title{position:relative; padding-left:15px; font-size:18px; line-height: 18px; max-height:44px; overflow:hidden; display: inline-block; letter-spacing:-0.03em; vertical-align: middle; word-break: keep-all; width:60%;}
+.konacard_wrap .inner > ul li .viewBtn{position:absolute; top:25px; right:25px;  width:30px; height:30px; border:1px #dddee6 solid; border-radius: 15px; box-sizing:border-box; transition: 0.5s;}
+.konacard_wrap .inner > ul li .viewBtn span{opacity: 0;}
+.konacard_wrap .inner > ul li .viewBtn:before{display: block; position:absolute; top:calc(50% - 6px); right:calc(50% - 6px); width:12px; height:10px; background: url("/site/www/images/contents/arrow_cts.png") no-repeat;transition: 0.5s;}
+.konacard_wrap .inner > ul li:hover{border-color:#0e7feb; background: #e3f0fd; box-shadow: 15px 15px 15px 0 rgba(0,0,0,0.1);}
+.konacard_wrap .inner > ul li:hover .viewBtn{width:auto; font-size:14px; line-height: 28px; color:#0a72d4; background: #fff; padding:0 20px 0 11px; border-color:#5287df;}
+.konacard_wrap .inner > ul li:hover .viewBtn span{opacity: 1;}
+.konacard_wrap .inner > ul li:hover .viewBtn:before{right:9px; background: url("/site/www/images/contents/arrow_cts.png") no-repeat left -14px;}
+.konacard_home {width: 350px; height:55px; margin:0 auto;}
+.konacard_home a{width:350px; height:55px; font-weight:bold; display: block; box-sizing: border-box; border-radius:10px;padding:15px 50px 0 20px; font-size:19px; text-align:center; color:#fff; text-decoration:none; background:#001f50 url("/site/www/images/popup/new_win_ico2.png") 77% 20px/16px no-repeat}
+.em_yellow {color:#ffdc40}
+.konacard_call .title{padding-top:35px;}
+@media all and (max-width: 1200px){
+	.konacard_wrap{margin-bottom:50px; padding-bottom:195px;}
+	.konacard_wrap:before{bottom:-52px;}
+	.konacard_wrap .inner{padding:30px 0 30px 60px}
+	.konacard_wrap .inner > ul li .viewBtn{right:15px;}
+}
+@media all and (max-width: 1000px){
+	.konacard_wrap{padding-bottom:140px;}
+	.konacard_wrap:before{right:0; bottom:-32px; width:345px; height:244px; background-size: contain;}
+}
+@media all and (max-width: 640px){
+	.konacard_wrap{margin-bottom:0; padding-bottom:0;}
+	.konacard_wrap:before{display:none;}
+	.konacard_wrap .inner{padding:30px 0 30px 30px;}
+	.konacard_wrap .inner > ul li{height:65px;}
+	.konacard_wrap .inner > ul li a{padding: 18px 14px 18px;}
+	.konacard_wrap .inner > ul li .title{font-size:16px; line-height: 35px; max-height: 40px;}
+	.konacard_wrap .inner > ul li .viewBtn{top:15px; right:25px;}
+	.konacard_wrap .inner > ul li:hover .viewBtn{width:31px; height:30px; padding:0; font-size:0; line-height: 0;}
+	.konacard_call .title{padding-top:20px;}
+}
+@media all and (max-width: 480px){
+	.konacard_wrap .inner:before{display: none;}
+	.konacard_wrap .inner{padding:15px 10px; background: #fafafa;}
+	.konacard_wrap.n01 .inner{padding:15px 10px;}
+	.konacard_wrap .inner > ul li{width:100%;}
+}
+</style>
+
+<div class="tab_menu" style=""> <!-- 두 번째 유형은 type2 클래스를 부여해주세요 -->
+	<div class="tab_contents">
+	
+	
+	
+	<ul class="tab_list clearfix ">
+	
+	
+
+
+
+
+		</ul>
+	</div>
+</div><!--  탭 메뉴 -->
+					</header>
+
+					<h3>원곡보건지소</h3>
+
+<p>원곡보건지소는 내국인 및 외국인의 건강권 보호와 건강한 삶을 지원하기 위하여 일차진료와 다양한 건강관리 서비스를 제공하고 있습니다.</p>
+
+<h3>청사 현황</h3>
+
+<table class="table type2 responsive">
+	<thead>
+		<tr>
+			<th rowspan="4" scope="col" style="background:#fff; border-bottom:1px solid #d5d5d5;"><img alt="원곡보건지소 이미지" class="v_img" src="/cmsdata/web_upload/temp/20250311/1741667368180TJMRN6TUBVUUCZVJXJNLGEWH9.jpg" style="width:100%" /></th>
+			<th scope="col">구분</th>
+			<th colspan="3" rowspan="1" scope="col">내용</th>
+		</tr>
+		<tr>
+			<th scope="row">청사유형</th>
+			<td colspan="3" rowspan="1">복합청사</td>
+		</tr>
+		<tr>
+			<th scope="row">위치</th>
+			<td colspan="3" rowspan="1">안산시 단원구 부부로 43, 3층 (안산시외국인주민지원본부 3층)</td>
+		</tr>
+		<tr>
+			<th scope="row">면적</th>
+			<td colspan="3" rowspan="1">75.86m&sup2; 진료(일반, 한방) 및 사무실, 창고</td>
+		</tr>
+	</thead>
+</table>
+
+<h3>운영 현황</h3>
+
+<table class="table type2 responsive">
+	<thead>
+		<tr>
+			<th scope="col">구분</th>
+			<th rowspan="1" scope="col">내용</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">업무시간</th>
+			<td rowspan="1">평일 월~금요일 09:00~18:00 (점심시간 12~13시)</td>
+		</tr>
+		<tr>
+			<th scope="row">준 비 물</th>
+			<td rowspan="1">신분증 (주민등록증 / 외국인등록증 또는 여권)</td>
+		</tr>
+		<tr>
+			<th scope="row">전화번호</th>
+			<td rowspan="1">☎ 031-481-6833~4</td>
+		</tr>
+	</tbody>
+</table>
+<style type="text/css">.table thead tr:last-child th{border-bottom:1px solid #d5d5d5;}
+</style>
+</div>
+				<!-- /#contents -->
+
+				<!-- TODO 메뉴별 담당자 DB구조 확정후 개발 필요, 해당 정보는  -->
+				
+
+
+
+
+
+
+
+
+
+
+
+	<footer class="satisfaction">
+	
+	
+
+		
+		<div class="kogl_open clearfix">
+			
+			
+			
+			<img src="/common_2019/images/program/new_img_opentype03.png" alt="공공누리 공공저작물 자유이용 허락(출처표시, 변경금지)" class="p-media__image--left">
+			본 저작물은 공공누리 제<em class="em_red">3</em>유형으로 <em class="em_red">"출처표시 + 변경금지"</em> 조건에 따라 이용할 수 있습니다.
+			
+			
+		</div>
+		
+	
+
+	</footer>
+	
+	
+
+</article>
+			</main>
+		</div><!-- .wrap .clearfix-->
+	</div><!-- #container-->
+	<!--  contents script -->
+	<script>
+	
+
+	const SERVER_TODAY = "2026-11-04"
+
+	</script>
+	<!--  //contents script -->
+	
+
+
+
+
+
+
+
+<script type="text/javascript">
+function fngoDept(deptnm) {
+	$("[name=searchKrwd]").val(deptnm);
+	$("[name=searchCnd]").val("DEPT_NM");
+
+	$("#footerForm").attr({action:"/danwongu/common/cntnts/deptMngList.do", method:"post"}).submit();
+
+}
+</script>
+
+<form id="footerForm" name="afrom"><input name="searchCnd" type="hidden" /> <input name="searchKrwd" type="hidden" /></form>
+<footer id="footer" class="foot-nwrap">
+	<div class="inner">
+		<div class="foot-top">
+			<ul>
+				<li><a href="https://www.ansan.go.kr/www/common/cntnts/selectContents.do?cntnts_id=www01839" target="_blank" rel="noopener" title="새창 바로가기">개인정보처리방침</a></li>
+				<li><a href="https://www.ansan.go.kr/www/common/cntnts/selectContents.do?cntnts_id=C0001381" target="_blank" rel="noopener" title="새창 바로가기">홈페이지이용안내</a></li>
+				<li><a href="https://www.ansan.go.kr/www/common/bbs/selectPageListBbs.do?bbs_code=B0526" target="_blank" rel="noopener" title="새창 바로가기">영상정보처리기기운영 관리방침</a></li>
+				<li><a href="https://www.ansan.go.kr/www/common/cntnts/selectContents.do?cntnts_id=C0001386" target="_blank" rel="noopener" title="새창 바로가기">저작권정책</a></li>
+				<li><a href="https://www.ansan.go.kr/www/common/bbs/selectPageListBbs.do?bbs_code=B0578" target="_blank" rel="noopener" title="새창 바로가기">개인정보위탁현황</a></li>
+				<li><a href="https://www.ansan.go.kr/www/common/cntnts/selectContents.do?cntnts_id=C0001070" target="_blank" rel="noopener" title="새창 바로가기">행정서비스헌장</a></li>
+				<li><a href="https://www.ansan.go.kr/www/common/cntnts/selectContents.do?cntnts_id=C0001387" target="_blank" rel="noopener" title="새창 바로가기">뷰어다운로드</a></li>
+				<li><a href="https://www.ansan.go.kr/www/common/cntnts/selectContents.do?cntnts_id=C0001392" target="_blank" rel="noopener" title="새창 바로가기">RSS 서비스</a></li>
+				<li><a href="/health/common/cntnts/selectContents.do?cntnts_id=C0001639">찾아오시는길</a></li>
+			</ul>
+		</div>
+		<div class="foot-address">
+			<h2><a href="#n"><img src="/site/health/images/main/foot_logo_danwon.png" alt="안산시 단원보건소"></a></h2>
+			<div class="foot-tel">
+				<p>안산시민원콜센터</p>
+				<span class="">☎1666-1234</span>
+			</div>
+			<div class="address-con">
+				<p class="">15396 경기도 안산시 단원구 화랑로250(초지동) </p>
+				<p class="">COPYRIGHT ⓒ 2019 ANSAN CITY HALL</p>
+			</div>
+		</div>
+	</div>
+</footer>
+<script type="text/javascript">
+
+</script>
+<!-- //footer --></body>
+</html>

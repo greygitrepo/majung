@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:majung/app_controller.dart';
 import 'package:majung/config.dart';
 import 'package:majung/data/facility_repository.dart';
 import 'package:majung/domain/geo.dart';
+import 'package:majung/domain/region.dart';
 import 'package:majung/services/location_service.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -33,6 +35,8 @@ Future<({FakeLauncher launcher, FakeLocation location, AppController controller}
     ),
     location: fakeLocation,
     originStore: PrefsOriginStore(),
+    loadRegions: () async =>
+        RegionCatalog.fromJson(jsonDecode(await rootBundle.loadString('assets/data/regions.json'))),
     tick: null,
   );
   await controller.start();
@@ -62,14 +66,19 @@ Future<void> scrollToAndTap(WidgetTester tester, Finder finder, {Key? within}) a
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
+  // 행정코드: 서울 용산구 11170, 부산 중구 26110 (app/assets/data/regions.json).
+  const yongsan = '11170';
+  const busanJunggu = '26110';
+
   setUp(() async {
-    await PrefsOriginStore().saveLandmarkId(null);
+    await PrefsOriginStore().saveRegionCode(yongsan);
   });
 
   testWidgets('핵심 흐름: 홈 → 밥 먹을 곳 → 상세 → 전화·길찾기', (tester) async {
     final app = await launch(tester);
     expect(find.text('밥 먹을 곳'), findsOneWidget);
     expect(find.text('잘 곳'), findsOneWidget);
+    expect(find.text('아플 때'), findsOneWidget);
 
     await tester.tap(find.byKey(const Key('group-meal')));
     await tester.pumpAndSettle();
@@ -86,24 +95,43 @@ void main() {
     expect(app.launcher.directionsTo, hasLength(1));
   });
 
-  testWidgets('위치 권한 거부 → 서울역 선택 → 거리 표시, 다시 켜도 기억', (tester) async {
+  testWidgets('위치 권한 거부 → 서울 용산구 선택 → 거리 표시, 다시 켜도 기억', (tester) async {
+    await PrefsOriginStore().saveRegionCode(null);
     await launch(tester);
     await tester.tap(find.byKey(const Key('origin-bar')));
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('use-gps')));
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('location-failure')), findsOneWidget);
-    await scrollToAndTap(tester, find.byKey(const Key('landmark-seoul_station')));
-    expect(find.text('서울역 근처 기준'), findsOneWidget);
+    await scrollToAndTap(tester, find.byKey(const Key('sido-서울')));
+    await scrollToAndTap(tester, find.byKey(const Key('region-$yongsan')));
+    expect(find.text('서울 용산구 기준'), findsOneWidget);
 
     await tester.tap(find.byKey(const Key('group-meal')));
     await tester.pumpAndSettle();
     expect(find.textContaining('걸어서 약'), findsWidgets);
 
-    // 앱을 새로 띄운 것처럼 다시 시작 → SharedPreferences 에 저장된 기준 장소
+    // 앱을 새로 띄운 것처럼 다시 시작 → SharedPreferences 에 저장된 지역
     await tester.pumpWidget(const SizedBox());
     await launch(tester);
-    expect(find.text('서울역 근처 기준'), findsOneWidget);
+    expect(find.text('서울 용산구 기준'), findsOneWidget);
+  });
+
+  testWidgets('서울 밖(부산): 밥·잠자리·진료 목록과 전국 긴급 번호', (tester) async {
+    await PrefsOriginStore().saveRegionCode(busanJunggu);
+    final app = await launch(tester);
+    expect(find.text('부산 중구 기준'), findsOneWidget);
+    for (final group in ['meal', 'sleep', 'clinic']) {
+      await scrollToAndTap(tester, find.byKey(Key('group-$group')));
+      expect(find.byType(Card), findsWidgets, reason: group);
+      await tester.tap(find.byTooltip('뒤로'));
+      await tester.pumpAndSettle();
+    }
+    await tester.tap(find.byKey(const Key('emergency')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('call-1600-9582')), findsNothing);
+    await tester.tap(find.byKey(const Key('call-129')));
+    expect(app.launcher.dialed, ['129']);
   });
 
   testWidgets('GPS 위치 사용', (tester) async {

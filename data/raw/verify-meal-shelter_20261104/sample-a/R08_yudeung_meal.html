@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">  
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>주간 식단표 | 유등노인복지관</title>
+<link rel="stylesheet" href="http://www.yudeung.or.kr/theme/yudeung/css/default.css?ver=2303229">
+<link rel="stylesheet" href="http://www.yudeung.or.kr/js/font-awesome/css/font-awesome.min.css?ver=2303229">
+<link rel="stylesheet" href="http://www.yudeung.or.kr/module/menu/skin/basic/style.css" />
+<link rel="stylesheet" href="http://www.yudeung.or.kr/module/spon/adm/css/admin_extend_spon.css?ver=2303229">
+<link rel="stylesheet" href="http://www.yudeung.or.kr/module/doc-issue/adm/css/admin_extend_doc_issue.css?ver=2303229">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css">
+<!--[if lte IE 8]>
+<script src="http://www.yudeung.or.kr/js/html5.js"></script>
+<![endif]-->
+	
+	<link rel="stylesheet" href="http://www.yudeung.or.kr/theme/yudeung/css/sub.css">
+	
+<link rel="stylesheet" href="http://www.yudeung.or.kr/theme/yudeung/css/responsive.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js"></script>
+
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "http://www.yudeung.or.kr";
+var g5_bbs_url   = "http://www.yudeung.or.kr/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+</script>
+<script src="http://www.yudeung.or.kr/js/jquery-1.12.4.min.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/jquery-migrate-1.4.1.min.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/jquery.menu.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/common.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/theme/yudeung/js/theme.common.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/wrest.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/js/placeholders.min.js?ver=2605291"></script>
+<script src="http://www.yudeung.or.kr/module/menu/skin/basic/script.js?ver=2605291"></script>
+</head>
+<body>
+
+<!-- 상단 시작 { -->
+
+<!-- <a href="http://www.yudeung.or.kr"><img src="http://www.yudeung.or.kr/img/logo.png" alt="유등노인복지관"></a> -->
+
+
+
+
+<div class="tnbWrap wrap">
+    <div class="container">
+        <div class="left">
+            <a href="#" id="btnFavorite">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                  <path d="M8.55696 13.6975L12.707 16.2075C13.467 16.6675 14.397 15.9875 14.197 15.1275L13.097 10.4075L16.767 7.2275C17.437 6.6475 17.077 5.5475 16.197 5.4775L11.367 5.0675L9.47696 0.6075C9.13696 -0.2025 7.97696 -0.2025 7.63696 0.6075L5.74696 5.0575L0.916957 5.4675C0.0369575 5.5375 -0.323043 6.6375 0.346957 7.2175L4.01696 10.3975L2.91696 15.1175C2.71696 15.9775 3.64696 16.6575 4.40696 16.1975L8.55696 13.6975Z" fill="#1C6DA6" fill-opacity="0.3"/>
+                </svg>즐겨찾기 추가
+            </a>
+        </div>
+		<script>
+			document.getElementById('btnFavorite').addEventListener('click', function(e) {
+				e.preventDefault(); // 기본 링크 이동 방지
+				
+				// 사용자의 접속 OS 확인 (맥 vs 윈도우)
+				const userAgent = navigator.userAgent.toLowerCase();
+				const isMac = userAgent.indexOf('mac') !== -1;
+				const shortcutKey = isMac ? 'Command(⌘) + D' : 'Ctrl + D';
+				
+				// 어르신들이 이해하기 쉬운 친절한 안내 문구
+				alert(
+					"안전한 인터넷 환경을 위해 버튼 클릭만으로는 추가가 되지 않습니다.\n\n" +
+					"키보드에서 [ " + shortcutKey + " ] 버튼을 동시에 누르시면\n" +
+					"복지관 홈페이지를 즐겨찾기에 등록하실 수 있습니다."
+				);
+			});
+		</script>
+        <ul class="tnb">        
+                        <li><a href="http://www.yudeung.or.kr/bbs/register.php">회원가입</a></li>
+            <li><a href="http://www.yudeung.or.kr/bbs/login.php">로그인</a></li>
+                        <li>글자확대축소
+				<button type="button" id="fontSizePlus"><i class="fas fa-plus-circle"></i></button>
+				<button type="button" id="fontSizeMinus"><i class="fas fa-minus-circle"></i></button>
+			</li>
+        </ul>
+    </div>
+</div>
+
+<header class="header wrap">
+    <div class="container">
+        <h1 class="mLogo"><a href="http://www.yudeung.or.kr"><img src="http://www.yudeung.or.kr/theme/yudeung/img/m_logo.png" alt=""></a></h1>
+        <nav class="gnb">
+			<ul class="de1_ul">
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/document/인사말/" target="_self" class="de1_a m10">복지관소개</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/인사말/" target="_self" class="de2_a">인사말</a></li>
+						<li class="de2_li"><a href="/document/법인소개/" target="_self" class="de2_a">법인소개</a></li>
+						<li class="de2_li"><a href="/document/미션-및-비전/" target="_self" class="de2_a">미션 및 비전</a></li>
+						<li class="de2_li"><a href="/document/주요연혁/" target="_self" class="de2_a">주요연혁</a></li>
+						<li class="de2_li"><a href="/document/조직현황/" target="_self" class="de2_a">조직현황</a></li>
+						<li class="de2_li"><a href="/document/오시는길/" target="_self" class="de2_a">오시는길</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus active ">
+		<a href="/document/회원가입/" target="_self" class="de1_a m20">이용안내</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/회원가입/" target="_self" class="de2_a">회원가입</a></li>
+						<li class="de2_li"><a href="/document/이용안내/" target="_self" class="de2_a">이용안내</a></li>
+						<li class="de2_li active "><a href="/module/meal-plans/" target="_self" class="de2_a">경로식당</a></li>
+						<li class="de2_li"><a href="/module/wel-program/" target="_self" class="de2_a">프로그램 시간표</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/document/노년사회화교육/" target="_self" class="de1_a m30">사업안내</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/노년사회화교육/" target="_self" class="de2_a">노년사회화교육</a></li>
+						<li class="de2_li"><a href="/document/건강생활지원사업/" target="_self" class="de2_a">건강생활지원사업</a></li>
+						<li class="de2_li"><a href="/document/상담-및-정보제공사업/" target="_self" class="de2_a">상담 및 정보제공사업</a></li>
+						<li class="de2_li"><a href="/document/사회참여-및-권익증진사업/" target="_self" class="de2_a">사회참여 및 권익증진사업</a></li>
+						<li class="de2_li"><a href="/document/사례관리-및-지역사회돌봄사업/" target="_self" class="de2_a">사례관리 및 지역사회돌봄사업</a></li>
+						<li class="de2_li"><a href="/document/지역자원-조직화사업/" target="_self" class="de2_a">지역자원 조직화사업</a></li>
+						<li class="de2_li"><a href="/document/노인사회활동지원사업/" target="_self" class="de2_a">노인사회활동지원사업</a></li>
+						<li class="de2_li"><a href="/document/노인맞춤돌봄서비스사업/" target="_self" class="de2_a">노인맞춤돌봄서비스사업</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/document/후원안내/" target="_self" class="de1_a m40">후원 및 자원봉사</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/후원안내/" target="_self" class="de2_a">후원안내</a></li>
+						<li class="de2_li"><a href="/module/spon/" target="_self" class="de2_a">후원신청</a></li>
+						<li class="de2_li"><a href="/document/봉사안내/" target="_self" class="de2_a">봉사안내</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/notice" target="_self" class="de1_a m50">유등소식</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/notice" target="_self" class="de2_a">공지사항</a></li>
+						<li class="de2_li"><a href="/recruit" target="_self" class="de2_a">채용공고</a></li>
+						<li class="de2_li"><a href="/gallery" target="_self" class="de2_a">유등이야기</a></li>
+						<li class="de2_li"><a href="/newsletter" target="_self" class="de2_a">소식지</a></li>
+						<li class="de2_li"><a href="/media" target="_self" class="de2_a">언론보도</a></li>
+						<li class="de2_li"><a href="/free" target="_self" class="de2_a">자유게시판</a></li>
+						<li class="de2_li"><a href="/download" target="_self" class="de2_a">자료실</a></li>
+						<li class="de2_li"><a href="/module/doc-issue/" target="_self" class="de2_a">서류발급신청(직원용)</a></li>
+					</ul>
+	</li>
+		<li class="de1_li gnb_al_li_plus">
+		<a href="/document/이용약관/" target="_self" class="de1_a m60">회원가입 및 약관안내</a>
+		
+		<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/이용약관/" target="_self" class="de2_a">이용약관</a></li>
+						<li class="de2_li"><a href="/document/개인정보취급방침/" target="_self" class="de2_a">개인정보취급방침</a></li>
+						<li class="de2_li"><a href="/document/개인정보의 수집 및 이용목적/" target="_self" class="de2_a">개인정보의 수집 및 이용목적</a></li>
+						<li class="de2_li"><a href="/document/이메일무단수집거부/" target="_self" class="de2_a">이메일무단수집거부</a></li>
+						<li class="de2_li"><a href="/bbs/register.php" target="_self" class="de2_a">약관동의</a></li>
+						<li class="de2_li"><a href="/bbs/register_form.php" target="_self" class="de2_a">회원가입</a></li>
+						<li class="de2_li"><a href="/bbs/register_result.php" target="_self" class="de2_a">회원가입 완료</a></li>
+					</ul>
+	</li>
+	</ul>
+        </nav>
+		<div class="toggleBox">
+			<div class="Toggle02">
+				<label class="menu">
+					<input type="checkbox" checked>
+					<div>
+						<span></span>
+						<span></span>
+					</div>
+				</label>
+			</div>
+		</div>
+    </div>
+</header>
+<div class="all_gnb">
+	<div class="container">
+		<ul class="de1_ul">
+						<li class="de1_li g10"><!--  style="z-index:999" -->
+				<a href="/document/인사말/" target="_self" class="de1_a">복지관소개<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/인사말/" target="_self" class="de2_a">인사말</a></li>
+											<li class="de2_li"><a href="/document/법인소개/" target="_self" class="de2_a">법인소개</a></li>
+											<li class="de2_li"><a href="/document/미션-및-비전/" target="_self" class="de2_a">미션 및 비전</a></li>
+											<li class="de2_li"><a href="/document/주요연혁/" target="_self" class="de2_a">주요연혁</a></li>
+											<li class="de2_li"><a href="/document/조직현황/" target="_self" class="de2_a">조직현황</a></li>
+											<li class="de2_li"><a href="/document/오시는길/" target="_self" class="de2_a">오시는길</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g20"><!--  style="z-index:998" -->
+				<a href="/document/회원가입/" target="_self" class="de1_a">이용안내<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/회원가입/" target="_self" class="de2_a">회원가입</a></li>
+											<li class="de2_li"><a href="/document/이용안내/" target="_self" class="de2_a">이용안내</a></li>
+											<li class="de2_li"><a href="/module/meal-plans/" target="_self" class="de2_a">경로식당</a></li>
+											<li class="de2_li"><a href="/module/wel-program/" target="_self" class="de2_a">프로그램 시간표</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g30"><!--  style="z-index:997" -->
+				<a href="/document/노년사회화교육/" target="_self" class="de1_a">사업안내<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/노년사회화교육/" target="_self" class="de2_a">노년사회화교육</a></li>
+											<li class="de2_li"><a href="/document/건강생활지원사업/" target="_self" class="de2_a">건강생활지원사업</a></li>
+											<li class="de2_li"><a href="/document/상담-및-정보제공사업/" target="_self" class="de2_a">상담 및 정보제공사업</a></li>
+											<li class="de2_li"><a href="/document/사회참여-및-권익증진사업/" target="_self" class="de2_a">사회참여 및 권익증진사업</a></li>
+											<li class="de2_li"><a href="/document/사례관리-및-지역사회돌봄사업/" target="_self" class="de2_a">사례관리 및 지역사회돌봄사업</a></li>
+											<li class="de2_li"><a href="/document/지역자원-조직화사업/" target="_self" class="de2_a">지역자원 조직화사업</a></li>
+											<li class="de2_li"><a href="/document/노인사회활동지원사업/" target="_self" class="de2_a">노인사회활동지원사업</a></li>
+											<li class="de2_li"><a href="/document/노인맞춤돌봄서비스사업/" target="_self" class="de2_a">노인맞춤돌봄서비스사업</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g40"><!--  style="z-index:996" -->
+				<a href="/document/후원안내/" target="_self" class="de1_a">후원 및 자원봉사<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/후원안내/" target="_self" class="de2_a">후원안내</a></li>
+											<li class="de2_li"><a href="/module/spon/" target="_self" class="de2_a">후원신청</a></li>
+											<li class="de2_li"><a href="/document/봉사안내/" target="_self" class="de2_a">봉사안내</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g50"><!--  style="z-index:995" -->
+				<a href="/notice" target="_self" class="de1_a">유등소식<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/notice" target="_self" class="de2_a">공지사항</a></li>
+											<li class="de2_li"><a href="/recruit" target="_self" class="de2_a">채용공고</a></li>
+											<li class="de2_li"><a href="/gallery" target="_self" class="de2_a">유등이야기</a></li>
+											<li class="de2_li"><a href="/newsletter" target="_self" class="de2_a">소식지</a></li>
+											<li class="de2_li"><a href="/media" target="_self" class="de2_a">언론보도</a></li>
+											<li class="de2_li"><a href="/free" target="_self" class="de2_a">자유게시판</a></li>
+											<li class="de2_li"><a href="/download" target="_self" class="de2_a">자료실</a></li>
+											<li class="de2_li"><a href="/module/doc-issue/" target="_self" class="de2_a">서류발급신청(직원용)</a></li>
+					</ul>
+			</li>
+						<li class="de1_li g60"><!--  style="z-index:994" -->
+				<a href="/document/이용약관/" target="_self" class="de1_a">회원가입 및 약관안내<i></i></a>
+				<ul class="de2_ul">
+						<li class="de2_li"><a href="/document/이용약관/" target="_self" class="de2_a">이용약관</a></li>
+											<li class="de2_li"><a href="/document/개인정보취급방침/" target="_self" class="de2_a">개인정보취급방침</a></li>
+											<li class="de2_li"><a href="/document/개인정보의 수집 및 이용목적/" target="_self" class="de2_a">개인정보의 수집 및 이용목적</a></li>
+											<li class="de2_li"><a href="/document/이메일무단수집거부/" target="_self" class="de2_a">이메일무단수집거부</a></li>
+											<li class="de2_li"><a href="/bbs/register.php" target="_self" class="de2_a">약관동의</a></li>
+											<li class="de2_li"><a href="/bbs/register_form.php" target="_self" class="de2_a">회원가입</a></li>
+											<li class="de2_li"><a href="/bbs/register_result.php" target="_self" class="de2_a">회원가입 완료</a></li>
+					</ul>
+			</li>
+					</ul>
+	</div>
+</div>
+		
+
+<script>
+	$(document).ready(function(){
+		$('.header').on('click', '.Toggle02', function(e){
+			if ($(this).hasClass('show') == false) {
+				$(this).addClass('show');
+				$('.all_gnb').addClass('show').fadeIn();
+				$('.toggleOut').addClass('show');
+				$('body').addClass('show');
+				$('html').addClass('show');
+			} else {
+				$('.all_gnb').removeClass('show').fadeOut();
+				$('.toggleOut').removeClass('show');
+				$(this).removeClass('show');
+				$('body').removeClass('show');
+				$('html').removeClass('show');
+			}
+			e.preventDefault();
+		});
+		
+		$('.all_gnb').on('click', '.toggleOut', function(e){
+			if ($(this).hasClass('show') == false) {
+				$(this).addClass('show');
+				$('.all_gnb').addClass('show').fadeIn();
+				$('.Toggle02').addClass('show');
+				$('body').addClass('show');
+				$('html').addClass('show');
+			} else {
+				$('.all_gnb').removeClass('show').fadeOut();
+				$('.Toggle02').removeClass('show');
+				$(this).removeClass('show');
+				$('body').removeClass('show');
+				$('html').removeClass('show');
+			}
+			e.preventDefault();
+		});
+
+		$(window).resize(function(){ 
+            if (window.innerWidth > 992) {  
+                // PC 화면 (992px 초과)
+                // 1. 모바일용 클릭 이벤트 해제
+                $('.all_gnb').off('click', '.de1_a');
+                // 2. 모바일에서 클릭하며 생긴 클래스 초기화
+                $('.de1_li, .de1_a').removeClass('active');
+                // 3. slideUp/Down으로 적용된 인라인 스타일(display) 제거하여 강제로 보여줌
+                $('.de2_ul').css('display', '');
+                
+            } else {
+                // 모바일 화면 (992px 이하)
+                // off('click')을 먼저 써서 리사이즈 시 이벤트가 중복 바인딩 되는 것을 방지
+                $('.all_gnb').off('click', '.de1_a').on('click', '.de1_a', function(e){
+                    if ($(this).hasClass('active') == false) {
+                        $('.de1_li').removeClass('active');
+                        $('.de1_a').removeClass('active');
+                        $('.de2_ul').stop().slideUp(300);
+
+                        $(this).addClass('active');
+                        $(this).parent('.de1_li').addClass('active');
+                        $(this).parent('.de1_li').children('.de2_ul').stop().slideDown(300);
+                    } else {
+                        $(this).removeClass('active');
+                        $(this).parent('.de1_li').removeClass('active');
+                        $(this).parent('.de1_li').children('.de2_ul').stop().slideUp(300);
+                    }
+                    e.preventDefault();
+                });
+            }
+        }).resize();
+	});
+</script>
+
+
+
+<script>
+    $(document).ready(function(){
+        $(".gnb .de1_li").mouseover(function(){
+            $(this).addClass("active")
+            $(this).find(".de2_ul").addClass("active").stop().fadeIn();
+        });
+        $(".gnb .de1_li").mouseout(function(){
+            $(this).removeClass("active")
+            $(this).find(".de2_ul").removeClass("active").stop().fadeOut();
+        });
+    });
+</script>
+    
+<!-- } 상단 끝 -->
+
+
+<!-- 콘텐츠 시작 { -->
+	
+ <div class="subHead wrap bg20 s2030">
+	<div class="container">
+		<div class="titBox">
+			<h2 class="tit">이용안내</h2>
+			<p class="titTxt"><strong>사랑과 행복이 넘쳐나는 복지관</strong>이 되도록 최선의 노력을 다 하겠습니다.</p>
+		</div>
+		
+		<div class="lnbBox">
+			<div class="inner">
+				<div class="home">
+					<a href="http://www.yudeung.or.kr">
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 22 24" fill="none">
+						  <path d="M2.75 21.2571H6.875V14.4C6.875 14.0114 7.007 13.6859 7.271 13.4235C7.535 13.1611 7.86133 13.0295 8.25 13.0286H13.75C14.1396 13.0286 14.4664 13.1602 14.7304 13.4235C14.9944 13.6869 15.1259 14.0123 15.125 14.4V21.2571H19.25V8.91428L11 2.74286L2.75 8.91428V21.2571ZM0 21.2571V8.91428C0 8.48 0.0976247 8.06857 0.292875 7.68C0.488125 7.29143 0.757167 6.97143 1.1 6.72L9.35 0.548571C9.83125 0.182857 10.3812 0 11 0C11.6187 0 12.1687 0.182857 12.65 0.548571L20.9 6.72C21.2437 6.97143 21.5132 7.29143 21.7085 7.68C21.9037 8.06857 22.0009 8.48 22 8.91428V21.2571C22 22.0114 21.7305 22.6574 21.1915 23.195C20.6525 23.7326 20.0053 24.0009 19.25 24H13.75C13.3604 24 13.0341 23.8683 12.771 23.605C12.5079 23.3417 12.3759 23.0162 12.375 22.6286V15.7714H9.625V22.6286C9.625 23.0171 9.493 23.3431 9.229 23.6064C8.965 23.8697 8.63866 24.0009 8.25 24H2.75C1.99375 24 1.34658 23.7317 0.8085 23.195C0.270416 22.6583 0.000916666 22.0123 0 21.2571Z" fill="white"/>
+						</svg>
+					</a>
+				</div>
+				<div class="labelBox">
+					<div class="label">이용안내<img src="http://www.yudeung.or.kr/theme/yudeung/img/sub/lnb_arrow.svg" alt=""></div>
+					<ul class="lnb de1_ul">
+								                
+						<li class="de1_li"><a href="/document/인사말/" class="de1_a" target="_self">복지관소개</a></li>
+								                
+						<li class="de1_li"><a href="/document/회원가입/" class="de1_a active " target="_self">이용안내</a></li>
+								                
+						<li class="de1_li"><a href="/document/노년사회화교육/" class="de1_a" target="_self">사업안내</a></li>
+								                
+						<li class="de1_li"><a href="/document/후원안내/" class="de1_a" target="_self">후원 및 자원봉사</a></li>
+								                
+						<li class="de1_li"><a href="/notice" class="de1_a" target="_self">유등소식</a></li>
+						  
+					</ul>
+				</div>
+				<div class="labelBox">
+					<div class="label">경로식당<img src="http://www.yudeung.or.kr/theme/yudeung/img/sub/lnb_arrow.svg" alt=""></div>
+					<ul class="lnb de2_ul">
+											
+						<li class="de2_li"><a href="/document/회원가입/" class="de2_a" target="_self">회원가입</a></li>
+											
+						<li class="de2_li"><a href="/document/이용안내/" class="de2_a" target="_self">이용안내</a></li>
+											
+						<li class="de2_li"><a href="/module/meal-plans/" class="de2_a active " target="_self">경로식당</a></li>
+											
+						<li class="de2_li"><a href="/module/wel-program/" class="de2_a" target="_self">프로그램 시간표</a></li>
+											</ul>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3 class="subTit">경로식당</h3>
+
+
+<script>
+$(document).ready(function(){
+    // 서브 메뉴
+    $(".labelBox .label").click(function(e){
+        e.preventDefault();
+        
+        $(this).not($(this).parent()).removeClass('active');
+    
+        if ($(this).parent().hasClass('active') == false) {
+            $(this).parent().addClass('active');
+            $(this).parent().children('.lnb').stop().fadeIn(300);
+        } else {
+            $(this).parent().removeClass('active');
+            $(this).parent().children('.lnb').stop().fadeOut(300);
+        }
+    });
+
+	var target = $(".labelBox");
+	$(document).mouseup(function (e){
+        if(target.has(e.target).length==0) {
+            //target.hide();
+            target.removeClass('active');
+			$('.lnb').stop().fadeOut(300);
+        } 
+    });
+});
+</script>
+
+<style>
+/* Design System Tokens */
+:root {
+    --mp-primary: #1e40af;
+    --mp-header-bg: #dbe6f3;
+    --mp-bg: #f4f7fa;
+    --mp-card-bg: #ffffff;
+    --mp-slate-900: #0f172a;
+    --mp-slate-800: #1e293b;
+    --mp-slate-600: #475569;
+    --mp-slate-500: #64748b;
+    --mp-slate-200: #e2e8f0;
+    --mp-slate-100: #f1f5f9;
+    --mp-border-radius: 16px;
+    --mp-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.mp-wrapper {
+    background-color: var(--mp-bg);
+    padding: 15rem 0;
+    min-height: 800px;
+    font-family: 'SUITE', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--mp-slate-800);
+}
+
+
+/* Control & Filter Nav (Hidden in Print) */
+.mp-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: #ffffff;
+    padding: 16px 24px;
+    border-radius: 14px;
+    border: 1px solid var(--mp-slate-200);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+	
+	display:none;
+}
+.mp-select-form select {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 15px !important;
+    font-weight: 600;
+    color: var(--mp-slate-800);
+}
+.mp-btn-print {
+    padding: 9px 20px;
+    background: var(--mp-slate-900);
+    color: #ffffff;
+    border: none;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 15px !important;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s ease;
+}
+.mp-btn-print:hover {
+    background: #334155;
+}
+
+/* Main Section Title (Exact Match to Image) */
+.mp-main-title {
+    text-align: center;
+    font-size: 32px !important;
+    font-weight: 800;
+    color: #000000;
+    letter-spacing: -0.02em;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+/* 5 Day Cards Grid */
+.mp-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    align-items: stretch;
+}
+
+/* Individual Day Card */
+.mp-day-card {
+    background: var(--mp-card-bg);
+    border-radius: var(--mp-border-radius);
+    border: 1px solid var(--mp-slate-200);
+    box-shadow: var(--mp-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Day Card Header */
+.mp-card-header {
+    background: rgba(28, 109, 166, 0.15);
+    padding: 22px 10px 18px 10px;
+    text-align: center;
+}
+.mp-day-name {
+    color: #1C6DA6;
+	text-align: center;
+	font-family: SUITE;
+	font-size: 2.2rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-bottom: 1rem;
+}
+.mp-day-date {
+    color: #666;
+	text-align: center;
+	font-family: SUITE;
+	font-size: 1.8rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+/* Day Card Body / Dishes List */
+.mp-card-body {
+    padding: 2rem 3rem 4.2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.mp-dish-item {
+	border-top: 2px dotted #DADADA;
+    display: flex;
+	padding: 1.5rem 0;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	align-self: stretch;
+	flex-direction:column;
+}
+.mp-dish-item:first-child {
+    border-top: none;
+}
+
+.mp-dish-name {
+    color: #3A3A3A;
+	text-align: center;
+	font-family: SUITE;
+	font-size: 1.8rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.mp-dish-origin {
+    color: #666;
+	text-align: center;
+	font-family: SUITE;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	display:block;
+}
+
+/* Footer Notices (Exact Match to Image) */
+.mp-notices-box {
+    margin-top: 3rem;
+	display:flex;
+	flex-direction:column;
+	gap:1.2rem;
+}
+
+.mp-notice-item {
+	display: flex;
+	align-items: baseline;
+	gap: 1rem;
+	align-self: stretch;
+    color: #666;
+	text-align: left;
+	font-family: SUITE;
+	font-size: 1.8rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.mp-notice-item i { 
+	color:#aaa;
+	font-size:2rem;
+}
+.mp-notice-badge {
+    font-size: 15px !important;
+    color: var(--mp-slate-500);
+    flex-shrink: 0;
+    user-select: none;
+}
+.footer {
+	margin-top: 0;
+}
+
+/* Print CSS Optimization */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .mp-wrapper, .mp-wrapper * {
+        visibility: visible;
+    }
+    .mp-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: #ffffff !important;
+    }
+    .mp-controls {
+        display: none !important;
+    }
+    .mp-cards-grid {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 10px !important;
+    }
+    .mp-day-card {
+        box-shadow: none !important;
+        border: 1px solid #94a3b8 !important;
+        break-inside: avoid;
+    }
+}
+</style>
+
+<div class="mp-wrapper">
+    <div class="container">
+
+        <!-- Controls / Nav (Hidden in print) -->
+        <div class="mp-controls">
+            <form name="fmealplan" method="get" class="mp-select-form">
+                <label style="font-weight:bold; margin-right:8px;">식단표 선택:</label>
+                <select name="mp_id" onchange="this.form.submit();">
+                                            <option value="2" selected>
+                            2026년 11월 1주차 식단표                        </option>
+                                    </select>
+            </form>
+
+            <button type="button" class="mp-btn-print" onclick="window.print();">
+                🖨️ 식단표 인쇄
+            </button>
+        </div>
+
+                    <!-- Main Title (Exact Match to Image) -->
+            <h1 class="mp-main-title">2026년 11월 1주차 식단표</h1>
+
+            <!-- 5 Day Cards Grid -->
+            <div class="mp-cards-grid">
+                                    <div class="mp-day-card">
+                        <div class="mp-card-header">
+                            <div class="mp-day-name">월요일</div>
+                            <div class="mp-day-date">11월2일</div>
+                        </div>
+
+                        <div class="mp-card-body">
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">차조밥</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">북어채콩나물국</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">동글이피쉬까스</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">팽이버섯들깨나물</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">꼬시래기무침</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">배추김치</div>
+                                                                            </div>
+                                                    </div>
+                    </div>
+                                    <div class="mp-day-card">
+                        <div class="mp-card-header">
+                            <div class="mp-day-name">화요일</div>
+                            <div class="mp-day-date">11월 3일</div>
+                        </div>
+
+                        <div class="mp-card-body">
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">렌틸콩밥</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">소고기무국</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">돈육묵은지볶음</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">베이컨감자전</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">토마토오이샐러드</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">배추김치</div>
+                                                                            </div>
+                                                    </div>
+                    </div>
+                                    <div class="mp-day-card">
+                        <div class="mp-card-header">
+                            <div class="mp-day-name">수요일</div>
+                            <div class="mp-day-date">11월 4일</div>
+                        </div>
+
+                        <div class="mp-card-body">
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">병아리콩밥</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">농어맑은탕</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">돼지불고기</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">도토리묵무침</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">단감쏨땀</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">배추김치</div>
+                                                                            </div>
+                                                    </div>
+                    </div>
+                                    <div class="mp-day-card">
+                        <div class="mp-card-header">
+                            <div class="mp-day-name">목요일</div>
+                            <div class="mp-day-date">11월 5일</div>
+                        </div>
+
+                        <div class="mp-card-body">
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">흑미밥</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">오색감자옹심이국</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">오징어두루치기</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">돈육메추리알조림</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">숙주미나리무침</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">배추김치</div>
+                                                                            </div>
+                                                    </div>
+                    </div>
+                                    <div class="mp-day-card">
+                        <div class="mp-card-header">
+                            <div class="mp-day-name">금요일</div>
+                            <div class="mp-day-date">11월 6일</div>
+                        </div>
+
+                        <div class="mp-card-body">
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">강낭콩밥</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">된장찌개</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">코다리무조림</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">궁중떡볶이</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">쌈다시마/초고추장</div>
+                                                                            </div>
+                                                                <div class="mp-dish-item">
+                                        <div class="mp-dish-name">배추김치</div>
+                                                                            </div>
+                                                    </div>
+                    </div>
+                            </div>
+
+            <!-- Footer Notices (Exact Match to Image) -->
+            <div class="mp-notices-box">
+                                    <div class="mp-notice-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>상기 식단은 식자재 수급 사정에 의해 변경될 수 있습니다.</span>
+                    </div>
+                
+                                    <div class="mp-notice-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>원산지 표기는 식단표에 기재하였음.(콩-수입산), (맛살, 명태-미국산) / 오징어-칠레산), (햄-돈육 / 계육-국내산), (얼갈이-국내산)</span>
+                    </div>
+                
+                                    <div class="mp-notice-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>쌀: 국내산, 현미-국내산 / 포기김치: 배추-국내산 / 고춧가루-중국산, 찌개용 배추-중국산</span>
+                    </div>
+                            </div>
+        
+    </div>
+</div>
+
+<style>
+	@media (max-width:1500px){
+
+	}
+
+
+	@media (max-width:1400px){
+
+	}
+
+
+	@media (max-width:1200px){
+
+	}
+
+
+	@media (max-width:992px){
+
+		.mp-wrapper { padding:10rem 0; }
+		
+		.mp-cards-grid { display:flex; flex-direction:column; }
+		.mp-card-header { width:120px; flex-shrink:0; padding:20px; display:flex; align-items:center; justify-content:center; flex-direction:column; }
+		.mp-day-name { margin-bottom: 0; }
+		.mp-day-card { flex-direction:row; }
+		.mp-card-body { flex-direction:row; gap:15px 20px; justify-content:start; padding:3rem 5rem; flex-wrap:wrap; }
+		.mp-dish-item { margin-bottom: 0; padding:0; padding-right: 20px; border-right: 2px solid #eaeaea; border-top: 0; text-align:left; justify-content:start; align-items:center; flex-direction:row; }
+		.mp-dish-item:last-child { padding-right: 0; border-right: 0; }
+		.mp-dish-origin { flex-shrink:0; }
+
+	}
+		
+
+
+	@media (max-width:768px){
+
+	}
+
+
+	@media (max-width:641px){
+	
+		.mp-day-card { flex-direction:column; }
+		.mp-card-header { width:100%; flex-direction:row; justify-content:center; align-items:baseline; }
+		.mp-card-body { justify-content:center; padding:3rem; }
+
+	}
+
+
+	@media (max-width:560px){
+
+	}
+
+
+	@media (max-width:479px){
+
+	}
+
+
+	@media (max-width:375px){
+
+
+	}
+</style>
+
+
+
+<!-- } 콘텐츠 끝 -->
+
+<!-- 하단 시작 { -->
+<footer class="footer wrap">
+    <div class="container">
+        <h1 class="fLogo"><a href=""><img src="http://www.yudeung.or.kr/theme/yudeung/img/m_logo.png" alt=""></a></h1>
+        <div class="fnbBox">
+            <ul class="fnb">
+                <li><a href="/document/이용약관/">이용약관</a></li>
+                <li><a href="/document/개인정보취급방침/">개인정보취급방침</a></li>
+                <!-- <li><a href="/document/개인정보의 수집 및 이용목적/">개인정보의 수집 및 이용목적</a></li> -->
+                <li><a href="/document/이메일무단수집거부/">이메일무단수집거부</a></li>
+            </ul>
+            <ul class="sns">
+                <li><a href="https://pf.kakao.com/_xjWLpj" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                  <path d="M8.99914 0C13.9706 0 18 3.22754 18 7.20999C18 11.1916 13.9706 14.4191 9 14.4191C8.5051 14.4182 8.01073 14.3858 7.51971 14.3222L3.74143 16.8618C3.312 17.0952 3.16029 17.0697 3.33686 16.498L4.10143 13.2581C1.63286 11.972 0 9.7434 0 7.20999C0 3.22842 4.02771 0 8.99914 0ZM14.064 7.09988L15.324 5.84551C15.3967 5.76791 15.4373 5.66435 15.4371 5.55662C15.437 5.4489 15.3962 5.34543 15.3233 5.26802C15.2504 5.1906 15.1512 5.14528 15.0464 5.14159C14.9416 5.13791 14.8396 5.17616 14.7617 5.24828L13.1091 6.892V5.53368C13.1091 5.42341 13.0665 5.31766 12.9906 5.23968C12.9148 5.16171 12.8119 5.11791 12.7046 5.11791C12.5973 5.11791 12.4944 5.16171 12.4185 5.23968C12.3426 5.31766 12.3 5.42341 12.3 5.53368V7.78609C12.2857 7.85045 12.2857 7.91728 12.3 7.98164V9.24923C12.3 9.3595 12.3426 9.46525 12.4185 9.54323C12.4944 9.6212 12.5973 9.665 12.7046 9.665C12.8119 9.665 12.9148 9.6212 12.9906 9.54323C13.0665 9.46525 13.1091 9.3595 13.1091 9.24923V8.04859L13.4751 7.68479L14.6991 9.47561C14.7297 9.52032 14.7685 9.55841 14.8134 9.5877C14.8583 9.61699 14.9084 9.6369 14.9607 9.64631C15.0131 9.65571 15.0668 9.65443 15.1187 9.64252C15.1705 9.63062 15.2196 9.60832 15.2631 9.57691C15.3066 9.54551 15.3437 9.5056 15.3722 9.45948C15.4007 9.41335 15.4201 9.36191 15.4292 9.30809C15.4384 9.25426 15.4371 9.19912 15.4256 9.14579C15.414 9.09247 15.3923 9.04201 15.3617 8.9973L14.064 7.09988ZM11.5286 8.7947H10.2771V5.54689C10.2724 5.44005 10.2277 5.33921 10.1524 5.26534C10.0771 5.19147 9.97708 5.15025 9.873 5.15025C9.76892 5.15025 9.66885 5.19147 9.59358 5.26534C9.51832 5.33921 9.47365 5.44005 9.46886 5.54689V9.21047C9.46886 9.4395 9.64886 9.62625 9.87257 9.62625H11.5286C11.6359 9.62625 11.7388 9.58244 11.8146 9.50447C11.8905 9.42649 11.9331 9.32074 11.9331 9.21047C11.9331 9.1002 11.8905 8.99445 11.8146 8.91647C11.7388 8.8385 11.6359 8.7947 11.5286 8.7947ZM6.50829 7.83366L7.10486 6.32912L7.65171 7.83278L6.50829 7.83366ZM8.67086 8.26264L8.67257 8.24855C8.67228 8.14382 8.63339 8.0431 8.56371 7.96667L7.66714 5.50021C7.62956 5.38267 7.55797 5.27972 7.46193 5.20511C7.3659 5.1305 7.25 5.08778 7.12971 5.08267C7.00866 5.08261 6.89041 5.12019 6.79052 5.19047C6.69063 5.26074 6.61375 5.36042 6.57 5.47642L5.14543 9.06601C5.10485 9.1681 5.1054 9.28258 5.14695 9.38426C5.1885 9.48593 5.26766 9.56648 5.367 9.60819C5.46634 9.64989 5.57774 9.64933 5.67667 9.60662C5.77561 9.56392 5.85399 9.48257 5.89457 9.38048L6.17914 8.66433H7.95343L8.20886 9.36903C8.22628 9.4217 8.25382 9.47025 8.28983 9.51179C8.32584 9.55333 8.3696 9.58702 8.41851 9.61086C8.46743 9.63471 8.5205 9.64822 8.57458 9.6506C8.62867 9.65298 8.68267 9.64418 8.73339 9.62473C8.78411 9.60527 8.83051 9.57555 8.86985 9.53732C8.90919 9.4991 8.94066 9.45315 8.9624 9.4022C8.98415 9.35125 8.99572 9.29634 8.99644 9.24071C8.99715 9.18507 8.987 9.12986 8.96657 9.07834L8.67086 8.26264ZM5.82257 5.5513C5.8228 5.49671 5.81252 5.44261 5.79232 5.39212C5.77212 5.34163 5.7424 5.29574 5.70488 5.25709C5.66736 5.21845 5.62277 5.18782 5.57368 5.16695C5.5246 5.14609 5.47198 5.13541 5.41886 5.13552H2.63743C2.53013 5.13552 2.42723 5.17933 2.35135 5.2573C2.27548 5.33527 2.23286 5.44103 2.23286 5.5513C2.23286 5.66157 2.27548 5.76732 2.35135 5.8453C2.42723 5.92327 2.53013 5.96707 2.63743 5.96707H3.63171V9.25804C3.63171 9.36831 3.67434 9.47406 3.75021 9.55204C3.82608 9.63001 3.92899 9.67381 4.03629 9.67381C4.14358 9.67381 4.24649 9.63001 4.32236 9.55204C4.39823 9.47406 4.44086 9.36831 4.44086 9.25804V5.96707H5.418C5.47119 5.96731 5.5239 5.95671 5.57309 5.9359C5.62228 5.91509 5.66697 5.88447 5.70458 5.84582C5.74219 5.80716 5.77199 5.76123 5.79224 5.71068C5.81249 5.66013 5.8228 5.60596 5.82257 5.5513Z" fill="#999999"/>
+                </svg></a></li>
+                <li><a href="https://www.facebook.com/yudeung17" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
+                  <path d="M10.5819 21.2599L10.5929 21.2579C10.6016 21.2593 10.6073 21.2653 10.6099 21.2759L10.6269 21.7029L10.6229 21.7199L10.6109 21.7359L10.5069 21.8099L10.4949 21.8139L10.4799 21.8099L10.3759 21.7359L10.3659 21.7229L10.3609 21.7029L10.3779 21.2749L10.3819 21.2649C10.3873 21.2583 10.3953 21.2566 10.4059 21.2599L10.4769 21.2949L10.4909 21.2989L10.5109 21.2949L10.5819 21.2599Z" fill="#999999"/>
+                  <path d="M10.8449 21.1469L10.8579 21.1449C10.8679 21.1476 10.8746 21.1549 10.8779 21.1669L10.9119 21.7809L10.9079 21.7949C10.9013 21.8036 10.8916 21.8063 10.8789 21.8029L10.6779 21.7099L10.6699 21.7029L10.6649 21.6909L10.6469 21.2609L10.6499 21.2499L10.6599 21.2399L10.8449 21.1469Z" fill="#999999"/>
+                  <path d="M10.1282 21.1445C10.1333 21.1434 10.1385 21.1443 10.1429 21.1469L10.3269 21.2389L10.3369 21.2489L10.3399 21.2609L10.3229 21.6909L10.3189 21.7019L10.3089 21.7099L10.1079 21.8029L10.0929 21.8049C10.0823 21.8009 10.0766 21.7929 10.0759 21.7809L10.1099 21.1669L10.1159 21.1529C10.1188 21.1487 10.1232 21.1456 10.1282 21.1445Z" fill="#999999"/>
+                  <path d="M11.5 19.888C16.311 19.164 20 15.013 20 10C20 4.477 15.523 0 10 0C4.477 0 0 4.477 0 10C0 15.013 3.689 19.165 8.5 19.888V13H7C6.60218 13 6.22064 12.842 5.93934 12.5607C5.65804 12.2794 5.5 11.8978 5.5 11.5C5.5 11.1022 5.65804 10.7206 5.93934 10.4393C6.22064 10.158 6.60218 10 7 10H8.5V8C8.5 7.07174 8.86875 6.1815 9.52513 5.52513C10.1815 4.86875 11.0717 4.5 12 4.5H12.5C12.8978 4.5 13.2794 4.65804 13.5607 4.93934C13.842 5.22064 14 5.60218 14 6C14 6.39782 13.842 6.77936 13.5607 7.06066C13.2794 7.34196 12.8978 7.5 12.5 7.5H12C11.8674 7.5 11.7402 7.55268 11.6464 7.64645C11.5527 7.74021 11.5 7.86739 11.5 8V10H13C13.3978 10 13.7794 10.158 14.0607 10.4393C14.342 10.7206 14.5 11.1022 14.5 11.5C14.5 11.8978 14.342 12.2794 14.0607 12.5607C13.7794 12.842 13.3978 13 13 13H11.5V19.888Z" fill="#999999"/>
+                </svg></a></li>
+                <li><a href="https://www.youtube.com/channel/UCunN7_Hax0_kxUcupos8IJA" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
+                  <path d="M8 10L13.19 7L8 4V10ZM19.56 2.17C19.69 2.64 19.78 3.27 19.84 4.07C19.91 4.87 19.94 5.56 19.94 6.16L20 7C20 9.19 19.84 10.8 19.56 11.83C19.31 12.73 18.73 13.31 17.83 13.56C17.36 13.69 16.5 13.78 15.18 13.84C13.88 13.91 12.69 13.94 11.59 13.94L10 14C5.81 14 3.2 13.84 2.17 13.56C1.27 13.31 0.69 12.73 0.44 11.83C0.31 11.36 0.22 10.73 0.16 9.93C0.0900001 9.13 0.0599999 8.44 0.0599999 7.84L0 7C0 4.81 0.16 3.2 0.44 2.17C0.69 1.27 1.27 0.69 2.17 0.44C2.64 0.31 3.5 0.22 4.82 0.16C6.12 0.0899998 7.31 0.0599999 8.41 0.0599999L10 0C14.19 0 16.8 0.16 17.83 0.44C18.73 0.69 19.31 1.27 19.56 2.17Z" fill="#999999"/>
+                </svg></a></li>
+            </ul>
+        </div>
+        <ul class="info">
+            <li><span>유등노인복지관</span><span>대표 : 박명래 관장</span><span>대표번호 : 042-528-0890~2</span><span>팩스번호 : 042-528-0893</li>
+            <li><span>이메일 : yudeung17@nate.com</span><span>통신판매업신고번호 : 제 2016-서울지역-1234호</span><span>주소 : 대전광역시 서구 도솔로 182</li>
+        </ul>
+        <p class="copyright">Copyright © yudeung.or.kr All Rights Reserved.</p>
+    </div>
+</footer>
+
+<div class="fixedBtn">
+	<ul>
+			<li class="green"><a href="http://www.yudeung.or.kr/bbs/register.php"><i class="fas fa-sign-in-alt"></i>회원가입</a></li>
+		<li class="blue"><a href="http://www.yudeung.or.kr/bbs/login.php"><i class="fas fa-unlock-alt"></i>로그인</a></li>
+		</ul>
+</div>
+
+<script>
+	var swiper = new Swiper('.programSlide .inner', {
+		slidesPerView: 1,
+		spaceBetween: 10,
+		loop: true,
+		navigation: {
+			nextEl: '.next',
+			prevEl: '.prev',
+		},
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false,
+		},
+		breakpoints: {
+			460: {
+				slidesPerView: 2,
+				spaceBetween: 10,
+			},
+			768: {
+				slidesPerView: 3,
+				spaceBetween: 10,
+			},
+			992: {
+				slidesPerView: 3,
+				spaceBetween: 10,
+			},
+			1500: {
+				slidesPerView: 3,
+				spaceBetween: 60,
+			},
+		},
+	});
+</script>
+
+
+
+<!-- } 하단 끝 -->
+
+<script>
+$(function() {
+    // 폰트 리사이즈 쿠키있으면 실행
+    font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+});
+</script>
+
+
+
+
+</body>
+</html>

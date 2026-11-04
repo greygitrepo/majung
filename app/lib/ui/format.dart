@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../domain/category.dart';
+import '../domain/facility.dart';
 import '../domain/freshness.dart';
 import '../domain/geo.dart';
 import '../domain/opening_hours.dart';
@@ -64,6 +65,10 @@ StatusText statusText(L10n l, OpenStatus s, DateTime now) => switch (s.state) {
 
 String walkText(L10n l, double meters) => l.walk(walkingMinutes(meters), formatDistance(meters));
 
+/// 가까우면 걷는 시간, 멀면 거리만 ("걸어서 300분"은 쓸모없다).
+String distanceText(L10n l, double meters) =>
+    meters <= walkableMeters ? walkText(l, meters) : l.distanceOnly(formatDistance(meters));
+
 String hoursRuleText(L10n l, HoursRule r) {
   if (r.isAllDay) return l.allDay;
   final open = koreanTime(l, r.open ~/ 60, r.open % 60);
@@ -96,12 +101,11 @@ IconData groupIcon(CategoryGroup g) => switch (g) {
       CategoryGroup.groceries => Icons.shopping_basket,
     };
 
-String landmarkName(L10n l, Landmark m) => switch (m.id) {
-      'seoul_station' => l.landmarkSeoulStation,
-      'euljiro' => l.landmarkEuljiro,
-      'yeongdeungpo' => l.landmarkYeongdeungpo,
-      'yongsan' => l.landmarkYongsan,
-      _ => m.id,
+String? clinicTypeLabel(L10n l, ClinicType? t) => switch (t) {
+      ClinicType.freeClinic => l.clinicFree,
+      ClinicType.healthCenter => l.clinicHealthCenter,
+      ClinicType.hospitalSupport => l.clinicHospitalSupport,
+      null => null,
     };
 
 String dateText(DateTime d) =>

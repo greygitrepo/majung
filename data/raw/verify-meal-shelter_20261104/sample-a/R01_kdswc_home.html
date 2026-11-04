@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="ko" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="ko" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="ko" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ko" class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+<meta http-equiv="imagetoolbar" content="no"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="apple-mobile-web-app-capable" content="no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="format-detection" content="telephone=no"/>
+<title>강동종합사회복지관</title>
+<link rel="stylesheet" href="http://www.kdswc.or.kr/theme/kdswc/css/NanumSquare.css"/>
+<link rel="stylesheet" href="http://www.kdswc.or.kr/theme/kdswc/css/default.css?ver=161020"/>
+<link rel="stylesheet" href="http://www.kdswc.or.kr/css/normalize.css"/>
+<link rel="stylesheet" href="http://www.kdswc.or.kr/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="http://www.kdswc.or.kr/theme/kdswc/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="http://www.kdswc.or.kr/css/global.css?ver=161020"/>
+<link rel="stylesheet" href="http://www.kdswc.or.kr/theme/kdswc/css/base.css"/>
+<link rel="stylesheet" href="http://www.kdswc.or.kr/js/jquery.bxslider/jquery.bxslider.css" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/html5shiv.js"></script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/respond.min.js"></script>
+<![endif]-->
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/selectivizr-min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "http://www.kdswc.or.kr";
+var g5_bbs_url   = "http://www.kdswc.or.kr/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+</script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/jquery-migrate-1.4.1.min.js"></script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/common.js?ver=161020"></script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/wrest.js?ver=161020"></script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/top-menu.js?ver=161020"></script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/jquery.bxslider/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/jquery.marquee.min.js"></script>
+</head>
+<body>
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;"></div>
+
+<!-- 팝업레이어 시작 { -->
+<div id="hd_pop" style="z-index:9999;">
+    <h2>팝업레이어 알림</h2>
+
+
+    <div id="hd_pops_217" class="hd_pops" style="top:10px;left:10px">
+        <div class="hd_pops_con" style="width:700px;height:490px">
+            <p><img src="http://kdswc.or.kr/data/editor/2611/30919069_1793610362.696.jpg" style="width: 700px;"><br></p>        </div>
+        <div class="hd_pops_footer">
+            <button class="hd_pops_reject hd_pops_217 24"><strong>24</strong>시간 동안 다시 열람하지 않습니다.</button>
+            <button class="hd_pops_close hd_pops_217">닫기</button>
+        </div>
+    </div>
+</div>
+
+<script>
+$(function() {
+    $(".hd_pops_reject").click(function() {
+        var id = $(this).attr('class').split(' ');
+        var ck_name = id[1];
+        var exp_time = parseInt(id[2]);
+        $("#"+id[1]).css("display", "none");
+        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+    });
+    $('.hd_pops_close').click(function() {
+        var idb = $(this).attr('class').split(' ');
+        $('#'+idb[1]).css('display','none');
+    });
+    $("#hd").css("z-index", 1000);
+});
+</script>
+<!-- } 팝업레이어 끝 -->
+<!-- 상단 시작 { -->
+<header id="header-container" class="group-main">
+<div class="navbar navbar-default">
+    <section class="top hidden-md hidden-lg">
+        <div class="container">
+            <div class="hbg-gnb row">
+                <div class="logo col-xs-9 col-sm-8 col-md-4 text-left">
+                    <a href="http://www.kdswc.or.kr"><img src="http://www.kdswc.or.kr/theme/kdswc/img/main/logo.png" alt=" 강동종합사회복지관"/></a>
+                </div>
+                <div class="col-xs-3 col-sm-4">
+                    <div class="menu-hambuger pull-right">
+                        <div class="hambuger-wrapper">
+                            <a href="#none" class="btn-hambuger-menu"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="menu-overlay" style="display:none; height:0%;"></div>
+        <div class="menu-pop container" style="display:none;">
+            <div class="col-xs-12 col-sm-12 pull-right menu-container">
+                <div class="menu-header container">
+                    <div class="col-xs-10 col-sm-10">
+                        <ul>
+                                                            <li><span class="small"><a href="http://www.kdswc.or.kr/bbs/login.php">LOGIN</a></span></li>
+                                <li><span class="small"><a href="http://www.kdswc.or.kr/bbs/register.php">JOIN</a></span></li>
+                                                        <li><span class="small"><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9999">SITEMAP</a></span></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-2 col-sm-2">
+                        <div class="pull-right">
+                            <span class="small">
+                                <a href="#none" class="btn-close"><i class="fa fa-times fa-lg"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-lists">
+                    <ul class="menus">
+                        <li class="cate1 row">
+                            <div class="col-xs-11">
+                                <a href="/" class="menu-link">HOME</a>
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="pull-right">
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </li>
+<li class="cate1 row "><div class="col-xs-11"><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0101">기관소개</a></div><div class="col-xs-1"><div class="pull-right"><i class="fa fa-arrow-right" aria-hidden="true"></i></div></div></li><li class="cate2 row "><ul class="sub-menu"><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0101" class="menu-link ">운영법인</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0102" class="menu-link ">인사말</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0103" class="menu-link ">복지관소개</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0104" class="menu-link ">기관연혁</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0105" class="menu-link ">시설현황</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0106" class="menu-link ">조직도</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0107" class="menu-link ">오시는길</a></li></ul></li><li class="cate1 row "><div class="col-xs-11"><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=020101">사업소개</a></div><div class="col-xs-1"><div class="pull-right"><i class="fa fa-arrow-right" aria-hidden="true"></i></div></div></li><li class="cate2 row "><ul class="sub-menu"><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=020101" class="menu-link ">사례관리사업</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=020201" class="menu-link ">지역사회조직사업</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=020301" class="menu-link ">서비스제공사업</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0204" class="menu-link ">사업·시설지원사업</a></li></ul></li><li class="cate1 row "><div class="col-xs-11"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301">스토리</a></div><div class="col-xs-1"><div class="pull-right"><i class="fa fa-arrow-right" aria-hidden="true"></i></div></div></li><li class="cate2 row "><ul class="sub-menu"><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301" class="menu-link ">복지관이야기</a></li><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0302" class="menu-link ">나눔이야기</a></li><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0303" class="menu-link ">소식지</a></li><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0304" class="menu-link ">활동영상</a></li><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0305" class="menu-link ">언론보도</a></li></ul></li><li class="cate1 row "><div class="col-xs-11"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0403">함께나눔</a></div><div class="col-xs-1"><div class="pull-right"><i class="fa fa-arrow-right" aria-hidden="true"></i></div></div></li><li class="cate2 row "><ul class="sub-menu"><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0403" class="menu-link ">대학생 서포터즈</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0401" class="menu-link ">후원안내</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=040201" class="menu-link ">자원봉사안내</a></li></ul></li><li class="cate1 row "><div class="col-xs-11"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0501">알림마당</a></div><div class="col-xs-1"><div class="pull-right"><i class="fa fa-arrow-right" aria-hidden="true"></i></div></div></li><li class="cate2 row "><ul class="sub-menu"><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0501" class="menu-link ">공지사항</a></li><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0502" class="menu-link ">의견수렴</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0503" class="menu-link ">실습신청</a></li><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0504" class="menu-link ">방문신청</a></li><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0505" class="menu-link ">프로그램안내</a></li><li><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0507" class="menu-link ">이달의일정</a></li></ul></li><li class="cate1 row "><div class="col-xs-11"><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0602">병설기관</a></div><div class="col-xs-1"><div class="pull-right"><i class="fa fa-arrow-right" aria-hidden="true"></i></div></div></li><li class="cate2 row "><ul class="sub-menu"><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0602" class="menu-link ">강동희망의 집</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0603" class="menu-link ">강동구푸드뱅크마켓센터</a></li></ul></li><li class="cate1 row "><div class="col-xs-11"><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9901">홈페이지</a></div><div class="col-xs-1"><div class="pull-right"><i class="fa fa-arrow-right" aria-hidden="true"></i></div></div></li><li class="cate2 row "><ul class="sub-menu"><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9901" class="menu-link ">이용약관</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9902" class="menu-link ">개인정보처리방침</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9903" class="menu-link ">이용자고충처리</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9904" class="menu-link ">인권침해</a></li><li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9999" class="menu-link ">사이트맵</a></li></ul></li>                    </ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('.menu-pop ul.menus li.cate1').on('click', function () {
+                    // reset
+                    $('.menu-pop ul.menus li.current-cate1').removeClass('current-cate1');
+                    $('.menu-pop ul.menus li.current-cate2').removeClass('current-cate2');
+                    $('.menu-pop ul.menus li.current-li').removeClass('current-li');
+                    $('.menu-pop ul.menus li.cate2').hide();
+                    $('.menu-pop ul.menus li.cate1 i').removeClass('fa-arrow-down').addClass('fa-arrow-right');
+
+                    // process
+                    if ($(this).next('li.cate2').length > 0) {
+                        if ($(this).next('li.cate2').css('display') == 'none') {
+                            $(this).addClass('current-cate1');
+                            $('i', this).removeClass('fa-arrow-right').addClass('fa-arrow-down');
+                        } else {
+                            $('i', this).removeClass('fa-arrow-down').addClass('fa-arrow-right');
+                            $(this).removeClass('current-cate1');
+                        }
+                        $(this).next('li.cate2').toggle('slow');
+                    } else {
+                        location.href = $('a.menu-link').prop('href');
+                    }
+                });
+                $('.btn-hambuger-menu').on('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $('.menu-overlay').css({display:'block',height:'100%'});
+                    $('body').css('overflow', 'hidden');
+                    $('.menu-pop').show();
+                });
+
+                $('.menu-pop a.btn-close').on('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $('.menu-pop').hide();
+                    $('body').css('overflow', 'inherit');
+                    $('.menu-overlay').css({display:'none',height:'0%'});
+                });
+                $('.menu-overlay').on('click', function () {
+                    $('.menu-pop a.btn-close').click();
+                });
+            });
+        </script>
+    </section>
+    <nav class="navbar gnb container hidden-xs hidden-sm">
+        <div class="nav-wrapper">
+            <div class="logo-container navbar-header"><a href="http://www.kdswc.or.kr"><img src="http://www.kdswc.or.kr/theme/kdswc/img/main/logo.png" alt="강동종합사회복지관"/></a></div>
+            <div class="menu-container">
+                <div class="short-head hidden-xs hidden-sm clearfix">
+                    <ul class="nav navbar-nav small">
+                                            <li><a href="http://www.kdswc.or.kr/bbs/login.php">로그인</a></li>
+                        <li><a href="http://www.kdswc.or.kr/bbs/register.php">회원가입</a></li>
+                                                                <li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9999">사이트맵</a></li>
+                                        </ul>
+                </div>
+                <div class="nav-menu collapse navbar-collapse">
+                    <ul class="nav navbar-nav hidden-xs">
+<li class="menu-dep-1 menu-01" code="01"><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0101">기관소개</a><div class="menu-sub-cont menu-01"><ul class="menu-dep-2 clearfix menu-01"><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0101" title="운영법인">운영법인</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0102" title="인사말">인사말</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0103" title="복지관소개">복지관소개</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0104" title="기관연혁">기관연혁</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0105" title="시설현황">시설현황</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0106" title="조직도">조직도</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0107" title="오시는길">오시는길</a></li></ul></div></li><li class="menu-dep-1 menu-02" code="02"><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=020101">사업소개</a><div class="menu-sub-cont menu-02"><ul class="menu-dep-2 clearfix menu-02"><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=020101" title="사례관리사업">사례관리사업</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=020201" title="지역사회조직사업">지역사회조직사업</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=020301" title="서비스제공사업">서비스제공사업</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0204" title="사업·시설지원사업">사업·시설지원사업</a></li></ul></div></li><li class="menu-dep-1 menu-03" code="03"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301">스토리</a><div class="menu-sub-cont menu-03"><ul class="menu-dep-2 clearfix menu-03"><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301" title="복지관이야기">복지관이야기</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0302" title="나눔이야기">나눔이야기</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0303" title="소식지">소식지</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0304" title="활동영상">활동영상</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0305" title="언론보도">언론보도</a></li></ul></div></li><li class="menu-dep-1 menu-04" code="04"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0403">함께나눔</a><div class="menu-sub-cont menu-04"><ul class="menu-dep-2 clearfix menu-04"><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0403" title="대학생 서포터즈">대학생 서포터즈</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0401" title="후원안내">후원안내</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=040201" title="자원봉사안내">자원봉사안내</a></li></ul></div></li><li class="menu-dep-1 menu-05" code="05"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0501">알림마당</a><div class="menu-sub-cont menu-05"><ul class="menu-dep-2 clearfix menu-05"><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0501" title="공지사항">공지사항</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0502" title="의견수렴">의견수렴</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0503" title="실습신청">실습신청</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0504" title="방문신청">방문신청</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0505" title="프로그램안내">프로그램안내</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0507" title="이달의일정">이달의일정</a></li></ul></div></li><li class="menu-dep-1 menu-06" code="06"><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0602">병설기관</a><div class="menu-sub-cont menu-06"><ul class="menu-dep-2 clearfix menu-06"><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0602" title="강동희망의 집">강동희망의 집</a></li><li class=""><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0603" title="강동구푸드뱅크마켓센터">강동구푸드뱅크마켓센터</a></li></ul></div></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<script type="text/javascript">
+$(function() {
+    $('li.menu-dep-1').on('mouseenter', function(e) {
+        e.preventDefault();
+        $('ul.menu-dep-2 .sub-top', $(this)).css('height',0).animate({'height':65}, {duration:200});
+        $('ul.menu-dep-2', $(this)).animate({opacity:'show'}, {duration:300});
+    }).on('mouseleave', function(e) {
+        e.preventDefault();
+        $('ul.menu-dep-2', $(this)).animate({opacity:'hide'}, {duration:200});
+        $('ul.menu-dep-2 .sub-top', $(this)).animate({'height':0}, {duration:200});
+    });
+});
+</script>
+<div class="main-head-wrapper">
+<div class="cs-head-wrapper co-main_head se-00001 main-visuals"><div class="cs-wrapper co-main_head se-00001 main-visuals"><div class="cs-body co-main_head se-00001 main-visuals"><div data-slider="{&quot;use&quot;:true,&quot;mode&quot;:&quot;horizontal&quot;,&quot;infiniteLoop&quot;:true,&quot;preloadImages&quot;:&quot;all&quot;,&quot;speed&quot;:2000,&quot;pause&quot;:9000,&quot;maxSlides&quot;:1,&quot;minSlides&quot;:1,&quot;moveSlides&quot;:0,&quot;slideWidth&quot;:3000,&quot;slideMargin&quot;:0,&quot;auto&quot;:true,&quot;autoDirection&quot;:&quot;next&quot;,&quot;pager&quot;:true,&quot;autoControls&quot;:false,&quot;autoHover&quot;:false,&quot;randomStart&quot;:false,&quot;ticker&quot;:false,&quot;tickerHover&quot;:false,&quot;stopAutoOnClick&quot;:false,&quot;controls&quot;:false,&quot;touchEnabled&quot;:false}" ><div style="background-color:#ffffff;" class="unit un-8">
+    <ul class="unit-photo">
+        <li>
+            <div class="visual-img">
+                <img src="http://kdswc.or.kr/data/file/section_00001/2109683580_NkljhWgC_03b35c127785b86f2ca76ff5a5d0d515d58510d4.jpg" alt=""/>
+            </div>
+            <div class="visual-text">
+                <div class="container">
+                    <img src="http://kdswc.or.kr/data/file/section_00001/2109683580_eUN5vhYo_37bde01484cff9e3e5530a37e1b73d3dd3b17353.png" alt=""/>
+                </div>
+            </div>
+        </li>
+    </ul>
+<div class="unit-flex">
+                        </div>
+</div>
+<div style="background-color:#f5ecdf;" class="unit un-18">
+    <ul class="unit-photo">
+        <li>
+            <div class="visual-img">
+                <img src="http://kdswc.or.kr/data/file/section_00001/2109683580_LlhYZHEk_397adb89fb34e300ecfc4998a0f804189667e513.jpg" alt=""/>
+            </div>
+        </li>
+    </ul>
+<div class="unit-flex">
+                        </div>
+</div>
+<div style="background-color:#ffcd00;" class="unit un-19">
+<a href="http://pf.kakao.com/_zjxnLK" target="_blank">    <ul class="unit-photo">
+        <li>
+            <div class="visual-img">
+                <img src="http://kdswc.or.kr/data/file/section_00001/2109683580_LBH1pu95_f022e596b7f6929fe9983510746a9f59c908e364.jpg" alt=""/>
+            </div>
+        </li>
+    </ul>
+<div class="unit-flex">
+                        </div>
+</a></div>
+</div><script type="text/javascript">
+$(function() {
+    //비쥬얼 텍스트 가로 사이즈 맞추기
+    $(window).on('resize', function(e) {
+        $('.visuals .visual-text .container').css('width', $('#header-container .container:eq(0)').width() + 'px');
+    }).resize();
+});
+</script>
+</div></div></div></div>
+</header>
+<!-- } 상단 끝 -->
+<!-- 콘텐츠 시작 { -->
+<div class="container group-main">
+    <div id="container" class="clearfix">
+<div class="main-wrapper co-main_01"><div class="main-container co-main_01 clearfix"><div class="cs-wrapper co-main_01 se-00128 main-gallery"><div class="sc-head co-main_01 se-00128 main-gallery"><h2><b><i>행복한 강동 이야기</i></b></h2><p><i>개인정보 수집 및 활용에 동의하지 않은</i> <i>사진은 모자이크 처리됩니다.</i><br></p></div><div class="cs-body co-main_01 se-00128 main-gallery"><div data-slider="{&quot;use&quot;:true,&quot;auto&quot;:true,&quot;autoDirection&quot;:&quot;next&quot;,&quot;autoHover&quot;:false,&quot;controls&quot;:true,&quot;infiniteLoop&quot;:true,&quot;maxSlides&quot;:4,&quot;minSlides&quot;:1,&quot;mode&quot;:&quot;horizontal&quot;,&quot;moveSlides&quot;:4,&quot;pager&quot;:true,&quot;pause&quot;:7000,&quot;preloadImages&quot;:&quot;visible&quot;,&quot;randomStart&quot;:false,&quot;slideMargin&quot;:13,&quot;slideWidth&quot;:330,&quot;speed&quot;:2000,&quot;ticker&quot;:false,&quot;tickerHover&quot;:false,&quot;touchEnabled&quot;:false}" data-slider-mobile="{&quot;use&quot;:true,&quot;auto&quot;:true,&quot;autoDirection&quot;:&quot;next&quot;,&quot;autoHover&quot;:false,&quot;controls&quot;:true,&quot;infiniteLoop&quot;:true,&quot;maxSlides&quot;:1,&quot;minSlides&quot;:1,&quot;mode&quot;:&quot;horizontal&quot;,&quot;moveSlides&quot;:1,&quot;pager&quot;:true,&quot;pause&quot;:7000,&quot;preloadImages&quot;:&quot;visible&quot;,&quot;randomStart&quot;:false,&quot;slideMargin&quot;:0,&quot;slideWidth&quot;:0,&quot;speed&quot;:2000,&quot;ticker&quot;:false,&quot;tickerHover&quot;:false,&quot;touchEnabled&quot;:false}"><a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1325">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2611/thumb-30919069_1793754484.3055_330x230.jpg" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 웰다잉 교육 및 찾아가는 사전연명의료의향서 상담소 운영</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1324">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2611/thumb-30919069_1793690474.2725_330x230.jpg" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 청년 고립가구 요리동아리 '함끼든든' 10월 체험활동</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1323">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2611/thumb-30919069_1793690374.7801_330x230.jpg" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 강동복지관 노인대학 '청춘캠퍼스' 글벗나들이 진행</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1322">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2611/thumb-30919069_1793688653.232_330x230.jpg" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 2026년 복지사각지대주민안전망사업 &lt;소통·나눔·…</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1321">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2611/thumb-30919069_1793688076.9826_330x230.jpg" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 청년 고립가구 요리동아리 '함끼든든' 10월 요리활동</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1320">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2611/thumb-30919069_1793608702.1937_330x230.jpg" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 노인대학 '청춘캠퍼스' 강동 어르신 시화전 수상</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1319">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2611/thumb-30919069_1793600684.8622_330x230.jpg" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 고립이웃 발굴단 '강동온누리' 10월 활동</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0305&amp;wr_id=108">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2611/thumb-30919069_1793594217.5998_330x230.jpg" alt=""/></dd>
+	<dt class="item-cate c-0305">언론보도</dt>        <dt class="item-subj">[동아일보 등] 도드람, 점자 스티커 제작·생필품 나눔</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1318">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2610/thumb-30919069_1793317064.6539_330x230.png" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 청년모임 빵긋의 10월 비정기 모임</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1317">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2610/thumb-30919069_1793260522.7277_330x230.jpg" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 자원재생활동가 가을 나들이</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1316">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2610/thumb-30919069_1793254614.7543_330x230.png" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 청년모임 기타등등의 10월 정기모임</dt>
+                    </dl>
+</a>
+<a class="item mixed" href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0301&amp;wr_id=1315">
+    <dl class="clearfix">
+        <dd class="item-photo"><img src="http://www.kdswc.or.kr/data/editor/2610/thumb-30919069_1793242921.5624_330x230.png" alt=""/></dd>
+	<dt class="item-cate c-0301">복지관이야기</dt>        <dt class="item-subj">[소식] 청년모임 빵긋, 기타등등 연합모임</dt>
+                    </dl>
+</a>
+</div></div></div></div></div><div class="main-wrapper co-main_02"><div class="main-container co-main_02 clearfix"><div class="cs-wrapper co-main_02 se-00129 main-video"><div class="sc-head co-main_02 se-00129 main-video"><p><img src="/data/editor/2005/3232235521_1590281036.9903.png"><br></p></div><div class="cs-body co-main_02 se-00129 main-video"><div class="item-list">
+<div class="matrix table"><div class="div-2 table-row"><div class="item table-cell">
+    <div class="item-video"><iframe allowfullscreen frameborder="0" src="//www.youtube.com/embed/ze8Z8kL9m9I" width="640" height="360" class="note-video-clip"></iframe></div>
+    <div class="item-subj"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0304&amp;wr_id=84">월간강동 9월호</a></div>
+    <span class="item-date">2026.10.13</span>        <span class="item-more"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0304&amp;wr_id=84"><img src="http://www.kdswc.or.kr/theme/kdswc/skin/latest/main_video/img/btn_main_video_more.png" alt="더보기"/></a></span>
+</div>
+<div class="item table-cell">
+    <div class="item-video"><iframe allowfullscreen frameborder="0" src="//www.youtube.com/embed/d_dW2w-fGFU" width="640" height="360" class="note-video-clip"></iframe></div>
+    <div class="item-subj"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0304&amp;wr_id=83">2026년 강동 감사드림 페스티</a></div>
+    <span class="item-date">2026.09.22</span>        <span class="item-more"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0304&amp;wr_id=83"><img src="http://www.kdswc.or.kr/theme/kdswc/skin/latest/main_video/img/btn_main_video_more.png" alt="더보기"/></a></span>
+</div>
+</div></div></div></div></div></div></div><div class="main-wrapper co-main_03"><div class="main-container co-main_03 clearfix"><div class="cs-wrapper co-main_03 se-00130 main-notice mn-01"><div class="cs-body co-main_03 se-00130 main-notice mn-01"><div class="item-more"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0501"><h2>공지사항</h2></a></div>
+<div class="item-list">
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0501&amp;wr_id=871"><span class="item-date">2026.10.22</span>2026년 3차 강동종합사회복지관 안전관리인 직원 공개채용 적격심사 … </a></dt>
+            </dl>
+</div>
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0501&amp;wr_id=870"><span class="item-date">2026.10.20</span>2026년 3차 강동종합사회복지관 안전관리인 직원 공개채용 1차 서류… </a></dt>
+            </dl>
+</div>
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0501&amp;wr_id=869"><span class="item-date">2026.10.12</span>2026년 9월 업무추진비 공시  <img src="http://dws141.dongwonweb.co.kr/theme/kdswc/skin/latest/main_notice/img/icon_file.gif" alt="첨부파일"></a></dt>
+            </dl>
+</div>
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0501&amp;wr_id=868"><span class="item-date">2026.10.02</span>2026년 3차 강동종합사회복지관 안전관리인 공개채용 공고  <img src="http://dws141.dongwonweb.co.kr/theme/kdswc/skin/latest/main_notice/img/icon_file.gif" alt="첨부파일"></a></dt>
+            </dl>
+</div>
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0501&amp;wr_id=867"><span class="item-date">2026.09.16</span>2026년 2차 강동종합사회복지관 사회복지사(육아휴직 대체직) 직원 … </a></dt>
+            </dl>
+</div>
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0501&amp;wr_id=866"><span class="item-date">2026.09.14</span>2026년 2차 강동종합사회복지관 사회복지사(육아휴직 대체직) 직원 … </a></dt>
+            </dl>
+</div>
+</div></div></div><div class="cs-wrapper co-main_03 se-00131 main-notice mn-02"><div class="cs-body co-main_03 se-00131 main-notice mn-02"><div class="item-more"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0505"><h2>프로그램 안내</h2></a></div>
+<div class="item-list">
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0505&amp;wr_id=130"><span class="item-date">2026.10.22</span>[가족문화어울마당] 선선한 가을날의 … </a></dt>
+            </dl>
+</div>
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0505&amp;wr_id=129"><span class="item-date">2026.08.12</span>[가족문화어울마당] 무더운 여름, 그… </a></dt>
+            </dl>
+</div>
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://dws141.dongwonweb.co.kr/bbs/board.php?bo_table=0505&amp;wr_id=128"><span class="item-date">2026.06.20</span>[가족문화어울마당] 양육자, 어린이 … </a></dt>
+            </dl>
+</div>
+</div></div></div><div class="cs-wrapper co-main_03 se-00132 main-notice mn-03"><div class="cs-body co-main_03 se-00132 main-notice mn-03"><div class="item-more"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0305"><h2>언론보도</h2></a></div>
+<div class="item-list">
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0305&amp;wr_id=108"><span class="item-date">2026.11.02</span>[동아일보 등] 도드람, 점자 스티커… </a></dt>
+            </dl>
+</div>
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0305&amp;wr_id=107"><span class="item-date">2026.09.14</span>[토요저널 등] 강동종합사회복지관, … </a></dt>
+            </dl>
+</div>
+<div class="item">
+    <dl class="clearfix">
+        <dt class="item-subj"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0305&amp;wr_id=106"><span class="item-date">2026.07.16</span>[연합뉴스 등] 강동구, 무더위 속 … </a></dt>
+            </dl>
+</div>
+</div></div></div></div></div><div class="main-wrapper co-main_04"><div class="main-container co-main_04 clearfix"><div class="cs-wrapper co-main_04 se-00133 main-schedule"><div class="cs-body co-main_04 se-00133 main-schedule"><script type="text/javascript">
+window.TAB_EVENT = 'mouseenter';
+window.TAB_SELECTOR = '.item-tab';
+</script>
+<script type="text/javascript" src="http://www.kdswc.or.kr/js/jquery.tabbable.js"></script>
+<div class="item-more"><a href="http://www.kdswc.or.kr/bbs/board.php?bo_table=0507"><h2>이달의 일정<div class="item-date">2026. 11</div></h2></a></div>
+<div class="sch-list">
+<div class="tab-list">
+    <div class="table">
+    <ul class="tabbable table-row">
+        <li class="  this-m this-w w-0"><a href="#tab-1" tab-id="#tab-1" class="tab-ctrl">1</a></li>
+        <li class="  this-m this-w w-1"><a href="#tab-2" tab-id="#tab-2" class="tab-ctrl">2</a></li>
+        <li class="  this-m this-w w-2"><a href="#tab-3" tab-id="#tab-3" class="tab-ctrl">3</a></li>
+        <li class="active  this-m this-w w-3"><a href="#tab-4" tab-id="#tab-4" class="tab-ctrl">4</a></li>
+        <li class="  this-m this-w w-4"><a href="#tab-5" tab-id="#tab-5" class="tab-ctrl">5</a></li>
+        <li class="  this-m this-w w-5"><a href="#tab-6" tab-id="#tab-6" class="tab-ctrl">6</a></li>
+        <li class="  this-m this-w w-6"><a href="#tab-7" tab-id="#tab-7" class="tab-ctrl">7</a></li>
+        <li class="  this-m w-0"><a href="#tab-8" tab-id="#tab-8" class="tab-ctrl">8</a></li>
+        <li class="  this-m w-1"><a href="#tab-9" tab-id="#tab-9" class="tab-ctrl">9</a></li>
+        <li class="  this-m w-2"><a href="#tab-10" tab-id="#tab-10" class="tab-ctrl">10</a></li>
+        <li class="  this-m w-3"><a href="#tab-11" tab-id="#tab-11" class="tab-ctrl">11</a></li>
+        <li class="  this-m w-4"><a href="#tab-12" tab-id="#tab-12" class="tab-ctrl">12</a></li>
+        <li class="  this-m w-5"><a href="#tab-13" tab-id="#tab-13" class="tab-ctrl">13</a></li>
+        <li class="  this-m w-6"><a href="#tab-14" tab-id="#tab-14" class="tab-ctrl">14</a></li>
+        <li class="  this-m w-0"><a href="#tab-15" tab-id="#tab-15" class="tab-ctrl">15</a></li>
+        <li class="  this-m w-1"><a href="#tab-16" tab-id="#tab-16" class="tab-ctrl">16</a></li>
+        <li class="  this-m w-2"><a href="#tab-17" tab-id="#tab-17" class="tab-ctrl">17</a></li>
+        <li class="  this-m w-3"><a href="#tab-18" tab-id="#tab-18" class="tab-ctrl">18</a></li>
+        <li class="  this-m w-4"><a href="#tab-19" tab-id="#tab-19" class="tab-ctrl">19</a></li>
+        <li class="  this-m w-5"><a href="#tab-20" tab-id="#tab-20" class="tab-ctrl">20</a></li>
+        <li class="  this-m w-6"><a href="#tab-21" tab-id="#tab-21" class="tab-ctrl">21</a></li>
+        <li class="  this-m w-0"><a href="#tab-22" tab-id="#tab-22" class="tab-ctrl">22</a></li>
+        <li class="  this-m w-1"><a href="#tab-23" tab-id="#tab-23" class="tab-ctrl">23</a></li>
+        <li class="  this-m w-2"><a href="#tab-24" tab-id="#tab-24" class="tab-ctrl">24</a></li>
+        <li class="  this-m w-3"><a href="#tab-25" tab-id="#tab-25" class="tab-ctrl">25</a></li>
+        <li class="  this-m w-4"><a href="#tab-26" tab-id="#tab-26" class="tab-ctrl">26</a></li>
+        <li class="  this-m w-5"><a href="#tab-27" tab-id="#tab-27" class="tab-ctrl">27</a></li>
+        <li class="  this-m w-6"><a href="#tab-28" tab-id="#tab-28" class="tab-ctrl">28</a></li>
+        <li class="  this-m w-0"><a href="#tab-29" tab-id="#tab-29" class="tab-ctrl">29</a></li>
+        <li class="  this-m w-1"><a href="#tab-30" tab-id="#tab-30" class="tab-ctrl">30</a></li>
+        <li class="  w-2"><a href="#tab-31" tab-id="#tab-31" class="tab-ctrl">1</a></li>
+        <li class="  w-3"><a href="#tab-32" tab-id="#tab-32" class="tab-ctrl">2</a></li>
+        <li class="  w-4"><a href="#tab-33" tab-id="#tab-33" class="tab-ctrl">3</a></li>
+        <li class="  w-5"><a href="#tab-34" tab-id="#tab-34" class="tab-ctrl">4</a></li>
+        <li class="  w-6"><a href="#tab-35" tab-id="#tab-35" class="tab-ctrl">5</a></li>
+    </ul>
+    </div>
+</div>
+<div class="item-tab tab-panel tab-1">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-2">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-3">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-4">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-5">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-6">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-7">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-8">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-9">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-10">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-11">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-12">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-13">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-14">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-15">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-16">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-17">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-18">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-19">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-20">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-21">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-22">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-23">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-24">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-25">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-26">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-27">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-28">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-29">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-30">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-31">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-32">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-33">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-34">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+<div class="item-tab tab-panel tab-35">
+    <div class="item-list">
+<div class="item-none"><span>등록된 일정이 없습니다.</span></div>        </div>
+</div>
+</div></div></div></div></div>
+</div>
+</div>
+<!-- } 콘텐츠 끝 -->
+
+<!-- 하단 시작 { -->
+<footer class="tail group-main">
+    <section class="copyright clearfix">
+        <div class="copy-head clearfix">
+            <div class="container">
+                <h4><a href="http://www.kdswc.or.kr"><img src="http://www.kdswc.or.kr/theme/kdswc/img/main/logo2.png" alt="강동종합사회복지관"/></a></h4>
+                <ul class="hot-link clearfix">
+                                        <li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9901">이용약관</a></li>
+                                        <li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9902">개인정보처리방침</a></li>
+                                        <li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=9903">이용자고충처리</a></li>
+                                        <li><a href="http://www.kdswc.or.kr/bbs/content.php?co_id=0107">오시는길</a></li>
+                                    </ul>
+            </div>
+        </div>
+            </section>
+    <div class="tail-container">
+        <div class="container">
+<div class="cs-wrapper co-tail se-00013 family-site dropup"><div class="sc-head co-tail se-00013 family-site dropup"><p>서울 강동구 진황도로23길 7 공공복합청사 5-6층 강동종합사회복지관 관장 임정백<br></p><p>강동종합사회복지관 사업자등록번호 212-82-10053<a href="/data/download/business_license.pdf" target="_blank">사업자등록증</a></p>
+
+<p>강동종합사회복지관 대표메일 <a href="mailto:kdswc@kdswc.or.kr">kdswc@kdswc.or.kr</a></p>
+
+
+
+<blockquote><p><a href="#" target="_blank"><img src="http://kdswc.or.kr/data/editor/2006/2109683580_1592374326.6736.png" style="width: 34px;"></a>
+
+<a href="https://www.youtube.com/channel/UCGFluL6jQcSB2MWfRj6dcjA" target="_blank">
+<img src="http://kdswc.or.kr/data/editor/2006/2109683580_1592373638.6085.png" style="width: 34px;"></a>
+
+
+<a href="https://www.facebook.com/profile.php?id=100071474821222&locale=ko_KR" target="_blank">
+<img src="http://kdswc.or.kr/data/editor/2006/2109683580_1592373653.3159.png" style="width: 34px;"></a>
+
+
+<a href="https://www.instagram.com/kdswc_insta/" target="_blank">
+
+<img src="http://kdswc.or.kr/data/editor/2006/2109683580_1592374283.103.png" style="width: 34px;"></a>
+
+<a href="https://happylog.naver.com/hlog/kdswc/home" target="_blank">
+
+<img style="width: 70px;" src="/data/editor/2005/3232235521_1589016602.4562.png"></a></p></blockquote></div><div class="cs-body co-tail se-00013 family-site dropup"><div class="btn-group">
+    <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown" aria-expanded="false">FAMILY SITE<span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+        <li class="unit un-1"><a href="https://kfh.campaignus.me/" target="_blank"><span class="unit-subj">사회복지법인 기아대책</span></a></li>
+        <li class="unit un-2"><a href="http://www.saswc.org/" target="_blank"><span class="unit-subj">서울시사회복지관협회</span></a></li>
+        <li class="unit un-3"><a href="http://sasw.or.kr/" target="_blank"><span class="unit-subj">서울특별시사회복지사협회</span></a></li>
+        <li class="unit un-4"><a href="http://www.s-win.or.kr/" target="_blank"><span class="unit-subj">서울특별시사회복지협의회</span></a></li>
+        <li class="unit un-5"><a href="http://www.welfare.net/" target="_blank"><span class="unit-subj">한국사회복지사협회</span></a></li>
+    </ul>
+</div>
+</div><div class="sc-tail co-tail se-00013 family-site dropup"><h4>사업후원</h4><p>140-003-605394(신한은행) | 548501-01-232521(국민은행)</p><h4>결연후원</h4><p>전화 및 이메일 문의</p><h4>이용안내</h4><p>Tel. 02-2041-7800&nbsp; &nbsp; Fax. 02-475-4588<!--<br>평일 08:30~20:00 | 주말 08:30~16:00--></p>
+
+
+<p><br></p>
+<a href="https://forms.office.com/r/B8w8Ba1UWQ" target="_blank">
+<img src="http://kdswc.or.kr/data/editor/2105/2109683580_1622023732.9737.png" style="width: 141px;"></a>
+&nbsp;&nbsp;
+<a href="https://forms.office.com/r/tNEsVhgaRH" target="_blank">
+<img src="http://kdswc.or.kr/data/editor/2105/2109683580_1622023741.6197.png" style="width: 141px;"></a></div></div>        </div>
+    </div>
+</footer>
+
+<!-- } 하단 끝 -->
+
+<script>
+$(function() {
+    // 폰트 리사이즈 쿠키있으면 실행
+    font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+});
+</script>
+
+
+
+<!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+<!--[if lte IE 7]>
+<script>
+$(function() {
+    var $sv_use = $(".sv_use");
+    var count = $sv_use.length;
+
+    $sv_use.each(function() {
+        $(this).css("z-index", count);
+        $(this).css("position", "relative");
+        count = count - 1;
+    });
+});
+</script>
+<![endif]-->
+<script type="text/javascript">
+$(function() {
+    //Slider 동작 시키기
+    $('[data-slider]').each(function() {
+        var _th = $(this), _slider;
+        if (_th.is('[data-slider-mobile]') && $(document).width() < 768) {
+            _slider = _th.bxSlider($.extend(_th.data('slider-mobile'), { onSliderLoad: function() {
+                $(this).css("visibility", "visible").animate({opacity:1});
+                $(this).parents('.cs-wrapper').css("visibility", "visible").animate({opacity:1});
+                if (typeof $(this).attr('onSliderLoad') != 'undefined') {
+                    window[$(this).attr('onSliderLoad')]();
+                }
+            } }));
+        } else {
+            _slider = _th.bxSlider($.extend(_th.data('slider'), { onSliderLoad: function() {
+                $(this).css("visibility", "visible").animate({opacity:1});
+                $(this).parents('.cs-wrapper').css("visibility", "visible").animate({opacity:1});
+                if (typeof $(this).attr('onSliderLoad') != 'undefined') {
+                    window[$(this).attr('onSliderLoad')]();
+                }
+            } }));
+        }
+        $(window).on('load', function() { _slider.reloadSlider(); });
+    });
+    $('[data-slider-mobile]').each(function() {
+        var _th = $(this), _slider;
+        if ($(document).width() < 768) {
+            _slider = _th.bxSlider($.extend(_th.data('slider-mobile'), { onSliderLoad: function() {
+                $(this).css("visibility", "visible").animate({opacity:1});
+                $(this).parents('.cs-wrapper').css("visibility", "visible").animate({opacity:1});
+            } }));
+            $(window).on('load', function() { _slider.reloadSlider(); });
+        }
+    });
+
+    //반응형 테이블 만들기
+    $('.table.table-bordered').each(function() {
+        var _th = $(this);
+        if (!_th.parent().is('div.table-responsive') && !_th.parents('.note-editing-area').length) {
+            _th.wrap('<div class="table-responsive">');
+        }
+    });
+
+    //FLOWCHART 높이값 자동으로 최대값으로 맞추기
+    $('.flowchart .cs-body-list').each(function() {
+        var AH = $('.unit-body', $(this));
+        AH.css('height', Math.max.apply(Math, jQuery.map(AH, function(e) { return $(e).outerHeight() * 1; })) + 'px');
+    });
+    //갤러리 타이틀 노출 시키기
+    $('.gallery .unit-photo img').on('mouseenter', function(e) {
+        $('.unit-subj', $(this).parents('.unit')).css('height', '0').show().animate({ height:'40px' }, 300);
+    }).on('mouseleave', function(e) {
+        $('.unit-subj', $(this).parents('.unit')).css('height', '0').hide();
+    });
+    //팝업 링크 동작 시키기
+    $('.popup-link').each(function(i) {
+        var _th = $(this), w = 800, h = 600;
+        $.each(_th.attr('class').split(' '), function(i, v) {
+            if (_m = v.match(/[wh][0-9]+/)) {
+                switch (_m[0].charAt(0)) {
+                    case 'w': w = _m[0].substring(1); break;
+                    case 'h': h = _m[0].substring(1); break;
+                }
+            }
+        });
+        $('a', _th).on('click', function(e) {
+            e.preventDefault();
+            window.open($(this).attr('href'),'','width='+w+',height='+h+',toolbar=no,menubar=no,status=no,scrollbars=yes,resizable=no');
+        });
+    });
+    //팝업 이미지 동작 시키기
+    $('.pop-image img').wrap(function() {
+        return '<a href="' + $(this).attr('src') + '" target="_blank"></a>';
+    });
+    $('.ui-marquee').marquee({
+        duration: 5000,
+        gap: 25,
+        delayBeforeStart: 0,
+        direction: 'up',
+        duplicated: true
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="euc-kr">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/css/style.css?2026-11-04오후3:16:44">
+	<link rel="stylesheet" href="/css/member.css?2026-11-04오후3:16:44">
+	<link rel="stylesheet" href="/css/sub.css?2026-11-04오후3:16:44">
+	<link rel="stylesheet" href="/css/introduce.css?2026-11-04오후3:16:44">
+	<link rel="stylesheet" href="/css/business.css?2026-11-04오후3:16:44">
+	<link rel="stylesheet" href="https://kit.fontawesome.com/4890a4286a.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/swiper-bundle.min.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="/js/swiper-bundle.min.js"></script>
+	<script src="/js/custom.js"></script>
+	<script src="/js/function.js"></script>
+	<title>함께하는 한숲</title>
+
+	<script>
+	$(document).ready(function() {
+		var url = window.document.location.href;
+		var arrUrl = url.split("/");
+
+		$("."+arrUrl[3]).css("color","#7cc242").css("text-decoration","underline");
+
+	});
+	</script>
+</head><body>
+<!---go-top--->
+<div class="go-top">
+	<div class="go-top_img">
+		<a href="/support/mogeum.html"><img src="/img/common/quik_menu01.png"><P>후원하기<P></a>
+		<a href="/volunteer/application.html"><img src="/img/common/quik_menu02.png"><P>봉사문의<P></a>
+		<a href="/support/support.html"><img src="/img/common/quik_menu03.png"><P>지원신청<P></a>
+	</div>
+	<div class="go-top_text">
+		<a href="#"><img src="/img/common/quick_arrow_top.png"></a>
+	</div>
+</div>
+
+<div class="floatingButtonWrap">
+    <div class="floatingButtonInner">
+        <a href="#" class="floatingButton">
+            <i class="fa fa-plus icon-default"></i>
+        </a>
+		<a href="#" class="floating_go_top"><i class="fa-solid fa-angle-up"></i></a>
+        <ul class="floatingMenu">
+            <li>
+                <a href="/support/mogeum.html"><span>후원하기</span><img src="/img/common/quik_menu01.png"></a>
+            </li>
+            <li>
+                <a href="/volunteer/application.html"><span>봉사문의</span><img src="/img/common/quik_menu02.png"></a>
+            </li>
+            <li>
+                <a href="/support/support.html"><span>자원신청</span><img src="/img/common/quik_menu03.png"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!----header------>
+<div class="header_top">
+	<div class="header_top_inner">
+		<span><i class="fa-solid fa-seedling"></i>후원자</span>
+		<a href="https://mrmweb.hsit.co.kr/v2/Member/MemberLogin.aspx" target="_blank">로그인</a>
+		<a href="https://mrmweb.hsit.co.kr/v2/Member/MemberJoin.aspx?action=join&server=C0bFD1uxOfW1qPxheXXVGQ==" target="_blank">후원신청</a>
+		<span><i class="fa-solid fa-user-large"></i>봉사자</span>
+		
+		<a href="/member/login.html">로그인</a>
+		<a href="/member/join01.html">회원가입</a>
+		
+		<a href="/manage/" target="_blank">관리자 로그인</a>
+	</div>
+</div>
+<header id="header" class="header">
+	<div class="c_container_wrap">
+
+		<div class="c_container pc_header">
+			<div class="logo">
+				<a href="/index.html"><img src="/img/common/logo_hansoup.png"></a>
+			</div>
+
+			<nav class="gnb">
+
+				<ul class="gnb_right">
+					<li>
+						<a href="#" class="navi navi_01 introduce">소개</a>
+						<ul class="sub_nav sub_nav_01">
+							<li><a href="/introduce/introduce.html">함께하는 한숲은</a></li>
+							<li><a href="/introduce/footprints.html">발자취</a></li>
+							<li><a href="/introduce/management.html">투명경영</a></li>
+							<li><a href="/introduce/cs_center.html">오시는 길</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#" class="navi navi_02 business">사업</a>
+						<ul class="sub_nav sub_nav_02">
+							
+							<li><a href="/business/lumberroom.html?view=1">마르지 않는 곳간</a></li>
+							
+							<li><a href="/business/lumberroom.html?view=2">결연지원사업</a></li>
+							
+							<li><a href="/business/lumberroom.html?view=3">교육문화사업</a></li>
+							
+							<li><a href="/business/lumberroom.html?view=4">환경개선사업</a></li>
+							
+							<li><a href="/business/lumberroom.html?view=5">따뜻한 겨울나기</a></li>
+							
+							<li><a href="/business/lumberroom.html?view=6">건강한 여름나기</a></li>
+							
+							<!--<li><a href="">결연사업</a></li>
+							<li><a href="">교육문화사업</a></li>
+							<li><a href="">환경개선사업</a></li>
+							<li><a href="">따뜻한 겨울나기</a></li>
+							<li><a href="">건강한 여름나기</a></li>-->
+						</ul>
+					</li>
+
+					<li>
+						<a href="#" class="navi navi_03 volunteer">봉사</a>
+						<ul class="sub_nav sub_nav_03">
+							<li><a href="/volunteer/application.html">봉사안내/신청</a></li>
+							<li><a href="/volunteer/volunteer_news.html">활동소식</a></li>
+							<li><a href="/volunteer/gallery.html">영상갤러리</a></li>
+							<li><a href="/volunteer/enterprise.html">나눔기업</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#" class="navi navi_04 support">후원</a>
+						<ul class="sub_nav sub_nav_04">
+							<li><a href="/support/mogeum.html">모금</a></li>
+							<li><a href="/support/alliance.html">아동결연</a></li>
+							<li><a href="/support/story.html">이야기마을</a></li>
+							<li><a href="/support/support.html">지원요청</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#" class="navi navi_05 community">소식</a>
+						<ul class="sub_nav sub_nav_05">
+							<li><a href="/community/notice.html">공지사항</a></li>
+							<li><a href="/community/press_release.html">언론보도</a></li>
+							<li><a href="/community/newsletter.html">소식지</a></li>
+							<li><a href="/community/facil.html">시설소개</a></li>
+							<li><a href="/community/qa.html">Q&A</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<div class="sns">
+				<!--<a href="https://cafe.naver.com/hansup1004" target="_blank"><img src="/img/common/sns_cafe.png"></a>-->
+				<a href="https://www.facebook.com/hansup1004" target="_blank"><img src="/img/common/sns_facebook.png"></a>
+				<a href="https://story.kakao.com/hansup1053" target="_blank"><img src="/img/common/sns_kakaosytory.png"></a>
+				<a href="https://blog.naver.com/hansup1004" target="_blank"><img src="/img/common/sns_blog.png"></a>
+				<a href="https://www.youtube.com/@user-bs7km7ge9n" target="_blank"><img src="/img/common/sns_youtube.png"></a>
+				<a href="https://www.instagram.com/hansup__official?igsh=MTNrZnpnNWd1eDZxaA%3D%3D&utm_source=qr" target="_blank"><img src="/img/common/sns_instagram.png"></a>
+				<a href="https://happylog.naver.com/hlog/hansup1004/home" target="_blank"><img src="/img/common/sns_happybean.png"></a>
+			</div>
+
+		</div>
+		<div class="c_container mo_header">
+			<a href="/index.html"><img src="/img/common/mo_logo_hansoup.png"></a>
+		</div>
+
+	</div>
+
+	<!--ham--->
+		<div class="header_content">
+			<div class="mobile_trigger">
+				<img src="/img/common/mo_menu_btn.png">
+			</div>
+		</div>
+		<div class="mobile_nav" style="overflow:scroll;">
+			<div class="mobile_nav_close_btn">
+				<img src="/img/main/mobile_nav_close.png">
+			</div>
+			<div class="mobile_login_join_box">
+				<p>로그인해주세요.</p>
+				<div class="join_box_inner">
+					<div>
+						<p>후원자</p>
+						<a class="mobile_login_btn" href="https://mrmweb.hsit.co.kr/v2/Member/MemberLogin.aspx" target="_blank"><i class="fa-solid fa-square"></i>로그인</a>
+						<a class="mobile_join_btn" href="https://mrmweb.hsit.co.kr/v2/Member/MemberJoin.aspx?action=join&server=C0bFD1uxOfW1qPxheXXVGQ==" target="_blank"><i class="fa-solid fa-square"></i>후원신청</a>
+					</div>
+					<div>
+						<p style="background-color:#399d56;">봉사자</p>
+						
+						<a class="mobile_login_btn" href="/member/login.html"><i class="fa-solid fa-square"></i>로그인</a>
+						<a class="mobile_join_btn" href="/member/join01.html"><i class="fa-solid fa-square"></i>회원가입</a>
+						
+					</div>
+				</div>
+				<div class="join_box_sns">
+					<a href="https://www.facebook.com/hansup1004" target="_blank"><img src="/img/common/sns_facebook.png"></a>
+					<a href="https://story.kakao.com/hansup1053" target="_blank"><img src="/img/common/sns_kakaosytory.png"></a>
+					<a href="https://blog.naver.com/hansup1004" target="_blank"><img src="/img/common/sns_blog.png"></a>
+					<a href="https://www.youtube.com/@user-bs7km7ge9n" target="_blank"><img src="/img/common/sns_youtube.png"></a>
+					<a href="https://www.instagram.com/hansup__official?igsh=MTNrZnpnNWd1eDZxaA%3D%3D&utm_source=qr" target="_blank"><img src="/img/common/sns_instagram.png"></a>
+					<a href="https://happylog.naver.com/hlog/hansup1004/home" target="_blank"><img src="/img/common/sns_happybean.png"></a>
+				</div>
+			</div>
+			<div class="mobile_gnb_box">
+				<ul>
+					<li class="aactive">
+						<a href="#none">소개</a>
+						<div class="mobile_gnb_sub_menu">
+							<a href="/introduce/introduce.html"><i class="fa-solid fa-square"></i>함께하는 한숲은</a>
+							<a href="/introduce/footprints.html""><i class="fa-solid fa-square"></i>발자취</a>
+							<a href="/introduce/management.html"><i class="fa-solid fa-square"></i>투명경영</a>
+							<a href="/introduce/cs_center.html"><i class="fa-solid fa-square"></i>오시는 길</a>
+						</div>
+					</li>
+					<li>
+						<a href="#none">주요사업</a>
+						<div class="mobile_gnb_sub_menu">
+							
+							<a href="/business/lumberroom.html?view=1"><i class="fa-solid fa-square"></i>마르지 않는 곳간</a>
+							
+							<a href="/business/lumberroom.html?view=2"><i class="fa-solid fa-square"></i>결연지원사업</a>
+							
+							<a href="/business/lumberroom.html?view=3"><i class="fa-solid fa-square"></i>교육문화사업</a>
+							
+							<a href="/business/lumberroom.html?view=4"><i class="fa-solid fa-square"></i>환경개선사업</a>
+							
+							<a href="/business/lumberroom.html?view=5"><i class="fa-solid fa-square"></i>따뜻한 겨울나기</a>
+							
+							<a href="/business/lumberroom.html?view=6"><i class="fa-solid fa-square"></i>건강한 여름나기</a>
+							
+						</div>
+					</li>
+					<li>
+						<a href="#none">봉사하기</a>
+						<div class="mobile_gnb_sub_menu">
+							<a href="/volunteer/application.html"><i class="fa-solid fa-square"></i>봉사안내/신청</a>
+							<a href="/volunteer/volunteer_news.html"><i class="fa-solid fa-square"></i>활동소식</a>
+							<a href="/volunteer/gallery.html"><i class="fa-solid fa-square"></i>영상갤러리</a>
+							<a href="/volunteer/enterprise.html"><i class="fa-solid fa-square"></i>나눔기업</a>
+						</div>
+					</li>
+					<li>
+						<a href="#none">후원</a>
+						<div class="mobile_gnb_sub_menu">
+							<a href="/support/mogeum.html"><i class="fa-solid fa-square"></i>모금</a>
+							<a href="/support/alliance.html"><i class="fa-solid fa-square"></i>아동결연</a>
+							<a href="/support/story.html"><i class="fa-solid fa-square"></i>이야기마을</a>
+							<a href="/support/support.html"><i class="fa-solid fa-square"></i>지원요청</a>
+						</div>
+					</li>
+					<li>
+						<a href="#none">소식</a>
+						<div class="mobile_gnb_sub_menu">
+							<a href="/community/notice.html"><i class="fa-solid fa-square"></i>공지사항</a>
+							<a href="/community/press_release.html"><i class="fa-solid fa-square"></i>언론보도</a>
+							<a href="/community/newsletter.html"><i class="fa-solid fa-square"></i>소식지</a>
+							<a href="/community/facil.html"><i class="fa-solid fa-square"></i>사설소개</a>
+							<a href="/community/qa.html"><i class="fa-solid fa-square"></i>Q&A</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Overlay -->
+		<div class="overlay"></div>
+		<!--ham--->
+
+</header>
+
+<!-----sub_top_location------>
+<div class="sub_top_location">
+	<div class="sub_top_location_img">
+		<div class="sub_text_box">
+			<h3>사랑과 희망을 나누는 따뜻한 세상</h3>
+			<h5>함께하는 한숲이 만들어가겠습니다.</h5>
+		</div>
+	</div>
+	<div class="sub_top_location_inner">
+		<img src="/img/common/icon_home.png">
+		<i class="fa-solid fa-chevron-right"></i>
+		<span>소식</span>
+		<i class="fa-solid fa-chevron-right"></i>
+		<span>시설소개</span>
+	</div>
+</div>
+<!-----sub_top_location------>
+
+<div class="sub_page">
+	<h1>시설소개</h1>
+	<div class="sub_page_inner">
+		<div class="facil">
+			<form name="frm" id="frm" method="post" action="./facil.html">
+				<input type="hidden" name="go_page" id="go_page" value="1">
+			</form>
+			<div class="content_list">
+
+				
+				<div class="content_box" onclick="window.open('http://www.xn--zb0bnwx5kxxio9bfznhle4a17d89qzr9b.kr/main/?load_popup=1')">
+					<div class="content_img">
+						
+						<img src="/MANAGE/upload/notice/20240604181656777101.PNG">
+						
+					</div>
+					<div class="content_text">
+						<p>안양시아동보호전문기관</p>
+					</div>
+				</div>
+				
+				<div class="content_box" onclick="window.open('http://판교종합사회복지관.kr/')">
+					<div class="content_img">
+						
+						<img src="/MANAGE/upload/notice/복지관 전경사진_판교.png">
+						
+					</div>
+					<div class="content_text">
+						<p>판교종합사회복지관</p>
+					</div>
+				</div>
+				
+				<div class="content_box" onclick="window.open('https://happylog.naver.com/hlog/hansup/review')">
+					<div class="content_img">
+						
+						<img src="/MANAGE/upload/notice/111KakaoTalk_20240715_132225172_02.png">
+						
+					</div>
+					<div class="content_text">
+						<p>한숲지역아동센터</p>
+					</div>
+				</div>
+				
+				<div class="content_box" onclick="window.open('https://blog.naver.com/pangyodaycare')">
+					<div class="content_img">
+						
+						<img src="/MANAGE/upload/notice/111판교장애인주간보호센터 홈페이지용.jpg">
+						
+					</div>
+					<div class="content_text">
+						<p>판교장애인주간보호센터</p>
+					</div>
+				</div>
+				
+				<div class="content_box" onclick="window.open('http://pf.kakao.com/_xaWhuT')">
+					<div class="content_img">
+						
+						<img src="/MANAGE/upload/notice/다함께돌봄센터  홈페이지 이미지.png">
+						
+					</div>
+					<div class="content_text">
+						<p>성남시다함께돌봄센터 34호점</p>
+					</div>
+				</div>
+				
+				<div class="content_box" onclick="window.open('https://blog.naver.com/youngmoonlcc')">
+					<div class="content_img">
+						
+						<img src="/MANAGE/upload/notice/1111721187425430.jpg">
+						
+					</div>
+					<div class="content_text">
+						<p>영문지역아동센터</p>
+					</div>
+				</div>
+				
+				<div class="content_box" onclick="window.open('https://hansup.jandi.com/app/www.hjy.kr/center/index.php?cId=light1690')">
+					<div class="content_img">
+						
+						<img src="/MANAGE/upload/notice/20240731172504180512.JPG">
+						
+					</div>
+					<div class="content_text">
+						<p>빛된지역아동센터</p>
+					</div>
+				</div>
+				
+				<div class="content_box" onclick="window.open('https://blog.naver.com/guroicare20')">
+					<div class="content_img">
+						
+						<img src="/MANAGE/upload/notice/20260625111326410148.JPG">
+						
+					</div>
+					<div class="content_text">
+						<p>구로구20호점 우리동네키움센터</p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="paging">
+			<div><button type="button" href="#" onClick="alert('첫페이지입니다.');"><img src="/img/common/page_arrow_first.png"></button><button type="button" href="#" onClick="alert('첫페이지입니다.');"><img src="/img/common/page_arrow_prev.png"></button></div><div><a href="javascript:void(0)" onClick="go_page('1');" title="1" class="on">1</a><a href="javascript:void(0)" onClick="go_page('2');" title="2">2</a></div><div><button type="button" onClick="go_page('2');" class="arrow right"><img src="/img/common/page_arrow_next.png"></button><button type="button" onClick="go_page('2');" class="arrow right"><img src="/img/common/page_arrow_last.png"></button></div>
+		</div>
+		
+	</div>
+</div>
+
+<script>
+function go_page(page) {
+	if (page == "") page = "1";
+
+	$("#go_page").val(page);
+	document.frm.submit();
+}
+</script>
+
+
+<!--footer--->
+<footer>
+	<div class="footer_inner">
+		<div class="footer_top">
+			<div class="footer_top_new">
+				<div class="footer_top_left">
+					
+					<a href="/index.html">단체소개</a>
+					
+					<a href="/community/terms.html">이용약관</a>
+					
+					<a href="/community/privacy.html">개인정보처리방침</a>
+					
+					<a href="/index.html">이메일무단수집거부</a>
+					
+					<a href="/footermenu/convention.html">협약안내</a>
+					
+				</div>
+				<div class="footer_top_right">
+					<div class="f_select">
+						<div class="pl_head_category">
+							<p>패밀리 사이트 바로가기<i class="fa-solid fa-angle-down"></i></p>
+							<ul class="pl_head_category_menu">
+								
+								<li onclick="location.href='https://naver.me/xZjKDsY1'">뉴스레터 신청</li>
+								
+								<li onclick="location.href='https://blog.naver.com/hansup1004'">네이버 블로그</li>
+								
+								<li onclick="window.open('https://happybean.naver.com/deposit/my/1332786')">네이버 콩 저금통</li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer_bottom">
+			<div class="footer_bottom_new">
+				
+				<div class="f_logo left">
+					<div class="f_logo_img">
+						<a href=""><img src="/MANAGE/upload/footer/20240605134654824275.PNG"></a>
+					</div>
+					<div class="f_logo_text">
+						<!--<p>상호 : 사단법인 함께하는 한숲  대표자:권훈삼   사업자등록번호 : 123-82-15030</p>
+						<address>주소 : 경기도 안양시 만연구 양화로 25번길 58(안양동)<br>TEL : 031-466-1053~4  FAX : 031-465-2756  Email : hansup1053@hansup.or.kr</address>
+						<p>통신판매등록번호 : 제 2022-부산해운대-0563호 사업자등록번호 : 178-87-02694</p>-->
+						상호 : 사단법인 함께하는한숲 대표자 : 권훈상 사업자등록번호 : 123-82-15030<br>주소 : 경기도 안양시 만만구 양화로 25번길 58(안양동)<br>TEL : 031-466-1053~5 FAX : 031-465-2756 <br>Email : hansup1053@hansup.or.kr
+					</div>
+					<div class="f_logo_text_m">
+						<!--<p>상호 : 사단법인 함께하는 한숲&nbsp;&nbsp;대표자:권훈삼 </p><p>  사업자등록번호 : 123-82-15030</p>
+						<address>주소 : 경기도 안양시 만연구 양화로 25번길 58(안양동)<br>TEL : 031-466-1053~4&nbsp;&nbsp;FAX : 031-465-2756 <br> Email : hansup1053@hansup.or.kr</address>
+						<p>통신판매등록번호 : 제 2022-부산해운대-0563호 <br>사업자등록번호 : 178-87-02694</p>-->
+						상호 : 사단법인 함께하는한숲 <br>대표자 : 권훈상 <br>사업자등록번호 : 123-82-15030<br>주소 : 경기도 안양시 만만구 양화로 25번길 58(안양동)<br>TEL : 031-466-1053~5 FAX : 031-465-2756 <br>Email : hansup1053@hansup.or.kr
+					</div>
+				</div>
+				<div class="manage_list manage_list_footer">
+					<div class="manage_list_con footer" onclick="window.open('https://www.nts.go.kr/')">
+						<img src="/img/introduce/link_tax_sevice.png">
+					</div>
+					<div class="manage_list_con footer" onclick="window.open('https://acrc.go.kr/')">
+						<img src="/img/introduce/link_acrc.png">
+					</div>
+					<div class="manage_list_con footer" onclick="window.open('https://www.epeople.go.kr/index.jsp')">
+						<img src="/img/introduce/link_epeople.png">
+					</div>
+					<div class="manage_list_con footer" onclick="window.open('https://www.gg.go.kr/')">
+						<img src="/img/introduce/link_ggd.png">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!--footer--->
+
+</body>
+</html>

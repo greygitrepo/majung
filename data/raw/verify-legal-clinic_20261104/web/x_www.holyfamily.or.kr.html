@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="Title" content="성가소비녀회">
+	<title>성가소비녀회</title>
+
+    <link rel="icon" href="/resource/images/favicon.png">
+	<!-- 스타일 -->
+	<link rel="stylesheet" href="/resource/css/reset.css?v=0.0">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="/resource/css/jquery_ui.css" media="all" />
+	<link rel="stylesheet" href="/resource/css/style.css?v=0.0">
+	<link rel="stylesheet" href="/resource/css/board.css">
+	<link rel="stylesheet" href="/resource/css/board_v2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-myeongjo.css" rel="stylesheet">
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumMyeongjoYetHangul.css" rel="stylesheet">
+
+    		<meta name="viewport" content="width=1024px">
+	    <meta property="og:image" content="/resource/images/link-img.png">
+    
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="naver-site-verification" content="92e575163bb7a88bfa01edb5dedf32a5">
+	<link rel="stylesheet" href="/resource/css/swiper.min.css">
+
+	<!-- 스크립트 -->
+	<script src="/resource/js/jquery-1.12.2.min.js"></script>
+	<script src="/resource/js/jquery-ui-1.10.3.js"></script>
+	<script src="/resource/js/swiper.min.js"></script>
+	<script src="/resource/js/function.js"></script>
+    <script src="/resource/js/modal.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+   
+    </script>
+</head><style>
+   /* 카드 디자인 공통 */
+.dg-first-flex ._box, .dg-item-card { 
+    background: #fff !important; border-radius: 12px !important; border: 1px solid #eee !important; 
+    overflow: hidden !important; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    flex-shrink: 0 !important; list-style: none !important;
+}
+/* 누락됐던 호버 효과 복구 */
+.dg-first-flex ._box:hover, .dg-item-card:hover { transform: translateY(-7px) !important; box-shadow: 0 12px 20px rgba(0,0,0,0.1) !important; border-color: #c9a067 !important; }
+
+.dg-first-flex ._box img, .dg-img-wrap img { width: 100% !important; height: 160px !important; object-fit: cover !important; display: block !important; }
+.dg-first-flex ._box ._txt-01, .dg-body { padding: 22px 15px !important; text-align: center; background:#fff !important; }
+/* 카드 안의 제목 */
+.dg-first-flex ._box ._txt-01 h1, .dg-body h3 { font-size: 20px !important; color: #222 !important; font-weight: 700 !important; margin: 0 0 8px 0 !important; border: none !important; background:none !important; line-height: 1.2; }
+
+/* 자세히 보기 */
+.dg-first-flex ._box ._txt-01 span, 
+.dg-body span {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    
+    width: 25px !important;    /* 원의 크기 */
+    height: 25px !important;   /* 원의 크기 */
+    border-radius: 50% !important;
+    border: 1px solid #c9a067 !important; /* 테두리 선 */
+    background: transparent !important;
+    
+    color: #c9a067 !important; /* 화살표 색상 */
+    font-size: 0 !important;   /* 기존 "자세히 보기" 글씨 숨기기 */
+    margin-top: 15px !important;
+    transition: all 0.3s ease;
+    position: relative;
+}
+  /* [자세히 보기 & 짧은 선] 중복 코드를 하나로 합쳤습니다 */
+  .dg-first-flex ._box ._txt-01 span::before,
+.dg-body span::before {
+    content: '〉' !important;
+    font-size: 14px !important;
+    font-weight: 999 !important;
+    color: #c9a067 !important;
+    
+    /* 1. 중앙 정렬을 위한 확실한 장치 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+
+    /* 2. 시각적 보정: 왼쪽으로 밀려 보인다면 오른쪽으로 1~2px 밀어줍니다 */
+    padding-left: 5px !important; 
+    
+    line-height: 1 !important;
+}
+
+/* 호버 시 색상 반전도 확실히! */
+.dg-first-flex ._box:hover span::before, 
+.dg-item-card:hover .dg-body span::before {
+    color: #fff !important;
+}
+/* 1층 박스 안의 '새로 넣은 부제목'만 스타일 조정 */
+.dg-first-flex ._box ._txt-01 p {
+    /* 2층 부제목과 동일한 색상 및 크기 설정 */
+    font-size: 16px !important; 
+    color: #777 !important; 
+    margin: 5px 0 0 0 !important; /* 제목과의 간격만 살짝 */
+    line-height: 1.4 !important;
+    font-weight: normal !important;
+    text-align: center !important;
+}
+/* 카드 부제목 */
+.dg-body p { font-size: 16px; color: #777; margin: 0; line-height: 1.4; }
+.main-notice ._tab ._left {
+    display: flex;           /* flex로 정렬 */
+    align-items: center;
+    position: relative;      /* 버튼 위치 조정을 위해 기준점 설정 */
+}
+
+.main-notice .quick-go {
+    position: absolute;
+    left: -12px;  /* 버튼 좌측 위치 */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #8e7a70;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    /* 부드러운 애니메이션 */
+    transition: all 0.4s ease;
+}
+
+/* 호버 효과: 회전 + 색 변화 */
+.main-notice .quick-go:hover {
+    background: #b08c56;       /* 호버 시 색 변화 */
+    transform: translateY(-50%) rotate(360deg); /* 한 바퀴 회전 */
+}
+/* 2. 원 안에 화살표(>) 넣기 */
+.dg-first-flex ._box ._txt-01 span::before,
+.dg-body span::before {
+    content: '〉';             /* 화살표 기호 */
+    font-size: 14px !important; /* 화살표 크기 */
+    font-weight: 700 !important;
+    display: block;
+}
+
+/* 3. 카드에 마우스 올렸을 때(Hover) 아이콘 변화 */
+.dg-first-flex ._box:hover span, 
+.dg-item-card:hover .dg-body span {
+    background: #c9a067 !important; /* 원 안이 갈색으로 채워짐 */
+    color: #fff !important;         /* 화살표가 흰색으로 변함 */
+}
+
+/* 1. 카드 노출창(성가/강생/길벗) 및 이음자리 전용 버튼 공통 스타일 */
+.main-thumb .inner ._box, 
+._joint {
+    position: relative !important; /* 버튼이 카드 안에서만 움직이도록 기준 설정 */
+}
+
+/* 2. 플러스(+) 버튼 디자인 및 위치 (시행착오 방지용 고정 좌표) */
+.main-thumb .inner .quick-go {
+    position: absolute !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* [위치 변경] 오른쪽 상단에서 제목 영역으로 이동 */
+    right: 220px !important;      /* 우측 여백 */
+    bottom: 200px !important;     /* 하단 텍스트 영역 높이에 맞춰 조정 (카드 높이에 따라 미세조정 필요) */
+    top: auto !important;        /* 기존 top 설정 해제 */
+    left: auto !important;
+    transform: none !important;
+    
+    /* 디자인 유지 */
+    width: 23px !important;      /* 제목 옆에 두기 위해 크기를 살짝 줄임 */
+    height: 23px !important;
+    border-radius: 50% !important;
+    background: #8e7a70 !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    z-index: 10 !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 2. 모든 버튼 호버 시 공통 효과 (색상 + 회전 + 크기) */
+.quick-go:hover {
+    background: #c9a067 !important; /* 황금색으로 변경 */
+    color: #fff !important;
+    /* rotate와 scale을 기본으로 적용 */
+    transform: rotate(360deg) scale(1.1) !important;
+}
+/* 카드형과 이음자리는 translateY가 필요 없으므로 설정을 덮어씌웁니다 */
+.main-thumb .inner .quick-go:hover,
+._joint .quick-go:hover {
+    transform: rotate(360deg) scale(1.1) !important; 
+}
+
+/* 1. 모든 바로가기 버튼 기본 설정 (부드러운 애니메이션 준비) */
+.quick-go {
+    transition: all 0.5s ease-in-out !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+/* 이음자리 전용 버튼 위치 보정 */
+._joint .quick-go.joint-btn {
+    position: static !important;    /* 절대 좌표 해제 */
+    display: inline-flex !important; /* 글자와 나란히 배치 */
+    width: 24px !important;         /* 글자 크기에 맞춰 살짝 축소 */
+    height: 24px !important;
+    font-size: 16px !important;
+    margin-top: -2px;               /* 시각적 높이 보정 */
+    transform: none !important;
+    background: #8e7a70 !important;
+}
+
+/* 4. [예외 케이스] 이음자리 버튼 */
+/* 이음자리는 static 또는 relative이므로 위치 이동 없이 회전만 적용 */
+._joint .quick-go.joint-btn:hover {
+    transform: rotate(360deg) scale(1.1) !important;
+}
+/* 3. [예외 케이스] 텍스트 게시판(수녀원 소식 등) 버튼 */
+/* 이 버튼은 원래 중앙 정렬을 위해 translateY(-50%)가 있으므로 이를 유지하며 회전시킵니다 */
+.main-notice ._tab ._left .quick-go:hover {
+    transform: translateY(-50%) rotate(360deg) scale(1.1) !important;
+}
+/* [2. PC 모드: 높이 축소 반영] */
+@media screen and (min-width: 769px) {
+    .mb-hide { display: block !important; }
+    .mb-show { display: none !important; }
+
+    .dg-section-first.mb-hide { 
+        background: url(&#39;/resource/images/img-sub-bnnr-01-01.png&#39;) no-repeat center / cover !important; 
+        padding: 30px 0 !important; 
+    }
+    #dg-vocation-section.mb-hide { 
+        background: url(&#39;/resource/images/bg-vocation-pc.png&#39;) no-repeat center / cover !important; 
+        padding: 40px 0 !important; 
+    }
+
+    .dg-first-flex, .dg-flex-box { display: flex !important; justify-content: center !important; gap: 20px; padding: 20px 0 !important; }
+    .dg-first-flex ._box, .dg-item-card { width: 220px !important; }
+    .main-notice ._notice { padding-bottom: 40px; }
+/* 1. 제목 크기를 줄여서 한 줄로 만들기 */
+    .father-say h2 {
+        font-size: 20px !important; /* 기존 24px 이상에서 20px로 축소 */
+        white-space: nowrap !important; /* 절대 줄바꿈 되지 않게 고정 */
+        letter-spacing: -1px !important; /* 자간을 살짝 좁혀 공간 확보 */
+        margin-top: -25px !important;
+    }
+
+    /* 2. 영어 부제목 크기 조정 */
+    .father-say ._left p {
+        font-size: 13px !important;
+        margin-top: 3px !important;
+    }
+
+    /* 3. 왼쪽 영역과 오른쪽 말씀 사이의 간격을 좀 더 넓힘 */
+    .father-say ._left {
+        margin-right: 20px !important; /* 간격을 35px에서 50px로 확대 */
+        min-width: 150px; /* 제목 영역의 최소 너비 확보 */
+    }
+  .father-say ._right {
+         margin-top: -60px !important;
+         font-size: 20px !important; /* 기존 24px 이상에서 20px로 축소 */
+    }
+
+    
+    /* 4. 날짜 숫자(04 등)가 너무 크면 제목을 밀어낼 수 있으니 미세 조정 */
+    .father-say h1._month {
+        font-size: 60px !important;
+    }
+}
+
+
+/* [3. 모바일 모드: 간격 밀착 및 기능 복구] */
+@media screen and (max-width: 768px) {
+    .mb-hide { display: none !important; background: none !important; height: 0; overflow: hidden; }
+    .mb-show { display: block !important; }
+    .mb-only { display: inline !important; }
+
+    .dg-section-first.mb-show { 
+        background: url(&#39;/resource/images/i.png&#39;) no-repeat center / cover !important; 
+        padding: 20px 0 0 0 !important; 
+    }
+    .dg-vocation-m-wrap.mb-show { 
+        background: url(&#39;/resource/images/bg-vocation-m.png?v=2&#39;) no-repeat center / cover !important; 
+        padding: 0px 0 20px 0 !important;
+    }
+
+    /* 1. 부모 컨테이너: 여백(25%)은 유지하고, 화살표 기준점(relative)을 잡습니다 */
+    .dg-first-scroll-wrap, 
+    .dg-scroll-container {
+        display: flex !important;
+        overflow-x: auto !important;     /* 가로 스크롤 유지 */
+        overflow-y: visible !important;  /* 화살표가 위아래로 살짝 삐져나와도 보이게 */
+        scroll-snap-type: x mandatory !important;
+        
+        position: relative !important;   /* ★ 화살표가 이 구역 안에만 있게 함 */
+        padding: 20px 25% 40px 25% !important; /* ★ 당그나님이 정한 황금 비율 유지 */
+        gap: 20px !important;
+    }
+    .dg-first-scroll-wrap::-webkit-scrollbar, .dg-scroll-container::-webkit-scrollbar { display: none; }
+  /* 2. 카드: 가로와 세로 비율을 통일 */
+  /* [1, 2층 공통] 카드의 전체적인 비율과 정렬 */
+    .dg-first-flex ._box, 
+    .dg-item-card { 
+        width: 55vw !important;        /* 너무 작지 않게 65%로 조정 */
+        min-width: 55vw !important; 
+        aspect-ratio: 4 / 5 !important; /* 약간 세로로 긴 안정적인 비율 */
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important; /* 위 이미지, 아래 텍스트 정렬 */
+        scroll-snap-align: center !important;
+    }
+/* 2. 화살표: 이제 absolute로 설정해서 해당 구역에만 나타납니다 */
+    .dg-first-scroll-wrap::after,
+    .dg-scroll-container::after {
+        content: '〉' !important;
+        position: absolute !important;   /* fixed에서 absolute로 변경! */
+      /* [위치 변경] 오른쪽 대신 왼쪽 끝에서 15px 띄움 */
+        left: 60px !important; 
+        right: auto !important; /* 기존 right 값 초기화 */
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        
+        /* 디자인 */
+        font-size: 35px !important;
+        font-weight: 900 !important;
+        color: #fff !important;
+        background: rgba(166, 133, 117, 0.7) !important;
+        width: 30px !important;
+        height: 47px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      /* [미세조정] 기호 특성상 왼쪽으로 쏠려 보일 때 우측으로 살짝 밀기 */
+        padding-left: 20px !important;
+        border-radius: 50% !important;
+        
+        pointer-events: none !important;
+        z-index: 10 !important;
+        animation: arrow-blink-strong 1.0s infinite;
+    }
+    /* 더 눈에 띄는 애니메이션 */
+    @keyframes arrow-blink-strong {
+        0% { opacity: 0.5; transform: translateY(-50%) translateX(0); }
+        50% { opacity: 1; transform: translateY(-50%) translateX(10px); }
+        100% { opacity: 0.5; transform: translateY(-50%) translateX(0); }
+    }    .dg-first-flex, .dg-flex-box { display: flex !important; width: max-content !important; gap: 15px !important; }
+   
+    /* 게시판 하단 여백 보정 복구 */
+   .tab-guide { 
+    font-size: 22px !important; 
+    color: #444; 
+    font-weight: 600; 
+    letter-spacing: -0.5px; 
+    /* 아래 한 줄을 추가해 주세요 */
+    margin-bottom: 20px !important; 
+    display: block !important; 
+}
+    .main-notice ._notice { position: relative; padding-bottom: 100px; }
+    .main-notice ._joint { padding-top: 100px !important; }
+
+  /* 사도직 카드 안의 제목크기 */
+  .dg-first-flex ._box ._txt-01 { min-height: 100px !important; }
+    .dg-vocation-m-wrap.mb-show h2 { font-size: 24px !important; margin-bottom: 5px !important; }
+/* 말씀 달력 자체에 아래쪽 여백을 줘서 사진첩을 밀어냅니다 */
+    .father-say { 
+        margin-bottom: 80px !important; 
+    }
+/* 1. 메뉴 전체를 관통하는 회색 줄 - 기존 정렬 유지 */
+.main-notice ._notice ._wrap ._ul {
+    border-left: 2px solid #eee !important;
+    margin-left: 10px !important;
+    padding-left: 0 !important;
+}
+
+/* 2. 각 메뉴 박스 - 너비를 건드리지 않아 아래로 떨어지는 것 방지 */
+.main-notice ._tab ._left {
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 0 !important;
+    margin-left: -2px !important;
+    display: inline-block !important; /* ★ 가로로 나란히 있게 함 */
+}
+/* 3. 메뉴 글씨 (24px, 한 줄 유지) */
+.main-notice ._tab ._left ._txt {
+    color: #999 !important;
+    font-weight: 600 !important;
+    padding-left: 0px !important;
+    display: block !important;
+    line-height: 1 !important; /* ★ 바 높이가 글자를 안 넘게 하는 핵심 */
+    white-space: nowrap !important;
+}
+/* 노티스 게시판 카페24 기본 탭 메뉴 글씨 강제 오버라이드 */
+    div.main-notice ul li._tab div._left span._txt,
+    .main-notice ._tab ._left ._txt,
+    ._tab ._left ._txt {
+        font-size: 27px !important;
+    }
+/* 선택된 메뉴의 글자와 바 설정 */
+.main-notice ._tab.on ._left ._txt {
+    color: #222 !important;      /* 글자 진하게 */
+    font-weight: 800 !important;   /* 글자 두껍게 */
+    
+    /* [여기서부터가 핵심입니다] */
+    display: inline-flex !important; /* 바 높이를 조절할 수 있게 구조 변경 */
+    align-items: center !important;  /* 바와 글씨를 중앙 정렬 */
+    height: 24px !important;         /* ★이 숫자를 줄이면 갈색 바가 작아집니다!★ */
+    
+    border-left: 6px solid #c9a067 !important; /* 굵기는 6px 유지 */
+    padding-left: 15px !important;
+}
+
+/* 2. 메뉴명 정렬 정상화 (위로 쏠렸던 padding 제거) */
+    .main-notice ._tab ._left {
+        position: relative !important;
+        padding-top: 10px !important; /* 적당한 간격 */
+        text-align: left !important;  /* 왼쪽 정렬 */
+    }
+  /* 1. 모바일에서 메뉴명 위에 둥둥 떠있던 버튼 제거 */
+    .main-notice .quick-go {
+        display: none !important; 
+    }
+
+/* 모바일에서 선택된 메뉴 옆 플러스 버튼 */
+.main-notice ._tab.on ._left ._txt::after {
+    content: '▶';              /* 화살표 대신 플러스 기호 */
+    display: inline-flex;      /* 중앙 정렬을 위해 flex 사용 */
+    align-items: center;
+    justify-content: center;
+    
+    margin-left: 10px;         /* 글자와의 간격 */
+    
+    /* [디자인 포인트] */
+    font-size: 28px !important; /* 플러스 기호 크기 */
+    font-weight: bold !important;
+    color: #c9a067;            /* 갈색 */
+    
+    /* 기호 주변에 얇은 테두리 원을 넣고 싶다면 아래 주석을 해제하세요 */
+    /*
+    width: 28px;
+    height: 28px;
+    border: 1px solid #c9a067;
+    border-radius: 50%;
+    line-height: 1;
+    */
+    
+    vertical-align: middle;
+    transform: translateY(-1px); /* 글자와 높이 맞춤 */
+}
+.main-notice ._tab ._txt {
+    display: block;
+    margin-top: 10px; 
+}
+/* 수도회 소명 섹션과 하단 푸터 사이 간격 벌리기 */
+#dg-vocation-section, 
+.dg-vocation-m-wrap {
+    margin-bottom: 80px !important; /* 이 숫자를 키울수록 간격이 더 넓어집니다 */
+}
+   /* 1. 영어 부제목 (apostolate 등) */
+    .main-notice ._list ._item ._text span,
+    [class*="_list"] [class*="_tit"] span {
+        font-size: 20px !important;  /* 모바일에 맞게 조정 */
+        line-height: 1.2 !important;
+        display: block !important;
+    }
+
+    /* 2. 섹션 제목 (사도직 소식 등) */
+    .main-notice ._list ._item ._text h3,
+    [class*="_list"] [class*="_tit"] h3 {
+        font-size: 26px !important;
+        font-weight: 800 !important;
+        line-height: 1.2 !important;
+    }
+/* [1층 이미지 정밀 조정] */
+    .dg-first-flex ._box a { display: block; height: 100%; }
+  /* 1. 이미지 높이를 강제로 키우기 */
+    .dg-first-flex ._box img, 
+    .dg-item-card .dg-img-wrap,
+    .dg-item-card .dg-img-wrap img {
+        height: 300px !important; /* 여기서 숫자를 키우면 이미지가 더 길어집니다 */
+        max-height: 300px !important;
+        object-fit: cover !important;
+        display: block !important;
+    }
+
+    /* 2. 텍스트 박스가 이미지 아래에 확실히 자리 잡게 함 */
+    .dg-first-flex ._box ._txt-01, 
+    .dg-body {
+        height: auto !important;
+        min-height: 120px !important;
+        padding: 20px 15px !important;
+        background: #fff !important;
+        position: relative !important;
+        display: block !important; /* 수직으로 쌓이게 함 */
+    }
+/* [제목 확실히 키우기] 클래스를 더 구체적으로 써서 강제 적용합니다 */
+    div.dg-first-flex ._box ._txt-01 h1, 
+    div.dg-item-card .dg-body h3 {
+        font-size: 27px !important;
+        font-weight: 600 !important;
+        margin-top: 15px !important;
+        margin-bottom: 10px !important;
+        line-height: 1.2 !important;
+        display: block !important;
+    }
+
+    /* [부제목] */
+    .dg-body p {
+        font-size: 24px !important;
+        color: #777 !important;
+        line-height: 1.4 !important;
+        margin: 5px 0 !important;
+    }
+.dg-first-flex ._box ._txt-01 p {
+        /* 1층 카드 부제목 2층 모바일 부제목과 동일하게 24px로 */
+        font-size: 24px !important;
+        color: #777 !important;
+    }
+/* 1. 모바일에서 원 크기를 대폭 키웁니다 (45px) */
+    .dg-first-flex ._box ._txt-01 span, 
+    .dg-body span {
+        width: 30px !important;
+        height: 30px !important;
+        border: 2px solid #c9a067 !important; /* 선 두께도 살짝 두껍게 */
+        margin-top: 10px !important;
+    }
+
+    /* 2. 화살표(>)를 더 크고 두껍게! */
+    .dg-first-flex ._box ._txt-01 span::before,
+    .dg-body span::before {
+        font-size: 22px !important; /* 크기를 훌쩍 키웠어요 */
+        font-weight: 900 !important; /* 가장 두껍게 */
+        padding-left: 3px !important; /* 커진 만큼 중앙 보정값도 살짝 조정 */
+
+ /* 2. 시각적 보정: 왼쪽으로 밀려 보인다면 오른쪽으로 1~2px 밀어줍니다 */
+    padding-left: 8px !important; 
+    
+    line-height: 1 !important;
+    }
+/* 1. 전체 구역 세로 정렬 유지 */
+    .father-say .inner {
+        flex-direction: column !important;
+        padding: 40px 20px !important;
+    }
+
+ /* 1. 전체 컨테이너를 다시 flex로 잡되, 정렬만 깔끔하게 */
+    .father-say ._left {
+        width: 100% !important;
+        position: relative !important; /* 날짜 박스 기준점 */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        border-bottom: none !important;
+        padding-bottom: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. 제목/버튼 영역 (왼쪽 공간 확보) */
+    .father-say ._left > div:first-child {
+        width: 100% !important;
+        padding-right: 70px !important; /* 날짜 박스 자리 확보 */
+        box-sizing: border-box !important;
+    }
+
+    /* 3. 날짜 박스 (가장 핵심: 무조건 맨 위 오른쪽으로 강제 고정) */
+    .father-say ._left > div:nth-child(2) {
+        position: absolute !important;
+        top: 0 !important;   /* 맨 위 */
+        right: 0 !important; /* 맨 오른쪽 */
+        width: 60px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+    }
+
+      
+ /* 1. 한글 제목 */
+    .father-say ._left h2 {
+        font-size: 23px !important;
+    }
+
+/* 클래스 명을 몰라도 '버튼이 있는 영역의 가장 마지막 링크'를 타겟팅합니다 */
+.father-say ._left a:last-of-type {
+    font-size: 25px !important;
+    padding: 10px 50px !important;
+    display: inline-block !important;
+    margin-top: 10px !important;
+}
+    /* 4. [중요] 영문제목 (가장 하단에 배치) */
+        .father-say ._left > div:first-child {
+        font-size: 17px !important; 
+        line-height: 1.6 !important;
+    }
+/* 2. 연도/월/일 개별 조절 (아녜스님이 만드신 핵심 코드) */
+    .father-say ._left ._year { 
+        font-size: 20px !important; 
+        margin-bottom: -7px !important;
+    }
+    
+    .father-say ._left ._day { 
+        font-size: 35px !important; 
+    }
+  
+    .father-say ._left h1._month { 
+        font-size: 90px !important; 
+        margin-left: -5px !important;
+    } 
+
+    /* 혹시 본문 내부에 별도의 p 태그나 div가 있다면 그 속성 초기화 */
+    .father-say ._left > div:first-child p,
+    .father-say ._left > div:first-child div {
+        font-size: inherit !important; /* 위에서 정한 17px을 상속받음 */
+    }
+
+/* 기존 코드들 아래에 아래 내용을 추가하세요 */
+    
+    .father-say ._right, 
+    .father-say ._right * {
+        font-size: 29px !important; /* 여기를 원하는 크기로 바꿔보세요 */
+        line-height: 1.7 !important;
+        margin-top: -25px !important; /* 위쪽(제목/날짜 영역)과의 간격 조절 */
+    }
+/* 1. 상단 카드(성가/강생/길벗)의 텍스트 박스를 기준점으로 설정 */
+    .main-thumb .inner ._box {
+        position: relative !important;
+    }
+
+    /* 2. 플러스 버튼을 제목(h1) 높이에 맞춰서 배치 */
+    .main-thumb .inner .quick-go {
+        position: absolute !important;
+        /* 제목 '이야기' 글자 옆 높이로 조정 (수치로 미세조정 가능) */
+        top: auto !important;
+        bottom: 70px !important; 
+        right: 20px !important;
+        
+        width: 70px !important;
+        height: 70px !important;
+        font-size: 40px !important;
+        
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transform: none !important;
+        z-index: 20 !important;
+    }   
+._joint .quick-go.joint-btn {
+    width: 40px !important;   /* 크기를 더 줄이고 싶으면 18, 키우고 싶으면 22 정도로 조절하세요 */
+    height: 40px !important;
+    font-size: 30px !important; /* 버튼이 작아지면 안의 기호도 같이 줄여야 예뻐요 */
+    
+    }
+/* 모든 모바일 플러스 버튼(카드, 노티스, 이음자리 공통) */
+    .quick-go, 
+    .main-thumb .inner .quick-go, 
+    ._joint .quick-go.joint-btn {
+        /* 배경색을 70% 투명도로 설정 (사도직 화살표와 동일한 농도) */
+        background: rgba(142, 122, 112, 0.7) !important; 
+        
+        /* 테두리를 살짝 주면 투명할 때 더 선명해 보입니다 (선택사항) */
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        
+        /* 그림자 제거 (투명할 때는 그림자가 없는 게 더 깔끔해요) */
+        box-shadow: none !important;
+    }
+
+    /* 터치(호버)했을 때는 다시 진해지게 하고 싶다면 추가 */
+    .quick-go:active {
+        background: rgba(201, 160, 103, 0.9) !important; /* 황금색 투명도 90% */
+    }
+/* 메인 노티스 리스트 글자크기 조절 */
+    .main-notice ._list li a span,
+    .main-notice ._list li a em,
+    .main-notice ._list li span.date,
+    .main-notice ._list li .date,
+    ._joint span.date,
+    ._joint .date {
+        font-size: 24px !important;
+        font-weight: bold !important;
+    }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // quick-go 버튼 모두 선택 (PC + 모바일)
+    document.querySelectorAll('.quick-go').forEach(function(btn){
+        btn.addEventListener('click', function(e){
+            e.preventDefault(); // 기본 이벤트 방지
+            e.stopPropagation(); // 부모 이벤트 방지
+            const url = btn.getAttribute('data-url');
+            if(url) {
+                // 새 탭 열기 테스트
+                window.location.href = url;
+                // window.open(url, '_self'); // 필요 시 사용
+            }
+        });
+    });
+
+    // 메뉴 제목 클릭
+    document.querySelectorAll('.main-notice ._tab ._txt').forEach(function(tab){
+        tab.addEventListener('click', function(){
+            const parentTab = tab.closest('._tab');
+// ★ [추가된 부분] 모바일에서 이미 열린 탭을 한 번 더 누르면 게시판으로 이동
+            if(parentTab.classList.contains('on')) {
+                const quickGoBtn = parentTab.querySelector('.quick-go');
+                const url = quickGoBtn ? quickGoBtn.getAttribute('data-url') : null;
+                
+                // 화면 폭이 768px 이하(모바일)일 때만 작동
+                if(window.innerWidth <= 768 && url) {
+                    window.location.href = url;
+                    return; // 이동 후 함수 종료
+                }
+            }
+            document.querySelectorAll('.main-notice ._tab').forEach(t => t.classList.remove('on'));
+            parentTab.classList.add('on');
+        });
+    });
+
+});
+</script>
+<body>
+   	<div id="wrap" class="main">
+		<style>
+/* ★ 미디어 쿼리 추가: 화면 너비가 769px 이상인 PC 환경에서만 작동 ★ */
+@media screen and (min-width: 769px) {
+/* 1. 서브메뉴(snb) 폰트: 로그인 여부와 상관없이 14px로 강제 고정 */
+    #gnb ul.snb li a {
+        font-size: 14px !important; 
+        white-space: nowrap !important;
+        text-align: center !important;
+        color: #666 !important; /* 글자색이 변한다면 색상도 고정 */
+        transition: all 0.3s ease;
+    }
+/* 2. 전체 메뉴(ham 버튼 클릭 시) 스타일 개선 */
+.menu-all ._wrap > div span a {
+    font-size: 18px !important; /* 상위 카테고리 폰트 */
+    font-weight: bold;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* 마우스 올렸을 때 강조 효과 (더 멋있게!) */
+.menu-all ._wrap > div ul li a:hover {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 5px; /* 살짝 옆으로 밀리는 효과 */
+}
+
+/* 햄버거 메뉴(전체메뉴) 정렬 잡기 */
+.menu-all ._wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; /* 메뉴들을 양옆으로 균등 배분 */
+    align-items: flex-start !important;
+    flex-wrap: nowrap !important; /* 절대 줄바꿈 되지 않게 고정 */
+    gap: 10px !important;
+}
+/* 각 메뉴 칸(열쇠 포함) 너비 통일 */
+.menu-all ._wrap > div, 
+.menu-all ._wrap .last_sub {
+    flex: 1 !important;           /* 모든 칸이 똑같은 너비를 가집니다 */
+    min-width: 0 !important;      /* 너비가 부족해도 억지로 한 줄 유지 */
+    margin-bottom: 0 !important;  /* 아래로 떨어지는 여백 제거 */
+}
+
+/* [수정] 마우스를 올렸을 때만 노란 황금색으로 변화 */
+.menu-all ._wrap > div ul li a:hover,
+.menu-all ._wrap .last_sub ul li a:hover {
+    color: #ffd68a !important; /* 수녀님이 원하시는 따뜻한 금색 */
+    font-weight: bold !important;
+    padding-left: 8px !important; /* 살짝 옆으로 밀리는 효과 */
+}
+/* [수정] 햄버거 메뉴 하위 리스트 색상 설정 */
+.menu-all ._wrap > div ul li a,
+.menu-all ._wrap .last_sub ul li a {
+    font-size: 17px !important;
+    /* 평상시: 부드러운 흰색 (주메뉴와 구분됨) */
+    color: rgba(255, 255, 255, 0.7) !important; 
+    line-height: 1.8 !important;
+    display: block;
+    padding: 6px 0;
+    transition: all 0.3s;
+    font-weight: 400;
+    text-decoration: none !important;
+}
+
+ #quick {
+        position: fixed;
+        right: 0;
+        top: 25%;
+        z-index: 9999;
+        transition: transform 0.4s ease;
+        width: 140px; /* 전체 메뉴 너비 */
+    }
+
+   /* 3. 퀵메뉴 닫기 상태 강제 고정 */
+    #quick.is-closed {
+        transform: translateX(140px) !important;
+    }
+
+    /* [중요] 화살표 버튼: 이제 메뉴의 '진짜' 왼쪽 끝에 고정됩니다 */
+    .quick-toggle {
+        position: absolute;
+        left: -30px; /* 버튼 너비만큼 밖으로 빼기 */
+        top: 40px;
+        width: 30px;
+        height: 80px;
+        background: #8e7d72;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 10px 0 0 10px;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        z-index: 10001;
+    }
+
+    /* 드래그 손잡이 */
+    .quick-handle {
+        background: #f1f1f1;
+        text-align: center;
+        color: #999;
+        cursor: grab;
+        font-size: 18px;
+        border: 1px solid #ddd;
+        border-right: none;
+        border-radius: 10px 0 0 0;
+    }
+.quick-toggle {
+    position: absolute;
+    left: -30px; 
+    top: 0px; /* 도서실 옆이 아니라, 드래그 손잡이와 나란히 배치 */
+    width: 30px;
+    height: 35px; /* 손잡이 높이에 맞춰 짧게 조절 */
+    background: #8e7d72;
+    /* ... 나머지 스타일 동일 ... */
+}
+}
+</style>
+              <script>
+/* 1. 로그인 여부 상관없이 "항상" 작동하는 퀵메뉴 함수 */
+function toggleQuick() {
+    const quick = document.getElementById('quick');
+    const txt = document.getElementById('toggle-txt');
+    const arrow = document.getElementById('toggle-arrow');
+    
+    if(!quick) return;
+
+    quick.classList.toggle('is-closed');
+    
+    if (quick.classList.contains('is-closed')) {
+        if(txt) txt.innerHTML = 'OPEN';
+        if(arrow) arrow.innerHTML = '◀';
+        localStorage.setItem('quickMenuClosed', 'true'); // 닫힘 상태 기억
+    } else {
+        if(txt) txt.innerHTML = 'CLOSE';
+        if(arrow) arrow.innerHTML = '▶';
+        localStorage.setItem('quickMenuClosed', 'false'); // 열림 상태 기억
+    }
+}
+
+/* 2. 페이지 로드 시 상태 복구 (공통) */
+document.addEventListener('DOMContentLoaded', function() {
+    const isClosed = localStorage.getItem('quickMenuClosed');
+    const quickMenu = document.getElementById('quick');
+    const txt = document.getElementById('toggle-txt');
+    const arrow = document.getElementById('toggle-arrow');
+
+    if (isClosed === 'true' && quickMenu) {
+        quickMenu.classList.add('is-closed');
+        if(txt) txt.innerHTML = 'OPEN';
+        if(arrow) arrow.innerHTML = '◀';
+    }
+});
+</script>
+
+    <script>
+    /* 3. 로그인 안 한 사람에게만 보여줄 알림창 (보안 유지) */
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.last a, .last_sub a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                alert('로그인이 필요한 서비스입니다.');
+                event.preventDefault();
+            });
+        });
+    });
+    </script>
+<div id="quick"> 
+    <div class="quick-toggle" onclick="toggleQuick()" style="position: absolute; left: -75px; top: 0; width: 75px; height: 35px; background: #6a9d55 !important; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 10px 0 0 10px; font-size: 13px; font-weight: bold; z-index: 10000; box-shadow: -2px 0 5px rgba(0,0,0,0.1);">
+        <span id="toggle-txt">CLOSE</span><span id="toggle-arrow" style="margin-left:3px;">▶</span>
+    </div>
+    
+    <div class="quick-handle" title="위아래 드래그" style="background: #f1f1f1; text-align: center; color: #999; cursor: grab; font-size: 18px; border: 1px solid #ddd; border-right: none; border-radius: 10px 0 0 0;">⋮</div>
+
+<a href="/easy.php" target="_blank" class="icon0 pc" style="text-align: center; padding-top: 35px; padding-bottom: 10px; display: block; text-decoration: none;">
+    <span style="font-size: 16px; font-weight: 800; color: #fff; line-height: 1; display: block; text-align: center;">EASY</span>
+</a>
+
+    <a href="https://holyfamily.egentouch.com/main.do?action=main" target="_blank" class="icon1 pc">
+        <i></i><span>도서실</span> 
+    </a>
+    <a href="https://www.instagram.com/holyfamily1225" target="_blank" class="icon2 pc">
+        <i></i><span>성소국 인스타</span> 
+    </a>
+    <a href="https://www.youtube.com/@holyfamily1943?si=PmmkECw47rnOtZYv" target="_blank" class="icon3 pc">
+        <i></i><span>유튜브</span> 
+    </a>
+    <a href="http://pf.kakao.com/_ptAxnG" target="_blank" class="icon4 pc">
+        <i></i><span>카카오 채널</span>
+    </a>
+    <a href="/sub1/page04.html" class="icon5 pc">
+        <i></i><span>오시는길</span> 
+    </a>
+</div>
+
+
+<div class="m-bg"></div>
+<header>
+    <h1 class="logo">
+        <a href="/">
+            <img class="header-logo mb-hide" src="/resource/images/logo.png" alt="성가소비녀회 로고">
+            <img class="header-logo mb-show" src="/resource/images/logo-m.png" alt="성가소비녀회 로고">
+        </a>
+    </h1>
+    <nav>
+      
+<div class="m-quick">
+    <ul>
+
+<li class="easy-btn">
+    <a href="/easy.php" target="_blank" onclick="window.open(this.href); return false;">
+        <span>EASY</span>
+    </a>
+</li>
+
+        <li>
+            <a href="https://holyfamily.egentouch.com/main.do?action=main" target="_blank">
+                <img src="/resource/images/icon-quick-01.png" alt="도서관 바로가기">
+                <span></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/holyfamily1225" target="_blank">
+                <img src="/resource/images/icon-quick-02.png" alt="성소국 인스타그램 바로가기">
+                <span></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.youtube.com/@holyfamily1943?si=PmmkECw47rnOtZYv" target="_blank">
+                <img src="/resource/images/icon-quick-03.png" alt="유튜브 바로가기">
+                <span></span>
+            </a>
+        </li>
+        <li>
+            <a href="http://pf.kakao.com/_ptAxnG" target="_blank">
+                <img src="/resource/images/icon-quick-04.png" alt="카카오채널 바로가기">
+                <span></span>
+            </a>
+        </li>
+        <!-- 5. 오시는 길 (복구완료) -->
+        <li>
+            <a href="/sub1/page04.html">
+                <img src="/resource/images/icon-quick-05.png" alt="찾아오시는 길">
+                <span></span>
+            </a>
+        </li>
+       
+
+    </ul>
+</div>
+<ul id="gnb">
+
+            <img class="mb-show m-gnb-close" src="/resource/images/gnb-close-m.png" alt="">
+            <a class="mb-show m-gnb-logo" href="/">
+                <img src="/resource/images/gnb-logo-m.png" alt="">
+            </a>
+            
+            <div class="mb-flex m-gnb-member">
+                
+                           
+                <a href="/member/login.html">LOGIN</a>
+                <a href="/member/join-tab.html">JOIN</a>
+            		
+            </div>
+
+            <li>
+                <span class="_1st"><a href="/sub1/page.html">성가소비녀회</a></span>
+                <ul class="snb">
+                    <li><a href="/sub1/page01.html">역사</a></li>
+                    <li><a href="/sub1/page02.html">설립자</a></li>
+                    <li><a href="/sub1/page03.html">소비녀</a></li>
+                    <li><a href="/sub1/page04.html">오시는길</a></li>
+                    <li><a href="/sub1/page05.html">후원안내</a></li>
+                </ul>
+            </li>
+            <li>
+                <span class="_1st"><a href="/sub2/page.html">강생의길</a></span>
+                <ul class="snb">
+                    <li><a href="/sub2/page01.html">본당선교</a></li>
+                    <li><a href="/sub2/page02.html">해외선교</a></li>
+                    <li><a href="/sub2/page03.html">복지·동행</a></li>
+                    <li><a href="/sub2/page04.html">교육·의료</a></li>
+                    <li><a href="/sub2/page05.html">정의·평화·생태</a></li>
+                    <li><a href="/sub2/page06.html">피정의집</a></li>
+                   
+                </ul>
+            </li>
+            <li>
+                <span class="_1st"><a href="/sub3/page.html">강생의 부르심</a></span>
+                <ul class="snb">
+                    <li><a href="/sub3/page01.html">양성과정</a></li>
+                    <li><a href="/sub3/page02.html">성소모임</a></li>
+                    <li><a href="/sub3/page03.html">청년모임</a></li>
+                    <li><a href="/sub3/page04-01.html">예수·마리아·요셉회</a></li>
+                </ul>
+            </li>
+            <li>
+                <span class="_1st"><a href="/sub4/page.html">JPIC</a></span>
+                <ul class="snb">
+                    <li><a href="/sub4/page01-1.html">정의·평화·창조보전</a></li>
+                    <li><a href="/sub4/page01-2.html">소비녀-JPIC여정</a></li>
+                    <li><a href="/sub4/page03.html">지금·여기-실천</a></li>
+                    <li><a href="/sub4/page04.html">연대의그물망</a></li>
+                    <li><a href="/sub4/page05.html">자료실</a></li>
+                </ul>
+            </li>
+            <li class="menu-fixed">
+                <span class="_1st"><a href="/sub5/page.html">생명의 그물망</a></span>
+                <ul class="snb">
+                    <li><a href="/sub5/page01.html">수녀원 소식</a></li>
+                    <li><a href="/sub5/page02.html">성가이야기</a></li>
+                    <li><a href="/sub5/page03.html">강생이야기</a></li>
+                    <li><a href="/sub5/page04.html">길벗이야기</a></li>
+                    <li><a href="/sub5/page06.html">이음자리</a></li>
+                    <li><a href="/sub5/page05-01.html">자료실</a></li>
+                     <li><a href="/sub5/page07.html">강생의 쉼터</a></li>
+                    
+                </ul>
+            </li>
+           <li class="last"> 
+    <span class="_1st">
+        <a href="/sub6/page.html">
+            <img class="li-sub6 mb-hide" src="/resource/images/icon-key.png" alt="회원전용">
+            <img class="li-sub6 mb-show" src="/resource/images/icon-key-m.png" alt="회원전용">
+        </a>
+    </span>
+    </li>
+
+            <div class="mb-show box-relative">
+                <img class="mb-show m-gnb-symbol" src="/resource/images/img-gnb-symbol-m.png" alt="">
+                <div class="mb-show gnb-sns-m">
+                    <a href="/sub1/page04.html">
+                        <img class="" src="/resource/images/icon-gnb-01-m.png" alt="">
+                    </a>
+                    <a href="http://pf.kakao.com/_ptAxnG" target="_blank">
+                        <img class="" src="/resource/images/icon-gnb-02-m.png" alt="">
+                    </a>
+                    <a href="https://www.youtube.com/@holyfamily1943?si=PmmkECw47rnOtZYv" target="_blank">
+                        <img class="" src="/resource/images/icon-gnb-03-m.png" alt="">
+                    </a>
+                    <a href="https://www.instagram.com/holyfamily1225" target="_blank">
+                        <img class="" src="/resource/images/icon-gnb-04-m.png" alt="">
+                    </a>
+                    <a href="https://holyfamily.egentouch.com/main.do?action=main" target="_blank">
+                        <img class="" src="/resource/images/icon-gnb-05-m.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </ul>
+        <div class="_right">            
+                            <a class="mb-hide" href="/member/join-tab.html"><span>회원가입</span></a>
+                <a class="mb-hide" href="/member/login.html"><span>로그인</span></a>
+            		
+            <div class="dropdown">
+            <a class="dropdown-button" style="line-height: unset;">
+                KO<img class="arrow-lang" style="margin-left:10px;" src="/resource/images/lang-down-wh.png">
+            </a>
+            <ul class="dropdown-lang">
+                <!--    
+                <li>
+                    <a href="/">KO
+                        
+                        <img class="_lang mb-hide" src="/resource/images/icon-flag-ko.png" alt="한국어">
+                        <img class="_lang mb-show" src="/resource/images/icon-flag-ko-m.png" alt="한국어">
+                        
+                    </a>
+                </li>
+                -->
+                <li>
+                    <!--<a href="http://eng.holyfamily.or.kr/" target="_blank">-->
+                    <a href="/eng">
+                        EN    
+                    </a>
+                <li>
+                    <a href="/vietnam">
+                        VT
+                        <!--
+                        <img class="mb-hide" src="/resource/vietnam/images/icon-flag-viet.png" alt="베트남 설정">
+                        <img class="mb-show" src="/resource/vietnam/images/icon-flag-viet-m.png" alt="베트남 설정">
+                        -->
+                    </a>
+                </li>
+            </ul>
+        </div>
+            <div class="_ham">
+                <img class="mb-hide" src="/resource/images/icon-ham.png" alt="메뉴">
+                <img class="mb-show" src="/resource/images/icon-ham-m.png" alt="메뉴">
+            </div>
+        </div>
+    </nav>
+    <div class="menu-all">
+        <img class="menu-close" src="/resource/images/icon-menu-close.png">
+        <div class="_wrap">
+        <div>
+            <span><a href="/sub1/page.html">성가소비녀회</a></span>
+            <ul>
+                <li><a href="/sub1/page01.html">역사</a></li>
+                <li><a href="/sub1/page02.html">설립자</a></li>
+                <li><a href="/sub1/page03.html">소비녀</a></li>
+                <li><a href="/sub1/page04.html">오시는길</a></li>
+               <li><a href="/sub2/page07.html">후원안내</a></li>
+            </ul>
+        </div>
+        <div>
+            <span><a href="/sub2/page.html">강생의길</a></span>
+            <ul>
+                <li><a href="/sub2/page01.html">본당선교</a></li>
+                <li><a href="/sub2/page02.html">해외선교</a></li>
+                <li><a href="/sub2/page03.html">복지·동행</a></li>
+                <li><a href="/sub2/page04.html">교육·의료</a></li>
+                <li><a href="/sub2/page05.html">정의·평화·생태</a></li>
+                <li><a href="/sub2/page06.html">피정의 집</a></li>
+            </ul>
+        </div>
+        <div>
+            <span><a href="/sub3/page.html">강생의 부르심</a></span>
+            <ul>
+                <li><a href="/sub3/page01.html">양성과정</a></li>
+                <li><a href="/sub3/page02.html">성소모임</a></li>
+                <li><a href="/sub3/page03.html">청년모임</a></li>
+                <li><a href="/sub3/page04-01.html">예수·마리아·요셉회</a></li>
+            </ul>
+        </div>
+        <div>
+            <span><a href="/sub4/page.html">JPIC</a></span>
+            <ul>
+                <li><a href="/sub4/page01-1.html">정의·평화·창조보전</a></li>
+                <li><a href="/sub4/page01-2.html">소비녀-JPIC여정</a></li>
+                <li><a href="/sub4/page03.html">지금·여기-실천</a></li>
+                <li><a href="/sub4/page04.html">연대의그물망</a></li>
+                <li><a href="/sub4/page05.html">자료실</a></li>
+            </ul>
+        </div>
+        <div>
+            <span><a href="/sub5/page.html">생명의 그물망</a></span>
+            <ul>
+                <li><a href="/sub5/page01.html">수녀원소식</a></li>
+                <li><a href="/sub5/page02.html">성가이야기</a></li>
+                <li><a href="/sub5/page03.html">강생이야기</a></li>
+                <li><a href="/sub5/page04.html">길벗이야기</a></li>
+                <li><a href="/sub5/page06.html">이음자리</a></li>
+                <li><a href="/sub5/page05-01.html">자료실</a></li>
+                <li><a href="/sub5/page07.html">강생의 쉼터</a></li>
+            </ul>
+        </div>
+       <div class="last_sub">
+    <span><a href="/sub6/page.html"><img src="/resource/images/icon-key-point.png" alt=""></a></span>
+    </div>
+    </div>
+</header>		<div id="container" class="main">
+			<div id="main-banner"> 
+                <div class="inner">
+                    <div class="slogan">
+                        <h2>
+                        
+                        </h2>
+                    </div>
+                </div>
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+
+						<li class="swiper-slide add-slogan">
+							<a href="#none">
+								<img class="mb-hide" src="/resource/images/main-bnnr-01.png" alt="">
+								<img class="mb-show" src="/resource/images/main-bnnr-01-m.png" alt="">
+
+							</a>
+						</li>
+                        <li class="swiper-slide">
+							<a href="#none">
+								<img class="mb-hide" src="/resource/images/main-bnnr-02.png" alt="">
+								<img class="mb-show" src="/resource/images/main-bnnr-02-m.png" alt="">
+							</a>
+                            <!--
+                            <div class="inner">
+                                <div class="_txt">
+                                    <h2>
+                                        <p>
+                                        대전환의 때(Kairos), 더 깊은 부르심! <br>
+                                            깊은 강생으로 신나고 설레게, 바로 지금!
+                                        </p>
+                                    </h2>
+                                </div>
+                            </div>
+                            -->
+						</li>
+                        <li class="swiper-slide">
+							<a href="#none">
+								<img class="mb-hide" src="/resource/images/main-bnnr-03.png" alt="">
+								<img class="mb-show" src="/resource/images/main-bnnr-03-m.png" alt="">
+								<div class="inner">
+							</a>
+						</li>
+                        <li class="swiper-slide">
+							<a href="#none">
+								<img class="mb-hide" src="/resource/images/main-bnnr-04.png" alt="">
+								<img class="mb-show" src="/resource/images/main-bnnr-04-m.png" alt="">
+							</a>
+						</li>
+					</ul>
+				</div>
+                <div class="button-box">
+                    <div class="swiper-pagination"></div>
+                    <div class="button-prev"></div>
+                    <div class="button-stop"></div>
+                    <div class="button-next"></div>
+                </div>
+			</div>
+			<!-- //end #main-banner -->
+
+          <div class="father-say">
+    <div class="inner">
+        <div class="_left" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; margin-right: 35px;">
+            
+            <div style="text-align: left; margin-bottom: 15px;">
+                <h2 style="font-family: 'Nanum Myeongjo', serif; font-size: 19px; color: #f4f1ea; font-weight: 800; margin: 0; line-height: 1.3; border:none; background:none;">
+                    설립자 신부님, 오늘의 말씀
+                </h2>
+                
+                <p style="color: #c9a067; font-weight: 600; font-size: 12px; letter-spacing: 0.5px; margin: 0; text-transform: uppercase;">
+                    The Word of Today
+                </p>
+            </div>
+
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <div class="_box" style="margin-right: 15px;">
+                    <p class="_year">2026</p>
+                    <span class="_day">November</span>
+                </div>
+                <h1 class="_month" style="margin:0; line-height:1;">04</h1>
+            </div>
+
+            <a href="/sub5/word.html" style="display: inline-block; background: #c9a067; color: #fff; border: none; padding: 8px 16px; font-family: 'Nanum Myeongjo', serif; font-size: 14px; font-weight: bold; border-radius: 4px; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); margin-bottom: 15px; text-align: center;">말씀 뽑기 🎲</a>
+            
+            <img class="mb-show" src="/resource/images/img-line-199.png" alt="수평선" style="margin-top:15px;">
+        </div>
+
+        <img class="mb-hide" src="/resource/images/img-line-199.png" alt="수평선">
+
+        <div class="_right">
+                  
+                    <span class="_txt-01">애덕으로 우리는 실제로 이 세상에서 천국의 삶을<br />
+시작합니다. (수도자 피정 202쪽)</span>
+                    <span class="_txt-02">Paradise begins in our world when we love.</span>
+                            </div>
+    </div>
+</div>
+
+
+                        <!-- <span class="_txt-01">성인이 되기 위해서는 조건이 있습니다. <br class="mb-show">간절해야 됩니다.(종합강론집 447쪽)</span>
+                        <span class="_txt-02">Genuineness is the way to saintliness. <br class="mb-show">Do not just pretend to be passionate for God.</span> -->
+                    </div>
+                </div>
+            </div>
+
+           <div class="main-thumb showBox">
+    <div class="inner">
+        <div style="position: relative; display: inline-block;">
+            <span class="quick-go" data-url="http://www.holyfamily.or.kr/sub5/page03.html?jb_code=50&jb_type=&page=">+</span>
+            
+                <div class="_box">
+                    <a href="/sub5/page03.html?&jb_mode=tdetail&jb_code=50&jb_idx=19069">
+                        <img src="http://www.holyfamily.or.kr/bbs/files/jb_50/17936891981269.png" alt="">
+                        <div class="_txt-01">
+                            <h1>강생이야기</h1>
+                            <span>성가복지병원] 교황청 수도회부 차관 티치아나 메를레티 수녀님의 방문 (10.20)</span>
+                        </div>
+                        <p>2026-11-03</p>
+                    </a>
+                </div>
+                        </div>
+
+        <div style="position: relative; display: inline-block;">
+            <span class="quick-go" data-url="http://www.holyfamily.or.kr/sub5/page02.html?jb_code=40&jb_type=&page=">+</span>
+            
+                <div class="_box">
+                    <a href="/sub5/page02.html?&jb_mode=tdetail&jb_code=40&jb_idx=19045">
+                        <img src="http://www.holyfamily.or.kr/bbs/files/jb_40/17906987867376.jpg" alt="">
+                        <div class="_txt-01">
+                            <h1>성가이야기</h1>
+                            <span>창조시기] 자연 속 소비녀들의 하모니 (09.27)</span>
+                        </div>
+                        <p>2026-09-29</p>
+                    </a>
+                </div>
+                        </div>
+
+        <div style="position: relative; display: inline-block;">
+            <span class="quick-go" data-url="http://www.holyfamily.or.kr/sub5/page04.html?jb_code=60&jb_type=&page=">+</span>
+            
+                <div class="_box">
+                    <a href="/sub5/page04.html?&jb_mode=tdetail&jb_code=60&jb_idx=19068">
+                        <img src="http://www.holyfamily.or.kr/bbs/files/jb_60/17935362626332.png" alt="">
+                        <div class="_txt-01">
+                            <h1>길벗이야기</h1>
+                            <span>강생의 새로운 성소] 믿음의 여정과 새 생명, 그 아름다운 결실이 가득했던 10월 이야기</span>
+                        </div>
+                        <p>2026-11-01</p>
+                    </a>
+                </div>
+                        </div>
+
+        </div>
+</div>>
+
+            <div class="main-notice">
+                <div class="inner">
+                    <div class="_notice">
+                        <p>성가소비녀회 소식을 전해드립니다.</p>
+                        <div class="_wrap">
+                            <ul class="_ul">
+                                <li class="_tab on">
+    <div class="_left">
+        <span class="quick-go" data-url="http://www.holyfamily.or.kr/sub5/page01.html?jb_code=30">
+            +
+        </span>
+        <span class="_txt">수녀원 소식</span>
+    </div>
+    <div class="_list">
+        <ul>
+            
+                    <li>
+                        <a href="/sub5/page01.html?&jb_mode=tdetail&jb_code=30&jb_idx=19067" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>청년모임] 강생의 새로운 성소 11월..</span>
+                            <span>2026.11.01</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub5/page01.html?&jb_mode=tdetail&jb_code=30&jb_idx=19064" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>[총장 수녀님 말씀] 천막에 머물며 ..</span>
+                            <span>2026.11.01</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub5/page01.html?&jb_mode=tdetail&jb_code=30&jb_idx=19058" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>독서 모임] 앎과 삶의 동행 (11.19)..</span>
+                            <span>2026.10.19</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub5/page01.html?&jb_mode=tdetail&jb_code=30&jb_idx=19052" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>안내] 성가소비녀회 카카오 채널 친..</span>
+                            <span>2026.10.01</span>
+                        </a>
+                    </li>
+                            </ul>
+    </div>
+</li>
+
+<li class="_tab">
+    <div class="_left">
+        <span class="quick-go" data-url="http://www.holyfamily.or.kr/sub3/page04-03.html?jb_code=10">
+            +
+        </span>
+        <span class="_txt">JMJ 소식</span>
+    </div>
+    <div class="_list">
+        <ul>
+            
+                    <li>
+                        <a href="/sub3/page04-03.html?&jb_mode=tdetail&jb_code=10&jb_idx=19066" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>11월 모임 및 일정 안내</span>
+                            <span>2026.11.01</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub3/page04-03.html?&jb_mode=tdetail&jb_code=10&jb_idx=19065" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>10월 소식] 생명을 살리는 나눔과 ..</span>
+                            <span>2026.11.01</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub3/page04-03.html?&jb_mode=tdetail&jb_code=10&jb_idx=19050" >
+                            <span>3</span>
+                            <span>10월 모임 및 일정 안내</span>
+                            <span>2026.10.01</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub3/page04-03.html?&jb_mode=tdetail&jb_code=10&jb_idx=19049" >
+                            <span>4</span>
+                            <span>9월 소식] 마음을 모으고 일상 안에..</span>
+                            <span>2026.10.01</span>
+                        </a>
+                    </li>
+                            </ul>
+    </div>
+</li>
+
+<li class="_tab">
+    <div class="_left">
+        <span class="quick-go" data-url="http://www.holyfamily.or.kr/sub5/page05-01.html?jb_code=70">
+            +
+        </span>
+        <span class="_txt">일반 자료실</span>
+    </div>
+    <div class="_list">
+        <ul>
+            
+                    <li>
+                        <a href="/sub5/page05-01.html?&jb_mode=tdetail&jb_code=70&jb_idx=19018" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>성재덕 신부님 유언서 (1972.12.25)..</span>
+                            <span>2026.08.27</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub5/page05-01.html?&jb_mode=tdetail&jb_code=70&jb_idx=18776" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>음원] 성가소비녀회 원가</span>
+                            <span>2025.08.24</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub5/page05-01.html?&jb_mode=tdetail&jb_code=70&jb_idx=18750" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>성재덕체 한글 폰트 </span>
+                            <span>2025.08.19</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub5/page05-01.html?&jb_mode=tdetail&jb_code=70&jb_idx=18749" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>아카이브] 악보 - 수녀원 관련 각종..</span>
+                            <span>2025.08.19</span>
+                        </a>
+                    </li>
+                            </ul>
+    </div>
+</li>
+<li class="_tab">
+    <div class="_left">
+        <span class="quick-go" data-url="http://www.holyfamily.or.kr/sub4/page05.html?jb_code=20">
+            +
+        </span>
+        <span class="_txt">JPIC자료실</span>
+    </div>
+    <div class="_list">
+        <ul>
+            
+                    <li>
+                        <a href="/sub4/page05.html?&jb_mode=tdetail&jb_code=20&jb_idx=19040" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span>창조시기] 2026년 전례 등 관련 자..</span>
+                            <span>2026.09.03</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub4/page05.html?&jb_mode=tdetail&jb_code=20&jb_idx=19015" >
+                            <span><img class="mb-hide" src="/resource/images/icon-speaker.png" alt="메인 공지사항 고정 게시물">
+                        <img class="mb-show" src="/resource/images/icon-speaker-m.png" alt="메인 공지사항 고정 게시물">
+                        </span>
+                            <span> 성가소비녀회 생명 공동체 이야기 ..</span>
+                            <span>2026.08.23</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub4/page05.html?&jb_mode=tdetail&jb_code=20&jb_idx=18955" >
+                            <span>3</span>
+                            <span>기후시민 플랫폼 - <기후도시 고양..</span>
+                            <span>2026.05.23</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sub4/page05.html?&jb_mode=tdetail&jb_code=20&jb_idx=18921" >
+                            <span>4</span>
+                            <span>전례] 십자가의 길 - 평화를 위한 ..</span>
+                            <span>2026.03.14</span>
+                        </a>
+                    </li>
+                            </ul>
+    </div>
+</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="_joint" style="position: relative;">
+    <p style="display: flex; align-items: center; gap: 8px;">
+        이음자리
+        <span class="quick-go joint-btn" data-url="http://www.holyfamily.or.kr/sub5/page06.html?jb_code=180&jb_type=&page=">+</span>
+    </p>
+    
+                <a href="/sub5/page06.html?&jb_mode=tdetail&jb_code=180&jb_idx=19070">
+                    <img src="http://www.holyfamily.or.kr/bbs/files/jb_180/17937214626309.png" alt="">
+                    <h1> 시와 영상] 농사 - 흙과 사람, 그리고 예수님 | 김 니꼬데모 농부 수녀님의 묵상 시</h1>
+                </a>
+               
+                </div>
+
+                    <!--
+                    <div class="_story">
+                        <p>소비녀 이야기를 들려드려요.</p>
+                        <iframe class="mb-hide" width="446" height="248" src="https://www.youtube.com/embed/neIfXBGNFt4?rel=0" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="mb-show" width="591" height="328" src="https://www.youtube.com/embed/neIfXBGNFt4?rel=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    -->
+                </div>
+            </div>
+
+		</div>
+
+<!-- 카드형 레이아웃 1 시작 -->    
+<div class="dg-section-first mb-hide" style="width: 100%; background: #efede9 !important; padding: 50px 0;"> 
+    <div class="inner">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <p style="color: #a68575; font-weight: 600; font-size: 14px; letter-spacing: 2px; margin: 0 0 10px 0;">Spirit & Mission</p>
+            <h2 style="font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Batang', serif !important; color: #555 !important; font-weight: 800 !important; font-size: 28px !important; margin: 0; border:none; background:none; line-height:1.2; letter-spacing:-1.5px;">영성과 사명 안에서</h2>
+            <div style="width: 40px; height: 2px; background: #c9a067; margin: 20px auto;"></div>
+        </div>
+        <div class="dg-first-flex">  
+            <div class="_box"><a href="/sub1/page02.html"><img src="/resource/images/main-card-1-01.png"><div class="_txt-01"><h1> 설립자</h1><p>강생의 씨앗<br>사명의 길을 열다</p><span>자세히 보기</span></div></a></div>
+            <div class="_box"><a href="/sub1/page03.html"><img src="/resource/images/main-card-1-02.png"><div class="_txt-01">
+<h1>소비녀</h1><p>기쁨으로 움트는<br> 강생의 작은 여종들</p><span>자세히 보기</span></div></a></div>
+            <div class="_box"><a href="/sub1/page01.html"><img src="/resource/images/main-card-1-03.png"><div class="_txt-01">
+<h1>역사</h1><p>뿌리 깊은 영성<br> 강생의 발걸음</p><span>자세히 보기</span></div></a></div>
+            <div class="_box"><a href="/sub3/page01.html"><img src="/resource/images//main-card-1-04.png"><div class="_txt-01">
+<h1>양성</h1><p>소비녀로 영글어가는<br> 은총의 기다림</p><span>자세히 보기</span></div></a></div>
+            <div class="_box"><a href="/sub4/page03.html"><img src="/resource/images/main-card-1-05.png"><div class="_txt-01">
+<h1>JPIC</h1><p>하느님 창조질서 회복<br> 강생의 예언적 사명</p><span>자세히 보기</span></div></a></div>
+        </div> 
+    </div>
+</div>
+
+<div class="dg-section-first mb-show" style="width: 100%; background: #efede9 !important; padding: 20px 0 10px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div style="text-align: center; margin-bottom: 15px;"> 
+            <p style="color: #a68575; font-weight: 600; font-size: 20px; letter-spacing: 2px; margin: 0 0 10px 0;">Spirit & Mission</p>
+            <h2 style="font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Batang', serif !important; color: #555 !important; font-weight: 800 !important; font-size: 38px !important; margin: 0; border:none; background:none; line-height:1.2; letter-spacing:-1.5px;">영성과 사명 안에서</h2> 
+            <div style="width: 40px; height: 2px; background: #c9a067; margin: 15px auto;"></div>
+        </div>
+        <div class="dg-first-scroll-wrap">
+            <div class="dg-first-flex"> 
+                <div class="_box"><a href="/sub1/page02.html"><img src="/resource/images/main-card-1-01.png"><div class="_txt-01"><h1> 설립자</h1><p>강생의 씨앗<br>사명의 길을 열다</p><span>자세히 보기</span></div></a></div>
+            <div class="_box"><a href="/sub1/page03.html"><img src="/resource/vietnam/images/main-menu-02.png"><div class="_txt-01">
+<h1>소비녀</h1><p>기쁨으로 움트는<br> 강생의 작은 여종들</p><span>자세히 보기</span></div></a></div>
+            <div class="_box"><a href="/sub1/page01.html"><img src="/resource/images/img-sub01-01-08.png"><div class="_txt-01">
+<h1>역사</h1><p>뿌리 깊은 영성<br> 강생의 발걸음</p><span>자세히 보기</span></div></a></div>
+            <div class="_box"><a href="/sub3/page01.html"><img src="/resource/images/img-sub03-01-01.png"><div class="_txt-01">
+<h1>양성</h1><p>소비녀로 영글어가는<br> 은총의 기다림</p><span>자세히 보기</span></div></a></div>
+            <div class="_box"><a href="/sub4/page03.html"><img src="/resource/images/main-card-1-05.png"><div class="_txt-01">
+<h1>JPIC</h1><p>하느님 창조질서 회복<br> 강생의 예언적 사명</p><span>자세히 보기</span></div></a></div>
+
+            </div> 
+        </div>
+    </div>
+</div>
+<!-- 카드형 레이아웃 2 시작 --> 
+<div id="dg-vocation-section" class="mb-hide" style="width: 100%; background: #ffffff !important; padding: 50px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div style="text-align: center; margin-bottom: 0px;">
+            <p style="color: #a68575; font-weight: 600; font-size: 14px; letter-spacing: 2px; margin: 0 0 10px 0;">Our Apostolate</p>
+            <h2 style="font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Batang', serif !important; color: #555 !important; font-weight: 800 !important; font-size: 28px !important; margin: 0; border:none; background:none; line-height:1.2; letter-spacing:-1.5px;">사도직, 생명의 발걸음</h2>
+            <div style="width: 40px; height: 2px; background: #c9a067; margin: 20px auto;"></div>
+        </div>
+        <div class="dg-scroll-container">
+            <div class="dg-flex-box">
+                <div class="dg-item-card"><a href="/sub2/page01.html"><div class="dg-img-wrap"><img src="/resource/images/main-card-2-01.png"></div><div class="dg-body"><h3>본당 선교</h3><p>신앙의 여정을 함께 - <br>복음의 동반자</p><span>입회 안내</span></div></a></div>
+                <div class="dg-item-card"><a href="/sub2/page02.html"><div class="dg-img-wrap"><img src="/resource/vietnam/images/main-menu-03.png"></div><div class="dg-body"><h3>해외 선교</h3><p>경계를 넘나드는 신앙의 불꽃</p><span>자세히 보기</span></div></a></div>
+                <div class="dg-item-card"><a href="/sub2/page03.html"><div class="dg-img-wrap"><img src="/resource/images/main-card-2-03.png"></div><div class="dg-body"><h3>복지 · 동행</h3><p>소외되고 가난한 이들과 함께</p><span>자세히 보기</span></div></a></div>
+                <div class="dg-item-card"><a href="/sub2/page04.html"><div class="dg-img-wrap"><img src="/resource/images/main-card-2-04.png"></div><div class="dg-body"><h3>교육 · 의료</h3><p>미소함 가운데 만나는<br> 생명의 빛 </p><span>자세히 보기</span></div></a></div>
+                <div class="dg-item-card"><a href="/sub2/page05.html"><div class="dg-img-wrap"><img src="/resource/images/main-card-2-05.png"></div><div class="dg-body"><h3>정의 · 평화 · 생태</h3><p>이 시대, 가장 절박한 곳으로</p><span>자세히 보기</span></div></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dg-vocation-m-wrap mb-show" style="width: 100%; background: #ffffff !important; padding: 60px 0 !important;">  
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div style="text-align: center; margin-bottom: 15px;"> 
+            <p style="color: #a68575; font-weight: 600; font-size: 20px; letter-spacing: 2px; margin: 0 0 10px 0;">Our Apostolate</p>
+            <h2 style="font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Batang', serif !important; color: #555 !important; font-weight: 800 !important; font-size: 32px !important; margin: 0; border:none; background:none; line-height:1.2; letter-spacing:-1.5px;">사도직, 생명의 발걸음</h2>
+            <div style="width: 80px; height: 2px; background: #c9a067; margin: 15px auto;"></div>
+        </div>
+        <div class="dg-scroll-container">
+            <div class="dg-flex-box">
+                  <div class="dg-item-card"><a href="/sub2/page01.html"><div class="dg-img-wrap"><img src="/resource/images/main-card-2-01.png"></div><div class="dg-body"><h3>본당 선교</h3><p>신앙의 여정을 함께 - 복음의 동반자</p><span>입회 안내</span></div></a></div>
+                <div class="dg-item-card"><a href="/sub2/page02.html"><div class="dg-img-wrap"><img src="/resource/vietnam/images/main-menu-03.png"></div><div class="dg-body"><h3>해외 선교</h3><p>경계를 넘나드는 신앙의 불꽃</p><span>자세히 보기</span></div></a></div>
+                <div class="dg-item-card"><a href="/sub2/page03.html"><div class="dg-img-wrap"><img src="/resource/images/main-card-2-03.png"></div><div class="dg-body"><h3>복지 · 동행</h3><p>소외되고 가난한 이들과 함께</p><span>자세히 보기</span></div></a></div>
+                <div class="dg-item-card"><a href="/sub2/page04.html"><div class="dg-img-wrap"><img src="/resource/images/main-card-2-04.png"></div><div class="dg-body"><h3>교육 · 의료</h3><p>미소함 가운데 만나는 생명의 빛 </p><span>자세히 보기</span></div></a></div>
+                <div class="dg-item-card"><a href="/sub2/page05.html"><div class="dg-img-wrap"><img src="/resource//images/main-card-2-05.png"></div><div class="dg-body"><h3>정의 · 평화 · 생태</h3><p>이 시대, 가장 절박한 곳으로</p><span>자세히 보기</span></div></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+﻿<style>
+/* 1. 배경을 가진 메인 컨테이너 */
+._family {
+    width: 100%;
+    background-image: url('/resource/images/bg-footer.png') !important; 
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    height: auto !important; 
+    min-height: 0 !important; 
+    padding: 100px 0 !important;
+    position: relative;
+    z-index: 5;
+    overflow: hidden; /* ★ 삐져나간 버튼이 화면을 밀지 않도록 방어 */
+}
+
+/* 2. 내부 레이아웃 */
+._family .inner {
+    background: transparent !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 3. 왼쪽 제목 스타일 */
+.dg-footer-title {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    white-space: nowrap; 
+    text-align: left;
+}
+.dg-title-en {
+    font-family: serif;
+    font-size: 40px !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    line-height: 1.1;
+    display: flex;
+    align-items: center; 
+    gap: 15px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+.dg-title-en::after {
+    content: "";
+    height: 2px;
+    width: 100px;
+    background: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+}
+.dg-title-ko {
+    font-size: 25px !important;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 3px;
+    margin-top: 8px;
+}
+
+/* 4. 오른쪽 카드 그리드 (PC 3열 고정) */
+.dg-footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 200px) !important; 
+    gap: 15px;
+    width: auto !important;
+    margin-left: auto !important;
+    position: relative; 
+    justify-content: end; 
+}
+
+.dg-footer-grid a {
+    grid-column: span 1 !important; 
+    width: 200px !important;
+    box-sizing: border-box;
+}
+
+.dg-footer-btn {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 105px !important;
+    padding: 15px !important;
+    border-radius: 12px;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(3px);
+    transition: all 0.3s ease-out;
+}
+
+.dg-footer-grid a:nth-child(3n+1) { background: rgba(250, 245, 230, 0.35) !important; }
+.dg-footer-grid a:nth-child(3n+2) { background: rgba(225, 210, 195, 0.35) !important; }
+.dg-footer-grid a:nth-child(3n)   { background: rgba(210, 215, 190, 0.35) !important; }
+
+/* 2. PC 버전 스타일 수정 */
+.dg-donation-wrapper {
+    position: absolute;
+    right: -130px; 
+    bottom: 5px;
+    width: 95px !important;
+    height: 95px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+.dg-footer-btn span:last-child {
+    color: #ffffff !important; 
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+    font-weight: 400 !important;
+    font-size: 16px;
+}
+.dg-footer-btn span:first-child img {
+    width: 40px !important;
+    height: auto !important;
+    margin-bottom: 10px;
+}
+.dg-footer-btn:hover {
+    transform: translateY(-8px) !important;
+    background: rgba(255, 255, 255, 1) !important;
+}
+
+.btn-donation-circle {
+    width: 95px !important;
+    height: 95px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    
+    /* ★ PC 평상시 애니메이션 적용 */
+    animation: salrang 4s ease-in-out infinite !important;
+}
+.btn-donation-circle span {
+    color: #fff !important;
+    font-weight: bold !important;
+    font-size: 15px !important;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+/* ★ PC 마우스 호버 시 효과 */
+.btn-donation-circle:hover {
+    animation-play-state: paused; /* 마우스 올리면 살랑거림 멈춤 */
+    transform: scale(1.15) rotate(10deg) !important; /* 대신 쫀득하게 커짐 */
+    background: #fff !important;
+}
+.btn-donation-circle:hover span {
+    color: #333 !important; /* PC는 마우스 떼면 다시 흰색으로 돌아오니 검정색 OK */
+}
+#holyfamily-kakao-fixed {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 10px !important;
+    z-index: 10001 !important;
+    display: flex !important; /* 문구와 아이콘을 가로로 배치 */
+    align-items: center !important;
+    gap: 12px !important;
+  }  
+/* 말풍선 스타일 */
+  .kakao-label {
+    background: #fff !important;
+    color: #333 !important;
+    padding: 8px 15px !important;
+    border-radius: 20px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+    white-space: nowrap !important;
+    border: 1px solid #eee !important;
+    position: relative !important;
+  }
+
+  /* 말풍선 꼬리표 */
+  .kakao-label::after {
+    content: '' !important;
+    position: absolute !important;
+    right: -6px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    border-top: 6px solid transparent !important;
+    border-bottom: 6px solid transparent !important;
+    border-left: 8px solid #fff !important;
+  }
+  #holyfamily-kakao-fixed img {
+    /* 선명한 고해상도 유지를 위해 70px로 고정 */
+    width: 70px !important; 
+    height: 70px !important;
+    display: block !important;
+    border-radius: 50% !important;
+    
+    /* 그림자를 조금 더 부드럽게 해서 고급스럽게 표현 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    
+    /* 이미지가 잘리지 않게 안쪽 여백(padding) 살짝 추가 */
+    padding: 2px !important;
+    background-color: #fff !important; /* 흰색 테두리 느낌으로 깔끔하게 */
+    
+    transition: transform 0.2s ease-in-out !important;
+    cursor: pointer !important;
+    object-fit: contain !important; /* 이미지 비율 유지 */
+  }
+
+  #holyfamily-kakao-fixed img:hover {
+    transform: scale(1.1) !important;
+
+  }
+
+/* 이 한 줄이 살랑이 버튼을 완벽하게 숨겨줍니다 */
+.dg-donation-wrapper { display: none !important; }/* 
+
+[6. 모바일 대응 - 쏠림 방지 및 레이아웃 재배치] */
+@media screen and (max-width: 1024px) {
+    /* PC와 모바일 중간 단계에서 버튼이 화면을 찌르지 않게 마진 확보 */
+    .dg-footer-grid { margin-right: 120px; }
+}
+/* 1. 살랑살랑 애니메이션 정의 (공통) */
+@keyframes salrang {
+    0% { transform: translateY(0) rotate(0); }
+    33% { transform: translateY(-6px) rotate(3deg); } /* 위로 살짝 */
+    66% { transform: translateY(3px) rotate(-3deg); } /* 아래로 살짝 */
+    100% { transform: translateY(0) rotate(0); }
+}
+@media screen and (max-width: 1024px) {
+    /* PC와 모바일 중간 단계에서 버튼이 화면을 찌르지 않게 마진 확보 */
+    .dg-footer-grid { margin-right: 120px; }
+}
+
+/* 1. 살랑살랑 애니메이션 정의 (공통) */
+@keyframes salrang {
+    0% { transform: translateY(0) rotate(0); }
+    33% { transform: translateY(-6px) rotate(3deg); } /* 위로 살짝 */
+    66% { transform: translateY(3px) rotate(-3deg); } /* 아래로 살짝 */
+    100% { transform: translateY(0) rotate(0); }
+}
+
+@media screen and (max-width: 768px) {
+    ._family { 
+        padding: 60px 0 !important;
+        background-image: url('/resource/images/bg-footer-m.png') !important; 
+    }
+    ._family .inner { 
+        flex-direction: column !important; 
+        align-items: center !important; 
+    }
+    
+    /* 1. 그리드 설정: 마지막 3행을 위해 정렬 */
+    .dg-footer-grid { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 12px;
+        margin-right: auto !important;
+        margin-top: 30px !important;
+        width: 100% !important;
+        position: static !important; 
+        justify-items: center; /* 자식 요소들을 중앙으로 */
+    }
+    
+    .dg-footer-grid a { width: 100% !important; }
+    .dg-footer-btn { min-height: 120px !important; }
+    .dg-footer-btn span:last-child { font-size: 22px !important; }
+
+    /* 2. ★ 문의상담 버튼: 모바일에서도 완벽한 원형 유지 ★ */
+    .dg-donation-wrapper {
+        position: static !important; 
+        grid-column: span 2 !important; 
+        width: 100% !important;
+        height: auto !important;
+        margin-top: 20px !important;
+        display: flex !important;
+        justify-content: center !important; 
+        padding-left: 20px !important; /* 왼쪽 벽에서 살짝 띄우기 */
+        overflow: visible !important; /* 애니메이션이 잘리지 않게 */
+    }
+    
+    .btn-donation-circle { 
+        width: 100px !important;
+        height: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+        border-radius: 50% !important; 
+        background: rgba(255, 255, 255, 0.2) !important;
+        border: 2px solid rgba(255, 255, 255, 0.6) !important;
+        animation: salrang 3s ease-in-out infinite !important; 
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transform: none; 
+    }
+
+    /* 모바일 터치 시 반응 */
+    .btn-donation-circle:active {
+        animation: none !important;
+        transform: scale(1.15) rotate(10deg) !important;
+        background: rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* 글자색 흰색 고정 */
+    .btn-donation-circle:hover span,
+    .btn-donation-circle:active span {
+        color: #fff !important; 
+    }
+    
+    .btn-donation-circle span {
+        font-size: 16px !important;
+        color: #fff !important;
+        font-weight: bold !important;
+        line-height: 1.2;
+    }
+
+    /* 제목 크기 보정 */
+    .dg-title-ko { font-size: 40px !important; text-align: center; }
+    .dg-title-en { font-size: 45px !important; justify-content: center; }
+
+    /* 1. 세로 정렬 및 우측 하단 고정 */
+    #holyfamily-kakao-fixed { 
+        bottom: 120px !important; 
+        right: 15px !important; 
+        display: flex !important;
+        flex-direction: column !important; /* 위(아이콘), 아래(글자) 배치 */
+        align-items: center !important;
+        background: none !important;
+        gap: 4px !important; /* 아이콘과 글자 사이의 아주 좁은 간격 */
+    }
+
+    /* 2. 아이콘 설정 (위쪽) */
+    #holyfamily-kakao-fixed img { 
+        width: 100px !important; 
+        height: 100px !important; 
+        order: 1 !important; 
+        margin: 0 !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+    }
+
+    /* 3. 말풍선(글자) 설정 (아래쪽, 꼬리표 제거) */
+    .kakao-label { 
+        display: block !important; 
+        order: 2 !important; 
+        background: rgba(255, 255, 255, 0.95) !important; 
+        color: #333 !important;
+        padding: 4px 10px !important;
+        border-radius: 12px !important; 
+        font-size: 17px !important;
+        font-weight: bold !important;
+        border: 1px solid #ffeb00 !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+        white-space: nowrap !important;
+        position: relative !important;
+    }
+
+    /* 4. 꼬리표(화살표) 제거 */
+    .kakao-label::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    /* 살랑이 버튼 숨김 */
+    .dg-donation-wrapper { display: none !important; }
+
+    /* 모바일 탭 메뉴 (2개씩 정렬) */
+    .wrapSelect.mb-show { display: none !important; }
+    
+    .mobile-tab-menu.mb-show { 
+        display: block !important; 
+        margin-bottom: 25px; 
+        padding: 0 10px; 
+    }
+    
+    .mobile-tab-menu ul.list { 
+        display: flex !important; 
+        flex-wrap: wrap !important; 
+        gap: 5px 10px !important; 
+        padding: 0; 
+        margin: 0; 
+        list-style: none; 
+        background: none !important; 
+    }
+    
+    .mobile-tab-menu ul.list li { 
+        flex: 0 0 calc(50% - 5px) !important; 
+        width: calc(50% - 5px) !important; 
+        box-sizing: border-box !important; 
+        margin: 0 !important; 
+        border: none !important; 
+    }
+    
+    .mobile-tab-menu ul.list li a { 
+        display: block !important; 
+        text-align: center; 
+        padding: 15px 5px; 
+        background: #fff; 
+        border: 1px solid #b1b1b1 !important; 
+        color: #666; 
+        font-size: 20px !important; 
+        text-decoration: none; 
+        border-radius: 4px; 
+        font-weight: bold; 
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    .mobile-tab-menu ul.list li.on a { 
+        background: #f1f1f1 !important; 
+        border-color: #666 !important; 
+        color: #333 !important; 
+    }
+}
+</style>
+
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js" integrity="sha384-l0xbGqW4vxlH9XyVdaXH7Y8/TzBvP1F9aT+f9N0L6S3S7uHh6oWpG7F7y6X1W4" crossorigin="anonymous"></script>
+
+<div class="_family">
+    <div class="inner">
+        <div class="_left">
+            <div class="dg-footer-title">
+                <span class="dg-title-en">Come and See</span>
+                <span class="dg-title-ko">와서 보아라</span>
+            </div>
+        </div>
+        
+        <div class="_right">
+            <div class="dg-footer-grid">
+                <a href="/sub3/page02.html" class="dg-footer-btn"><span><img src="/resource/images/footer-card-01.png" style="width: 30px; height: auto;"></span><span>성소 모임</span></a>
+                <a href="/sub3/page03.html" class="dg-footer-btn"><span><img src="/resource/images/footer-card-02.png" style="width: 30px; height: auto;"></span><span>청년 모임</span></a>
+                <a href="/sub3/page04-01.html" class="dg-footer-btn"><span><img src="/resource/images/footer-card-03.png" style="width: 30px; height: auto;"></span><span>예수 · 마리아 · 요셉회</span></a>
+                <a href="/sub2/page06.html" class="dg-footer-btn"><span><img src="/resource/images/footer-card-04.png" style="width: 30px; height: auto;"></span><span>피정의 집</span></a>
+                <a href="/sub5/page05-02.html" target="_blank" class="dg-footer-btn"><span><img src="/resource/images/footer-card-05.png" style="width: 30px; height: auto;"></span><span>소식지 · 간행물</span></a>
+                <a href="/sub1/page05.html" class="dg-footer-btn"><span><img src="/resource/images/footer-card-06.png" style="width: 30px; height: auto;"></span><span>후원 안내</span></a>
+<!-- 이 내용은 브라우저에 표시되지 않습니다 -->
+<div class="dg-donation-wrapper">
+        <a href="https://pf.kakao.com/_ptAxnG/" target="_blank" class="btn-donation-circle" >
+            <span>문의 · 상담</span>
+        </a>
+    </div><!-- 이 내용은 브라우저에 표시되지 않습니다 -->
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    
+    <div class="inner">
+        <img class="_logo mb-hide" src="/resource/images/footer-logo.png" alt="로고">
+        <img class="_logo mb-show" src="/resource/images/footer-logo-m.png" alt="로고">
+        
+        <div class="_center">
+            <div><span>총원</span><span>02721 서울시 성북구 길음로9길 46(정릉동)</span><span>TEL 02) 940-5800</span></div>
+            <div><span>의정부관구</span><span>11423 경기도 양주시 광적면 현석로 245</span><span>TEL 031) 850-8800</span></div>
+            <div><span>인천관구</span><span>14647 경기도 부천시 원미구 소사로 327-1 </span><span>TEL 032) 310-7400</span></div>
+            <br>
+            <<div style="margin-top: 8px; opacity: 0.8; font-size: 13.5px;">
+    <span style="font-weight: 500; color: rgba(255,255,255,0.7);">관리자</span>
+    <span style="color: rgba(255,255,255,0.6);">실시간 상담 : 우측 하단 카카오톡 버튼 클릭</span>
+    <span style="color: rgba(255,255,255,0.6);">E-MAIL : library@holyfamily.or.kr</span>
+</div>
+        </div>
+
+        <div class="_right">
+            <div class="_top">
+                <a href="https://holyfamily.egentouch.com/main.do?action=main" target="_blank"><img class="mb-hide" src="/resource/images/icon-footer-01.png" alt="도서실 바로가기"></a>
+                <a href="https://holyfamily.egentouch.com/main.do?action=main" target="_blank"><img class="mb-show" src="/resource/images/icon-footer-01-m.png" alt="도서실 바로가기"></a>
+                <a href="https://www.instagram.com/holyfamily1225" target="_blank"><img class="mb-hide" src="/resource/images/icon-footer-02.png" alt="성소국 인스타 바로가기"></a>
+                <a href="https://www.instagram.com/holyfamily1225" target="_blank"><img class="mb-show" src="/resource/images/icon-footer-02-m.png" alt="성소국 인스타 바로가기"></a>
+                <a href="https://www.youtube.com/@holyfamily1943?si=PmmkECw47rnOtZYv" target="_blank"><img class="mb-hide" src="/resource/images/icon-footer-03.png" alt="유튜브 바로가기"></a>
+                <a href="https://www.youtube.com/@holyfamily1943?si=PmmkECw47rnOtZYv" target="_blank"><img class="mb-show" src="/resource/images/icon-footer-03-m.png" alt="유튜브 바로가기"></a>
+                <a href="http://pf.kakao.com/_ptAxnG" target="_blank"><img class="mb-hide" src="/resource/images/icon-footer-04.png" alt="카카오채널 바로가기"></a>
+                <a href="http://pf.kakao.com/_ptAxnG" target="_blank"><img class="mb-show" src="/resource/images/icon-footer-04-m.png" alt="카카오채널 바로가기"></a>
+            </div>
+            <div class="_bottom">
+                <a href="/member/page01.html"><span>개인정보취급방침</span></a>
+                <a href="/member/page02.html"><span>회원가입약관</span></a>
+                <a href="/sub1/page04.html"><span>오시는길</span></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<div id="holyfamily-kakao-fixed">
+  <div class="kakao-label">문의 · 상담</div>
+  <a href="javascript:void(0)" onclick="finalOpenKakao()">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오상담">
+  </a>
+</div>
+
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js"></script>
+
+<script>
+  function finalOpenKakao() {
+    // 1. 카카오가 로드될 때까지 최대 1초 정도 더 기다려보고 실행합니다.
+    var retryCount = 0;
+    var checkKakao = setInterval(function() {
+      if (typeof Kakao !== 'undefined') {
+        clearInterval(checkKakao);
+        
+        // 2. 초기화 확인
+        if (!Kakao.isInitialized()) {
+          Kakao.init('b813c8666dc4fb40422c77c58018187e'); 
+        }
+
+        // 3. 채팅창 열기
+        Kakao.Channel.chat({
+          channelPublicId: '_ptAxnG' 
+        });
+      } else {
+        retryCount++;
+        if (retryCount > 10) { // 10번 넘게 시도해도 안 되면 그때 알림
+          clearInterval(checkKakao);
+          alert("카카오 기능을 불러오는 데 실패했습니다. 새로고침 후 다시 시도해 주세요.");
+        }
+      }
+    }, 100); // 0.1초마다 카카오가 로드됐는지 확인
+  }
+  
+  var openKakaoChat = finalOpenKakao;
+  var chatChannel = finalOpenKakao;
+</script><script type="text/javascript">
+<!--//
+function getCookie( name )
+{
+	var nameOfCookie = name + "=";
+	var x = 0;
+	while ( x <= document.cookie.length )
+	{
+		var y = (x+nameOfCookie.length);
+		if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+			if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+				endOfCookie = document.cookie.length;
+			return unescape( document.cookie.substring( y, endOfCookie ) );
+		}
+		x = document.cookie.indexOf( " ", x ) + 1;
+		if ( x == 0 )
+		break;
+	}
+	return;
+}
+</script>
+
+</script></div></body>
+</html>

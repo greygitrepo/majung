@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta id="resResponsiveViewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=yes">
+<meta name="robots" content="noindex, follow">
+<link type="text/css" rel="stylesheet" href="./css/schfMedia.css">
+<link type="text/css" rel="stylesheet" href="./css/datepicker.css">
+<link type="text/css" rel="stylesheet" href="./css/include.css">
+<link type="text/css" rel="stylesheet" href="./css/include2.css">
+<link type="image/x-icon" rel="icon" href="./images/dgdg.ico">
+<style>
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansLight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+</style>
+<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-datepicker.js"></script>
+<title>통합검색 - 대구광역시 동구청</title>
+
+<script type="text/javascript" src="./wpdldptm/rsa.js"></script>
+<script type="text/javascript" src="./wpdldptm/search.js" ></script>
+<script type="text/javascript" src="./wpdldptm/common.js"></script>
+<script type="text/javascript" src="./wpdldptm/preview.js"></script>
+<script type="text/javascript" src="./wpdldptm/rcmdWord.js"></script>
+<script type="text/javascript" src="./wpdldptm/search_popup.js"></script>
+<script>
+function inputFocus() {
+    const input = document.RsaSearchForm1.qt;
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
+}
+
+function viewPortChange() {
+	if (screen.width > 1025) { 
+		var mvp = document.getElementById('resResponsiveViewport');
+		mvp.setAttribute('content','width=1100');
+	} else if (screen.width < 1025 && screen.width > 601) { 
+		var mvp = document.getElementById('resResponsiveViewport');
+		mvp.setAttribute('content','width=760');
+	} else if (screen.width < 601 && screen.width > 0){
+		var mvp = document.getElementById('resResponsiveViewport');
+		mvp.setAttribute('content','width=450');
+	}
+}
+
+	$(window).on('load resize', function(){
+		viewPortChange();
+	})
+	function formSubmit(){
+		if(document.RsaSearchForm1.qt.value==""){
+			clickFldSet(document.RsaSearchForm1,'menu', '통합검색' );
+		}else{
+			document.RsaSearchForm1.submit();
+		}
+	}
+	$(document).ready(function($) {
+		showKeywordPopup();
+		/* 검색 창 */
+		$(".sc_input").attr("autocomplete", "off"); /* 시스템 자동 완성 해제 */
+		$(".sc_input").css("ime-mode", "active"); /* 한글 기본 */
+		$(".sc_input").keypress(function(key){
+			if(key.which == 13)
+			{
+				if(document.RsaSearchForm1.qt.value==""){
+					clickFldSet(document.RsaSearchForm1,'menu', '통합검색' );
+				}else{
+					document.RsaSearchForm1.submit();
+				}
+			}
+		});
+
+		/* 인기 검색어 상태 저장 */
+		var fMode=readCookie("fMode");
+		if(fMode=='day') $('#pc_title_on2').trigger('click');
+		else if(fMode=="week")
+		{
+			$('#pc_title_on3').trigger('click');
+		}
+		else if(fMode=='month') $('#pc_title_on4').trigger('click');
+		
+		/* 카테고리 상태 저장 */
+		var cMode=readCookie("cMode");
+		if(cMode=='open')
+		{
+			$('.nav-wrap button').attr('class', 'open');
+			$('.nav-wrap button').trigger('click');
+		}
+		
+		/* 상세보기 상태 저장 */
+		var advMode=readCookie("advMode");
+		if(advMode=='open')
+		{
+			detailOpen();
+		}
+		
+		$("#detailOpenButton").click(function() {
+			if($("#detailStatus").val() == "0"){
+				$("#detailStatus").val("1");
+			}else if($("#detailStatus").val() == "1"){
+				$("#detailStatus").val("0");
+			}
+		});
+		$(".detail_btn1").click(function() {
+			if($("#detailStatus").val() == "0"){
+				$("#detailStatus").val("1");
+			}else if($("#detailStatus").val() == "1"){
+				$("#detailStatus").val("0");
+			}
+		});
+			if($("#detailStatus").val() == "0"){
+				$("#detailSearch").attr("style","display:none;");
+			}else if($("#detailStatus").val() == "1"){
+				$("#detailSearch").attr("style","display:block;");
+			}
+		
+		/* 이미지 초기화 */
+		$('img').each( function(){
+			var instance = $(this);
+			var img = new Image();
+
+			$(img).error(function(){
+				if(instance.hasClass('thumb_img')==true)
+				{
+					instance.attr('src', 'images/noimage.png');
+				}
+				else if(instance.hasClass('file_icn')==true)
+				{
+					instance.attr('src', 'images/file_icn_unknown.png');
+					// instance.attr('alt', '');
+				}
+				// else
+					// instance.attr('src', 'images/noimage.png');
+			}).attr('src', instance.attr('src'));
+
+			if(instance.hasClass('sect_image')==true && instance.attr('src')!='')
+				instance.show();
+		});
+
+		/* 매개 변수 초기화 */
+		initForm(document.RsaSearchForm1, 'false', '', '@all', '', '');
+	});
+	
+	$(document).ready(function() {
+		$.ajax({
+			url: '/search/mTool/common/getdirectList.do'       // 요청 할 주소
+			, async: true           // false 일 경우 동기 요청으로 변경
+			, type: 'post'          // GET, PUT
+			, data: $('form[name="RsaSearchForm1"]').serialize()    // 전송할 데이터
+			, dataType: 'text' // xml, json, script, html
+			, beforeSend: function(jqXHR) {}        // 서버 요청 전 호출 되는 함수 return false; 일 경우 요청 중단
+			, success: function(jqXHR) {            // 요청 완료 시
+				var data = jqXHR;
+ 				if(data.length>100)
+				{
+					$('div.totalSearch_golink').html(data);
+					$('div.totalSearch_golink').show();
+				}
+			}
+			, error: function(jqXHR) {}                     // 요청 실패
+			, complete: function(jqXHR) {}          // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
+		}); 
+	
+		$.ajax({
+				url: '/search/mTool/common/getcontentList.do'      // 요청 할 주소
+				, async: true           // false 일 경우 동기 요청으로 변경
+				, type: 'post'          // GET, PUT
+				, data: $('form[name="RsaSearchForm1"]').serialize()    // 전송할 데이터
+				, dataType: 'text' // xml, json, script, html
+				, beforeSend: function(jqXHR) {}        // 서버 요청 전 호출 되는 함수 return false; 일 경우 요청 중단
+				, success: function(jqXHR) {            // 요청 완료 시
+					var data = jqXHR;
+					if(data.length>100)
+				{
+					$('div.totalSearch_goTheme').html(data);
+					$('div.totalSearch_goTheme').show();
+				}
+				}
+				, error: function(jqXHR) {}                     // 요청 실패
+				, complete: function(jqXHR) {}          // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
+			});
+		
+			$("#btuniv").change(function() {
+				$("#btuniv option:selected").each(function() {
+					
+					$("#menu").val($(this).val());
+					$("#section").val($(this).val());
+					document.RsaSearchForm1.submit();
+				});
+			});
+		});
+			function content_view(){
+				document.RsaSearchForm2.submit();
+			}
+
+</script>
+</head>
+
+<body onload="initForm(document.RsaSearchForm1, 'false', '', '@all', '', '');inputFocus();">
+<header id="headerWrap">
+	<div id="gnbWrap">
+		<div class="inner">
+			<a href="javascript:;" onclick="$('.gnbNav').addClass('active');" class="control-gnb-nav open">포털사이트 <span class="blind">열기</span></a> 
+			<ul class="gnbNav">
+				<li><a href="/main.do" class="on"><span>동구</span></a></li>
+				<li><a href="/tour/main.do"><span>문화관광</span></a></li>
+				<li><a href="/health/main.do"><span>보건소</span></a></li>
+				<li><a href="https://www.donggucl.daegu.kr/" title="새창" target="_blank"><span>동구의회</span></a></li>
+				<li><a href="/dong/main.do"><span>동행정복지센터</span></a></li>
+				<li><a href="/reserve/main.do"><span>통합예약</span></a></li>
+				<li><a href="/map/main.do"><span>생활지도</span></a></li>
+				<li><a href="https://food.dong.daegu.kr/main.asp" title="새창" target="_blank"><span>동구맛집</span></a></li>
+			</ul>
+			<a href="javascript:;" onclick="$('.gnbNav').removeClass('active'); $('.control-gnb.open').focus();" class="control-gnb-nav close">포털사이트 <span class="blind">닫기</span></a>
+			
+			
+		</div>
+	</div>
+</header>
+<div id="wrap">
+	<ul class="skip_navi_w">
+		<li class="skip_navi"><a href="#Smenu" title="메뉴바로가기" class="skip_navi02">주메뉴 바로가기</a></li>
+		<li class="skip_navi"><a href="#Scon" title="본문바로가기" class="skip_navi02">본문 바로가기</a></li>
+	</ul>
+	
+	<!--//Media header 부분-->
+	<form id="searchForm" name="RsaSearchForm1" method="post" action="/search/front/Search.jsp" onsubmit="return chkSearchForm(this);">
+		<div id="header">
+			<div class="hMain">
+				<div class="hLogo">
+					<a href="https://dong.daegu.kr" title="로고"><img src="./images/logo.png" alt="logo"></a>
+				</div><!--logo-->
+
+				<div class="search Mobile_search">
+					<a href="https://dong.daegu.kr" title="로고"><img src="./images/logo.png" alt="logo" class="mobil_logo"></a>
+					<input type="button" value="검색" title="검색" onclick="formSubmit();">
+					<img src="./images/search.png" alt="logo" class="search_img">
+				</div><!--search-->
+				<div class="search_chang">
+					<fieldset>
+						<input type="text" id="qt" name="qt" class="sc_input" title="검색입력창" value="사랑나무공동체" onfocus="return setTextBox_(event);" onmousedown="setTextBox_(event);" onkeydown="setTextBox_(event);" onchange="javascript:search_promo_off();" />
+<!--// rcmd load init start // -->
+					<script type="text/javascript">
+						//<!--
+						rcmd_default_set(document.RsaSearchForm1.qt, 200);
+						if (t_>0 && c_>0)
+						{
+							wd_ ();
+							setTimeout ("wi_()", TimeOut);
+						}
+						//-->
+					</script>
+					<!--// rcmd load init end // -->
+<div class="search_arrow" id="autoCompleteToOn" style="display:block;">
+							<a href="javascript:;" title="검색어자동완성 열림" class="set_sugicn" onclick="ac_show__();"><img src="./images/harrow_blue.png" alt="arrow" /></a>
+						</div><!--search_arrow-->
+						<div class="search_arrow_off" id="autoComplete" onmouseover="set_mouseon_(2);" onmouseout="set_mouseoff_(2);" style="display:none">
+							<a href="javascript:;" title="검색어자동완성 닫힘" class="set_sugicn" onclick="ac_hide__()"><img src="./images/arrow_d_blue.png" alt="arrow" /></a>
+						</div><!--search_arrow_off-->
+					</fieldset>
+					<div id="rcmdResult" style="display:none" onmouseover="set_mouseon_(2);" onmouseout="set_mouseoff_(2);">
+					</div>
+				</div><!--search_chang-->
+
+				<div class="search">
+					<input type="button" value="검색" title="검색" onclick="formSubmit();">
+				</div><!--search-->
+
+				<div class="detatil_search">
+					<input type="button" id="detailOpenButton" value="상세검색" title="상세검색" onclick="detailOpen()">
+				</div><!--detatil_search-->
+
+				<div class="result_chang">
+					<input type="checkbox" id="rc_check" name="pq" title="결과 내 재검색" onclick="clickPq(this, document.RsaSearchForm1.qt);" value=""> <span><label for="rc_check">결과 내 재검색</label></span>
+				</div><!--result_chang-->
+			</div><!--hMain-->
+		</div><!--header-->
+ <input type="hidden" name="section" id="section" value="" />
+	 <input type="hidden" name="nh" value="20" />
+	<input type="hidden" name="st" value="1" />
+	<input type="hidden" name="adv" value="0" />
+	<input type="hidden" name="sw" value="0" />
+	<input type="hidden" name="searchType" value="1"/>
+	<input type="hidden" class="opt_sDate" name="sDate" value=""/>
+	<input type="hidden" class="opt_eDate" name="eDate" value=""/>
+	<input type="hidden" class="opt_sPeriod" name="sPeriod" value="" />
+	<input type="hidden" id="menu" name="menu" value="통합검색"/>
+	<input type="hidden" name="rf" class="opt_sort" value="@date" />
+	<input type="hidden" name="field" class="opt_field" value="@all" />
+	<input type="hidden" name="detailStatus" id="detailStatus" value="0" />
+	</form>
+<div id="relation">
+		<div class="relation_search">
+			<div class="rs_Bar">
+				<ul>
+					<li class="rsText" style="text-decoration: none;">추천검색어</li>
+<li><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1, 'qt', '공공근로'); return false;" title="추천검색어 공공근로">공공근로</a></li>
+<li><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1, 'qt', '조직도'); return false;" title="추천검색어 조직도">조직도</a></li>
+<li><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1, 'qt', '폐기물'); return false;" title="추천검색어 폐기물">폐기물</a></li>
+<li><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1, 'qt', '여권'); return false;" title="추천검색어 여권">여권</a></li>
+<li><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1, 'qt', '보건증'); return false;" title="추천검색어 보건증">보건증</a></li>
+</ul>
+			</div><!--rs_Barh-->
+		</div><!--relation_search-->
+	</div><!--h_menu-->
+<!--//상세검색 화면-->
+<div class="detail_wrap" id="detailSearch" style="display:none;">
+			<div class="Fdetail">
+				<ul>
+					<li class="detail_title">
+						<a href="javascript:;" title="정렬" onclick="detail_option('sort')" class="sortField_TEXT">
+
+						최신순
+<span class="arrow">▼</span>
+					</a>						
+					<div class="detail_box_sort" id="detail_box_sort" style="display:none;">
+						<ul>
+							<li id="sortField_DATE" class="on"><a href="javascript:goSortField('@date')" title="정렬 최신순">최신순</a></li>
+							<li id="sortField_RANK"  ><a href="javascript:goSortField('@import')" title="정렬 관련도순">관련도순</a></li>
+						</ul>						
+					</div>
+					</li>
+					<li class="detail_title">
+						<a href="javascript:;" title="기간" onclick="detail_option('period')">
+
+						기간 
+<span class="arrow">▼</span>
+					</a>
+						<div class="detail_box_period" id="detail_box_period" style="display:none;">
+							<ul>
+								<li class="on"><a href="javascript:;" onclick="goSPeriodField('all','', '20261104')" title="전체" >전체</a></li>
+								<li ><a href="javascript:;" onclick="goSPeriodField('day','20261103', '20261104')" title="1일">1일</a></li>
+								<li ><a href="javascript:;" onclick="goSPeriodField('week','20261028', '20261104')" title="1주">1주</a></li>
+								<li ><a href="javascript:;" onclick="goSPeriodField('month','20261004', '20261104')" title="1개월">1개월</a></li>
+								<li ><a href="javascript:;" onclick="goSPeriodField('year','20251104', '20261104')" title="1년">1년</a></li>
+							</ul>
+							<div class="detail_calendar">
+								<p class="tit " >직접입력</p>
+								<div class="calendar_search">
+									<input type="text" name="calendar_start" id="date_calendar" placeholder="yyyymmdd" class="startDate opt_sDate" value="" title="시작일" />
+									<a href="javascript:;" title="날짜시작 선택">
+										<img src="./images/calendar.gif"  alt="날짜선택" />
+									</a>
+								</div>
+								<div class="calendar_search">
+									<input type="text" name="calendar_end" placeholder="yyyymmdd" class="endDate opt_eDate" value="" title="종료일" />
+									<a href="javascript:;" title="날짜시작 선택" class="cal_en">
+										<img src="./images/calendar.gif" alt="날짜선택" />
+									</a>
+								</div>
+
+								<div class="calendar_search">
+									<input type="button" value="적용하기" name="confirming" onclick="goSPeriodField('manually', '', '');" />
+								</div>
+							</div>
+						</div>
+					</li>
+	
+					<li class="detail_title">
+						<a href="javascript:;" title="영역" onclick="detail_option('region')" class="searchField_TEXT"> 
+
+						전체
+<span class="arrow">▼</span>
+						</a>
+						
+						<div class="detail_box_region" id="detail_box_region" style="display:none;">
+							<ul>
+								<li id="searchField_ALL" class="on" ><a href="javascript:goSearchField('@all')" title="검색범위 전체">전체</a></li>
+								<li id="searchField_TITLE"  ><a href="javascript:goSearchField('@title')" title="검색범위 제목">제목</a></li>
+							</ul>
+						</div>
+					</li>
+	
+				</ul>
+			</div><!--Fdetail//-->
+		</div><!--detail_wrap//-->
+<!--상세검색 화면//-->
+
+
+<div class="nav-wrap">
+	<nav>
+		<ul class="gnb">
+<li class="ctgr"><a href="javascript:;" data-target="" data-trcode="" onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu', '통합검색');return false;" title="MENU 통합검색 Search" style="color:#466db1;">통합검색</a></li>
+<li class="ctgr"><a href="javascript:;" data-target="" data-trcode=""  onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','메뉴검색');return false;" title="Menu '메뉴검색' Search">메뉴검색</a></li>
+<li class="ctgr"><a href="javascript:;" data-target="" data-trcode=""  onclick="document.RsaSearchForm1.section.value='게시판';clickFldSet(document.RsaSearchForm1,'menu','게시판');return false;" title="Menu '게시판' Search">게시판</a></li>
+<li class="ctgr"><a href="javascript:;" data-target="" data-trcode=""  onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','고시공고');return false;" title="Menu '고시공고' Search">고시공고</a></li>
+<li class="ctgr"><a href="javascript:;" data-target="" data-trcode=""  onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','직원검색');return false;" title="Menu '직원검색' Search">직원검색</a></li>
+<li class="ctgr"><a href="javascript:;" data-target="" data-trcode=""  onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','웹페이지');return false;" title="Menu '웹페이지' Search">웹페이지</a></li>
+<li class="ctgr"><a href="javascript:;" data-target="" data-trcode=""  onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','이미지');return false;" title="Menu '이미지' Search">이미지</a></li>
+<li class="ctgr"><a href="javascript:;" data-target="" data-trcode=""  onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','첨부파일');return false;" title="Menu '첨부파일' Search">첨부파일</a></li>
+</ul>
+	</nav>
+	<button type="button" title="카테고리 더보기" class="open">
+		<span class="ico-set dot"></span>
+		<span class="nav-close">닫기</span>
+	</button>
+</div><!-- nav-wrap// -->
+
+<!--모바일 상세검색-->
+	<div class="align_kind">
+		<ul class="clearfix">
+			<li>
+				<button class="kind_open kind_line" onclick="mobile_detail('array')"><span>정렬</span></button>
+				<div class="kind_detail detail_array" id="kind_array" style="display:none;">
+					<ul class="kind_btn">
+						<li><a href="javascript:;" onclick="goSortField('@date')" style="background-color:#397bbf;color:#fff;">최신순</a></li>
+						<li><a href="javascript:;" onclick="goSortField('@import')" >정확도</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<button class="kind_open kind_date" onclick="mobile_detail('date')"><span>기간</span></button>
+				<div class="kind_detail detail_date" id="kind_date" style="display:none;">
+					<ul class="kind_btn">
+						<li><a href="javascript:;" onclick="goSPeriodField('all','', '20261104')"  >전체</a></li>
+						<li><a href="javascript:;" onclick="goSPeriodField('week','20261028', '20261104')" >1주</a></li>
+						<li><a href="javascript:;" onclick="goSPeriodField('month','20261004', '20261104')" >1개월</a></li>
+						<li><a href="javascript:;" onclick="goSPeriodField('year','20251104', '20261104')" >1년</a></li>
+					</ul>
+					<div class="search_term">
+						<!--form name=""-->
+						<fieldset style="border:0;">
+							<!-- 검색 기간 조건 선택시 달력 선택 뿐만아니라 input 박스에 직접 날짜를 입력할 수 있도록 동시기능을 제공해야합니다. 추후 접근성, 호환성에 문제가 됩니다. -->
+							<legend>검색기간 직접 선택</legend>
+							<label>시작일</label>
+							<span class="term"><input type="text" class="mstartDate" id="msdate" name="startDate" value=""><a href="javascript:;" onclick="f_datepicker('startDate')">검색 시작 날짜 선택하기</a></span>
+						  <label>종료일</label>
+						  <span class="term"><input type="text" class="mendDate" id="medate" name="endDate" value=""><a href="javascript:;" onclick="f_datepicker('endDate')">검색 종료 날짜 선택하기</a></span>
+						</fieldset>
+						<!--/form-->
+					</div>
+				</div>
+			</li>
+			<li>
+				<button class="kind_open" onclick="mobile_detail('region')"><span>영역</span></button>
+				<div class="kind_detail detail_region" id="kind_region" style="display:none;">
+					<ul class="kind_btn">
+						<li><a href="javascript:;" onclick="goSearchField('@all');" style="background-color:#397bbf;color:#fff;">전체</a></li>
+						<li><a href="javascript:;" onclick="goSearchField('@title');" >제목</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div id="search_second2">
+		<div class="totalSearch_gorelatd" style="display:block">
+		</div>
+	</div>
+	<div id="search_second">
+		<p>검색어 <span>"사랑나무공동체"</span>에 대한 <span>총 110건</span>의 검색결과를 찾았습니다.</p>
+		<div class="totalSearch_gocorrectWord" style="display:block"></div>
+	</div>
+
+	<!--//contents 부분-->
+	<div id="contents">
+		<div class="cMain">
+			<div class="cMenu" id="Smenu">
+				<ul id="menuBar">
+<li class="on"><a href="javascript:;" onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu', '통합검색');return false;" title="Menu '통합검색' Search"><p class="Mtitle">통합검색</p><div class="Marrow"><img src="./images/carrow_on_white.png" alt="arrow" /></div></a></li>
+<li><a href="javascript:;" onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','메뉴검색');return false;" title="Menu '메뉴검색' Search"><p class="Mtitle">메뉴검색</p><div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div></a></li>
+<li><a href="javascript:;" onclick="document.RsaSearchForm1.section.value='게시판';clickFldSet(document.RsaSearchForm1,'menu','게시판');return false;" title="Menu '게시판' Search"><p class="Mtitle">게시판</p><div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div></a></li>
+<li><a href="javascript:;" onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','고시공고');return false;" title="Menu '고시공고' Search"><p class="Mtitle">고시공고</p><div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div></a></li>
+<li><a href="javascript:;" onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','직원검색');return false;" title="Menu '직원검색' Search"><p class="Mtitle">직원검색</p><div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div></a></li>
+<li><a href="javascript:;" onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','웹페이지');return false;" title="Menu '웹페이지' Search"><p class="Mtitle">웹페이지</p><div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div></a></li>
+<li><a href="javascript:;" onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','이미지');return false;" title="Menu '이미지' Search"><p class="Mtitle">이미지</p><div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div></a></li>
+<li><a href="javascript:;" onclick="document.RsaSearchForm1.section.value='';clickFldSet(document.RsaSearchForm1,'menu','첨부파일');return false;" title="Menu '첨부파일' Search"><p class="Mtitle">첨부파일</p><div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div></a></li>
+</ul>
+				<div class="cM_expression"><!--첫번째 li 선 --></div>
+			</div><!--cMenu-->
+
+			<div class="cLeft" id="Scon">
+<!--// Content -->
+
+<div class="integration_sc">
+					<ul class="Cmenu_Title">
+						<li>통합검색</li>
+						<li>총 &nbsp;110건</li>
+					</ul>
+					
+					<div class="integration_box">
+						<div class="integration_txt2">
+							<div class="title">
+								<strong>검색결과</strong>
+							</div>
+							<div class="list">
+								<ul>
+<li><a href="#Result_첨부파일" title="본문 첨부파일결과 이동">첨부파일(110)</a></li>
+</ul>
+							</div>
+						</div><!--integration_txt2-->
+					</div>
+				</div><!--integration_sc-->
+				<div class="cLine"><!--integration_sc 라인--></div>
+					<!-- 키워드 컨텐츠 -->
+				<div class="totalSearch_golink"></div>
+				<div class="totalSearch_goTheme"></div>
+
+<div class="C_body" id="file_sc">
+					<ul class="Cmenu_Title" id="Result_첨부파일">
+						<li>첨부파일</li>
+						<li>총 &nbsp;<span>110</span>건</li>
+					</ul>
+				
+					<dl class="C_Cts">
+							<dt class="txt">
+								<a href="//dong.daegu.kr/portal/board/post/view.do?bcIdx=562&mid=0606120000&idx=196146" target="_blank" title="2026년 11월 구정 주요업무 추진계획(게시).hwp 새창열기" rel="noopener noreferrer">2026년 11월 구정 주요업무 추진계획(게시).hwp</a>
+								<span class="wGun">2026.10.29</span>
+								<span class="wGun">
+									<a href="//dong.daegu.kr/portal/file/download/logged.do?atchFileId=E4B35EC6ABF85008A44E4BEE00CA5EEE7CB9AB50E22B319F0B1464C284DE39AF&fileSn=E56E92A803C0FE7C90582D36FF7E7EE8" target="_self" title="내려받기">
+									<img src="images/file_icn3.png" alt="download"> 
+									<span class="tb_txt2">내려받기</span></a>
+								</span>
+							</dt>
+							<dd class="txt2">
+								역량강화 워크숍 개최 문화관광과  도동 측백<span class='searchWord'>나무</span> 숲 유지보수  불로동 고분군 관리  파계사...국소 실과 업무명 복지생활국 복지정책과  2026 <span class='searchWord'>사랑</span>플러스 김장나눔 행사 개최 ...4,500, 구비 5,000, 기타 11,605)  사업내용 : <span class='searchWord'>공동체</span> 기반 구축, 골목상권 활성화, 주거환경개선 등  추진상</dd>
+							<dd class="txt3">
+							<a href="//dong.daegu.kr/portal/board/post/view.do?bcIdx=562&mid=0606120000&idx=196146" target="_blank" title="2026년 11월 구정 주요업무 추진계획(게시).hwp 새창열기" rel="noopener noreferrer">[본문보기] - 2026년 11월 구정 주요업무 추진계획</a>
+							</dd>
+						</dl>
+<dl class="C_Cts">
+							<dt class="txt">
+								<a href="//dong.daegu.kr/portal/board/post/view.do?bcIdx=523&mid=0501020300&idx=195319" target="_blank" title="동구 환경보전계획(2018~2027)(인쇄본).pdf 새창열기" rel="noopener noreferrer">동구 환경보전계획(2018~2027)(인쇄본).pdf</a>
+								<span class="wGun">2026.08.25</span>
+								<span class="wGun">
+									<a href="//dong.daegu.kr/portal/file/download/logged.do?atchFileId=E4B35EC6ABF85008A44E4BEE00CA5EEE42448D14AD21EBD4F294818AC98FDD36&fileSn=78F6C76797E0512124C392213D7DC6FF" target="_self" title="내려받기">
+									<img src="images/file_icn3.png" alt="download"> 
+									<span class="tb_txt2">내려받기</span></a>
+								</span>
+							</dt>
+							<dd class="txt2">
+								천혜의 자원인 팔공산과 금호강을 끼고 도동측백<span class='searchWord'>나무</span>숲, 동화사, 갓바위, 불로동고분군 등 관광...안심어린이공원 1,500 신기동 560-1번지 조성 <span class='searchWord'>사랑</span>어린이공원 1,500 율하동 1019번지 조성...지원 - 동북아 환경보전 선도 - 한반도 환경<span class='searchWord'>공동체</span> 실현 ..PAGE:67 Ⅰ. 총론 대구광역시 동구...</dd>
+							<dd class="txt3">
+							<a href="//dong.daegu.kr/portal/board/post/view.do?bcIdx=523&mid=0501020300&idx=195319" target="_blank" title="동구 환경보전계획(2018~2027)(인쇄본).pdf 새창열기" rel="noopener noreferrer">[본문보기] - 동구 환경보전계획(2019~2028)</a>
+							</dd>
+						</dl>
+<dl class="C_Cts">
+							<dt class="txt">
+								<a href="//dong.daegu.kr/portal/board/post/view.do?bcIdx=562&mid=0606120000&idx=194169" target="_blank" title="2026년 5월 구정 주요업무 추진계획(게시).hwp 새창열기" rel="noopener noreferrer">2026년 5월 구정 주요업무 추진계획(게시).hwp</a>
+								<span class="wGun">2026.05.04</span>
+								<span class="wGun">
+									<a href="//dong.daegu.kr/portal/file/download/logged.do?atchFileId=E4B35EC6ABF85008A44E4BEE00CA5EEED756AC689630A318A7BB8A5F17C1959C&fileSn=78F6C76797E0512124C392213D7DC6FF" target="_self" title="내려받기">
+									<img src="images/file_icn3.png" alt="download"> 
+									<span class="tb_txt2">내려받기</span></a>
+								</span>
+							</dt>
+							<dd class="txt2">
+								교육   찾아가는 오피스 건강상담소 운영   꿈<span class='searchWord'>나무</span> 건강놀이터 교실 운영   AI·IoT기반 어르신... 지급수단 : 신용체크카드, 대구<span class='searchWord'>사랑</span>상품권(모바일카드형) 중 선택  신청방법 - 온라인(앱,...구비5,000, 기타11,605)  사업내용 : <span class='searchWord'>공동체</span> 기반 구축, 골목상권 활성화, 주거환경개선 등 ...</dd>
+							<dd class="txt3">
+							<a href="//dong.daegu.kr/portal/board/post/view.do?bcIdx=562&mid=0606120000&idx=194169" target="_blank" title="2026년 5월 구정 주요업무 추진계획(게시).hwp 새창열기" rel="noopener noreferrer">[본문보기] - 2026년 5월 구정 주요업무 추진계획</a>
+							</dd>
+						</dl>
+<dl class="C_Cts">
+							<dt class="txt">
+								<a href="//dong.daegu.kr/portal/board/post/view.do?bcIdx=562&mid=0606120000&idx=193434" target="_blank" title="2026년 3월 구정 주요업무 추진계획(게시).hwp 새창열기" rel="noopener noreferrer">2026년 3월 구정 주요업무 추진계획(게시).hwp</a>
+								<span class="wGun">2026.02.27</span>
+								<span class="wGun">
+									<a href="//dong.daegu.kr/portal/file/download/logged.do?atchFileId=E4B35EC6ABF85008A44E4BEE00CA5EEE5F37EBA021543D8C49F791FE094EE3FB&fileSn=78F6C76797E0512124C392213D7DC6FF" target="_self" title="내려받기">
+									<img src="images/file_icn3.png" alt="download"> 
+									<span class="tb_txt2">내려받기</span></a>
+								</span>
+							</dt>
+							<dd class="txt2">
+								3월 정례회 개최 : 불로, 한 잔의 이야기  2026 <span class='searchWord'>사랑</span>의 집 고쳐주기 사업 국소 단·실과 업무명...동구 관광사진 공모전」추진  도동 측백<span class='searchWord'>나무</span> 숲 유지보수  동구 공룡발자국 화석 기초조사 ...구비5,000, 기타11,605)  사업내용 : <span class='searchWord'>공동체</span> 기반 구축, 골목상권 활성화, 주거환경개선 등 ...</dd>
+							<dd class="txt3">
+							<a href="//dong.daegu.kr/portal/board/post/view.do?bcIdx=562&mid=0606120000&idx=193434" target="_blank" title="2026년 3월 구정 주요업무 추진계획(게시).hwp 새창열기" rel="noopener noreferrer">[본문보기] - 2026년 3월 구정 주요업무 추진계획</a>
+							</dd>
+						</dl>
+<div class="thebogi"><a href="javascript:;" onclick="document.RsaSearchForm1.section.value='첨부파일';clickFldSet(document.RsaSearchForm1, 'menu', '첨부파일' );" title="첨부파일 더보기">더보기</a></div>
+</div>
+<!--multi_scht-->
+			</div><!--cLeft-->
+
+			<div class="cRight">
+				<div class="pop_con">
+					<h2>인기 검색어</h2>
+					<ul class="pop_conContent">
+						<li><a href="#" title="인기검색어 실시간" class="pc_title_on" id="pc_title_on" style="background-color:#fff" onclick="saveCookie('fMode', 'real'); popFunction('real'); return false;">실시간</a>
+							<div class="pc_text_on" id="pc_text_on" style="display:block;">
+								<ul>
+<li data-order="1" data-update="0" class="none">
+										<span class="pop_num">1</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '폐기물'); return false;" title="실시간 인기검색어 1위 폐기물">폐기물</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+<li data-order="2" data-update="0" class="none">
+										<span class="pop_num">2</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '영유아'); return false;" title="실시간 인기검색어 2위 영유아">영유아</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+<li data-order="3" data-update="0" class="none">
+										<span class="pop_num">3</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '동구르르'); return false;" title="실시간 인기검색어 3위 동구르르">동구르르</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+<li data-order="4" data-update="0" class="none">
+										<span class="pop_num">4</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '특산물'); return false;" title="실시간 인기검색어 4위 특산물">특산물</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+<li data-order="5" data-update="0" class="none">
+										<span class="pop_num">5</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '영유아보육법'); return false;" title="실시간 인기검색어 5위 영유아보육법">영유아보육법</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+<li data-order="6" data-update="0" class="none">
+										<span class="pop_num">6</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '예산'); return false;" title="실시간 인기검색어 6위 예산">예산</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+<li data-order="7" data-update="0" class="none">
+										<span class="pop_num">7</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '음식물처리기'); return false;" title="실시간 인기검색어 7위 음식물처리기">음식물처리기</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+<li data-order="8" data-update="0" class="none">
+										<span class="pop_num">8</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '축제'); return false;" title="실시간 인기검색어 8위 축제">축제</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+<li data-order="9" data-update="0" class="none">
+										<span class="pop_num">9</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '상징물'); return false;" title="실시간 인기검색어 9위 상징물">상징물</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+<li data-order="10" data-update="0" class="none">
+										<span class="pop_num">10</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="javascript:clickFldSet(document.RsaSearchForm1, 'qt', '공공근로'); return false;" title="실시간 인기검색어 10위 공공근로">공공근로</a></span>
+										<span class="arrow_img"><span class="popText">-</span></span>
+</li>
+</ul>
+</div>
+						</li>
+						<li><a href="#" title="인기검색어 일간" class="pc_title_on" id="pc_title_on2" style="background-color:#f5f8fa" onclick="saveCookie('fMode', 'day'); popFunction('day'); return false;">일간</a>
+							<div class="pc_text_on" id="pc_text_on2" style="display:none;">
+								<ul>
+<li>
+										<span class="pop_num">1</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','특산물'); return false;" title="일간 인기검색어 1위 특산물">특산물</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">2</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','상징물'); return false;" title="일간 인기검색어 2위 상징물">상징물</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">3</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','예산'); return false;" title="일간 인기검색어 3위 예산">예산</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">4</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','축제'); return false;" title="일간 인기검색어 4위 축제">축제</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">5</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','일상감사'); return false;" title="일간 인기검색어 5위 일상감사">일상감사</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">6</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','동구르르'); return false;" title="일간 인기검색어 6위 동구르르">동구르르</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">7</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','제안서'); return false;" title="일간 인기검색어 7위 제안서">제안서</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">8</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','대구 관광 상품'); return false;" title="일간 인기검색어 8위 대구 관광 상품">대구 관광 상품</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">9</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','민원'); return false;" title="일간 인기검색어 9위 민원">민원</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">10</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','식당'); return false;" title="일간 인기검색어 10위 식당">식당</a></span>
+									</li>
+
+</ul>
+</div>
+						</li>
+						<li><a href="#" title="인기검색어 주간" class="pc_title_on" id="pc_title_on3" style="background-color:#f5f8fa" onclick="saveCookie('fMode', 'week'); popFunction('week'); return false;">주간</a>
+							<div class="pc_text_on" id="pc_text_on3" style="display:none;">
+								
+
+
+
+
+								<ul>
+
+									<li>
+										<span class="pop_num">1</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','조직도'); return false;" title="주간 인기검색어 1. 조직도">조직도</a></span>
+									</li>
+
+									<li>
+										<span class="pop_num">2</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','폐기물'); return false;" title="주간 인기검색어 2. 폐기물">폐기물</a></span>
+									</li>
+
+									<li>
+										<span class="pop_num">3</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','의정비'); return false;" title="주간 인기검색어 3. 의정비">의정비</a></span>
+									</li>
+
+									<li>
+										<span class="pop_num">4</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','특산물'); return false;" title="주간 인기검색어 4. 특산물">특산물</a></span>
+									</li>
+
+									<li>
+										<span class="pop_num">5</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','교통문제'); return false;" title="주간 인기검색어 5. 교통문제">교통문제</a></span>
+									</li>
+
+									<li>
+										<span class="pop_num">6</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','예산'); return false;" title="주간 인기검색어 6. 예산">예산</a></span>
+									</li>
+
+									<li>
+										<span class="pop_num">7</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','음식물처리기'); return false;" title="주간 인기검색어 7. 음식물처리기">음식물처리기</a></span>
+									</li>
+
+									<li>
+										<span class="pop_num">8</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','축제'); return false;" title="주간 인기검색어 8. 축제">축제</a></span>
+									</li>
+
+									<li>
+										<span class="pop_num">9</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','음식물'); return false;" title="주간 인기검색어 9. 음식물">음식물</a></span>
+									</li>
+
+									<li>
+										<span class="pop_num">10</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','쓰레기문제'); return false;" title="주간 인기검색어 10. 쓰레기문제">쓰레기문제</a></span>
+									</li>
+
+								</ul>
+
+</div>
+						</li>
+						<li><a href="#" title="인기검색어 월간" class="pc_title_on" id="pc_title_on4" style="background-color:#f5f8fa" onclick="saveCookie('fMode', 'month'); popFunction('month'); return false;">월간</a>
+							<div class="pc_text_on" id="pc_text_on4" style="display:none;">
+								<ul>
+<li>
+										<span class="pop_num">1</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','조직도'); return false;" title="월간 인기검색어 1위 조직도">조직도</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">2</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','폐기물'); return false;" title="월간 인기검색어 2위 폐기물">폐기물</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">3</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','막창축제'); return false;" title="월간 인기검색어 3위 막창축제">막창축제</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">4</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','막창'); return false;" title="월간 인기검색어 4위 막창">막창</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">5</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','채용공고'); return false;" title="월간 인기검색어 5위 채용공고">채용공고</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">6</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','주민자치'); return false;" title="월간 인기검색어 6위 주민자치">주민자치</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">7</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','업무추진비'); return false;" title="월간 인기검색어 7위 업무추진비">업무추진비</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">8</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','공공근로'); return false;" title="월간 인기검색어 8위 공공근로">공공근로</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">9</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','채용'); return false;" title="월간 인기검색어 9위 채용">채용</a></span>
+									</li>
+
+<li>
+										<span class="pop_num">10</span>
+										<span class="pop_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1,'qt','음식물'); return false;" title="월간 인기검색어 10위 음식물">음식물</a></span>
+									</li>
+
+</ul>
+</div>
+						</li>
+					</ul>
+				</div><!--pop_con-->
+
+				<div class="find_con">
+						<h2>내가 찾은 검색어</h2>
+						<ol>
+<li><span class="find_num">1</span>
+								<span class="find_txt"><a href="javascript:;" onclick="clickFldSet(document.RsaSearchForm1, 'qt', '사랑나무공동체'); return false;" title="내가 찾은 검색어 사랑나무공동체">사랑나무공동체</a></span>
+							</li>
+
+</ol>
+					</div><!--find_con-->
+</div><!--cRight-->
+		</div><!--cMain-->
+	</div><!--contents-->
+	<div class="wrap-footer">
+		<div class="container">
+			<div class="box-footer">
+				<div class="footer">
+					<strong class="footer-logo">
+						<img src="./images/logo-footer.gif" alt="대구광역시 동구청">
+					</strong>
+					<div class="footer-desc">
+						<div class="footer-address">
+						(우) 41185, 대구광역시 동구 아양로 207(신암동) Tel.<a href="tel:053-662-2000">(053)-662-2000</a><br/>
+						Copyright 2023 Dong-gu, Daegu Metropolitan City. All rights reserved
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!--wrap-->
+<div class="goTop">
+	<a href="javascript:;" role="button" class="" onclick="window.scrollTo(0,0); return false;" title="맨위로 버튼">맨위로</a>
+</div>
+</body>
+</html>

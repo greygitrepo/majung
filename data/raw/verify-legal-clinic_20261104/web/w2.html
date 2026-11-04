@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>요셉나눔재단법인요셉의원 </title>
+<meta name="Title" content="요셉나눔재단법인요셉의원" />
+<meta name="description" content="서울역 부근 동자동, 노숙인 자선의료기관, 봉사 및 후원안내, 진료일정, 필리핀 분원운영">
+<meta property="og:title" content="요셉나눔재단법인요셉의원">
+<meta property="og:description" content="서울역 부근 동자동, 노숙인 자선의료기관, 봉사 및 후원안내, 진료일정, 필리핀 분원운영">
+<meta name="robots" content="INDEX, FOLLOW">
+<link rel="canonical" href="http://www.josephclinic.org/index.html">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" sizes="57x57" href="/public/images/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/public/images/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/public/images/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/public/images/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/public/images/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/public/images/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/public/images/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/public/images/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/public/images/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/public/images/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/public/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/public/images/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/public/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="/public/images/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="transparent">
+<meta name="msapplication-TileImage" content="/public/images/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="transparent">
+<link rel="stylesheet" type="text/css" href="/public/font/nanumgothic/style.css">
+<link rel="stylesheet" type="text/css" href="/public/font/nanummyeongjo/style.css">
+<link rel="stylesheet" type="text/css" href="/public/css/default.css">
+<link rel="stylesheet" type="text/css" href="/public/css/common.css">
+<link rel="stylesheet" type="text/css" href="/public/css/board.css">
+
+<link rel="stylesheet" href="/public/css/contents.css?v=1782953039">
+
+<script type="text/javascript" src="/js/jquery-1.12.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="/js/jquery.base64.js"></script>
+<script type="text/javascript" src="/js/calc.js"></script>
+<script type="text/javascript" src="/js/ui.js"></script>
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<script type="text/javascript" src="js/selectivizr-min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/js/jquery.zrssfeed.js"></script>
+<script type="text/javascript" src="/js/sns_main.js"></script>
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://spi.maps.daum.net/imap/map_js_init/roughmapLoader.js"></script>
+<script type="text/javascript" src="/js/main_ui.js"></script>
+<script>
+	var globalPageStartPoint = '';
+	var globalYear = '';
+	var globalMonth = '';
+	var globalDay = '';
+
+ 	function select_Doctor(sel_Year, sel_Month, sel_Day, direction) {
+
+ 		// 날짜 바뀔경우 페이지 초기화, 음수단위로 넘어갈경우 시작점 0 세팅.
+ 		if ( sel_Day != '' && (globalDay != sel_Day) ) globalPageStartPoint = '0';
+
+ 		// 파라미터 값이 empty 값이 아닐 경우에만 global variable에 담아줌.
+ 		if ( sel_Year != '' ) globalYear = sel_Year;
+ 		if ( sel_Month != '' ) globalMonth = sel_Month;
+ 		if ( sel_Day != '' ) globalDay = sel_Day;
+
+
+
+ 		if ( globalPageStartPoint == 'undefined' ) {
+ 			//page 시작 포인트가 없을경우 0번째 부터 뽑도록 한다.
+ 			globalPageStartPoint = '0';
+
+ 		} else { // 시작 포인트가 있을 경우...
+ 			//방향을 확인한다.
+ 			if ( direction == 'Next' && direction != 'undefined' ) {
+ 				globalPageStartPoint = Number(globalPageStartPoint) + 1; //앞으로
+
+ 			} else if ( direction == 'Before' && direction != 'undefined' ) {
+ 				globalPageStartPoint = Number(globalPageStartPoint) - 1; //뒤로
+ 			}
+
+ 		}
+
+ 		if ( globalPageStartPoint < 0 ) globalPageStartPoint = '0';
+
+ 		$.ajax({
+		    type: 'post',
+		    url: './main_lib/main_schedule_proc.php',
+		    data: {Year: globalYear, Month: globalMonth, Day: globalDay, Page: globalPageStartPoint},
+		    success: function (data) {
+	    		var str = '';
+                str = data;
+	            $('#time_list').html(str);
+
+		    },
+		    error: function (request, status, error) {
+		        console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
+		    }
+		});
+
+ 	}
+
+
+</script>
+</head>
+<body>
+<div id="wrap">
+	
+	<ul class="skipNavi">
+		<li><a href="#container">본문 바로가기</a></li>
+		<li><a href="#header">메뉴 바로가기</a></li>
+	</ul>
+	<div id="header">
+		<div class="hgroup">
+			<h1><a href="/index.html" class="ntxt"><span>요셉의원</span></a></h1>
+		</div>
+		<div id="nav">
+			<a href="/intro/page06.html" class="engPage">About Clinic | ENG</a> 
+			<h2><a href="javascript:void(0)" class="trigger ntxt"><span>메뉴</span></a></h2>
+			<ul id="lnb">
+				<li class="dp1"><a href="/support/page01.html" class="support"><span>후원신청</span></a></li>
+				<li class="dp1"><a href="/volunteer/page03.html" class="volunteer"><span>봉사신청</span></a></li>
+                <li class="dp1"><a href="https://archivecenter.net/josephclinic" target="_blank" class="archive"><span>디지털 아카이브</span></a></li>
+				<!-- 외부의 별도 회원제를 사용하는걸로 변경하여 로그인 버튼, 외부 링크로 수정 18.7.20 -->
+				<!-- 로그인 버튼 삭제요청 25.08.06 li class="dp1"><a href="https://mrmweb.hsit.co.kr/v2/default.aspx?Server=QlHyBJfrrCjD4kFlhLKOpA==&action=info" target="_blank"><span>로그인</span></a></li-->
+				
+				<!-- 				<li class="dp1"><a href="/member/login.html"><span>로그인</span></a></li>
+				<li class="dp1"><a href="/member/join1.html"><span>회원가입</span></a></li>
+				 -->
+				<li class="dp1"><a href="/intro/page01.html" onclick="nextPageTab(2)"><span>필리핀요셉의원</span></a></li>
+                <li class="dp1"><a href="/ibas.html" onclick="nextPageTab(2)"><span>국성회 안내</span></a></li>
+			</ul>
+			<div class="ngroup">
+				<ul id="gnb">
+					<li class="dp1"><a><span>병원소개</span></a>
+						<ul class="dp_section">
+							<li class="dp2"><a href="/intro/page01.html" onclick="nextPageTab(1)"><span>요셉의원 소개</span></a></li>
+							<li class="dp2"><a href="/intro/page02.html"><span>병원장 인사말</span></a></li>
+							<li class="dp2"><a href="/intro/page03.html"><span>초대원장 소개</span></a></li>
+							<li class="dp2"><a href="/intro/page08-01.html"><span>역대병원장</span></a></li>
+							<li class="dp2"><a href="/intro/page04.html"><span>병원연혁</span></a></li>
+							<li class="dp2"><a href="/intro/page05.html"><span>오시는길</span></a></li>
+							<li class="dp2"><a href="/intro/page01.html" onclick="nextPageTab(2)"><span>필리핀요셉의원</span></a></li>
+							<li class="dp2"><a href="/intro/page06.html"><span>About Clinic</span></a></li>
+						</ul>
+					</li>
+					<li class="dp1"><a><span>진료안내</span></a>
+						<ul class="dp_section">
+							<li class="dp2"><a href="/medical/page01.html"><span>진료안내</span></a></li>
+							<li class="dp2"><a href="/medical/page03.html"><span>치과 진료 안내</span></a></li>
+							<li class="dp2"><a href="/medical/page02.html"><span>진료일정</span></a></li>
+						</ul>
+					</li>
+					<li class="dp1"><a><span>재활지원</span></a>
+						<ul class="dp_section">
+							<li class="dp2"><a href="/house/page02.html"><span>재활프로그램</span></a></li>
+							<li class="dp2"><a href="/house/page01.html"><span>목동의집(중간집)</span></a></li>
+
+						</ul>
+					</li>
+					<li class="dp1"><a><span>봉사안내</span></a>
+						<ul class="dp_section">
+							<li class="dp2"><a href="/volunteer/page01.html"><span>봉사안내</span></a></li>
+							<li class="dp2"><a href="/volunteer/page02.html"><span>봉사자모집</span></a></li>
+							<li class="dp2"><a href="/volunteer/page03.html"><span>봉사신청</span></a></li>
+							<!--li class="dp2"><a href="/volunteer/page04.html"><span>봉사자소식</span></a></li-->
+						</ul>
+					</li>
+					<li class="dp1"><a><span>후원안내</span></a>
+						<ul class="dp_section">
+							<li class="dp2"><a href="/support/page02.html"><span>후원안내</span></a></li>
+							<li class="dp2"><a href="/support/page01.html"><span>후원신청</span></a></li>
+							<li class="dp2"><a href="/support/page04.html"><span>후원내역조회</span></a></li>
+							<li class="dp2"><a href="/support/page05.html"><span>기부영수증출력</span></a></li>
+						</ul>
+					</li>
+					<li class="dp1"><a><span>요셉소식</span></a>
+						<ul class="dp_section">
+							<li class="dp2"><a href="/community/page01.html?jb_code=10"><span>요셉소식</span></a></li>
+							<li class="dp2"><a href="/community/page02.html"><span>요셉의원소식지</span></a></li>
+							<!-- <li class="dp2"><a href="/community/page03.html"><span>요셉포커스</span></a></li> -->
+							<!--li class="dp2"><a href="/community/page04.html"><span>후원사랑방</span></a></li-->
+						</ul>
+					</li>
+					<li class="dp1 none"><a><span>Member</span></a>
+						<ul class="dp_section">
+														<li class="dp2"><a href="/member/login.html"><span>로그인</span></a></li>
+							<li class="dp2"><a href="/member/join1.html"><span>회원가입</span></a></li>
+							<li class="dp2"><a href="/member/idpw.html"><span>아이디/비밀번호 찾기</span></a></li>
+							<li class="dp2"><a href="/member/privacy.html"><span>개인정보 취급방침</span></a></li>
+							<li class="dp2"><a href="/member/terms.html"><span>이용약관</span></a></li>
+													</ul>
+					</li>
+					<li class="dp1"><a><span>재단소개</span></a>
+						<ul class="dp_section">
+							<li class="dp2"><a href="/corporation/page01.html"><span>이사장 인사말</span></a></li>
+							<li class="dp2"><a href="/corporation/page02.html"><span>재단연혁</span></a></li>
+							<li class="dp2"><a href="/corporation/page03.html"><span>사업내용</span></a></li>
+                            <!--
+                            <li class="dp2"><a href="/corporation/page06.html"><span>재단후원</span></a></li>
+                            -->
+                            <li class="dp2"><a href="/corporation/page04.html">설립취지<span></span></a></li>
+							<li class="dp2"><a href="/corporation/page05.html"><span>재단법인조직도</span></a></li>
+							<li class="dp2"><a href="/intro/page05.html"><span>오시는길</span></a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<!--
+				<div class="aside pc_show">
+					<dl>
+						<dt>후원문의 및 봉사문의 <small>(월~금 : 13시~20시에 통화 가능합니다)</small></dt>
+						<dd>
+							<strong>02</strong>
+							<ul class="tel_list">
+								<li>2636-2476</li>
+								<li>2634-1760</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				-->
+			</div>
+		</div>
+	</div>
+	<div id="container">
+		<div id="main_bnr" class="article">
+			<ul class="swiper">
+				<li>
+					<div class="picture pc_show"><img src="/public/images/temp/main_slide1_pc.jpg" class="block" alt="" /></div>
+					<div class="picture pc_hide"><img src="/public/images/temp/main_slide1.jpg" class="block" alt="" /></div>
+					<div class="contents">
+						<p>진료비가 없는 환자야 말로<br />진정 의사가 필요한 환자입니다<br />
+							<a href="/intro/page01.html" class="btn-link"><span>요셉의원</span></a>
+						</p>
+					</div>
+				</li>
+				<li>
+					<div class="picture pc_show"><img src="/public/images/temp/main_slide2_pc.jpg" class="block" alt="" /></div>
+					<div class="picture pc_hide"><img src="/public/images/temp/main_slide2.jpg" class="block" alt="" /></div>
+					<div class="contents text_right">
+						<p>가난한 환자는<br />하느님이 내게 주신<br />선물입니다<br />
+							<a href="/intro/page03.html" class="btn-link"><span>초대원장 소개</span></a>
+						</p>
+					</div>
+				</li>
+                <li>
+					<div class="picture pc_show"><img src="/public/images/temp/main_slide4_pc.jpg" class="block" alt="" /></div>
+					<div class="picture pc_hide"><img src="/public/images/temp/main_slide4.jpg" class="block" alt="" /></div>
+					<div class="contents">
+						<p>자선진료와 다양한 지원을 위해 <br />여러분의 따뜻한 손길을 <br />기다리고 있습니다.<br />
+							<a href="/support/page02.html" class="btn-link"><span>후원안내</span></a>
+						</p>
+					</div>
+				</li>
+				<li>
+					<div class="picture pc_show"><img src="/public/images/temp/main_slide3_pc.jpg" class="block" alt="" /></div>
+					<div class="picture pc_hide"><img src="/public/images/temp/main_slide3.jpg" class="block" alt="" /></div>
+					<div class="contents text_right">
+						<p>나눌수록 더해지는 행복 <br />여러분의 사랑의<br /> 손길을 기다립니다<br />
+							<a href="/volunteer/page01.html" class="btn-link"><span>봉사안내</span></a>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<div class="controller">
+				<a href="javascript:void(0);" class="btn_prev ntxt"><span>이전 슬라이드</span></a>
+				<a href="javascript:void(0);" class="btn_next ntxt"><span>다음 슬라이드</span></a>
+			</div>
+			<div class="paginate">
+				<ul class="swiper_paginate">
+					<li class="current">
+						<a href="javascript:void(0)" data-slide-index="0">
+							<p>요셉의원 소개</p>
+							<span>진료비가 없는 환자야 말로 <br />진정 의사가 필요한 환자입니다</span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-slide-index="1">
+							<p>초대원장 소개</p>
+							<span>가난한 환자는 <br />하느님이 내게 주신 선물입니다</span>
+						</a>
+					</li>
+                    <li>
+						<a href="javascript:void(0)" data-slide-index="2">
+							<p>후원안내</p>
+							<span>자선진료와 다양한 지원을 위해<br>
+                                여러분의 따뜻한 손길을 기다리고 있습니다.
+                                </span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-slide-index="3">
+							<p>봉사안내</p>
+							<span>나눌수록 더해지는 행복 <br />여러분의 사랑의 손길을 기다립니다</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="mainLayoutCustom">
+			<div id="main_calendar" class="article">
+				<div class="header pc_hide">
+					<h2>
+						<a href="/medical/page02.html">
+							<span class="h_text">
+								<small>요셉의원</small>
+								진료일정
+								<span class="point">바로가기</span>
+							</span>
+						</a>
+					</h2>
+				</div>
+				<div class="section pc_show">
+					<div class="panel calendar">
+						<div id="datepicker"></div>
+						<div id="current_date" name="tsd_date">
+							<strong class="day" id="day"></strong>
+							<span class="month" id="month"></span>
+							<span class="week"></span>
+						</div>
+						<a class="calendarMore" href="/medical/page02.html">월간일정 보기</a>
+					</div>
+					<div id="main_schedule" class="panel schedule">
+						<ul class="time_list" id="time_list" name="time_list">
+							<li>
+								<dt class="none">진료과목</dt><dd class="dpart">원하시는 진료 날짜를 선택해주세요.</dd>
+								<dt class="none">진료의사</dt><dd class="doctor">
+									<ul class="list">
+										<li><span></span></li>
+										<li><span></span></li>
+									</ul>
+								</dd>
+							</li>
+							<li>
+								<dt class="none">진료과목</dt><dd class="dpart"></dd>
+								<dt class="none">진료의사</dt><dd class="doctor">
+									<ul class="list">
+										<li><span></span></li>
+										<li><span></span></li>
+									</ul>
+								</dd>
+							</li>
+							<li>
+								<dt class="none">진료과목</dt><dd class="dpart"></dd>
+								<dt class="none">진료의사</dt><dd class="doctor">
+									<ul class="list">
+										<li><span></span></li>
+										<li><span></span></li>
+									</ul>
+								</dd>
+							</li>
+							<li>
+								<dt class="none">진료과목</dt><dd class="dpart"></dd>
+								<dt class="none">진료의사</dt><dd class="doctor">
+									<ul class="list">
+										<li><span></span></li>
+										<li><span></span></li>
+									</ul>
+								</dd>
+							</li>
+							<li>
+								<dt class="none">진료과목</dt><dd class="dpart"></dd>
+								<dt class="none">진료의사</dt><dd class="doctor">
+									<ul class="list">
+										<li><span></span></li>
+										<li><span></span></li>
+									</ul>
+								</dd>
+							</li>
+							<li>
+								<dt class="none">진료과목</dt><dd class="dpart"></dd>
+								<dt class="none">진료의사</dt><dd class="doctor">
+									<ul class="list">
+										<li><span></span></li>
+										<li><span></span></li>
+									</ul>
+								</dd>
+							</li>
+						</ul>
+						<div class="controller">
+							<a onClick="javascript:select_Doctor('', '', '', 'Before');" class="btn_prev disabled ntxt"><span>이전</span></a>
+							<a onClick="javascript:select_Doctor('', '', '', 'Next');" class="btn_next ntxt"><span>다음</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="main_intro" class="article">
+				<div class="section">
+					<h2 class="none">요셉의원 소개</h2>
+					<div class="about_contents panel">
+						<div class="blockquote text_center">
+							<blockquote>
+								<p class="contents">가난하고 의지할 데 없는 환자를 <br />그리스도의 사랑으로 돌보며 <br />그들의 자립을 위하여 최선의 도움을 준다.</p>
+								<p class="footer">요셉의원 이념</p>
+							</blockquote>
+							<a href="/intro/page03.html"><span class="btn tb_hide">초대원장 소개</span></a>
+						</div>
+						<div class="intro_contents">
+							<ul class="swiper">
+								<li><a href="#"><div class="picture"><img src="/public/images/main_add_intro_01.jpg" class="block" alt="" /></div></a></li>
+								<li><a href="#"><div class="picture"><img src="/public/images/main_add_intro_02.jpg" class="block" alt="" /></div></a></li>
+								<li><a href="#"><div class="picture"><img src="/public/images/main_add_intro_03.jpg" class="block" alt="" /></div></a></li>
+							</ul>
+							<div class="controller">
+								<a href="javascript:void(0);" class="btn_prev ntxt"><span>이전 슬라이드</span></a>
+								<a href="javascript:void(0);" class="btn_next ntxt"><span>다음 슬라이드</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="main_latest" class="article">
+			<div class="section">
+				<h2 class="none">최신 내용</h2>
+				<div class="panel board">
+					<div id="latest_notice" class="board">
+						<h3>공지사항</h3>
+						<div class="picture"></div>
+						<ul class="list">
+                        
+				<li><a href="/community/page01.html?jb_code=10&jb_idx=1809">
+							[직원모집] 홍보팀, 의료사업실 채용안내...
+							
+						</a></li>
+			
+				<li><a href="/community/page01.html?jb_code=10&jb_idx=1808">
+							[직원모집] 약사 채용안내 ===> 마감되었습니다...
+							
+						</a></li>
+			
+				<li><a href="/community/page01.html?jb_code=10&jb_idx=1802">
+							[직원모집] 간호사 채용안내 => 마감되었습니다...
+							
+						</a></li>
+										<!--li><a href="#">의류 및 운동화 기증안내(영등포/필리핀)...</a></li>
+							<li><a href="#">소식지를 신청하시는 분</a></li>
+							<li><a href="#">요셉의원 안내 (2016년)</a></li-->
+						</ul>
+						<a href="/community/page01.html?jb_code=10" class="btn_more"><span>더보기</span></a>
+					</div>
+					<div id="latest_support" class="board">
+						<h3 class="sns-title">facebook</h3>
+						<ul class="facebook-list" >
+							<li>
+
+								<div id="fb-root"></div>
+								<script>(function(d, s, id) {
+								  var js, fjs = d.getElementsByTagName(s)[0];
+								  if (d.getElementById(id)) return;
+								  js = d.createElement(s); js.id = id;
+								  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.6&appId=898930250215576";
+								  fjs.parentNode.insertBefore(js, fjs);
+								}(document, 'script', 'facebook-jssdk'));</script>
+								<div class="fb-page" data-href="https://www.facebook.com/Josephclinic1987/" data-tabs="timeline" data-width="480" data-height="240" data-small-header="true" data-adapt-container-width="480" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/Josephclinic1987/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Josephclinic1987/">요셉의원</a></blockquote></div>
+							</li>
+
+						</ul>
+						<a href="https://www.facebook.com/Josephclinic1987" class="btn_more"><span>더보기</span></a>
+					</div>
+				</div>
+				<div class="panel webzine">
+					
+				<a href="/community/page02.html?jb_code=50&jb_idx=1810">
+					<div class="picture left"><img src='http://www.josephclinic.org/bbs/files//jb_50/17930858166708.jpg' alt=''  class='block' ></div>	
+					<div class="contents">
+					<h3 class="subject">요셉회보</h3>
+						<p class="sub_title">[제148호] 서울역 이전 1년, 요셉의원을 찾는 환자...</p>
+						<p class="text"></p>
+					</div>
+						</a>
+								
+			<div class="webzine">
+				<a href="/community/page03.html?jb_code=60&jb_idx=1111">
+					<div class="picture right"><img src='http://www.josephclinic.org/bbs/files//jb_60/15065754197940.jpg' alt=''  class='block' ></div>	
+					<div class="contents">
+					<h3 class="subject">요셉포커스</h3>
+							<p class="sub_title">요셉의원 30년사 PDF 파일</p>
+							<p class="text">요셉의원 30년사가 책자와 함께 PDF 형태의 파일로 간행되었습니다.아래 링크를 복사 후 주소창에 붙여...</p>
+					</div>
+						</a>
+			  </div>
+								<!--div class="webzine">
+					<a href="#">
+						<div class="picture left"><img src="/public/images/main_latest_webzine_01.jpg" class="block" alt="" /></div>
+						<div class="contents">
+							<h3 class="subject">요셉회보</h3>
+							<p class="sub_title">열두 번째 봉사자의 날 개최</p>
+							<p class="text">사랑의 마음으로 요셉의원의 든든한 힘이 되어준 봉사자들을 위한 모임이 6월 8일 월 살레시오 회관에서 열렸...</p>
+						</div>
+					</a></div-->
+					<!--div class="webzine"><a href="#">
+						<div class="picture right"><img src="/public/images/main_latest_webzine_02.jpg" class="block" alt="" /></div>
+						<div class="contents">
+							<h3 class="subject">요셉포커스</h3>
+							<p class="sub_title">요셉의원의 역사와 전경</p>
+							<p class="text">사랑의 마음으로 요셉의원의 든든한 힘이 되어준 봉사자들을 위한 모임이 6월 8일 월 살레시오 회관에서 열렸다.</p>
+						</div>
+					</a></div-->
+				</div>
+			</div>
+		</div>
+		<div id="main_quick" class="article">
+			<div class="section">
+				<h2 class="none">빠른 후원 & 봉사</h2>
+				<ul class="text_center">
+					<li><a href="/support/page02.html">
+						<h3 class="subject">후원안내</h3>
+						<p class="contents">여러분의 따뜻한 <br class="mb_hide" />도움의 <br class="mb_show" />손길을 기다리고 있어요</p>
+						<div class="picture"><img src="/public/images/main_quick_01.jpg" class="block" alt="" /></div>
+						<p class="quick_link"><em>바로가기 <span class="point">▶</span></em></p>
+					</a></li>
+					<li><a href="/support/page01.html">
+						<h3 class="subject">후원신청</h3>
+						<p class="contents">요셉의원 후원회원이 <br />되고 싶어요</p>
+						<div class="picture"><img src="/public/images/main_quick_02.jpg" class="block" alt="" /></div>
+						<p class="quick_link"><em>바로가기 <span class="point">▶</span></em></p>
+					</a></li>
+					<li><a href="/volunteer/page01.html">
+						<h3 class="subject">봉사안내</h3>
+						<p class="contents">다양한 분야에 <br />여러분의 도움이 필요해요</p>
+						<div class="picture"><img src="/public/images/main_quick_03.jpg" class="block" alt="" /></div>
+						<p class="quick_link"><em>바로가기 <span class="point">▶</span></em></p>
+					</a></li>
+					<li><a href="/volunteer/page03.html">
+						<h3 class="subject">봉사신청</h3>
+						<p class="contents">작은 도움이라도 <br />되고 싶어요</p>
+						<div class="picture"><img src="/public/images/main_quick_04.jpg" class="block" alt="" /></div>
+						<p class="quick_link"><em>바로가기 <span class="point">▶</span></em></p>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main_location" class="article">
+			<h2><a href="/intro/page05.html"><strong>오시는 길</strong>바로가기</a></h2>
+			<div class="panel map">
+				<div id="daumRoughmapContainer1753919538359" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+<script charset="UTF-8" class="daum_roughmap_loader_script"
+        src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+<script charset="UTF-8">
+  new daum.roughmap.Lander({
+    "timestamp" : "1753919538359",
+    "key" : "6jcgopx4gng",       // 카카오에서 발급된 퍼가기 key
+    "mapWidth" : "100%",
+    "mapHeight" : "540"
+  }).render();
+</script>
+			</div>
+			<div class="panel picture"><img src="/public/images/main_location_01.jpg" class="block" alt="" /></div>
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div class="fgroup">
+			<p class="logo ntxt"><span>요셉나눔재단법인 요셉의원</span></p>
+			<ul class="quick_links">
+				<li><a href="/intro/page05.html"><span>오시는길</span></a></li>
+				<li><a href="/member/privacy.html"><span>개인정보취급방침</span></a></li>
+				<li><a href="/member/terms.html"><span>이용안내</span></a></li>
+				<!-- <li><a href="/special_thanks.html"><span>Special Thanks</span></a></li> 
+				<li><a href="/ibas.html"><span>국성회 안내</span></a></li>-->
+				<li><a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=13386&cntntsId=109155" target="_blank"><span>국세청</span></a></li>
+				<!-- <li><a href="/intro/page07.html"><span>사이트맵</span></a></li> -->
+			</ul>
+			<dl class="info">
+				<dt class="none">상호</dt><dd class="firm">  요셉나눔재단법인</dd>
+				<dt>전화</dt><dd class="firm">02)2634-1760<span>(월~금 : 오전 9시~오후 5시 통화가능)</span></dd>
+				<dt>이메일</dt><dd class="tel">info@josephclinic.org</dd>
+				<dt>고유번호</dt><dd class="firm">743-82-00495</dd>
+				<dt>대표자</dt><dd class="tel">유경촌</dd>
+				<dt>주소</dt><dd>(04320) 서울특별시 용산구 한강대로 389 요셉의원</dd>
+			</dl>
+			<p class="copyright">제작 및 운영. 기부 <strong><a href="http://mediinside.co.kr/" target="_blank">(주)메디인사이드</a></strong></p>
+		</div>
+	</div>
+	<!-- <div id="popup_1" style="position: absolute; left: 0px; top: 50px;max-width:600px;width:100%; z-index: 9999; visibility: visible; overflow: hidden;" class="ui-draggable">
+		<form name="Pop_form_23">
+			<span><img src="/public/images/yosep1.jpg" alt="" style="max-width:600px;width:100%;vertical-align: middle;"></span>
+			<a href="https://mrmweb.hsit.co.kr/v2/default.aspx?Server=QlHyBJfrrCjD4kFlhLKOpA==&action=list" target="_blank">
+				<img src="/public/images/yosep2.jpg" alt="" style="max-width:600px;width:100%;vertical-align: middle;">
+			</a>
+			<span><img src="/public/images/yosep3.jpg" alt="" style="max-width:600px;width:100%;vertical-align: middle;"></span>
+			<a href="https://www.hometax.go.kr/websquare/websquare.wq?w2xPath=/ui/pp/index_pp.xml" target="_blank">
+				<img src="/public/images/yosep4.jpg" alt="" style="max-width:600px;width:100%;vertical-align: middle;">
+			</a>
+			<a href="http://www.josephclinic.org/bbs/index.php?jb_code=80&jb_idx=1323&search_key=&search_keyword=&page=&dep1=&dep2=" target="_blank">
+				<img src="/public/images/yosep5.jpg" alt="" style="max-width:600px;width:100%;vertical-align: middle;">
+			</a>
+			<span><img src="/public/images/yosep6.jpg" alt="" style="max-width:600px;width:100%;vertical-align: middle;">	</span>
+			<div style="height:30px;background:#000;font-size:12px; color:#FFFFFF;">
+				<label style="float:left;padding:0 5px;" onClick="PopupNoDisplay_1()"><input name="chkbox" type="checkbox" value="1"> 이 창을 하루동안 열지 않습니다.</label>
+				<a href="#none" onClick="PopupHide();" style="float:right;padding:6px;color:#fff;font-weight:bold;">[닫기]</a> 
+			</div> 
+		</form>     
+	</div>	 -->
+	<style type="text/css">
+		#popup_1 form > a, #popup_1 a img {display:block;font-size:0;vertical-align: middle;}
+	</style>
+	<!-- <script src="/js/jquery.rwdImageMaps.js"></script> -->
+	<script>
+		$(document).ready(function(e) {
+			// $('img[usemap]').rwdImageMaps();
+			
+			// $('area').on('click', function() {
+			// 	alert($(this).attr('alt') + ' clicked');
+			// });
+		});
+		$(document).ready(function () { 
+		// 	$('.popup').show(); 
+		// 	cookiedata = document.cookie; 
+		// 	if ( cookiedata.indexOf("popup_1=done") < 0 ){
+		// 		 //쿠키 변경 여부 불러오기 
+		// 		 document.all['popup_1'].style.visibility = "visible"; 
+		// 	} else { 
+		// 		document.all['popup_1'].style.display = "none"; 
+		// 	} 
+		// 	PopupBgDisplay(); 
+		// }); 
+		// function PopupNoDisplay_1() { 
+		// 	setCookie("popup_1", "done", 1); 
+		// 	//쿠키값 변경 
+		// 	PopupHide(); 
+		// }; 
+		// function PopupHide() { 
+		// 	//팝업창 지우기 
+		// 	$('#popup_1').hide(); 
+		// 	PopupBgDisplay(); 
+		// };
+		// function PopupBgDisplay() { 
+		// 	//팝업창이 없어진 경우 배경(popupbg) 지우기 
+		// 	cookiedata1 = document.cookie; 
+		// 	if (cookiedata1.indexOf("popup_1=done") > 0) { 
+		// 		$("#popupWrap").hide(); 
+		// 	} 
+		 };
+	</script>
+    <script type="text/javascript">
+<!--//
+function getCookie( name )
+{
+	var nameOfCookie = name + "=";
+	var x = 0;
+	while ( x <= document.cookie.length )
+	{
+		var y = (x+nameOfCookie.length);
+		if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+			if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+				endOfCookie = document.cookie.length;
+			return unescape( document.cookie.substring( y, endOfCookie ) );
+		}
+		x = document.cookie.indexOf( " ", x ) + 1;
+		if ( x == 0 )
+		break;
+	}
+	return;
+}
+</script>
+<script>
+	if ( getCookie( "popup_45" ) != "done" )	{
+	window.open('/popup/popup_window.php?pop_idx=45', 'popup_45','left=1200,top=500,width=300,height=205,marginwidth=0,marginheight=0,resizable=1,scrollbars=no');		
+	}            
+</script>	
+
+</script></div>
+</body>
+</html>

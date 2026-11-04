@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Date: Wed, 04 Nov 2026 05:50:12 GMT
+Server: Apache
+Expires: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Set-Cookie: JSESSIONID=XbxdkhA1ttEvRUeGXi7SFBW1cJBJNBTKUvUNKgqG.portal21; path=/
+X-XSS-Protection: 1; mode=block
+Pragma: no-cache
+X-Frame-Options: DENY
+Vary: Accept,User-Agent
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Content-Language: ko-
+Transfer-Encoding: chunked
+Content-Type: text/html;charset=UTF-8
+

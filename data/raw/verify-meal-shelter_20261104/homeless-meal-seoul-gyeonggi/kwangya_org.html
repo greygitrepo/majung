@@ -1,0 +1,2311 @@
+
+<!DOCTYPE HTML>
+	<script>	var emailaddr = 'fahope@hanmail.net';	var filename = '/index.asp';	var frame = 'index';	var homedir = 'kwangya';	var pid = '';	var server_name = 'www.kwangya.org';	var dir = 'via';	</script>	<script language = 'javascript' src='/modu/uinc/ulink/blur.js'></script>	<script language = 'javascript' src='/modu/include/js_all.js'></script>	<script language = 'javascript' src='/modu/uinc/ulink/link_manager.js?version=2026-11-0417'></script>	<script language = 'javascript' src='/modu/uinc/Embed.js'></script>
+<!--웹알림을 위한 서비스워커 등록-->
+
+<!-- service worker는 로그인 시만 작동 -->
+
+<!-- service worker는 로그 시만 작동 end -->
+<html>
+<head>
+<title>광야교회</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="Title" content="광야교회"/>
+<meta name="Keywords" content="광야교회"/>
+<meta name="Description" content="광야교회"/>
+<meta name="Author" content="웹처치"/>
+<meta name="Publisher" content="웹처치"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="광야교회"/>
+<meta property="og:description" content="광야교회"/>
+<meta property="og:url" content="http://www.kwangya.org/"/>
+<meta property="og:image" content="/img/top/logo_snsimg.jpg"/><link rel="apple-touch-icon" sizes="57x57" href="/favicon-57x57.png"/>
+<link rel="shortcut icon" sizes="72x72" href="/favicon-72x72.png" type="image/x-icon"><!-- 
+  *** 이 파일 수정 시 inc_css_session.asp 도 동일하게 수정 ***
+
+  html 앞에 Request.Cookies("com")("church") 가 붙어야 한다면 inc_css_session.asp 사용
+  ex) /wangsung/department/church01/index.asp
+-->
+<link href="/modu/css/reset.css" rel="stylesheet">
+<link href="/modu/css/modu_style.css" rel="stylesheet">
+<link href="/modu/css/responsive_rem.css" rel="stylesheet">
+<link href="/html/style.css?version=2026110415" rel="stylesheet">
+<link href="/modu/effect/loading/loading.css" rel="stylesheet"><!-- 
+  *** 이 파일 수정 시 inc_javascript_session.asp 도 동일하게 수정 ***
+
+  html 앞에 Request.Cookies("com")("church") 가 붙어야 한다면 inc_javascript_session.asp 사용
+  ex) /wangsung/department/church01/index.asp
+-->
+<script src="/modu/js/jquery-3.3.1.min.js"></script>
+<script src="/modu/js/modu_event.js" defer></script>
+<script src="/modu/js/modu_js.js"></script>
+<script src="/html/common.js?version=2026110415" defer></script>
+<script src="https://kit.fontawesome.com/4465f02211.js" crossorigin="anonymous"></script>
+<script src="https://cdn.lordicon.com/lordicon.js"></script><!-- 
+  교회 안에 교회가 있는 형태인 경우 inc_font_session.asp 사용 (font_admin.asp 제외)
+  ex) /wangsung/department/church01/index.asp
+-->
+<!-- 에디터 폰트 경로 -->
+<link href="/modu/font/noto_sans_kr/noto_sans_kr.css" rel="stylesheet">
+<link href="/modu/font/nanum_gothic/nanum_gothic.css" rel="stylesheet">
+<link href="/modu/font/nanum_myeongjo/nanum_myeongjo.css" rel="stylesheet">
+<link href="/modu/font/nanum_brush/nanum_brush.css" rel="stylesheet">
+<link href="/modu/font/cute/cute.css" rel="stylesheet">
+<link href="/modu/font/east_sea_dokdo/east_sea_dokdo.css" rel="stylesheet">
+<link href="/modu/font/black_han_sans/black_han_sans.css" rel="stylesheet">
+<link href="/modu/font/kopub/kopub.css" rel="stylesheet">
+<link href="/modu/font/kingsejonginstitute/kingsejonginstitute.css" rel="stylesheet"><!-- 관리자페이지 - 폰트 변경 -->
+
+<link href="/modu/font/kopub/kopub.css" rel="stylesheet">
+<style>
+  .wrap {font-family:"Kopub", sans-serif;}
+</style>
+<script>
+  $('html').css('font-size', '62.50%'); // 폰트 크기 %
+</script>
+<script src="/modu/js/jquery-ui.min.js"></script>
+<link href="/modu/css/jquery-ui.min.css" rel="stylesheet"><link href="/modu/notiboard/css/swiper.min.css" rel="stylesheet">
+<script src="/modu/notiboard/js/swiper.min.js"></script>
+<link href="/modu/font/nanum_gothic/nanum_gothic.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- 보안서버 미설치 팝업 start -->
+<style>
+  .sol_security_pop {display:none; position:absolute; top:15px; left:10px; width:210px; padding:15px; background:rgba(90,100,110, 0.7); border-radius:10px; box-sizing:border-box; z-index:9999999;}
+  .sol_security_pop::before {content:''; position:absolute; top:-15px; right:30%; display:block; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 15px solid rgba(90,100,110, 0.7);
+  }
+  .sol_security_pop_cont {display:block; text-align:center;}
+  .sol_security_pop_cont .txt {color:#fff; font-size:13px; line-height:1.3; text-align:left; word-break:keep-all; font-family:Pretendard;}
+  .sol_security_pop_cont .link {position:relative; display:inline-block; margin-top:8px; padding-bottom:3px; color:#ffe799; font-size:13px; font-weight:100; font-family:Pretendard;}
+  .sol_security_pop_cont .link::before {content:''; position:absolute; bottom:0; left:0; display:block; width:100%; border-bottom:1px solid #ffe799;}
+  .sol_security_pop_btn_cls {position:absolute; bottom:-30px; left:50%; display:block; width:25px; height:25px; transform:translateX(-50%); background:none; border:1px solid #fff; border-radius:50%; background:rgba(0,0,0,0.5); opacity:0.7;}
+  .sol_security_pop_btn_cls .line {position:absolute; top:50%; left:50%; display:block; width:60%; height:1px; background:#fff; transform:translate(-50%,-50%) rotate(45deg);}
+  .sol_security_pop_btn_cls .line:last-child {transform:translate(-50%,-50%) rotate(-45deg);}
+</style>
+<aside class="sol_security_pop">
+  <a href="https://www.webchurch.co.kr/sub/sub_security.asp" class="sol_security_pop_cont" target="_blank">
+    <p class="txt">
+      주소창 <span class="caut">[주의 요함]은</span> 브라우저가 표시하는 기본 경고입니다. <br>
+      홈페이지 이용엔 문제없지만, 보안서버설치시 더 안전하게 이용하실 수 있습니다.
+    </p>
+    <p class="link" target="_blank">보안서버 상세알아보기</p>
+  </a>
+  <button class="sol_security_pop_btn_cls">
+    <div class="line"></div>
+    <div class="line"></div>
+  </button>
+</aside>
+<script>
+  // 쿠키 설정 함수
+  function setScrCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+  }
+
+  // 쿠키 가져오기 함수
+  function getScrCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const show_security_pop = function(){
+    const scr_pop = document.querySelector('.sol_security_pop');
+    const btn_cls = document.querySelector('.sol_security_pop_btn_cls');
+    const txt_caut = document.querySelector('.sol_security_pop_cont .txt .caut');
+
+    // 브라우저별 보안 경고 문구 모음
+    const browserWarnings = {
+      chrome: "[주의 요함]은",
+      edge: "[안전하지 않음]은",
+      firefox: "[안전하지 않음]은",
+      safari: "[이 웹사이트는 안전하지 않습니다]는",
+      opera: "[주의]는"
+    };
+    let browser = 'unknown';
+    const ua = navigator.userAgent.toLowerCase();
+    // Edge (먼저 체크 — "chrome" 포함되어 있음)
+    if (ua.includes("edg")) browser = "edge";
+    // Opera (마찬가지로 Chromium 기반이라 chrome 문자열 포함)
+    if (ua.includes("opr") || ua.includes("opera")) browser = "opera";
+    // Chrome (Safari 문자열 포함되어 있어도 Safari로 인식되지 않게)
+    if (ua.includes("chrome") && !ua.includes("edg") && !ua.includes("opr")) browser = "chrome";
+    // Firefox
+    if (ua.includes("firefox")) browser = "firefox";
+    // Safari (Chrome, Edge, Opera가 아닌 경우에만)
+    if (ua.includes("safari") && !ua.includes("chrome") && !ua.includes("edg")) browser = "safari";
+
+    txt_caut.innerText = browserWarnings[browser];
+
+    // 페이지 로드 시
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.location.protocol !== 'https:') { // https 확인
+        if (getScrCookie('hideSecurityPop') !== 'true') { // 쿠키 확인
+          scr_pop.style.display = 'block';
+        }
+      }
+    });
+
+    // 버튼 클릭 시 처리
+    btn_cls.addEventListener('click', () => {
+      scr_pop.querySelector('.sol_security_pop_cont').innerHTML = '<p class="txt">7일간 보이지 않습니다.</p>';
+      setScrCookie('hideSecurityPop', 'true', 7);
+
+      setTimeout(() => {
+        scr_pop.style.opacity = '0';
+        setTimeout(() => {
+          scr_pop.style.display = 'none';
+        }, 500); // transition 후 숨기기
+      }, 3000);
+    });
+  }
+  show_security_pop();
+</script>
+<!-- 보안서버 미설치 팝업 end -->
+<!--
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<link href="/modu/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/modu/css/responsive_rem.css" rel="stylesheet" type="text/css">
+-->
+<link href="/modu/font/pretendard/pretendard.css" rel="stylesheet">
+<link href="/modu/privacy/css/privacy_css.css" rel="stylesheet" type="text/css">
+<!-- <script src="/modu/js/jquery-3.3.1.min.js"></script> -->
+<div class="privacy_bg"></div>
+<article class="privacy_area personal_safe">
+	<div class="privacy_top">
+		개인정보처리방침
+		<div class="close_btn">
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<div class="privacy_cont">
+		<p class="txt">
+			회원가입을 위해 
+      광야교회
+      는(은) 아래와 같이 개인정보를 위탁하고 있으며, 관계 법령에 따라 위탁 계약 시 개인정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다.
+		</p>
+		<p class="txt">
+			수탁업체 : (주)웹커뮤니티
+		</p>
+		<p class="txt">
+			㈜웹커뮤니티(이하 ‘회사’또는 '웹처치'라 함)는 회원의 개인정보 보호를 매우 중요시하며, 『정보통신망 이용촉진 및 정보보호 등에 관한 법률』 및 전기통신사업법, 통신비밀보호법을 준수하고 있습니다. 회사는 개인정보처리방침을 수립하여 회원의 개인정보를 보호하고 있으며, 이를 홈페이지에 명시하여 회원이 온라인상에서 회사에 제공한 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치를 취하는지 알려드립니다. 회사의 개인정보처리방침은 다음과 같은 내용을 담고 있습니다.
+		</p>
+		<p class="txt f_str">
+			1. 개인정보의 수집 및 이용 목적 <br>
+			2. 수집하는 개인정보의 항목 및 수집방법 <br>
+			3. 개인정보의 공유 및 제공 <br>
+			4. 개인정보의 취급위탁 <br>
+			5. 개인정보의 보유 및 이용기간 <br>
+			6. 개인정보 파기절차 및 방법 <br>
+			7. 회원 및 법정대리인의 권리와 그 행사방법 <br>
+			8. 개인정보 자동 수집 장치의 설치 / 운영 및 거부에 관한 사항 <br>
+			9. 개인정보의 기술적 / 관리적 보호 대책 <br>
+			10. 개인정보관리책임자 및 담당자의 연락처 <br>
+			11. 고지의 의무
+		</p>
+		<p class="txt f_str">
+			1. 개인정보의 수집 및 이용목적
+		</p>
+		<h3 class="tit">
+			회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다
+		</h3>
+		<p class="txt">
+			<strong>가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산</strong><br>
+			서비스 및 컨텐츠 제공, 청구서 발송, 본인인증, 구매 및 요금 결제, 요금추심
+		</p>
+		<p class="txt">
+			<strong>나. 회원관리</strong><br>
+			회원제 서비스 이용 및 제한적 본인 확인제에 따른 본인확인, 개인식별, 불량회원의 부정 이용방지와 비인가 사용방지, 가입의사 확인, 가입 및 가입횟수 제한, 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 추후 법정 대리인 본인확인, 분쟁 조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달 컨텐츠 제공, 청구서 발송, 본인인증, 구매 및 요금 결제, 요금추심
+		</p>
+		<p class="txt">
+			<strong>다. 신규 서비스 개발 및 마케팅</strong><br>
+			신규 서비스 개발 및 맞춤 서비스 제공, 통계학적 특성에 따른 서비스 제공 및 광고 게재, 서비스의 유효성 확인, 이벤트 및 광고성 정보 제공, 접속빈도 파악, 회원의 서비스이용에 대한 통계 (회원님의 개인정보는 광고를 의뢰한 개인이나 단체에는 제공되지 않습니다.)
+		</p>
+		<h3 class="tit">
+			2. 수집하는 개인정보의 항목 및 수집방법
+		</h3>
+		<p class="txt">
+			‘개인정보’란 생존하는 개인에 관한 정보로서 성명, 주민등록번호 등에 의하여 당해 개인을 식별할 수 있는 정보(당해 정보만으로는 특정 개인을 알아볼 수 없는 경우에도 다른 정보와 용이하게 결합하여 알아볼 수 있는 것을 포함)를 말합니다
+		</p>
+		<p class="txt">
+			<strong>가. 수집하는 개인정보 항목</strong><br>
+			1. 회사는 회원가입, 서비스시청, 고객상담, 각종 서비스의 제공을 위해 아래와 같은 개인정보를 수집하고 있습니다. <br>
+			- 회원가입 시<br>
+			<일반 회원가입 시> : 이름, 생년월일, 아이디, 비밀번호, 이메일주소, 전화번호(휴대전화번호 또는 유선전화번호), 법정대리인 정보(만 14세 미만인 아동의 경우)<br>
+			<아이핀(I-PIN) 회원가입 시> : 이름, 생년월일, 성별, 아이핀 번호, 아이디, 중복가입확인 정보(D.I값), 비밀번호, 이메일 주소, 전화번호(휴대전화번호 또는 유선전화번호), 법정대리인 정보(만 14세 미만의 아동인 경우)
+		</p>
+		<p class="txt">
+			- 일부 서비스 신청 시 : 주소, 사업자 관련 정보(상호, 사업자등록번호(고유번호), 대표자 이름, 사업장 주소/전화번호/팩스번호/이메일주소, 홈페이지 주소)
+		</p>
+		<p class="txt">
+			- 환불 시 : 계좌정보(거래은행명, 계좌번호, 거래자 성명)
+		</p>
+		<p class="txt">
+			2. 서비스 이용과정이나 사업 처리 과정 에서 아래와 같은 정보들이생성되어 수집될 수 있습니다. 이용자의 브라우저 종류 및 OS, 서비스 이용 기록, 접속 로그 IP 주소, 방문 일시, 불량 이용 기록, , 결제기록, 쿠키
+		</p>
+		<p class="txt">
+			<strong>나.개인정보 수집방법</strong><br>
+			회사는 다음과 같은 방법으로 개인정보를 수집합니다 홈페이지, 팩스, 전화, 상담 게시판, 이메일, 이벤트 응모, 생성정보 수집 툴을 통한 수집
+		</p>
+		<h3 class="tit">
+			3. 개인정보의 공유 및 제공
+		</h3>
+		<p class="txt">
+			회사는 이용자들의 개인정보를 '2. 개인정보의 수집목적 및 이용목적'에서 고지한 범위내에서 사용하며, 이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 공개하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.
+		</p>
+		<p class="txt">
+			- 이용자들이 사전에 공개에 동의한 경우<br>
+			- 법령의 규정에 의거하거나, 적법한 절차에 의한 정부/수사기관의 요구가 있을 경우<br>
+			- 이용목적에 부합하는 개인정보의 이용 및 제공<br>
+			- 업무상 연락을 위하여 회원의 정보(성명, 주소, 전화번호)를 사용하는 경우<br>
+			- 통계작성,홍보자료,학술연구 또는 시장조사를 위하여 필요한 경우로서 특정 고객임을 식별할 수 없는 형태로 제공되는 경우
+		</p>
+		<h3 class="tit">
+			4. 개인정보의 취급위탁
+		</h3>
+		<p class="txt">
+			회사는 서비스 향상을 위해서 이용자들의 개인정보를 외부전문업체에 위탁하여 처리할 수 있습니다. 개인정보의 처리를 위탁하는 경우에는 미리 그 사실을 이용자들에게 공지할 것입니다. 또한 위탁계약 등을 통하여 서비스제공자의 개인정보보호 관련 지시엄수, 개인정보에 관한 비밀유지, 제3자 제공의 금지 및 사고시의 책임부담 등을 명확히 규정하고 당해 계약내용을 서면 또는 전자적으로 보관하여 이용자의 권익을 보호하고 있습니다.
+		</p>
+		<table class="privacy_tbl">
+			<colgroup>
+				<col width="50%">
+				<col width="50%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th>수탁업체</th>
+					<th>위탁업무</th>
+				</tr>	
+			</thead>
+			<tbody>
+				<tr>
+					<td>나이스신용평가정보(주)	</td>
+					<td>실명인증</td>
+				</tr>
+				<tr>
+					<td>(주) 올더게이트	</td>
+					<td>결제</td>
+				</tr>
+				<tr>
+					<td>Siren24</td>
+					<td>본인인증</td>
+				</tr>
+				<tr>
+					<td>유서트</td>
+					<td>보안서버</td>
+				</tr>
+				<tr>
+					<td>후이즈</td>
+					<td>도메인</td>
+				</tr>
+				<tr>
+					<td>Cafe24</td>
+					<td>일부 호스팅</td>
+				</tr>
+				<tr>
+					<td>페이팔</td>
+					<td>외화결제</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3 class="tit">
+			5. 개인정보의 보유 및 이용기간
+		</h3>
+		<p class="txt">
+			개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.
+		</p>
+		<p class="txt">
+			<strong>1. 회사 내부방침에 의한 정보보유 사유</strong><br>
+			회원이 탈퇴한 경우에도 회사는 원활한 서비스의 제공 및 부정한 서비스의 이용을 방지하기 위하여 아래와 같이 회원정보를 보관합니다.
+		</p>
+		<p class="txt">
+			이름, 생년월일, 이메일 주소, 전화번호<br>
+			- 보존이유 : 서비스 이용의 혼선방지, 분쟁해결 및 수사기관의 요청에 따른 협조<br>
+			- 보존기간 : 1 년
+		</p>
+		<p class="txt">
+			부정/불량이용기록 (부정/불량이용자의 개인정보 포함)<br>
+		- 보존이유 : 서비스의 부정 및 불량 이용 방지 및 부정/불량이용자의 재가입 방지<br>
+		- 보존기간 : 1 년
+		</p>
+		<p class="txt">
+			<strong>2. 관련 법령에 의한 정보보유 사유</strong><br>
+			상법, 전자상거래 등에서의 소비자보호에 관한 법률 등 관계 법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 관계 법령에서 정한 일정한 기간 동안 회원정보를 보관합니다. 이 경우 회사는 보관하는 정보를 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.	
+		</p>
+		<p class="txt">
+			계약 또는 청약철회 등에 관한 기록<br>
+			- 보존이유 : 전자상거래 등에서의 소비자보호에 관한 법률<br>
+			- 보존기간 : 5년
+		</p>
+		<p class="txt">
+			대금결제 및 재화 등의 공급에 관한 기록<br>	
+			- 보존이유 : 전자상거래 등에서의 소비자보호에 관한 법률<br>
+			- 보존기간 : 5년
+		</p>
+		<p class="txt">
+			소비자의 불만 및 분쟁처리에 관한 기록<br>
+			- 보존이유 : 전자상거래 등에서의 소비자보호에 관한 법률<br>
+			- 보존기간 : 3년
+		</p>
+		<p class="txt">
+			로그기록<br>
+			- 보존이유 : 통신비밀보호법<br>
+			- 보존기간 : 3개월
+		</p>
+		<h3 class="tit">
+			6. 개인정보 파기절차 및 방법
+		</h3>
+		<p class="txt">
+			회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 파기절차 및 방법은 다음과 같습니다.
+		</p>
+		<p class="txt">
+			<strong>1. 파기절차</strong><br>
+			회원이 회원가입 등을 위해 입력한 정보는 목적이 달성된 후 별도의 DB로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조)일정 기간 저장된 후 파기됩니다. 동 개인정보는 법률에 의한 경우가 아니고서는 보유되는 이외의 다른 목적으로 이용되지 않습니다
+		</p>
+		<p class="txt">
+			<strong>2. 파기방법</strong><br>
+			① 종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각하여 파기합니다.<br>
+			② 전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.
+		</p>
+		<h3 class="tit">
+			7. 회원 및 법정대리인의 권리와 그 행사방법
+		</h3>
+		<p class="txt">
+			1. 회원 및 법정대리인은 언제든지 등록되어 있는 자신 또는 당해 만14세 미만 아동의 개인정보를 조회하거나 수정할 수 있으며 가입해지(동의철회)를 요청할 수도 있습니다.
+		</p>
+		<p class="txt">
+			2. 회원 혹은 만14세 미만 아동의 개인정보 조회, 수정을 위해서는 “회원정보수정”을 가입해지(동의철회)를 위해서는 “회원탈퇴”를 클릭하여 본인 확인절차를 거치신 후 직접 열람, 정정 또는 탈퇴가 가능합니다. 혹은 개인정보 관리책임자에게 서면, 전화, 이메일 또는 상담게시판으로 연락하시면 지체 없이 조치하겠습니다.
+		</p>
+		<p class="txt">
+			3. 회원 또는 법정대리인이 개인정보의 오류에 대한 정정을 요청하신 경우에는 정정을 완료하기 전까지 당해 개인정보를 이용 또는 제공하지 않습니다. 또한 잘못된 개인정보를 제3자에게 이미 제공한 경우에는 정정 처리결과를 제3자에게 지체 없이 통지하여 정정이 이루어지도록 하겠습니다.
+		</p>
+		<p class="txt">
+			4. 회사는 회원 또는 법정대리인의 요청에 의해 해지 또는 삭제된 개인정보는 “(주)웹커뮤니티가 수집하는 개인정보의 보유 및 이용기간”에 명시된 바에 따라 처리하고 그 외의 용도로 열람 또는 이용할 수 없도록 처리하고 있습니다.
+		</p>
+		<h3 class="tit">
+			8. 개인정보 자동 수집 장치의 설치/운영 및 거부에 관한 사항
+		</h3>
+		<p class="txt">
+			회사는 회원에게 개별적으로 특화된 맞춤서비스를 제공하기 위해서 회원의 정보를 수시로 저장하고 찾아내는 ‘쿠키(cookie)’를 사용합니다. 쿠키는 당사의 웹사이트를 운영하는데 이용되는 서버가 사용자의 브라우저에 보내는 소량의 텍스트 파일로서 사용자의 컴퓨터 하드디스크에 저장되며, 사용자의 컴퓨터는 식별하지만 사용자를 개인적으로 식별하지는 않습니다.
+		</p>
+		<p class="txt">
+			<strong>1. 쿠키 등 사용목적</strong><br>
+			회사는 다음과 같은 목적을 위해 쿠키를 사용합니다.<br>	
+			회원과 비회원의 접속빈도나 방문시간 등을 분석, 이용자의 취향과 관심분야를 파악 및 자취 추적 각종 이벤트 참여 정도 및 방문회수 파악 등을 통한 타겟 마케팅 및 개인맞춤서비스제공
+		</p>
+		<p class="txt">
+			<strong>2. 쿠키설정거부방법</strong><br>
+			회원은 쿠키 설치에 대한 선택권을 가지고 있습니다. 따라서, 회원은 웹브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수도 있습니다.<br>
+			설정방법의 예 : (인터넷 익스플로러의 경우)<br>
+			웹브라우저 상단의 도구 > 인터넷 옵션 > 개인정보<br>
+			그러나 회사 홈페이지에 접속하여 서비스를 이용하기 위해서는 쿠키를 허용하여야 하며, 이를 거부할 경우 로그인이 필요한 회사의 서비스의 이용이 어려울 수 있습니다.		
+		</p>
+		<h3 class="tit">
+			9. 개인정보의 기술적/관리적 보호 대책
+		</h3>
+		<p class="txt">
+			회원의 개인정보는 기본적으로 회원의 아이디와 비밀번호에 의하여 보호되며, 회사는 회원의 개인정보를 취급함에 있어 개인정보가 유출, 변조 또는 훼손되지 않도록 안전성을 확보하기 위하여 다음과 같은 기술적/관리적 대책을 마련하고 있습니다.
+		</p>
+		<p class="txt">
+			<strong>1. 기술적 대책</strong><br>
+			① 회원 계정의 비밀번호는 암호화되어 저장되므로 본인만이 알 수 있습니다. 따라서 계정 로그인이 필요한 개인정보의 확인 및 수정은 해당 아이디와 비밀번호를 알고 있는 본인 만이 가능합니다.<br>
+			② 회사는 개인정보의 훼손에 대비하여 자료를 수시로 백업하고 있고, 백신 프로그램 및 악성코드 방어 소프트웨어을 이용하여 컴퓨터 바이러스에 의한 피해를 방지하고 있으며, 해당 소프트웨어는 매일 주기적으로 업데이트하고 있습니다.<br>
+			③ 회사는 결제 등의 경우에 있어 네트워크상에서 개인정보를 안전하게 전송할 수 있도록 보안장치를 채택하고 있습니다.<br>
+			④ 회사는 해킹 등에 의한 정보의 유출을 방지하기 위해 침입차단시스템(방화벽)을 이용하여 외부로부터의 무단 접근을 통제하고 있으며, 기타 시스템적인 보안성을 확보하기 위해 가능한 모든 기술적 장치를 갖추려 노력하고 있습니다.
+		</p>
+		<p class="txt">
+			<strong>2. 관리적 대책</strong><br>
+			① 회사는 회원 본인의 비밀번호 요청 등에 의해 개인정보를 다룰 때 가능한 최선의 방법으로 본인임을 확인하고 안전하게 정보가 처리될 수 있도록 최선을 다합니다.<br>
+			② 회사는 개인정보에 대한 접근권한을 개인정보관리책임자 등 개인정보관리업무를 수행하는 자, 기타 업무상 개인정보의 취급이 불가피한 자로 제한하며, 개인정보를 취급하는 직원에 대한 수시 교육을 통하여 개인정보취급방침의 준수를 항상 강조하고 있습니다.
+		</p>
+		<p class="txt">
+			위와 같은 회사의 노력 이외에 회원은 아이디와 비밀번호가 인터넷 상에 노출되거나 타인에게 유출되지 않도록 주의하여야 합니다. 회원 본인의 부주의나 관리소홀로 아이디와 비밀번호 등 개인정보가 유출되었다면 이에 대해서 회사는 책임을 지지 않습니다.
+			따라서, 회원의 아이디와 비밀번호는 반드시 본인만 사용하시고, 비밀번호를 자주 바꿔주시는 것이 좋으며, 비밀번호는 영문자, 숫자를 혼합하여 타인이 유추하기 어려운 번호를 사용하는 것이 좋습니다.
+			또한 서비스의 이용을 마친 후에는 항상 로그아웃을 하여 주시고 웹 브라우저를 종료하는 것이 좋습니다. 특히, 다른 사람과 컴퓨터를 공유하거나, 공공장소에서 이용하는 경우에 개인정보의 보안을 위해서는 이와 같은 절차가 더욱 필요합니다.
+		</p>
+		<h3 class="tit">
+			10. 개인정보관리책임자 및 담당자의 연락처
+		</h3>
+		<p class="txt">
+			회사는 고객의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 관련 부서 및 개인정보관리책임자를 지정하고 있습니다
+		</p>
+		<p class="txt">
+			1. 개인정보 관리책임자 : 이재욱 / 기술담당 / ptj@webchurch.co.kr <br>	
+			2. 개인정보 관리담당자 : 김숙희 / 운영팀장 / sm@webcomm.co.kr 
+		</p>
+		<p class="txt">
+			귀하께서는 회사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보관리 책임자 혹은 담당자에게 연락하시기 바랍니다. 회사는 회원의 문의사항에 대해 신속하게 충분한 답변을 드릴 것입니다.
+		</p>
+		<p class="txt">
+			기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다. <br>	
+			개인정보 침해신고센터 (<a href="http://www.cyberprivacy.or.kr" target="_blank">http://www.cyberprivacy.or.kr</a>, 전화 1336)<br>
+			개인정보 분쟁조정위원회 (<a href="http://www.kopico.or.kr" target="_blank">http://www.kopico.or.kr</a>, 전화 1336)<br>
+			정보보호마크 인증위원회 (<a href="http://www.privacymark.or.kr" target="_blank">http://www.privacymark.or.kr</a>, 전화 02-580-0533)<br>
+			대검찰청 인터넷범죄수사센터 (<a href="http://www.spo.go.kr" target="_blank">http://www.spo.go.kr</a>, 전화 02-3480-3600)<br>
+			경찰청 사이버테러대응센터 (<a href="http://www.ctrc.go.kr" target="_blank">http://www.ctrc.go.kr</a>, 전화 02-392-0330)
+			경찰청 (<a href="http://www.police.go.kr" target="_blank">http://www.police.go.kr</a>)
+		</p>
+		<h3 class="tit">
+			11. 고지의 의미
+		</h3>
+		<p class="txt">
+			현 개인정보취급방침의 내용 추가, 삭제 및 수정이 있을시에는 개정되는 개인정보취급방침을 최소 7일전부터 홈페이지의 '공지사항'을 통해 고지할 것입니다.
+		</p>
+		<h3 class="tit">
+			[부칙]
+		</h3>
+		<p class="txt">
+			1. 공고일자 : 2021년 5월 1일<br>
+			2. 시행일자 : 2021년 5월 1일
+		</p>
+	</div>
+</article>
+<article class="privacy_area use">
+	<div class="privacy_top">
+		이용약관
+		<div class="close_btn">
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<div class="privacy_cont">
+    <p class="txt">
+      <strong>제 1 조 (목적 등)</strong><br>
+     (주)웹커뮤니티(이하 “회사)에서 제공하는 교회 전용 웹사이트 솔루션(이하 “솔루션”)을 통해 제공되는 광야교회(이하 “관리자”) 서비스를 이용함에 있어, 관리자는 회사에 개인정보처리을 위탁하며,  이와 관련하여 회사,관리자 와 회원의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.<br><br>
+
+      <strong>제 2 조 (이용약관의 효력 및 변경)</strong><br>
+      (1) 이 약관은 해당 웹사이트에서 온라인으로 공시함으로써 효력을 발생하며, 합리적인 사유가 발생할 경우 관련법령에 위배되지 않는 범위 안에서 개정될 수 있습니다.<br>
+      (2) 합리적인 사유가 발생될 경우에는 이 약관을 변경할 수 있으며, 약관을 변경할 경우에는 지체 없이 이를 사전에 공시합니다.<br>
+      (3) 이 약관에 동의하는 것은 정기적으로 웹을 방문하여 약관의 변경사항을 확인하는 것에 동의함을 의미합니다. 변경된 약관에 대한 정보를 알지 못해 발생하는 회원의 피해는 관리자 및 회사에서 책임지지 않습니다.<br>
+      (4) 회원은 변경된 약관에 동의하지 않을 경우 회원 탈퇴(해지)를 요청할 수 있으며, 변경된 약관의 효력 발생일로부터 7일 이후에도 거부의사를 표시하지 아니하고 서비스를 계속 사용할 경우 약관의 변경 사항에 동의한 것으로 간주됩니다.<br><br>
+
+
+
+      <strong>제 3조 (약관 외 준칙)</strong><br>
+      이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 정부가 제정한 관계법령 및 관례에 따릅니다.<br><br>
+
+
+
+      <strong>제 4 조 (용어의 정의)</strong><br>
+      본 약관에서 사용되는 주요한 용어의 정의는 다음과 같습니다.<br>
+      (1) 회원 : 회사와 서비스 이용계약을 체결하고 이용자 아이디(ID)를 부여받은 자를 말합니다.<br>
+      (2) 이용자 아이디(이하 ID) : 회원의 식별과 회원의 서비스 이용을 위하여 회원이 선정하고 관리자가 승인하는 문자나 숫자 혹은 그 조합을 말합니다.<br>
+      (3) 비밀번호 : 회원이 부여받은 ID와 일치된 회원임을 확인하고, 회원 자신의 비밀을 보호하기 위하여 회원이 정한 문자와 숫자의 조합을 말합니다.<br>
+      (4) 해지 : 관리자 또는 회원이 서비스 사용 후 이용계약을 해약하는 것을 말합니다.<br><br>
+
+
+      <strong>제 5 조 (이용 계약의 성립)</strong><br>
+      (1) 서비스 가입 신청시 본 약관을 읽고 "위의 이용자 약관에 동의합니다."의 체크 박스에 체크를 한 후 등록하기 버튼을 클릭하면 본 약관에 동의하는 것으로 간주됩니다.<br>
+      (2 )이용계약은 서비스 이용희망자의 이용약관 동의 후 이용 신청에 대하여 관리자가 승낙 또는 바로 성립합니다.<br>
+
+
+      <strong>제 6 조 (서비스 이용 신청)</strong><br>
+      (1) 회원으로 가입하여 서비스를 이용하고자 하는 자는 회사가 요청하는 제반정보(이름,이메일,연락처 등)을 제공하여야 합니다.<br>
+      (2) 모든 회원은 반드시 회원 본인의 이름과 이메일 주소를 제공하여야만 서비스를 이용할 수 있습니다.<br>
+      (3) 회원가입은 관리자가 원할 경우 실명으로만 가입할 수 있으며, 회사는 실명확인조치를 할 수 있습니다.<br>
+      (4) 타인의 명의를 도용하여 이용신청을 한 회원의 모든 ID는 삭제되며, 관계법령에 따라 처벌을 받을 수 있습니다.<br><br>
+
+
+      <strong>제 7 조 (개인정보의 보호 및 사용)</strong><br>
+      관리자와 회사는 관련법령이 정하는 바에 따라 회원 등록정보를 포함한 회원의 개인정보를 보호하기 위하여 노력합니다. 회원의 개인정보보호에 대해서는 관련법령 및 회사가 정하는 개인정보 처리방침이 적용됩니다. 단, 해당사이트 이외의 웹에서 링크된 사이트에서는 회사의 개인정보처리방법이 적용되지 않습니다. 또한 관리자와 회사는 회원의 귀책사유로 인해 노출된 정보에 대해서 일체의 책임을 지지 않습니다.<br>
+
+
+      <strong>제 8 조 (이용신청의 승낙과 제한)</strong><br>
+      (1) 관리자는 상기 제6조. 서비스 이용신청 의 내용에 따른 이용신청에 대해 특별한 하자가 없는 한 접수 순서대로 이용 신청을 승낙합니다.<br>
+      (2) 관리자는 아래 사항에 대해 이용신청을 승낙하지 않을 수 있고, 그 사유가 해소될 때까지 승낙을 유보할 수 있습니다.<br>
+      가. 기술적인 문제가 발생한 경우<br>
+      나. 장비에 여유가 없는 경우<br>
+      다. 기타 사정상 이용승낙이 곤란한 경우<br>
+      (3) 관리자는 아래사항에 대해 이용신청을 승낙하지 아니할 수 있습니다<br>
+      - 본인의 실명으로 신청하지 않은 경우 (실명인증 사용의 경우)<br>
+      - 기재 내용을  허위로 기재하여 신청한 경우<br>
+      - 사회의 안녕과 질서 혹은 미풍양속을 저해할 목적으로 신청한 경우<br>
+      - 부정한 용도로 본 서비스를 이용하고자 하는 경우<br>
+      - 영리를 추구할 목적으로 본 서비스를 이용하고자 하는 경우<br>
+      - 기타 규정한 이용신청요건 및 제반사항에 미치지 못할 경우<br>
+      (4) 2 또는 3 의 각 호의 내용에 의하여 회원가입 신청의 승낙을 유보하거나 승낙하지 않은 경우, 관리자는 이를 회원가입 신청자에게 알립니다. 다만, 관리자의 귀책사유없이 회원 신청자에게 통지할 수 없는 경우는 예외로 합니다.<br><br>
+
+
+      <strong>제 9 조 (이용자ID 부여 및 변경 등)</strong><br>
+      (1) 회원ID는 원칙적으로 변경이 불가하며 부득이한 사유로 인하여 변경 하고자 하는 경우에는 해당 ID를 해지하고 재가입해야 합니다.<br>
+      (2) 회원ID는 다음 각 호에 해당하는 경우에는 회원 또는 관리자의 요청으로 변경할 수 있습니다.<br>
+      -  ID가 회원의 전화번호 또는 주민등록번호 등으로 등록되어 사생활침해가 우려되는 경우<br>
+      -  타인에게 혐오감을 주거나 미풍양속에 어긋나는 경우<br>
+      -  기타 합리적인 사유가 있는 경우<br>
+      (3) 회원은 회원정보 수정을 통하여 자신의 개인정보를 관리할 수 있는 페이지를 열람할 수 있으며, 해당 페이지에서 언제든지 본인의 개인정보를 수정할 수 있습니다. 단, 서비스 관리를 통하여 반드시 필요한 생년월일, 이메일, ID등은 수정할 수 없습니다.<br>
+      (4) 서비스 회원ID 및 비밀번호의 관리책임은 회원에게 있습니다. 이를 소홀이 관리하여 발생하는 서비스 이용상의 손해 또는 제3자에 의한 부정이용 등에 대한 책임은 회원에게 있으며 회사와 관리자는 그에 대한 책임을 일절 지지 않습니다.<br>
+      (5) 기타 이용자 개인정보 관리 및 변경 등에 관한 사항은 서비스별 안내에 정하는 바에 의합니다.<br><br>
+
+
+      <strong>제 10 조 (회사의 의무)</strong><br>
+      (1) 회사는 회원으로부터 제기되는 의견이나 불만이 정당하다고 객관적으로 인정될 경우에는 적절한 절차를 거쳐 즉시 처리하여야 합니다. 다만, 즉시 처리가 곤란한 경우는 해당 회원에게 그 사유와 처리일정을 통보하여야 합니다.<br>
+      (2) 회사는 회원의 개인정보보호와 관련하여 정한 개인정보보호 정책을 만들어 회원이 열람할 수 있도록 서비스 내에 공지하고 이를 준수합니다.<br>
+      (3) 회사는 이용계약의 체결, 계약사항의 변경 및 해지 등 회원과의 계약 관련 절차 및 내용 등에 있어 회원에게 편의를 제공하도록 노력합니다.<br><br>
+
+
+      <strong>제 11 조 (회원의 의무)</strong><br>
+      (1) 가입을 원하는 자는 회원가입 신청 또는 회원정보 변경 시 실명으로 모든 사항을 사실에 근거하여 작성하여야 하며, 허위 또는 타인의 정보를 등록할 경우 일체의 권리를 주장할 수 없습니다.<br>
+      (2) 회원은 본 약관에서 규정하는 사항과 기타 회사와 관리자가 정한 제반 규정, 공지사항 등 회사와 관리자가 공지하는 사항 및 관계법령을 준수하여야 하며, 기타 회사와 관리자의 업무에 방해가 되는 행위, 회사와 관리자의 명예를 손상시키는 행위를 해서는 안됩니다.<br>
+      (3) 회원은 주소, 연락처, 전자우편 주소 등 이용계약사항이 변경된 경우에 회원정보변경등으로 해당 절차를 거쳐 이를 관리자에 즉시 알려야 합니다.<br>
+      (4) 관리자와 회사가 관계법령 및 '개인정보처리보호'에 의거하여 그 책임을 지는 경우를 제외하고 회원에게 부여된 ID의 비밀번호 관리소홀, 부정사용에 의하여 발생하는 모든 결과에 대한 책임은 회원에게 있습니다.<br>
+      (5) 회원은 자신의 ID나 비밀번호가 부정하게 사용되었다는 사실을 발견한 경우에는 즉시 관리자나 회사에 신고하여야 하며, 회사의 안내가 있는 경우에는 그에 따라야 합니다. 이를 따르지 않는 경우 이에 따른 모든 결과의 책임은 회원에게 있습니다.<br>
+      (6) 회원은 관리자나 회사의 사전 승낙 없이 서비스를 이용하여 영업활동을 할 수 없으며, 그 영업활동의 결과에 대해 회사와 관리자는 책임을 지지 않습니다. 또한 회원은 이와 같은 영업활동으로 관리자와 회사가 손해를 입은 경우, 회원은 관리자와 회사에 대해 손해배상의무를 지며, 관리자와 회사는 해당 회원에 대해 서비스 이용제한 및 적법한 절차를 거쳐 손해배상 등을 청구할 수 있습니다.<br>
+      (7) 회원은 관리자의 명시적 동의가 없는 한 서비스의 이용권한, 기타 이용계약상의 지위를 타인에게 양도, 증여할 수 없으며 이를 담보로 제공할 수 없습니다.<br>
+      (7) 회원은 회사 및 제 3자의 지적 재산권을 침해해서는 안됩니다.<br>
+      (8) 회원은 다음 각 호에 해당하는 행위를 하여서는 안되며, 해당 행위를 하는 경우에 관리자와 회사는 회원의 서비스 이용제한 및 적법 조치를 포함한 제재를 가할 수 있습니다.<br>
+      - 회원가입 신청 또는 회원정보 변경 시 허위내용을 등록하는 행위<br>
+      - 다른 회원의 ID, 비밀번호 도용하는 행위<br>
+      - 회원 ID를 타인과 거래하는 행위<br>
+      - 회사의 운영진, 직원 또는 관계자를 사칭하는 행위<br>
+      - 회사로부터 특별한 권리를 부여 받지 않고 회사의 클라이언트 프로그램을 변경하거나, 회사의 서버를 해킹하거나, 웹사이트 또는 게시된 정보의 일부분 또는 전체를 임의로 변경하는 행위<br>
+      - 서비스에 위해를 가하거나 고의로 방해하는 행위<br>
+      - 본 서비스를 통해 얻은 정보를 회사의 사전 승낙 없이 서비스 이용 외의 목적으로 복제하거나, 이를 출판 및 방송 등에 사용하거나, 제 3자에게 제공하는 행위<br>
+      - 공공질서 및 미풍양속에 위반되는 저속, 음란한 내용의 정보, 문장, 도형, 음향, 동영상을 전송, 게시, 전자우편 또는 기타의 방법으로 타인에게 유포하는 행위<br>
+      - 모욕적이거나 개인신상에 대한 내용이어서 타인의 명예나 프라이버시를 침해할 수 있는 내용을 전송, 게시, 전자우편 또는 기타의 방법으로 타인에게 유포하는 행위<br>
+      - 다른 이용자를 희롱 또는 위협하거나, 특정 이용자에게 지속적으로 고통 또는 불편을 주는 행위<br>
+      - 관리자와 회사의 승인을 받지 않고 다른 사용자의 개인정보를 수집 또는 저장하는 행위<br>
+      - 범죄와 결부된다고 객관적으로 판단되는 행위<br>
+      - 본 약관을 포함하여 기타 회사가 정한 제반 규정 또는 이용 조건을 위반하는 행위<br>
+      - 기타 관계법령에 위배되는 행위<br><br>
+
+
+      <strong>제 12 조 (서비스 이용관련)</strong><br>
+      (1) 회사는 이 서비스 이용중 제공할 필요가 있다고 인정되는 다양한 정보에 대해서 전자우편, 유선매체, 서신우편 등의 방법으로 회원에게 제공할 수 있습니다.<br>
+      (2) 본 정보의 제공은 관리자의 특별한 요청이 없는 한 하루 24 시간 제공을 원칙으로 하며 정기점검이나 설비의 보수, 전기통신 사업법에 의한 기간통신사업자로 인한 서비스 중단, 기타 천재지변등 불가항력적인 사유로 사전 고지 없이 정보제공을 중단할 수 있습니다.<br>
+      (3) 특정 항목의 정보에 대해서는 별도의 신청을 통하여 회원에 대하여 유료로 제공할 수 있습니다.<br><br>
+
+
+      <strong>제 13 조 (요금)</strong><br>
+      (1) 서비스 이용은 기본적으로 무료입니다.<br>
+      (2) Sms(문자)은 이용을 원하는 회원에 한하여 선충전 후 사용합니다.<br><br>
+
+
+      <strong>제 14 조 (게시물 관리)</strong><br>
+      회사와 관리자는 다음 각 호에 해당하는 게시물이나 자료를 사전통지 없이 삭제하거나 이동 또는 등록 거부를 할 수 있습니다 .<br>
+      - 다른 회원 또는 제 3자에게 심한 모욕을 주거나 명예를 손상시키는 내용인 경우<br>
+      - 공공질서 및 미풍양속에 위반되는 내용을 유포하거나 링크시키는 경우<br>
+      - 불법복제 또는 해킹을 조장하는 내용인 경우<br>
+      - 영리를 목적으로 하는 광고일 경우<br>
+      - 범죄와 결부된다고 객관적으로 인정되는 내용일 경우<br>
+      - 다른 이용자 또는 제 3자의 저작권 등 기타 권리를 침해하는 내용인 경우<br>
+      - 규정한 게시물 원칙에 어긋나거나, 게시판 성격에 부합하지 않는 경우<br>
+      - 기타 관계법령에 위배된다고 판단되는 경우<br><br>
+
+
+      <strong>제 15 조 (게시물의 저작권)</strong><br>
+      (1) 회원이 서비스 화면 내에 게시한 게시물의 저작권은 게시한 회원에게 귀속됩니다. 또한 관리자의 동의 없이 게시물을 상업적으로 이용할 수 없습니다. 다만 비영리 목적인 경우는 그러하지 아니하며, 또한 서비스내의 게재권을 갖습니다.<br>
+      (2) 회원은 서비스를 이용하여 취득한 정보를 임의 가공, 판매하는 행위 등 서비스에 게재된 자료를 상업적으로 사용할 수 없습니다.<br>
+      (3) 회원이 게시하거나 등록하는 서비스 내의 내용물, 게시 내용에 대해 제14조 각 호에 해당된다고 판단되는 경우 사전통지 없이 삭제하거나 이동 또는 등록 거부할 수 있습니다.<br><br>
+
+
+      <strong>제 16 조 (정보의 제공)</strong><br>
+      (1) 회사는 회원에게 서비스 이용에 필요가 있다고 인정되는 각종 정보에 대해서 전자우편이나 서신우편 등의 방법으로 회원에게 제공할 수 있습니다.<br>
+      (2) 회사는 서비스 개선 및 회원 대상의 서비스 소개 등의 목적으로 회원의 동의 하에 추가적인 개인 정보를 요구할 수 있습니다.<br><br>
+
+
+      <strong>제 17 조 (메일의 이용)</strong><br>
+      (1) 회사는 회원의 메일 내용을 감시하지 않으며, 전자우편의 내용에 대한 책임은 각 회원에게 있습니다.<br>
+      (2) 회원은 허가를 받지 않고서는 음란물이나 불온한 내용, 스팸메일 및 타인에게 피해를 주거나 미풍양속을 해치는 메일을 보내서는 안됩니다.<br>
+      (3) 전기통신법 제 53조와 전기통신사업법 시행령 16조, 통신사업법 제53조 3항에 의거, 음란물이나 불온한 내용을 전송함으로서 발생하는 모든 법적인 책임은 회원에게 있으며 관리자나 회사는 책임을 지지 않습니다.<br>
+      (4) 본 서비스를 이용하여 타인에게 피해를 주거나 미풍양속을 해치는 행위를 한 회원의 ID와 메일은 (1)의 내용에 의하여 보호를 받을 수 없습니다.<br><br>
+
+
+      <strong>제 18 조 (광고게재 및 광고주와의 거래)</strong><br>
+      (1) 본 서비스의 회원은 서비스 이용시 노출되는 광고게재에 대해 동의하는 것으로 간주됩니다.<br>
+      (2) 회사는 서비스 상에 게재되어 있거나 본 서비스를 통한 광고주의 판촉활동에 회원이 참여하거나 교신 또는 거래를 함으로써 발생하는 모든 손실과 손해에 대해 책임을 지지 않습니다.<br><br>
+
+
+      <strong>제 19 조 (서비스 이용 제한)</strong><br>
+      (1) 회사는 회원이 서비스 이용내용에 있어서 본 약관 제11조 내용을 위반하거나, 다음 각 호에 해당하는 경우 서비스 이용을 제한할 수 있습니다.<br>
+      - 미풍양속을 저해하는 비속한 ID 및 별명 사용<br>
+      - 타 이용자에게 심한 모욕을 주거나, 서비스 이용을 방해한 경우<br>
+      - 기타 정상적인 서비스 운영에 방해가 될 경우<br>
+      - 정보통신 윤리위원회 등 관련 공공기관의 시정 요구가 있는 경우<br>
+      - 웹공간에 자료만 올려 놓고 파일 자료실 전용으로 이용하는 경우<br>
+      - 불법 홈페이지인 경우<br>
+      1. 상용소프트웨어나 크랙파일을 올린 경우<br>
+      2. 정보통신윤리 위원회의 심의 세칙 제7조에 어긋나는 음란물을 게재한 경우<br>
+      3. 반국가적 행위의 수행을 목적으로 하는 내용을 포함한 경우<br>
+      4. 저작권이 있는 글을 무단 복제하거나 저작권이 적용된 파일 (mp3 등) 홈계정에 올린 경우<br>
+      (2) 상기 이용제한 규정에 따라 서비스를 이용하는 회원에게 서비스 이용에 대하여 별도 공지 없이 서비스 이용의 일시정지, 초기화, 이용계약 해지 등을 불량이용자 처리규정에 따라 취할 수 있습니다.<br><br>
+
+
+      <strong>제 20 조 (계약 해지 및 이용제한)</strong><br>
+      (1) 회원이 이용계약을 해지하고자 하는 경우에는 회원 본인이 온라인을 통하여 가입해지를 하여 바로 탈퇴할 수 있습니다.<br>
+      (2) 관리자와 회사는 회원이 다음 각 혹의 내용에 해당하는 행위를 하였을 경우 사전통지 없이 이용계약을 해지하거나 또는 기간을 정하여 서비스 이용을 중지할 수 있습니다.<br>
+      - 회원 가입신청 또는 변경시 허위내용을 등록한 경우<br>
+      - 타인의 서비스 이용을 방해하거나 개인정보를 도용, 공개했을 경우<br>
+      - 관계법령에 의거, 음란 채팅이나 미풍양속을 해치는 행위를 했을 경우<br>
+      - 타인의 명예를 손상시키거나 불이익을 주는 행위를 한 경우<br>
+      - 회사, 다른 회원 또는 제 3자의 인격권 또는 지적재산권을 침해하거나 업무를 방해하는 행위를 했을 경우<br>
+      - 서비스 운영을 고의로 방해한 경우<br>
+      - 관계 법령에 의거, 전송 또는 게시가 금지되는 정보를 전송 또는 게시했을 경우<br>
+      - 정보통신윤리위원회 등 외부기관의 시정요구가 있거나 불법선거운동과 관련하여 선거관리위원회의 유권해석을 받은 경우<br>
+      - 범죄와 관련이 있다고 판단되는 행위를 한 경우<br>
+      - 기타 관계법령에 위배되는 행위를 한 경우<br>
+      - 본 약관을 포함하여 기타 회사가 정한 이용 조건에 위반한 경우<br><br>
+
+
+      <strong>제 21 조 (손해 배상 및 기타사항)</strong><br>
+      회사와 관리자는 서비스에서 무료로 제공하는 서비스의 이용과 관련하여 개인정보 처리방침에서 정하는 내용에 해당하지 않는 사항에 대하여 어떠한 손해도 책임을 지지 않습니다.<br><br>
+
+
+      <strong>제 22 조 (면책조항)</strong><br>
+      (1) 관리자와 회사는 천재지변, 전쟁 및 기타 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 서비스 제공에 대한 책임이 면제됩니다.<br>
+      (2) 관리자와 회사는 기간통신 사업자가 전기통신 서비스를 중지하거나 정상적으로 제공하지 아니하여 손해가 발생한 경우 책임이 면제됩니다.<br>
+      (3) 관리자와 회사는 서비스용 설비의 보수, 교체, 정기점검, 공사 등 부득이한 사유로 발생한 손해에 대한 책임이 면제됩니다.<br>
+      (4) 관리자와 회사는 회원의 귀책사유로 인한 서비스 이용의 장애 또는 손해에 대하여 책임을 지지 않습니다.<br>
+      (5) 관리자와 회사는 회원의 컴퓨터 오류에 의해 손해가 발생한 경우, 또는 회원이 신상정보 및 전자우편 주소를 부실하게 기재하여 손해가 발생한 경우 책임을 지지 않습니다.<br>
+      (6) 관리자와 회사는 회원이 서비스를 이용하여 기대하는 수익을 얻지 못하거나 상실한 것에 대하여 책임을 지지 않습니다.<br>
+      (8) 관리자와 회사는 회원이 서비스를 이용하면서 얻은 자료로 인한 손해에 대하여 책임을 지지 않습니다. 또한 회원이 서비스를 이용하며 타 회원으로 인해 입게 되는 정신적 피해에 대하여 보상할 책임을 지지 않습니다.<br>
+      (9) 관리자와 회사는 회원이 서비스에 게재한 각종 정보, 자료, 사실의 신뢰도, 정확성 등 내용에 대하여 책임을 지지 않습니다.<br>
+      (10) 관리자와 회사는 이용자 상호간 및 이용자와 제 3자 상호 간에 서비스를 매개로 발생한 분쟁에 대해 개입할 의무가 없으며, 이로 인한 손해를 배상할 책임도 없습니다.<br>
+      (11) 관리자와 회사에서 회원에게 무료로 제공하는 서비스의 이용과 관련해서는 어떠한 손해도 책임을 지지 않습니다<br><br>
+
+
+      <strong>제 23 조 (재판권 및 준거법)</strong><br>
+      (1) 이 약관에 명시되지 않은 사항은 전기통신사업법 등 관계법령과 상관습에 따릅니다.<br>
+      (2) 회사의 유료 서비스 이용 회원의 경우 회사가 별도로 정한 약 관 및 정책에 따릅니다.<br>
+      (3) 서비스 이용으로 발생한 분쟁에 대해 소송이 제기되는 경우 회사의 본사 소재지를 관할하는 법원을 관할 법원으로 합니다.<br><br>
+
+      <strong>제 24 조 (후원금 사용)</strong><br>
+      1. 응급환자 돕기 이웃사랑실천 시민운동을 전개하는데 사용합니다.<br>
+      2. 기부금 내역은 회원들이 확인할 수 있도록 투명하게 공개됩니다.<br><br>
+
+      <strong><부칙></strong><br>
+      (시행일) 본 약관은 2011년 09월 30일부터 적용됩니다.<br>
+      회사는 회원님들의 권익을 보호하고, 회원님들의 개인정보 보호에 만전을 기하고자, 관계법령의 규정을 반영하여 약관을 변경하였습니다.<br>
+      
+
+    </p>
+	</div>
+</article>
+<article class="privacy_area email_no">
+	<div class="privacy_top email_no">
+		이메일 무단수집거부
+		<div class="close_btn">
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<div class="privacy_cont">
+		<p class="txt">
+			본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반시 정보통신망법에 의해 형사처벌됨을 유념하시기 바랍니다.	
+		</p>
+		<p class="txt">[게시일 2021년 5월 1일 ]</p>
+	</div>
+</article>
+<script>
+	$(function(){
+		// 개인정보처리방침 
+		$('.bott_info_link.policy').click(function(e){
+			e.preventDefault();
+			$('.privacy_area.personal_safe').fadeIn();
+			$('.privacy_bg').addClass('show');
+		});
+
+		$('.privacy_area.personal_safe .close_btn').click(function(){
+			$('.privacy_area.personal_safe').fadeOut();
+			$('.privacy_bg').removeClass('show');
+		});
+
+		// 이용약관 
+		$('.bott_info_link.use').click(function(e){
+			e.preventDefault();
+			$('.privacy_area.use').fadeIn();
+			$('.privacy_bg').addClass('show');
+		});
+
+		$('.privacy_area.use .close_btn').click(function(){
+			$('.privacy_area.use').fadeOut();
+			$('.privacy_bg').removeClass('show');
+		});
+
+		// 이메일 무단수집거부
+		$('.bott_info_link.email_no').click(function(e){
+			e.preventDefault();
+			$('.privacy_area.email_no').fadeIn();
+			$('.privacy_bg').addClass('show');
+		});
+
+		$('.privacy_area.email_no .close_btn').click(function(){
+			$('.privacy_area.email_no').fadeOut();
+			$('.privacy_bg').removeClass('show');
+		});
+
+		$('.privacy_bg').click(function(){
+			$('.privacy_area').fadeOut();
+			$('.privacy_bg').removeClass('show');
+		});
+	});
+</script>
+<!--
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<link href="/modu/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/modu/css/responsive_rem.css" rel="stylesheet" type="text/css">
+-->
+<link href="/modu/upop/pop/css/popups_css.css" rel="stylesheet" type="text/css">
+<link href="/modu/upop/pop/css/popups_animation.css" rel="stylesheet" type="text/css">
+<link href="/modu/font/noto_sans_kr/noto_sans_kr.css" rel="stylesheet">
+<!--<script src="/modu/js/jquery-3.3.1.min.js"></script>-->
+<script src="/modu/js/jquery-ui.min.js"></script>
+<!-- 
+	팝업 솔루션
+	
+	팝업 아이디 : popups_item1~
+	
+	팝업 사이즈 :
+		data-popups-w = 가로사이즈 (입력하지 않을시 컨텐츠 사이즈에 맞춰서 적용 / 0 or "")
+		data-popups-h = 세로사이즈 + 35 (오늘하루열지않음 부분 포함)(입력하지 않을시 컨텐츠 사이즈에 맞춰서 적용 / 0 or "")
+		
+		style 도 동일하게 적용
+		width = 가로사이즈 (입력하지 않을시 컨텐츠 사이즈에 맞춰서 적용 / 입력하지 않음)
+		height = 세로사이즈  (오늘하루열지않음 부분 포함)(입력하지 않을시 컨텐츠 사이즈에 맞춰서 적용 / 입력하지 않음)
+		top = 상단에서 px
+		left = 좌측에서 px
+		
+	애니메이션 :
+		popups_item 의 클래스에 부여
+		없음 = 기본
+		animation_popups_down = 아래로
+		animation_popups_up = 위로
+		animation_popups_right = 오른쪽으로
+		animation_popups_left = 왼쪽으로
+		animation_popups_bigger = 커지게
+		animation_popups_smaller = 작아지게
+		animation_popups_news = 뉴스페이퍼
+		animation_popups_flip = 회전
+		animation_popups_sign = 간판
+		animation_popups_fold = 폴더
+		animation_popups_jump = 점프
+		animation_popups_full = 전체화면
+		animation_popups_ct = 중앙 고정
+		animation_popups_lb = 좌측하단 고정
+		animation_popups_lt = 좌측상단 고정
+		animation_popups_rb = 우측하단 고정
+		animation_popups_rt = 우측상단 고정
+	
+	popups_item_link 링크 : 
+		링크는 컨텐츠 전체영역 = 이미지 및 에디터로 작성하고 링크를 걸 경우 때문.
+		링크값 없을시 제거 (end 포함) = 링크 태그 존재시 아래 영상 재생 문제가 발생
+-->
+
+<!--67 전체 대상 웹처치 안내 임시 팝업 --------------------------------------------------------->
+<!--
+<article id="popups_item99" class="popups_item " data-popups-w="" data-popups-h=""
+	style="width:px; top: px; left: px;">
+	<div class="popups_item_cont">
+			<div class="popups_item_link">
+				<div class="popups_item_editor_cont99">
+        <article class="popups_inspct" style="display:flex; align-items:center; padding:30px; line-height:1.5;">
+          <div class="popups_inspct_img" style="position:relative; display:inline-block;">
+            <img src="/modu/upop/pop/img/inspct_img.jpg" alt="" class="icon" style="display:block; width:100px; margin:0 auto 20px;">
+            <p class="num" style="position:absolute; top:10px; right:10px; width:30px; height:30px; line-height:30px; border-radius:50%; background:red; color:#fff; text-align:center;">1</p>
+          </div>
+          <div class="popups_inspct_cont" style="padding-left:40px;">
+            <p class="txt" style="margin-bottom:10px;font-size:20px;"><span style="color:#eb6101;">시스템 점검 안내</span></p>
+            <p class="txt" style="margin-bottom:20px;"><span style="font-size:20px;color:red;border-bottom:1px solid red;">오늘 3월 6일(목)21시~3월 7일(금)01시</span> 시스템 점검 및 업데이트 작업 예정입니다.</p>
+            <p class="txt" style="margin-bottom:10px;font-size:14px;">
+            <span style="color:#eb6101;text-decoration:underline;">게시물 등록 및 수정 작업 시</span> 반영되지 않을 수 있사오니 <br>이 시간대 홈페이지 이용은 가급적 피해 주시면 감사하겠습니다.<br>
+            작업이 조속히 끝날 수 있도록 하겠습니다.
+            </p>
+						감사합니다.	<span style="padding-left:20px;">- 웹처치</span>
+          </div>
+        </article>
+				</div>
+		</div>
+	</div>
+	<div class="popups_item_foot">
+		
+		<button type="button" class="popups_btn_cls">닫기</button>
+	</div>
+</article>
+-->
+<!--67 전체 대상 웹처치 안내 임시 팝업 --------------------------------------------------------->
+
+<script src="/modu/upop/pop/js/popups_js.js"></script>
+<script>
+	// 쿠키 세팅
+	var set_cookie_popups = function (name, value, exp_day) {
+		var today = new Date();
+		today.setDate(today.getDate() + exp_day);
+		document.cookie = name + '=' + escape(value) + '; path=/; expires=' + today.toGMTString() + ';'
+	}
+
+	// 쿠키 가져오기
+	var get_cookie_popups = function (popup) {
+		var cookie_data = document.cookie;
+		if (cookie_data.indexOf($(popup).attr('id') + '=done') < 0) {
+			$(popup).addClass('show');
+		} else {
+			$(popup).removeClass('show');
+		}
+	}
+
+	// 팝업 가져오기
+	$('article.popups_item').each(function () {
+		get_cookie_popups(this);
+	});
+
+	// 팝업 사이즈 조절
+	var resize_popup_h = function () {
+		var $popup = $('article.popups_item');
+		var max_w = document.documentElement.clientWidth; // 브라우저 넓이
+		var max_h = document.documentElement.clientHeight; // 브라우저 높이
+
+		$popup.each(function (idx) {
+			if ($(this).is(':visible')) {
+				var $popup_curr = $(this);
+				var popup_w = Number($popup_curr.attr('data-popups-w')); // 팝업 넓이
+				var popup_h = Number($popup_curr.attr('data-popups-h')); // 팝업 높이
+
+				if (matchMedia("screen and (max-width: 1020px)").matches) { // 모바일에선 영상 넓이 100%
+					if ((popup_w == 0 || popup_w == '')) {
+						if ($popup_curr.find('iframe').length > 0 || $popup_curr.find('video').length > 0) {
+							$popup_curr.css('width', '100%');
+						}
+					}
+				} else {
+					if ($popup_curr.find('iframe').length > 0 || $popup_curr.find('video').length > 0) {
+						$popup_curr.css('width', 'auto');
+					}
+				}
+
+				if (popup_w >= max_w) { // 브라우저 넓이보다 팝업 넓이가 넓을때 가로 100%
+					$popup_curr.addClass('max_w');
+				} else {
+					$popup_curr.removeClass('max_w');
+				}
+
+				if (popup_h >= max_h) { // 브라우저 높이보다 팝업 높이가 높을때 세로 100%
+					$popup_curr.addClass('max_h');
+				} else {
+					$popup_curr.removeClass('max_h');
+				}
+
+			}
+		});
+	}
+	resize_popup_h();
+
+	// 영상 사이즈 조절
+	var resize_popups_video = function (target) {
+		var $video = $(target);
+		if ($video.is(':visible')) {
+			if (matchMedia("screen and (max-width: 1020px)").matches) {
+				var ifr_w = Number($video.css('width').replace('px', ''));
+				var ifr_h = ifr_w * 0.5625; // 16:9
+				$video.css('height', ifr_h);
+			}
+		}
+	}
+	$('div.popups_item_cont iframe').each(function () {
+		resize_popups_video(this);
+	});
+	$('div.popups_item_cont video').each(function () {
+		resize_popups_video(this);
+	});
+
+
+	// 드래그 기능
+	$('article.popups_item').draggable();
+
+	// 팝업 닫기
+	var close_popups = function (btn) {
+		var $popup = $(btn).closest('article.popups_item'); // 클릭한 버튼의 팝업
+		var ani_delay = 700;
+
+		$popup.addClass('cls');
+
+		if ($popup.attr('class').indexOf('animation_popups') < 0) { // 애니메이션 없을때 딜레이 없음
+			ani_delay = 0;
+		}
+		console.log(btn)
+
+		if($(btn).hasClass('popups_btn_today')){ // 클릭한 버튼이 오늘 하루 열지 않음 버튼이라면
+			set_cookie_popups($popup.attr('id'), 'done', 1); // 쿠키 저장
+		}
+
+		setTimeout(function () {
+			$popup.remove();
+		}, ani_delay);
+	}
+
+	// 닫기 클릭
+	$('button.popups_btn_cls').on('click', function () {
+		close_popups(this);
+	});
+	// 오늘 하루 열지 않음 클릭
+	$('.popups_btn_today').on('click', function () {
+		close_popups(this);
+	});
+
+  // 중앙고정 left 위치 계산(css문제로 left 따로 계산)
+  const popups_ct_left = function(){
+    const animation_popups_ct = $('article.animation_popups_ct');
+    
+    if(animation_popups_ct.length > 0){
+      animation_popups_ct.each(function (idx, item) {
+        const popups_ct_w = item.offsetWidth;
+        const browser_w = (document.documentElement.clientWidth - popups_ct_w) / 2 + 'px'; // (브라우저가로 - 팝업가로)/2
+        $(item).css('margin-left', browser_w);
+      });
+    }
+  }
+  popups_ct_left();
+
+	// 브라우저 리사이즈
+	$(window).resize(function () {
+		resize_popup_h();
+		$('div.popups_item_cont iframe').each(function () {
+			resize_popups_video(this);
+		});
+		$('div.popups_item_cont video').each(function () {
+			resize_popups_video(this);
+		});
+    popups_ct_left();
+	});
+
+</script>
+
+<div class="wrap">
+   <!--헤더-->
+    <header id="header" class="clearfix">
+      <div class="tnb">
+        <ul class="tnb_list">
+		    
+          <li id="animation_3"><a href="javascript:goTo('home');">HOME</a></li> 
+		    
+          <li id="animation_4"><a href="javascript:goTo('loginpage');">로그인</a></li>
+          <li id="animation_5"><a href="javascript:goTo('regist');">회원가입</a></li>
+        
+          <li id="animation_7"><a href="javascript:alert('회원전용공간입니다');">문자</a></li>
+          <li id="animation_8"><a href="javascript:goTo('comm');">카페</a></li>
+          <li id="animation_9"><a href="javascript:goTo('1','cal');">일정</a></li>
+        </ul>
+      </div>
+
+      <h1 id="logo">
+        <a href="javascript:goTo('home');"><img src="img/body/logo.gif" alt="광야교회" id="animation_1"></a>
+      </h1>
+      <nav id="gnb">
+        <ul class="clearfix">
+          <li><a href="javascript:goTo('1', 'uotc', '2253','10381');">교회안내</a>
+            <ul class="full_nav_item">
+              <li><a href="javascript:goTo('1', 'uotc', '2253', '10381')" href='#'>목사님인사말</a></li><li><a href="javascript:goTo('1', 'uotc', '2253', '10380')" href='#'>교회소개</a></li><li><a href="javascript:goTo('1', 'uotc', '2253', '10437')" href='#'>교회비전</a></li><li><a href="javascript:goTo('1', 'uotc', '2253', '10438')" href='#'>교회사역원리</a></li><li><a href="javascript:goTo('1', 'uotc', '2253', '10439')" href='#'>담임목사소개</a></li>
+              <li><a href="javascript:goTo('1','serve');">섬기는분들</a></li>
+              <li><a href="javascript:goTo('1', 'uotc', '2253', '10378')" href='#'>찾아오시는길</a></li><li><a href="javascript:goTo('1','worshipTable','')" href='#'>예배안내</a></li>
+            </ul>
+          </li>
+          <li><a href="javascript:goTo('2', 'media_board','1');">말씀과칼럼</a>
+            <ul class="full_nav_item">
+              <li><a href="javascript:goTo('2','media_board','1')" href='#'>동영상설교</a></li><li><a href="javascript:goTo('2','s_board','20')" href='#'>목사님칼럼</a></li><li><a href="javascript:goTo('2','s_board','4')" href='#'>사역과비전</a></li>
+            </ul>
+          </li>
+		  <!--
+          <li><a href="javascript:goTo('3', 's_board','2');">포토갤러리</a>
+            <ul class="full_nav_item">
+              <li><a href="javascript:goTo('3','s_board','2')" href='#'>광야앨범</a></li><li><a href="javascript:goTo('3','s_board','3')" href='#'>새가족사진</a></li>
+            </ul>
+          </li>
+		  -->
+          <li><a href="javascript:goTo('4', 's_board','19');">게시판</a>
+            <ul class="full_nav_item">
+              <li><a href="javascript:goTo('4','s_board','19')" href='#'>공지사항</a></li><li><a href="javascript:goTo('4','s_board','5')" href='#'>자유게시판</a></li><li><a href="javascript:goTo('4','s_board','1')" href='#'>광야에세이</a></li><li><a href="javascript:goTo('4','s_board','16')" href='#'>통합자료실</a></li><li><a href="javascript:goTo('4','s_board','7')" href='#'>보도자료</a></li><li><a href="javascript:goTo('4','s_board','2')" href='#'>광야앨범</a></li><li><a href="javascript:goTo('4','s_board','3')" href='#'>새가족사진</a></li>
+            </ul>
+          </li>
+          <li><a href="/html/give_write.asp?lef=05" target="_parent">후원안내</a>
+            <ul class="full_nav_item">
+              <li><a href="html/give_write.asp?lef=05" target="_parent">후원신청하기</a></li>
+							<li><a href="javascript:goTo('5', 'uotc', '2254', '10442')" href='#'>후원안내</a></li><li><a href="javascript:goTo('5', 'uotc', '2254', '10383')" href='#'>물품후원안내</a></li><li><a href="javascript:goTo('5', 'uotc', '2254', '10382')" href='#'>자원봉사안내</a></li><li><a href="javascript:goTo('5','s_board','9')" href='#'>후원게시판</a></li>
+            </ul>
+          </li>
+          <li><a href="http://sagilsa.org/" target="_blank"><img src="img/body/ban01.jpg" alt="img" class="btn_banner01"></a>
+            <ul class="full_nav_item">
+			  
+            </ul>
+          </li>
+        </ul>
+        <div class="full_nav"></div>
+      </nav>
+       <div class="mobile_btn">
+        <a href="">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+      </div>
+      <div id="menu_active_bg"></div>
+      <div class="mobile_menu_wrap">
+        <div class="m_login">
+          
+						<a class="btn_login" href="javascript:goTo('loginpage');">로그인</a>
+						<a class="btn_login" href="javascript:goTo('regist');">회원가입</a>
+					
+						<a class="btn_login" href="javascript:goTo('comm');">카페</a>
+					
+            <a href="#" class="btn_menu_close">
+              <span class="cross1"></span>
+              <span class="cross2"></span>
+            </a>            
+        </div>
+        <div class="m_menu">
+          <nav>
+            <ul>
+              <li><a href="#">교회안내<i class="fa fa-caret-right arrow" aria-hidden="true"></i></a>
+                <ul class="m_sub_ul">
+                  <li><a href="javascript:goTo('1', 'uotc', '2253', '10381')" href='#'>목사님인사말</a></li><li><a href="javascript:goTo('1', 'uotc', '2253', '10380')" href='#'>교회소개</a></li><li><a href="javascript:goTo('1', 'uotc', '2253', '10437')" href='#'>교회비전</a></li><li><a href="javascript:goTo('1', 'uotc', '2253', '10438')" href='#'>교회사역원리</a></li><li><a href="javascript:goTo('1', 'uotc', '2253', '10439')" href='#'>담임목사소개</a></li>
+				  <li><a href="javascript:goTo('1','serve');">섬기는분들</a></li>
+				  <li><a href="javascript:goTo('1', 'uotc', '2253', '10378')" href='#'>찾아오시는길</a></li><li><a href="javascript:goTo('1','worshipTable','')" href='#'>예배안내</a></li>
+                </ul>
+              </li>
+              <li><a href="#">말씀과칼럼<i class="fa fa-caret-right arrow" aria-hidden="true"></i></a>
+                <ul class="m_sub_ul">
+                  <li><a href="javascript:goTo('2','media_board','1')" href='#'>동영상설교</a></li><li><a href="javascript:goTo('2','s_board','20')" href='#'>목사님칼럼</a></li><li><a href="javascript:goTo('2','s_board','4')" href='#'>사역과비전</a></li>
+                </ul>
+              </li>
+              <!--
+			  <li><a href="#">포토갤러리<i class="fa fa-caret-right arrow" aria-hidden="true"></i></a>
+                <ul class="m_sub_ul">
+                  <li><a href="javascript:goTo('3','s_board','2')" href='#'>광야앨범</a></li><li><a href="javascript:goTo('3','s_board','3')" href='#'>새가족사진</a></li>
+                </ul>
+              </li>
+			  -->
+              <li><a href="#">게시판<i class="fa fa-caret-right arrow" aria-hidden="true"></i></a>
+                <ul class="m_sub_ul">
+                  <li><a href="javascript:goTo('4','s_board','19')" href='#'>공지사항</a></li><li><a href="javascript:goTo('4','s_board','5')" href='#'>자유게시판</a></li><li><a href="javascript:goTo('4','s_board','1')" href='#'>광야에세이</a></li><li><a href="javascript:goTo('4','s_board','16')" href='#'>통합자료실</a></li><li><a href="javascript:goTo('4','s_board','7')" href='#'>보도자료</a></li><li><a href="javascript:goTo('4','s_board','2')" href='#'>광야앨범</a></li><li><a href="javascript:goTo('4','s_board','3')" href='#'>새가족사진</a></li>
+                </ul>
+              </li>
+              <li><a href="#">후원안내<i class="fa fa-caret-right arrow" aria-hidden="true"></i></a>
+                <ul class="m_sub_ul">
+									<li><a href="/html/give_write.asp?lef=05" target="_parent">후원신청하기</a></li>
+									<li><a href="javascript:goTo('5', 'uotc', '2254', '10442')" href='#'>후원안내</a></li><li><a href="javascript:goTo('5', 'uotc', '2254', '10383')" href='#'>물품후원안내</a></li><li><a href="javascript:goTo('5', 'uotc', '2254', '10382')" href='#'>자원봉사안내</a></li><li><a href="javascript:goTo('5','s_board','9')" href='#'>후원게시판</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!--헤더끝-->
+    <!--메인-->
+    <div id="main">
+		<!-- main banner -->
+			<div class="banner_area">
+				<div class="banner_cont">
+					<!DOCTYPE html>
+
+<link rel="stylesheet" href="/modu/notiboard/css/swiper.min.css">
+<link rel="stylesheet" href="/modu/notiboard/css/bm_swiper.css?version=2026110415">
+<link href="/modu/font_awesome2/css/all.css" rel="stylesheet">
+<script type="text/javascript" src="/modu/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/modu/js/vimeo-player.js"></script><!-- vimeo api -->
+
+<!-- 메인광고알림판 모든 형태(날개형제외) -->
+<div class="banner_main bm_swiper">
+	<div class="bm_swiper_area">
+		<div class="swiper-container bm_swiper_cont">
+			<div class="swiper-wrapper bm_swiper_wrap">
+			
+			<div class="swiper-slide bm_swiper_slide" alt="">
+			  
+				<a class="slide-link slide-inner" href="https://link.donationbox.co.kr/donationBoxList.jsp?campaignuid=1W14IQAuqA" target="_blank" style='cursor:pointer;'>
+				  
+					<img src="/file/KWANGYA/banner/2266교회후원이미지2.png"  alt="" class="bm_swiper_img">
+				  
+				</a>
+			  
+			</div>
+			
+			<div class="swiper-slide bm_swiper_slide" alt="">
+			  
+				<a class="slide-link slide-inner" href="#n" target="_self" style='cursor:default;'>
+				  
+					<img src="/file/KWANGYA/banner/7098D2001-2_main.jpg"  alt="" class="bm_swiper_img">
+				  
+				</a>
+			  
+			</div>
+			
+			<div class="swiper-slide bm_swiper_slide" alt="">
+			  
+				<a class="slide-link slide-inner" href="#n" target="_self" style='cursor:default;'>
+				  
+					<img src="/file/KWANGYA/banner/624177652019_mainimg_01.jpg"  alt="" class="bm_swiper_img">
+				  
+				</a>
+			  
+			</div>
+			
+			<div class="swiper-slide bm_swiper_slide" alt="">
+			  
+				<a class="slide-link slide-inner" href="#n" target="_self" style='cursor:default;'>
+				  
+					<img src="/file/KWANGYA/banner/3746pic_slider_2_1.jpg"  alt="" class="bm_swiper_img">
+				  
+				</a>
+			  
+			</div>
+			
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination bm_swiper_page"></div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next bm_swiper_btn"></div>
+			<div class="swiper-button-prev bm_swiper_btn"></div>
+			<!-- Add Scrollbar -->
+			<div class="swiper-scrollbar bm_swiper_scrl"></div>
+		</div>
+		<!-- effect thumbs list : 메인 swiper와 같은 이미지를 썸네일로 출력 -->
+		<div class="swiper-container gallery-thumbs bm_swiper_thumbs_cont">
+			<div class="swiper-wrapper">
+			  
+				<div class="swiper-slide">
+          
+					<img src="/file/KWANGYA/banner/2266교회후원이미지2.png" alt="" class="bm_swiper_thumbs_img">
+          
+				</div>
+			  
+				<div class="swiper-slide">
+          
+					<img src="/file/KWANGYA/banner/7098D2001-2_main.jpg" alt="" class="bm_swiper_thumbs_img">
+          
+				</div>
+			  
+				<div class="swiper-slide">
+          
+					<img src="/file/KWANGYA/banner/624177652019_mainimg_01.jpg" alt="" class="bm_swiper_thumbs_img">
+          
+				</div>
+			  
+				<div class="swiper-slide">
+          
+					<img src="/file/KWANGYA/banner/3746pic_slider_2_1.jpg" alt="" class="bm_swiper_thumbs_img">
+          
+				</div>
+			  
+			</div>
+		</div>
+		<!-- effect thumbs list end -->
+	</div>
+</div>
+<!-- 메인광고알림판 모든 형태(날개형제외) end -->
+
+<!-- 유튜브 실시간 버튼 팝업 -->
+<aside class="yt_strm_btn" style="display:none;; top:px; left:px;" OnClick="window.open('');"> <!-- 미노출 : display:none; 노출  라이브 버튼 위치 top, left -->
+  <span class="txt">LIVE 영상</span>
+  <i class="fas fa-arrows-alt icon"></i>
+</aside>
+<!-- 유튜브 실시간 버튼 팝업 end -->
+<!-- Swiper JS -->
+<script src="/modu/notiboard/js/swiper.min.js"></script>
+<script src="/modu/js/jquery-ui.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+
+	// swiper Required parameter
+  var slide_count = 4; // 슬라이드 개수
+	var swiper_width = 1200;		// 메인광고알림판 가로사이즈
+	var swiper_height = 460;	// 메인광고알림판 세로사이즈
+	var auto_delay = 15000;			// 이미지 교체시간(ms)
+	var slide_efct = 'vertical';		// 이미지 교체 효과 / horizontal:기본(가로/효과없음) / vertical:세로 / fade:흐려짐 / coverflow:교체(3d) / curtain: 커튼처럼 덮어씌우기 / thumbs:썸네일 리스트 / wing:날개형
+	var page_memo_arr = ''; // 각 슬라이드 메모
+	
+	var page_btn_type = 'fraction';	// 페이지 버튼 디자인
+	var btn_arrow_class = 'trsp'; // 좌우 화살표 / trsp:투명배경 / rect:네모배경 / circle:동글배경 / none:미사용
+	var is_btn_efct_dnmc = false;	// 페이지 버튼 다이다믹 사용유무 
+	var is_btn_auto_play = false;		// 재생버튼 사용유무 
+	var yt_url_ary = [];
+  //var yt_url_ary = ['https://www.youtube.com/embed/MkmSxGCGW8Y','https://www.youtube.com/embed/MkmSxGCGW8Y','https://www.youtube.com/embed/MkmSxGCGW8Y','https://www.youtube.com/embed/MkmSxGCGW8Y','https://www.youtube.com/embed/MkmSxGCGW8Y','https://www.youtube.com/embed/MkmSxGCGW8Y','https://www.youtube.com/embed/MkmSxGCGW8Y']; // 유튜브 url
+
+	// swiper Default parameter
+	var swiper_main;		// swiper 객체
+	var swiper_option;		// 메인 swiper 옵션
+	var is_loop = true; // 루프 옵션
+	var swiper_main_thumbs; // thumbs swiper 옵션
+	var page_btn_option;	// 페이지 버튼 옵션
+	var slide_speed = 800;	// 이미지 교체 속도
+	var slide_direc = 'horizontal'; // 슬라이드 방향 / horizontal / vertical
+	var page_btn_scrl;		// 페이지 버튼 스크롤 클래스 / default:undefined
+	var is_auto_play = ''; // 자동재생 여부 22.01.28
+	var btn_auto_play = '<div class="bm_swiper_btn_play"><img src="/modu/notiboard/img/btn_stop.png" alt="" class="bm_swiper_btn_play_img"></div>';	// 재생버튼		
+	var efct_coverflow_set = '';	// 교체효과 - 커버플로우 옵션
+	var efct_curtain_set;			// 교체효과 - 커튼 옵션
+	var inter_leave_offset = 0.7;	// 교체효과 - 커튼 이미지 밀어내는 정도 0~1
+  
+  // 유튜브 api 생성
+  var tag = document.createElement('script');
+  tag.src = "https://youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // 단일슬라이드 (루프 중지 / 화살표,버튼,재생버튼 안보이기)
+  if(slide_count <= 1){
+    is_loop = false;
+    btn_arrow_class = '';
+    page_btn_type = 'none';
+    is_btn_auto_play = false;
+  }
+  // 루프 중지 (페이지버튼 - 스크롤)
+  if(page_btn_type == 'scroll'){
+    is_loop = false;
+  }
+
+  // 루프 중지 (유튜브, 비메오 있을시 - 루프시 복사되는 슬라이드로 인해 유튜브,비메오 영상의 아이디가 중복됨)
+  if($('.video_yt').length > 0 || $('.video_vm').length > 0){
+    is_loop = false;
+  }
+
+	// 메인광고알림판 사이즈
+	if(swiper_width == 0 || swiper_width == '' || swiper_width == null || swiper_width == undefined)
+	{
+		swiper_width = 1920;
+	}
+	if(swiper_height == 0 || swiper_height == '' || swiper_height == null || swiper_height == undefined)
+	{
+		swiper_height = 800;
+	}
+  if(swiper_width < 1920 && slide_efct != 'wing'){ // 가로사이즈 존재하면 해당 사이즈로 지정(날개형 제외)
+    $('div.banner_main.bm_swiper').css({'width':swiper_width});
+  }
+
+	var swiper_ratio = swiper_height * 100 / swiper_width +'%';
+	//$('div.banner_main.bm_swiper').css({'padding-bottom':swiper_ratio});
+  if(swiper_height < 700){
+    $('div.banner_main.bm_swiper').css({'min-height':'0'});
+  }
+
+  $('div.banner_main.bm_swiper').css({'height':swiper_height+'px'});
+
+	// 교체효과 - coverflow 옵션
+	efct_coverflow_set = {
+		slideShadows: true, //슬라이더 그림자
+		rotate: 50,			// 슬라이더 회전 각
+		stretch: 0,			// 슬라이더간 거리
+		depth: 50,			//깊이 효과값
+		modifier: 1,		//효과 배수
+	}
+
+	// 이미지 슬라이드 방향
+	if(slide_efct == 'vertical') {slide_direc = 'vertical';}
+
+	// 교체효과 - 버티컬 사용시
+	if(slide_efct == 'vertical')
+	{
+		$('div.swiper-button-next.bm_swiper_btn').addClass('verti');
+		$('div.swiper-button-prev.bm_swiper_btn').addClass('verti');
+		if(page_btn_type == 'time') // 교체효과 - 버티컬 사용시 버튼 디자인 - time 사용불가 / time > ring으로 대체
+		{ 
+			page_btn_type = 'ring'; 
+		}
+
+    // 페이지 효과가 세로일경우 페이지버튼 css fix
+    $('.bm_swiper_area .bm_swiper_cont .swiper-pagination').css('position','absolute');
+
+		slide_efct = '';
+	}
+
+	// 페이지 버튼 스크롤 사용시
+	if(page_btn_type == 'scroll') 													
+	{
+		page_btn_scrl = '.swiper-scrollbar';
+		$('.swiper-scrollbar.bm_swiper_scrl').css('opacity','1');
+	}
+	
+	// swiper 옵션 생성
+	if(slide_efct == 'thumbs') // thumbs effect 옵션
+	{
+		$('div.bm_swiper_cont').addClass('thumbs_top');
+		$('div.bm_swiper_thumbs_cont').addClass('active');
+		swiper_main_thumbs = new Swiper('div.bm_swiper_thumbs_cont',{ // thumbs swiper 생성
+			spaceBetween: 10,
+			slidesPerView: 4,
+			loop: is_loop,
+			freeMode: true,
+			watchSlidesVisibility: true,
+			watchSlidesProgress: true,
+		});
+		swiper_option = {	// 메인 swiper 옵션
+			autoplay: {		// 오토플레이
+				delay: auto_delay, // 이미지 교체 시간
+				disableOnInteraction: false,
+			},
+			speed: slide_speed,
+			loop: is_loop,
+			navigation: { // 좌우버튼
+				nextEl: '.swiper-button-next.bm_swiper_btn', 
+				prevEl: '.swiper-button-prev.bm_swiper_btn', 
+			},	
+			thumbs: {
+				swiper: swiper_main_thumbs,
+			},
+		};
+	}
+	else if(slide_efct == 'wing') // wing effect 옵션
+	{
+		swiper_option = {
+			slidesPerView: 'auto',
+			centeredSlides: true,
+			loop: is_loop,
+			autoplay: {
+				delay: auto_delay,
+				disableOnInteraction: false,
+			}, 
+			pagination: {
+				el: '.swiper-pagination.bm_swiper_page',
+				clickable: true, // 페이지 버튼 클릭 여부
+				dynamicBullets: is_btn_efct_dnmc, // 페이지 다이나믹 버튼
+				renderBullet: function (index, className) { // 페이지 버튼 디자인 / ring:링(빈공간) / circle:원형(색) / num:숫자 / scroll:스크롤 / time:타임 바 / none:미사용
+
+					// 재생버튼 디자인
+					if(page_btn_type == 'num')
+					{
+						return '<span class="' + className + ' ' + page_btn_type + '">' + (index + 1) + '</span>';
+					}
+					else if(page_btn_type == 'none' || page_btn_type == 'scroll')
+					{
+						return '';
+					}
+					else if(page_btn_type == 'time')
+					{
+						return '<span class="' + className + ' ' + page_btn_type + '"><span class="timeline_memo"><span class="memo">'+page_memo_arr[index]+'</span></span><span class="timeline"></span></span>';
+					}
+					else // ring,circle
+					{
+						return '<span class="' + className + ' ' + page_btn_type + '"></span>';
+					}
+				},
+			}
+			,
+			navigation: {
+				nextEl: '.swiper-button-next.bm_swiper_wing_btn',
+				prevEl: '.swiper-button-prev.bm_swiper_wing_btn',
+			},
+		};
+	}
+	else if(slide_efct == 'vertical') // vertical effect 옵션
+	{
+		swiper_option = {
+			speed: slide_speed, // 이미지 교체 속도
+			effect: slide_efct, // 이미지 교체 효과
+			autoplay: { // 오토플레이
+				delay: auto_delay, // 이미지 교체 시간
+				disableOnInteraction: false,
+			},
+			loop: is_loop,
+			pagination: {
+				el: '.swiper-pagination.bm_swiper_page',
+				clickable: true, // 페이지 버튼 클릭 여부
+				dynamicBullets: is_btn_efct_dnmc, // 페이지 다이나믹 버튼
+				renderBullet: function (index, className) { // 페이지 버튼 디자인 / ring:링(빈공간) / circle:원형(색) / num:숫자 / scroll:스크롤 / time:타임 바 / none:미사용
+
+					// 재생버튼 디자인
+					if(page_btn_type == 'num')
+					{
+						return '<span class="' + className + ' ' + page_btn_type + '">' + (index + 1) + '</span>';
+					}
+					else if(page_btn_type == 'none' || page_btn_type == 'scroll')
+					{
+						return '';
+					}
+					else if(page_btn_type == 'time')
+					{
+						return '<span class="' + className + ' ' + page_btn_type + '"><span class="timeline_memo"><span class="memo">'+page_memo_arr[index]+'</span></span><span class="timeline"></span></span>';
+					}
+					else // ring,circle
+					{
+						return '<span class="' + className + ' ' + page_btn_type + '"></span>';
+					}
+				},
+			}
+			,
+			scrollbar: { // 페이지 버튼 스크롤바형
+				el: page_btn_scrl,
+				hide: false,
+			},
+			navigation: { // 좌우버튼
+				nextEl: '.swiper-button-next.bm_swiper_btn', 
+				prevEl: '.swiper-button-prev.bm_swiper_btn', 
+			},
+			direction: slide_direc,	// 슬라이드 진행방향
+			coverflowEffect: efct_coverflow_set, // 교체효과 - 커버플로우
+		};
+	}
+	else // thumbs, wing, vertical 이외의 effect 옵션
+	{
+		swiper_option = {
+			speed: slide_speed, // 이미지 교체 속도
+			effect: slide_efct, // 이미지 교체 효과
+			autoplay: { // 오토플레이
+				delay: auto_delay, // 이미지 교체 시간
+				disableOnInteraction: false,
+			},
+			loop: is_loop,
+			pagination: {
+				el: '.swiper-pagination.bm_swiper_page',
+				clickable: true, // 페이지 버튼 클릭 여부
+				dynamicBullets: is_btn_efct_dnmc, // 페이지 다이나믹 버튼
+				renderBullet: function (index, className) { // 페이지 버튼 디자인 / ring:링(빈공간) / circle:원형(색) / num:숫자 / scroll:스크롤 / time:타임 바 / none:미사용
+
+					// 재생버튼 디자인
+					if(page_btn_type == 'num')
+					{
+						return '<span class="' + className + ' ' + page_btn_type + '">' + (index + 1) + '</span>';
+					}
+					else if(page_btn_type == 'none' || page_btn_type == 'scroll')
+					{
+						return '';
+					}
+					else if(page_btn_type == 'time')
+					{
+						return '<span class="' + className + ' ' + page_btn_type + '"><span class="timeline_memo"><span class="memo">'+page_memo_arr[index]+'</span></span><span class="timeline"></span></span>';
+					}
+					else // ring,circle
+					{
+						return '<span class="' + className + ' ' + page_btn_type + '"></span>';
+					}
+				},
+			}
+			,
+			scrollbar: { // 페이지 버튼 스크롤바형
+				el: page_btn_scrl,
+				hide: false,
+			},
+			navigation: { // 좌우버튼
+				nextEl: '.swiper-button-next.bm_swiper_btn', 
+				prevEl: '.swiper-button-prev.bm_swiper_btn', 
+			},
+			direction: slide_direc,	// 슬라이드 진행방향
+			coverflowEffect: efct_coverflow_set, // 교체효과 - 커버플로우
+		};
+	}
+  
+  // 페이지 버튼 디자인 - 페이지번호
+  if(page_btn_type == 'fraction'){
+    swiper_option.pagination.type = 'fraction';
+  }
+
+  // 슬라이드 초기화 해제 (영상이 있을때, 영상부분에서 따로 커스텀)
+  if($('.main_video').length > 0){
+    swiper_option.init = false;
+  }
+
+  // ----------------------------- 유튜브 iframe 생성 -------------------------------------- //
+  var yt_id_ary = []; // 유튜브 아이디
+  var yt_obj_ary = []; // 유튜브 플레이어 객체
+  var yt_url_id_ary = []; // 유튜브 영상 아이디
+  var idx_bef_load = 0;
+  var video_yt_leng = $('.video_yt').length;
+  var yt_err_on = false; // 유튜브 에러코드 트리거
+  // 유튜브 url 에서 아이디 추출
+  function get_yt_id(url){
+    var tag = '';
+    if(url){
+      if(url.includes('/live/')) url = url.replace('youtube.com/live/','youtube.com/watch?v=');
+      url = url.replace('?feature=share','');
+			// var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed|shorts)\/|(watch\?))\??v?=?([^#\&\?]*).*/;
+			var regExp = /(?:youtu.be\/|youtube.com\/(?:v\/|embed\/|shorts\/|watch\?v=))([a-zA-Z0-9_-]{11})/;
+      var matchs = url.match(regExp);
+      if (matchs && matchs[1]) {
+				tag = matchs[1];
+			}
+      return tag;
+    }
+  }
+
+  if(video_yt_leng > 0){
+
+    $.each(yt_url_ary, function(idx, item){
+      if(item.indexOf('youtu') > -1){ // youtube url 만 생성
+        yt_url_id_ary.push(get_yt_id(item));
+      }
+    });
+
+    // 유튜브 아이디 추가
+    $('.video_yt').each(function(i){
+      $(this).attr('id','yt_player_' + i); 
+      yt_id_ary.push('yt_player_' + i);
+      idx_bef_load = i;
+    });
+
+    // 유튜브 iframe 생성 함수
+    function onYouTubeIframeAPIReady() {
+      if(video_yt_leng > 0){
+        var player_yt;
+
+        // 로드 전 유튜브 갯수와 스와이퍼 루프로 인한 유튜브 갯수가 차이날때
+        if(idx_bef_load != video_yt_leng){ 
+          video_yt_leng = video_yt_leng - (video_yt_leng - idx_bef_load);
+        }
+        
+        // 객체 반복 생성
+        for (var i = 0; i <= video_yt_leng; i++)
+        {
+          var player_yt_id = yt_id_ary[i];
+          player_yt = new YT.Player(player_yt_id,{
+            videoId: yt_url_id_ary[i],
+            width: '100%',
+            height: '100%',
+            playerVars: {
+              controls: 2, // controls / 0: 컨트롤x , 1:컨트롤o , 2:컨트롤o(성능향상)
+              rel: 0,
+              
+            },
+            events: {
+              'onStateChange': onPlayerStateChange,
+              'onReady': onPlayerReady,
+              'onError' : onPlayerError
+            }
+          });
+          yt_obj_ary.push(player_yt);
+        }
+
+        function onPlayerStateChange(event){
+          // 영상 재생시 오토플레이 중지
+          if(event.data === 1){
+            swiper_main.autoplay.stop();
+          }
+          // 영상 재생 완료시 다음 슬라이드, 오토플레이 활성
+          if(event.data === 0){
+            swiper_main.slideNext();
+            swiper_main.autoplay.start();
+          }
+        }
+
+        function onPlayerError(event){
+          // 실시간일때 재생 불가시 해당 링크 열기
+          var $strm = $('.yt_strm_pop');
+
+          if($strm.length > 0 && yt_err_on == false){ 
+            var link = $strm.attr('href');
+            $strm.addClass('show');
+            window.open(link);
+            yt_err_on = true;
+          }
+        }
+
+      }
+    }
+
+    function onPlayerReady(event) { // 유튜브 자동 재생
+      if($('.yt_strm_pop').length < 1 && is_auto_play == 'Y'){ // 실시간이 아닐때, 자동재생 중지를 방지하기위한 음소거
+        event.target.mute(); 
+      }
+      if(
+          $(event.target.getIframe()).attr('id') == 'yt_player_0' && $('#yt_player_0').parent().parent().hasClass('swiper-slide-active') && 
+          is_auto_play == 'Y'
+        ){ // 첫번째 슬라이드의 첫번째 유튜브 영상일때 자동재생
+        play_video_yt(0);
+      }
+    }
+
+    function play_video_yt(idx){ // 유튜브 재생
+      yt_obj_ary[idx].playVideo();
+    }
+
+    function stop_video_yt(){ // 유튜브 정지
+      for (var i = 0; i < yt_obj_ary.length; i++)
+      {
+        yt_obj_ary[i].stopVideo();
+      }
+    }
+
+  }
+  // ----------------------------- 유튜브 iframe 생성 end -------------------------------------- //
+
+  // ----------------------------- 비메오 객체 생성 -------------------------------------- //
+  var vm_id_ary = []; // 비메오 아이디
+  var vm_obj_ary = []; // 비메오 플레이어 객체
+  var video_vm_leng = $('.video_vm').length;
+
+  if(video_vm_leng > 0 && $('.video_vm').attr('src').indexOf('vimeo') > -1){ // 비메오만 객체 생성
+
+    $('.video_vm').each(function(i){
+      $(this).attr('id','vm_player_' + i);
+      vm_id_ary.push('vm_player_' + i);
+    });
+
+    for(var i = 0; i < video_vm_leng; i++){
+      var player_vm = new Vimeo.Player(document.querySelector('#vm_player_' + i));
+      if(is_auto_play == 'Y'){ // 자동재생시 음소거
+        player_vm.setVolume(0);
+      }
+      vm_obj_ary.push(player_vm);
+      player_vm.on('play',function(){ // 영상 재생시 오토플레이 중지
+        swiper_main.autoplay.stop();
+      });
+      player_vm.on('ended',function(){ // 영상 재생 완료시 다음 슬라이드, 오토플레이 활성
+        swiper_main.slideNext();
+        swiper_main.autoplay.start();
+      });
+    }
+
+    function play_video_vm(idx){ // 비메오 재생
+      vm_obj_ary[idx].play();
+    }
+
+    function stop_video_vm(){ // 비메오 정지
+      for (var i = 0; i < vm_obj_ary.length; i++)
+      {
+        vm_obj_ary[i].unload();
+      }
+    }
+
+  }
+
+  // ----------------------------- 비메오 객체 생성 end -------------------------------------- //
+
+
+	// swiper 생성
+	var swiper_cont_class = 'bm_swiper_cont';
+	if(slide_efct == 'wing') swiper_cont_class = 'bm_swiper_wing_cont'; // 날개형
+	function create_swiper(option_call)
+	{
+    setTimeout(function(){ // wing bug fix = 스크롤 생길시 여백이 생김. 원인 : 스크롤이 생기기 전에 페이지를 읽어서 넓이 값이 달라지는 것으로 추정. 시간차를 둬서 스크립트를 나중에 읽도록 수정
+      swiper_main = new Swiper('.swiper-container.'+swiper_cont_class, swiper_option);
+      option_call();
+    },1);
+	}
+	create_swiper(function(){
+		// 교체효과 - 커튼 옵션 추가
+		if(slide_efct == 'curtain')
+		{
+			$('.slide-inner').addClass('curtain');
+			swiper_main.params.watchSlidesProgress = true;
+			swiper_main.on('progress',function(){
+				var swiper_obj = this;
+				for (var i = 0; i < swiper_obj.slides.length; i++) {
+					var slideProgress = swiper_obj.slides[i].progress;
+					var innerOffset = swiper_obj.width * inter_leave_offset;
+					var innerTranslate = slideProgress * innerOffset;
+					swiper_obj.slides[i].querySelector(".slide-inner").style.transform = "translate3d(" + innerTranslate + "px, 0, 0)";
+				}   
+			});
+			swiper_main.on('touchStart',function(){
+				var swiper_obj = this;
+				for (var i = 0; i < swiper_obj.slides.length; i++) {
+					swiper_obj.slides[i].style.transition = "";
+				}
+			});
+			swiper_main.on('setTransition',function(speed){
+				var swiper_obj = this;
+				for (var i = 0; i < swiper_obj.slides.length; i++) {
+					swiper_obj.slides[i].style.transition = speed + "ms";
+					swiper_obj.slides[i].querySelector(".slide-inner").style.transition =
+						speed + "ms";
+				}
+			});
+		}
+
+		// thumbs effect 예외처리
+		if(slide_efct == 'thumbs')
+		{
+			$('div.bm_swiper_btn_play').addClass('thumbs');
+		}
+
+		// 좌우 화살표 변경
+		$('.swiper-button-next.bm_swiper_btn, .swiper-button-prev.bm_swiper_btn').addClass(btn_arrow_class);
+
+		// wing effect 예외처리
+		if(slide_efct == 'wing')
+		{
+			var swiper_wing_wrap = $('div.swiper-wrapper.bm_swiper_wing_wrap').css('width').replace('px','');
+			var slide_wing_width = $('.swiper-slide.bm_swiper_wing_slide').eq(0).css('width').replace('px','');
+			var wing_w = (swiper_wing_wrap - slide_wing_width) / 2;
+			$('.swiper-wing-left').css({'width':wing_w,'left':0});
+			$('.swiper-wing-right').css({'width':wing_w,'right':0});
+			$('div.swiper-button-next.bm_swiper_wing_btn').css({'right':wing_w-40});
+			$('div.swiper-button-prev.bm_swiper_wing_btn').css({'left':wing_w-40});
+			$(window).resize(function(){
+				swiper_wing_wrap = $('div.swiper-wrapper.bm_swiper_wing_wrap').css('width').replace('px','');
+				slide_wing_width = $('.swiper-slide.bm_swiper_wing_slide').eq(0).css('width').replace('px','');
+				wing_w = (swiper_wing_wrap - slide_wing_width) / 2;
+				$('.swiper-wing-left').css({'width':wing_w,'left':0});
+				$('.swiper-wing-right').css({'width':wing_w,'right':0});
+				$('div.swiper-button-next.bm_swiper_wing_btn').css({'right':wing_w-40});
+				$('div.swiper-button-prev.bm_swiper_wing_btn').css({'left':wing_w-40});
+			});
+
+			$('.swiper-wing-right,.swiper-button-next.bm_swiper_wing_btn').mouseenter(function(){
+				$('.swiper-button-next').css('opacity','1');
+			});
+			$('.swiper-wing-right,.swiper-button-next.bm_swiper_wing_btn').mouseleave(function(){
+				$('.swiper-button-next').css('opacity','0.1');
+			});
+			$('.swiper-wing-left,.swiper-button-prev.bm_swiper_wing_btn').mouseenter(function(){
+				$('.swiper-button-prev').css('opacity','1');
+			});
+			$('.swiper-wing-left,.swiper-button-prev.bm_swiper_wing_btn').mouseleave(function(){
+				$('.swiper-button-prev').css('opacity','0.1');
+			});
+		}    
+
+    $(function(){
+      // 오토플레이 시작, 정지
+      $('div.bm_swiper_btn_play').click(function(){
+        if($(this).hasClass('stop'))
+        {
+          swiper_main.autoplay.start();
+          on_page_btn_timeline();
+          $(this).removeClass('stop');
+          var img_src = $('img.bm_swiper_btn_play_img').attr('src');
+          img_src = img_src.replace('play','stop');
+          $('img.bm_swiper_btn_play_img').attr('src',img_src);
+
+          $.play_main_video(swiper_main,false); // 영상 재생
+        }
+        else
+        {
+          swiper_main.autoplay.stop();
+          $('span.swiper-pagination-bullet-active.time .timeline').stop();
+          $(this).addClass('stop');
+          var img_src = $('img.bm_swiper_btn_play_img').attr('src');
+          img_src = img_src.replace('stop','play');
+          $('img.bm_swiper_btn_play_img').attr('src',img_src);
+
+          $.video_stop_all(); // 영상 멈춤
+        }
+      });
+
+      $('.yt_strm_btn').draggable();
+      
+    });
+
+
+    /** 영상 관련 **/
+    var video_cnt = $('.main_video').length; // 영상 갯수
+    var video_yt_cnt = $('.video_yt').length;
+    var video_vm_cnt = $('.video_vm').length;
+
+    if(video_cnt > 0){
+      // 영상 재생 함수
+      $.play_main_video = function(swiper_obj,is_init){
+        var slide_idx = swiper_obj.activeIndex;
+        var video_active = $(swiper_obj.slides[slide_idx]).find('.main_video'); // 현재 슬라이드의 비디오
+        var video_class = video_active.attr('class');
+
+        if(video_active.length > 0 && is_auto_play == 'Y'){ // 영상이 존재하면
+          if(video_class.indexOf('video_mp4') > 0){ // mp4 일때
+            swiper_main.autoplay.stop();
+            $.video_stop_all();
+            video_active.prop('muted','true');
+            video_active.trigger('play');
+          }
+          else if (video_class.indexOf('video_yt') > 0){ // 유튜브 일때
+            swiper_main.autoplay.stop();
+            $.video_stop_all();
+
+            var delay = 500;
+            if(is_init) delay = 2000;
+
+            setTimeout(function(){
+              var video_idx = video_active.attr('id').replace('yt_player_','');
+              play_video_yt(video_idx);
+            },delay);
+          }
+          else if (video_class.indexOf('video_vm') > 0){ // 비메오 일때
+            swiper_main.autoplay.stop();
+            $.video_stop_all();
+
+            var delay = 500;
+            if(is_init) delay = 2000;
+
+            setTimeout(function(){
+              var video_idx = video_active.attr('id').replace('vm_player_','');
+              play_video_vm(video_idx);
+            },delay);
+          }
+        }
+      }
+
+      // 모든 영상 재생 정지 함수
+      $.video_stop_all = function(){
+        if(video_cnt > 0){
+          $('.main_video').trigger('pause');
+          $('.main_video').each(function(){
+            this.addEventListener('loadedmetadata', function(){
+              this.currentTime = 0;
+            });
+          }); // 다른 슬라이드 재생바 : 0
+        }
+        if(video_yt_cnt > 0){
+          stop_video_yt();
+        }
+        if(video_vm_cnt > 0){
+          stop_video_vm();
+        }
+      }
+
+      // 영상 슬라이드 초기화
+      if('' != 'Y'){ // 실시간 영상이 아닐때만
+        swiper_main.on('init',function(){
+          $('.main_video').each(function(){ 
+            this.onplay = function(){ // 영상 재생시 오토플레이 중지
+              swiper_main.autoplay.stop();
+            }
+            this.onended = function(){ // 영상 재생 완료시 다음 슬라이드, 오토플레이 활성
+              swiper_main.slideNext();
+              swiper_main.autoplay.start();
+            }
+          });
+          $.play_main_video(this,true);
+        });
+        swiper_main.init();
+      }
+
+      // 다음 슬라이드 넘어갔을때 영상 재생
+      swiper_main.on('slideChangeTransitionEnd',function(){
+        var slide_obj = this;
+        var active_slide_idx = slide_obj.activeIndex;
+
+        $.video_stop_all(); // 기존 재생 중인 영상 중지
+        if($(slide_obj.slides[active_slide_idx]).find('.bm_swiper_img').length > 0){
+          swiper_main.autoplay.start();
+        }else{
+          $.play_main_video(slide_obj,false);
+        }
+      });
+    }
+    /** 영상 관련 end **/
+
+		// 재생버튼 사용
+		if(is_btn_auto_play) 															
+		{
+			$('div.bm_swiper div.swiper-pagination').append(btn_auto_play);
+		}
+
+		// 페이지 버튼 타임 바 애니메이션
+		function on_page_btn_timeline(){
+			var $timeline = $('span.swiper-pagination-bullet-active.time .timeline');
+			$timeline.css('width','0%');
+			$timeline.stop().animate({
+				width: '100%',
+			},auto_delay);
+		}
+		on_page_btn_timeline();
+		swiper_main.on('slideChange',function(){
+			on_page_btn_timeline();
+		});
+
+    // 페이지 버튼 타임 바 메모 효과
+		$('span.swiper-pagination-bullet.time').hover(function(){
+			$(this).find('span.timeline_memo .memo').stop().animate({
+				bottom: '8px',
+				opacity: '1'
+			},300);
+		},function(){
+			$(this).find('span.timeline_memo .memo').stop().animate({
+				bottom: '-10px',
+				opacity: '0'
+			},300);
+		});
+
+    // 메모 내용 없을시
+    if(page_memo_arr == ''){
+      $('span.timeline_memo .memo').addClass('disable');
+    }
+
+	});
+
+  // 메인광고알림판 유튜브 볼륨버튼 추가
+  setTimeout(function(){  
+    // 버튼 추가
+    document.querySelectorAll('iframe.main_video.video_yt').forEach(ytElement => {
+      const parent = ytElement.closest('.swiper-slide');
+      if (parent) {
+        const btn = document.createElement('button');
+        const btn_icon = document.createElement('i');
+
+        btn.type = 'button';
+        btn.classList.add('btn_vol');
+        btn.textContent = '배경음 재생 ️';
+        btn_icon.classList.add('fas', 'fa-play-circle');
+        btn.appendChild(btn_icon);
+        parent.appendChild(btn);
+      }
+    });
+
+    const youtubeBtnMuteArr = document.querySelectorAll('div.banner_main button.btn_vol');
+    yt_obj_ary.forEach(function(item, idx){
+      let yt_player = item;
+      const youtubeBtnMute = youtubeBtnMuteArr[idx]
+
+      function updateButtonLabel() {
+        if (!yt_player || !youtubeBtnMuteArr) return;
+        if (yt_player.isMuted()) {
+          youtubeBtnMute.innerHTML = '배경음 일시정지 <i class="far fa-stop-circle"></i>';
+        } else {
+          youtubeBtnMute.innerHTML = '배경음 재생 <i class="fas fa-play-circle"></i>';
+        }
+      }
+
+      // 배경음 재생, 일시정지
+      youtubeBtnMute.addEventListener('click', () => {
+        if (!yt_player) return;
+        if (yt_player.isMuted()) {
+          yt_player.unMute();
+          yt_player.setVolume(100);
+          yt_player.playVideo();
+        } else {
+          yt_player.mute();
+        }
+        updateButtonLabel();
+      });
+
+    });
+  },700);
+  
+
+  // 메인광고알림판 mp4 볼륨버튼 추가
+  setTimeout(function(){  
+
+    // 버튼 추가
+    document.querySelectorAll('video.main_video.video_mp4').forEach(mp4Element => {
+      const parent = mp4Element.closest('.swiper-slide');
+      if (parent) {
+        const btn = document.createElement('button');
+        const btn_icon = document.createElement('i');
+
+        btn.type = 'button';
+        btn.classList.add('btn_vol');
+        btn.textContent = '배경음 재생 ';
+        btn_icon.classList.add('fas', 'fa-play-circle');
+        btn.appendChild(btn_icon);
+        parent.appendChild(btn);
+      }
+    });
+
+    const mp4BtnMuteArr = document.querySelectorAll('div.banner_main button.btn_vol');
+
+    document.querySelectorAll('video.main_video.video_mp4').forEach(function(video, idx){
+      const mp4BtnMute = mp4BtnMuteArr[idx];
+
+      function updateButtonLabel() {
+        if (!video || !mp4BtnMute) return;
+
+        if (video.muted) {
+          mp4BtnMute.innerHTML = '배경음 재생 <i class="fas fa-play-circle"></i>';
+        } else {
+          mp4BtnMute.innerHTML = '배경음 일시정지 <i class="far fa-stop-circle"></i>';
+        }
+      }
+
+      // 초기 상태 (자동재생 정책 대응)
+      video.muted = true;
+      updateButtonLabel();
+
+      // 배경음 재생, 일시정지
+      mp4BtnMute.addEventListener('click', () => {
+        if (!video) return;
+
+        if (video.muted) {
+          video.muted = false;
+          video.volume = 1;
+          video.play();
+        } else {
+          video.muted = true;
+        }
+
+        updateButtonLabel();
+      });
+    });
+
+  },700);
+
+</script>
+<!-- 메인광고알림판 end -->
+
+				</div>
+			</div>
+			<!-- main banner end --> 
+        <script>
+          // 동영상 비율과 메인광고 비율이 맞지않기때문에 동영상일땐 css 조정 필요
+          if(yt_url_ary + '' != ''){
+            if (matchMedia("screen and (max-width: 768px)").matches) {
+              $('.main_visual').css('padding-bottom','56.25%');
+            }
+          }
+        </script>
+      <div class="contents clearfix">
+      
+        <section class="sermon clearfix">
+          <a href="javascript:goTo('2', 'media_board','1');">
+            <h1 id="animation_5">주일설교</h1>
+            <div class="pastor_img">
+              <img src="<a href="javascript:goTo('2', 'media_board', '1', '1', '291361');" class="b"><img src="/file/KWANGYA/media_board/20261030223456_iqllsifc.jpg" class='ex_img'></a>"> 
+            </div>
+            <p class="sermon_tit"><a href="javascript:goTo('2', 'media_board', '1', '1', '291361');" class="b">북방왕과 남방왕의 싸움</a></p>
+            <p class="bible"><a href="javascript:goTo('2', 'media_board', '1', '1', '291361');" class="b">단 11:10-16</a><br><a href="javascript:goTo('2', 'media_board', '1', '1', '291361');" class="b">2026-11-01</a>&nbsp;<a href="javascript:goTo('2', 'media_board', '1', '1', '291361');" class="b">임명희 담임목사</a></p>
+          </a>
+        </section>  
+        <section class="quick_menu">
+          <ul class="quick_a clearfix">
+            <li class="quick_menu01 clearfix" id="animation_16">
+              <a href="javascript:goTo('4', 's_board', '19');">
+                <p class="quick_tit" id="animation_24">공지사항<br><span>Notice</span></p>
+                <img class="quick_icon" src="img/body/quick_img01.png" id="animation_25">
+              </a>
+            </li>
+			<li class="quick_menu04" id="animation_19">
+              <a href="javascript:goTo('3', 's_board', '2');">
+                <p class="quick_tit" id="animation_30">광야앨범<br><span>Gallery</span></p>
+                <img class="quick_icon" src="img/body/quick_img04.png" id="animation_31">
+              </a>
+            </li>
+			<li class="quick_menu08" id="animation_23">  
+              <a href="javascript:goTo('3', 's_board','3');">
+                <p class="quick_tit" id="animation_38">새가족<br><span>New Family</span></p>
+                <img class="quick_icon" src="img/body/quick_img08.png" id="animation_39">
+              </a>
+            </li>
+             <li class="quick_menu03" id="animation_18">
+              <a href="javascript:goTo('4', 's_board','5');">
+                <p class="quick_tit" id="animation_28">자유게시판<br><span>Free Board</span></p>
+                <img class="quick_icon" src="img/body/quick_img03.png" id="animation_29">
+              </a>
+            </li>
+             
+           </ul>
+           <ul class="clear">
+			<li class="quick_menu02" id="animation_17">
+              <a href="javascript:goTo('4', 's_board','7');">
+                <p class="quick_tit" id="animation_26">보도자료<br><span>Announce</span></p>
+                <img class="quick_icon" src="img/body/quick_img02.png" id="animation_27">
+              </a>
+            </li>
+             <li class="quick_menu05" id="animation_20">
+              <a href="javascript:goTo('5','uotc','2254','10442');">
+                <p class="quick_tit" id="animation_32">후원안내<br><span>Sponsor</span></p>
+                <img class="quick_icon" src="img/body/quick_img05.png" id="animation_33">
+              </a>
+            </li>
+             <li class="quick_menu06" id="animation_21">
+              <a href="javascript:goTo('6', 'uotc','2284','10506');">
+                <p class="quick_tit quick_tit01" id="animation_34">광야<br>홈리스센터<br><span>Homeless Center</span></p>
+                <img class="quick_icon" src="img/body/quick_img06.png" id="animation_35">
+              </a>
+            </li>
+             <li class="quick_menu07" id="animation_22">
+              <a href="javascript:goTo('7','uotc','4342','20091');">
+                <p class="quick_tit quick_tit01" id="animation_36">영등포<br>쪽방상담소<br><span>Counseling</span></p>
+                <img class="quick_icon" src="img/body/quick_img07.png" id="animation_37">
+              </a>
+            </li>
+             
+          </ul>
+        </section>
+      </div>
+	
+    <!--메인끝-->
+	<div class="bn_area">
+      <!-- 흐르는 배너 -->
+      <div class="banner_roll_main">
+      <link href="/modu/notiboard/css/swiper.min.css" rel="stylesheet" type="text/css">
+<script src="/modu/notiboard/js/swiper.min.js"></script>
+<style>
+	#banner_roll_area {position: relative; width: 100%; }
+  #banner_roll_area .swiper-wrapper {height: auto;}
+	#banner_roll_area .swiper-container {width: 97%; margin: 0 auto; box-sizing: border-box;}
+	#banner_roll_area .swiper-slide {padding:0 0px; box-sizing:border-box;}
+	#banner_roll_area .swiper-link {display:block; width:100%; height:100%; box-sizing:border-box;}
+	#banner_roll_area .swiper_slide_img {display:block; margin:0 auto; width: 160px; height: 50px;} /* 160*50 사이즈 고정 */
+	#banner_roll_area .swiper-button-prev {background: url('/modu/banner_roll/btn_bn_prev.gif') center no-repeat; left: -5px;}
+	#banner_roll_area .swiper-button-next {background: url('/modu/banner_roll/btn_bn_next.gif') center no-repeat; right: -5px;}
+	#banner_roll_area .swiper-button-next, .swiper-button-prev {width: 20px; height: 40px; margin-top: -20px;}
+	
+	@media screen and (max-width:768px) {
+		#banner_roll_area .swiper-container {width: 100%;}
+	}
+</style>
+
+<div id="banner_roll_area">
+	<!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+	
+      <div class="swiper-slide">
+	  
+		<a href="http://sagilsa.org/" target="_blank" class="swiper-link">
+		<img src="/file/KWANGYA/banner/2568ban01.jpg" class="swiper_slide_img" alt="사막에길을내는사람들"></a>
+	  
+      </div>
+		
+      <div class="swiper-slide">
+	  
+		<!-- 이미지 비율 w=160px h=50px -->
+	  	<img src="/file/KWANGYA/banner/6817ban02.jpg" class="swiper_slide_img" alt="죽을 때 웃을 수 있을까?">
+	  
+      </div>
+		
+      <div class="swiper-slide">
+	  
+		<a href="http://duranno.com" target="_blank" class="swiper-link">
+		<img src="/file/KWANGYA/banner/6019duranno_com.gif" class="swiper_slide_img" alt="두란노"></a>
+	  
+      </div>
+		
+      <div class="swiper-slide">
+	  
+		<a href="http://webchurch.co.kr" target="_blank" class="swiper-link">
+		<img src="/file/KWANGYA/banner/5230logo.gif" class="swiper_slide_img" alt="웹처치"></a>
+	  
+      </div>
+		
+      <div class="swiper-slide">
+	  
+		<a href="http://bskorea.or.kr" target="_blank" class="swiper-link">
+		<img src="/file/KWANGYA/banner/8942bskorea_orkr.jpg" class="swiper_slide_img" alt="bskorea"></a>
+	  
+      </div>
+		
+      <div class="swiper-slide">
+	  
+		<a href="http://365qt.com" target="_blank" class="swiper-link">
+		<img src="/file/KWANGYA/banner/9778365qt_com_TodaysQT.jpg" class="swiper_slide_img" alt="365qt"></a>
+	  
+      </div>
+		
+    </div>
+  </div>
+  <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+	<!-- Initialize Swiper -->
+  <script>
+		//이미지 개수에 따라 루프 활성, 비활성
+		var img_count = document.getElementsByClassName('swiper_slide_img').length;
+		var loop_tgl = true;
+
+		if (matchMedia("screen and (min-width: 1019px)").matches) {
+			if(img_count < 6){
+				loop_tgl = false;
+			}
+		} else if(matchMedia("screen and (min-width: 768px)").matches) {
+			if(img_count < 5){
+				loop_tgl = false;
+			}
+		} else if(matchMedia("screen and (min-width: 640px)").matches) {
+			if(img_count < 3){
+				loop_tgl = false;
+			}
+		} else if(matchMedia("screen and (min-width: 400px)").matches) {
+			if(img_count < 2){
+				loop_tgl = false;
+			}
+		} else {
+				loop_tgl = false;
+		}
+		
+		window.onload = function(){
+			//auto_height();
+		}
+		
+		window.onresize = function() {
+			//auto_height();
+		}
+		
+		//이미지 개수
+		var slidesPerView = 6; //한 라인에 보여줄 최대 이미지 개수 / 기본값 6(최대)
+		var slidesPerView1019 = 5; 
+		var slidesPerView850 = 4; 
+		var slidesPerView640 = 3; 
+		var slidesPerView510 = 2; 
+		/*
+		if(slidesPerView != 6){
+				 slidesPerView1019 = slidesPerView;
+				 slidesPerView850 = slidesPerView;
+				 slidesPerView640 = slidesPerView;
+				 slidesPerView510 = slidesPerView;
+		}
+		*/
+		// 컨테이너 높이 자동 조절
+		//function auto_height(){
+		//	var wrap_width = document.getElementById('banner_roll_area').offsetWidth;
+		//	var ratio = 50 / (slidesPerView * 160); //이미지 비율 w=160px h=50px
+
+		//	var ratio1019 = 50 / (slidesPerView1019 * 160); 
+		//	var ratio768 = 50 / (slidesPerView850 * 160);
+		//	var ratio640 = 50 / (slidesPerView640 * 160);
+		//	var ratio400 = 50 / (slidesPerView510 * 160);
+		//	var wrap_height = wrap_width * ratio;
+
+		//	if (matchMedia("screen and (min-width: 1019px)").matches) {
+		//		wrap_height = wrap_width * ratio;
+		//	} else if(matchMedia("screen and (min-width: 768px)").matches) {
+		//		wrap_height = wrap_width * ratio1019;
+		//	} else if(matchMedia("screen and (min-width: 640px)").matches) {
+		//		wrap_height = wrap_width * ratio768;
+		//	} else if(matchMedia("screen and (min-width: 400px)").matches) {
+		//		wrap_height = wrap_width * ratio640;
+		//	} else {
+		//		wrap_height = wrap_width * ratio400;
+		//	}
+		//	
+		//	document.getElementById('banner_roll_area').style.height = wrap_height;
+		//}
+		
+		//스와이퍼
+    var swiper_roll = new Swiper('#banner_roll_area .swiper-container', { 
+			speed: 1000, //스크롤 속도
+      slidesPerView: slidesPerView, //한 라인에 보여줄 최대 이미지 개수
+      spaceBetween: 4,
+			loop: loop_tgl, //가로보다 이미지 개수가 적을 경우 loop false
+      // init: false,
+			autoplay: {
+        delay: 2000, //스크롤 딜레이 기본 2초
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '#banner_roll_area .swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        1019: {
+          slidesPerView: slidesPerView1019,
+          spaceBetween: 0,
+        },
+        850: {
+          slidesPerView: slidesPerView850,
+          spaceBetween: 0,
+        },
+        640: {
+          slidesPerView: slidesPerView640,
+          spaceBetween: 0,
+        },
+        510: {
+          slidesPerView: slidesPerView510,
+          spaceBetween: 0,
+        }
+      },
+			navigation: {
+        nextEl: '#banner_roll_area .swiper-button-next',
+        prevEl: '#banner_roll_area .swiper-button-prev',
+      },
+    });
+		
+
+  </script>
+</div>
+
+      </div>
+			<!-- 흐르는 배너 end -->
+    </div>
+    <!--푸터-->
+    <hr>
+	 
+    <footer id="footer">
+      <p id="animation_40">
+	  <span class="footer_offering">[후원계좌] 국민은행 014-01-0927-497 광야교회</span><br>
+	  Copyright &copy; 2020 &nbsp;광야교회. All rights reserved<br>
+	  (07306) 서울특별시 영등포구 경인로100길 3(영등포동), Tel : 2636-3373<br>
+	  <a href="https://webchurch.co.kr/index.asp" target="blank" class="bott_info_link"><span style='color:#444;'>Powered by <span style='text-decoration:underline;'>웹처치.</span></span></a><a href="#none" class="bott_info_link policy"><span style='color:#000; font-weight:bold;'>[개인정보 처리방침]</span></a>&nbsp;<a href="#none" class="bott_info_link email_no"><span style='color:#444;'>[이메일 무단수집거부]<span></a></p>
+    </footer>
+    <!--푸터끝-->
+  </div>        
+</body>
+</html>

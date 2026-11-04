@@ -5,7 +5,7 @@
     "provider": "공공데이터포털 (각 지자체)",
     "url": "https://www.data.go.kr/data/15013107/standard.do",
     "license": "이용허락범위 제한 없음",
-    "raw": "data/raw/national-free-meal-std_20261103/national_free_meal_std.json"
+    "raw": "data/raw/national-free-meal-std_20261104/national_free_meal_std.json"
   },
   {
     "id": "ssis-welfare-basic",
@@ -16,20 +16,68 @@
     "raw": "data/raw/seoul-ssis-welfare-basic_20261103/OA-23025.csv"
   },
   {
+    "id": "ssis-fclt-api",
+    "name": "한국사회보장정보원_사회복지시설정보서비스",
+    "provider": "한국사회보장정보원 (공공데이터포털 OpenAPI)",
+    "url": "https://www.data.go.kr/data/15001848/openapi.do",
+    "license": "이용허락범위 제한 없음",
+    "fetched": "2026-11-04",
+    "raw": "data/curated/derived/ssis-facilities-20261104.csv",
+    "derived_from": "data/raw/ssis-api_20261104/bass/*.xml (getFcltByBassInfoInqire2)",
+    "derived_by": "python3 -I pipeline/extract.py ssis"
+  },
+  {
+    "id": "busan-homeless-fac",
+    "name": "부산광역시_노숙인시설 현황 (기준 2025-09-30)",
+    "provider": "공공데이터포털 (부산광역시)",
+    "url": "https://www.data.go.kr/data/15066687/fileData.do",
+    "license": "이용허락범위 제한 없음",
+    "raw": "data/raw/homeless-fac-regional_20261104/15066687.csv"
+  },
+  {
+    "id": "daegu-buk-homeless-fac",
+    "name": "대구광역시 북구_노숙인시설 (기준 2026-02-07)",
+    "provider": "공공데이터포털 (대구광역시 북구)",
+    "url": "https://www.data.go.kr/data/15029665/fileData.do",
+    "license": "이용허락범위 제한 없음",
+    "raw": "data/raw/homeless-fac-regional_20261104/15029665.csv"
+  },
+  {
+    "id": "hira-hospital",
+    "name": "전국 병의원 및 약국 현황 2026.9 (보건소·무료진료소 주소·전화·좌표)",
+    "provider": "건강보험심사평가원",
+    "url": "https://www.data.go.kr/data/15051059/fileData.do",
+    "license": "공공누리 1유형 (출처표시)",
+    "raw": "data/curated/derived/hira-clinics-20260930.csv",
+    "derived_from": "data/raw/clinic_20261103/hira_20260930_extracted/1.병원정보서비스(2026.9.).csv",
+    "derived_by": "python3 -I pipeline/extract.py hira",
+    "as_of": "2026-09-30"
+  },
+  {
+    "id": "molit-bjd",
+    "name": "국토교통부_전국 법정동 (2026-07-29, 시군구 이름·코드)",
+    "provider": "국토교통부",
+    "url": "https://www.data.go.kr/data/15063424/fileData.do",
+    "license": "이용허락범위 제한 없음",
+    "raw": "data/raw/molit-bjd-national_20261104/molit_bjd_20260729.csv"
+  },
+  {
+    "id": "sgis-boundary",
+    "name": "SGIS 행정구역 경계 2025년 2분기 (시군구 대표 좌표 계산)",
+    "provider": "국가데이터처",
+    "url": "https://www.data.go.kr/data/15129688/fileData.do",
+    "license": "이용허락범위 제한 없음",
+    "raw": "data/curated/derived/sigungu-centroids.csv",
+    "derived_from": "data/raw/sgis-admin-boundary_20261104/sgis.zip",
+    "derived_by": "python3 -I pipeline/extract.py centroids"
+  },
+  {
     "id": "seoul-welfare-fac-gu",
     "name": "서울시 자치구 사회복지시설 목록 (중구·용산구·영등포구)",
     "provider": "서울열린데이터광장",
     "url": "https://data.seoul.go.kr/dataList/OA-20395/S/1/datasetView.do",
     "license": "공공누리 1유형 (출처표시)",
     "raw": "data/raw/seoul-ydp-welfare-fac_20261103/OA-20395.csv"
-  },
-  {
-    "id": "hira-hospital",
-    "name": "전국 병의원 및 약국 현황 (좌표 참고용)",
-    "provider": "건강보험심사평가원",
-    "url": "https://opendata.hira.or.kr/",
-    "license": "공공누리 1유형 (출처표시)",
-    "raw": "data/raw/clinic_20261103/hira_20260930_extracted/1.병원정보서비스(2026.9.).csv"
   },
   {
     "id": "seoul-heat-shelter",
@@ -41,7 +89,7 @@
   },
   {
     "id": "osm-nominatim",
-    "name": "OpenStreetMap Nominatim (도로 단위 좌표, 근사값)",
+    "name": "OpenStreetMap Nominatim (주소 검색 좌표, 빌드 준비 때만 · 캐시 data/curated/geocode-cache.json)",
     "provider": "© OpenStreetMap 기여자",
     "url": "https://nominatim.openstreetmap.org/",
     "license": "ODbL"

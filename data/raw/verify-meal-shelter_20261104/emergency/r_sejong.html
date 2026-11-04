@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>에러페이지</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/pcms/common/pluigs/jQuery/jquery-3.3.1.min.js;jsessionid=1C99483F867CFD901227F1DDF0D5354B.portal2"></script>
+<script src="/pcms/common/pluigs/jQuery/jquery-migrate-1.4.1.min.js;jsessionid=1C99483F867CFD901227F1DDF0D5354B.portal2"></script>
+<script src="/pcms/common/pluigs/jQueryUI/jquery-ui.min.js;jsessionid=1C99483F867CFD901227F1DDF0D5354B.portal2"></script>
+
+<link rel="stylesheet" href="/pcms/common/css/common.css;jsessionid=1C99483F867CFD901227F1DDF0D5354B.portal2" />
+<link rel="stylesheet" href="/pcms/common/font/font_nanumgothic.css;jsessionid=1C99483F867CFD901227F1DDF0D5354B.portal2" />
+<link rel="stylesheet" href="/js/virtualkeyboard/css/air_small2/keyboard.css" />
+<link rel="stylesheet" href="/css/error/main.css" />
+
+<script src="/js/virtualkeyboard/vk_loader.js?vk_layout=KR%202%20Beolsik&vk_skin=air_small2"></script>
+
+
+<script>
+	function fncGoAfterErrorPage() {
+		history.back(-2);
+	}
+</script>
+</head>
+<body>
+<div id="body_layout">
+	
+	<div class="body_wrap">
+        <div class="error_wrap">
+           <div class="inner">
+                <div class="logo"><a href="#">세종특별자치시</a></div>
+                <div class="cont">
+					<img class="for_bg" src="/images/error/error_bg4.png" alt="Page Not Found">
+                    <div class="cont_inner">
+                        <div class="tit">죄송합니다. 요청하신 페이지를 찾을 수 없습니다.</div>
+                        <div class="txt1">
+                            <p>서비스 이용에 불편을 드려 죄송합니다.</p>
+                        </div>
+                        <div class="txt2">
+                            <p>
+                                <span>찾으시려는 페이지는 주소를 잘못 입력하였거나 </span>
+                                <span>페이지 주소의 변경 또는 삭제 등의 이유로 페이지를 찾을 수 없습니다.</span>
+                                <span>입력하신 페이지의 주소와 경로가 정확한지 한번 더 확인 후 이용하시기 바랍니다.</span>
+                            </p>
+                            
+                        </div>
+                        <div id="topsearch" class="basic_search">
+							<span class="bul">검색으로 원하는 페이지를 찾으실 수 있습니다.</span>
+							<form name="searchForm" method="post" action="/search/sjSearch.do" target="_blank" onsubmit="return checkWord();">
+								<div class="searchFrm">
+									<h2 class="skip">SEARCH</h2>
+									<fieldset class="search">
+										<legend>통합검색</legend>
+										<label class="flow" for="searchkeywordSejong" style="position: absolute; visibility: visible;">검색어를 입력하세요.</label>
+										<input type="search" id="searchkeywordSejong" name="query" value="" placeholder="검색어를 입력해주세요">
+										<a class="key" href="" onclick="VirtualKeyboard.toggle('searchkeywordSejong','searchVirtualKeyboard'); return false;">
+											
+											<img src="/js/virtualkeyboard/img/jsvk.gif" alt="가상키보드">
+										</a>
+										<input type="submit" value="검색">
+									</fieldset>
+								</div>
+								<div id="searchVirtualKeyboard"></div>
+							</form>
+							<script>
+							function checkWord(){
+								var word = $('#searchkeywordSejong').val();
+								var num = "/{}[]()<>?|'~`!@#$%^&*-+=_,.;:\"";
+								var bFlag = true;
+								
+								for(var i=0;i<word.length;i++){
+								if(num.indexOf(word.charAt(i)) != -1)
+									bFlag=false;
+								}
+								
+								if(!bFlag){
+									alert("특수문자는 입력할 수 없습니다.");
+									return false;
+								}
+								if(word == ""){
+									alert("검색어를 입력해주세요.");
+									return false;
+								}else{
+									return true;
+								}
+							}
+							</script>
+							<div class="masked"></div>
+						</div>
+                        <div class="btn_wrap">
+							<a href="javascript:fncGoAfterErrorPage();" class="btn2">뒤로가기</a>
+							  <a href="http://www.sejong.go.kr/" class="btn1">처음으로</a>
+						</div>
+                    </div>
+                </div>
+                
+                
+                <script src="/js/error/jumpjump.js"></script>
+                <div class="jump_box">
+					<img src="/images/error/bg.png" alt="에러페이지 게임 배경" id="bg" class="hide">
+					<img src="/images/error/man.png" alt="에러페이지 게임 사람" id="player" class="hide">
+					<img src="/images/error/bullshit.png" alt="에러페이지 게임 장애물"  id="bullshit" class="hide">
+					<img src="/images/error/gameover.png" alt="에러페이지 게임 오버텍스트" id="gameover" class="hide">
+					<img src="/images/error/structure.png" alt="에러페이지 게임 배경 세종관광지" id="structure" class="hide">
+					<canvas id="jump"></canvas>
+				</div>
+                
+                
+                
+                <div class="error_footer">
+                    <p>세종특별자치시 한누리대로 2130 (보람동) (우)30151   /   대표전화 (044) 120</p>
+                    <p>Copyright © 세종특별자치시. All Rights Reserved. </p>
+                </div>
+            </div>
+        </div>
+        
+	</div>
+	
+</div>
+
+</body>
+</html>

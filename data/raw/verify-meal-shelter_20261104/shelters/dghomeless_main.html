@@ -1,0 +1,520 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="대경홈리스복지회">
+<meta name="description" content="대경홈리스복지회" />
+<meta name="robots" content="대구시 북구">
+<meta charset="utf-8">
+<meta property="og:type" content="website">
+ <meta property="og:title" content="대경홈리스복지회">
+ <meta property="og:description" content="대구시 북구">
+ <meta property="og:image" content="">
+ <meta property="og:url" content="대경홈리스복지회">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
+<title>대경홈리스복지회</title>
+<link rel="stylesheet" href="http://www.dghomeless.or.kr/main/css/default.css">
+<link rel="stylesheet" href="http://www.dghomeless.or.kr/main/skin/latest/basic/style.css?ver=171222"><link rel="stylesheet" href="http://www.dghomeless.or.kr/main/css/content.css">
+<!--[if lte IE 8]>
+<script src="http://www.dghomeless.or.kr/main/js/html5.js"></script>
+<![endif]-->
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "http://www.dghomeless.or.kr/main";
+var g5_bbs_url   = "http://www.dghomeless.or.kr/main/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+</script>
+<script src="http://www.dghomeless.or.kr/main/js/jquery-1.8.3.min.js"></script>
+<script src="http://www.dghomeless.or.kr/main/js/jquery.menu.js"></script>
+<script src="http://www.dghomeless.or.kr/main/js/common.js"></script>
+<script src="http://www.dghomeless.or.kr/main/js/wrest.js"></script>
+</head>
+<body>
+
+<!-- 상단 시작 { -->
+<div id="hd">
+    
+<!-- 팝업레이어 시작 { -->
+<div id="hd_pop">
+    <h2>팝업레이어 알림</h2>
+
+<span class="sound_only">팝업레이어 알림이 없습니다.</span></div>
+
+<script>
+$(function() {
+    $(".hd_pops_reject").click(function() {
+        var id = $(this).attr('class').split(' ');
+        var ck_name = id[1];
+        var exp_time = parseInt(id[2]);
+        $("#"+id[1]).css("display", "none");
+        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+    });
+    $('.hd_pops_close').click(function() {
+        var idb = $(this).attr('class').split(' ');
+        $('#'+idb[1]).css('display','none');
+    });
+    $("#hd").css("z-index", 1000);
+});
+</script>
+<!-- } 팝업레이어 끝 -->	<div id="tnb">
+		<ul>
+            			<li><a href="/"><b>HOME</b></a></li>
+			<li style="border-right:1px solid #dfdfdf;"></li>
+			
+			
+			
+            <li><a href="/bbs/content.php?co_id=0102">오시는길</a></li>
+			<li style="border-right:1px solid #dfdfdf;"></li>
+            <li><a href="http://www.dghomeless.or.kr/main/bbs/login.php">로그인</a></li>
+                    </ul>
+	</div>
+
+    <div id="hd_wrapper">
+        <div id="logo">
+            <a href="http://www.dghomeless.or.kr/main"><img src="http://www.dghomeless.or.kr/main/img/logo.jpg" alt="대경홈리스복지회"></a>
+        </div>
+
+		<div id="gnb">
+			<ul id="gnb_1dul">
+								<li class="gnb_1dli" style="z-index:999">
+					<a href="/main/bbs/content.php?co_id=0101" target="_self" class="gnb_1da"><font color="#333"><b>대구노숙인종합지원센터</b></font></a>
+					<ul class="gnb_2dul">
+						<li class="gnb_2dli"><a href="/main/bbs/content.php?co_id=0101" target="_self" class="gnb_2da">센터 소개</a></li>
+											<li class="gnb_2dli"><a href="/main/bbs/content.php?co_id=0102" target="_self" class="gnb_2da">센터 주요사업</a></li>
+											<li class="gnb_2dli"><a href="/main/bbs/board.php?bo_table=0104" target="_self" class="gnb_2da">연혁</a></li>
+											<li class="gnb_2dli"><a href="/main/bbs/content.php?co_id=0103" target="_self" class="gnb_2da">센터 오시는 길</a></li>
+					</ul>
+				</li>
+								<li class="gnb_1dli" style="z-index:998">
+					<a href="/main/bbs/content.php?co_id=0201" target="_self" class="gnb_1da"><font color="#333"><b>징검다리</b></font></a>
+					<ul class="gnb_2dul">
+						<li class="gnb_2dli"><a href="/main/bbs/content.php?co_id=20220201" target="_self" class="gnb_2da">징검다리 소개</a></li>
+											<li class="gnb_2dli"><a href="/main/bbs/content.php?co_id=20220202" target="_self" class="gnb_2da">징검다리 주요사업</a></li>
+											<li class="gnb_2dli"><a href="/main/bbs/content.php?co_id=0203" target="_self" class="gnb_2da">징검다리 오시는 길</a></li>
+					</ul>
+				</li>
+								<li class="gnb_1dli" style="z-index:997">
+					<a href="/main/bbs/board.php?bo_table=0501" target="_self" class="gnb_1da"><font color="#333"><b>커뮤니티</b></font></a>
+					<ul class="gnb_2dul">
+						<li class="gnb_2dli"><a href="/main/bbs/board.php?bo_table=0501" target="_self" class="gnb_2da">공지사항</a></li>
+											<li class="gnb_2dli"><a href="/main/bbs/board.php?bo_table=0502" target="_self" class="gnb_2da">사진자료</a></li>
+											<li class="gnb_2dli"><a href="/main/bbs/board.php?bo_table=0503" target="_self" class="gnb_2da">정책/홍보자료</a></li>
+											<li class="gnb_2dli"><a href="/main/bbs/board.php?bo_table=0505" target="_self" class="gnb_2da">후원/자원봉사</a></li>
+					</ul>
+				</li>
+							</ul>
+		</div>
+	</div>
+</div>
+<!-- } 상단 끝 -->
+<div id="wrap">
+	<div id="visual">
+		<div class="flexslider">
+			<ul class="slides">
+				<li>
+					<a href="/"><img src="http://www.dghomeless.or.kr/main/img/main.jpg" /></a>
+				</li>
+				<li>
+					<a href="/"><img src="http://www.dghomeless.or.kr/main/img/main01.jpg" /></a>
+				</li>
+				<li>
+					<a href="/"><img src="http://www.dghomeless.or.kr/main/img/main02.jpg" /></a>
+				</li>
+				<li>
+					<a href="/"><img src="http://www.dghomeless.or.kr/main/img/main03.jpg" /></a>
+				</li>
+			
+				
+			</ul>
+		</div>
+	</div>
+
+    <div class="cont01">
+			
+			
+			<div class="cont01_img_area">
+				<div><a href="/main/bbs/board.php?bo_table=0104"><img src="http://www.dghomeless.or.kr/main/img/cont01_01.jpg"></a></div>
+				<div><a href="/main/bbs/board.php?bo_table=0505"><img src="http://www.dghomeless.or.kr/main/img/cont01_02.jpg"></a></div>
+				<div><a href="/main/bbs/board.php?bo_table=0504"><img src="http://www.dghomeless.or.kr/main/img/cont01_03.jpg"></a></div>
+			</div>
+			
+	</div>
+		
+
+			
+	<div class="cont02">
+	  <div id="banner_a">
+	     <div class="cont02_a f_cont02">
+	    	 <ul class="cont02_left cont02_ul">
+		        <li> <img src="http://www.dghomeless.or.kr/main/img/cont02_01.jpg">  </li>
+		    	<li class="notice_list"> <a href="/main/bbs/board.php?bo_table=0501" class="cont02_notice"><img src="http://www.dghomeless.or.kr/main/img/notice_text.jpg"> </a> 
+				     <div class="news_main cont02_notice">
+<!-- 공지사항 최신글 시작 { -->
+<div class="lt">
+   <!-- <strong class="lt_title"><a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0501">공지사항</a></strong> -->
+    <ul>
+            <li>
+            <a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0501&amp;wr_id=57">[대구노숙인종합지원센터] 2025년…</a>  <i class="fa fa-heart" aria-hidden="true"></i>           </li>
+            <li>
+            <a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0501&amp;wr_id=56">대구희망진료소 운영 종료 안내(25…</a>  <i class="fa fa-heart" aria-hidden="true"></i>           </li>
+            <li>
+            <a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0501&amp;wr_id=55">2025년 「징검다리」 직원 채용(…</a>  <i class="fa fa-heart" aria-hidden="true"></i>           </li>
+            <li>
+            <a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0501&amp;wr_id=54">2025년 「징검다리」 직원 채용(…</a>  <i class="fa fa-heart" aria-hidden="true"></i>           </li>
+            <li>
+            <a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0501&amp;wr_id=53">[징검다리] 2025년 직원 채용 …</a>  <i class="fa fa-heart" aria-hidden="true"></i>  <i class="fa fa-download" aria-hidden="true"></i>           </li>
+            <li>
+            <a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0501&amp;wr_id=52">[대구노숙인종합지원센터] 2024년…</a>  <i class="fa fa-heart" aria-hidden="true"></i>           </li>
+            <li>
+            <a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0501&amp;wr_id=51"><strong>시설 세입세출결산서 확인 방법</strong></a>  <i class="fa fa-heart" aria-hidden="true"></i>           </li>
+            </ul>
+ <!--   <div class="lt_more"><a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0501"><span class="sound_only">공지사항</span>더보기</a></div> -->
+</div>
+<!-- } 공지사항 최신글 끝 --></div>
+				</li>
+		     </ul>
+	    </div>
+        <div class="cont02_a2">
+			  <ul class="cont02_right cont02_ul">
+		        <li><a href="https://happylog.naver.com/hlog/dghomeless/home" target="_blank"><img src="http://www.dghomeless.or.kr/main/img/cont02_02.jpg"> </a> </li>
+		    	<li class="cont02_f"> <a href="/main/bbs/board.php?bo_table=0505&wr_id=6"><img src="http://www.dghomeless.or.kr/main/img/cont02_03.jpg"> </a>  </li>
+				
+		    	<li> <a href="/main/bbs/board.php?bo_table=0503"><img src="http://www.dghomeless.or.kr/main/img/cont02_05.jpg"> </a>  </li>
+		     </ul>
+		 </div>
+      </div>
+	</div>
+		<!--슬라이드 갤러리 -->
+<table width="100%"border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	   <td align="center">
+
+		                <Table width="1100" border="0" cellpadding="0" cellspacing="0">
+						
+						<tr>
+							<td style="height: 285px; vertical-align: middle;" >﻿<link rel="stylesheet" href="http://www.dghomeless.or.kr/main/skin/latest/move_2/style.css">
+<section class="n_gallery_wrap">
+<div class="n_title_wrap">
+     <!-- <div class="n_title"><a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0502"><img src="/img/new_g.png"></a></div>-->
+   <!-- <div class="n_right_wrap">
+            <a href="http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0502"><img src="http://www.dghomeless.or.kr/main/skin/latest/move_2/img/icon_more.gif" width="13" height="13" alt="더보기" title="" /></a>
+    </div>-->
+  </div>
+
+</section>
+<script type="text/javascript">
+var sliderwidth="1100px"  //스크롤 가로 사이즈
+var sliderheight="172px"  //스크롤 세로 사이즈
+var slidespeed="1"  
+slidebgcolor="transparent"  // 배경색을 주시려면 #99cc00 등과 같이 바꾸시면 됩니다 !
+
+var leftarrowimage = "http://www.dghomeless.or.kr/main/skin/latest/move_2/img/left.gif";
+var rightarrowimage = "http://www.dghomeless.or.kr/main/skin/latest/move_2/img/right.gif";
+
+var leftrightslide=new Array()
+var finalslide=''
+
+    leftrightslide[0] = "&nbsp;&nbsp;&nbsp;<A HREF='http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0502&amp;wr_id=15' ><img src='http://www.dghomeless.or.kr/main/data/editor/2306/thumb-d46e30442ec700071630793b0b545b4f_1687830287_9476_250x172.jpg' border=0 width='250' height='172' ></A>&nbsp;&nbsp;&nbsp;";
+    leftrightslide[1] = "&nbsp;&nbsp;&nbsp;<A HREF='http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0502&amp;wr_id=14' ><img src='http://www.dghomeless.or.kr/main/data/editor/2305/thumb-0f63af4987965ff91dc31567119f6f8f_1684286236_5969_250x172.jpg' border=0 width='250' height='172' ></A>&nbsp;&nbsp;&nbsp;";
+    leftrightslide[2] = "&nbsp;&nbsp;&nbsp;<A HREF='http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0502&amp;wr_id=13' ><img src='http://www.dghomeless.or.kr/main/data/editor/2305/thumb-e61eb1fa6fc63f600fda9da448e001ea_1684132245_7549_250x172.jpg' border=0 width='250' height='172' ></A>&nbsp;&nbsp;&nbsp;";
+    leftrightslide[3] = "&nbsp;&nbsp;&nbsp;<A HREF='http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0502&amp;wr_id=12' ><img src='http://www.dghomeless.or.kr/main/data/file/0502/thumb-1794371829_mbDP25qA_530df7f287a8c431e9a2fbc8c4bf10e7b18b187c_250x172.jpg' border=0 width='250' height='172' ></A>&nbsp;&nbsp;&nbsp;";
+    leftrightslide[4] = "&nbsp;&nbsp;&nbsp;<A HREF='http://www.dghomeless.or.kr/main/bbs/board.php?bo_table=0502&amp;wr_id=11' ><img src='http://www.dghomeless.or.kr/main/data/editor/1902/thumb-cef68af9b8f2a813188a826b380ea53f_1550106053_2423_250x172.jpg' border=0 width='250' height='172' ></A>&nbsp;&nbsp;&nbsp;";
+
+
+var imagegap=""
+var slideshowgap=0
+
+var copyspeed=slidespeed
+    leftrightslide='<nobr>'+leftrightslide.join(imagegap)+'</nobr>'
+var iedom=document.all||document.getElementById
+    if (iedom)
+        document.write('<span id="temp" style="visibility:hidden;position:absolute;top:-100px;left:-9000px">'+leftrightslide+'</span>')
+
+var actualwidth=''
+var cross_slide, ns_slide
+var righttime,lefttime
+
+function fillup(){
+    if (iedom){
+        cross_slide=document.getElementById? document.getElementById("test2") : document.all.test2
+        cross_slide2=document.getElementById? document.getElementById("test3") : document.all.test3
+        cross_slide.innerHTML=cross_slide2.innerHTML=leftrightslide
+        actualwidth=document.all? cross_slide.offsetWidth : document.getElementById("temp").offsetWidth
+        cross_slide2.style.left=actualwidth+slideshowgap+"px"
+    }
+    else if (document.layers){
+        ns_slide=document.ns_slidemenu.document.ns_slidemenuorange
+        ns_slide2=document.ns_slidemenu.document.ns_slidemenu3
+        ns_slide.document.write(leftrightslide)
+        ns_slide.document.close()
+        actualwidth=ns_slide.document.width
+        ns_slide2.left=actualwidth+slideshowgap
+        ns_slide2.document.write(leftrightslide)
+        ns_slide2.document.close()
+    }
+    lefttime=setInterval("slideleft()",30)
+}
+window.onload=fillup
+
+function slideleft(){
+    if (iedom){
+    if (parseInt(cross_slide.style.left)>(actualwidth*(-1)+8))
+        cross_slide.style.left=parseInt(cross_slide.style.left)-copyspeed+"px"
+    else
+        cross_slide.style.left=parseInt(cross_slide2.style.left)+actualwidth+slideshowgap+"px"
+    if (parseInt(cross_slide2.style.left)>(actualwidth*(-1)+8))
+        cross_slide2.style.left=parseInt(cross_slide2.style.left)-copyspeed+"px"
+    else
+        cross_slide2.style.left=parseInt(cross_slide.style.left)+actualwidth+slideshowgap+"px"
+    }
+    else if (document.layers){
+    if (ns_slide.left>(actualwidth*(-1)+8))
+        ns_slide.left-=copyspeed
+    else
+        ns_slide.left=ns_slide2.left+actualwidth+slideshowgap
+    if (ns_slide2.left>(actualwidth*(-1)+8))
+        ns_slide2.left-=copyspeed
+    else
+        ns_slide2.left=ns_slide.left+actualwidth+slideshowgap
+    }
+}
+
+function slideright(){
+    if (iedom){
+    if (parseInt(cross_slide.style.left)<(actualwidth+8))
+        cross_slide.style.left=parseInt(cross_slide.style.left)+copyspeed+"px"
+    else
+        cross_slide.style.left=parseInt(cross_slide2.style.left)+actualwidth*(-1)+slideshowgap+"px"
+    if (parseInt(cross_slide2.style.left)<(actualwidth+8))
+        cross_slide2.style.left=parseInt(cross_slide2.style.left)+copyspeed+"px"
+    else
+        cross_slide2.style.left=parseInt(cross_slide.style.left)+actualwidth*(-1)+slideshowgap+"px"
+    }
+    else if (document.layers){
+    if (ns_slide.left>(actualwidth*(-1)+8))
+        ns_slide.left-=copyspeed
+    else
+        ns_slide.left=ns_slide2.left+actualwidth+slideshowgap
+    if (ns_slide2.left>(actualwidth*(-1)+8))
+        ns_slide2.left-=copyspeed
+    else
+        ns_slide2.left=ns_slide.left+actualwidth+slideshowgap
+    }
+}
+
+function right(){
+    if(lefttime){
+        clearInterval(lefttime)
+        clearInterval(righttime)
+        righttime=setInterval("slideright()",30)  
+    }
+}
+
+function left(){
+    if(righttime){
+        clearInterval(lefttime)
+        clearInterval(righttime)
+        lefttime=setInterval("slideleft()",30)  
+    }
+}
+    document.write('<table width='+sliderwidth+' border="0" cellspacing="0" cellpadding="0">');
+    document.write('<tr><td align=center valign=middle width=50><img src='+leftarrowimage+' onMouseover="left(); copyspeed=2" onMouseout="copyspeed=1" style="cursor:hand"></td>')
+
+
+    if (iedom||document.layers){
+        with (document){
+            document.write('<td>')
+    if (iedom){
+        write('<div style="position:relative;width:'+sliderwidth+';height:'+sliderheight+';overflow:hidden">')
+        write('<div style="position:absolute;width:'+sliderwidth+';height:'+sliderheight+';background-color:'+slidebgcolor+'" onMouseover="copyspeed=0" onMouseout="copyspeed=1">')
+        write('<div id="test2" style="position:absolute;left:0px;top:0px"></div>')
+        write('<div id="test3" style="position:absolute;left:-1100px;top:0px"></div>')
+        write('</div></div>')
+    }
+    else if (document.layers){
+        write('<ilayer width='+sliderwidth+' height='+sliderheight+' name="ns_slidemenu" bgColor='+slidebgcolor+'>')
+        write('<layer name="ns_slidemenuorange" left=0 top=0 onMouseover="copyspeed=0" onMouseout="copyspeed=slidespeed"></layer>')
+        write('<layer name="ns_slidemenu3" left=0 top=0 onMouseover="copyspeed=0" onMouseout="copyspeed=slidespeed"></layer>')
+        write('</ilayer>')
+    }
+    document.write('</td>')
+    }
+}
+
+document.write('<td width="50" align=center valign=middle><img src='+rightarrowimage+' onMouseover="right();copyspeed=2" onMouseout="copyspeed=1" style="cursor:hand"></td></tr></table>')
+
+</script></td>
+						</tr>
+						
+					</table>
+	   </td>
+	 </tr>
+
+	
+</table>
+
+<!-- 슬라이드 갤러리 끝 -->
+		
+	
+	<div class="cont03">
+			<div class="cont03_img01"><a href="/main/bbs/content.php?co_id=0103"><img src="http://www.dghomeless.or.kr/main/img/cont03_text.png"></a></div>
+			
+	</div>
+	
+ 
+   
+	
+<script src="http://www.dghomeless.or.kr/main/js/jquery.min.js"></script>
+<script src="http://www.dghomeless.or.kr/main/js/jquery-1.7.2.min.js"></script>
+<script defer src="http://www.dghomeless.or.kr/main/js/jquery.flexslider.js"></script>
+
+<script>
+        // moveType (0:left / 1:right) 
+        var moveType = 0;
+        // 이동시간간격 3초 
+        var moveSpeed = 3000;
+        // 움직이는 작업중 다시 명령 받지 않음 
+        var moveWork = false;
+        // 일시정지 flag 
+        var movePause = false;
+        function imgMove() {
+            if (moveWork == false) {
+                // 0d\일경우 left방향 
+                if (moveType == 0) {
+                    // 맨처음 이미지의 폭 
+                    var aWidth = $(".RollDiv > div > a:first").width();
+                    // 롤링마지막에 맨처음의 a태그 추가 
+                    $(".RollDiv > div").append("<a href=\"" + $(".RollDiv > div > a:first").attr("href") + "\">" + $(".RollDiv > div > a:first").html() + "</a>");
+                    // 맨처음이미지를 왼쪽으로 이동시킨다. 
+                    $(".RollDiv > div > a:first").animate({ marginLeft: -aWidth }, {
+                        duration: moveSpeed, step: function () {
+                            // 이동중 만약 일시정지 flag가 true라면 
+                            if (movePause == true) {
+                                // 이동을 멈춘다 
+                                $(this).stop();
+                            }
+                        }, complete: function () {
+                            // 이동을 마친후 첫번째 a태그를 지워버린다 
+                            $(this).remove();
+                            // 이미지 움직이는것을 다시 실행 
+                            imgMove();
+                        }
+                    });
+                } else {
+                    // 마지막 a태그의 폭 
+                    var aWidth = $(".RollDiv > div > a:last").width();
+                    // a태그 앞에 마지막의 a태그를 생성한다 단 스타일은 마지막 a태그의 폭만큼 빼준다 
+                    $("<a href=\"" + $(".RollDiv > div > a:last").attr("href") + "\" style=\"margin-left:-" + aWidth + "px\">" + $(".RollDiv > div > a:last").html() + "</a>").insertBefore(".RollDiv > div > a:first")
+                    // 맨처음 a태그의 margin-left를 다시 0으로 맞춰준다. 
+                    $(".RollDiv > div > a:first").animate({ marginLeft: 0 }, {
+                        duration: moveSpeed, step: function () {
+                            // 이동중 만약 일시정지 flag가 true라면 
+                            if (movePause == true) {
+                                // 이동을 멈춘다 
+                                $(this).stop();
+                            }
+                        }, complete: function () {
+                            // 이동을 마친후 마지막 a태그를 지워버린다 
+                            $(".RollDiv > div > a:last").remove();
+                            // 이미지 움직이는것을 다시 실행 
+                            imgMove();
+                        }
+                    });
+                }
+            }
+        }
+        function goMove() {
+            // 일시정지가 풀려있을 경우를 대비하여 일시정지를 풀러준다 
+            movePause = false;
+            // 0d\일경우 left방향 
+            if (moveType == 0) {
+                imgMove();
+            } else {
+                $(".RollDiv > div > a:first").animate({ marginLeft: 0 }, {
+                    duration: moveSpeed, step: function () {
+                        // 이동중 만약 일시정지 flag가 true라면 
+                        if (movePause == true) {
+                            // 이동을 멈춘다 
+                            $(this).stop();
+                        }
+                    }, complete: function () {
+                        // 이동을 마친후 마지막 a태그를 지워버린다 
+                        //$(".RollDiv > div > a:last").remove(); 
+                        // 이미지 움직이는것을 다시 실행 
+                        imgMove();
+                    }
+                });
+            }
+
+        }
+        imgMove();
+    </script>   
+<script type="text/javascript">
+	$(window).load(function(){
+	  $('.flexslider').flexslider({
+		animation: "slide",
+		controlNav: true,
+		directionNav: false
+	  });
+	  $('.sub_img').flexslider({
+		animation: "slide",
+		controlNav: false,
+		directionNav: false
+	  });
+	});
+</script>
+
+
+﻿    </div>
+</div>
+
+
+<!-- 하단 시작 { -->
+	<div id="footer">
+			<div class="footer_cont">
+				<div>
+					<p>사)대경홈리스복지회 ｜ 대구노숙인종합지원센터 | 시설장 : 윤상철</P>
+					<p>주소 : 대구광역시 북구 칠성남로 38길 22,  3층</p>
+					<p>Tel : 053-426-5828 / Fax : 053-423-6243 | E-mail : worker@dghomeless.or.kr</P>
+					<p>COPYRIGHT &copy; <b>대경홈리스복지회</b>  ALL RIGHT RESERVED</P>
+				</div>				
+			</div>
+	</div>
+
+
+<!-- } 하단 끝 -->
+
+<script>
+$(function() {
+    // 폰트 리사이즈 쿠키있으면 실행
+    font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+});
+</script>
+
+
+
+<!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+<!--[if lte IE 7]>
+<script>
+$(function() {
+    var $sv_use = $(".sv_use");
+    var count = $sv_use.length;
+
+    $sv_use.each(function() {
+        $(this).css("z-index", count);
+        $(this).css("position", "relative");
+        count = count - 1;
+    });
+});
+</script>
+<![endif]-->
+
+</body>
+</html>

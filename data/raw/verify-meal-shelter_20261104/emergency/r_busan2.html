@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="keywords" content="부산민원120, 부산 민원">
+<meta name="description" content="온라인 민원신청과 제안은 부산민원120에서 시작하세요">
+<meta property="og:title" content="부산민원120"> 
+<meta property="og:description" content="온라인 민원신청과 제안은 부산민원120에서 시작하세요"> 
+<title>Home : 부산민원120</title>
+	<link rel="stylesheet" href="/humanframe/global/assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="/humanframe/global/assets/vendor/chart/Chart.css">
+<link rel="stylesheet" href="/humanframe/global/assets/css/global.css">
+<link rel="stylesheet" href="/humanframe/theme/minwon/assets/css/common.css?v=202201251040">
+
+<link rel="stylesheet" href="/humanframe/global/assets/vendor/slick/slick.css">
+<link rel="stylesheet" href="/humanframe/theme/minwon/assets/css/main.css?v=202112091720">
+<script src="/humanframe/global/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/humanframe/global/assets/vendor/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="/humanframe/global/assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="/humanframe/theme/minwon/assets/script/jquery.datetimepicker.js"></script>
+<script src="/humanframe/global/assets/vendor/chart/Chart.js"></script>
+
+<!--[if lte IE 9]>
+<link rel="stylesheet" href="/humanframe/global/assets/css/common_ie9.css">
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="/humanframe/global/assets/vendor/plugins/html5shiv.min.js"></script>
+<script src="/humanframe/global/assets/vendor/plugins/respond.min.js"></script>
+<![endif]-->
+
+<script src="/humanframe/global/assets/vendor/plugins/jquery.validate.min.js"></script>
+<script src="/humanframe/global/assets/vendor/plugins/jquery.validate.rule.js"></script>
+<script src="/humanframe/global/assets/vendor/plugins/jquery.cookie.js"></script>
+<script src="/humanframe/global/assets/vendor/netfunnel/netfunnel.js"></script>
+<script src="/humanframe/global/assets/script/global.js?v=202112091720"></script>
+<script src="/humanframe/theme/minwon/assets/script/common.js?v=2"></script>
+
+<script src="/humanframe/global/assets/vendor/plugins/localization/messages_ko.js"></script>
+<script src="/humanframe/global/assets/vendor/slick/slick.js"></script>
+	<script src="/humanframe/theme/minwon/assets/script/main.js?v=2"></script>
+<script src="/humanframe/theme/minwon/assets/script/date.js"></script>
+
+<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-X80QE708PR"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'G-X80QE708PR');
+	</script>
+<script src="/humanframe/global/assets/script/kakao.min.2.6.0.js"></script>
+<script>
+  Kakao.init('e3e59d502dacbc8fd6599e38fcd59a79');
+</script>
+
+</head>
+<body>
+
+<!--<script src="/humanframe/global/assets/script/jquery.rwdImageMaps.min.js"></script>-->
+<script>
+	var pop;
+	var siteNo = "25";
+	
+	
+	function stopCookie(popupNo){
+		return document.cookie.match("STOP_VIEW_AT_"+siteNo+"_"+popupNo);
+	}
+	
+	function mainPopupShow(id,popupNo){
+		pop = document.querySelector(id);
+		if(siteNo == 213){
+			if(!stopCookie(popupNo)) {
+				pop.style.display = "block";
+				pop.style.height = "auto";
+				pop.style.position= "absolute";
+				pop.style.top = "50%";
+				pop.style.bottom = "0";
+				pop.style.right = "0";
+				pop.style.left = "auto";
+				pop.style.maxWidth  = "450px";
+				pop.style.width="100%";
+			}
+		}else{
+			
+			if(!stopCookie(popupNo)) {
+				pop.style.display = "flex";
+				pop.style.height = window.innerHeight+"px";
+				if(siteNo !=130){
+					document.querySelector("html").classList.add("overflow-hidden");
+				}
+			}
+		}
+		
+		window.addEventListener("resize", function(){
+			pop.style.height = window.innerHeight+"px";
+		});
+		
+	}
+
+	
+	function mainPopupClose(idx){
+		try {
+			var stopViewAt = $('#stopViewAt'+idx);
+			var isStop = stopViewAt.is(':checked');
+
+			if(isStop){	
+				if(!stopCookie(idx)){
+					var today = new Date();
+					var timestamp = today.getTime() + (1000 * 60 * 60 * 24);
+					var setday = new Date(timestamp);
+					document.cookie = "STOP_VIEW_AT_"+siteNo+"_"+idx+"=Y; expires="+setday.toUTCString()+"; path=/;";
+				}
+			}
+		} catch(err){
+			console.log("오늘하루보이지않기 기능 해제");
+		}
+		pop = document.querySelector('.mainPopup'+idx);
+		pop.style.display = "none";
+		document.querySelector("html").classList.remove("overflow-hidden");
+	}
+	
+	
+</script>
+
+
+
+<div id="skipNav"><a href="#contents">본문내용 바로가기</a></div>
+
+<!-- start:header -->
+<script>
+function gologout(){
+		alert("소셜 로그아웃되었습니다. \n(참고)페이스북/카카오톡/네이버에서도 로그아웃하시려면 \n각 웹사이트로 이동하여 로그아웃 하여 주십시오.");
+		location.href = "http://www.busan.go.kr/member/logout";
+	}
+</script>
+
+<header id="header" class="new">
+			<div class="header-top">
+				<div class="header-inner">
+					<div class="header-logo">
+						<div class="header-logo-area">
+							<a href="http://www.busan.go.kr/index"><img src="/humanframe/global/assets/img/common/logo.svg" alt="부산광역시 BUSAN METROPOLITAN CITY"></a>
+							<a href="/minwon"><img src="/humanframe/theme/minwon/assets/img/common/minwon_logo_new.png" alt="부산민원120"></a>
+						</div>
+					</div>
+					<div class="header-search">
+						<button class="header-search-btn">통합검색</button>
+						<div class="header-search-area">
+							<form id="srchFrm" name="srchFrm" action="https://www.busan.go.kr/search/total" method="get">
+								<fieldset>
+									<legend>통합검색</legend>
+									<input type="hidden" id="siteNo" name="siteNo" value="">
+									<label for="searchText" class="hidden">검색어 입력</label>
+									<input id="searchText" name="searchText" type="text" placeholder="검색어를 입력하세요.">
+									<button class="search-btn">검색</button>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="header-util">
+						<ul class="header-util-area">
+							<li class="myminwonlink"><a href="/minwon/minwon05"><img src="/humanframe/theme/minwon/assets/img/common/ico_check_minwon_new.png" alt="나의민원확인아이콘"/><span>나의 민원확인</span></a></li>
+							<li><a href="https://www.busan.go.kr/member/register-step01">회원가입</a></li>
+								<li><a href="https://www.busan.go.kr/member/login?referUrl=https://www.busan.go.kr/minwon/index">로그인</a></li>
+							<!-- 					<li><a href="/covid19" title="새창열림" target="_blank" class="btn-covid">코로나19</a></li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="header-body">
+				<div class="header-inner">
+				<button type="button" class="btn-nav"><span>메뉴보기</span></button>
+				<nav class="header-nav">
+					<a href="https://www.busan.go.kr/minwon/minwon05" class="nav_myminwon_link"><img src="/humanframe/theme/minwon/assets/img/common/ico_check_minwon.png" alt="나의민원확인아이콘"/><span>나의 민원확인</span></a>
+					<div class="header-nav-util">
+						<a href="https://www.busan.go.kr/member/register-step01">회원가입</a>
+							<a href="https://www.busan.go.kr/member/login?referUrl=https://www.busan.go.kr/minwon/index">로그인</a>
+						</div>
+					<ul class="header-nav-menu">
+						<li>
+								<a href="/minwon/minwon02" ><span>민원신청</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul class="header-nav-sub">
+									<li>
+								<a href="/minwon/minwon02"><span>통합민원신청</span></a>
+									</li>
+								<li>
+								<a href="/minwon/minwon0001"><span>민원서비스 현황</span></a>
+									</li>
+								<li>
+								<a href="/minwon/minwon100101"><span>버스전용차로위반 의견진술</span></a>
+									</li>
+								<li>
+								<a href="https://www.safetyreport.go.kr/#safereport/safereport" target="_blank" rel="noopener noreferrer" title="새창"><span>안전신문고</span></a>
+									</li>
+								<li>
+								<a href="/minwon/guide"><span>신고센터</span></a>
+									</li>
+								<li>
+								<a href="/minwon/tmpassport01" ><span>여권안내</span></a>
+									</li>
+								<li>
+								<a href="https://www.busan.go.kr/bshotline" target="_blank" rel="noopener noreferrer" title="새창"><span>공익제보센터</span></a>
+									</li>
+								<li>
+								<a href="/minwon/citizengrievance01" ><span>시민고충처리위원회</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul>
+									<li>
+								<a href="/minwon/citizengrievance01"><span>시민고충처리위원회 소개</span></a>
+									</li>
+								<li>
+								<a href="/minwon/citizengrievance02"><span>시민고충처리위원회 운영</span></a>
+									</li>
+								<li>
+								<a href="/minwon/citizengrievance03"><span>시민고충처리위원회 소식</span></a>
+									</li>
+								<li>
+								<a href="/minwon/citizengrievance04"><span>고충민원 신청</span></a>
+									</li>
+								</ul>
+								</li>
+							<li>
+								<a href="http://www.gov.kr" target="_blank" rel="noopener noreferrer" title="새창"><span>정부24</span></a>
+									</li>
+								</ul>
+								</li>
+							<li>
+								<a href="/minwon/proguide" ><span>제안신청</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul class="header-nav-sub">
+									<li>
+								<a href="/minwon/proguide" ><span>일반제안</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul>
+									<li>
+								<a href="/minwon/proguide"><span>제안안내</span></a>
+									</li>
+								<li>
+								<a href="/minwon/propse"><span>제안신청</span></a>
+									</li>
+								</ul>
+								</li>
+								</ul>
+								</li>
+							<li>
+								<a href="/minwon/survey" ><span>시민참여</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul class="header-nav-sub">
+									<li>
+								<a href="/minwon/survey"><span>설문조사</span></a>
+									</li>
+								<li>
+								<a href="/minwon/occation"><span>행사/모집 신청</span></a>
+									</li>
+								<li>
+								<a href="/minwon/eventresult"><span>이벤트</span></a>
+									</li>
+								<li>
+								<a href="http://www.busan.go.kr/yesan/" target="_blank" rel="noopener noreferrer" title="새창"><span>주민참여예산</span></a>
+									</li>
+								<li>
+								<a href="https://www.busan.go.kr/siminopen" target="_blank" rel="noopener noreferrer" title="새창"><span>시민열린마루</span></a>
+									</li>
+								<li>
+								<a href="http://www.busan.go.kr/gnance/" target="_blank" rel="noopener noreferrer" title="새창"><span>협치부산</span></a>
+									</li>
+								<li>
+								<a href="https://blog.naver.com/finebusan" target="_blank" rel="noopener noreferrer" title="새창"><span>청렴부산시민소통</span></a>
+									</li>
+								<li>
+								<a href="/minwon/chmonitor" ><span>시정모니터</span></a>
+									</li>
+								<li>
+								<a href="/minwon/citimoniter01" ><span>시민감사관</span></a>
+									</li>
+								<li>
+								<a href="/minwon/citizenboard01"><span>시민게시판</span></a>
+									</li>
+								</ul>
+								</li>
+							<li>
+								<a href="/minwon/manual" ><span>민원안내</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul class="header-nav-sub">
+									<li>
+								<a href="/minwon/manual"><span>민원편람</span></a>
+									</li>
+								<li>
+								<a href="/minwon/manual2"><span>민원목록</span></a>
+									</li>
+								<li>
+								<a href="/minwon/minwonopen"><span>민원처리 확인</span></a>
+									</li>
+								<li>
+								<a href="/minwon/info0202" ><span>편리한 민원서비스</span></a>
+									</li>
+								<li>
+								<a href="/minwon/info0301" ><span>민원정보</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul>
+									<li>
+								<a href="/minwon/info0301" ><span>도로<span class="fontGothic">&middot;</span>하천 사용절차 안내</span></a>
+									</li>
+								<li>
+								<a href="/minwon/info0401" ><span>정보통신<span class="fontGothic">&middot;</span>건설엔지니어링업 등록 안내</span></a>
+									</li>
+								</ul>
+								</li>
+							<li>
+								<a href="/minwon/mwpolicy02" ><span>민원시책</span></a>
+									</li>
+								<li>
+								<a href="/minwon/charter"><span>행정서비스헌장</span></a>
+									</li>
+								</ul>
+								</li>
+							<li>
+								<a href="/minwon/manual120" ><span>120콜센터</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul class="header-nav-sub">
+									<li>
+								<a href="/minwon/callguide01" ><span>이용안내</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul>
+									<li>
+								<a href="/minwon/callguide01"><span>전화상담</span></a>
+									</li>
+								<li>
+								<a href="/minwon/callguide02"><span>문자상담</span></a>
+									</li>
+								<li>
+								<a href="/minwon/callguide03"><span>수어상담</span></a>
+									</li>
+								<li>
+								<a href="/minwon/callguide04"><span>외국어상담(Foreign Language Services)</span></a>
+									</li>
+								<li>
+								<a href="/minwon/callconsult"><span>전화상담 예약신청</span></a>
+									</li>
+								<li>
+								<a href="/minwon/chatconsult"><span>실시간 채팅상담</span></a>
+									</li>
+								</ul>
+								</li>
+							<li>
+								<a href="/minwon/callinfo02" ><span>콜센터 소개</span></a>
+									<button type="button" class="dropdown">하위메뉴 열기</button>
+								<ul>
+									<li>
+								<a href="/minwon/callinfo02"><span>연혁</span></a>
+									</li>
+								<li>
+								<a href="/minwon/callinfo04"><span>찾아오시는길</span></a>
+									</li>
+						</ul>
+						</li>
+						</ul>
+						</li>
+						</ul>
+						</nav>
+				</div>
+			</div>
+			<div class="header-nav-back"></div>
+		</header>
+	<!-- end:header -->
+
+<!-- start:content -->
+<div id="container">
+	<div id="contents">
+  <section class="main-visual new">
+        <div class="main-visual-inner">
+          <div class="visual_area">
+            <div class="slogan_bx"><span class="txt">온라인 민원신청과 제안은</span><img src="/humanframe/theme/minwon/assets/img/common/minwon_logo_new.png" alt="부산민원120로고" /><span class="txt">에서 시작하세요!</span></div>
+            <div class="boogi_bx">
+              <img src="/humanframe/theme/minwon/assets/img/main/main_visual_item_01_new.png" alt="민원신청부기캐릭터" /><a href="/minwon/minwon02"><span class="access_txt">민원신청</span></a>
+            </div>
+            <div class="link_bx">
+              <div class="minwon-link">
+                <a href="/minwon/minwon05">
+                  <img src="/humanframe/theme/minwon/assets/img/main/minwon_link_icon_01.png" alt="나의민원확인아이콘" />
+                  <span>나의<br />민원확인</span>
+                </a>
+              </div>
+              <div class="minwon-link">
+                <a href="/minwon/guide">
+                  <img src="/humanframe/theme/minwon/assets/img/main/minwon_link_icon_02.png" alt="신고센터아이콘" />
+                  <span>신고센터</span>
+                </a>
+              </div>
+            </div>
+            <!-- <div class="bsg_logo"><img src="/humanframe/theme/minwon/assets/img/main/main_visual_item_02.png" alt="Busan is good 부산이 좋다 로고" /></div> -->
+          </div>
+        </div>
+
+        <div class="main-visual-link">
+          <div class="main-visual-link-inner">
+            <ul>
+              <li>
+                <a href="/minwon/manual">민원편람<img src="/humanframe/theme/minwon/assets/img/main/link_item.png" alt="+" /></a>
+              </li>
+              <li>
+                <a href="/minwon/propse">제안신청<img src="/humanframe/theme/minwon/assets/img/main/link_item.png" alt="+" /></a>
+              </li>
+              <li>
+                <a href="/minwon/chmonitor">시정모니터<img src="/humanframe/theme/minwon/assets/img/main/link_item.png" alt="+" /></a>
+              </li>
+              <li>
+                <a href="/minwon/citimoniter01">시민감사관<img src="/humanframe/theme/minwon/assets/img/main/link_item.png" alt="+" /></a>
+              </li>
+              <li>
+                <a href="/minwon/minwon0001">자주 찾는 민원 사례<img src="/humanframe/theme/minwon/assets/img/main/link_item.png" alt="+" /></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="main-info new">
+        <div class="main-info-inner">
+          <div class="main-content">
+            <article>
+              <div class="top-banner">
+	<div class="banner">
+<a href="https://dpaper.kr" target="_blank"  rel="noopener noreferrer" title="새창열림" >
+					<div class="banner-img">
+						<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=6790&amp;fileTy=PCIMG&amp;fileNo=2" alt="전자증명서_카드배너" />
+					</div>
+				</a>	
+	</div>
+		<div class="banner">
+<a href="https://www.mois.go.kr/video/bbs/type019/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000255&nttId=107163" target="_blank"  rel="noopener noreferrer" title="새창열림" >
+					<div class="banner-img">
+						<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=6726&amp;fileTy=PCIMG&amp;fileNo=3" alt="반복민원 처리절차를 개선합니다. 민원조정위원회 설치 의무 반목민원 3단계 처리절차" />
+					</div>
+				</a>	
+	</div>
+		<div class="banner">
+<a href="https://www.passport.go.kr/home/kor/contents.do?menuPos=57" target="_blank"  rel="noopener noreferrer" title="새창열림" >
+					<div class="banner-img">
+						<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=4308&amp;fileTy=PCIMG&amp;fileNo=2" alt="차세대 전자여권
+2021년 12월 21일부터 발급 받으실 수 있습니다.
+※ 출처 : 외교부" />
+					</div>
+				</a>	
+	</div>
+		<div class="banner">
+<a href="https://www.busan.go.kr/minwon/mwpolicy05" target="_self"  >
+					<div class="banner-img">
+						<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=3365&amp;fileTy=PCIMG&amp;fileNo=2" alt="민원처리 지연보상 안내
+1일 이상 유기한 민원사무 대상" />
+					</div>
+				</a>	
+	</div>
+		<div class="banner">
+<a href="https://www.mois.go.kr/video/bbs/type019/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000255&nttId=68175" target="_blank"  rel="noopener noreferrer" title="새창열림" >
+					<div class="banner-img">
+						<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=3367&amp;fileTy=PCIMG&amp;fileNo=3" alt="아직도 모르시나요? 인감증명서와 동일한 본인서명사실확인서!
+1 인감증명서와 효력이 동일
+2 전국 어디서나 편리한 발급
+3 인감사고 사전예방
+4 전자본인서명 확인서 발급
+행전안전부" />
+					</div>
+				</a>	
+	</div>
+		<div class="banner">
+<a href="https://www.busan.go.kr/nbnews/1439115?curPage=&srchBeginDt=2019-06-17&srchEndDt=2020-06-17&srchKey=&srchText=" target="_blank"  rel="noopener noreferrer" title="새창열림" >
+					<div class="banner-img">
+						<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=3364&amp;fileTy=PCIMG&amp;fileNo=4" alt="국민과 가장 가까운 곳에 민원 공무원이 있습니다.
+민원공무원의 안전과 인권을 적극 보호하겠습니다." />
+					</div>
+				</a>	
+	</div>
+		<div class="banner">
+<a href="https://www.gov.kr/portal/service/serviceInfo/126200000030" target="_blank"  rel="noopener noreferrer" title="새창열림" >
+					<div class="banner-img">
+						<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=4309&amp;fileTy=PCIMG&amp;fileNo=1" alt="여권재발급
+온라인으로 신청하세요!
+※ 출처 : 외교부" />
+					</div>
+				</a>	
+	</div>
+		<div class="banner">
+<a href="https://www.busan.go.kr/minwon/manual120" target="_self"  >
+					<div class="banner-img">
+						<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=3366&amp;fileTy=PCIMG&amp;fileNo=6" alt="120콜센터 051-120 전화상담 08:30 ~ 18:30
+웹기반채팅상담 시행
+시행일 : 2023. 11. 1.(수) ~
+상담시간 : 평일 09:30 ~ 17:30 (토, 일, 공휴일 제외)" />
+					</div>
+				</a>	
+	</div>
+		<div class="banner">
+<div class="banner-img">
+					<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=7175&amp;fileTy=PCIMG&amp;fileNo=1" alt="인감증명서 주민센터 방문 없이 정부 24에서 무료로 발급받으세요!
+※ 단, 일반용 인감증명서 중 법원·금융기관 제출용은 제외
+행정안전부, 대통령직속 디지털플랫폼정부위원회 로고" />
+				</div>
+	</div>
+		<div class="banner">
+<a href="https://blog.naver.com/finebusan" target="_blank"  rel="noopener noreferrer" title="새창열림" >
+					<div class="banner-img">
+						<img src="/comm/getImage?srvcId=BANNER&amp;upperNo=7387&amp;fileTy=PCIMG&amp;fileNo=1" alt="청렴부산시민소통시스템
+바로가기" />
+					</div>
+				</a>	
+	</div>
+		</div>
+</article>
+          </div>
+          <article>
+            <div class="main-content-etc">
+              <div class="main-content-etc-top">
+                <div class="gra-bg"></div>
+                <h4 class="main-content-tit">시민참여</h4>
+                <ul class="main-content-etc-list">
+                  <li>
+                    <a href="/minwon/eventresult"
+                      ><div class="link_icon_bx"><img src="/humanframe/theme/minwon/assets/img/main/citizen_icon_01.png" alt="이벤트 참여하기 아이콘" /></div>
+                      <span>이벤트 참여하기</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/minwon/occation"
+                      ><div class="link_icon_bx"><img src="/humanframe/theme/minwon/assets/img/main/citizen_icon_02.png" alt="행사/모집 아이콘" /></div>
+                      <span>행사/모집 신청</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/minwon/survey"
+                      ><div class="link_icon_bx"><img src="/humanframe/theme/minwon/assets/img/main/citizen_icon_03.png" alt="설문조사 아이콘" /></div>
+                      <span>설문조사</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="main-content-etc-bottom">
+                <div class="gra-bg"></div>
+                <h4 class="main-content-tit">바로가기</h4>
+                <ul class="main-content-etc-list">
+                  <li>
+                    <a href="/minwon/manual120"
+                      ><div class="link_icon_bx"><img src="/humanframe/theme/minwon/assets/img/main/quick_icon_01.png" alt="부산120콜센터 아이콘" /></div>
+                      <span>부산120 콜센터</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/minwon/minwon02"
+                      ><div class="link_icon_bx"><img src="/humanframe/theme/minwon/assets/img/main/quick_icon_02.png" alt="교통서비스 불편신청 아이콘" /></div>
+                      <span>교통서비스 불편신청</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/minwon/minwon100101"
+                      ><div class="link_icon_bx"><img src="/humanframe/theme/minwon/assets/img/main/quick_icon_03.png" alt="버스전용차로 위반의견진술 아이콘" /></div>
+                      <span>버스전용차로 위반의견진술</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    <section class="main-link">
+    <div class="main-link-inner">
+      <ul class="main-link-list">
+        <li>
+          <a href="https://www.gov.kr/portal/main" title="정부24 새창열림" target="_blank"
+            ><div class="img"><img src="/humanframe/theme/minwon/assets/img/main/footer_link_item_01.png" alt="정부24 아이콘" /></div
+          ></a>
+        </li>
+        <li>
+          <a href="/yesan" title="부산광역시 주민참여예산 새창열림" target="_blank"
+            ><div class="img"><img src="/humanframe/theme/minwon/assets/img/main/footer_link_item_02.png" alt="부산광역시 주민참여예산 아이콘" /></div
+          ></a>
+        </li>
+        <li>
+          <a href="https://www.safetyreport.go.kr/" title="안전신문고 새창열림" target="_blank"
+            ><div class="img"><img src="/humanframe/theme/minwon/assets/img/main/footer_link_item_03.png" alt="안전신문고 아이콘" /></div
+          ></a>
+        </li>
+        <li>
+          <a href="/bshotline/index" title="공정한부산 공익제보센터 새창열림" target="_blank"
+            ><div class="img"><img src="/humanframe/theme/minwon/assets/img/main/footer_link_item_04.png" alt="공정한부산 공익제보센터 아이콘" /></div
+          ></a>
+        </li>
+        <li>
+          <a href="/siminopen" title="시민열린마루 새창열림" target="_blank"
+            ><div class="img"><img src="/humanframe/theme/minwon/assets/img/main/footer_link_item_05.png" alt="시민열린마루 아이콘" /></div
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+
+<style>
+  :root {
+    --backdrop: rgba(0,0,0,.48);
+    --popup-bg: #fff;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(0,0,0,.2);
+    --header-bg: #d2147b;
+    --header-color: #fff;
+  }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif; margin: 0; }
+  button { cursor: pointer; }
+
+  .popup-overlay {
+    position: fixed; inset: 0; display: none; place-items: center;
+    background: var(--backdrop); z-index: 9999;
+  }
+  .popup-overlay.open { display: grid; }
+
+  .popup {
+    width: 100%;
+    max-width: 840px;
+    background: var(--popup-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transform: translateY(8px);
+    animation: rise .18s ease-out;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }
+
+  .popup-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 18px; background: var(--header-bg); color: var(--header-color);
+  }
+  .popup-title { font-weight:700; font-size:18px; }
+  .popup-close { border:0; background:transparent; font-size:20px; line-height:1; padding:6px; color: var(--header-color); }
+  .popup-body { padding:0px; color:#444; font-size:18px; line-height:160%; }
+
+  .popup-footer { margin-top:16px; display:flex; justify-content:center; gap:8px; }
+  .btn {
+    border: 1px solid #fff;
+    border-radius: 22px;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 14px;
+  }
+  .btn:hover { background: var(--header-bg); }
+
+  .pc-img { display: block; }
+  .mobile-img { display: none; }
+
+  @media (max-width: 580px) {
+    .pc-img { display: none; }
+    .mobile-img { display: block; }
+  }
+  @media (max-width: 480px) {
+    .popup-title { font-size:16px; }
+    .popup-body { font-size:14px; }
+    .btn { flex:1; padding:10px; font-size:14px; }
+  }
+</style>
+
+<!-- <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+  <div class="popup-wrap">
+    <div class="popup-footer" id="popupFooter" style="display:none;">
+      <button class="btn" id="btnHideToday">오늘하루 열지 않음 X</button>
+      <button class="btn" id="btnOk">닫기 X</button>
+    </div>
+
+    <div class="popup" role="document">
+      <div class="popup-body">
+        <img src="/humanframe/global/assets/img/notice/noticePopup2501023.jpg"
+             alt="공지 이미지"
+             usemap="#popupLinksPC"
+             class="pc-img"
+             id="popupImagePC">
+        <map name="popupLinksPC">
+          <area shape="rect"
+                coords="60,411,589,436"
+                href="https://www.busan.go.kr/relationsite#region"
+                target="_blank">
+          <area shape="rect"
+                coords="208,640,429,689"
+                href="https://www.busan.go.kr/minwon/minwon02"
+                target="_self">
+        </map>
+
+        <a href="https://www.busan.go.kr/minwon/minwon02" target="_self">
+          <img src="/humanframe/global/assets/img/notice/noticePopup2501023.jpg"
+               alt="공지 이미지 (모바일)"
+               class="mobile-img">
+        </a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<script>
+  const STORAGE_KEY = "popupDismissedUntil2";
+
+  function openPopup() {
+    document.getElementById('popupOverlay').classList.add('open');
+    document.getElementById('popupFooter').style.display = 'flex';
+    document.getElementById('btnOk').focus();
+  }
+  function closePopup() {
+    document.getElementById('popupOverlay').classList.remove('open');
+    document.getElementById('popupFooter').style.display = 'none';
+  }
+  function getTonightMidnightTs() {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0,0,0,0).getTime();
+  }
+  function shouldShowPopup() {
+    const until = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    return Date.now() >= until;
+  }
+  function hideToday(e) {
+    if (e) e.preventDefault();
+    try {
+      localStorage.setItem(STORAGE_KEY, String(getTonightMidnightTs()));
+    } catch (err) {
+      console.warn('localStorage unavailable', err);
+    }
+    closePopup();
+  }
+
+  // 이미지맵 비율 조정 함수 (coords 직접 값이라면 이건 옵션)
+  function resizeMapAreas(img, mapName) {
+    if (!img) return;
+    const map = document.querySelector(`map[name=""]`);
+    if (!map) return;
+    const wRatio = img.clientWidth / img.naturalWidth;
+    const hRatio = img.clientHeight / img.naturalHeight;
+
+    map.querySelectorAll('area').forEach(area => {
+      const origCoords = area.getAttribute('coords');
+      if (!origCoords) return;
+      const parts = origCoords.split(',').map(Number);
+      const scaled = parts.map((v, idx) => {
+        return (idx % 2 === 0)
+          ? Math.round(v * wRatio)
+          : Math.round(v * hRatio);
+      });
+      area.coords = scaled.join(',');
+    });
+  }
+
+  function adjustMaps() {
+    const imgPC = document.getElementById('popupImagePC');
+    resizeMapAreas(imgPC, "popupLinksPC");
+  }
+
+  $(function () {
+    if (shouldShowPopup()) openPopup();
+
+    document.getElementById('btnOk')?.addEventListener('click', closePopup);
+    document.getElementById('btnClose')?.addEventListener('click', closePopup);
+    document.getElementById('btnHideToday')?.addEventListener('click', hideToday);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closePopup();
+    });
+    document.getElementById('popupOverlay').addEventListener('click', e => {
+      if (e.target.id === 'popupOverlay') closePopup();
+    });
+
+    const imgPC = document.getElementById('popupImagePC');
+    if (imgPC) {
+      imgPC.onload = adjustMaps;
+    }
+    window.addEventListener('resize', adjustMaps);
+  });
+</script>
+</div>
+<!-- end:content -->
+
+<!-- start:footer -->
+<footer id="footer">
+	<div class="footer-inner">
+		<div class="footer-logo">
+			<a href="http://www.busan.go.kr"><img src="/humanframe/global/assets/img/common/logo.svg" alt="부산광역시 BUSAN METROPOLITAN CITY"></a>
+		</div>
+		<div class="footer-copyright">
+			<div class="footer-minwon">
+				<a href="https://www.busan.go.kr/minwon/manual120" target="_blank" title="새창열기">
+					<p class="tit">부산시 120 콜센터 (지역번호 051, 유료)</p>
+					<p class="txt">평일 08:30 ~ 18:30<br>야간․공휴일 당직실 전환</p>
+				</a>
+			</div>
+			<div class="footer-address">
+				<p>(우 47545) 부산광역시 연제구 중앙대로 1001(연산동)</p>
+				<div class="link">
+					<a href="https://www.busan.go.kr/bhintro02" target="_blank" title="새창열기">시청 찾아오시는길</a>
+					<a href="https://www.busan.go.kr/bhintro03" target="_blank" title="새창열기">주차안내</a>
+					<a href="https://www.busan.go.kr/opgude" target="_blank" title="새창열기">이용안내</a>
+				</div>
+				<p class="copy">Copyright © Busan Metropolitan City. All rights reserved.</p>
+			</div>
+		</div>
+		<div class="footer-menu">
+			<ul>
+				<li><a href="https://www.busan.go.kr/terms" target="_blank" title="새창열기">약관</a></li>
+				<li><a href="https://www.busan.go.kr/cright" target="_blank" title="새창열기">저작권 보호정책</a></li>
+				<li><a href="https://www.busan.go.kr/vprivacy1" target="_blank" title="새창열기"><span>개인정보 처리방침</span></a></li>
+				<li><a href="https://www.busan.go.kr/minwon/charter" target="_blank" title="새창열기">행정서비스헌장</a></li>
+				<li><a href="https://www.busan.go.kr/viewdn" target="_blank" title="새창열기">뷰어다운로드</a></li>
+				<li><a href="https://www.busan.go.kr/homemonitor" target="_blank" title="새창열기">홈페이지 개선의견</a></li>
+			</ul>
+		</div>
+		<div class="footer-qr">
+			<img src="/humanframe/theme/minwon/assets/img/common/img_qr.jpg" alt="부산시 통합민원서비스 qr코드"/>
+		</div>
+	</div>
+</footer><!-- end:footer -->
+
+<!-- LOGGER(TM) TRACKING SCRIPT V.40 FOR logger.co.kr / 113596 : COMBINE TYPE / DO NOT ALTER THIS SCRIPT. -->
+<script type="text/javascript">var _TRK_LID = "113596";var _L_TD = "ssl.logger.co.kr";var _TRK_CDMN = "";</script>
+<script type="text/javascript">var _CDN_DOMAIN = location.protocol == "https:" ? "https://fs.bizspring.net" : "http://fs.bizspring.net"; 
+(function (b, s) { var f = b.getElementsByTagName(s)[0], j = b.createElement(s); j.async = true; j.src = "//fs.bizspring.net/fs4/bstrk.1.js"; f.parentNode.insertBefore(j, f); })(document, "script");
+</script>
+<noscript><img alt="Logger Script" width="1" height="1" src="http://ssl.logger.co.kr/tracker.1.tsp?u=113596&amp;js=N"/></noscript>
+<!-- END OF LOGGER TRACKING SCRIPT -->
+
+</body>
+</html>

@@ -30,7 +30,7 @@ class DetailScreen extends StatelessWidget {
     }
     final ranked = RankedFacility(
       facility: f,
-      status: f.hours.statusAt(now, isHoliday: dataset.isHoliday),
+      status: f.statusAt(now, isHoliday: dataset.isHoliday),
       freshness: f.freshnessAt(now),
       distance: c.origin.point == null ? null : distanceMeters(c.origin.point!, f.location),
     );
@@ -51,6 +51,10 @@ class DetailScreen extends StatelessWidget {
           StatusLine(status: ranked.status, now: now, large: true),
           const SizedBox(height: 12),
           Text(f.name, style: theme.textTheme.headlineLarge),
+          if (clinicTypeLabel(l, f.clinicType) case final kind?) ...[
+            const SizedBox(height: 4),
+            Text(kind, style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.primary)),
+          ],
           if (ranked.distance != null) ...[
             const SizedBox(height: 8),
             Row(
@@ -59,7 +63,7 @@ class DetailScreen extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    walkText(l, ranked.distance!),
+                    distanceText(l, ranked.distance!),
                     style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant),
                   ),
                 ),
@@ -89,7 +93,7 @@ class DetailScreen extends StatelessWidget {
             title: l.detailHours,
             child: _HoursTable(facility: f, now: now),
           ),
-          if (f.hoursNote != null)
+          if (f.hoursNote != null && f.hoursTrusted)
             _Section(
               title: l.detailNote,
               child: Text(f.hoursNote!, style: theme.textTheme.bodyLarge),
@@ -108,6 +112,12 @@ class DetailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SelectableText(f.address, style: theme.textTheme.bodyLarge),
+                if (f.geocoded)
+                  Text(
+                    l.detailGeocoded,
+                    key: const Key('geocoded-note'),
+                    style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                  ),
                 TextButton.icon(
                   onPressed: () async {
                     await Clipboard.setData(ClipboardData(text: f.address));
@@ -197,7 +207,24 @@ class _HoursTable extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = L10n.of(context);
     final theme = Theme.of(context);
-    if (facility.hours.isEmpty) return Text(l.detailNoHours, style: theme.textTheme.bodyLarge);
+    if (!facility.hoursTrusted) {
+      // 사람이 확인하지 않은 시간은 표로 만들지 않고 원문 그대로 + 전화 확인 (decisions #16).
+      final note = facility.hoursNote;
+      return Column(
+        key: const Key('unverified-hours'),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            note == null ? l.detailNoHours : l.detailUnverifiedHours,
+            style: theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700),
+          ),
+          if (note != null) ...[
+            const SizedBox(height: 8),
+            Text(note, style: theme.textTheme.bodyLarge),
+          ],
+        ],
+      );
+    }
     final today = Weekday.fromNumber(now.weekday);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

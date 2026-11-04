@@ -9,57 +9,66 @@ import 'domain/dataset.dart';
 import 'domain/geo.dart';
 import 'domain/opening_hours.dart';
 import 'domain/ranking.dart';
+import 'domain/region.dart';
 import 'services/location_service.dart';
 
-enum OriginKind { none, gps, landmark }
+enum OriginKind { none, gps, region }
 
 class Origin {
   const Origin.none()
       : kind = OriginKind.none,
         point = null,
-        landmark = null;
-  const Origin.gps(GeoPoint this.point)
-      : kind = OriginKind.gps,
-        landmark = null;
-  Origin.landmark(Landmark this.landmark)
-      : kind = OriginKind.landmark,
-        point = landmark.point;
+        region = null;
+
+  /// [region] 은 GPS 좌표에서 기기 안에서 찾은 가장 가까운 시군구 (긴급 연락처 지역 판단용).
+  const Origin.gps(GeoPoint this.point, {this.region}) : kind = OriginKind.gps;
+
+  Origin.region(Region this.region)
+      : kind = OriginKind.region,
+        point = region.point;
 
   final OriginKind kind;
   final GeoPoint? point;
-  final Landmark? landmark;
+  final Region? region;
 }
 
-/// 사용자가 고른 기준 장소(랜드마크 id)만 기기에 저장한다. GPS 좌표는 저장하지 않는다.
+/// 사용자가 고른 시군구 코드만 기기에 저장한다. GPS 좌표는 저장하지 않는다.
 abstract class OriginStore {
-  Future<String?> loadLandmarkId();
-  Future<void> saveLandmarkId(String? id);
+  Future<String?> loadRegionCode();
+  Future<void> saveRegionCode(String? code);
 }
 
 class PrefsOriginStore implements OriginStore {
-  static const _key = 'origin_landmark';
+  static const _key = 'origin_region';
+
+  /// 서울 3개 구 시절 저장값. 읽지 않고 지운다.
+  static const _legacyKey = 'origin_landmark';
 
   @override
-  Future<String?> loadLandmarkId() async => (await SharedPreferences.getInstance()).getString(_key);
-
-  @override
-  Future<void> saveLandmarkId(String? id) async {
+  Future<String?> loadRegionCode() async {
     final prefs = await SharedPreferences.getInstance();
-    if (id == null) {
+    if (prefs.containsKey(_legacyKey)) await prefs.remove(_legacyKey);
+    return prefs.getString(_key);
+  }
+
+  @override
+  Future<void> saveRegionCode(String? code) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (code == null) {
       await prefs.remove(_key);
     } else {
-      await prefs.setString(_key, id);
+      await prefs.setString(_key, code);
     }
   }
 }
 
 class MemoryOriginStore implements OriginStore {
-  MemoryOriginStore([this.id]);
-  String? id;
+  MemoryOriginStore([this.code]);
+  String? code;
   @override
-  Future<String?> loadLandmarkId() async => id;
+  Future<String?> loadRegionCode() async => code;
   @override
-  Future<void> saveLandmarkId(String? value) async => id = value;
+  Future<void> saveRegionCode(String? value) async => code = value;
 }
 
 class AppController extends ChangeNotifier {
@@ -67,9 +76,11 @@ class AppController extends ChangeNotifier {
     required this.repository,
     required this.location,
     required this.originStore,
+    Future<RegionCatalog> Function()? loadRegions,
     DateTime Function()? clock,
     Duration? tick = const Duration(minutes: 1),
-  }) : clock = clock ?? DateTime.now {
+  })  : clock = clock ?? DateTime.now,
+        _loadRegions = loadRegions {
     if (tick != null) _ticker = Timer.periodic(tick, (_) => notifyListeners());
   }
 
@@ -77,7 +88,10 @@ class AppController extends ChangeNotifier {
   final LocationService location;
   final OriginStore originStore;
   final DateTime Function() clock;
+  final Future<RegionCatalog> Function()? _loadRegions;
   Timer? _ticker;
+
+  RegionCatalog regions = RegionCatalog.empty;
 
   Dataset? dataset;
   Object? loadError;
@@ -93,9 +107,15 @@ class AppController extends ChangeNotifier {
     } on Object catch (e) {
       loadError = e;
     }
-    final saved = await originStore.loadLandmarkId();
-    final landmark = saved == null ? null : Landmark.byId(saved);
-    if (landmark != null) origin = Origin.landmark(landmark);
+    try {
+      final load = _loadRegions;
+      if (load != null) regions = await load();
+    } on Object {
+      regions = RegionCatalog.empty;
+    }
+    final saved = await originStore.loadRegionCode();
+    final region = saved == null ? null : regions.byCode(saved);
+    if (region != null) origin = Origin.region(region);
     notifyListeners();
     unawaited(_refreshInBackground());
   }
@@ -120,8 +140,8 @@ class AppController extends ChangeNotifier {
     final result = await location.current();
     locating = false;
     if (result.point != null) {
-      origin = Origin.gps(result.point!);
-      await originStore.saveLandmarkId(null);
+      origin = Origin.gps(result.point!, region: regions.nearest(result.point!));
+      await originStore.saveRegionCode(null);
     } else {
       lastLocationFailure = result.failure;
     }
@@ -129,12 +149,15 @@ class AppController extends ChangeNotifier {
     return result.point != null;
   }
 
-  Future<void> useLandmark(Landmark landmark) async {
-    origin = Origin.landmark(landmark);
+  Future<void> useRegion(Region region) async {
+    origin = Origin.region(region);
     lastLocationFailure = null;
-    await originStore.saveLandmarkId(landmark.id);
+    await originStore.saveRegionCode(region.code);
     notifyListeners();
   }
+
+  /// 긴급 연락처를 지역에 맞추는 데 쓴다. 모르면 null(전국 공통 번호만).
+  String? get currentSido => origin.region?.sido;
 
   List<RankedFacility> ranked(CategoryGroup group) {
     final d = dataset;

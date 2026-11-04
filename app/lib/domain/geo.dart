@@ -48,23 +48,5 @@ String formatDistance(double meters) {
   return km < 10 ? '${km.toStringAsFixed(1)}km' : '${km.round()}km';
 }
 
-/// 위치 권한이 없을 때 고를 수 있는 기준 장소 (1차 지역).
-class Landmark {
-  const Landmark(this.id, this.point);
-  final String id;
-  final GeoPoint point;
-
-  static const seoulStation = Landmark('seoul_station', GeoPoint(37.5547, 126.9707));
-  static const euljiro = Landmark('euljiro', GeoPoint(37.5660, 126.9826));
-  static const yeongdeungpo = Landmark('yeongdeungpo', GeoPoint(37.5156, 126.9073));
-  static const yongsan = Landmark('yongsan', GeoPoint(37.5299, 126.9648));
-
-  static const all = [seoulStation, euljiro, yeongdeungpo, yongsan];
-
-  static Landmark? byId(String id) {
-    for (final l in all) {
-      if (l.id == id) return l;
-    }
-    return null;
-  }
-}
+/// 이 거리 안이면 "걸어서 약 N분", 넘으면 거리만 보여 준다.
+const walkableMeters = 3000.0;

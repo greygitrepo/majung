@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head></head>
+ <body>
+  <input type="hidden" id="lsNm" name="lsNm" value="인천광역시 제물포구ㆍ영종구 및 검단구 설치 등에 관한 법률" /> 
+  <input type="hidden" id="lsId" name="lsId" value="014604" /> 
+  <input type="hidden" id="lsiSeq" name="lsiSeq" value="259479" /> 
+  <input type="hidden" id="ancYd" name="ancYd" value="20240130" /> 
+  <input type="hidden" id="efYd" name="efYd" value="20260701" /> 
+  <input type="hidden" id="ancNo" name="ancNo" value="20161" /> 
+  <input type="hidden" id="lsBdyChrCls" name="lsBdyChrCls" value="010202" /> 
+  <input type="hidden" id="lumIsConOrdin" value="" /> 
+  <input type="hidden" id="nwYnValue" value="N" /> 
+  <input type="hidden" id="hstLnkDpYn" value="0" /> 
+  <style>
+.byl_pop ul li {
+	padding: 7px;
+	margin-left: 10px;
+}
+</style> 
+  <script type="text/javascript">
+$(document).ready(function(){
+	customResizePop(); // 본문 리사이즈
+	initEDotXPress('\uC778\uCC9C\uAD11\uC5ED\uC2DC \uC81C\uBB3C\uD3EC\uAD6C\u318D\uC601\uC885\uAD6C \uBC0F \uAC80\uB2E8\uAD6C \uC124\uCE58 \uB4F1\uC5D0 \uAD00\uD55C \uBC95\uB960');
+});
+
+function customResizePop() {
+		// 본문 버튼 높이 만큼 제공한다. 13은 패딩값
+		var $contentHeight = $("#center").height() - ($('.body_top_area').height() + 13);
+		var $conTopHeight = $('#conTop').height() + 35;
+
+		var bdyValue = lsVO.bdyUpdValue.updateContentNm || 'lsBdy';
+		
+        //lsInfoP 가 열릴 때 본문은 무조건 조회 하기 때문에 조건문 밖에 위치 하도록 변경.
+		$('#viewwrapCenter').css('overflow-y', 'hidden');
+        $('#bodyContentTOP > #viewwrapCenter').height($contentHeight);
+        $('#conScroll').height($('#viewwrapCenter').height() - $conTopHeight);
+        
+        if (bdyValue == 'lsBdy') {
+			/* 본문에서는 법령명 고정 때문에 hidden 처리*/
+			$('#viewwrapCenter').css('overflow-y', 'hidden');
+			$('#bodyContentTOP > #viewwrapCenter').height($contentHeight);
+			if($('#viewwrapCenter2').height() != null || $('#viewwrapCenter2').height() == 0){
+				$('#bodyContentTOP > #viewwrapCenter2').height($contentHeight);
+				$('#conScroll').height($('#viewwrapCenter2').height() - $conTopHeight);
+				$('#viewwrapCenter2').css('overflow', 'hidden');
+			}
+			$('#bodyContent').css('width', 'inherit');
+		} else if (bdyValue == 'lsPtnThdCmp') {
+			lspttnThdCmpResize();
+		} else if (bdyValue == 'lumThdCmp') {
+			thdCmpNewScPResize();
+		} else if (bdyValue == 'lumThdCmpSc') {
+
+		} else if (bdyValue == 'thdCmpNew') {
+
+		} else if (bdyValue == 'lsOldAndNew') {				
+			// 신구법은 이전 이후 버튼 높이까지 마이너스 한다. 
+			$('#bodySideContent > #oldAndNewDiv').height(($contentHeight + $('#tmpWidth').height()-114));
+		} else if (bdyValue == 'lsRvsDocInfoR') {
+
+			$('#bodySideContent > #viewwrapCenter').height($contentHeight);
+			$('#conScroll').height($('#viewwrapCenter').height() - $conTopHeight);
+			$('#conTop').height($('.cont_top').height());
+			$('#rvsConScroll').height($('#viewwrapCenter').height() - $('#rvsConTop').height());
+			
+		} else {
+			$('#bodySideContent > #viewwrapCenter').height($contentHeight);
+		}
+}
+
+function fileLayer(temp){
+	var tempStr = $("#hwptext"+temp).attr("value");
+	if(tempStr.length > 32){
+ 		$("#hwptext"+temp).css("width", "80%").css("text-overflow", "ellipsis").css("overflow","hidden").css("white-space","nowrap");
+ 		$("#hwpxtext"+temp).css("width", "80%").css("text-overflow", "ellipsis").css("overflow","hidden").css("white-space","nowrap");
+ 		$("#pdftext"+temp).css("width", "80%").css("text-overflow", "ellipsis").css("overflow","hidden").css("white-space","nowrap");
+ 	}
+
+ 	$(".byl_pop").css("display","none");
+
+ 	//레이어높이값
+ 	var height = $("#fileSaveLayer"+temp).height();
+ 	//본문 제일 하단 위치값 
+	var pagePos = document.querySelector('#center');
+	pagePos = pagePos.getBoundingClientRect().bottom;
+	//레이어버튼위치값
+	var layPos =document.querySelector('#imgPos'+temp);
+	layPos = layPos.getBoundingClientRect().bottom;
+	var lay_pop = $('#fileSaveLayer'+temp);
+	var pos = $('#imgPos'+temp).position();
+	
+	if(pagePos > height+layPos){ //레이어가 잘리지 않을 때 
+		lay_pop.css('top', (pos.top)+25 + 'px');
+		lay_pop.css('left', '250px')
+	}else{ //레이어가 잘릴 때
+		lay_pop.css('top', ((pos.top)-height)+ 'px');
+		lay_pop.css('left', (pos.left)+25+'px');
+	}
+	document.getElementById("fileSaveLayer"+temp).style.display="block";
+}
+
+function copyToClipBoard(temp2){
+	var content = document.getElementById('textarea'+temp2);
+	content.select();
+	document.execCommand('copy');
+	alert("주소가 클립보드에 저장되었습니다.");
+	content.setSelectionRange(0,0);
+}
+
+function delLayer(temp){
+	document.getElementById("fileSaveLayer"+temp).style.display="none";
+}
+
+</script> 
+  <div id="contentBody" class="scr_ctrl"> 
+   <div id="sideCenter" class="cont_area"> 
+    <ul class="cont_icon"> 
+     <li><a><img alt="판" src="/LSW/images/button/btn_jostmdico.gif" />판례</a></li> 
+     <li><a><img alt="연" src="/LSW/images/button/btn_year3.gif" />연혁</a></li> 
+     <li><a><img alt="행" src="/LSW/images/button/btn_entrust3_2.gif" />위임행정규칙</a></li> 
+     <li><a><img alt="규" src="/LSW/images/button/btn_entrust4_2.gif" />규제</a></li> 
+     <li><a><img alt="한" src="/LSW/images/button/btn_oneviewIcon.gif" />한눈보기</a></li> 
+    </ul> 
+    <!-- 연혁법령 안내문구 --> 
+    <div id="hisComment" class="pgroup" style="margin-bottom: auto;"> 
+     <p class="gtit" style="padding-top: 5px; margin-bottom: 0px; font-size: 13px; font-weight: normal; color: #024fce;"> ※ 본 법령은 공포 후 시행전 개정된 사항을 모두 포함한 법령이며, 개별 시행일별로 공포된 내용은 상단 메뉴의 '<span class="btn type8" style="margin: auto; display: inline;">연혁</span>' 또는 조문 앞의 '<img alt="연혁" src="/LSW/images/button/btn_year3.gif" style="width: 22px; height: 17px;" />' 아이콘을 통해 확인할 수 있습니다. </p> 
+    </div> 
+    <!-- 법령명 --> 
+    <div id="conTop" class="cont_top"> 
+     <a id="top"></a> 
+     <!-- 국민신문고 연결배너 출력 --> 
+     <h2> 인천광역시 제물포구ㆍ영종구 및 검단구 설치 등에 관한 법률 </h2> 
+     <div class="ct_sub"> 
+      <span>[시행 2026. 7. 1.] [법률 제20161호, 2024. 1. 30., 제정]</span> 
+     </div> 
+    </div> 
+    <!-- 소관부처 --> 
+    <div id="conScroll" class="scr_area" style="overflow-y: auto;"> 
+     <div class="cont_subtit"> 
+      <p> <a title="팝업으로 이동" onclick="javascript:cptOfiPop('www.mois.go.kr'); return false;" href="#AJAX" target="_blank"> <span title="www.mois.go.kr" style="cursor: pointer;">행정안전부</span> (<span title="" style="cursor: pointer;">자치분권지원과</span>), 044-205-3332 </a> </p> 
+     </div> 
+     <!-- 조문정보 --> 
+     <a name="J1:0" id="J1:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('259479', '0001', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000100" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="1:0:000100:96071731" /> <span class="bl"><label for="Y000100"> 제1조(목적) </label> </span> 이 법은 「지방자치법」 제5조제1항에 따라 인천광역시에 제물포구ㆍ영종구 및 검단구를 설치함으로써 주민생활의 편의를 증진하고 균형있는 지역발전을 도모함을 목적으로 한다. </p> 
+      </div> 
+     </div> 
+     <a name="J2:0" id="J2:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('259479', '0002', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000200" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="2:0:000200:96071733" /> <span class="bl"><label for="Y000200"> 제2조(설치 등) </label> </span> ① 인천광역시 중구 및 동구를 각각 폐지한다. </p>
+       <p class="pty1_de2_1">② 인천광역시에 제물포구ㆍ영종구 및 검단구를 각각 다음과 같이 설치한다.<br /><img alt="img137249077" src="/LSW/flDownload.do?flSeq=137249077" /> </p> 
+       <p class="pty1_de2_1">③ 인천광역시 서구의 관할구역 중에서 제2항에 따른 인천광역시 검단구의 관할구역에 속하는 지역을 제외한다. </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <a name="J3:0" id="J3:0"></a> 
+     <div class="pgroup"> 
+      <ul class="lawico01"> 
+       <li><a title="조문체계도 팝업으로 이동" style="text-decoration: none;" onclick="javascript:joStmdPop('259479', '0003', '00' );return false; " href="#AJAX"> <img alt="조문체계도버튼" src="/LSW/images/button/btn_jostmdico.gif" /> </a></li> 
+       <li><a title="연혁 팝업으로 이동" style="text-decoration: none;" onclick="javascript:fJoHstShow(this, '014604', '259479', '96071735', '010202');return false;" href="#AJAX"> <img alt="연혁" src="/LSW/images/button/btn_year3.gif" /> </a></li> 
+      </ul> 
+      <div class="lawcon"> 
+       <p class="pty1_p4"> <input name="joNoList" id="Y000300" style="vertical-align: middle;" onclick="javascript:getJoSelectLayer(this,'');" type="checkbox" value="3:0:000300:96071735" /> <span class="bl"><label for="Y000300"> 제3조(재정지원에 관한 특례) </label> </span> 국가 및 인천광역시는 인천광역시 제물포구ㆍ영종구 및 검단구 설치에 소요되는 비용을 지원하며, 보조금ㆍ지방교부세, 재정 투자ㆍ융자 등 재정상 특별한 지원을 할 수 있다. </p>
+       <p class="pty1_de2"> <span class="sfon">[본조신설 2025. 12. 30.]</span> </p> 
+       <p></p> 
+      </div> 
+     </div> 
+     <!-- 조문정보 --> 
+     <!-- 부칙 영역 끝 --> 
+     <br /> 
+     <div id="arDivArea"> 
+      <a name="arArea"></a> 
+      <a name="J12271579" id="J12271579"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <a class="nun" onclick="javascript:arView('ar12271579','<법률 제20161호,  2024. 1. 30.>'); return false;" href="#AJAX"> <img id="ar12271579btn" style="vertical-align: middle;" alt="부칙 <법률 제20161호,  2024. 1. 30.>조문목록 접기" src="/LSW/images/button/btn_cocl.gif" /> </a> <input name="arInf" id="chk12271579" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제20161호,  2024. 1. 30.>체크박스 " value="12271579" /> <a class="nun" onclick="javascript:arView('ar12271579','<법률 제20161호,  2024. 1. 30.>'); return false;" href="#AJAX"> <label for="chk12271579"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제20161호, 2024. 1. 30.&gt;</span> </a> <a class="nun" onclick="javascript:arView('ar12271579','<법률 제20161호,  2024. 1. 30.>');return false;" href="#AJAX"> <img id="ar12271579MrBtn" style="vertical-align: middle;" alt="부칙 <법률 제20161호,  2024. 1. 30.>보기" src="/LSW/images/button/btn_more_bu.gif" /> </a> </p> 
+       <p class="pty3_dep1"><span class="bl">제1조(시행일)</span> 이 법은 2026년 7월 1일부터 시행한다. 다만, 부칙 제3조 및 제4조제1항ㆍ제2항은 공포한 날부터 시행한다.</p>
+       <div id="ar12271579">
+        <p class="pty3_dep1"><span class="bl">제2조(법 시행을 위한 준비행위)</span> 관계 중앙행정기관의 장, 인천광역시장, 인천광역시의회의장, 인천광역시 중구ㆍ동구ㆍ서구청장 및 인천광역시 중구ㆍ동구ㆍ서구의회의장은 이 법 시행을 위하여 필요한 준비행위를 이 법 시행 전에 할 수 있다. <span class="sfon">&lt;개정 2025. 12. 30.&gt;</span></p>
+        <p class="pty3_dep1"><span class="bl">제3조(선거에 관한 특례)</span> ① 이 법에 따라 설치되는 인천광역시 제물포구ㆍ영종구 및 검단구(이하 “신설구”라 한다)와 이 법에 따라 관할구역이 변경되는 인천광역시 서구의 구청장 선거는 2026년 7월 1일 전에 실시하는 「공직선거법」 제203조제1항에 따른 선거일에 각각 실시하며, 인천광역시 중구 및 동구의 구청장 선거는 실시하지 아니한다.</p>
+        <p class="pty3_dep2"> ② 신설구 및 이 법에 따라 관할구역이 변경되는 인천광역시 서구의 의회의원과 각각의 관할구역에서 선출하는 인천광역시의회의원 선거는 2026년 7월 1일 전에 실시하는 「공직선거법」 제203조제1항에 따른 선거일에 각각 실시하며, 인천광역시 중구 및 동구의 의회의원과 각각의 관할구역에서 선출하는 인천광역시의회의원 선거는 실시하지 아니한다.</p>
+        <p class="pty3_dep2"> ③ 제1항 및 제2항에 따라 선거를 실시하는 경우 「공직선거법」 제15조제2항제1호부터 제3호까지 및 제16조제3항 전단에 규정된 “해당 지방자치단체”는 “신설구 또는 이 법에 따라 관할구역이 변경되는 인천광역시 서구”로 본다.</p>
+        <p class="pty3_dep2"> ④ 제1항 및 제2항에 따라 선거를 실시하는 경우 인천광역시 중구ㆍ동구ㆍ서구청장 및 중구ㆍ동구ㆍ서구의회의원은 「공직선거법」 제53조제1항제1호 및 같은 조 제2항제4호에도 불구하고 그 직을 그만두지 아니하고 다음 각 호의 구분에 따른 선거에 입후보할 수 있다. <span class="sfon">&lt;개정 2025. 12. 30.&gt;</span></p>
+        <p class="pty3_dep2"> 1. 인천광역시 중구청장 및 중구의회의원: 인천광역시 제물포구 또는 영종구의 구청장 및 의회의원 선거</p>
+        <p class="pty3_dep2"> 2. 인천광역시 동구청장 및 동구의회의원: 인천광역시 제물포구의 구청장 및 의회의원 선거</p>
+        <p class="pty3_dep2"> 3. 인천광역시 서구청장 및 서구의회의원: 인천광역시 서구 또는 검단구의 구청장 및 의회의원 선거</p>
+        <p class="pty3_dep2"> 4. 삭제 <span class="sfon">&lt;2025. 12. 30.&gt;</span></p>
+        <p class="pty3_dep2"> 5. 삭제 <span class="sfon">&lt;2025. 12. 30.&gt;</span></p>
+        <p class="pty3_dep2"> 6. 삭제 <span class="sfon">&lt;2025. 12. 30.&gt;</span></p>
+        <p class="pty3_dep2"> ⑤ 제1항 및 제2항에 따라 선거를 실시하는 경우 선거인명부 작성권자는 「공직선거법」 제37조제1항에도 불구하고 다음 표에서 정하는 바에 따른다.</p>
+        <p class="pty3_dep2"> <img alt="img137249057" src="/LSW/flDownload.do?flSeq=137249057" /></p>
+        <p class="pty3_dep2"> ⑥ 제1항 및 제2항에 따라 선거를 실시하는 경우 「선거관리위원회법」 제2조제3항 및 제4항에도 불구하고 인천광역시 중구선거관리위원회의 명칭은 영종구선거관리위원회로 하고, 관할 구역은 이 법에 따라 설치되는 인천광역시 영종구의 관할 구역으로 하며, 인천광역시 동구선거관리위원회의 명칭은 제물포구선거관리위원회로 하고, 관할 구역은 이 법에 따라 설치되는 인천광역시 제물포구의 관할 구역으로 한다. <span class="sfon">&lt;신설 2025. 12. 30.&gt;</span></p>
+        <p class="pty3_dep2"> ⑦ 제1항 및 제2항에 따라 선거를 실시하는 경우 「선거관리위원회법」 제2조제4항에도 불구하고 인천광역시 서구의 관할 구역 안에 설치하는 선거관리위원회의 명칭은 이 법에 따라 관할 구역이 변경되거나 설치되는 인천광역시 서구 또는 검단구의 행정구역명을 붙여 표시할 수 있다. <span class="sfon">&lt;신설 2025. 12. 30.&gt;</span></p>
+        <p class="pty3_dep2"> ⑧ 제1항 및 제2항에 따라 선거를 실시하는 경우에 선거에 관한 사항은 이 법에 규정한 것을 제외하고는 「공직선거법」에 따른 임기만료에 의한 선거에 관한 규정을 적용한다. <span class="sfon">&lt;신설 2025. 12. 30.&gt;</span></p>
+        <p class="pty3_dep1">[시행일: 2025. 12. 30.] 제3조</p>
+        <p class="pty3_dep1"><span class="bl">제4조(구청장의 직 인수위원회에 관한 특례 및 경과조치)</span> ① 「지방자치법」 제105조제2항 및 제10항 중 “해당 지방자치단체”는 인천광역시 제물포구에 대하여는 “인천광역시 중구 또는 동구 중 당선인이 정하는 구”로, 인천광역시 영종구에 대하여는 “인천광역시 중구”로, 인천광역시 검단구에 대하여는 “인천광역시 서구”로 각각 본다.</p>
+        <p class="pty3_dep2"> ② 인천광역시 제물포구청장의 직 인수위원회는 인천광역시 중구청장 또는 동구청장에게 자료ㆍ정보 또는 의견의 제출 등 필요한 협조를 요청할 수 있다.</p>
+        <p class="pty3_dep2"> ③ 이 법 시행 당시 제1항에 따라 종전의 인천광역시 중구ㆍ동구 또는 서구에 설치된 인천광역시 제물포구ㆍ영종구 및 검단구청장의 직 인수위원회는 인천광역시 제물포구ㆍ영종구 및 검단구에 각각 설치된 것으로 본다.</p>
+        <p class="pty3_dep1">[시행일: 2024. 1. 30.] 제4조제1항, 제4조제2항</p>
+        <p class="pty3_dep1"><span class="bl">제5조(처분 등에 관한 경과조치)</span> ① 이 법 시행 전에 종전의 인천광역시 중구청장ㆍ동구청장ㆍ중구의회의장ㆍ동구의회의장이나 그 소속 기관의 장과 인천광역시 서구청장ㆍ서구의회의장이나 그 소속 기관의 장이 한 처분이나 그 밖의 행위는 각각 해당 지역을 관할구역으로 하는 신설구의 구청장이나 구의회의 의장 또는 그 소속 기관의 장이 한 것으로 본다. <span class="sfon">&lt;개정 2025. 12. 30.&gt;</span></p>
+        <p class="pty3_dep2"> ② 이 법 시행 전에 종전의 인천광역시 중구청장ㆍ동구청장이나 그 소속 기관의 장과 인천광역시 서구청장이나 그 소속 기관의 장에게 한 신청ㆍ신고나 그 밖의 행위는 각각 해당 지역을 관할구역으로 하는 신설구의 구청장이나 그 소속 기관의 장에게 한 것으로 본다.</p>
+        <p class="pty3_dep1"><span class="bl">제6조(조례ㆍ규칙 등에 관한 경과조치)</span> ① 종전의 인천광역시 중구ㆍ동구와 인천광역시 서구의 조례나 규칙은 신설구의 조례나 규칙이 각각 제정될 때까지 해당 조례나 규칙이 적용되던 지역에 한정하여 계속하여 시행할 수 있다. 이 경우 종전의 인천광역시 중구ㆍ동구ㆍ중구청장ㆍ동구청장과 인천광역시 서구ㆍ서구청장의 권한 및 소관 사항은 각각 해당 지역을 관할구역으로 하는 신설구 또는 신설구 구청장의 권한 및 소관 사항으로 본다.</p>
+        <p class="pty3_dep2"> ② 이 법 시행 당시 종전의 인천광역시 중구ㆍ동구와 인천광역시 서구의 일부나 전부를 관할구역으로 정하고 있는 법령의 경우 해당 법령이 개정될 때까지 각각 신설구의 관할구역에 대해서도 적용한다.</p>
+        <p class="pty3_dep1"><span class="bl">제7조(공무원의 임용 등에 관한 경과조치)</span> ① 이 법 시행 전에 종전의 인천광역시 중구 소속의 공무원은 인천광역시 영종구 또는 제물포구 소속의 공무원으로 보고, 종전의 인천광역시 동구 소속의 공무원은 인천광역시 제물포구 소속의 공무원으로 보며, 인천광역시 서구 소속의 공무원은 검단구 또는 이 법에 따라 관할구역이 변경되는 인천광역시 서구 소속의 공무원으로 본다.</p>
+        <p class="pty3_dep2"> ② 이 법 시행 당시 종전의 인천광역시 중구의 공무원 채용절차가 진행 중인 경우에는 인천광역시 영종구 또는 제물포구의 공무원 채용절차가 진행 중인 것으로 보고, 종전의 인천광역시 동구의 공무원 채용절차가 진행 중인 경우에는 인천광역시 제물포구의 공무원 채용절차가 진행 중인 것으로 보며, 인천광역시 서구의 공무원 채용절차가 진행 중인 경우에는 인천광역시 검단구 또는 이 법에 따라 관할구역이 변경되는 인천광역시 서구의 공무원 채용절차가 진행 중인 것으로 본다.</p>
+        <p class="pty3_dep2"> ③ 제2항에 따른 채용절차를 진행하는 경우 종전의 인천광역시 중구의 공무원 채용사무는 인천광역시 영종구가 승계하고, 종전의 인천광역시 동구의 공무원 채용사무는 인천광역시 제물포구가 승계하며, 인천광역시 서구의 공무원 채용사무는 이 법에 따라 관할구역이 변경되는 인천광역시 서구가 승계한다.</p>
+        <p class="pty3_dep1"><span class="bl">제8조(동의 설치에 관한 경과조치)</span> 이 법 시행 전에 종전의 인천광역시 중구ㆍ동구와 인천광역시 서구에 설치된 동(洞) 중 신설구의 관할구역에 속한 지역에 설치된 동은 각각 신설구의 동으로 본다.</p>
+       </div> 
+      </div> 
+      <a name="J12271581" id="J12271581"></a> 
+      <div class="pgroup"> 
+       <p class="pty3" style="margin-bottom: -1px;"> <img id="ar12271581btn" style="vertical-align: middle;" alt="부칙<법률 제21247호,  2025. 12. 30.>조문목록 없음" src="/LSW/images/button/btn_dot.gif" /> <input name="arInf" id="chk12271581" style="vertical-align: middle;" type="checkbox" alt="부칙 <법률 제21247호,  2025. 12. 30.>체크박스 " value="12271581" /> <a class="nun" onclick="javascript:arView('ar12271581','<법률 제21247호,  2025. 12. 30.>'); return false;" href="#AJAX"> <label for="chk12271581"> <span class="bl"> 부      칙</span> </label> <span class="sfon">&lt;법률 제21247호, 2025. 12. 30.&gt;</span> </a> </p> 
+       <p class="pty3_dep1">이 법은 2026년 7월 1일부터 시행한다. 다만, 법률 제20161호 인천광역시 제물포구ㆍ영종구 및 검단구 설치 등에 관한 법률 부칙 제3조의 개정규정은 공포한 날부터 시행한다.</p> 
+      </div> 
+     </div> 
+     <!-- 부칙 영역 끝 --> 
+     <!-- 별표 서식 시작 --> 
+     <!-- 별표 서식 끝 --> 
+    </div> 
+   </div> 
+  </div> 
+ </body>
+</html>

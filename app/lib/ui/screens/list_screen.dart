@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../data/facility_repository.dart';
 import '../../domain/category.dart';
+import '../../domain/facility.dart';
 import '../../domain/ranking.dart';
 import '../../l10n/app_localizations.dart';
 import '../format.dart';
@@ -11,6 +12,7 @@ import 'detail_screen.dart';
 import 'emergency_screen.dart';
 import 'home_screen.dart';
 import 'map_screen.dart';
+import 'origin_picker.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key, required this.group});
@@ -30,15 +32,34 @@ class _ListScreenState extends State<ListScreen> {
     final c = scope.controller;
     final now = c.clock();
     final items = c.ranked(widget.group);
+    final needOrigin = c.origin.point == null;
+    final general = items.where((r) => r.facility.audience == Audience.general).toList();
+    final senior = items.where((r) => r.facility.audience == Audience.senior).toList();
 
     void openDetail(RankedFacility item) =>
         Navigator.of(context).push(MaterialPageRoute(builder: (_) => DetailScreen(facilityId: item.facility.id)));
+
+    Widget card(RankedFacility item) => Padding(
+          padding: const EdgeInsets.only(bottom: 14),
+          child: FacilityCard(
+            key: Key('facility-${item.facility.id}'),
+            item: item,
+            now: now,
+            onOpen: () => openDetail(item),
+            onCall: item.facility.phone == null
+                ? null
+                : () async {
+                    final ok = await scope.launcher.dial(item.facility.phone!);
+                    if (!ok && context.mounted) showSnack(context, l.launchFailed);
+                  },
+          ),
+        );
 
     return Scaffold(
       appBar: AppBar(
         title: Text(groupTitle(l, widget.group)),
         actions: [
-          TextButton.icon(
+          if (!needOrigin) TextButton.icon(
             key: const Key('toggle-map'),
             style: TextButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.secondaryContainer),
             onPressed: () => setState(() => _showMap = !_showMap),
@@ -63,23 +84,37 @@ class _ListScreenState extends State<ListScreen> {
                 children: [
                   const OriginBar(),
                   const SizedBox(height: 12),
-                  _Banner(text: l.listCallFirstBanner),
-                  const SizedBox(height: 12),
-                  if (items.isEmpty) _Empty(),
-                  for (final item in items) ...[
-                    FacilityCard(
-                      key: Key('facility-${item.facility.id}'),
-                      item: item,
-                      now: now,
-                      onOpen: () => openDetail(item),
-                      onCall: item.facility.phone == null
-                          ? null
-                          : () async {
-                              final ok = await scope.launcher.dial(item.facility.phone!);
-                              if (!ok && context.mounted) showSnack(context, l.launchFailed);
-                            },
-                    ),
-                    const SizedBox(height: 14),
+                  if (needOrigin)
+                    _NeedOrigin()
+                  else ...[
+                    _Banner(icon: Icons.phone_rounded, text: l.listCallFirstBanner),
+                    const SizedBox(height: 12),
+                    if (widget.group == CategoryGroup.clinic) ...[
+                      _Banner(
+                        key: const Key('clinic-info'),
+                        icon: Icons.medical_information_rounded,
+                        title: l.clinicInfoTitle,
+                        text: l.clinicInfoBody,
+                      ),
+                      const SizedBox(height: 12),
+                    ],
+                    if (items.isEmpty) _Empty(),
+                    for (final item in general) card(item),
+                    if (senior.isNotEmpty) ...[
+                      const SizedBox(height: 8),
+                      Semantics(
+                        header: true,
+                        child: Text(
+                          l.seniorSectionTitle,
+                          key: const Key('senior-section'),
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(l.seniorSectionSub, style: Theme.of(context).textTheme.bodyLarge),
+                      const SizedBox(height: 12),
+                      for (final item in senior) card(item),
+                    ],
                   ],
                 ],
               ),
@@ -92,7 +127,9 @@ class _ListScreenState extends State<ListScreen> {
 }
 
 class _Banner extends StatelessWidget {
-  const _Banner({required this.text});
+  const _Banner({super.key, required this.icon, required this.text, this.title});
+  final IconData icon;
+  final String? title;
   final String text;
 
   @override
@@ -104,13 +141,26 @@ class _Banner extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.phone_rounded, color: scheme.onTertiaryContainer),
+          Icon(icon, color: scheme.onTertiaryContainer),
           const SizedBox(width: 10),
           Expanded(
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.bodyLarge
-                  ?.copyWith(color: scheme.onTertiaryContainer, fontWeight: FontWeight.w600),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (title != null) ...[
+                  Text(
+                    title!,
+                    style: Theme.of(context).textTheme.titleMedium
+                        ?.copyWith(color: scheme.onTertiaryContainer, fontWeight: FontWeight.w800),
+                  ),
+                  const SizedBox(height: 4),
+                ],
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.bodyLarge
+                      ?.copyWith(color: scheme.onTertiaryContainer, fontWeight: FontWeight.w600),
+                ),
+              ],
             ),
           ),
         ],
@@ -132,6 +182,36 @@ class _Empty extends StatelessWidget {
           Text(l.listEmpty, style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
           const SizedBox(height: 4),
           Text(l.listEmptyHelp, style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
+        ],
+      ),
+    );
+  }
+}
+
+/// 기준 위치가 없을 때: 전국 목록 대신 위치부터 정하게 한다.
+class _NeedOrigin extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final l = L10n.of(context);
+    final theme = Theme.of(context);
+    return Padding(
+      key: const Key('need-origin'),
+      padding: const EdgeInsets.symmetric(vertical: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Icon(Icons.place_rounded, size: 56, color: theme.colorScheme.primary),
+          const SizedBox(height: 12),
+          Text(l.listNeedOrigin, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
+          const SizedBox(height: 4),
+          Text(l.listNeedOriginHelp, style: theme.textTheme.bodyLarge, textAlign: TextAlign.center),
+          const SizedBox(height: 16),
+          FilledButton.icon(
+            key: const Key('need-origin-pick'),
+            onPressed: () => showOriginPicker(context),
+            icon: const Icon(Icons.place_rounded, size: 28),
+            label: Text(l.originSet),
+          ),
         ],
       ),
     );

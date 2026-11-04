@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang ="ko" xml:lang="ko">
+<head>
+<meta name="author" content="" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+
+<title>함장종합사회복지관</title>
+
+<meta name="description" content="함장종합사회복지관, 대구 수성구, 지역주민 프로그램, 복지서비스, 지역사회보호사업, 교육문화사업">
+<meta name="subject" content="함장종합사회복지관">
+<meta name="keywords" content="함장종합사회복지관, 대구 수성구. 지역주민 프로그램, 복지서비스, 지역사회보호사업, 교육문화사업">
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="함장종합사회복지관" />
+<meta property="og:subject" content="함장종합사회복지관">
+<meta property="og:site_name" content="함장종합사회복지관" />
+<meta property="og:description" content="함장종합사회복지관, 대구 수성구. 지역주민 프로그램, 복지서비스, 지역사회보호사업, 교육문화사업">
+<meta property="og:url" content="http://www.hamjang.or.kr/">
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:image" content=""id="og-image-value">
+<meta property="og:image" content="../img/img_og.png" />
+<meta name="twitter:title" content="함장종합사회복지관" />
+<meta name="twitter:description" content="함장종합사회복지관, 대구 수성구. 지역주민 프로그램, 복지서비스, 지역사회보호사업, 교육문화사업" />
+<meta name="twitter:image" content="../img/img_og.png" />
+
+<link rel="shortcut icon" href="../img/favicon.png">
+
+<link type="text/css" rel="stylesheet" media="all" href="../js/css/jquery-ui.min.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../css/common.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../css/styleDefault.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../css/layout.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../css/content.css" /><!-- main & content -->
+<link type="text/css" rel="stylesheet" media="all" href="../css/board.css" />
+
+<script type="text/javascript">
+// Common Javascript
+var _CACHE_URL = "";
+var _PACK_URL = "/pack";
+var _CUR_URL = "/06_sub/03_sub.html";
+</script>
+<script type="text/javascript" src="../js/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/jquery/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="../js/jquery/jquery.easing.1.3.js"></script>
+
+<script type="text/javascript" src="../js/topmenu.js"></script>
+<script type="text/javascript" src="../js/layout.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/sub.js"></script><!-- main & sub -->
+<script type="text/javascript" src="../js/jquery/aos.js"></script>
+<script type="text/javascript" src="../js/jquery/sly.js"></script>
+<script type="text/javascript" src="../js/jquery/slick.js"></script>
+<script type="text/javascript" src="../js/jquery/owl.carousel.js"></script>
+<script type="text/javascript" src="../js/jquery/wow.js"></script>
+<script type="text/javascript" src="../js/custom/common.js"></script>
+<script type="text/javascript" src="../js/jquery/jquery.scrollbar.js"></script>
+<script type="text/javascript" src="../js/jquery/popup.js"></script><!-- 인증서 -->
+
+<link rel="stylesheet" href="../js/css/animate.css">
+<link rel="stylesheet" href="../js/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../js/css/slick-theme.css">
+<link rel="stylesheet" href="../js/css/slick.css">
+<link rel="stylesheet" href="../js/css/jquery.scrollbar.css">
+
+<link rel="stylesheet" href="../js/css/aos.css"><!-- 연혁 -->
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function execPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var fullAddr = ''; // 최종 주소 변수
+            var extraAddr = ''; // 조합형 주소 변수
+
+            // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                fullAddr = data.roadAddress;
+
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                fullAddr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+            if(data.userSelectedType === 'R'){
+                //법정동명이 있을 경우 추가한다.
+                if(data.bname !== ''){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있을 경우 추가한다.
+                if(data.buildingName !== ''){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('zip').value = data.zonecode; //5자리 새우편번호 사용
+            document.getElementById('addr').value = fullAddr;
+
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById('detail_addr').focus();
+        }
+    }).open();
+}
+</script>
+<script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function(){
+        $.datepicker.regional['ko'] = {
+            closeText: '닫기',
+            prevText: '이전달',
+            nextText: '다음달',
+            currentText: '오늘',
+            monthNames: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
+            '7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
+            monthNamesShort: ['1월','2월','3월','4월','5월','6월',
+            '7월','8월','9월','10월','11월','12월'],
+            dayNames: ['일','월','화','수','목','금','토'],
+            dayNamesShort: ['일','월','화','수','목','금','토'],
+            dayNamesMin: ['일','월','화','수','목','금','토'],
+            weekHeader: 'Wk',
+            dateFormat: 'yymmdd',
+            firstDay: 0,
+            isRTL: false,
+            showMonthAfterYear: true,
+            yearSuffix: ''};
+        $.datepicker.setDefaults($.datepicker.regional['ko']);
+    
+        $('#birth').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy-mm-dd',
+            yearRange: 'c-99:c+99',
+            maxDate: '+0d'
+        }); 
+    
+        $('.datepicker').datepicker({
+            monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            dayNamesMin: ['일','월','화','수','목','금','토'],
+            weekHeader: 'Wk',
+            dateFormat: 'yy-mm-dd',
+            autoSize: false,
+            changeYear: true,
+            changeMonth: true,
+            showButtonPanel: true,
+            currentText: '오늘 2026-11-04',
+            closeText: '닫기'
+        });
+    
+    });
+//]]>
+</script></head>
+<body>
+<div id="skipNavi">
+  <h1 class="blind">함장종합사회복지관 스킵네비게이션</h1>
+  <ul>
+    <li><a href="#contents" class="skipLink">본문바로가기</a></li>
+    <li><a href="#topmenu" class="skipLink">주메뉴바로가기</a></li>
+  </ul>
+</div>
+<!-- s: #doc //-->
+<div id="doc" class="sub"> 
+  <!-- s: #header-wrap //-->
+  <header id="header-wrap">
+		<div id="header">
+			<h1 id="logo"><a href="../main/"><span class="blind">함장종합사회복지관</span></a></h1>
+			<div class="top-sns">
+				<ul>
+					<li><a href="https://www.instagram.com/hamjang1182/"  target="_blank"><span class="blind">인스타</span></a></li>
+					<li><a href="https://www.facebook.com/profile.php?id=100095436257708"  target="_blank"><span class="blind">페이스북</span></a></li>
+					<!--<li><a href="https://cafe.naver.com/hamjang82"  target="_blank"><span class="blind">네이버블로그</span></a></li>-->
+					<li><a href="https://www.youtube.com/@%ED%95%A8%EC%9E%A5%EC%A2%85%ED%95%A9%EC%82%AC%ED%9A%8C%EB%B3%B5%EC%A7%80%EA%B4%80"  target="_blank"><span class="blind">유튜브</span></a></li>
+				</ul>
+			</div>
+			<a href="#n" class="bt-mnall">
+				<span class="bar no1"></span>
+				<span class="bar no2"></span>
+				<span class="bar no3"></span>
+				<span class="blind">메뉴</span>
+			</a>
+			<a href="#n" class="bt-allmenu">
+				<span class="bar no1"></span>
+				<span class="bar no2"></span>
+				<span class="bar no3"></span>
+				<span class="blind">사이트맵</span>
+			</a>
+			<!-- s: allmenu-wrap -->
+			<div id="allmenu-wrap" >
+				<a href="#n" class="close"><span class="blind">닫기</span></a>
+				<div class="allmenu">
+					<div class="vc">
+						<h3><span>SITE MAP</span></h3>
+						<ul>
+							<li class="mn_l1">
+								<a href="#n" class="mn_a1"><span>복지관 소개</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../01_sub/01_sub.html" class="mn_a2"><span>인사말</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/10_sub.html" class="mn_a2"><span>연혁</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/02_sub.html" class="mn_a2"><span>미션과 비전</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/03_sub.html" class="mn_a2"><span>기관현황</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/04_sub.html" class="mn_a2"><span>조직 및 직원현황</span></a></li>
+
+										<!--<li class="mn_l2"><a href="../01_sub/05_sub.html" class="mn_a2"><span>규정 및 지침</span></a></li>
+
+										<li class="mn_l2"><a href="../01_sub/05_sub.html" class="mn_a2"><span>복지관 윤리강령</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/06_sub.html" class="mn_a2"><span>이용자 권리규정</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/07_sub.html" class="mn_a2"><span>개인정보처리방침</span></a></li>-->
+
+										<li class="mn_l2"><a href="../01_sub/08_sub.html" class="mn_a2"><span>오시는길</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="mn_l1">
+								<a href="#n" class="mn_a1"><span>복지관 소식</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../02_sub/01_sub.html" class="mn_a2"><span>공지사항</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/02_sub.html" class="mn_a2"><span>재정 및 외부 공고</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/03_sub.html" class="mn_a2"><span>복지관 이야기</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/04_sub.html" class="mn_a2"><span>복지관 갤러리</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/05_sub.html" class="mn_a2"><span>자료실</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/06_sub.html" class="mn_a2"><span>연차보고서</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="mn_l1">
+								<a href="#n" class="mn_a1"><span>사업소개</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../03_sub/01_sub.html" class="mn_a2"><span>통합돌봄 사례관리</span></a></li>
+										<li class="mn_l2"><a href="../03_sub/02_sub.html" class="mn_a2"><span>서비스제공</span></a></li>
+										<li class="mn_l2"><a href="../03_sub/03_sub.html" class="mn_a2"><span>지역조직</span></a></li>
+										<li class="mn_l2"><a href="../03_sub/04_sub.html" class="mn_a2"><span>특화사업</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<!-- <li class="mn_l1">
+								<a href="#n" class="mn_a1"><span>특화사업</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec1" class="mn_a2"><span>놀이지도사 양성</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec1" class="mn_a2"><span>아동권리교육</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec2" class="mn_a2"><span>미래인재 발굴 및 지원</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec2" class="mn_a2"><span>후원회 구성 및 운영</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec3" class="mn_a2"><span>북카페 운영</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec3" class="mn_a2"><span>행복공동체사업</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec4" class="mn_a2"><span>이웃기웃사업</span></a></li> 
+									</ul>
+								</div>
+							</li>-->
+							<li class="mn_l1">
+								<a href="#n" class="mn_a1"><span>프로그램 참여</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../05_sub/01_sub.html" class="mn_a2"><span>교육문화사업 이용안내</span></a></li>
+										<li class="mn_l2"><a href="../05_sub/02_sub.html" class="mn_a2"><span>프로그램 시간표</span></a></li>
+										<li class="mn_l2"><a href="../05_sub/03_sub.html" class="mn_a2"><span>교육문화 신청</span></a></li>
+										<li class="mn_l2"><a href="../05_sub/04_sub.html" class="mn_a2"><span>신청내역확인</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="mn_l1">
+								<a href="#n" class="mn_a1"><span>참여와 나눔</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../06_sub/01_sub.html" class="mn_a2"><span>자원봉사</span></a></li>
+										<li class="mn_l2"><a href="../06_sub/02_sub.html" class="mn_a2"><span>후원</span></a></li>
+										<li class="mn_l2"><a href="../06_sub/04_sub.html" class="mn_a2"><span>실무자 교육</span></a></li>
+										<li class="mn_l2"><a href="../06_sub/03_sub.html" class="mn_a2"><span>건의 및 고충상담</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="mn_l1">
+								<a href="#n" class="mn_a1"><span>공간대관</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../07_sub/01_sub.html" class="mn_a2"><span>공간대관</span></a></li>
+									</ul>
+								</div>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+				<p class="copy">ⓒ 함장종합사회복지관. ALL RIGHTS RESERVED.</p>
+			</div>
+			<!-- e: allmenu-wrap --> 
+			<!-- s: mainNavi-wrap -->
+			<div id="mainNavi-wrap" >
+				<h2 class="blind">함장종합사회복지관 메뉴</h2>
+				<div id="mainNavi">
+					<!-- s : nav -->
+					<div class="nav">
+						<div class="tm-top">
+							<h3><span class="blind">함장종합사회복지관</span></h3>
+							<a href="#n" class="bt-mnclose"><span class="blind">메뉴닫기</span></a>
+						</div>
+						<ul class="topmenu" id="topmenu">
+							<li class="mn_l1">
+								<a href="../01_sub/01_sub.html" class="mn_a1"><span>복지관 소개</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../01_sub/01_sub.html" class="mn_a2"><span>인사말</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/10_sub.html" class="mn_a2"><span>연혁</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/02_sub.html" class="mn_a2"><span>미션과 비전</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/03_sub.html" class="mn_a2"><span>기관현황</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/04_sub.html" class="mn_a2"><span>조직 및 직원현황</span></a></li>
+
+										<!--<li class="mn_l2"><a href="../01_sub/05_sub.html" class="mn_a2"><span>규정 및 지침</span></a></li>
+
+										<li class="mn_l2"><a href="../01_sub/05_sub.html" class="mn_a2"><span>복지관 윤리강령</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/06_sub.html" class="mn_a2"><span>이용자 권리규정</span></a></li>
+										<li class="mn_l2"><a href="../01_sub/07_sub.html" class="mn_a2"><span>개인정보처리방침</span></a></li>-->
+
+										<li class="mn_l2"><a href="../01_sub/08_sub.html" class="mn_a2"><span>오시는길</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="mn_l1">
+								<a href="../02_sub/01_sub.html" class="mn_a1"><span>복지관 소식</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../02_sub/01_sub.html" class="mn_a2"><span>공지사항</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/02_sub.html" class="mn_a2"><span>재정 및 외부 공고</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/03_sub.html" class="mn_a2"><span>복지관 이야기</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/04_sub.html" class="mn_a2"><span>복지관 갤러리</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/05_sub.html" class="mn_a2"><span>자료실</span></a></li>
+										<li class="mn_l2"><a href="../02_sub/06_sub.html" class="mn_a2"><span>연차보고서</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="mn_l1">
+								<a href="../03_sub/01_sub.html" class="mn_a1"><span>사업소개</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../03_sub/01_sub.html" class="mn_a2"><span>통합돌봄 사례관리</span></a></li>
+										<li class="mn_l2"><a href="../03_sub/02_sub.html" class="mn_a2"><span>서비스제공</span></a></li>
+										<li class="mn_l2"><a href="../03_sub/03_sub.html" class="mn_a2"><span>지역조직</span></a></li>
+										<li class="mn_l2"><a href="../03_sub/04_sub.html" class="mn_a2"><span>특화사업</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<!-- <li class="mn_l1">
+								<a href="../04_sub/01_sub.html" class="mn_a1"><span>특화사업</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec1" class="mn_a2"><span>놀이지도사 양성</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec1" class="mn_a2"><span>아동권리교육</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec2" class="mn_a2"><span>미래인재 발굴 및 지원</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec2" class="mn_a2"><span>후원회 구성 및 운영</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec3" class="mn_a2"><span>북카페 운영</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec3" class="mn_a2"><span>행복공동체사업</span></a></li>
+										<li class="mn_l2"><a href="../04_sub/01_sub.html#sec4" class="mn_a2"><span>이웃기웃사업</span></a></li>
+									</ul>
+								</div>
+							</li> -->
+							<li class="mn_l1">
+								<a href="../05_sub/01_sub.html" class="mn_a1"><span>프로그램 참여</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../05_sub/01_sub.html" class="mn_a2"><span>교육문화사업 이용안내</span></a></li>
+										<li class="mn_l2"><a href="../05_sub/02_sub.html" class="mn_a2"><span>프로그램 시간표</span></a></li>
+										<li class="mn_l2"><a href="../05_sub/03_sub.html" class="mn_a2"><span>교육문화 신청</span></a></li>
+										<li class="mn_l2"><a href="../05_sub/04_sub.html" class="mn_a2"><span>신청내역확인</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="mn_l1">
+								<a href="../06_sub/01_sub.html" class="mn_a1"><span>참여와 나눔</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../06_sub/01_sub.html" class="mn_a2"><span>자원봉사</span></a></li>
+										<li class="mn_l2"><a href="../06_sub/02_sub.html" class="mn_a2"><span>후원</span></a></li>
+										<li class="mn_l2"><a href="../06_sub/04_sub.html" class="mn_a2"><span>실무자 교육</span></a></li>
+										<li class="mn_l2"><a href="../06_sub/03_sub.html" class="mn_a2"><span>건의 및 고충상담</span></a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="mn_l1">
+								<a href="../07_sub/01_sub.html" class="mn_a1"><span>공간대관</span></a>
+								<div class="depth2-wrap">
+									<ul class="depth2">
+										<li class="mn_l2"><a href="../07_sub/01_sub.html" class="mn_a2"><span>공간대관</span></a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+						<div class="tm-sns">
+							<ul>
+								<li><a href="https://www.instagram.com/hamjang1182/" target="_blank"><span class="blind">인스타</span></a></li>
+								<li><a href="https://www.facebook.com/profile.php?id=100095436257708"><span class="blind" target="_blank">페이스북</span></a></li>
+								<li><a href="https://www.youtube.com/@%ED%95%A8%EC%9E%A5%EC%A2%85%ED%95%A9%EC%82%AC%ED%9A%8C%EB%B3%B5%EC%A7%80%EA%B4%80"><span class="blind" target="_blank">유튜브</span></a></li>
+								<!--<li><a href="https://cafe.naver.com/hamjang82" target="_blank"><span class="blind">네이버블로그</span></a></li>-->
+							</ul>
+						</div>
+					</div>
+					<!-- e : nav -->
+					
+				</div>
+			</div>
+			<!-- e: mainNavi-wrap -->
+			<div class="mn-bar">&nbsp;</div>
+		</div>
+	</header>  <!-- e: #header-wrap //--> 
+  <!-- s: #container-wrap //-->
+  <div id="container-wrap">
+    <div id="contents" class="div-cont"> 
+       <div id="path" class="div-cont">
+        <ul>
+          <li>홈</li>
+          <li>참여와 나눔</li>
+          <li>건의 및 고충상담</li>
+        </ul>
+      </div>
+      <!-- s: cont-top -->
+      <div class="cont-top">
+        <h2>참여와 나눔</h2>
+        <div class="snb02">
+          <div class="ov">
+            <ul>
+              <li><a href="01_sub.html"><span>자원봉사</span></a></li>
+              <li><a href="02_sub.html">후원</span></a></li>
+			  <li><a href="04_sub.html"><span>실무자 교육</span></a></li>
+              <li class="active"><a href="03_sub.html">건의 및 고충상담</span></a></li>
+            </ul>
+            <div class="under"></div>
+          </div>
+        </div>
+      </div>
+      <!-- e: cont-top -->
+
+	  <div class="gap30"></div>
+      
+      <!-- s: 내용 --> 
+      <!-- s: 탭 -->
+      
+      <div class="u-tab04" style="margin-bottom: 0px;">
+        <ul>
+          <li class="active"><a href="03_sub.html"><span>건의·고충 접수</span></a></li>
+		  <li><a href="03_sub_2.html"><span>처리결과</span></a></li>
+        </ul>
+      </div>
+      <!-- e: 탭 -->
+	<!-- s: list -->
+      <form name="request_form" id="request_form">
+      <input type="hidden" name="proc" value="1" />
+      <input type="hidden" name="sms_mode" value="cs" />
+      <input type="hidden" name="cs_cate" value="cs" />
+
+      <div class="board-wrap write">
+	  <h5>기본정보</h5>
+        <div class="write">
+          <p class="nec-ex">표시는 필수 입력 항목입니다.</p>
+          <ul>
+		   
+            <li>
+              <p class="btxt nec"><span>성명</span></p>
+              <p class="chk-input w50p">
+                <input type="text" name="name" id="name" class="essential" title="성명" placeholder="성명을 입력해주세요"  autocomplete="off"/>
+              </p>
+            </li>
+            <li>
+              <p class="btxt nec"><span>이메일</span></p>
+              <p class="chk-input">
+                <input type="text" name="email" id="email" title="이메일" placeholder="이메일를 입력해주세요" autocomplete="off"/>
+              </p>
+            </li>
+            <li>
+              <p class="btxt nec"><span>연락처</span></p>
+              <p class="chk-input w50p">
+                <input type="text" name="tel" id="tel" title="연락처" placeholder="연락처를 입력해주세요" autocomplete="off"/>
+              </p>
+            </li>
+            <li>
+              <p class="btxt nec"><span>연락방법</span></p>
+              <div class="field choice pad5t">
+                              <p class="chk-radio">
+                  <input type="radio" id="contact_how1" name="contact_how" value="1" class="essential" title="연락방법" />
+                  <label for="contact_how1">이메일</label>
+                </p>
+                              <p class="chk-radio">
+                  <input type="radio" id="contact_how2" name="contact_how" value="2" class="essential" title="연락방법" />
+                  <label for="contact_how2">휴대폰</label>
+                </p>
+                            </div>
+            </li>
+
+			
+			<li>
+              <p class="btxt nec"><span>제목</span></p>
+              <p class="chk-input w100p">
+                <input type="text" name="subject" id="subject" class="essential" title="제목" placeholder="제목을 입력해주세요"  autocomplete="off"/>
+              </p>
+            </li>
+            <li>
+              <p class="btxt nec"><span>하실말씀</span></p>
+              <div class="chk-input">
+                <textarea name="comment" id="comment" class="essential" title="하실말씀" placeholder="건의하실 사항을 남겨주세요" autocomplete="off"></textarea>
+              </div>
+            </li>
+			<li>
+              <p class="btxt nec"><span>문의사항과 처리결과 공개</span></p>
+              <div class="field choice pad5t">
+              <p class="chk-radio mg10r">
+                <input type="radio" id="secret_proc_2" name="secret_proc" value="2" class="essential" title="문의사항에 대한 답변 공개여부" />
+                <label for="secret_proc_2">동의합니다</label>
+              </p>
+              <p class="chk-radio mg10r">
+                <input type="radio" id="secret_proc_1" name="secret_proc" value="1" class="essential" title="문의사항에 대한 답변 공개여부" />
+                <label for="secret_proc_1">동의하지 않습니다</label>
+              </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- s: 개인정보처리방침 -->
+        <div class="private">
+          <h5>개인정보처리방침</h5>
+          <div class="scroll">
+          <h6>함장종합사회복지관은 수집한 개인정보를 다음의 목적을 위해 활용합니다.</h6>
+<ul>
+<li>- 문의사항에 대한 답변</li>
+</ul>
+<br>
+
+<h6>수집하는 개인정보 항목</h6>
+<ul>
+<li>- 함장종합사회복지관은 문의사항에 대한 친절한 답변을 위해 아래와 같은 개인정보를 수집하고 있습니다.</li>
+<li>- 수집항목 : 회사명, 성명, 연락처, 이메일<br>- 개인정보 수집방법 : 온라인문의 입력 폼</li>
+</ul>
+<br>
+
+<h6>개인정보의 보유 및 이용기간</h6>
+<ul>
+<li>- 함장종합사회복지관은 개인정보 수집 및 이용목적이 달성된 후에는 예외 없이 해당 정보를 지체 없이 파기합니다.</li>
+</ul>          </div>
+          <div class="agrees">
+            <p class="chk-check">
+              <input type="checkbox" name="agree" id="agree" value="y" class="essential" title="개인정보처리방침" />
+              <label for="agree">동의합니다.</label>
+            </p>
+          </div>
+        </div>
+        
+        <!-- e: 개인정보처리방침 -->
+
+		<div class="lower"> <a href="javascript:void(0);" class="bblue-btn" id="request_submit"><span>상담 신청하기</span></a> </div>
+      </div>
+      </form>
+      <script>
+        $(function(){
+            $("input:radio[name='contact_how']").on("click", function() {
+                if($(this).val() == "1") {
+                    $("input[name='email']").addClass('essential');
+                    $("input[name='tel']").removeClass('essential');
+                } else {
+                    $("input[name='email']").removeClass('essential');
+                    $("input[name='tel']").addClass('essential');
+                }
+            });
+        
+            $('#request_submit').on('click', function() {
+                var es = essential2('request_form');
+                if(es) {
+                    var dataA = new FormData($('#request_form')[0]);
+                    //dataA.append('userfile', $('input[type=file]')[0].files[0]);
+        
+                    loading('show');
+                    $.ajax({
+                        method: 'POST',
+                        dataType: 'json',
+                        data: dataA,
+                        url: _PACK_URL + '/cs/doConsult.php',
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        processData: false,
+                        contentType: false
+                    }).done(function(sData) {
+                        switch(sData['state']) {
+                            case 'success' : 
+                                $('#request_form')[0].reset();
+                                $('#name').focus();
+                                alert(sData['note']);
+                                break;
+                            default : 
+                                alert(sData['note']);
+                                console.log(sData['state']);
+                                break;
+                        }
+                    }).fail(function(err, _err) {
+                        console.log(err)
+                    }).always(function() {
+                        loading('hide');
+                    });
+                }
+            });
+        });
+      </script>
+      <!-- e: list --> 
+      <div class="gap"></div>
+      <div class="gap"></div>
+      <!-- s: page end // --> 
+    </div>
+  </div>
+  <!-- e: #container-wrap //--> 
+  <!-- s: #footer-wrap //-->
+  <footer id="footer-wrap">
+		<div id="footer" class="div-cont">
+			<div class="f-link">
+				<ul>
+					<li><a href="../01_sub/07_sub.html"><span>개인정보처리방침</span></a></li>
+					<li><a href="../01_sub/08_sub.html"><span>찾아오시는 길</span></a></li>
+				</ul>
+			</div>
+			<div class="f-info">
+				<div class="f-txt">
+					<p>우. 42162   대구광역시 수성구 들안로19길 48 </p>
+
+					<p><span>단체명</span> : 함장종합사회복지관 </p>
+					
+					<p><span>대표자명</span> : 김홍수 </p>
+					
+					<p><span>고유번호</span> : 299-82-00659 </p>
+					<br />
+
+					
+					<p><span>전화</span> : 053-763-1182 </p>
+					<p><span>팩스</span> : 053-763-1183 </p>
+					<p><span>통신판매업신고번호</span> : 2024-대구수성구-0063 </p>
+					<p><span>이메일</span> : hamjang82@daum.net </p>
+
+					<p class="in-copy">ⓒ <span>2023 함장종합사회복지관.</span></p>
+				</div>
+			</div>
+			<div class="f-abr">
+				<div class="fl">
+					<div class="f-oth">
+						<ul>
+							<li><a href="../08_sub/01_sub.html"><span>복지관 윤리강령</span></a></li>
+							<li><a href="../08_sub/02_sub.html"><span>이용자 권리규정</span></a></li>
+							<li><a href="../08_sub/03_sub.html"><span>개인정보처리방침</span></a></li>
+							<li><a href="../08_sub/04_sub.html"><span>안전보건관리계획</span></a></li> 
+						</ul>
+					</div>
+				</div>
+				<div class="fr">
+					<div class="f-cs">
+						<p class="btxt">이용안내 <span>053-763-1182</span></p>
+						<p class="stxt"><span>평일   오전 9시 ~ 오후 8시</span>일 · 공휴일은 휴관입니다.</p>
+					</div>
+					<!--<div class="f-sns">
+						<ul>
+							<li><a href="https://www.instagram.com/hamjang1182/" target="_blank"><span class="blind">인스타</span></a></li>
+							<li><a href="https://www.facebook.com/profile.php?id=100095436257708"><span class="blind" target="_blank">페이스북</span></a></li>
+							<li><a href="#n"><span class="blind" target="_blank">유튜브</span></a></li>
+							<li><a href="https://cafe.naver.com/hamjang82" target="_blank"><span class="blind">네이버블로그</span></a></li>
+						</ul>
+					</div>-->
+				</div>
+			</div>
+			<div class="f-family">
+				<a href="#n" class="sel"><span>협력기관</span></a>
+				<ul>
+					<li><a href="http://www.hwasung.or.kr/" target="_blank"><span>화성복지재단</span></a></li>
+					<li><a href="https://www.suseong.kr/" target="_blank"><span>수성구청</span></a></li>
+					<li><a href="https://www.daegu.go.kr/index.do" target="_blank"><span>대구광역시</span></a></li>
+					<li><a href="http://www.dgaswc.or.kr/html/main.html" target="_blank"><span>대구광역시사회복지관협회</span></a></li>
+					<li><a href="http://www.welpia.org/main/index.html" target="_blank"><span>대구광역시사회복지사협회</span></a></li>
+					<li><a href="http://www.twin.or.kr/" target="_blank"><span>대구광역시사회복지협의회</span></a></li>
+					<li><a href="https://chest.or.kr/base.do" target="_blank"><span>사랑의열매 사회복지공동모금회</span></a></li>
+					<li><a href="https://kaswc.or.kr/" target="_blank"><span>한국사회복지관협회</span></a></li>
+					<li><a href="https://www.welfare.net/welfare/main.do" target="_blank"><span>한국사회복지사협회</span></a></li>
+					<li><a href="https://www.bokji.net/" target="_blank"><span>사회복지포털 복지넷</span></a></li>
+					<li><a href="https://www.mohw.go.kr/react/index.jsp" target="_blank"><span>보건복지부</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+
+	<a href="#n" class="top-btn"><span class="blind">상단으로</span></a>  <!-- e: #footer-wrap //--> 
+</div>
+<!-- e: #doc //--> 
+<script>
+     new WOW().init();
+</script>
+</body>
+</html>

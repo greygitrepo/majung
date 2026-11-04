@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <!-- 좌측 list 시작 -->
+ <head></head>
+ <body>
+  <div id="list_listR" style="display:none;"> 
+   <div class="left_area" id="lelistwrapLeft"> 
+    <div class="tbl_type"> 
+     <div class="none_area"> 
+      <script type="text/javascript">
+  
+  	//검색어가 있을 때, "AI 법령검색 서비스로 이동" 누르면 검색어 포함해서 페이지 이동
+	function goNoSearchAi(){
+		var searchWord = $("#query").val().trim();
+		var menuNum = (typeof menuInfoParam != "undefined" && menuInfoParam) ? menuInfoParam.tabMenuId:0;
+		if(searchWord == null || searchWord == ''){
+			window.open('/LSW/ais/main.do',"_blank");
+		}
+		else if(menuNum == 81){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=0&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum ==183){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=2&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum == 261){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=1&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum == 267){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=3&searchResultLsKndCd=0',"_blank");
+		}else{
+			window.open('/LSW/ais/main.do',"_blank");
+		}
+	}
+</script> 
+      <div class="none_area_wrap"> 
+       <div class="tp"> 
+        <div class="tit"> 
+         <span class="txt-rd">검색결과</span>가 없습니다.
+         <br /> 
+         <span>검색 결과가 나오지 않으셨나요?</span> 
+        </div> 
+        <a href="javascript:;" title="지능형 법령검색 바로가기" onclick="javascript:goNoSearchAi()"> <img src="/LSW/images/aai/aiLnk.png" alt="AI 법령검색 바로가기" /> </a> 
+       </div> 
+       <ul> 
+        <li>찾고자 하는 법령정보의 <span class="txt-bl">제명이 정확한지</span> 확인해 주세요.</li> 
+        <li>찾고자 하는 법령정보의 제명을 모르는 경우, <span class="txt-bl">키워드만 입력</span>해 보세요<br /> <span class="txt-sm">(예: 임시수입부가세법 -- ‘임시수입’만 입력)</span></li> 
+        <li>최상단 탭에서 <span class="txt-bl">법령, 자치법규, 행정규칙 등 대분류</span>를 바꾸어 보세요 </li> 
+        <li>중앙 상단 탭에서 <span class="txt-bl">현행, 연혁 등의 분류</span>를 바꾸어 보세요</li> 
+        <li>좌측 상단 법령 본문 혹은 조문 내용 등 <span class="txt-bl">다른 탭으로 이동</span>해 보세요</li> 
+       </ul> 
+       <p class="bt"> <a href="#" onclick="javascript:searchAdd('1');">관보검색 <img src="https://www.law.go.kr/LSW/images/common/btn_kwanbo.gif" alt="관보검색" /> </a> <a href="#" onclick="javascript:searchAdd('2');">국가기록원 검색 <img style="margin-left: 4px;" src="https://www.law.go.kr/LSW/images/common/btn_record.gif" alt="국가기록원검색" /> </a> </p> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- 좌측 list 끝 //--> 
+  <!-- Wide List --> 
+  <div id="readNumDiv" style="display:none;">
+    총
+   <strong>0</strong>건 
+  </div> 
+  <div class="tbl_wrap"> 
+   <input type="hidden" id="tabMenu" value="81" /> 
+   <div id="viewHeightDiv" class="tbl_type"> 
+    <table summary="법령 검색결과 목록으로 항목은 번호, 법령명, 법령종류, 공포번호, 공포일자 , 시행일자, 제정·개정구분, 소관부처 입니다 "> 
+     <caption>
+      법령 검색결과 목록
+     </caption> 
+     <colgroup> 
+      <col style="width: 4%" /> 
+      <col /> 
+      <col style="width: 10%;" /> 
+      <col style="width: 10%;" /> 
+      <col style="width: 10%;" /> 
+      <col style="width: 10%;" /> 
+      <col style="width: 10%;" /> 
+      <col style="width: 10%;" /> 
+     </colgroup> 
+     <thead> 
+      <tr id="wideListTblThead100_7_0"> 
+       <th scope="col">번호</th> 
+       <th scope="col">법령명</th> 
+       <th scope="col">공포일자</th> 
+       <th scope="col">법령종류</th> 
+       <th scope="col">공포번호</th> 
+       <th scope="col">시행일자</th> 
+       <th scope="col">제정·개정구분</th> 
+       <th scope="col">소관부처</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td colspan="8" class="none_area"> <script type="text/javascript">
+  
+  	//검색어가 있을 때, "AI 법령검색 서비스로 이동" 누르면 검색어 포함해서 페이지 이동
+	function goNoSearchAi(){
+		var searchWord = $("#query").val().trim();
+		var menuNum = (typeof menuInfoParam != "undefined" && menuInfoParam) ? menuInfoParam.tabMenuId:0;
+		if(searchWord == null || searchWord == ''){
+			window.open('/LSW/ais/main.do',"_blank");
+		}
+		else if(menuNum == 81){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=0&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum ==183){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=2&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum == 261){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=1&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum == 267){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=3&searchResultLsKndCd=0',"_blank");
+		}else{
+			window.open('/LSW/ais/main.do',"_blank");
+		}
+	}
+</script> 
+        <div class="none_area_wrap"> 
+         <div class="tp"> 
+          <div class="tit"> 
+           <span class="txt-rd">검색결과</span>가 없습니다.
+           <br /> 
+           <span>검색 결과가 나오지 않으셨나요?</span> 
+          </div> 
+          <a href="javascript:;" title="지능형 법령검색 바로가기" onclick="javascript:goNoSearchAi()"> <img src="/LSW/images/aai/aiLnk.png" alt="AI 법령검색 바로가기" /> </a> 
+         </div> 
+         <ul> 
+          <li>찾고자 하는 법령정보의 <span class="txt-bl">제명이 정확한지</span> 확인해 주세요.</li> 
+          <li>찾고자 하는 법령정보의 제명을 모르는 경우, <span class="txt-bl">키워드만 입력</span>해 보세요<br /> <span class="txt-sm">(예: 임시수입부가세법 -- ‘임시수입’만 입력)</span></li> 
+          <li>최상단 탭에서 <span class="txt-bl">법령, 자치법규, 행정규칙 등 대분류</span>를 바꾸어 보세요 </li> 
+          <li>중앙 상단 탭에서 <span class="txt-bl">현행, 연혁 등의 분류</span>를 바꾸어 보세요</li> 
+          <li>좌측 상단 법령 본문 혹은 조문 내용 등 <span class="txt-bl">다른 탭으로 이동</span>해 보세요</li> 
+         </ul> 
+         <p class="bt"> <a href="#" onclick="javascript:searchAdd('1');">관보검색 <img src="https://www.law.go.kr/LSW/images/common/btn_kwanbo.gif" alt="관보검색" /> </a> <a href="#" onclick="javascript:searchAdd('2');">국가기록원 검색 <img style="margin-left: 4px;" src="https://www.law.go.kr/LSW/images/common/btn_record.gif" alt="국가기록원검색" /> </a> </p> 
+        </div> </td> 
+      </tr> 
+     </tbody>  
+    </table> 
+   </div> 
+  </div> 
+  <!-- paging --> 
+  <!-- paging --> 
+  <div class="paging"> 
+   <a><img src="/LSW/images/cssimg/page_first.gif" alt="처음" style="display:none" /></a>
+   <ol start="1">
+    <li></li>
+   </ol>
+   <a></a> 
+  </div> 
+  <!-- paging //--> 
+  <!-- paging --> 
+  <!-- Wide List //--> 
+  <input type="hidden" id="pageSize" value="1" /> 
+ </body>
+</html>

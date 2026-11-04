@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <!-- 좌측 list -->
+ <head></head>
+ <body>
+  <div id="list_listR" style="display:none;"> 
+   <div class="left_area" id="lelistwrapLeft"> 
+    <div class="tbl_type"> 
+     <div class="none_area"> 
+      <script type="text/javascript">
+  
+  	//검색어가 있을 때, "AI 법령검색 서비스로 이동" 누르면 검색어 포함해서 페이지 이동
+	function goNoSearchAi(){
+		var searchWord = $("#query").val().trim();
+		var menuNum = (typeof menuInfoParam != "undefined" && menuInfoParam) ? menuInfoParam.tabMenuId:0;
+		if(searchWord == null || searchWord == ''){
+			window.open('/LSW/ais/main.do',"_blank");
+		}
+		else if(menuNum == 81){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=0&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum ==183){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=2&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum == 261){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=1&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum == 267){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=3&searchResultLsKndCd=0',"_blank");
+		}else{
+			window.open('/LSW/ais/main.do',"_blank");
+		}
+	}
+</script> 
+      <div class="none_area_wrap"> 
+       <div class="tp"> 
+        <div class="tit"> 
+         <span class="txt-rd">검색결과</span>가 없습니다.
+         <br /> 
+         <span>검색 결과가 나오지 않으셨나요?</span> 
+        </div> 
+        <a href="javascript:;" title="지능형 법령검색 바로가기" onclick="javascript:goNoSearchAi()"> <img src="/LSW/images/aai/aiLnk.png" alt="AI 법령검색 바로가기" /> </a> 
+       </div> 
+       <ul> 
+        <li>찾고자 하는 법령정보의 <span class="txt-bl">제명이 정확한지</span> 확인해 주세요.</li> 
+        <li>찾고자 하는 법령정보의 제명을 모르는 경우, <span class="txt-bl">키워드만 입력</span>해 보세요<br /> <span class="txt-sm">(예: 임시수입부가세법 -- ‘임시수입’만 입력)</span></li> 
+        <li>최상단 탭에서 <span class="txt-bl">법령, 자치법규, 행정규칙 등 대분류</span>를 바꾸어 보세요 </li> 
+        <li>중앙 상단 탭에서 <span class="txt-bl">현행, 연혁 등의 분류</span>를 바꾸어 보세요</li> 
+        <li>좌측 상단 법령 본문 혹은 조문 내용 등 <span class="txt-bl">다른 탭으로 이동</span>해 보세요</li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- paging --> 
+   <div class="paging"> 
+    <a><img src="/LSW/images/cssimg/page_first.gif" alt="처음" style="display:none" /></a>
+    <ol start="1">
+     <li></li>
+    </ol>
+    <a></a> 
+   </div> 
+   <!-- paging //--> 
+  </div> 
+  <!-- Wide List --> 
+  <div id="readNumDiv" style="display:none;">
+    총
+   <strong id="listCnt">0</strong>건 
+  </div> 
+  <div class="tbl16 tbl_type" id="viewHeightDiv" style="margin-top:0px;"> 
+   <table cellpadding="0" cellspacing="0" class="tbl22" summary="자치법규 검색결과 목록으로 항목은 번호, 법규명, 종류, 공포번호, 공포일자, 시행일자, 제정·개정구분, 부서 입니다"> 
+    <caption>
+     자치법규 검색결과 목록
+    </caption> 
+    <colgroup> 
+     <col width="4%" /> 
+     <col width="10%" /> 
+     <col width="45%" /> 
+     <col width="6%" /> 
+     <col width="8%" /> 
+     <col width="6%" /> 
+     <col width="8%" /> 
+    </colgroup> 
+    <thead> 
+     <tr id="ordinTr1"> 
+      <th scope="col">번호</th> 
+      <th scope="col">자치단체</th> 
+      <th scope="col">법규명</th> 
+      <th scope="col">종류</th> 
+      <th scope="col">공포번호</th> 
+      <th scope="col">공포일자</th> 
+      <!-- 							<th scope="col">시행일자</th> --> 
+      <th scope="col">제정·개정구분</th> 
+      <!-- 							<th scope="col" class="bano">부서</th> --> 
+     </tr> 
+     <tr id="ordinTr2" style="display:none;"> 
+      <th scope="col">순번</th> 
+      <th scope="col">법규명</th> 
+      <th scope="col" id="addTh">시행일자</th> 
+      <th scope="col">종류</th> 
+      <th scope="col">공포번호</th> 
+      <th scope="col">공포일자</th> 
+      <th scope="col">제정·개정구분</th> 
+      <!-- <th scope="col" class="bano">부서</th> --> 
+     </tr> 
+    </thead> 
+    <tbody> 
+     <tr> 
+      <td class="none_area" style="line-height: 214%;" colspan="7"> 
+       <!-- 검색결과/다른 법령정보에서 더 찾아보기 --> <script type="text/javascript">
+  
+  	//검색어가 있을 때, "AI 법령검색 서비스로 이동" 누르면 검색어 포함해서 페이지 이동
+	function goNoSearchAi(){
+		var searchWord = $("#query").val().trim();
+		var menuNum = (typeof menuInfoParam != "undefined" && menuInfoParam) ? menuInfoParam.tabMenuId:0;
+		if(searchWord == null || searchWord == ''){
+			window.open('/LSW/ais/main.do',"_blank");
+		}
+		else if(menuNum == 81){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=0&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum ==183){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=2&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum == 261){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=1&searchResultLsKndCd=0',"_blank");
+		}else if(menuNum == 267){
+			window.open('/LSW/ais/searchList.do?query='+encodeURIComponent(searchWord)+'&searchKndCd=3&searchResultLsKndCd=0',"_blank");
+		}else{
+			window.open('/LSW/ais/main.do',"_blank");
+		}
+	}
+</script> 
+       <div class="none_area_wrap"> 
+        <div class="tp"> 
+         <div class="tit"> 
+          <span class="txt-rd">검색결과</span>가 없습니다.
+          <br /> 
+          <span>검색 결과가 나오지 않으셨나요?</span> 
+         </div> 
+         <a href="javascript:;" title="지능형 법령검색 바로가기" onclick="javascript:goNoSearchAi()"> <img src="/LSW/images/aai/aiLnk.png" alt="AI 법령검색 바로가기" /> </a> 
+        </div> 
+        <ul> 
+         <li>찾고자 하는 법령정보의 <span class="txt-bl">제명이 정확한지</span> 확인해 주세요.</li> 
+         <li>찾고자 하는 법령정보의 제명을 모르는 경우, <span class="txt-bl">키워드만 입력</span>해 보세요<br /> <span class="txt-sm">(예: 임시수입부가세법 -- ‘임시수입’만 입력)</span></li> 
+         <li>최상단 탭에서 <span class="txt-bl">법령, 자치법규, 행정규칙 등 대분류</span>를 바꾸어 보세요 </li> 
+         <li>중앙 상단 탭에서 <span class="txt-bl">현행, 연혁 등의 분류</span>를 바꾸어 보세요</li> 
+         <li>좌측 상단 법령 본문 혹은 조문 내용 등 <span class="txt-bl">다른 탭으로 이동</span>해 보세요</li> 
+        </ul> 
+       </div> 
+       <!-- 검색결과/다른 법령정보에서 더 찾아보기 //--> </td> 
+     </tr> 
+     <tr> 
+      <td colspan="8" style="margin:0;padding:0;border:none;"> 
+       <div style="vertical-align:middle;text-align:center;border:none;"> 
+        <!-- 통합검색결과 --> 
+        <!-- 통합검색결과 --> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+  <!-- paging --> 
+  <div class="paging"> 
+   <a><img src="/LSW/images/cssimg/page_first.gif" alt="처음" style="display:none" /></a>
+   <ol start="1">
+    <li></li>
+   </ol>
+   <a></a> 
+  </div> 
+  <!-- paging //--> 
+  <input type="hidden" id="pageSize" value="1" /> 
+ </body>
+</html>

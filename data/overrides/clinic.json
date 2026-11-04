@@ -1,0 +1,274 @@
+{
+  "_설명": "아플 때(clinic) 중 무료진료소(free_clinic)·입원비 지원(hospital_support). 좌표·전화·주소는 HIRA 병의원 현황(hira_name 으로 찾음, data/curated/derived/hira-clinics-20260930.csv). 대상·조건·시간은 기관 공식 안내에서 사람이 확인한 것만. CONFIRMED 항목만 넣는다(대구희망진료소 2025-04-30 폐쇄, 원곡보건지소 일반진료 휴진 → 넣지 않음). 보건소·보건지소(health_center)는 파이프라인이 HIRA 에서 자동으로 만든다.",
+  "entries": [
+    {
+      "id": "clinic-seoulstation",
+      "hira_name": "다시서기종합지원센터부속의원",
+      "name": "서울역 무료진료소 (다시서기 부속의원)",
+      "subtype": "free_clinic",
+      "cost": "free",
+      "hours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "09:00",
+          "close": "17:00"
+        }
+      ],
+      "hours_note": "평일 오전 9시~오후 5시. 결핵 엑스레이는 평일 오전 9~11시, 오후 1~4시. 치과(틀니 등)는 심사를 거쳐 정해진 분만 받아요.",
+      "eligibility": "거리에서 지내는 분, 노숙인 시설 이용자, 쪽방·고시원·여인숙·만화방·사우나·PC방에서 지내는 분",
+      "requirements": "의료급여(1·2종)를 받는 분은 이용할 수 없어요. 동네 의원·병원으로 가세요. 서울시 안내에는 건강보험 가입자도 제외로 나와요.",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "https://www.homeless.or.kr/medical/",
+      "reason": "주소·전화 CONFIRMED (운영기관 공식·HIRA·서울시). 시간은 운영기관 공식 1곳.",
+      "sources": [
+        "https://www.homeless.or.kr/medical/",
+        "HIRA 병의원 현황 2026.9",
+        "https://news.seoul.go.kr/welfare/archives/49778 (2026-10-12)"
+      ],
+      "research": "data/research/verify-legal-clinic-20261104.md F1",
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "clinic-yeongdeungpo",
+      "hira_name": "영등포보현종합지원센터 부속의원",
+      "name": "영등포 무료진료소 (보현 부속의원)",
+      "subtype": "free_clinic",
+      "cost": "free",
+      "hours_note": "진료 시간은 확인되지 않았어요. 가기 전에 전화로 확인하세요.",
+      "eligibility": "노숙 중인 분, 집이 불안정한 분",
+      "requirements": "서울시 안내에는 의료급여를 받거나 건강보험에 가입된 분은 이용할 수 없다고 나와요.",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "https://www.homeless.or.kr/other/",
+      "reason": "주소·전화 CONFIRMED (HIRA·다시서기 목록·서울시). 서울시 '버드나무로 24가'는 오기. 시간 미확인.",
+      "sources": [
+        "HIRA 병의원 현황 2026.9",
+        "https://www.homeless.or.kr/other/",
+        "https://news.seoul.go.kr/welfare/archives/49778 (2026-10-12)"
+      ],
+      "research": "data/research/verify-legal-clinic-20261104.md F2",
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "clinic-joseph",
+      "hira_name": "요셉나눔재단법인 요셉의원",
+      "name": "요셉의원",
+      "subtype": "free_clinic",
+      "cost": "free",
+      "hours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "13:00",
+          "close": "15:30"
+        },
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "16:00",
+          "close": "17:00"
+        },
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "19:00",
+          "close": "20:00"
+        }
+      ],
+      "holiday_policy": "closed",
+      "hours_note": "평일 낮 오후 1시~5시(3시 30분~4시는 쉬어요), 저녁 7시~9시(접수는 8시까지). 공휴일은 쉬어요.",
+      "eligibility": "노숙 중인 분, 건강보험료를 못 낸 분, 난민, 한국에 온 지 3개월이 넘은 미등록 외국인 등",
+      "requirements": "처음 오면 1층 사회사업팀에서 먼저 상담해요(평일 오후 1시~4시). 외국인 노동자는 먼저 02-863-9966 으로 물어보세요.",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "https://www.josephclinic.org/medical/page01.html",
+      "reason": "주소·전화 CONFIRMED (공식·HIRA). 시간은 공식 홈페이지. '지금 열림'이 접수 가능 시간과 맞도록 쉬는 시간을 빼고 저녁은 접수 마감 20시로 넣음(진료는 21시까지, hours_note 에 적음).",
+      "sources": [
+        "https://www.josephclinic.org/medical/page01.html",
+        "HIRA 병의원 현황 2026.9"
+      ],
+      "research": "data/research/verify-legal-clinic-20261104.md F3",
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "clinic-joseph-dental",
+      "hira_name": "요셉나눔재단법인 요셉치과의원",
+      "name": "요셉치과의원",
+      "subtype": "free_clinic",
+      "cost": "free",
+      "hours_note": "예약해야 해요(주 1회 진료). 처음이면 월·수 오후 1시~3시에 상담해요(070-4688-3403).",
+      "eligibility": "65세 미만 기초생활수급자·차상위, 건강보험료를 못 낸 분, 건강보험이 없는 분",
+      "requirements": "바로 진료받을 수 없어요. 예약하고 기다려야 해요(한 달쯤).",
+      "verified_by": "official",
+      "last_verified": "2026-11-03",
+      "source_url": "https://www.josephclinic.org/medical/page03.html",
+      "reason": "주소·전화 일치 (공식 치과안내·HIRA). 예약제.",
+      "sources": [
+        "https://www.josephclinic.org/medical/page03.html",
+        "HIRA 병의원 현황 2026.9"
+      ],
+      "research": "data/research/clinic.md §3",
+      "checked": "2026-11-03"
+    },
+    {
+      "id": "clinic-dail-angel",
+      "hira_name": "다일천사병원",
+      "name": "다일천사병원",
+      "subtype": "free_clinic",
+      "cost": "free",
+      "hours_note": "진료 시간은 공식 안내에 없어요. 가기 전에 전화로 확인하세요. 내과·정신건강의학과·산부인과·치과.",
+      "eligibility": "건강보험·의료급여가 없는 분, 미등록 외국인, 노숙 중인 분, 주민등록이 말소된 분",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "https://dail.org/business_domestic_02",
+      "reason": "CONFIRMED (시간 제외): 공식·HIRA.",
+      "sources": [
+        "https://dail.org/business_domestic_02",
+        "HIRA 병의원 현황 2026.9"
+      ],
+      "research": "data/research/verify-legal-clinic-20261104.md E10",
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "clinic-holyfamily",
+      "hira_name": "사회복지법인 성가소비녀회 성가복지병원",
+      "name": "성가복지병원",
+      "subtype": "free_clinic",
+      "cost": "free",
+      "hours": [
+        {
+          "days": [
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat"
+          ],
+          "open": "08:30",
+          "close": "11:30"
+        },
+        {
+          "days": [
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat"
+          ],
+          "open": "13:00",
+          "close": "16:30"
+        }
+      ],
+      "holiday_policy": "closed",
+      "hours_note": "화~토 오전 8시 30분~12시, 오후 1시~5시 (접수는 오전 11시 30분, 오후 4시 30분까지). 일·월·공휴일은 쉬어요.",
+      "eligibility": "기초생활수급자, 차상위, 거리에서 지내는 분, 돌봐 줄 가족이 없는 분, 외국인 노동자 등",
+      "requirements": "먼저 사회사업과(02-940-1561)에서 상담해요(화~토 오전 9시~오후 4시 30분). 가족관계증명서와 주민등록등본이 필요해요.",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "https://www.sgbokji.or.kr/use/page01.html",
+      "reason": "CONFIRMED: 공식·HIRA. hours 는 접수 가능 시간.",
+      "sources": [
+        "https://www.sgbokji.or.kr/use/page01.html",
+        "HIRA 병의원 현황 2026.9"
+      ],
+      "research": "data/research/verify-legal-clinic-20261104.md E11",
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "clinic-daegu-medical-center",
+      "hira_name": "대구의료원",
+      "name": "대구의료원 (입원·수술비 지원)",
+      "subtype": "hospital_support",
+      "cost": "low_cost",
+      "phone": "053-560-7375",
+      "hours_note": "걸어 들어가 바로 받는 무료 진료가 아니에요. 입원이나 당일 수술비를 지원하는 사업이에요(이어지는 외래 3번까지). 병원 대표번호 053-560-7575.",
+      "eligibility": "건강보험·의료급여가 없는 노숙 중인 분, 외국인 노동자 등",
+      "requirements": "입원·당일 수술 지원이에요. 먼저 사업 담당(053-560-7375)에 물어보세요. 한 번에 300만 원까지 지원해요.",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "https://www.daegu.go.kr/woman/index.do?menu_id=00050107",
+      "reason": "CONFIRMED: 대구시·HIRA·복지부 안내. 전화는 사업 문의 번호(대구시 안내).",
+      "sources": [
+        "https://www.daegu.go.kr/woman/index.do?menu_id=00050107",
+        "HIRA 병의원 현황 2026.9",
+        "보건복지부 「2025 외국인근로자 등 의료지원 사업 안내」"
+      ],
+      "research": "data/research/verify-legal-clinic-20261104.md E5",
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "clinic-seongnam-medical-center",
+      "hira_name": "성남시의료원",
+      "ssis": "C0289461312",
+      "name": "성남시의료원 (노숙인 의료급여 진료)",
+      "subtype": "hospital_support",
+      "cost": "low_cost",
+      "phone": "031-738-7090",
+      "hours_note": "종합병원이에요. 진료 시간은 전화로 확인하세요. 병원 대표번호 031-738-7000.",
+      "eligibility": "노숙인 1종 의료급여증이 있는 분 (노숙인 의료급여 진료 지정 병원 — 무료 진료소가 아님)",
+      "requirements": "증이 있으면 진료비 본인부담이 없어요(비급여는 낼 수 있어요). 증이 없으면 가까운 노숙인 종합지원센터·쉼터에서 신청할 수 있어요. 응급이 아니면 먼저 전화로 물어보세요.",
+      "verified_by": "public_data",
+      "last_verified": "2026-11-04",
+      "source_id": "ssis-fclt-api",
+      "reason": "SSIS 노숙인 진료시설(050110) 유일 항목. 좌표·주소는 HIRA(같은 주소 수정로171번길 10). 전화는 SSIS(2026-11-04) 031-738-7090, HIRA 대표 031-738-7000 → 더 최신인 SSIS 번호를 쓰고 대표번호는 안내에 적음. 노숙인 1종 본인부담 면제·비급여 본인부담은 2026 의료급여사업안내(clinic-national.md §1).",
+      "sources": [
+        "data/curated/derived/ssis-facilities-20261104.csv",
+        "HIRA 병의원 현황 2026.9",
+        "data/research/clinic-national.md §1"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "name": "라파엘클리닉",
+      "sido": "서울",
+      "exclude_reason": "좌표 필요",
+      "note": "PARTLY: 성북구 창경궁로43길 7 라파엘센터, 02-763-7595, 일요일 오전 접수 10:00~13:00, 이주노동자 대상. HIRA·SSIS 에 없고 주소 출처가 기관 누리집 1곳뿐이라(주소 미확정) 지오코딩도 하지 않음.",
+      "sources": [
+        "https://raphael.or.kr/ko_KR/"
+      ],
+      "checked": "2026-11-04"
+    }
+  ],
+  "health_center": {
+    "kinds": [
+      "보건소",
+      "보건의료원",
+      "보건지소"
+    ],
+    "eligibility": "누구나 (무료 아님, 진료비가 싸요)",
+    "hours_note": "운영시간은 전화로 확인하세요",
+    "exclude": [
+      {
+        "hira_name": "원곡보건지소",
+        "reason": "일반진료 '현재 휴진 중'(안산시 공식). 한방(월~금)·치과(2·4째 화, 예약)만 운영. 일반 보건지소처럼 보여주지 않음.",
+        "sources": [
+          "https://www2.ansan.go.kr/health (cntnts_id=health08, health09)"
+        ],
+        "research": "data/research/verify-legal-clinic-20261104.md E4",
+        "checked": "2026-11-04"
+      }
+    ]
+  }
+}

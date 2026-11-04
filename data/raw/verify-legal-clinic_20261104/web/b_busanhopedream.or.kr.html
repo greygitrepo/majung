@@ -1,0 +1,1360 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <!-- 네이버 서치어드바이저 -->
+  <meta name="naver-site-verification" content="a4e0976a172dd5d841e1f8af51f4f6419df39e83" />
+  <meta charset="utf-8">
+  <meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="shortcut icon" href="http://busanhopedream.or.kr/img/favicon.ico" type="image/x-ico" />
+  <title>부산희망드림센터</title>
+  <meta name="description" content="부산희망드림센터는 노숙인과 지역주민의 삶에 활력을 불어넣을 수 있는 사회복지 공동체를 만들어가기 위해 노력합니다.">
+  <meta name="keywords" content="부산희망드림센터, 부산희망드림, 희망드림, 노숙인, 복지, 복지센터, 무료 봉사, 무료 급식, 사회봉사">
+  <meta name="author" content="부산희망드림센터">
+
+  <!-- tailwindcss -->
+  <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
+
+
+  <!-- 폰트페이스 설정 -->
+  <style>
+  /* 노토산스 */
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+  /* 프리텐다드 */
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('http://busanhopedream.or.kr/theme/basic/fonts/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('http://busanhopedream.or.kr/theme/basic/fonts/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('http://busanhopedream.or.kr/theme/basic/fonts/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('http://busanhopedream.or.kr/theme/basic/fonts/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+  </style>
+
+  <!-- swiper  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <link rel="stylesheet" href="http://busanhopedream.or.kr/theme/basic/css/common.css">
+<link rel="stylesheet" href="http://busanhopedream.or.kr/theme/basic/css/home.css">
+
+
+  <link rel="stylesheet" href="http://busanhopedream.or.kr/theme/basic/css/default.css?ver=2303229">
+  <!--[if lte IE 8]>
+<script src="http://busanhopedream.or.kr/js/html5.js"></script>
+<![endif]-->
+  <script>
+  // 자바스크립트에서 사용하는 전역변수 선언
+  var g5_url = "http://busanhopedream.or.kr";
+  var g5_bbs_url = "http://busanhopedream.or.kr/bbs";
+  var g5_is_member = "";
+  var g5_is_admin = "";
+  var g5_is_mobile = "";
+  var g5_bo_table = "";
+  var g5_sca = "";
+  var g5_editor = "";
+  var g5_cookie_domain = "";
+      </script>
+  
+<link rel="stylesheet" href="http://busanhopedream.or.kr/js/font-awesome/css/font-awesome.min.css?ver=2303229">
+<link rel="stylesheet" href="http://busanhopedream.or.kr/theme/basic/skin/latest/custom_basic/style.css?ver=2303229">
+<link rel="stylesheet" href="http://busanhopedream.or.kr/theme/basic/skin/content/basic/component/calendar_style.css?ver=2303229">
+<link rel="stylesheet" href="http://busanhopedream.or.kr/theme/basic/skin/latest/custom_imgSlide/style.css?ver=2303229">
+<script src="http://busanhopedream.or.kr/js/jquery-1.12.4.min.js?ver=2304171"></script>
+<script src="http://busanhopedream.or.kr/js/jquery-migrate-1.4.1.min.js?ver=2304171"></script>
+<script src="http://busanhopedream.or.kr/js/jquery.menu.js?ver=2304171"></script>
+<script src="http://busanhopedream.or.kr/js/common.js?ver=2304171"></script>
+<script src="http://busanhopedream.or.kr/js/wrest.js?ver=2304171"></script>
+<script src="http://busanhopedream.or.kr/js/placeholders.min.js?ver=2304171"></script>
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=evpwf3lkq1"></script>
+</head>
+<body>
+  
+
+
+<!-- 상단 시작 { -->
+<div id="hd">
+  <h1 id="hd_h1"></h1>
+  <div id="skip_to_container"><a href="#container">본문 바로가기</a></div>
+
+  
+<!-- 팝업레이어 시작 { -->
+<div id="hd_pop">
+    <h2>팝업레이어 알림</h2>
+
+<span class="sound_only">팝업레이어 알림이 없습니다.</span></div>
+
+<script>
+$(function() {
+    $(".hd_pops_reject").click(function() {
+        var id = $(this).attr('class').split(' ');
+        var ck_name = id[1];
+        var exp_time = parseInt(id[2]);
+        $("#"+id[1]).css("display", "none");
+        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+    });
+    $('.hd_pops_close').click(function() {
+        var idb = $(this).attr('class').split(' ');
+        $('#'+idb[1]).css('display','none');
+    });
+    $("#hd").css("z-index", 1000);
+});
+</script>
+<!-- } 팝업레이어 끝 -->
+  <div id="hd_wrapper">
+
+    <div id="logo">
+      <a href="http://busanhopedream.or.kr">
+        <img src="http://busanhopedream.or.kr/img/TopLogo.png" alt="부산희망드림센터">
+      </a>
+    </div>
+
+    <nav id="gnb">
+      <h2>메인메뉴</h2>
+      <div class="gnb_wrap">
+        <ul id="gnb_1dul">
+          
+          <li class="gnb_1dli gnb_al_li_plus" style="z-index:999">
+            <a href="/content/%EC%9D%B8%EC%82%AC%EB%A7%90/" target="_self"
+              class="gnb_1da">기관소개            </a>
+
+            <div class="gnb_2dul"><ul class="gnb_2dul_box">
+
+          <li class="gnb_2dli">
+            <a href="/content/%EB%B2%95%EC%9D%B8-ci-%EC%86%8C%EA%B0%9C/" target="_self"
+              class="gnb_2da">법인 & CI 소개            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EC%97%B0%ED%98%81/" target="_self"
+              class="gnb_2da">연혁            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EC%9D%B8%EC%82%AC%EB%A7%90/" target="_self"
+              class="gnb_2da">인사말            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EB%AF%B8%EC%85%98-%EB%B9%84%EC%A0%84/" target="_self"
+              class="gnb_2da">미션 & 비전            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EC%A1%B0%EC%A7%81%EB%8F%84/" target="_self"
+              class="gnb_2da">조직도            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EA%B3%A0%EA%B0%9D%EC%84%9C%EB%B9%84%EC%8A%A4%ED%97%8C%EC%9E%A5/" target="_self"
+              class="gnb_2da">고객서비스헌장            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EC%8B%9C%EC%84%A4%EC%95%88%EB%82%B4/" target="_self"
+              class="gnb_2da">시설안내            </a>
+          </li>
+
+          </ul></div>
+
+          </li>
+
+          
+          <li class="gnb_1dli gnb_al_li_plus" style="z-index:998">
+            <a href="/content/%EC%83%81%EB%8B%B4-%EB%B0%8F-%EC%97%B0%EA%B3%84/" target="_self"
+              class="gnb_1da">사업안내            </a>
+
+            <div class="gnb_2dul"><ul class="gnb_2dul_box">
+
+          <li class="gnb_2dli">
+            <a href="/content/%EC%83%81%EB%8B%B4-%EB%B0%8F-%EC%97%B0%EA%B3%84/" target="_self"
+              class="gnb_2da">상담 및 연계            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EB%AC%B4%EB%A3%8C%EA%B8%89%EC%8B%9D-%EC%A7%80%EC%9B%90/" target="_self"
+              class="gnb_2da">무료급식 지원            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EC%95%84%EC%9B%83%EB%A6%AC%EC%B9%98%ED%98%84%EC%9E%A5%EC%83%81%EB%8B%B4/" target="_self"
+              class="gnb_2da">아웃리치(현장상담)            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EC%83%9D%ED%99%9C%EC%B2%B4%EC%9C%A1%EC%82%AC%EC%97%85/" target="_self"
+              class="gnb_2da">생활체육사업            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EC%9C%84%EC%83%9D%EA%B4%80%EB%A6%AC/" target="_self"
+              class="gnb_2da">위생관리            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EA%B8%B0%EC%B4%88%EA%B1%B4%EA%B0%95%EC%A6%9D%EC%A7%84/" target="_self"
+              class="gnb_2da">기초건강증진            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EC%8B%AC%EB%A6%AC%EC%A0%95%EC%84%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/" target="_self"
+              class="gnb_2da">심리·정서 프로그램            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EC%82%AC%ED%9A%8C%EC%A0%81-%EC%86%8C%EC%99%B8%EA%B0%90-%ED%95%B4%EC%86%8C/" target="_self"
+              class="gnb_2da">사회적 소외감 해소            </a>
+          </li>
+
+          </ul></div>
+
+          </li>
+
+          
+          <li class="gnb_1dli gnb_al_li_plus" style="z-index:997">
+            <a href="/announcement" target="_self"
+              class="gnb_1da">센터소식            </a>
+
+            <div class="gnb_2dul"><ul class="gnb_2dul_box">
+
+          <li class="gnb_2dli">
+            <a href="/announcement" target="_self"
+              class="gnb_2da">공지사항            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/notice" target="_self"
+              class="gnb_2da">고시공고            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/reports" target="_self"
+              class="gnb_2da">언론보도            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/referenceRoom" target="_self"
+              class="gnb_2da">자료실            </a>
+          </li>
+
+          </ul></div>
+
+          </li>
+
+          
+          <li class="gnb_1dli gnb_al_li_plus" style="z-index:996">
+            <a href="/opinion" target="_self"
+              class="gnb_1da">고객지원            </a>
+
+            <div class="gnb_2dul"><ul class="gnb_2dul_box">
+
+          <li class="gnb_2dli">
+            <a href="/opinion" target="_self"
+              class="gnb_2da">고객의견함            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EB%8C%80%EA%B4%80%EC%95%88%EB%82%B4/" target="_self"
+              class="gnb_2da">대관안내            </a>
+          </li>
+
+          </ul></div>
+
+          </li>
+
+          
+          <li class="gnb_1dli gnb_al_li_plus" style="z-index:995">
+            <a href="/content/%ED%9B%84%EC%9B%90%EC%95%88%EB%82%B4/" target="_self"
+              class="gnb_1da">후원봉사            </a>
+
+            <div class="gnb_2dul"><ul class="gnb_2dul_box">
+
+          <li class="gnb_2dli">
+            <a href="/content/%ED%9B%84%EC%9B%90%EC%95%88%EB%82%B4/" target="_self"
+              class="gnb_2da">후원안내            </a>
+          </li>
+
+          
+          <li class="gnb_2dli">
+            <a href="/content/%EB%B4%89%EC%82%AC%EC%95%88%EB%82%B4/" target="_self"
+              class="gnb_2da">봉사안내            </a>
+          </li>
+
+          </ul></div>
+
+          </li>
+
+                  </ul>
+      </div>
+    </nav>
+
+    <ul class="hd_login">
+
+            <li class="hd_login_loginBtn"><a href="http://busanhopedream.or.kr/bbs/login.php">로그인</a></li>
+      
+    </ul>
+
+  </div>
+
+  <script>
+  // 스크롤 시 헤더 클래스 추가 스크립트        
+  document.addEventListener("DOMContentLoaded", function() {
+    const targetElement = document.getElementById("hd"); // 특정 ID 요소 찾기
+
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        targetElement.classList.add("scrolled");
+      } else {
+        targetElement.classList.remove("scrolled");
+      }
+    }
+    // 스크롤 이벤트 추가
+    window.addEventListener("scroll", handleScroll);
+
+  });
+  </script>
+
+</div>
+
+
+
+<!-- } 상단 끝 -->
+
+
+<hr>
+
+<!-- 콘텐츠 시작 { -->
+<div id="wrapper">
+  <div id="container_wr">
+
+    <div id="container">
+
+
+
+      
+<!-- Main Slide -->
+<div id="home_mainSlide">
+  <!-- Slider main container -->
+  <div class="swiper mySwiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide" data-title="HAPPINESS" data-subtitle="모두가 희망을 가지고 함께 만들어가는 행복한 세상">
+        <img src="http://busanhopedream.or.kr/img/MainSlide_1.jpg" alt="슬라이드이미지1">
+      </div>
+      <div class="swiper-slide" data-title="OPPORTUNITY" data-subtitle="행복한 삶의 기회를 고르게 보장하는 복지 서비스">
+        <img src="http://busanhopedream.or.kr/img/MainSlide_2.jpg" alt="슬라이드이미지2">
+      </div>
+      <div class="swiper-slide" data-title="PARTNERSHIP" data-subtitle="자율적 참여로 화합을 추구하는 동반자 문화 조성">
+        <img src="http://busanhopedream.or.kr/img/MainSlide_3.jpg" alt="슬라이드이미지3">
+      </div>
+      <div class="swiper-slide" data-title="EVERYWHERE" data-subtitle="곳곳마다 찾아가는 맞춤형 복지 서비스">
+        <img src="http://busanhopedream.or.kr/img/MainSlide_4.jpg" alt="슬라이드이미지4">
+      </div>
+    </div>
+
+    <!-- title -->
+    <div class="home_mainSlide_titleDiv">
+      <div class="swiper-pagination"></div>
+      <div id="home_mainSlide_title">
+        <h1 id="home_mainSlide_title_main">HAPPINESS</h1>
+        <p id="home_mainSlide_title_sub">모두가 희망을 가지고 함께 만들어가는 행복한 세상</p>
+      </div>
+    </div>
+
+
+  </div>
+
+  <script>
+  const pageTitleBox = document.getElementById("home_mainSlide_title");
+  const pageTitle = document.getElementById("home_mainSlide_title_main");
+  const pageSubTitle = document.getElementById("home_mainSlide_title_sub");
+
+  var swiper = new Swiper(".mySwiper", {
+    autoplay: {
+      delay: 5000,
+    },
+    effect: "fade",
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    on: {
+      slideChange: function() {
+        const activeSlide = this.slides[this.activeIndex];
+        const newTitle = activeSlide.getAttribute("data-title");
+        const newSubTitle = activeSlide.getAttribute("data-subtitle");
+
+        // 현재 타이틀을 점점 사라지게 함
+        pageTitleBox.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        pageTitleBox.style.opacity = "0";
+        pageTitleBox.style.transform = "translateX(-30px)"; // 왼쪽으로 이동하며 사라지기
+
+        // 짧은 시간 후 새로운 타이틀을 업데이트하고 애니메이션 적용
+        setTimeout(() => {
+          pageTitle.textContent = newTitle;
+          pageSubTitle.textContent = newSubTitle;
+
+          // 애니메이션 초기화 후 다시 나타나게 함
+          pageTitleBox.style.transition = "none"; // 트랜지션 제거 후 위치 초기화
+          pageTitleBox.style.transform = "translateX(30px)"; // 반대 방향으로 이동하여 준비
+
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              pageTitleBox.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+              pageTitleBox.style.opacity = "1";
+              pageTitleBox.style.transform = "translateX(0)";
+            }, 10); // 10ms 지연 후 애니메이션 적용
+          });
+        }, 500); // 사라지는 애니메이션이 끝난 후 실행
+      }
+    }
+  });
+  </script>
+</div>
+
+<!-- News -->
+<div id="home_news">
+  <div class="home_news_contents">
+    <div class="home_news_container">
+      <div class="home_news_tab_bar">
+        <div class="home_news_tabs">
+          <div class="news_tab active" data-index="0" data-link="/announcement">공지사항
+          </div>
+          <div class="news_tab" data-index="1" data-link="/notice">고시공고</div>
+          <div class="news_tab" data-index="2" data-link="/reports">언론보도</div>
+        </div>
+        <a id="lt_more" href="/announcement" class="lt_more">+</a>
+      </div>
+      <div class="home_news_body">
+        <div class="latest_wr active">
+          
+<div class="lat">
+  <ul>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/announcement/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-%EC%B1%84%EC%9A%A9-%EA%B2%B0%EA%B3%BC-%EA%B3%B5%EA%B3%A0-3/"> 부산희망드림센터 채용 결과 공고</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2025-10-17</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/announcement/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-%EC%9C%A1%EC%95%84%ED%9C%B4%EC%A7%81-%EB%8C%80%EC%B2%B4%EC%9D%B8%EB%A0%A5-1%EC%B0%A8-%EC%84%9C%EB%A5%98%ED%95%A9%EA%B2%A9%EC%9E%90-%EB%B0%9C%ED%91%9C/"> 부산희망드림센터 육아휴직 대체인력 1차 서류합격자 발표</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2025-10-14</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/announcement/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-%EC%B1%84%EC%9A%A9-%EA%B3%B5%EA%B3%A0-1/"> 부산희망드림센터 채용 공고</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>  <i class="fa fa-download" aria-hidden="true"></i>      <span class="lt_date">2025-09-24</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/announcement/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-%EC%B1%84%EC%9A%A9-%EA%B2%B0%EA%B3%BC-%EA%B3%B5%EA%B3%A0-2/"> 부산희망드림센터 채용 결과 공고</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2024-11-21</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/announcement/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-1%EC%B0%A8-%EC%84%9C%EB%A5%98%ED%95%A9%EA%B2%A9%EC%9E%90-%EB%B0%9C%ED%91%9C-1/"> 부산희망드림센터 1차 서류합격자 발표</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2024-11-20</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/announcement/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-%EC%A7%81%EC%9B%90-%EC%B1%84%EC%9A%A9-%EA%B3%B5%EA%B3%A0-1/"> 부산희망드림센터 직원 채용 공고</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2024-11-05</span>
+    </li>
+          </ul>
+
+
+</div>        </div>
+        <div class="latest_wr">
+          
+<div class="lat">
+  <ul>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/notice/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-2026%EB%85%84-3%EB%B6%84%EA%B8%B0-%EC%9A%B4%EC%98%81%EC%9C%84%EC%9B%90%ED%9A%8C-%ED%9A%8C%EC%9D%98%EB%82%B4%EC%9A%A9-%EA%B3%B5%EA%B0%9C/"> 부산희망드림센터 2026년 3분기 운영위원회 회의내용 공개</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2026-09-23</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/notice/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-2026%EB%85%84-2%EB%B6%84%EA%B8%B0-%EC%9A%B4%EC%98%81%EC%9C%84%EC%9B%90%ED%9A%8C-%ED%9A%8C%EC%9D%98%EB%82%B4%EC%9A%A9-%EA%B3%B5%EA%B0%9C/"> 부산희망드림센터 2026년 2분기 운영위원회 회의내용 공개</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2026-07-06</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/notice/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-2025%EB%85%84-%ED%9B%84%EC%9B%90%EA%B8%88%EB%AC%BC%ED%92%88-%EC%82%AC%EC%9A%A9%EB%AA%85%EC%84%B8%EC%84%9C-%EA%B3%B5%EA%B3%A0/"> 부산희망드림센터 2025년 후원금(물품) 사용명세서 공고</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2026-03-27</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/notice/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-2025%EB%85%84-%ED%9B%84%EC%9B%90%EA%B8%88%EA%B8%88%EC%A0%84-%EC%82%AC%EC%9A%A9%EB%AA%85%EC%84%B8%EC%84%9C-%EA%B3%B5%EA%B3%A0/"> 부산희망드림센터 2025년 후원금(금전) 사용명세서 공고</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2026-03-27</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/notice/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-2025%EB%85%84-%ED%9B%84%EC%9B%90%EA%B8%88%EB%AC%BC%ED%92%88-%EC%88%98%EC%9E%85%EB%AA%85%EC%84%B8%EC%84%9C-%EA%B3%B5%EA%B3%A0/"> 부산희망드림센터 2025년 후원금(물품) 수입명세서 공고</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2026-03-27</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/notice/%EB%B6%80%EC%82%B0%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-2025%EB%85%84-%ED%9B%84%EC%9B%90%EA%B8%88%EA%B8%88%EC%A0%84-%EC%88%98%EC%9E%85%EB%AA%85%EC%84%B8%EC%84%9C-%EA%B3%B5%EA%B3%A0/"> 부산희망드림센터 2025년 후원금(금전) 수입명세서 공고</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2026-03-27</span>
+    </li>
+          </ul>
+
+
+</div>        </div>
+        <div class="latest_wr">
+          
+<div class="lat">
+  <ul>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/reports/hug-%EC%B0%BD%EB%A6%BD-33%EC%A3%BC%EB%85%84-%EB%A7%9E%EC%95%84-%EB%B6%80%EC%82%B0-%EC%B7%A8%EC%95%BD%EA%B3%84%EC%B8%B5-%EB%82%98%EB%88%94%ED%99%9C%EB%8F%99-%EC%A0%84%EA%B0%9C/"> HUG, 창립 33주년 맞아 부산 취약계층 나눔활동 전개</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2026-07-02</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/reports/%ED%95%B4%EC%A7%84%EA%B3%B5-%EC%B7%A8%EC%95%BD%EA%B3%84%EC%B8%B5%EC%97%90-%EA%B2%A8%EC%9A%B8%EB%82%98%EA%B8%B0-%EC%98%A8%EA%B8%B0-%EC%A0%84%EB%8B%AC/"> 해진공, 취약계층에 겨울나기 온기 전달</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2026-01-22</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/reports/%EB%B6%80%EC%82%B0%EC%A0%81%EC%8B%AD%EC%9E%90%EC%82%AC-%EB%B4%89%EC%82%AC%EB%A1%9C-%EB%B3%91%EC%98%A4%EB%85%84-%EC%97%85%EB%AC%B4-%EC%8B%9C%EC%9E%91/"> 부산적십자사, 봉사로 병오년 업무 시작</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2026-01-06</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/reports/hug-%EC%82%AC%EB%9E%91%EC%9D%98-%EC%8C%80-%EB%82%98%EB%88%94-%EC%A0%84%EB%8B%AC%EC%8B%9D_%EB%B6%80%EC%82%B0-%EC%B7%A8%EC%95%BD%EA%B3%84%EC%B8%B5%EC%97%90-4500-%EA%B8%B0%EB%B6%80/"> HUG, '사랑의 쌀 나눔' 전달식_부산 취약계층에 4,500㎏ …</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2025-11-19</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/reports/%ED%95%B4%EC%A7%84%EA%B3%B5-%EC%9D%B4%EC%9B%83%EA%B3%BC-%ED%95%A8%EA%BB%98%ED%95%98%EB%8A%94-kobc-%EC%82%AC%EB%9E%91%EC%9D%98-%ED%8A%B9%EC%8B%9D%EB%8D%B0%EC%9D%B4-%EA%B0%9C%EC%B5%9C/"> 해진공, 이웃과 함께하는 'KOBC 사랑의 특식데이' 개최</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>  <i class="fa fa-download" aria-hidden="true"></i>      <span class="lt_date">2025-04-18</span>
+    </li>
+        <li class="basic_li">
+      <a href="http://busanhopedream.or.kr/reports/%EA%B5%AD%EC%A0%9C%EC%8B%A0%EB%AC%B8%EB%A9%94%ED%8A%B8%EB%A1%9C%EC%8B%A0%EB%AC%B8%EB%AF%BC%EC%A3%BC%EC%8B%A0%EB%AC%B8%EB%B6%80%EC%82%B0%EC%8B%9C%EC%84%A4%EA%B3%B5%EB%8B%A8-%ED%9D%AC%EB%A7%9D%EB%93%9C%EB%A6%BC%EC%84%BC%ED%84%B0-%EC%B0%BE%EC%95%84-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%82%98%EB%88%94-%EB%B4%89%EC%82%AC-%ED%99%9C%EB%8F%99-%EC%A7%84%ED%96%89/"> (국제신문,메트로신문,민주신문)부산시설공단, 희망드림센터 찾아 다…</a><span class="hot_icon"><i class="fa fa-heart" aria-hidden="true"></i><span class="sound_only">인기글</span></span>       <span class="lt_date">2024-08-16</span>
+    </li>
+          </ul>
+
+
+</div>        </div>
+      </div>
+    </div>
+    <div class="home_news_calender">
+      
+
+<div id="calendar">
+  </div>
+
+<div id="eventViewModal" class="modal">
+  <div class="modal-overlay viewModalOverlay">
+    <div class="modal-content eventViewModal_content">
+      <div id="viewEventModal">
+        <div class="eventViewModal_content_header">
+          <h3 class="eventViewModal_content_header_title">일정 상세</h3>
+          <span class="close viewModalCloseBtn">&times;</span>
+        </div>
+        <div class="eventViewModal_content_body">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="eventAddModal" class="modal">
+  <div class="modal-overlay">
+    <div class="modal-content">
+      <p>일정 등록은 관리자만 가능합니다.</p>    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  var eventAddModal = document.getElementById("eventAddModal");
+  var eventViewModal = document.getElementById("eventViewModal");
+  var closeBtn = document.querySelectorAll(".close");
+  var eventForm = document.getElementById("eventForm");
+  // var deleteBtn = document.querySelectorAll(".deleteBtn");
+  var eventViewModalContentBody = document.querySelector('.eventViewModal_content_body');
+  var eventViewModalContentHeaderTitle = document.querySelector('.eventViewModal_content_header_title');
+
+
+
+  // 날짜 비교 후 형식을 변환한 최종텍스트 출력 함수
+  function compareAndFormatDateTime(startDate, endDate) {
+    // 날짜 포맷팅 함수
+    const extractDateComponents = (date) => {
+      const d = new Date(date);
+
+      return {
+        year: d.getFullYear(),
+        month: String(d.getMonth() + 1).padStart(2, '0'), // 2자리 숫자로 변환
+        day: String(d.getDate()).padStart(2, '0'), // 2자리 숫자로 변환
+        hour: String(d.getHours()).padStart(2, '0'), // 24시간 형식, 2자리 숫자
+        minute: String(d.getMinutes()).padStart(2, '0'), // 2자리 숫자
+        // 전체 포맷팅된 문자열 (24시간 형식)
+        formatted: new Intl.DateTimeFormat('ko-KR', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false // 24시간 형식 사용
+        }).format(d)
+      };
+    };
+    const start = extractDateComponents(startDate);
+    const end = extractDateComponents(endDate);
+    // 날짜와 시간 부분 분리
+    const [dateA, timeA] = startDate.split(' ');
+    const [dateB, timeB] = endDate.split(' ');
+    // 조건 1: A와 B가 완전히 같다면
+    if (startDate === endDate) {
+      return `${start.year}.${start.month}.${start.day} ${start.hour}:${start.minute}`;
+    }
+    // 조건 2: 날짜 부분은 같지만 시간 부분이 다르다면
+    if (dateA === dateB && timeA !== timeB) {
+      return `${start.year}.${start.month}.${start.day} ${start.hour}:${start.minute} ~ ${end.hour}:${end.minute}`;
+    }
+    // 조건 3: 날짜 부분과 시간 부분이 모두 다르다면
+    if (dateA !== dateB) {
+      return `${start.year}.${start.month}.${start.day} ${start.hour}:${start.minute} ~ ${end.year}.${end.month}.${end.day} ${end.hour}:${end.minute}`;
+    }
+    // 위 조건에 해당하지 않는 경우 (이 경우는 발생하지 않아야 함)
+    return '알 수 없는 비교 결과입니다.';
+  }
+
+  // calendar.php에서 이벤트 제목 출력 시 HTML 이스케이프
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // FullCalendar 초기화
+  window.calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    locale: 'ko',
+    headerToolbar: {
+      left: 'prev',
+      center: 'title',
+      right: 'next',
+
+    },
+    dayCellContent: function(arg) {
+      return {
+        html: String(arg.date.getDate())
+      }; // 날짜 셀에 "4일" → "4"
+    },
+    selectable: false,
+    editable: false,
+    height: 'auto', // 전체 높이 자동
+    contentHeight: 'auto', // 내부 콘텐츠에 따라 자동 증가
+    expandRows: true, // week row들이 꽉 채우도록
+    // 동적 이벤트 로딩 설정: 보여지는 월의 데이터만 로딩
+    events: function(info, successCallback, failureCallback) {
+      // info.start: 현재 화면에 표시되는 달력의 시작 날짜
+      // info.end: 현재 화면에 표시되는 달력의 끝 날짜
+
+      fetch("http://busanhopedream.or.kr/theme/basic/api/get-events.php?" + new URLSearchParams({
+          start: info.startStr, // ISO-8601 형식의 시작 날짜
+          end: info.endStr // ISO-8601 형식의 끝 날짜
+        }))
+        .then(response => response.json())
+        .then(data => {
+          successCallback(data);
+        })
+        .catch(error => {
+          failureCallback(error);
+        });
+    },
+    eventDidMount: function(info) {
+      // time 요소를 숨깁니다 (기본 구조 유지)
+      const timeEl = info.el.querySelector('.fc-event-time');
+      if (timeEl) {
+        timeEl.style.display = 'none';
+      }
+    },
+
+    // 날짜 클릭 시 일정 보기 모달 열기
+    dateClick: function(info) {
+      const selectedDate = info.date;
+      // 원본 날짜 객체를 복사하여 사용
+      const startOfDay = new Date(selectedDate);
+      startOfDay.setHours(0, 0, 0, 0);
+
+      const endOfDay = new Date(selectedDate);
+      endOfDay.setHours(23, 59, 59, 999);
+
+      eventViewModalContentHeaderTitle.textContent =
+        `${selectedDate.getFullYear()}년 ${selectedDate.getMonth() + 1}월 ${selectedDate.getDate()}일`;
+
+      // 로컬 시간대를 고려한 날짜 형식으로 변환
+      const formatDateToLocalISO = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+      };
+
+      // API를 통해 해당 날짜의 이벤트만 가져오기
+      fetch(
+          `http://busanhopedream.or.kr/theme/basic/api/get-events.php?start=${formatDateToLocalISO(startOfDay)}&end=${formatDateToLocalISO(endOfDay)}`
+        )
+        .then(response => response.json())
+        .then(events => {
+          eventViewModalContentBody.innerHTML = ''; // 기존 내용 초기화
+
+          if (events.length > 0) {
+            events.forEach(event => {
+              const div = document.createElement('div');
+              div.className = 'event-detail';
+
+              div.innerHTML = `
+              <div class="event-time">
+                <p>${compareAndFormatDateTime(event.start, event.end)}</p>
+                              </div>
+              <div class="event-title">
+              ${escapeHtml(event.title)}
+              </div>`;
+              eventViewModalContentBody.appendChild(div);
+            });
+          } else {
+            // 이벤트가 없는 경우 메시지 표시
+            const div = document.createElement('div');
+            div.className = 'eventViewModal_content_message';
+            div.innerHTML = '해당 날짜에 등록된 일정이 없습니다.';
+            eventViewModalContentBody.appendChild(div);
+          }
+
+          eventViewModal.style.display = "block";
+        })
+        .catch(error => {
+          console.error('이벤트 조회 중 오류 발생:', error);
+        });
+
+    },
+
+    eventClick: function() {
+
+    }
+  });
+  window.calendar.render();
+
+  // 일정 등록 버튼 클릭 시 모달 표시
+  var addEventBtn = document.getElementById("addEventBtn");
+  if (addEventBtn) {
+    addEventBtn.addEventListener("click", function() {
+      eventAddModal.style.display = "block";
+    });
+  }
+
+  closeBtn.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      eventViewModal.style.display = "none";
+      eventAddModal.style.display = "none";
+      eventViewModalContentBody.innerHTML = ''; // 기존 내용 초기화
+    });
+  });
+
+  // 모달 오버레이 클릭 시 닫기
+  var modalOverlay = document.querySelectorAll('.modal-overlay');
+  modalOverlay.forEach(function(overlay) {
+    overlay.addEventListener('click', function() {
+      eventViewModal.style.display = "none";
+      eventAddModal.style.display = "none";
+      eventViewModalContentBody.innerHTML = ''; // 기존 내용 초기화
+    });
+  });
+
+  // 모달 컨텐츠 클릭 시 이벤트 전파 중단
+  var modalContent = document.querySelectorAll('.modal-content');
+  modalContent.forEach(function(content) {
+    content.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  });
+
+
+  // 일정 삭제 기능
+  eventViewModalContentBody.addEventListener("click", function(e) {
+
+    // 클릭된 요소가 deleteBtn 클래스를 가진 버튼인지 확인
+    if (e.target.classList.contains("deleteBtn")) {
+      e.preventDefault();
+      var eventId = e.target.getAttribute("data-id");
+
+      if (!eventId) {
+        return alert("삭제할 일정이 없습니다.");
+      }
+
+      if (confirm("정말 삭제하시겠습니까?")) {
+        fetch("http://busanhopedream.or.kr/theme/basic/api/delete-event.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: eventId
+            })
+          })
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            alert(data.message);
+            calendar.refetchEvents();
+            // 현재 선택된 날짜 가져오기
+            var currentDate = calendar.getDate();
+            var startOfDay = new Date(currentDate.setHours(0, 0, 0, 0));
+            var endOfDay = new Date(currentDate.setHours(23, 59, 59, 999));
+
+            // 모달 내용 업데이트
+            eventViewModalContentBody.innerHTML = ''; // 기존 내용 초기화
+
+            // API를 통해 해당 날짜의 이벤트만 가져오기
+            fetch(
+                `http://busanhopedream.or.kr/theme/basic/api/get-events.php?start=${startOfDay.toISOString()}&end=${endOfDay.toISOString()}`
+              )
+              .then(response => response.json())
+              .then(events => {
+                if (events.length > 0) {
+                  events.forEach(event => {
+                    const div = document.createElement('div');
+                    div.className = 'event-detail';
+
+                    div.innerHTML = `
+          <div class="event-time">
+            <p>${compareAndFormatDateTime(event.start, event.end)}</p>
+                      </div>
+          <div class="event-title">
+          ${escapeHtml(event.title)}
+          </div>`;
+                    eventViewModalContentBody.appendChild(div);
+                  });
+                } else {
+                  // 이벤트가 없는 경우 메시지 표시
+                  const div = document.createElement('div');
+                  div.className = 'eventViewModal_content_message';
+                  div.innerHTML = '해당 날짜에 등록된 일정이 없습니다.';
+                  eventViewModalContentBody.appendChild(div);
+                }
+              })
+              .catch(error => {
+                console.error('이벤트 조회 중 오류 발생:', error);
+              });
+
+          })
+          .catch(error => {
+            alert("삭제 실패");
+          });
+      }
+    }
+  });
+});
+</script>    </div>
+  </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll('.news_tab');
+    const contents = document.querySelectorAll('.latest_wr');
+    const moreButton = document.getElementById('lt_more');
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        // 모든 탭에서 active 클래스 제거
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // 모든 본문 숨기고 선택한 본문만 표시
+        contents.forEach(content => content.classList.remove('active'));
+        contents[index].classList.add('active');
+
+        // "더보기" 버튼의 링크 변경
+        moreButton.href = tab.getAttribute('data-link');
+      });
+    });
+  });
+  </script>
+</div>
+
+<!-- Biz -->
+<div id="home_biz_bg">
+  <div id="home_biz">
+    <div class="home_biz_top">
+      <div class="home_biz_top_title">
+        <h2>Hope Business</h2>
+        <svg width="42" height="17" viewBox="0 0 42 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M21 16.3902C32.598 16.3902 42 9.05208 42 0H36.5538C36.5538 5.96495 29.5901 10.8005 20.9999 10.8005C12.4098 10.8005 5.44607 5.96495 5.44607 0H0C0 9.05208 9.40202 16.3902 21 16.3902Z"
+            fill="#5E1E7C" />
+        </svg>
+      </div>
+      <h5 class="home_biz_top_subtitle">노숙인과 지역주민의 삶에 활력을 불어넣을 수 있는 사회복지 공동체를 만들어가기 위해 노력합니다.</h5>
+    </div>
+    <div class="home_biz_body">
+      <img class="home_biz_body_bg_defalut" src="http://busanhopedream.or.kr/img/BizImg_defalut.png" alt="사업안내 이미지">
+      <div class="home_biz_grid_container">
+                        <div class="home_biz_grid_itemBox">
+
+
+          <a href="/content/%EC%83%81%EB%8B%B4-%EB%B0%8F-%EC%97%B0%EA%B3%84/" class="home_biz_grid_item"
+            data-index="1">
+            <h5 class="grid_item_title">상담 및 연계</h5>
+            <div class="grid_item_dec">
+              <p>대상자에게 가장 적정한 자원을 모색하여 필요한 서비스를 연계합니다.</p>
+              <svg width="44" height="12" viewBox="0 0 44 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.03174 10.3903L40.9683 10.3903L32.0968 1.39026" stroke="white" stroke-width="2"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+          </a>
+
+          <img class="home_biz_body_bg" src="http://busanhopedream.or.kr/img/BizImg_1.jpeg" alt="사업안내이미지" />
+
+        </div>
+                <div class="home_biz_grid_itemBox">
+
+
+          <a href="/content/%EB%AC%B4%EB%A3%8C%EA%B8%89%EC%8B%9D-%EC%A7%80%EC%9B%90/" class="home_biz_grid_item"
+            data-index="2">
+            <h5 class="grid_item_title">무료급식 지원</h5>
+            <div class="grid_item_dec">
+              <p>무료 급식을 통해 대상자들의 기본적이고 필수적인 식생활을 보장합니다.</p>
+              <svg width="44" height="12" viewBox="0 0 44 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.03174 10.3903L40.9683 10.3903L32.0968 1.39026" stroke="white" stroke-width="2"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+          </a>
+
+          <img class="home_biz_body_bg" src="http://busanhopedream.or.kr/img/BizImg_2.jpeg" alt="사업안내이미지" />
+
+        </div>
+                <div class="home_biz_grid_itemBox">
+
+
+          <a href="/content/%EC%95%84%EC%9B%83%EB%A6%AC%EC%B9%98%ED%98%84%EC%9E%A5%EC%83%81%EB%8B%B4/" class="home_biz_grid_item"
+            data-index="3">
+            <h5 class="grid_item_title">아웃리치(현장상담)</h5>
+            <div class="grid_item_dec">
+              <p>직접 현장으로 나가 센터에 대한 접근성을 높이고 사회복귀 및 자활을 돕습니다.</p>
+              <svg width="44" height="12" viewBox="0 0 44 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.03174 10.3903L40.9683 10.3903L32.0968 1.39026" stroke="white" stroke-width="2"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+          </a>
+
+          <img class="home_biz_body_bg" src="http://busanhopedream.or.kr/img/BizImg_3.jpeg" alt="사업안내이미지" />
+
+        </div>
+                <div class="home_biz_grid_itemBox">
+
+
+          <a href="/content/%EC%83%9D%ED%99%9C%EC%B2%B4%EC%9C%A1%EC%82%AC%EC%97%85/" class="home_biz_grid_item"
+            data-index="4">
+            <h5 class="grid_item_title">생활체육사업</h5>
+            <div class="grid_item_dec">
+              <p>부산광역시 동구 지역주민의 건강증진을 위하여 생활체육시설을 운영합니다.</p>
+              <svg width="44" height="12" viewBox="0 0 44 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.03174 10.3903L40.9683 10.3903L32.0968 1.39026" stroke="white" stroke-width="2"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+          </a>
+
+          <img class="home_biz_body_bg" src="http://busanhopedream.or.kr/img/BizImg_4.jpeg" alt="사업안내이미지" />
+
+        </div>
+                <div class="home_biz_grid_itemBox">
+
+
+          <a href="/content/%EC%9C%84%EC%83%9D%EA%B4%80%EB%A6%AC/" class="home_biz_grid_item"
+            data-index="5">
+            <h5 class="grid_item_title">위생관리</h5>
+            <div class="grid_item_dec">
+              <p>대상자의 위생관리를 위해 샤워 및 세탁 시설, 피복과 이미용 서비스를 제공합니다.</p>
+              <svg width="44" height="12" viewBox="0 0 44 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.03174 10.3903L40.9683 10.3903L32.0968 1.39026" stroke="white" stroke-width="2"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+          </a>
+
+          <img class="home_biz_body_bg" src="http://busanhopedream.or.kr/img/BizImg_5.jpeg" alt="사업안내이미지" />
+
+        </div>
+                <div class="home_biz_grid_itemBox">
+
+
+          <a href="/content/%EA%B8%B0%EC%B4%88%EA%B1%B4%EA%B0%95%EC%A6%9D%EC%A7%84/" class="home_biz_grid_item"
+            data-index="6">
+            <h5 class="grid_item_title">기초건강증진</h5>
+            <div class="grid_item_dec">
+              <p>대상자들의 건강유지를 위해 결핵 검진 및 진료와 중독 예방 프로그램을 운영합니다. </p>
+              <svg width="44" height="12" viewBox="0 0 44 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.03174 10.3903L40.9683 10.3903L32.0968 1.39026" stroke="white" stroke-width="2"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+          </a>
+
+          <img class="home_biz_body_bg" src="http://busanhopedream.or.kr/img/BizImg_6.jpeg" alt="사업안내이미지" />
+
+        </div>
+                <div class="home_biz_grid_itemBox">
+
+
+          <a href="/content/%EC%8B%AC%EB%A6%AC%EC%A0%95%EC%84%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/" class="home_biz_grid_item"
+            data-index="7">
+            <h5 class="grid_item_title">심리·정서 프로그램</h5>
+            <div class="grid_item_dec">
+              <p>대상자들 정신건강을 위해 개개인 특성에 맞는 심리치료 프로그램을 실시합니다.</p>
+              <svg width="44" height="12" viewBox="0 0 44 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.03174 10.3903L40.9683 10.3903L32.0968 1.39026" stroke="white" stroke-width="2"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+          </a>
+
+          <img class="home_biz_body_bg" src="http://busanhopedream.or.kr/img/BizImg_7.jpeg" alt="사업안내이미지" />
+
+        </div>
+                <div class="home_biz_grid_itemBox">
+
+
+          <a href="/content/%EC%82%AC%ED%9A%8C%EC%A0%81-%EC%86%8C%EC%99%B8%EA%B0%90-%ED%95%B4%EC%86%8C/" class="home_biz_grid_item"
+            data-index="8">
+            <h5 class="grid_item_title">사회적 소외감 해소</h5>
+            <div class="grid_item_dec">
+              <p>다양한 공동체 경험을 제공하고, 사회적 유대감을 형성할 수 있도록 돕습니다.</p>
+              <svg width="44" height="12" viewBox="0 0 44 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.03174 10.3903L40.9683 10.3903L32.0968 1.39026" stroke="white" stroke-width="2"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+          </a>
+
+          <img class="home_biz_body_bg" src="http://busanhopedream.or.kr/img/BizImg_8.jpeg" alt="사업안내이미지" />
+
+        </div>
+              </div>
+    </div>
+
+    <script>
+    //호버 시 백그라운드 이미지 변경하기
+    const hoverTriggers = document.querySelectorAll(".home_biz_grid_itemBox");
+    const targetImg = document.querySelector(".home_biz_body_bg");
+
+    hoverTriggers.forEach(trigger => {
+      trigger.addEventListener("mouseenter", function() {
+        trigger.classList.add("hover")
+      });
+
+      trigger.addEventListener("mouseleave", function() {
+        trigger.classList.remove("hover");
+      });
+    });
+    </script>
+
+
+  </div>
+</div>
+
+<!-- ReferenceRoom -->
+<div id="home_referenceRoom">
+  <div class="home_referenceRoom_container">
+    <h2 class="home_referenceRoom_title">Hope Photo</h2>
+    <div class="home_referenceRoom_slide">
+      
+<div class="swiper referenceSlide">
+  <div class="swiper-wrapper">
+        <div class="swiper-slide referenceItem">
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EC%A3%BC%ED%83%9D%EB%8F%84%EC%8B%9C%EB%B3%B4%EC%A6%9D%EA%B3%B5%EC%82%AC%EA%B3%B5%EB%8F%99%EB%AA%A8%EA%B8%88%ED%9A%8C%EC%99%80-%ED%95%A8%EA%BB%98%ED%95%98%EB%8A%94-%ED%95%9C%EB%81%BC%EC%9D%B4%EC%9D%8C-%EC%8C%80-%EB%82%98%EB%88%94/"
+        class="lt_img"><img src="http://busanhopedream.or.kr/data/editor/2610/thumb-20597a5725d5b87d01bf24a0520f426c_1793065342_5198_600x450.jpg" alt="" >      </a>
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EC%A3%BC%ED%83%9D%EB%8F%84%EC%8B%9C%EB%B3%B4%EC%A6%9D%EA%B3%B5%EC%82%AC%EA%B3%B5%EB%8F%99%EB%AA%A8%EA%B8%88%ED%9A%8C%EC%99%80-%ED%95%A8%EA%BB%98%ED%95%98%EB%8A%94-%ED%95%9C%EB%81%BC%EC%9D%B4%EC%9D%8C-%EC%8C%80-%EB%82%98%EB%88%94/" class='referenceItem_title'>주택도시보증공사·공동모금회와 함께하는 「한끼이음」 쌀 나눔</a>    </div>
+        <div class="swiper-slide referenceItem">
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%8C%80%EC%9A%B0%EA%B1%B4%EC%84%A4-%EB%B8%94%EB%9E%91%EC%8D%A8%EB%B0%8B-74-%ED%98%84%EC%9E%A5%ED%8C%80-%ED%98%88%EC%95%95%EC%B8%A1%EC%A0%95%EA%B8%B0-%ED%9B%84%EC%9B%90-%EB%B0%8F-%EA%B0%90%EC%82%AC%ED%8C%A8/"
+        class="lt_img"><img src="http://busanhopedream.or.kr/data/editor/2609/thumb-b1715e0707b852859dc2e6d6b5ba9137_1790043839_1448_600x450.jpg" alt="" >      </a>
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%8C%80%EC%9A%B0%EA%B1%B4%EC%84%A4-%EB%B8%94%EB%9E%91%EC%8D%A8%EB%B0%8B-74-%ED%98%84%EC%9E%A5%ED%8C%80-%ED%98%88%EC%95%95%EC%B8%A1%EC%A0%95%EA%B8%B0-%ED%9B%84%EC%9B%90-%EB%B0%8F-%EA%B0%90%EC%82%AC%ED%8C%A8/" class='referenceItem_title'>대우건설 블랑써밋 74 현장팀, 혈압측정기 후원 및 감사패 전달</a>    </div>
+        <div class="swiper-slide referenceItem">
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%9D%98%ED%9A%8C-%EB%B3%B4%EA%B1%B4%EB%B3%B5%EC%A7%80%EC%9C%84%EC%9B%90%ED%9A%8C-%EA%B8%B0%EA%B4%80-%EB%82%B4%EB%B0%A9/"
+        class="lt_img"><img src="http://busanhopedream.or.kr/data/editor/2609/thumb-56c0192889c0bac7c64deda694e12d27_1789709357_5118_600x450.jpg" alt="" >      </a>
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%9D%98%ED%9A%8C-%EB%B3%B4%EA%B1%B4%EB%B3%B5%EC%A7%80%EC%9C%84%EC%9B%90%ED%9A%8C-%EA%B8%B0%EA%B4%80-%EB%82%B4%EB%B0%A9/" class='referenceItem_title'>서울특별시의회 보건복지위원회 기관 내방</a>    </div>
+        <div class="swiper-slide referenceItem">
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%8F%99%EB%9E%98%EB%B4%89%EC%83%9D%EB%B3%91%EC%9B%90-%EB%AF%B8%EB%9E%98%EA%B4%80-%EA%B0%9C%EA%B4%80-%EA%B8%B0%EB%85%90-%EC%A3%BC%EA%B1%B0%EC%B7%A8%EC%95%BD%EA%B3%84%EC%B8%B5%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B1%B4%EA%B0%95%EA%BE%B8%EB%9F%AC%EB%AF%B8-%EB%82%98%EB%88%94/"
+        class="lt_img"><img src="http://busanhopedream.or.kr/data/editor/2609/thumb-56c0192889c0bac7c64deda694e12d27_1789707896_3782_600x450.jpg" alt="" >      </a>
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%8F%99%EB%9E%98%EB%B4%89%EC%83%9D%EB%B3%91%EC%9B%90-%EB%AF%B8%EB%9E%98%EA%B4%80-%EA%B0%9C%EA%B4%80-%EA%B8%B0%EB%85%90-%EC%A3%BC%EA%B1%B0%EC%B7%A8%EC%95%BD%EA%B3%84%EC%B8%B5%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B1%B4%EA%B0%95%EA%BE%B8%EB%9F%AC%EB%AF%B8-%EB%82%98%EB%88%94/" class='referenceItem_title'>동래봉생병원 미래관 개관 기념 주거취약계층을 위한 건강꾸러미 나눔</a>    </div>
+        <div class="swiper-slide referenceItem">
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%B6%80%EC%82%B0%EC%A4%91%EB%8F%85%EA%B4%80%EB%A6%AC%ED%86%B5%ED%95%A9%EC%A7%80%EC%9B%90%EC%84%BC%ED%84%B0-%EA%B0%90%EC%82%AC%ED%8C%A8-%EC%A0%84%EB%8B%AC/"
+        class="lt_img"><img src="http://busanhopedream.or.kr/data/editor/2609/thumb-d8f4743ebf2ca897c160179e53847c3a_1789027808_3428_600x450.jpg" alt="" >      </a>
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%B6%80%EC%82%B0%EC%A4%91%EB%8F%85%EA%B4%80%EB%A6%AC%ED%86%B5%ED%95%A9%EC%A7%80%EC%9B%90%EC%84%BC%ED%84%B0-%EA%B0%90%EC%82%AC%ED%8C%A8-%EC%A0%84%EB%8B%AC/" class='referenceItem_title'>부산중독관리통합지원센터 감사패 전달</a>    </div>
+        <div class="swiper-slide referenceItem">
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EC%97%90%EC%96%B4%EB%B6%80%EC%82%B0-%EC%8A%B9%EB%AC%B4%EC%9B%90-%EC%9E%90%EC%9B%90%EB%B4%89%EC%82%AC%ED%8C%80-blue-angel-%EB%B4%89%EC%82%AC%ED%99%9C%EB%8F%99-%EC%A7%84%ED%96%89/"
+        class="lt_img"><img src="http://busanhopedream.or.kr/data/editor/2608/thumb-d9bdda827d33d6b257f5110e614578dd_1786513301_7189_600x450.jpg" alt="" >      </a>
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EC%97%90%EC%96%B4%EB%B6%80%EC%82%B0-%EC%8A%B9%EB%AC%B4%EC%9B%90-%EC%9E%90%EC%9B%90%EB%B4%89%EC%82%AC%ED%8C%80-blue-angel-%EB%B4%89%EC%82%AC%ED%99%9C%EB%8F%99-%EC%A7%84%ED%96%89/" class='referenceItem_title'>에어부산 승무원 자원봉사팀 ‘BLUE ANGEL'  봉사활동 진행</a>    </div>
+        <div class="swiper-slide referenceItem">
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%8C%80%ED%95%9C%EC%A0%81%EC%8B%AD%EC%9E%90%EC%82%AC-%EB%B6%80%EC%82%B0%EC%A7%80%EC%82%AC-%EC%9E%AC%EB%82%9C%EC%8B%AC%EB%A6%AC%ED%9A%8C%EB%B3%B5%EC%A7%80%EC%9B%90%EC%84%BC%ED%84%B0-%ED%8F%AD%EC%97%BC-%EB%8C%80%EC%9D%91-%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4-%EC%8B%A4%EC%8B%9C/"
+        class="lt_img"><img src="http://busanhopedream.or.kr/data/editor/2608/thumb-9cd450c68a0c38c2bc2f8fa1774ca943_1785824747_612_600x450.jpg" alt="" >      </a>
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%8C%80%ED%95%9C%EC%A0%81%EC%8B%AD%EC%9E%90%EC%82%AC-%EB%B6%80%EC%82%B0%EC%A7%80%EC%82%AC-%EC%9E%AC%EB%82%9C%EC%8B%AC%EB%A6%AC%ED%9A%8C%EB%B3%B5%EC%A7%80%EC%9B%90%EC%84%BC%ED%84%B0-%ED%8F%AD%EC%97%BC-%EB%8C%80%EC%9D%91-%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4-%EC%8B%A4%EC%8B%9C/" class='referenceItem_title'>대한적십자사 부산지사 재난심리회복지원센터, 폭염 대응 심리상담 실…</a>    </div>
+        <div class="swiper-slide referenceItem">
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%8F%99%EC%95%84%EC%98%A4%EC%B8%A0%EC%B9%B4%EB%8C%80%ED%95%9C%EC%A0%81%EC%8B%AD%EC%9E%90%EC%82%AC-%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%EC%A7%80%EC%82%AC-%ED%8F%AD%EC%97%BC-%EB%8C%80%EB%B9%84-%EB%85%B8%EC%88%99%EC%9D%B8-%EC%98%A8%EC%97%B4%EC%A7%88%ED%99%98-%EC%98%88%EB%B0%A9%EC%9D%84-%EC%9C%84%ED%95%9C/"
+        class="lt_img"><img src="http://busanhopedream.or.kr/data/editor/2608/thumb-58e91ee1c5feb86e97a529ff73746a4b_1785738760_9567_600x450.jpg" alt="" >      </a>
+      <a href="http://busanhopedream.or.kr/referenceRoom/%EB%8F%99%EC%95%84%EC%98%A4%EC%B8%A0%EC%B9%B4%EB%8C%80%ED%95%9C%EC%A0%81%EC%8B%AD%EC%9E%90%EC%82%AC-%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%EC%A7%80%EC%82%AC-%ED%8F%AD%EC%97%BC-%EB%8C%80%EB%B9%84-%EB%85%B8%EC%88%99%EC%9D%B8-%EC%98%A8%EC%97%B4%EC%A7%88%ED%99%98-%EC%98%88%EB%B0%A9%EC%9D%84-%EC%9C%84%ED%95%9C/" class='referenceItem_title'>동아오츠카·대한적십자사 부산광역시지사 폭염 대비 노숙인 온열질환 …</a>    </div>
+          </div>
+</div>
+<div class="swiper-button-next referenceSlide_nextBtn"></div>
+<div class="swiper-button-prev referenceSlide_prevBtn"></div>
+
+<script>
+var swiper = new Swiper(".referenceSlide", {
+  slidesPerView: 4,
+  spaceBetween: 20,
+  navigation: {
+    nextEl: ".referenceSlide_nextBtn",
+    prevEl: ".referenceSlide_prevBtn",
+  },
+});
+</script>    </div>
+    <a href="/referenceRoom" class="home_referenceRoom_button">VIEW MORE</a>
+  </div>
+</div>
+
+<!-- company -->
+<div id="home_company">
+  <div class="home_wrap">
+    <!-- Additional required wrapper -->
+    <div class="rolling-list">
+      <!-- Slides -->
+            <ul>
+                <li>
+          <a class="image-wrap" href="https://www.busan.go.kr/index" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_1.png"
+              alt="부산광역시 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://www.nts.go.kr/nts/main.do" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_2.png"
+              alt="국세청 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://www.acrc.go.kr/" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_3.png"
+              alt="국민권익위원회 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://www.bisco.or.kr/" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_4.png"
+              alt="부산시설공단 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://blog.naver.com/busantcc9030" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_5.png"
+              alt="부산금연지원센터 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="http://busancamc.org/" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_6.png"
+              alt="부산중독관리통합지원센터 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://dmhc.co.kr/" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_7.png"
+              alt="동구정신건강복지센터 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://www.busanhumanrights.or.kr/" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_8.png"
+              alt="부산광역시인권센터 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://www.krxfoundation.or.kr/kor/main/index.html" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_9.png"
+              alt="KRX국민행복재단 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://www.kra.co.kr/main.do" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_10.png"
+              alt="KRA한국마사회 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://www.kobc.or.kr/ebz/kor/main.do" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_11.png"
+              alt="KOBC한국해양진흥공사 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://busan.chest.or.kr/base.do" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_12.png"
+              alt="사랑의열매 부산사회복지공동모금회 로고">
+          </a>
+        </li>
+                <li>
+          <a class="image-wrap" href="https://www.airbusan.com/content/individual/" target="_blank">
+            <img src="http://busanhopedream.or.kr/img/Company_13.png"
+              alt="에어부산 로고">
+          </a>
+        </li>
+              </ul>
+
+    </div>
+
+  </div>
+  <script>
+  // 롤링 배너 복제본 생성
+  let roller = document.querySelector('.rolling-list');
+  roller.id = 'roller1'; // 아이디 부여
+
+  let clone = roller.cloneNode(true)
+  // cloneNode : 노드 복제. 기본값은 false. 자식 노드까지 복제를 원하면 true 사용
+  clone.id = 'roller2';
+  document.querySelector('.home_wrap').appendChild(clone); // wrap 하위 자식으로 부착
+
+  document.querySelector('#roller1').style.left = '0px';
+  document.querySelector('#roller2').style.left = document.querySelector('.rolling-list ul').offsetWidth + 'px';
+  // offsetWidth : 요소의 크기 확인(margin을 제외한 padding값, border값까지 계산한 값)
+
+  roller.classList.add('original');
+  clone.classList.add('clone');
+  </script>
+</div>
+
+<!-- Help Center -->
+<div id="home_help">
+  <h2 class="home_help_title">Help Center</h2>
+  <ul class="home_help_menus">
+    <li class="home_help_menuItem">
+      <a class="home_help_menuItemTop" href="/opinion">
+        <div class="home_help_menuItem_icon">
+          <img src="http://busanhopedream.or.kr/img/OpinionImg.png" alt="고객의견함 아이콘">
+        </div>
+        <div class="home_help_menuItem_text">
+          <h5>고객 의견함</h5>
+        </div>
+      </a>
+    </li>
+    <li class="home_help_menuItem">
+      <a class="home_help_menuItemTop" href="/content/%EB%8C%80%EA%B4%80%EC%95%88%EB%82%B4/">
+        <div class="home_help_menuItem_icon">
+          <img src="http://busanhopedream.or.kr/img/RentalImg.png" alt="대관신청 아이콘">
+        </div>
+        <div class="home_help_menuItem_text">
+          <h5>대관안내</h5>
+        </div>
+      </a>
+    </li>
+    <li class="home_help_menuItem">
+      <a class="home_help_menuItemTop" href="/content/%ED%9B%84%EC%9B%90%EC%95%88%EB%82%B4/">
+        <div class="home_help_menuItem_icon">
+          <img src="http://busanhopedream.or.kr/img/Sponsorship_process01.png" alt="후원안내 아이콘">
+        </div>
+        <div class="home_help_menuItem_text">
+          <h5>후원안내</h5>
+        </div>
+      </a>
+    </li>
+    <li class="home_help_menuItem">
+      <a class="home_help_menuItemTop" href="/content/%EB%B4%89%EC%82%AC%EC%95%88%EB%82%B4/">
+        <div class="home_help_menuItem_icon">
+          <img src="http://busanhopedream.or.kr/img/Volunteer.png" alt="봉사안내 아이콘">
+        </div>
+        <div class="home_help_menuItem_text">
+          <h5>봉사안내</h5>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+</div>
+
+<!-- 사이드 로그인 기능 -->
+<!-- <div id="aside">
+                    </div> -->
+</div>
+
+</div>
+<!-- } 콘텐츠 끝 -->
+
+<hr>
+
+<!-- 하단 시작 { -->
+<div id="ft_bg">
+  <div id="ft">
+    <div class="ft_content">
+      <h2 class="ft_title">부산희망드림센터</h2>
+      <div class="ft_buttons">
+        <a href="http://busanhopedream.or.kr/content/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8/">개인정보처리방침</a> |
+        <a href="http://busanhopedream.or.kr/content/%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8/">영상정보처리방침</a> |
+        <a href="http://busanhopedream.or.kr/content/%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%AC%B4%EB%8B%A8%EC%88%98%EC%A7%91%EA%B1%B0%EB%B6%80/">이메일무단수집거부</a> |
+        <a href="http://busanhopedream.or.kr/?device=mobile">모바일버전</a>
+
+      </div>
+      <ul class="ft_info">
+        <li>김성진 | 부산광역시 동구 중앙대로 404 </li>
+        <li>사업자등록번호 : 143-82-72068 | TEL. 051-631-9001 | E-MAIL. hopedream0601@naver.com</li>
+        <li>Copyright &copy; 부산희망드림센터. All right Reserved.</li>
+      </ul>
+    </div>
+    <!-- <div id="ft_catch"><img src="http://busanhopedream.or.kr/img/ft_logo.png" alt="그누보드5"></div> -->
+
+
+
+    <button type="button" id="top_btn">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i><span class="sound_only">상단으로</span>
+    </button>
+    <script>
+    $(function() {
+      $("#top_btn").on("click", function() {
+        $("html, body").animate({
+          scrollTop: 0
+        }, '500');
+        return false;
+      });
+    });
+    </script>
+  </div>
+</div>
+
+
+<!-- } 하단 끝 -->
+
+<script>
+$(function() {
+  // 폰트 리사이즈 쿠키있으면 실행
+  font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+});
+</script>
+
+
+
+
+</body>
+</html>

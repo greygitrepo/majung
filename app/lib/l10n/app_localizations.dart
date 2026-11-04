@@ -156,7 +156,7 @@ abstract class L10n {
   /// No description provided for @groupClinicSub.
   ///
   /// In ko, this message translates to:
-  /// **'무료 진료'**
+  /// **'무료 진료소 · 보건소'**
   String get groupClinicSub;
 
   /// No description provided for @groupGroceries.
@@ -180,7 +180,7 @@ abstract class L10n {
   /// No description provided for @originNone.
   ///
   /// In ko, this message translates to:
-  /// **'가까운 순으로 보려면 위치를 정해 주세요'**
+  /// **'어디 근처에서 찾을지 먼저 정해 주세요'**
   String get originNone;
 
   /// No description provided for @originGps.
@@ -189,11 +189,11 @@ abstract class L10n {
   /// **'내 위치 기준'**
   String get originGps;
 
-  /// No description provided for @originLandmark.
+  /// No description provided for @originRegion.
   ///
   /// In ko, this message translates to:
-  /// **'{place} 근처 기준'**
-  String originLandmark(String place);
+  /// **'{place} 기준'**
+  String originRegion(String place);
 
   /// No description provided for @originChange.
   ///
@@ -228,8 +228,26 @@ abstract class L10n {
   /// No description provided for @pickerOr.
   ///
   /// In ko, this message translates to:
-  /// **'또는 가까운 곳을 고르세요'**
+  /// **'또는 지역을 고르세요'**
   String get pickerOr;
+
+  /// No description provided for @pickerSigungu.
+  ///
+  /// In ko, this message translates to:
+  /// **'{sido}에서 고르세요'**
+  String pickerSigungu(String sido);
+
+  /// No description provided for @pickerBack.
+  ///
+  /// In ko, this message translates to:
+  /// **'다른 시·도 고르기'**
+  String get pickerBack;
+
+  /// No description provided for @pickerNoRegions.
+  ///
+  /// In ko, this message translates to:
+  /// **'지역 목록을 불러오지 못했어요. 위치 쓰기를 눌러 주세요.'**
+  String get pickerNoRegions;
 
   /// No description provided for @pickerLocating.
   ///
@@ -237,52 +255,28 @@ abstract class L10n {
   /// **'위치를 찾고 있어요…'**
   String get pickerLocating;
 
-  /// No description provided for @landmarkSeoulStation.
-  ///
-  /// In ko, this message translates to:
-  /// **'서울역'**
-  String get landmarkSeoulStation;
-
-  /// No description provided for @landmarkEuljiro.
-  ///
-  /// In ko, this message translates to:
-  /// **'을지로입구역'**
-  String get landmarkEuljiro;
-
-  /// No description provided for @landmarkYeongdeungpo.
-  ///
-  /// In ko, this message translates to:
-  /// **'영등포역'**
-  String get landmarkYeongdeungpo;
-
-  /// No description provided for @landmarkYongsan.
-  ///
-  /// In ko, this message translates to:
-  /// **'용산역'**
-  String get landmarkYongsan;
-
   /// No description provided for @locDenied.
   ///
   /// In ko, this message translates to:
-  /// **'위치를 쓸 수 없어요. 아래에서 가까운 곳을 골라 주세요.'**
+  /// **'위치를 쓸 수 없어요. 아래에서 지역을 골라 주세요.'**
   String get locDenied;
 
   /// No description provided for @locDeniedForever.
   ///
   /// In ko, this message translates to:
-  /// **'위치 권한이 꺼져 있어요. 휴대폰 설정에서 켜거나, 아래에서 가까운 곳을 골라 주세요.'**
+  /// **'위치 권한이 꺼져 있어요. 휴대폰 설정에서 켜거나, 아래에서 지역을 골라 주세요.'**
   String get locDeniedForever;
 
   /// No description provided for @locServiceOff.
   ///
   /// In ko, this message translates to:
-  /// **'휴대폰 위치(GPS)가 꺼져 있어요. 켜거나, 아래에서 가까운 곳을 골라 주세요.'**
+  /// **'휴대폰 위치(GPS)가 꺼져 있어요. 켜거나, 아래에서 지역을 골라 주세요.'**
   String get locServiceOff;
 
   /// No description provided for @locError.
   ///
   /// In ko, this message translates to:
-  /// **'위치를 찾지 못했어요. 아래에서 가까운 곳을 골라 주세요.'**
+  /// **'위치를 찾지 못했어요. 아래에서 지역을 골라 주세요.'**
   String get locError;
 
   /// No description provided for @openSettings.
@@ -411,6 +405,12 @@ abstract class L10n {
   /// **'걸어서 약 {minutes}분 ({distance})'**
   String walk(int minutes, String distance);
 
+  /// No description provided for @distanceOnly.
+  ///
+  /// In ko, this message translates to:
+  /// **'여기서 {distance}'**
+  String distanceOnly(String distance);
+
   /// No description provided for @whoCanUse.
   ///
   /// In ko, this message translates to:
@@ -477,6 +477,66 @@ abstract class L10n {
   /// **'급하면 아래 번호로 전화하세요.'**
   String get listEmptyHelp;
 
+  /// No description provided for @listNeedOrigin.
+  ///
+  /// In ko, this message translates to:
+  /// **'어디 근처에서 찾을지 먼저 정해 주세요'**
+  String get listNeedOrigin;
+
+  /// No description provided for @listNeedOriginHelp.
+  ///
+  /// In ko, this message translates to:
+  /// **'전국의 시설 중 가까운 곳만 보여 드려요.'**
+  String get listNeedOriginHelp;
+
+  /// No description provided for @homeNeedOrigin.
+  ///
+  /// In ko, this message translates to:
+  /// **'위치를 정하면 가까운 곳을 보여 드려요'**
+  String get homeNeedOrigin;
+
+  /// No description provided for @seniorSectionTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'어르신 경로식당'**
+  String get seniorSectionTitle;
+
+  /// No description provided for @seniorSectionSub.
+  ///
+  /// In ko, this message translates to:
+  /// **'그 동네에 사는 어르신이 미리 등록해야 먹을 수 있는 곳이에요. 처음이면 전화로 물어보세요.'**
+  String get seniorSectionSub;
+
+  /// No description provided for @clinicFree.
+  ///
+  /// In ko, this message translates to:
+  /// **'무료 진료소'**
+  String get clinicFree;
+
+  /// No description provided for @clinicHealthCenter.
+  ///
+  /// In ko, this message translates to:
+  /// **'보건소 · 진료비가 싸요 (무료 아님)'**
+  String get clinicHealthCenter;
+
+  /// No description provided for @clinicHospitalSupport.
+  ///
+  /// In ko, this message translates to:
+  /// **'입원·수술비 지원 병원'**
+  String get clinicHospitalSupport;
+
+  /// No description provided for @clinicInfoTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'노숙인 의료급여증이 있으면 병원비가 거의 들지 않아요'**
+  String get clinicInfoTitle;
+
+  /// No description provided for @clinicInfoBody.
+  ///
+  /// In ko, this message translates to:
+  /// **'노숙한 지 1개월이 넘고, 건강보험이 없거나 3개월 넘게 못 냈다면 받을 수 있어요. 쉼터나 노숙인 종합지원센터에 신청해요. 일부 검사·치료는 돈을 낼 수 있어요. 잘 모르면 129에 전화해 물어보세요.'**
+  String get clinicInfoBody;
+
   /// No description provided for @detailHours.
   ///
   /// In ko, this message translates to:
@@ -488,6 +548,12 @@ abstract class L10n {
   /// In ko, this message translates to:
   /// **'운영 시간 정보가 없어요. 전화로 확인하세요.'**
   String get detailNoHours;
+
+  /// No description provided for @detailUnverifiedHours.
+  ///
+  /// In ko, this message translates to:
+  /// **'아래는 공공데이터에 적힌 내용이에요. 실제와 다른 경우가 많아요. 가기 전에 꼭 전화해 보세요.'**
+  String get detailUnverifiedHours;
 
   /// No description provided for @detailWho.
   ///
@@ -518,6 +584,12 @@ abstract class L10n {
   /// In ko, this message translates to:
   /// **'주소를 복사했어요'**
   String get detailCopied;
+
+  /// No description provided for @detailGeocoded.
+  ///
+  /// In ko, this message translates to:
+  /// **'지도 위치는 주소로 찾은 대략적인 위치예요.'**
+  String get detailGeocoded;
 
   /// No description provided for @detailNote.
   ///
@@ -654,7 +726,7 @@ abstract class L10n {
   /// No description provided for @emergencyWelfareSub.
   ///
   /// In ko, this message translates to:
-  /// **'생계가 막막할 때 · 위기 상담 24시간'**
+  /// **'생계가 막막할 때 · 긴급 복지 상담 24시간'**
   String get emergencyWelfareSub;
 
   /// No description provided for @emergencySuicide.
@@ -680,6 +752,42 @@ abstract class L10n {
   /// In ko, this message translates to:
   /// **'서울시 생활 · 복지 안내'**
   String get emergencyDasanSub;
+
+  /// No description provided for @emergencyMental.
+  ///
+  /// In ko, this message translates to:
+  /// **'정신건강 위기상담'**
+  String get emergencyMental;
+
+  /// No description provided for @emergencyMentalSub.
+  ///
+  /// In ko, this message translates to:
+  /// **'마음이 너무 힘들 때 · 24시간'**
+  String get emergencyMentalSub;
+
+  /// No description provided for @emergencyGyeonggi.
+  ///
+  /// In ko, this message translates to:
+  /// **'경기도 콜센터'**
+  String get emergencyGyeonggi;
+
+  /// No description provided for @emergencyGyeonggiSub.
+  ///
+  /// In ko, this message translates to:
+  /// **'24시간 · 0번을 누르면 긴급 복지 위기 상담'**
+  String get emergencyGyeonggiSub;
+
+  /// No description provided for @emergencyRegion.
+  ///
+  /// In ko, this message translates to:
+  /// **'{sido} 지역 번호와 전국 어디서나 되는 번호예요.'**
+  String emergencyRegion(String sido);
+
+  /// No description provided for @emergencyRegionUnknown.
+  ///
+  /// In ko, this message translates to:
+  /// **'전국 어디서나 걸 수 있는 번호예요. 위치를 정하면 지역 번호도 보여 드려요.'**
+  String get emergencyRegionUnknown;
 
   /// No description provided for @emergencyPolice.
   ///
@@ -714,7 +822,7 @@ abstract class L10n {
   /// No description provided for @infoAbout.
   ///
   /// In ko, this message translates to:
-  /// **'마중은 무료 급식소와 쉼터를 한곳에서 찾는 앱이에요. 정부나 구청이 만든 앱이 아니고, 공공데이터를 바탕으로 만든 민간 앱이에요.'**
+  /// **'마중은 무료 급식소, 쉼터, 무료 진료소를 전국에서 찾는 앱이에요. 정부나 구청이 만든 앱이 아니고, 공공데이터를 바탕으로 만든 민간 앱이에요.'**
   String get infoAbout;
 
   /// No description provided for @infoPrivacy.
@@ -770,6 +878,24 @@ abstract class L10n {
   /// In ko, this message translates to:
   /// **'핀을 누르면 정보가 나와요'**
   String get mapHint;
+
+  /// No description provided for @mapRecenterGps.
+  ///
+  /// In ko, this message translates to:
+  /// **'내 위치로'**
+  String get mapRecenterGps;
+
+  /// No description provided for @mapRecenterRegion.
+  ///
+  /// In ko, this message translates to:
+  /// **'처음 위치로'**
+  String get mapRecenterRegion;
+
+  /// No description provided for @mapLocateFailed.
+  ///
+  /// In ko, this message translates to:
+  /// **'지금 위치를 찾지 못했어요. 전에 찾은 위치로 보여 드려요.'**
+  String get mapLocateFailed;
 
   /// No description provided for @mapUnavailable.
   ///

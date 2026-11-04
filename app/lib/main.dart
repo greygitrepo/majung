@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -9,6 +10,7 @@ import 'app.dart';
 import 'app_controller.dart';
 import 'config.dart';
 import 'data/facility_repository.dart';
+import 'domain/region.dart';
 import 'services/launcher.dart';
 import 'services/location_service.dart';
 
@@ -29,6 +31,8 @@ Future<void> main() async {
     repository: repository,
     location: GeolocatorLocationService(),
     originStore: PrefsOriginStore(),
+    loadRegions: () async =>
+        RegionCatalog.fromJson(jsonDecode(await rootBundle.loadString('assets/data/regions.json'))),
   );
   runApp(MajungApp(
     controller: controller,

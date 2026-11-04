@@ -1,0 +1,474 @@
+{
+  "_설명": "잠자리(shelter) = 한국사회보장정보원 사회복지시설정보(SSIS, data/curated/derived/ssis-facilities-20261104.csv)의 노숙인 종합지원센터(050107)·일시보호시설(050108) 전부. 주소·전화는 SSIS(가장 최신, 2026-11-04)를 기본으로 쓰고, cross_check(원본 CSV)·checks(조사 문서의 공식 출처 값)와 비교해 다르면 보고서에 남긴다. 좌표: coords → 주소가 같은 cross_check 원본 좌표 → 지오코딩 캐시(검증 통과분, geocoded:true) 순. 셋 다 없으면 '좌표 필요'로 뺀다. hours 는 공식 확인된 것만(verified_by official). SSIS 목록에 없는 entries 항목은 '목록에서 사라짐' 경고.",
+  "eligibility": "노숙 중인 분 (시설마다 조건이 달라요)",
+  "default_hours_note": "운영시간·입소 방법은 전화로 확인하세요.",
+  "research": "data/research/verify-meal-shelter-20261104.md §6",
+  "entries": [
+    {
+      "id": "shelter-dasiseogi",
+      "name": "다시서기종합지원센터",
+      "coords": {
+        "lat": 37.54569095,
+        "lng": 126.9725568,
+        "source_id": "national-free-meal-std",
+        "reason": "같은 주소(한강대로92길 6)의 무료급식 데이터 좌표"
+      },
+      "verified_by": "public_data",
+      "ssis": "C0000006761",
+      "checks": [
+        {
+          "source": "전국무료급식소표준데이터 같은 시설 행 (기준 2026-09-21)",
+          "address": "한강대로92길 6",
+          "phone": "02-777-5217"
+        }
+      ]
+    },
+    {
+      "id": "shelter-bridge",
+      "name": "브릿지종합지원센터",
+      "coords": {
+        "lat": 37.561884,
+        "lng": 126.967692,
+        "source_id": "seoul-heat-shelter",
+        "reason": "무더위쉼터 데이터의 같은 시설 좌표"
+      },
+      "hours_note": "공공데이터 안내: 무더위쉼터 자료에 24시간 운영으로 나와요. 잠자리 이용 조건은 전화로 확인하세요.",
+      "verified_by": "public_data",
+      "ssis": "C0000011084",
+      "cross_check": [
+        {
+          "source_id": "seoul-heat-shelter",
+          "key": {
+            "쉼터명칭": "시립브릿지종합지원센터"
+          }
+        }
+      ]
+    },
+    {
+      "id": "shelter-bohyeon",
+      "name": "영등포보현종합지원센터",
+      "coords": {
+        "lat": 37.5212884,
+        "lng": 126.9124402,
+        "source_id": "hira-hospital",
+        "reason": "같은 주소(버드나루로 24)의 부속의원 좌표"
+      },
+      "verified_by": "public_data",
+      "ssis": "C0209152160",
+      "checks": [
+        {
+          "source": "HIRA 2026-09 같은 건물 부속의원",
+          "address": "버드나루로 24"
+        }
+      ]
+    },
+    {
+      "id": "shelter-mannasem",
+      "name": "만나샘 (일시보호시설)",
+      "coords": {
+        "lat": 37.55152257,
+        "lng": 126.974148,
+        "source_id": "national-free-meal-std",
+        "reason": "같은 주소(후암로57길 45)의 무료급식 데이터 좌표"
+      },
+      "address": "서울 용산구 후암로57길 45 (동자동)",
+      "address_reason": "원본 상세주소 \"전층 (동자동, 202호 제외)\"는 이용자에게 혼란 → 단순화",
+      "verified_by": "public_data",
+      "ssis": "C0137401321",
+      "checks": [
+        {
+          "source": "전국무료급식소표준데이터 같은 시설 행 (기준 2026-09-21)",
+          "address": "후암로57길 45",
+          "phone": "02-757-7595"
+        }
+      ]
+    },
+    {
+      "id": "shelter-ongdalsaem",
+      "name": "옹달샘드롭인센터 (일시보호시설)",
+      "coords": {
+        "lat": 37.514579,
+        "lng": 126.903834,
+        "source_id": "osm-nominatim",
+        "approximate": true,
+        "reason": "2026-11-03 에 받아 둔 경인로94길 도로 단위 좌표 두 개의 중간값(새로 조회하지 않음). 건물 위치 확인 필요"
+      },
+      "verified_by": "public_data",
+      "ssis": "C0000012673"
+    },
+    {
+      "id": "shelter-haetsal",
+      "name": "햇살보금자리 (일시보호시설)",
+      "coords": {
+        "lat": 37.522167,
+        "lng": 126.909948,
+        "source_id": "seoul-heat-shelter",
+        "approximate": true,
+        "reason": "이웃 건물(국회대로54길 41-11) 좌표. 약 20m 이내"
+      },
+      "verified_by": "public_data",
+      "ssis": "C0000012674"
+    },
+    {
+      "ssis": "C0119732204",
+      "id": "shelter-bridge-temp",
+      "name": "구세군브릿지 노숙인일시보호시설",
+      "cross_check": [
+        {
+          "source_id": "seoul-heat-shelter",
+          "key": {
+            "쉼터명칭": "시립브릿지종합지원센터"
+          },
+          "coords_only": true
+        }
+      ],
+      "note": "브릿지종합지원센터와 같은 건물(서소문로 57-1). 좌표는 같은 건물의 무더위쉼터 좌표. 전화는 SSIS 에만 있음."
+    },
+    {
+      "ssis": "C0170809951",
+      "id": "shelter-didim",
+      "name": "디딤센터 (일시보호시설)",
+      "cross_check": [
+        {
+          "source_id": "seoul-heat-shelter",
+          "key": {
+            "쉼터명칭": "디딤센터"
+          }
+        }
+      ]
+    },
+    {
+      "id": "shelter-busan-heemang-deungdae",
+      "name": "부산희망등대종합지원센터 (응급잠자리)",
+      "hours": [
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "18:00",
+          "close": "07:00"
+        }
+      ],
+      "holiday_policy": "open",
+      "hours_note": "응급잠자리: 매일 저녁 6시 ~ 다음 날 아침 7시. 24시간 여는 곳은 아니에요.",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "https://www.busan.go.kr/eng/ai-translated-press-releases/1712063",
+      "reason": "SSIS(2026-11-04)·부산시 보도자료(2026-02-13)는 가야동(가야대로587번길 8), 부산시 노숙인시설 현황(2025-09-30)·다시서기 목록은 옛 주소(동천로108번길 14). 새 주소로 옮긴 것으로 보고 SSIS 주소를 씀. 응급잠자리 365일 18:00~07:00 는 부산시 보도자료(2025-12-28).",
+      "sources": [
+        "https://www.data.go.kr/data/15066687/fileData.do (기준 2025-09-30)",
+        "https://www.homeless.or.kr/other/ (날짜 없음)",
+        "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수정 2025-07-01)",
+        "https://www.busan.go.kr/eng/ai-translated-press-releases/1712063 (2025-12-28)"
+      ],
+      "research": "data/research/verify-meal-shelter-20261104.md §6",
+      "ssis": "C0120576351",
+      "cross_check": [
+        {
+          "source_id": "busan-homeless-fac",
+          "key": {
+            "시설명": "부산희망등대종합지원센터"
+          }
+        }
+      ],
+      "checks": [
+        {
+          "source": "부산시 영문 보도자료 (2026-02-13, data/research/clinic-national.md §5-9)",
+          "address_contains": "가야동"
+        },
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "address": "동천로108번길 14",
+          "phone": "051-463-1127"
+        },
+        {
+          "source": "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수원시, 수정 2025-07-01)",
+          "phone": "051-463-1127"
+        }
+      ]
+    },
+    {
+      "id": "shelter-busan-somang",
+      "name": "부산소망종합지원센터",
+      "hours_note": "센터 운영시간과 잠자리를 바로 주는지는 확인되지 않았어요. 모텔 등과 이어 주는 응급구호방을 운영해요(부산시 안내). 가기 전에 전화로 확인하세요.",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "https://www.busan.go.kr/eng/ai-translated-press-releases/1712063",
+      "reason": "전화는 모든 출처가 같음. 주소는 SSIS(2026-11-04) 초량중로 34 ↔ 부산시 현황(2025-09-30)·다시서기·수원시 중앙대로260번길 3-9. 더 최신인 SSIS 주소를 씀(이전 확인 필요).",
+      "sources": [
+        "https://www.data.go.kr/data/15066687/fileData.do (기준 2025-09-30)",
+        "https://www.homeless.or.kr/other/",
+        "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수정 2025-07-01)",
+        "https://www.busan.go.kr/eng/ai-translated-press-releases/1712063 (2025-12-28)"
+      ],
+      "research": "data/research/verify-meal-shelter-20261104.md §6",
+      "ssis": "C0000015476",
+      "cross_check": [
+        {
+          "source_id": "busan-homeless-fac",
+          "key": {
+            "시설명": "부산소망종합지원센터"
+          }
+        }
+      ],
+      "checks": [
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "address": "중앙대로260번길 3-9",
+          "phone": "051-463-7707"
+        },
+        {
+          "source": "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수원시, 수정 2025-07-01)",
+          "phone": "051-463-7707"
+        }
+      ]
+    },
+    {
+      "id": "shelter-daegu-center",
+      "name": "대구노숙인종합지원센터",
+      "hours_note": "운영시간은 확인되지 않았어요. 처음 온 분도 상담받을 수 있어요. 같은 건물 4층에 일시보호시설(징검다리)이 있어요. 가기 전에 전화로 확인하세요.",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "http://www.dghomeless.or.kr/main/bbs/content.php?co_id=0101",
+      "reason": "주소·전화 CONFIRMED (북구 노숙인시설·다시서기 목록·수원시 현황표·센터 누리집). 운영시간 미확인.",
+      "sources": [
+        "https://www.data.go.kr/data/15029665/fileData.do (2026-02-07)",
+        "https://www.homeless.or.kr/other/",
+        "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수정 2025-07-01)",
+        "http://www.dghomeless.or.kr/main/bbs/content.php?co_id=0101"
+      ],
+      "research": "data/research/verify-meal-shelter-20261104.md §6",
+      "ssis": "C0000025616",
+      "cross_check": [
+        {
+          "source_id": "daegu-buk-homeless-fac",
+          "key": {
+            "시설명": "대구노숙인 종합지원센터"
+          }
+        }
+      ],
+      "checks": [
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "phone": "053-426-5828"
+        },
+        {
+          "source": "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수원시, 수정 2025-07-01)",
+          "phone": "053-426-5828"
+        }
+      ]
+    },
+    {
+      "id": "shelter-daegu-jingeomdari",
+      "name": "징검다리 (대구 일시보호시설)",
+      "hours_note": "밤에 잘 수 있는 응급잠자리가 있어요. 쉬는 날 없이 운영해요. 시간은 전화로 확인하세요.",
+      "requirements": "본인이 원하면 이용할 수 있어요. 한 달에 20일까지예요.",
+      "holiday_policy": "open",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "http://www.dghomeless.or.kr/main/bbs/content.php?co_id=20220201",
+      "reason": "주소·전화·정원 CONFIRMED (북구 노숙인시설·다시서기 목록·센터 누리집). 야간응급잠자리·연중무휴·본인 희망 시·월 20일은 센터 누리집. 시작·끝 시간은 없음 → hours 비움.",
+      "sources": [
+        "https://www.data.go.kr/data/15029665/fileData.do (2026-02-07)",
+        "https://www.homeless.or.kr/other/",
+        "http://www.dghomeless.or.kr/main/bbs/content.php?co_id=20220201",
+        "http://www.dghomeless.or.kr/main/bbs/content.php?co_id=20220202"
+      ],
+      "research": "data/research/verify-meal-shelter-20261104.md §6",
+      "ssis": "C0121011976",
+      "cross_check": [
+        {
+          "source_id": "daegu-buk-homeless-fac",
+          "key": {
+            "시설명": "징검다리"
+          }
+        }
+      ],
+      "checks": [
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "phone": "053-426-0231"
+        }
+      ]
+    },
+    {
+      "ssis": "C0000034236",
+      "id": "shelter-daejeon-center",
+      "name": "대전노숙인종합지원센터",
+      "checks": [
+        {
+          "source": "대전광역시_노숙인시설 현황 (data.go.kr 15063353, 2020-12-31)",
+          "address": "대전로839번길 75",
+          "phone": "042-221-8331"
+        },
+        {
+          "source": "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수원시, 수정 2025-07-01)",
+          "address": "대전로839번길 75",
+          "phone": "042-221-8331"
+        }
+      ]
+    },
+    {
+      "ssis": "C0120445403",
+      "id": "shelter-daejeon-temp",
+      "name": "대전노숙인일시보호센터",
+      "checks": [
+        {
+          "source": "대전광역시_노숙인시설 현황 (data.go.kr 15063353, 2020-12-31)",
+          "address": "선화로 224",
+          "phone": "042-221-8332"
+        },
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "address": "선화로 224",
+          "phone": "042-221-8332"
+        }
+      ]
+    },
+    {
+      "ssis": "C0295784417",
+      "id": "shelter-gwangju-dasiseogi",
+      "name": "광주다시서기종합지원센터 (일시보호)",
+      "hours_note": "일시보호 접수: 평일 아침 7시~밤 10시, 주말·공휴일 저녁 6시~밤 10시 (상담 후 이용). 센터는 평일 아침 6시~밤 12시. 24시간 여는 곳은 아니에요.",
+      "requirements": "상담을 받고 이용해요. 개인정보 동의가 필요해요. 한 달에 20일까지(10일 더 연장 가능). 기초생활수급자·긴급복지 수급자·청소년·장애인·혼자 움직이기 어려운 분은 이용이 제한될 수 있어요.",
+      "verified_by": "official",
+      "last_verified": "2026-11-04",
+      "source_url": "https://gjdasi.or.kr/wp_2ds/02_01.html",
+      "reason": "시간·조건은 시설 공식 누리집(© 2026). 접수 시간을 넣지 않고 안내만: 접수 시간과 머무는 시간이 다르므로 '지금 열림'을 계산하지 않음.",
+      "checks": [
+        {
+          "source": "https://gjdasi.or.kr/wp_main/index.html (© 2026)",
+          "address": "화산로 177-1",
+          "phone": "062-716-7400"
+        },
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "address": "화산로 177-1"
+        }
+      ]
+    },
+    {
+      "ssis": "C0113397945",
+      "id": "shelter-seongnam-center",
+      "name": "성남시 노숙인종합지원센터",
+      "checks": [
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "address": "성남대로1147번길 12",
+          "phone": "031-751-1970"
+        },
+        {
+          "source": "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수원시, 수정 2025-07-01)",
+          "address": "성남대로1147번길 12",
+          "phone": "031-751-1970"
+        }
+      ]
+    },
+    {
+      "ssis": "C0119379079",
+      "id": "shelter-suwon-dasiseogi",
+      "name": "수원다시서기 노숙인종합지원센터",
+      "checks": [
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "address": "갓매산로 86",
+          "phone": "031-238-8579"
+        },
+        {
+          "source": "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수원시, 수정 2025-07-01)",
+          "address": "갓매산로 86",
+          "phone": "031-238-8579"
+        }
+      ]
+    },
+    {
+      "ssis": "C0119114021",
+      "id": "shelter-uijeongbu-center",
+      "name": "의정부시희망회복종합지원센터",
+      "checks": [
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "address": "동일로711번길 41-2",
+          "phone": "031-844-7000"
+        },
+        {
+          "source": "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수원시, 수정 2025-07-01)",
+          "address": "동일로711번길 41-2",
+          "phone": "031-846-4232"
+        }
+      ],
+      "note": "같은 건물의 희망회복일시보호소는 031-846-4232 (다시서기 목록). 수원시 표의 번호는 일시보호소 번호와 섞인 것으로 보임."
+    },
+    {
+      "ssis": "C0000094663",
+      "id": "shelter-jeju-center",
+      "name": "희망나눔종합지원센터",
+      "checks": [
+        {
+          "source": "제주특별자치도_노숙인지원시설현황 (data.go.kr 15109150, 2025-12-31)",
+          "address": "탑동로15길 2",
+          "phone": "064-753-0711"
+        },
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "phone": "064-753-0711"
+        },
+        {
+          "source": "https://www.suwon.go.kr/sw-www/deptHome/dep_welfare/welfare06/welfare06-05.jsp (수원시, 수정 2025-07-01)",
+          "phone": "064-753-0711"
+        }
+      ]
+    },
+    {
+      "ssis": "C0133687291",
+      "id": "shelter-chuncheon-temp",
+      "name": "춘천시 노숙인일시보호소",
+      "checks": [
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "address": "영서로 1925-25",
+          "phone": "033-264-6901"
+        }
+      ]
+    },
+    {
+      "ssis": "C0201282226",
+      "id": "shelter-wonju-temp",
+      "name": "원주시 노숙인일시보호소",
+      "checks": [
+        {
+          "source": "https://www.homeless.or.kr/other/ (다시서기 '타 시설이용 안내', 날짜 없음·2022~2023 추정)",
+          "address": "대안로 1010",
+          "phone": "033-747-1795"
+        }
+      ],
+      "note": "도심에서 멀어요(흥업면, 원주복지원 안)."
+    }
+  ],
+  "exclude": [
+    {
+      "ssis": "C0297171629",
+      "name": "부산희망드림센터",
+      "reason": "낮 시설(평일 09~18시, 급식·샤워·세탁·상담). 잠자리 없음 → 잠자리로 넣지 않음.",
+      "sources": [
+        "http://busanhopedream.or.kr/",
+        "https://www.busan.go.kr/eng/ai-translated-press-releases/1712063 (2025-12-28)"
+      ]
+    }
+  ],
+  "not_shelters": [
+    {
+      "name": "쪽방상담소 (SSIS 050111, 12곳)",
+      "reason": "쪽방상담소는 상담·임시주거비 지원 기관이고 잠자는 곳이 아님. 상담(counseling) 분류가 생기면 후보.",
+      "sources": [
+        "data/research/verify-meal-shelter-20261104.md §6"
+      ]
+    }
+  ]
+}

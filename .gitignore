@@ -20,3 +20,12 @@ __pycache__/
 
 # 용량이 큰 원본(1차 출시 범위 밖, 다시 내려받을 수 있음 — data/research/clinic.md 참고)
 data/raw/clinic_20261103/
+
+# 대용량 원본(행정구역 경계 SHP, 약 450MB) — 커밋하지 않음
+data/raw/sgis-admin-boundary_20261104/
+
+# 대용량 원본(10MB 넘음, 다시 내려받을 수 있음 — 출처 URL은 data/research/ 참고). 본문 텍스트(mg2026.txt)만 커밋
+data/raw/verify-legal-clinic_20261104/mg2026_seq2.bin
+data/raw/verify-legal-clinic_20261104/mg2026.pdf
+data/raw/verify-legal-clinic_20261104/hira_20260930.zip
+data/raw/clinic-national_20261104/mohw_medical_aid_guide_2026.pdf

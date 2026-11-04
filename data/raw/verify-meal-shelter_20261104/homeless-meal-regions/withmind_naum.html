@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="format-detection" content="telephone=no">
+<meta name="naver-site-verification" content="132366e5c1770faa1e1e547ff2d178310baa6617" />
+<meta name='description' content="함께하는마음재단 소개, 노인복지, 자활, 지역복지 등 사업, 봉사 및 후원 안내. ">
+<meta name="keywords" content="함께하는마음재단 소개, 노인복지, 자활, 지역복지 등 사업, 봉사 및 후원 안내. ">
+<meta property="og:type" content="website">
+<meta property="og:title" content="함께하는마음재단">
+<meta property="og:description" content="함께하는마음재단 소개, 노인복지, 자활, 지역복지 등 사업, 봉사 및 후원 안내.">
+<meta property="og:url" content="http://withmind.or.kr">
+<link rel="canonical" href="http://withmind.or.kr">
+
+  <meta property="og:image" content="http://withmind.or.kr/mlogo.png">
+<title>소개 | 사회복지법인 함께하는마음재단</title>
+<link rel="stylesheet" href="http://www.withmind.or.kr/theme/theme04/css/default.css?ver=171222">
+<link rel="stylesheet" href="http://www.withmind.or.kr/theme/theme04/skin/content/basic/style.css?ver=171222">
+<link rel="stylesheet" href="http://www.withmind.or.kr/theme/theme04/css/response.css?ver=171222">
+<link href="/img/withmind.ico" rel="shortcut icon">
+<!--[if lte IE 8]>
+<script src="http://www.withmind.or.kr/js/html5.js"></script>
+<![endif]-->
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "http://www.withmind.or.kr";
+var g5_bbs_url   = "http://www.withmind.or.kr/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+</script>
+<script src="http://www.withmind.or.kr/js/jquery-1.8.3.min.js"></script>
+<script src="http://www.withmind.or.kr/js/jquery.menu.js?ver=171222"></script>
+<script src="http://www.withmind.or.kr/js/common.js?ver=171222"></script>
+<script src="http://www.withmind.or.kr/js/wrest.js?ver=171222"></script>
+<script src="http://www.withmind.or.kr/js/placeholders.min.js"></script>
+<link rel="stylesheet" href="http://www.withmind.or.kr/js/font-awesome/css/font-awesome.min.css">
+
+
+
+
+<script src="/js/jquery.ui.core.min.js" type="text/javascript"></script>
+<script>
+/*
+* 탭 버튼 설정
+* 인자값으로 넘어온 btnId로 시작되는 id를 가진 요소를 클릭했을경우 이벤트 발생
+* 		--버튼 클릭시 이벤트--
+* 1.	아이디가 btnId로 시작되는 요소들에서 class항목제거(on)
+* 2.	클릭한 대상에 class항목 추가(on) 
+* 3.	아이디가 contId로 시작되는 요소들을 hide
+* 4.	클릭한 대상의 아이디에서 btnId를 제외한 문자(XXX)를 사용하여 아이디가 contId+XXX 인 요소를 show
+* 비고.	인자값 selectBtnId가 존재하는 경우 클릭이벤트와 동일하게 처리
+* btnId : 버튼 아이디
+* contId : 내용 아이디
+* selectBtnId : 활성화될 버튼 아이디 파라매터를 이용할 경우 - ${param.selectBtnId}
+* callback : 텝 클릭 시 callback 함수명만 넣어준다.
+* 			callback('활성화버튼아이디','활성화영역아이디','활성화영역고유아이디');
+* 			callback('tabDaysBtn','tabDaysArea','1'); 현재활성화된 영역 tabDaysArea1 에서 뒤에자리만 반환
+* ex)
+* 	$jq(function(){
+*		setTab('tabDaysBtn','tabDaysArea','${param.selectBtnId}', 'callback');
+*	});
+*/
+function setTab(btnId, contId, selectBtnId, callback){
+	$jq("[id^='"+btnId+"']").css({"cursor":"pointer"});
+	$jq("[id^='"+btnId+"']").click(function(){
+		$jq("[id^='"+btnId+"']").removeClass("on");
+		$jq(this).addClass("on");
+		$jq("[id^='"+contId+"']").hide();
+		$jq("[id='"+contId+$jq(this).attr("id").replace(btnId, "")+"']").show();
+		try{
+			eval(callback + "("
+						 + "'" + btnId + $jq(this).attr("id").replace(btnId, "") + "',"
+						 + "'" + contId + $jq(this).attr("id").replace(btnId, "") + "',"
+						 + "'" + $jq(this).attr("id").replace(btnId, "")+"'"
+						 + ");");
+		}catch(e){}
+	});
+	//활성화될 버튼 아이디가 없으면 
+	if( selectBtnId != null && selectBtnId != ""
+							&& $jq("[id="+selectBtnId+"]").get(0) != null
+							&& selectBtnId.replace($jq.trim(btnId), "") != "" ){
+			$jq("[id^='"+btnId+"']").removeClass("on");
+			$jq("[id="+selectBtnId+"]").addClass("on");
+			$jq("[id^='"+contId+"']").hide();
+			$jq("[id='"+contId+selectBtnId.replace($jq.trim(btnId), "")+"']").show();
+	}
+}
+</script>
+
+<script src="/js/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript">
+			$(function(){
+				setTab('btnId', 'contId', 'btnId1');
+			});
+</script>
+
+</head>
+<body>
+
+
+
+
+
+
+
+<!-- 상단 시작 { -->
+<div id="hd">
+    <h1 id="hd_h1">소개</h1>
+
+    <div id="skip_to_container"><a href="#container">본문 바로가기</a></div>
+
+
+    <div id="tnb">
+        <ul>
+
+
+
+
+                        <li><a href="http://www.withmind.or.kr/bbs/register.php"><i class="fa fa-user-plus" aria-hidden="true"></i> 회원가입</a></li>
+            <li><a href="http://www.withmind.or.kr/bbs/login.php"><b><i class="fa fa-sign-in" aria-hidden="true"></i> 로그인</b></a></li>
+            
+
+
+
+
+		
+
+				         
+				                    </ul>
+  
+    </div>
+<div class='hd_fixed'>
+    <div id="hd_wrapper">
+
+        <div id="logo">
+			<span id="mobile_open">
+
+			<i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only">전체메뉴열기</span></span>
+            <a href="http://www.withmind.or.kr"><img src="http://www.withmind.or.kr/img/logo.png" alt="사회복지법인 함께하는마음재단"></a>
+        </div>
+  
+    <nav id="gnb">
+        <h2>메인메뉴</h2>
+        <div class="gnb_wrap">
+
+            <ul id="gnb_1dul">
+
+                                <li class="gnb_1dli" style="z-index:999">
+                    <a href="/bbs/content.php?co_id=greeting" target="_self" class="gnb_1da">재단소개</a>
+                    <span class="bg">하위분류</span><ul class="gnb_2dul">
+ 
+                        <li class="gnb_2dli"><a href="/bbs/content.php?co_id=greeting" target="_self" class="gnb_2da">재단소개</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/content.php?co_id=orgchart" target="_self" class="gnb_2da">조직도</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/content.php?co_id=location" target="_self" class="gnb_2da">오시는길</a></li>
+                    </ul>
+                </li>
+
+                                <li class="gnb_1dli" style="z-index:998">
+                    <a href="/bbs/content.php?co_id=silver" target="_self" class="gnb_1da">사업안내</a>
+                    <span class="bg">하위분류</span><ul class="gnb_2dul">
+ 
+                        <li class="gnb_2dli"><a href="/bbs/content.php?co_id=silver" target="_self" class="gnb_2da">노인복지</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/content.php?co_id=self" target="_self" class="gnb_2da">자활복지</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/content.php?co_id=local" target="_self" class="gnb_2da">지역복지</a></li>
+                    </ul>
+                </li>
+
+                                <li class="gnb_1dli" style="z-index:997">
+                    <a href="/bbs/content.php?co_id=service" target="_self" class="gnb_1da">참여하기</a>
+                    <span class="bg">하위분류</span><ul class="gnb_2dul">
+ 
+                        <li class="gnb_2dli"><a href="/bbs/content.php?co_id=service" target="_self" class="gnb_2da">자원봉사안내</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/content.php?co_id=support" target="_self" class="gnb_2da">후원안내</a></li>
+                    </ul>
+                </li>
+
+                                <li class="gnb_1dli" style="z-index:996">
+                    <a href="/bbs/board.php?bo_table=in_1" target="_self" class="gnb_1da">인재채용</a>
+                    <span class="bg">하위분류</span><ul class="gnb_2dul">
+ 
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=in_1" target="_self" class="gnb_2da">채용공고</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=in_2" target="_self" class="gnb_2da">입사지원</a></li>
+                    </ul>
+                </li>
+
+                                <li class="gnb_1dli" style="z-index:995">
+                    <a href="/bbs/board.php?bo_table=naum" target="_self" class="gnb_1da">홍보실</a>
+                    <span class="bg">하위분류</span><ul class="gnb_2dul">
+ 
+                        <li class="gnb_2dli"><a href="http://webzine.withmind.or.kr" target="_blank" class="gnb_2da">나눔레터W</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=naum" target="_self" class="gnb_2da">나눔지</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=bodo" target="_self" class="gnb_2da">언론보도</a></li>
+                    </ul>
+                </li>
+
+                                <li class="gnb_1dli" style="z-index:994">
+                    <a href="/bbs/board.php?bo_table=notice" target="_self" class="gnb_1da">커뮤니티</a>
+                    <span class="bg">하위분류</span><ul class="gnb_2dul">
+ 
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=notice" target="_self" class="gnb_2da">공지사항</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=disclosure" target="_self" class="gnb_2da">공시정보</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=news" target="_self" class="gnb_2da">기관소식</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=welf" target="_self" class="gnb_2da">복지뉴스</a></li>
+                    </ul>
+                </li>
+
+                                <li class="gnb_1dli" style="z-index:993">
+                    <a href="/bbs/content.php?co_id=naum" target="_self" class="gnb_1da">희망의집</a>
+                    <span class="bg">하위분류</span><ul class="gnb_2dul">
+ 
+                        <li class="gnb_2dli"><a href="/bbs/content.php?co_id=naum" target="_self" class="gnb_2da">소개</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=namu_01" target="_self" class="gnb_2da">공지사항</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=sup1" target="_self" class="gnb_2da">나눔이야기</a></li>
+                     
+                        <li class="gnb_2dli"><a href="/bbs/board.php?bo_table=namu_06" target="_self" class="gnb_2da">사진갤러리</a></li>
+                    </ul>
+                </li>
+
+                                <li class="gnb_1dli gnb_mnal"><button type="button" class="gnb_menu_btn"><i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only">전체메뉴열기</span></button></li>
+            </ul>
+
+        </div>
+    </nav>
+ 
+    </div>
+
+<div id="gnb_all">
+            <div id="gnb_all_bg">
+
+                <h2>전체메뉴</h2>
+                <ul class="gnb_al_ul">
+                                        <li class="gnb_al_li">
+                        <a href="/bbs/content.php?co_id=greeting" target="_self" class="gnb_al_a">재단소개</a>
+                        <ul>
+                            <li><a href="/bbs/content.php?co_id=greeting" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 재단소개</a></li>
+
+                            <li> &nbsp; <a href="/bbs/content.php?co_id=greeting" target="_self">  · 함께하는마음재단은</a></li>
+							                            <li> &nbsp; <a href="/bbs/content.php?co_id=history" target="_self">  · 발자취</a></li>
+							                            <li> &nbsp; <a href="/bbs/content.php?co_id=ci" target="_self">  · CI/슬로건</a></li>
+							                            <li><a href="/bbs/content.php?co_id=orgchart" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 조직도</a></li>
+
+                            <li><a href="/bbs/content.php?co_id=location" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 오시는길</a></li>
+
+</ul>
+                    </li>
+                                        <li class="gnb_al_li">
+                        <a href="/bbs/content.php?co_id=silver" target="_self" class="gnb_al_a">사업안내</a>
+                        <ul>
+                            <li><a href="/bbs/content.php?co_id=silver" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 노인복지</a></li>
+
+                            <li><a href="/bbs/content.php?co_id=self" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 자활복지</a></li>
+
+                            <li><a href="/bbs/content.php?co_id=local" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 지역복지</a></li>
+
+</ul>
+                    </li>
+                                        <li class="gnb_al_li">
+                        <a href="/bbs/content.php?co_id=service" target="_self" class="gnb_al_a">참여하기</a>
+                        <ul>
+                            <li><a href="/bbs/content.php?co_id=service" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 자원봉사안내</a></li>
+
+                            <li> &nbsp; <a href="/bbs/board.php?bo_table=vol3" target="_self">  · 자원봉사모집</a></li>
+							                            <li> &nbsp; <a href="/bbs/write.php?bo_table=vol2" target="_self">  · 자원봉사신청</a></li>
+							                            <li><a href="/bbs/content.php?co_id=support" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 후원안내</a></li>
+
+                            <li> &nbsp; <a href="/bbs/board.php?bo_table=sup2" target="_self">  · 후원문의</a></li>
+							                            <li> &nbsp; <a href="/bbs/write.php?bo_table=sup3" target="_self">  · 후원신청</a></li>
+							</ul>
+                    </li>
+                                        <li class="gnb_al_li">
+                        <a href="/bbs/board.php?bo_table=in_1" target="_self" class="gnb_al_a">인재채용</a>
+                        <ul>
+                            <li><a href="/bbs/board.php?bo_table=in_1" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 채용공고</a></li>
+
+                            <li><a href="/bbs/board.php?bo_table=in_2" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 입사지원</a></li>
+
+</ul>
+                    </li>
+                                        <li class="gnb_al_li">
+                        <a href="/bbs/board.php?bo_table=naum" target="_self" class="gnb_al_a">홍보실</a>
+                        <ul>
+                            <li><a href="http://webzine.withmind.or.kr" target="_blank"><i class="fa fa-caret-right" aria-hidden="true"></i> 나눔레터W</a></li>
+
+                            <li><a href="/bbs/board.php?bo_table=naum" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 나눔지</a></li>
+
+                            <li><a href="/bbs/board.php?bo_table=bodo" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 언론보도</a></li>
+
+</ul>
+                    </li>
+                                        <li class="gnb_al_li">
+                        <a href="/bbs/board.php?bo_table=notice" target="_self" class="gnb_al_a">커뮤니티</a>
+                        <ul>
+                            <li><a href="/bbs/board.php?bo_table=notice" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 공지사항</a></li>
+
+                            <li><a href="/bbs/board.php?bo_table=disclosure" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 공시정보</a></li>
+
+                            <li><a href="/bbs/board.php?bo_table=news" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 기관소식</a></li>
+
+                            <li><a href="/bbs/board.php?bo_table=welf" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 복지뉴스</a></li>
+
+</ul>
+                    </li>
+                                        <li class="gnb_al_li">
+                        <a href="/bbs/content.php?co_id=naum" target="_self" class="gnb_al_a">희망의집</a>
+                        <ul>
+                            <li><a href="/bbs/content.php?co_id=naum" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 소개</a></li>
+
+                            <li><a href="/bbs/board.php?bo_table=namu_01" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 공지사항</a></li>
+
+                            <li><a href="/bbs/board.php?bo_table=sup1" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 나눔이야기</a></li>
+
+                            <li><a href="/bbs/board.php?bo_table=namu_06" target="_self"><i class="fa fa-caret-right" aria-hidden="true"></i> 사진갤러리</a></li>
+
+</ul>
+                    </li>
+                                    </ul>
+				
+				<button type="button" class="gnb_close_btn"><i class="fa fa-times" aria-hidden="true"></i></button>
+		</div>
+</div>
+</div>
+  
+    <script>
+    
+    $(function(){
+        $(".gnb_menu_btn").click(function(){
+            $("#gnb_all").show();
+        });
+        $(".gnb_close_btn").click(function(){
+            $("#gnb_all").hide();
+        });
+    });
+
+    </script>
+</div>
+<!-- } 상단 끝 -->
+
+    <hr>
+
+<!-- 콘텐츠 시작 { -->
+<div id="wrapper">
+
+
+   <div id="main_bn" class='main_bn_sub main_bn_naum' style='background:#ececec;'>
+<div class="bx-wrapper" style="max-width: 100%;  ">
+<div class="bx-viewport" style="width: 100%; height: auto; overflow: hidden; position: relative; background:url('/theme/theme04/img/sub70.png') no-repeat center top"> 
+</div></div>
+</div>
+
+	
+
+
+    <div id="container_wr">
+   
+       <div id="container_wr_index">
+
+
+	    <div class='sub_location'>
+		<a href=/>home</a>&nbsp; > &nbsp;<a href='/bbs/content.php?co_id=naum '>희망의집</a> &nbsp;> &nbsp;<span>소개</span>
+		
+		</div>
+		
+
+		<script type="text/javascript">
+<!--
+    function display_submenu(num) { 
+         document.getElementById("mysub"+num).style.display="block";
+    }
+//-->
+</script>
+
+<style>
+#left_menu {float:left;width:252px;padding:0;height: 100%;margin:20px 70px 20px 10px}
+
+#subBx{	width:100%;	height:58px;  }
+#subBx h2{
+	font-size:26px;
+	color:#333;
+	padding-bottom:20px;
+	/*background:url('/img/smenu_bar.jpg') no-repeat bottom;*/
+}
+#subBx .stitle1{	color:#3399cc;	font-size:1.1em;}
+#subBx .stitle2{	letter-spacing:0.1em;font-size:0.9em;	color:#999}
+/*
+.snb .title00{	width:100%;	background:url('/img/bg_sun.png') no-repeat right bottom;}
+.snb .title10{	width:100%;	background:url(/img/bg_tulip.png)  no-repeat right bottom;}
+.snb .title20{	width:100%;	background:url(/img/bg_umbrella.png)   no-repeat right bottom;}
+.snb .title30{	width:100%;	background:url(/img/bg_nature.png)   no-repeat right bottom;}
+.snb .title40{	width:100%;	background:url(/img/bg_flower.png)   no-repeat right bottom;}
+.snb .title50{	width:100%;	background:url(/img/bg_berry.png)  no-repeat right bottom;}
+*/
+#subBx span{	color:#9cb351;	}
+#subBx p{	line-height:140%;}
+ 
+.leftMenu{	z-index:3;}
+.leftMenu:after {display:block;visibility:hidden;clear:both;content:""}
+
+
+.snb{position:relative;width:252px; float:left; height:100%;   margin-bottom:70px;}
+.snb ul{padding:0px; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+.snb li{display:block;border-top: 1px solid #ddd;  color:#333; FONT-size:1.3em; height:45px;line-height:45px;padding-left:15px;}
+.snb li:last-child{border-bottom:1px solid #ddd;}
+.snb li a:hover {color:#3399cc;!important; text-decoration:none}
+.snb li.on{background:url('/img/left_menu_bg.png'); text-decoration:none;color:#fff;border-bottom:none;}
+.snb li.on a{color:#fff;}
+.snb li.sub_menu{ font-size:1.1em}
+.snb li.left_sub{background:#f8faf3;!important; text-decoration:none;color:#fff;border-bottom:none;}
+.snb li.left_sub a{background:#f8faf3;!important;color:#333;}
+.snb li.left_subon{background:#f8faf3;!important;text-decoration:none;color:#333;border-bottom:none;}
+.snb li.left_subon a{background:#f8faf3;!important;color:#789b00;}
+
+</style>
+ 
+
+
+ 
+
+
+<div id="left_menu" class="sub_menu">
+<div class="snb">    
+		
+					<div id='mysub0' class='leftMenu'  style='display:none;'>
+						<div ID='subBx' class='title00'>
+							<h2>재단소개</h2>
+							<p>
+							<span class=stitle1> </span><br>
+							<span class=stitle2> <span>
+							</p>
+						</div>
+							<ul>
+
+							<li class=""><a href="/bbs/content.php?co_id=greeting" target="_self" >재단소개</a></li>
+							<li class="  sub_menu  "><a href="/bbs/content.php?co_id=greeting" target="_self" >· 함께하는마음재단은</a></li>
+							<li class="  sub_menu  "><a href="/bbs/content.php?co_id=history" target="_self" >· 발자취</a></li>
+							<li class="  sub_menu  "><a href="/bbs/content.php?co_id=ci" target="_self" >· CI/슬로건</a></li>
+							<li class=""><a href="/bbs/content.php?co_id=orgchart" target="_self" >조직도</a></li>
+							<li class=""><a href="/bbs/content.php?co_id=location" target="_self" >오시는길</a></li></ul>
+</div>
+					<div id='mysub1' class='leftMenu'  style='display:none;'>
+						<div ID='subBx' class='title10'>
+							<h2>사업안내</h2>
+							<p>
+							<span class=stitle1> </span><br>
+							<span class=stitle2> <span>
+							</p>
+						</div>
+							<ul>
+
+							<li class=""><a href="/bbs/content.php?co_id=silver" target="_self" >노인복지</a></li>
+							<li class=""><a href="/bbs/content.php?co_id=self" target="_self" >자활복지</a></li>
+							<li class=""><a href="/bbs/content.php?co_id=local" target="_self" >지역복지</a></li></ul>
+</div>
+					<div id='mysub2' class='leftMenu'  style='display:none;'>
+						<div ID='subBx' class='title20'>
+							<h2>참여하기</h2>
+							<p>
+							<span class=stitle1> </span><br>
+							<span class=stitle2> <span>
+							</p>
+						</div>
+							<ul>
+
+							<li class=""><a href="/bbs/content.php?co_id=service" target="_self" >자원봉사안내</a></li>
+							<li class="  sub_menu  "><a href="/bbs/board.php?bo_table=vol3" target="_self" >· 자원봉사모집</a></li>
+							<li class="  sub_menu  "><a href="/bbs/write.php?bo_table=vol2" target="_self" >· 자원봉사신청</a></li>
+							<li class=""><a href="/bbs/content.php?co_id=support" target="_self" >후원안내</a></li>
+							<li class="  sub_menu  "><a href="/bbs/board.php?bo_table=sup2" target="_self" >· 후원문의</a></li>
+							<li class="  sub_menu  "><a href="/bbs/write.php?bo_table=sup3" target="_self" >· 후원신청</a></li></ul>
+</div>
+					<div id='mysub3' class='leftMenu'  style='display:none;'>
+						<div ID='subBx' class='title30'>
+							<h2>인재채용</h2>
+							<p>
+							<span class=stitle1> </span><br>
+							<span class=stitle2> <span>
+							</p>
+						</div>
+							<ul>
+
+							<li class=""><a href="/bbs/board.php?bo_table=in_1" target="_self" >채용공고</a></li>
+							<li class=""><a href="/bbs/board.php?bo_table=in_2" target="_self" >입사지원</a></li></ul>
+</div>
+					<div id='mysub4' class='leftMenu'  style='display:none;'>
+						<div ID='subBx' class='title40'>
+							<h2>홍보실</h2>
+							<p>
+							<span class=stitle1> </span><br>
+							<span class=stitle2> <span>
+							</p>
+						</div>
+							<ul>
+
+							<li class=""><a href="http://webzine.withmind.or.kr" target="_blank" >나눔레터W</a></li>
+							<li class=""><a href="/bbs/board.php?bo_table=naum" target="_self" >나눔지</a></li>
+							<li class=""><a href="/bbs/board.php?bo_table=bodo" target="_self" >언론보도</a></li></ul>
+</div>
+					<div id='mysub5' class='leftMenu'  style='display:none;'>
+						<div ID='subBx' class='title50'>
+							<h2>커뮤니티</h2>
+							<p>
+							<span class=stitle1> </span><br>
+							<span class=stitle2> <span>
+							</p>
+						</div>
+							<ul>
+
+							<li class=""><a href="/bbs/board.php?bo_table=notice" target="_self" >공지사항</a></li>
+							<li class=""><a href="/bbs/board.php?bo_table=disclosure" target="_self" >공시정보</a></li>
+							<li class=""><a href="/bbs/board.php?bo_table=news" target="_self" >기관소식</a></li>
+							<li class=""><a href="/bbs/board.php?bo_table=welf" target="_self" >복지뉴스</a></li></ul>
+</div>
+					<div id='mysub6' class='leftMenu'  style='display:none;'>
+						<div ID='subBx' class='title60'>
+							<h2>희망의집</h2>
+							<p>
+							<span class=stitle1> </span><br>
+							<span class=stitle2> <span>
+							</p>
+						</div>
+							<ul>
+
+							<li class="on "><a href="/bbs/content.php?co_id=naum" target="_self" >소개</a></li><script language='javascript'> display_submenu(6 ); </script> 
+							<li class=""><a href="/bbs/board.php?bo_table=namu_01" target="_self" >공지사항</a></li>
+							<li class=""><a href="/bbs/board.php?bo_table=sup1" target="_self" >나눔이야기</a></li>
+							<li class=""><a href="/bbs/board.php?bo_table=namu_06" target="_self" >사진갤러리</a></li></ul>
+</div>
+</div>
+</div>    
+	<div id="mysub5" class='leftMenu'  style="display:none;">
+			<div ID='subBx' class="title70">
+				<h2>이용안내</h2>
+				<p>
+				<span class=stitle1> </span><br>
+				<span class=stitle2> Center<span>
+				</p>
+			</div>
+            <ul>
+                <a href="/bbs/content.php?co_id=privacy" target="_self" ><li class="leftmenu_s">개인정보처리방침</li></a>
+                <a href="/bbs/content.php?co_id=provision" target="_self" ><li class="leftmenu_s">서비스이용약관</li></a>
+            </ul>
+    </div>
+    	
+
+	 
+
+</div>
+														 
+		<div id="container_sub" >
+
+        
+
+
+
+
+<article id="ctt" class="ctt_naum">
+    <header>
+        <h1>1소개  </h1>
+	<h3 class="sub-title">소개<small>우리동네 경로식당 희망의집</small></h3>
+	
+	</header>
+
+    <div id="ctt_con">
+
+ 
+	        <div class="col-sm-12">
+         <div class="title3">
+          희망의집은 지역의 결식어르신들의 건강한 생활을 위해 <br>주3회(화,금,토) 정성스럽게 식사를 대접하는 내 집 같은 경로식당입니다. 
+          </div>
+
+</div>
+<div class="col-sm-12">
+				<div class="datat1">실내경로급식 </div>
+		<div class="col-sm-6">
+				<div class="datat2"> 희망의집 경로급식  (since 1998)</div>
+				
+<ul class="line-icon">
+
+			<li> 장소 : 희망의집 실내급식소 (남구 대봉로108)</li>
+			<li> 시기 : 매주 화, 금, 토 / 주3회</li>
+			<li> 이용인원 : 1회 250~300여명</li>
+			<li> 기타서비스 : 풍물 및 이미용서비스 </li>
+			<li> 봉사참여 가능인원 : 10~20여명 </li>
+			<li> 나눔비용 : 1회 50만원 정도 </li>
+			</ul>
+				
+		</div>
+		<div class="col-sm-6">
+			<img style="width: 100%; margin-top: 17px; max-width: 300px;" src="/theme/theme04/img/7-1.jpg">
+		</div>
+</div>
+<div class="col-sm-12">
+				<div class="datat1">실외경로급식  </div>
+		<div class="col-sm-6">
+				<div class="datat2">토요나눔마당 (1996~2020)</div>
+				
+<ul class="line-icon">
+				<li> 장소 : 달성공원 잉어장 옆</li>
+				<li> 시기 : 매주 토 / 주1회</li>
+				<li> 이용인원 : 1회 900~1,000여명</li>
+				<li> 기타서비스 : 안마, 이미용서비스 등 </li>
+				<li> 봉사참여 가능인원 : 90여명 </li>
+				<li> 나눔비용 : 1회 200만원 정도 </li>
+				</ul>  
+					
+		</div>
+		<div class="col-sm-6">
+				<img style="width: 100%; margin-top: 17px; max-width: 300px;" src="/theme/theme04/img/7-2.jpg"><br><br>
+		</div>
+</div>
+<div class="col-sm-12">
+		<div class="col-sm-6">
+				<div class="datat2">신천경로급식 (2010~2023)</div>
+				
+<ul class="line-icon">
+				<li> 장소 : 신천 희망교 다리 아래 </li>
+				<li> 시기 : 매주 목 / 주1회</li>
+				<li> 이용인원 : 1회 350~380여명 </li>
+				<li> 봉사참여 가능인원 : 20여명</li>
+				<li> 나눔비용 : 1회 60만원 정도 </li>
+				</ul>  
+					
+		</div>
+		<div class="col-sm-6">
+				<img style="width: 100%; margin-top: 17px; max-width: 300px;" src="/theme/theme04/img/7-3.jpg">
+		</div>
+				
+</div>
+<div class="col-sm-12">
+<div class="datat1"><div style="display: inline-block;">희망의집 후원계좌 : </div><div style="display: inline-block;">224-05-055032-006 대구은행 </div></div>
+				<div class="datat1">희망의집 오시는 길</div>
+				<div class="datat2">지도보기</div>
+				<div class="datad1">
+<iframe width="100%" height="450" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6468.063908678229!2d128.604204!3d35.84822!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3565e3ae5c95d2c1%3A0xa219ee02c5a32653!2z64yA6rWs6rSR7Jet7IucIOuCqOq1rCDsnbTsspzrj5kg64yA67SJ66GcIDEwOA!5e0!3m2!1sko!2skr!4v1546591457969" frameborder="0" allowfullscreen="" style="border: 0px currentColor; border-image: none;"></iframe>
+</div>
+
+</div>
+<div class="col-sm-6">
+
+
+				<div class="datat2">주소 및 연락처 </div>
+				<div class="datad1">
+<ul>
+	<li> 주소 : 대구광역시 남구 대봉로 108</li>
+	<li> 연락처 : TEL) 053-476-6635 </li>
+FAX) 053-476-6632
+	</ul> 
+  				</div>	
+</div>
+<div class="col-sm-6">
+				<div class="datat2">교통안내 </div>
+				<div class="datad1"> <b>버스노선 </b>
+<ul>
+	<li> 희망교 이천주공2단지 앞 : 204</li>
+	<li>이천치안센터 건너 : 240, 401. 730</li>
+	<li>대구중학교 앞 : (도보 5분) 240, 401, 730</li>
+	</ul> 
+				</div>	
+</div>		
+	    </div>
+
+</article>    </div>
+    </div>
+
+	<div class="close_menu">
+	<div class='tmp_mobile'></div>
+	<i class="fa fa-times" id="mobile_menu_close"></i></div>
+    <div id="aside"  >
+                
+		<div class="mobile_menu">
+            <ul>
+                                <li>
+                    <a href="/bbs/content.php?co_id=greeting" target="_self" class="gnb_1da">재단소개</a>
+					<i class="fa fa-angle-down"></i>
+                    <ul>
+                        <li><a href="/bbs/content.php?co_id=greeting" target="_self">재단소개</a></li>
+                                            <li><a href="/bbs/content.php?co_id=greeting" target="_self">· 함께하는마음재단은</a></li>
+                                            <li><a href="/bbs/content.php?co_id=history" target="_self">· 발자취</a></li>
+                                            <li><a href="/bbs/content.php?co_id=ci" target="_self">· CI/슬로건</a></li>
+                                            <li><a href="/bbs/content.php?co_id=orgchart" target="_self">조직도</a></li>
+                                            <li><a href="/bbs/content.php?co_id=location" target="_self">오시는길</a></li>
+                    </ul>
+                </li>
+                                <li>
+                    <a href="/bbs/content.php?co_id=silver" target="_self" class="gnb_1da">사업안내</a>
+					<i class="fa fa-angle-down"></i>
+                    <ul>
+                        <li><a href="/bbs/content.php?co_id=silver" target="_self">노인복지</a></li>
+                                            <li><a href="/bbs/content.php?co_id=self" target="_self">자활복지</a></li>
+                                            <li><a href="/bbs/content.php?co_id=local" target="_self">지역복지</a></li>
+                    </ul>
+                </li>
+                                <li>
+                    <a href="/bbs/content.php?co_id=service" target="_self" class="gnb_1da">참여하기</a>
+					<i class="fa fa-angle-down"></i>
+                    <ul>
+                        <li><a href="/bbs/content.php?co_id=service" target="_self">자원봉사안내</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=vol3" target="_self">· 자원봉사모집</a></li>
+                                            <li><a href="/bbs/write.php?bo_table=vol2" target="_self">· 자원봉사신청</a></li>
+                                            <li><a href="/bbs/content.php?co_id=support" target="_self">후원안내</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=sup2" target="_self">· 후원문의</a></li>
+                                            <li><a href="/bbs/write.php?bo_table=sup3" target="_self">· 후원신청</a></li>
+                    </ul>
+                </li>
+                                <li>
+                    <a href="/bbs/board.php?bo_table=in_1" target="_self" class="gnb_1da">인재채용</a>
+					<i class="fa fa-angle-down"></i>
+                    <ul>
+                        <li><a href="/bbs/board.php?bo_table=in_1" target="_self">채용공고</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=in_2" target="_self">입사지원</a></li>
+                    </ul>
+                </li>
+                                <li>
+                    <a href="/bbs/board.php?bo_table=naum" target="_self" class="gnb_1da">홍보실</a>
+					<i class="fa fa-angle-down"></i>
+                    <ul>
+                        <li><a href="http://webzine.withmind.or.kr" target="_blank">나눔레터W</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=naum" target="_self">나눔지</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=bodo" target="_self">언론보도</a></li>
+                    </ul>
+                </li>
+                                <li>
+                    <a href="/bbs/board.php?bo_table=notice" target="_self" class="gnb_1da">커뮤니티</a>
+					<i class="fa fa-angle-down"></i>
+                    <ul>
+                        <li><a href="/bbs/board.php?bo_table=notice" target="_self">공지사항</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=disclosure" target="_self">공시정보</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=news" target="_self">기관소식</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=welf" target="_self">복지뉴스</a></li>
+                    </ul>
+                </li>
+                                <li>
+                    <a href="/bbs/content.php?co_id=naum" target="_self" class="gnb_1da">희망의집</a>
+					<i class="fa fa-angle-down"></i>
+                    <ul>
+                        <li><a href="/bbs/content.php?co_id=naum" target="_self">소개</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=namu_01" target="_self">공지사항</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=sup1" target="_self">나눔이야기</a></li>
+                                            <li><a href="/bbs/board.php?bo_table=namu_06" target="_self">사진갤러리</a></li>
+                    </ul>
+                </li>
+                            </ul>
+		</div>
+
+<script type="text/javascript">
+<!--
+$( document ).ready(function(){
+	$( ".mobile_menu > ul > li" ).click(function(){
+		$( this ).find('ul').toggle( 100 );
+	});
+
+	$( "#mobile_menu_close" ).click(function(){
+		$( "#aside" ).animate({"left":"-315px"}, 200);
+		$( ".close_menu" ).animate({"left":"-80px"}, 200);
+	});
+
+	$( "#mobile_menu_close" ).click(function(){
+		$( "#aside" ).animate({"left":"-315px"}, 200);
+		$( ".close_menu" ).animate({"left":"-80px"}, 200);
+	});
+	$( "#mobile_open" ).click(function(){
+		$( "#aside" ).animate({"left":"0px"}, 200);
+		$( ".close_menu" ).animate({"left":"8px"}, 200);
+	});
+
+});
+//-->
+</script>
+
+                    </div>
+</div>
+
+</div>
+<!-- } 콘텐츠 끝 -->
+
+<hr>
+
+
+<div id="ft">
+   	<div id="ft_wr">
+        <div class="ft_info"style='float:left; text-align:left'>
+			<div id="ft_link">
+				<a href="http://www.withmind.or.kr/bbs/content.php?co_id=email">이메일무단수집거부</a> | 
+				<a href="http://www.withmind.or.kr/bbs/content.php?co_id=privacy">개인정보처리방침</a> | 
+				<a href="http://www.withmind.or.kr/bbs/content.php?co_id=provision">서비스이용약관</a> 
+			 
+			 
+			</div>
+ 
+           <span style='display:inline-block'>&nbsp; <b> COMPANY</b> : 사회복지법인 함께하는마음재단 &nbsp;  </span>  
+
+  <span style='display:inline-block'>&nbsp; <b> ADDRESS</b> :  (42431) 대구광역시 남구 이천로26길 13-3</span><br> 
+
+ <span>&nbsp; <b> E-MAIL</b> : withmind971029@hanmail.net</span> <span>&nbsp; <b>Tel</b>: 053-476-6631</span>    <span>&nbsp; <b>Fax</b> : 053-476-6632 </span>
+			<div id="ft_copy">&nbsp; Copyright &copy; <b>withmind.co.kr.</b> All rights reserved.</div>
+		</div>
+		<div class=ft_logo><img src="http://www.withmind.or.kr/img/ft_logo.png" alt="그누보드5">
+		</div>
+</div>
+ 
+    <button type="button" id="top_btn"><i class="fa fa-arrow-up" aria-hidden="true"></i><span class="sound_only">상단으로</span></button>
+        <script>
+        
+        $(function() {
+            $("#top_btn").on("click", function() {
+                $("html, body").animate({scrollTop:0}, '500');
+                return false;
+            });
+        });
+        </script>
+</div>
+
+
+
+
+
+
+
+
+<!-- } 하단 끝 -->
+
+<script>
+$(function() {
+    // 폰트 리사이즈 쿠키있으면 실행
+    font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+});
+</script>
+
+
+
+<!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+<!--[if lte IE 7]>
+<script>
+$(function() {
+    var $sv_use = $(".sv_use");
+    var count = $sv_use.length;
+
+    $sv_use.each(function() {
+        $(this).css("z-index", count);
+        $(this).css("position", "relative");
+        count = count - 1;
+    });
+});
+</script>
+<![endif]-->
+
+</body>
+</html>
+
+  
+

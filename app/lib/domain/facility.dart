@@ -3,7 +3,27 @@ import 'freshness.dart';
 import 'geo.dart';
 import 'opening_hours.dart';
 
-enum VerifiedBy { publicData, phone, field, report }
+enum VerifiedBy { publicData, official, phone, field, report }
+
+/// general = 누구나·노숙 중인 분. senior = 어르신 경로식당처럼 미리 등록해야 하는 곳 (decisions #18).
+enum Audience { general, senior }
+
+/// 진료 시설 종류. 무료 진료소와 보건소(무료 아님)를 꼭 구분해 보여 준다.
+enum ClinicType {
+  freeClinic('free_clinic'),
+  healthCenter('health_center'),
+  hospitalSupport('hospital_support');
+
+  const ClinicType(this.code);
+  final String code;
+
+  static ClinicType? tryParse(Object? v) {
+    for (final t in values) {
+      if (t.code == v) return t;
+    }
+    return null;
+  }
+}
 
 class Facility {
   const Facility({
@@ -23,6 +43,11 @@ class Facility {
     this.services = const [],
     this.sourceUrl,
     this.isFree = true,
+    this.sido,
+    this.sigungu,
+    this.audience = Audience.general,
+    this.clinicType,
+    this.geocoded = false,
   });
 
   /// 필수 필드가 없거나 형식이 틀리면 [FormatException].
@@ -69,6 +94,7 @@ class Facility {
     if (verified == null) throw FormatException('last_verified 형식 오류 (id=${json['id']})');
 
     final verifiedBy = switch (json['verified_by']) {
+      'official' => VerifiedBy.official,
       'phone' => VerifiedBy.phone,
       'field' => VerifiedBy.field,
       'report' => VerifiedBy.report,
@@ -97,6 +123,11 @@ class Facility {
       sourceUrl: opt('source_url'),
       lastVerified: DateTime(verified.year, verified.month, verified.day),
       verifiedBy: verifiedBy,
+      sido: opt('sido'),
+      sigungu: opt('sigungu'),
+      audience: json['audience'] == 'senior' ? Audience.senior : Audience.general,
+      clinicType: ClinicType.tryParse(json['subtype']),
+      geocoded: json['geocoded'] == true,
     );
   }
 
@@ -116,6 +147,21 @@ class Facility {
   final String? sourceUrl;
   final DateTime lastVerified;
   final VerifiedBy verifiedBy;
+  final String? sido;
+  final String? sigungu;
+  final Audience audience;
+  final ClinicType? clinicType;
+
+  /// 주소로 좌표를 찾은 시설 (원본에 좌표 없음). 지도 위치가 조금 다를 수 있다.
+  final bool geocoded;
+
+  /// 사람이 확인한 운영시간만 믿는다. 공공데이터 시간은 대조해 보니 자주 틀렸다 (decisions #16).
+  bool get hoursTrusted => verifiedBy != VerifiedBy.publicData && hours.rules.isNotEmpty;
+
+  /// 확인 안 된 시설은 시간이 있어도 "지금 열림"을 계산하지 않는다.
+  OpenStatus statusAt(DateTime now, {bool Function(DateTime)? isHoliday}) => hoursTrusted
+      ? hours.statusAt(now, isHoliday: isHoliday)
+      : const OpenStatus(OpenState.unknown);
 
   Freshness freshnessAt(DateTime now) => freshnessOf(lastVerified, now);
 }

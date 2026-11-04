@@ -38,8 +38,17 @@ cost: free | low_cost
 source_id: string     # data/sources.yaml 참조
 source_url: string?
 last_verified: date   # 마지막으로 사람이 또는 원본에서 확인한 날짜
-verified_by: public_data | phone | field | report
+verified_by: public_data | official | phone | field | report
+                      # official = 기관 공식 안내(홈페이지·공고)를 사람이 확인함
+sido: string          # 시도 (2026-07-01 이후 이름. 예: "서울", "전남광주", "경기")
+sigungu: string?      # 시군구 (예: "용산구", "화성시 동탄구")
+audience: general | senior   # senior = 어르신 경로식당 등 미리 등록해야 하는 곳 (기본 general)
+subtype: string?      # clinic 전용: free_clinic | health_center | hospital_support
 ```
+
+- **운영시간 규칙 (decisions #16)**: `verified_by: public_data` 인 시설은 `hours` 를 비우고 원문을 `hours_note` 에 "공공데이터 안내: …" 로 넣는다. 앱은 "지금 열림"을 계산하지 않고 "가기 전에 전화로 확인하세요"를 보여준다. 사람이 확인한(`official`/`phone`/`field`) 시설만 구조화된 `hours` 를 갖는다.
+- 전화번호 형식이 이상하면(지역번호 없음, 팩스 의심) `phone` 을 비우고 빌드 보고서 "전화 확인 필요"에 남긴다.
+- 지역 목록은 `app/assets/data/regions.json` (`[{code, sido, sigungu, lat, lng}]`, 시군구 대표 좌표). 위치 권한 없이 지역을 고르는 데 쓴다.
 
 - 운영 요일, 이용 대상, 이용 조건은 이 앱이 일반 지도 앱과 다른 핵심 가치다. 비어 있으면 "확인 필요"로 표시하고 지어내지 않는다.
 - 좌표가 없는 데이터는 지오코딩하되, 지오코딩한 좌표임을 표시(`geocoded: true`)하고 대표 장소는 수동 검증한다.
@@ -57,4 +66,4 @@ verified_by: public_data | phone | field | report
 - 수집·가공 파이프라인은 앱과 분리한다(`pipeline/`). 같은 입력이면 같은 출력이 나오게(결정적) 만든다.
 - 가공 결과는 검증 단계를 통과해야 배포한다: 필수 필드, 좌표가 대한민국 범위 안인지, 전화번호 형식, 중복 시설(이름+주소 유사도) 검사.
 - 앱에 배포하는 파일에는 버전(생성 일시)을 넣고, 앱은 더 새 버전일 때만 교체한다. 받다가 실패하면 기존 데이터를 유지한다.
-- 1차 범위는 **서울 중구·용산구·영등포구**(서울역·을지로·영등포 일대). 범위 밖 데이터를 넣을 때는 정확도 검증 계획과 함께 상의한다.
+- 범위는 **전국 16개 시도** (decisions #14). 공공데이터는 출처끼리 다른 경우가 많으므로(2026-11-04 표본 41% 불일치) 운영 종료·1년 넘은 정보는 빼고, 사람이 확인한 보정은 `data/overrides/`에 근거(URL·확인일)와 함께 둔다.

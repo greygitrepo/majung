@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+X-XSS-Protection: 1; mode=block
+Content-Type: application/octet-stream;charset=utf-8
+Content-Disposition: attachment;filename="2026+%EC%9D%98%EB%A3%8C%EA%B8%89%EC%97%AC%EC%82%AC%EC%97%85+%EC%95%88%EB%82%B4.hwpx"
+Content-Language: ko
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Content-type: application/octet-stream
+X-Content-Type-Options: nosniff
+Date: Wed, 04 Nov 2026 06:16:30 GMT
+Content-Transfer-Encoding: binary
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: JSESSIONID=K1xqHQeWSJfcyQ3arWKlLBJXpd2gvxUeTRHkT78RteahIfLFTQLXa9LYmKG6LaDs.mohwwas2_servlet_engine20;Path=/;Secure;HttpOnly;SameSite=Lax
+Content-Length: 27559816
+

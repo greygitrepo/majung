@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>안나의 집</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="https://www.annahouse.or.kr/js/font-awesome/css/font-awesome.min.css?ver=191202">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/skin/latest/r_slide/style.css?ver=191202">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/skin/latest/pic_list/style.css?ver=191202">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/skin/latest/pic_block/style.css?ver=191202">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/skin/latest/basic/style.css?ver=191202">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/skin/latest/r_slide/jquery.bxslider.css?ver=191202">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/css/jquery-ui.min.css">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/css/animate.css">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/css/icomoon.css">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/theme/basic/css/bootstrap.css">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/css/jquery.bxslider.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/theme/basic/css/font.css">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/theme/basic/css/default.css?ver=191202">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/css/slick.css">
+<link rel="stylesheet" href="https://www.annahouse.or.kr/css/slick-theme.css">
+<!--[if lte IE 8]>
+<script src="https://www.annahouse.or.kr/js/html5.js"></script>
+<![endif]-->
+
+
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "https://www.annahouse.or.kr";
+var g5_bbs_url   = "https://www.annahouse.or.kr/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+</script>
+<script src="https://www.annahouse.or.kr/js/jquery-1.12.4.min.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/jquery-ui.min.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/jquery-migrate-1.4.1.min.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/jquery.menu.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/common.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/wrest.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/placeholders.min.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/TweenMax.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/jquery.transit.min.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/jquery.waypoints.min.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/jquery.countTo.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/jquery.bxslider.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/jquery.rwdImageMaps.min.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/slick.min.js?ver=191202"></script>
+<script src="https://www.annahouse.or.kr/js/system.js?ver=191202"></script>
+</head>
+<body>
+<style>
+.gnb{width:900px}
+</style>
+<!-- 상단 시작 { -->
+<div class="wrap">
+    <div id="skip_to_container"><a href="#container">본문 바로가기</a></div>
+   
+<!-- 팝업레이어 시작 { -->
+<div id="hd_pop">
+    <h2>팝업레이어 알림</h2>
+
+<span class="sound_only">팝업레이어 알림이 없습니다.</span></div>
+
+<script>
+$(function() {
+    $(".hd_pops_reject").click(function() {
+        var id = $(this).attr('class').split(' ');
+        var ck_name = id[1];
+        var exp_time = parseInt(id[2]);
+        $("#"+id[1]).css("display", "none");
+        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+    });
+    $('.hd_pops_close').click(function() {
+        var idb = $(this).attr('class').split(' ');
+        $('#'+idb[1]).css('display','none');
+    });
+    $("#hd").css("z-index", 1000);
+});
+</script>
+<!-- } 팝업레이어 끝 -->	<div id="header" class="header">
+		<div class="head">
+    		<div id="logo">
+				<a href="/index.php"><img src="/images/logo.png" alt="안나의 집"></a>
+			</div>
+			<div class="gnb">
+				<ul>
+				 	<li><a href="/bbs/board.php?bo_table=6_1" >직원게시판</a></li>
+	<li><a href="https://www.paypal.com/ncp/payment/5X6ER44JPQN4E" target="_blank">PayPal</a></li>
+	<li><a href="/1_1.php" >안나의 집 소개</a>
+		<ul>
+			<li><a href="/1_1.php">인사말</a></li>
+			<li><a href="/bbs/board.php?bo_table=1_2">연혁</a></li>
+			<li><a href="/1_2.php">안나의 집 소개</a></li>
+			<li><a href="/1_5.php">조직도</a></li>
+			<li><a href="/1_3.php">법인소개</a></li>
+			<li>
+				<a href="/bbs/board.php?bo_table=1_6&sca=노숙인급식소">산하시설소개</a>
+
+				<ul >
+					<li><a href="/bbs/board.php?bo_table=1_6&sca=노숙인급식소">노숙인 급식소</a></li>
+					<li><a href="/bbs/board.php?bo_table=1_6&sca=노숙인자활시설">노숙인 자활시설</a></li>
+					<li><a href="/bbs/board.php?bo_table=1_6&sca=자활작업장">자활작업장</a></li>
+					<li><a href="/bbs/board.php?bo_table=1_6&sca=공동생활가정">공동생활가정</a></li>
+					<li><a href="/bbs/board.php?bo_table=1_6&sca=단기쉼터">단기 쉼터</a></li>
+					<li><a href="/bbs/board.php?bo_table=1_6&sca=아지트">아지트</a></li>
+					<li><a href="/bbs/board.php?bo_table=1_6&sca=중장기쉼터">중장기쉼터</a></li>
+					<li><a href="/bbs/board.php?bo_table=1_6&sca=자립지원관">자립지원관</a></li>
+					<li><a href="/bbs/board.php?bo_table=1_6&sca=청년쉐어하우스">청년쉐어하우스</a></li>
+				</ul>
+			</li>
+			<li><a href="/1_7.php">찾아오시는길</a></li>
+		</ul>
+	</li>
+	<li><a href="/2_1.php" >사업실적</a>
+		<ul>
+			<li><a href="/2_1.php">사업실적</a></li>
+			<li><a href="/bbs/board.php?bo_table=2_2">결산공지</a></li>
+			<li><a href="/bbs/board.php?bo_table=2_3">수상이력</a></li>
+			<li><a href="/bbs/board.php?bo_table=2_4">책출판</a></li>
+		</ul>
+	</li>
+	<li>
+		<a href="/3_1.php" >후원안내</a>
+		<ul>
+			<li>
+				<a href="/3_1.php">후원</a>
+				<ul>
+					<li><a href="/3_1.php">후원안내</a></li>
+					<li><a href="https://secure.donus.org/annahouse/pay/step1" target="_blank">후원신청</a></li>
+					<li><a href="/3_1_03.php">기부금영수증안내</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="/3_2.php">자원봉사</a>
+				<ul>
+					<li><a href="/3_2.php">자원봉사안내</a></li>
+					<li><a href="/3_2_02.php">프로그램안내</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="/bbs/board.php?bo_table=3_3">이달의후원</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="/bbs/board.php?bo_table=4_1" >새소식</a>
+		<ul>
+			<li><a href="/bbs/board.php?bo_table=4_5">기관뉴스</a></li>
+			<li><a href="/bbs/board.php?bo_table=4_6">안나영상톡톡</a></li>
+			<li><a href="/bbs/board.php?bo_table=4_4">이달의봉사</a></li>
+			<li><a href="/bbs/board.php?bo_table=4_2">보도자료</a></li>
+			<li><a href="/bbs/board.php?bo_table=4_1">공지사항</a></li>
+			<li><a href="/bbs/board.php?bo_table=4_3">채용정보</a></li>
+							
+		</ul>
+	</li>
+	<li><a href="/eng.php" >ENGLISH</a></li>				</ul>
+			</div>
+			<!--로그인-->
+			<!--ul class="top-bt">
+								<li><a href="https://www.annahouse.or.kr/bbs/register.php">회원가입</a></li>
+				<li><a href="https://www.annahouse.or.kr/bbs/login.php">로그인</a></li>
+							</ul-->
+        </div>
+    </div>
+
+ <div class="main-visual">
+       <style>
+.prev-a, .next-a{display:block;position:absolute;background-size:cover;width:29px;height:56px;;top:50%;margin-top:-35px;z-index:9}
+.prev-a{background:url(https://www.annahouse.or.kr/skin/latest/r_slide/img/arrowm_prev.png) no-repeat center;left:50px}
+.next-a{background:url(https://www.annahouse.or.kr/skin/latest/r_slide/img/arrowm_next.png) no-repeat center;right:50px}
+.prev-a a, .next-a a{display:block;;text-indent:-9999px;position:absolute;width:100%;height:100%}
+.hope li{text-align:center !important}
+.mo{display:none}
+img.mo{max-width:100%}
+@media only screen and (max-width:1200px) {
+.prev-a{left:5px}
+.next-a{right:5px}
+}
+@media only screen and (max-width:800px) {
+.pc{display:none}
+.mo{display:block}
+}
+@media only screen and (max-width:480px) {
+.prev-a{left:0}
+.next-a{right:-5px}
+}
+@media only screen and (max-width:440px) {
+.prev-a, .next-a{display:none}
+}
+</style>
+<div class="bxa">
+    <ul class="hope">
+            <li>
+           <div class="pc"><img src="https://www.annahouse.or.kr/data/file/mainslide/2049448210_3IDXzQHU_c342733426cebe4843b8aeda7617c1c6acc54e15.png"></div><img src="https://www.annahouse.or.kr/data/file/mainslide/2049448210_7jUmVzDa_4cc54e191de2b63c4fb289369c614c9a51c7be8a.png" class="mo">         </li>
+    	</ul>
+</div>
+<script>
+$(document).ready(function(){
+	  bxstart();
+});
+function bxstart(){
+if($(".hope>li").length > 1) {
+	$('.bxa').append('<div class=prev-a></div><div class=next-a></div>');
+	$('.hope').bxSlider({
+	auto: true,
+	controls:true,
+	nextSelector:'.next-a',
+	prevSelector:'.prev-a'
+	});
+  }
+}
+</script></div>
+
+<!-- 콘텐츠 시작 { -->
+<div id="container"  class="main">
+		
+		<style>
+.slick-list{max-width:1100px;margin:0 auto}
+.slick-initialized .slick-slide{margin:0 20px}
+.slick-dots, .slick-dots{display:none !important}
+.arrow-prev{position:absolute;top:50%;left:0;z-index:5;margin-top:-30px}
+.arrow-next{position:absolute;top:50%;right:0;z-index:5;margin-top:-30px}
+.slick-dotted.slick-slider{margin-bottom:0}
+</style>
+<h2 class="main">안나의 집 소개<p>인간의 공평한 삶을 유지하기 위하여 항상 열린 마음으로 취약계층 노숙인 및 홀몸노인들의 상처받은 영육을<br/>
+회복시키고 무한한 사랑을 베푸는 정신을 갖고 일하는 전인적 사회복지서비스 기관입니다.</p></h2>
+<div class="visual_box">
+	<div class="visual_in">
+		<div class="visual">
+			<h2>후원신청</h2>
+			<img src="/images/ico_01.png"/>
+		</div>
+
+		<p>
+			<a href="https://secure.donus.org/annahouse/mypage/record">
+			여러분들의 많은 관심과<br/>
+			응원이 안나의집 가족들에게<br/>
+			희망이 됩니다.
+			</a>
+		</p>
+
+		<span><a href="https://secure.donus.org/annahouse/pay/step1" target="_blank">자세히보기</a></span>
+	</div>
+
+	<div class="visual_in">
+		<div class="visual">
+			<h2>산하시설소개</h2>
+			<img src="/images/ico_02.png"/>
+		</div>
+
+		<p>
+			산하시설의 입소절차 및<br/>
+			프로그램소개/ 활동소식안내
+		</p>
+		
+		<br/>
+		
+		<span><a href="/bbs/board.php?bo_table=1_6&sca=노숙인급식소">자세히보기</a></span>
+	</div>
+
+	<div class="visual_in">
+		<div class="visual">
+			<h2>이달의 봉사</h2>
+			<img src="/images/ico_03.png"/>
+		</div>
+
+		<p>
+			한달동안 안나의집을<br/>
+			위해 봉사해주신 분들입니다. 
+		</p>
+
+		<br/>
+
+		<span><a href="/bbs/board.php?bo_table=4_4">자세히보기</a></span>
+	</div>
+
+	<div class="visual_in">
+		<div class="visual">
+			<h2>자원봉사안내</h2>
+			<img src="/images/ico_04.png"/>
+		</div>
+
+		<p>
+			자원봉사 문의 안내 및<br/>
+			급식소 운영 안내입니다.
+		</p>
+
+		<br/>
+
+		<span><a href="/3_2.php">자세히보기</a></span>
+	</div>
+</div>
+
+<div class="award">
+	<h2 class="main">안나의집은 신뢰할 수 있는 기관입니다.</h2>
+	<ul>
+		<li>
+			<span class="thumb"><img src="/images/award1.png" alt="" /></span>
+			<p class="award_txt"><strong>2018</strong>국민훈장 동백장</p>
+		</li>
+		<li>
+			<span class="thumb"><img src="/images/award2.png" alt="" /></span>
+			<p class="award_txt"><strong>2023</strong>성남시 명예시민상</p>
+		</li>
+		<!--<li>
+			<ul>
+				<li><p class="award_txt"><strong>2014</strong>호암상 사회봉사상</p></li>
+				<li><p class="award_txt"><strong>2015</strong>카톨릭대학교 인본주의상</p></li>
+				<li><p class="award_txt"><strong>2018</strong>아시아 필란트로피상</p></li>
+				<li><p class="award_txt"><strong>2018</strong>포니정 혁신상</p></li>
+				<li><p class="award_txt"><strong>2021</strong>만해실천대상</p></li>
+			</ul>
+		</li>-->
+		<li>
+			<a href="/bbs/board.php?bo_table=2_3">
+				<span class="thumb"><img src="/images/award5.png" alt="" /></span>
+				<p class="award_link"><strong>시설별 수상</strong><span>자세히보기</span></p>
+			</a>
+		</li>
+		<li>
+			<span class="thumb"><img src="/images/award3.png" alt="" /></span>
+			<p class="award_txt"><strong>2023</strong>인도장 금장</p>
+		</li>
+		<li>
+			<span class="thumb"><img src="/images/award4.png" alt="" /></span>
+			<p class="award_txt"><strong>2024</strong>이탈리아 대통령 OMRI상</p>
+		</li>
+		<li>
+			<a href="/bbs/board.php?bo_table=2_4">
+				<span class="thumb"><img src="/images/award6.png" alt="" /></span>
+				<p class="award_link"><strong>책출판</strong><span>자세히보기</span></p>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="main-back">
+	<h2 class="main_w">후원자분들의 <span>사랑에 책임을 갖고<br/>
+	투명하게 운영</span>되고 있습니다.</h2>
+
+	<!--p><span>후원계좌안내 (예금주 : 안나의 집)</span></p-->
+
+	<!--span class="main-num">
+		<span class="num_n">농협 <span class="m_num">171405-51-047081</span></span>
+		<span>우리 <span class="m_num">1005-601-037069</span></span><br/>
+		<span class="m_nun_l num_n">국민 <span class="m_num">275401-04-093261</span></span>
+		<span>신한 <span class="m_num">100-024-061995</span></span>
+	</span-->
+</div>
+
+<div class="toktok">
+	<h2 class="main">안나 영상 톡 톡 &amp; 기관소식</h2>
+
+	<div class="top_box v_box">
+		<a href="/bbs/board.php?bo_table=4_6"><span>더보기 +</span></a>
+
+		<div class="vbox_l">
+		<div class="video">
+			
+    <ul>
+            <li>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/https://youtube.com/shorts/BqFz_LLEQfM?si=YKKeDvNbxiEo_Nej" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </li>
+            </ul>
+    <a href="https://www.annahouse.or.kr/bbs/board.php?bo_table=4_6" class="lt_more"><span class="sound_only">안나영상톡톡</span>더보기</a>
+
+
+		</div>
+		</div>
+	</div>
+
+
+	<div class="top_box g_box">
+		<a href="/bbs/board.php?bo_table=4_5"><span>더보기 +</span></a>
+		<div class="gallery">
+			
+<div class="pic_lt">
+    <!--h2 class="lat_title"><a href="https://www.annahouse.or.kr/bbs/board.php?bo_table=4_5">기관뉴스</a></h2-->
+    <ul>
+            <li class="gallery_li">
+            <a href="https://www.annahouse.or.kr/bbs/board.php?bo_table=4_5&amp;wr_id=4058" class="lt_img"><img src="https://www.annahouse.or.kr/data/file/4_5/thumb-1025868422_DXAGtRkM_d1b5f4a21971565d02fd448b6f3991a7457a46f7_300x200.jpg" alt="" ></a>
+            <a href="https://www.annahouse.or.kr/bbs/board.php?bo_table=4_5&amp;wr_id=4058" class='a-subject'> [단기쉼터&아지트] 아지트 11월 학교 아웃리치 - 성남테크노과학고등학교</a>
+           
+        </li>
+            </ul>
+    <!--a href="https://www.annahouse.or.kr/bbs/board.php?bo_table=4_5" class="lt_more"><span class="sound_only">기관뉴스</span>더보기</a-->
+
+</div>
+		</div>
+	</div>
+</div>
+
+<div class="notice">
+	<div class="notice-back">
+		<div class="notice-box">
+			<h2>공지사항</h2>
+			<a href="/bbs/board.php?bo_table=4_1" class="more"><img src="/images/more.png"/>more</a>
+
+			<div class="notice_w">
+				
+<div class="lat">
+    <ul>
+            <li>
+		<a href="https://www.annahouse.or.kr/bbs/board.php?bo_table=4_1&amp;wr_id=118"> 이사회 회의록(2026.09.11.)</a>
+
+		<div class="year"><p>2026.09.17</p> <!--p class="year-day">17</p-->     </div>
+
+        </li>
+            <li>
+		<a href="https://www.annahouse.or.kr/bbs/board.php?bo_table=4_1&amp;wr_id=117"> 이사회 회의록(26.5.12.)</a>
+
+		<div class="year"><p>2026.05.14</p> <!--p class="year-day">14</p-->     </div>
+
+        </li>
+            </ul>
+
+</div>
+			</div>
+		</div>
+
+		<div class="notice-box">
+			<h2>보도자료</h2>
+			<a href="/bbs/board.php?bo_table=4_2" class="more"><img src="/images/more.png"/>more</a>
+
+			<div class="notice_w">
+				
+<div class="lat">
+    <ul>
+            <li>
+		<a href="https://www.annahouse.or.kr/bbs/board.php?bo_table=4_2&amp;wr_id=25"> 노숙자를 위한 따뜻한 밥한끼 나눔행사</a>
+
+		<div class="year"><p>2026.02.27</p> <!--p class="year-day">27</p-->     </div>
+
+        </li>
+            <li>
+		<a href="https://www.annahouse.or.kr/bbs/board.php?bo_table=4_2&amp;wr_id=24"> 10주년 맞은 'A.지.T'…김하종 신부 &#034;WYD에서 '아지트' 널리 알릴 수 있길&#034;</a>
+
+		<div class="year"><p>2025.08.22</p> <!--p class="year-day">22</p-->     </div>
+
+        </li>
+            </ul>
+
+</div>
+			</div>
+		</div>
+		
+		<div class="question-box">
+			<div class="question">
+				<div class="q_write">
+					<h2>상담문의</h2>
+
+					<img src="/images/phone.png"/>
+
+					<span>031 - 757 - 6336</span>
+					<span>010 - 6490 - 9050</span>
+				</div>
+
+				<div class="q_write">
+					<h2>봉사문의</h2>
+
+					<img src="/images/service.png"/>
+
+					<span>031 - 756 - 9050</span>
+				</div>
+			</div>
+
+		<a href="/1_7.php" class="way"><img src="/images/pin.png"/>오시는 길<span></a>
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('.m-quick').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  autoplay:true,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  prevArrow: '<a href="#" class="arrow-prev"><img src="/images/l_arrow.png"></a>',
+  nextArrow: '<a href="#" class="arrow-next"><img src="/images/r_arrow.png"></a>',
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+});
+</script>
+
+     </div>
+
+
+<hr>
+
+<!-- 하단 시작 { -->
+	<div class="footer">
+			<div class="foot">
+				<div class="foot-link">
+					<ul>
+						<li><a href="https://www.paypal.com/ncp/payment/5X6ER44JPQN4E" target="_blank"><img src="/images/paypal.png"/>페이팔</a></li>
+						<li><a href="https://www.facebook.com/annahouse1998/" target="_blank"><img src="/images/anna_facebook.png"/>안나의 집 페이스북</a></li>
+						<li class="wr_link"><a href="http://www.oblates.or.kr/index/" target="_blank">
+						OBLATES.M.I<br/>
+						오블라티선교수도회</a></li>
+						<li><a href="https://blog.naver.com/servoservo" target="_blank"><img src="/images/anna_blog.png"/>김하종신부 이야기</a></li>
+						<li><a href="https://www.facebook.com/vincenzo.bordo.16" target="_blank"><img src="/images/vincenzo_facebook.png"/>김하종신부 페이스북</a></li>
+					</ul>
+				</div>
+
+				<div class="f_line">
+					<div class="foot_wr">	
+						<div class="r_foot">
+							<ul>
+								<li><a href="https://www.gg.go.kr/" target="_blank"><img src="/images/f_logo_1.png"/>경기도청</a></li>
+								<li><a href="http://www.mohw.go.kr/react/index.jsp" target="_blank"><img src="/images/f_logo_2.png"/>보건복지부</a></li>
+								<li><a href="http://www.mogef.go.kr/index.do" target="_blank"><img src="/images/f_logo_3.png"/>여성가족부</a></li>
+								<li><a href="https://www.seongnam.go.kr/main.do" target="_blank"><img src="/images/f_logo_4.png"/>성남시청</a></li>
+							</ul>
+						</div>
+
+						<div class="f_logo">
+							<img src="/images/f_logo.png"/>
+						</div>
+
+						<div class="add">
+							<p>단체명 : 사회복지법인 안나의 집</p> &nbsp;  <p>대표자 : 김하종</p> &nbsp; <p>고유번호 : 129-82-10839</p> <br>
+							<p>주소 : (13409) 경기도 성남시 중원구 마지로 28 안나의 집</p><br/>
+							<p>Tel. 031-757-6336</p> &nbsp;   <p>Fax. 031-751-9050</p>  &nbsp;   <p>e-mail. annahouse77@daum.net</p> <br>
+							<p><a href="/bbs/login.php">COPYRIGHT ⓒ 2012 ANNAHOUSE. ALL RIGHTS RESERVED.
+							</a> 							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<button type="button" id="top_btn"><i class="fa fa-arrow-up" aria-hidden="true"></i><span class="sound_only">상단으로</span></button>
+        <script>
+        $(function() {
+			$("#top_btn").hide();
+
+			$(window).scroll(function(){
+				setTimeout(scroll_top, 100);
+			});
+
+
+            $("#top_btn").on("click", function() {
+                $("html, body").animate({scrollTop:0}, '500');
+                return false;
+            });
+
+			function scroll_top(){
+				if($(window).scrollTop()<=100) {
+					$("#top_btn").fadeOut("slow");
+				}
+				else {
+					$("#top_btn").fadeIn("slow");
+				}
+	}
+
+        });
+
+	$(function(){
+		$(".f-bt1").click(function(){
+			$(".f-con1").css({display:"block",marginBottom:"-700px"}).stop().animate({marginBottom:0}, 500, "easeInOutBack");
+			$(".bg-black").fadeIn('10');
+	    });
+		
+		$(".foot_layerpopup_close, .bg-black").click(function(){
+			$(".f-con1").stop().animate({marginBottom:"-700px"}, 500, "easeOutElastic", function(){$(this).css({display:"none"})});
+			$(".bg-black").fadeOut();
+	    });
+
+})
+
+var SubMain_inMotion = (function(){
+    var seqTimer;
+    var seqCount = 0;
+    var prevSeqCount = 0;
+    var seqTotalLen = 0;
+    var domain = location.href;
+    var isSeqLoop = false;
+    var endCount = 0;
+
+    var $self = {
+        init:function(){
+            $self.inMotion();
+        },
+        inMotion:function(){
+            CustomTw.to($("#sub_main_dimmed"), 1, {delay:0.2, alpha:0});
+            TweenMax.delayedCall(1.5, function(){ $("#sub_main_dimmed").hide(); });
+            CustomTw.to($(".main_motion_bg"), 2, {delay:0.2, scale:1.07});
+        },
+    }
+    return $self;
+})();
+
+var CustomTw = (function(){
+    var $self = {
+        to:function(el, duration, paraObj){
+            var ease = "";
+            var underIE = ($self.GetBrowser() < 10 && $self.GetBrowser() != -1);
+            if(underIE){
+                TweenMax.to($(el), duration, paraObj);
+            }else{
+                if(typeof paraObj.alpha == "number"){
+                    var opacity = paraObj.alpha;
+                    delete paraObj.alpha;
+                    paraObj.opacity = opacity;
+                }
+                $(el).transition(paraObj, duration*1000, ease);
+            }
+        },
+        GetBrowser:function(){
+            var rv = -1;
+            return rv;
+        }
+    }
+    return $self;
+})();
+$(function(){
+    SubMain_inMotion.init();
+})
+
+        </script>
+</div>
+
+    <script>
+$(document).ready(function(){
+		$('.main-bg').bxSlider({
+		mode: 'fade',
+			controls:false,
+		 	auto:true,
+			autoHover:false,
+		 	pager:false,
+			speed:500,
+			pause: 5000,
+			autoControls:false
+		});
+		
+	});
+</script>
+
+
+
+<!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+<!--[if lte IE 7]>
+<script>
+$(function() {
+    var $sv_use = $(".sv_use");
+    var count = $sv_use.length;
+
+    $sv_use.each(function() {
+        $(this).css("z-index", count);
+        $(this).css("position", "relative");
+        count = count - 1;
+    });
+});
+</script>
+<![endif]-->
+
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 """고운돋움(Gowun Dodum) 글꼴을 앱에 넣을 만큼 줄인다 (7.2MB → 약 1.2MB).
 
 남기는 글자: 영문·숫자·기본 기호, KS X 1001 한글 2,350자, 앱 문구(app_ko.arb)와
-시설 데이터(facilities.json)에 나오는 모든 글자. 빠진 글자는 휴대폰 기본 글꼴로 보인다.
+시설·지역 데이터(facilities.json, regions.json)에 나오는 모든 글자. 빠진 글자는 휴대폰 기본 글꼴로 보인다.
 시설 데이터에 드문 글자가 새로 들어오면 다시 돌린다.
 
 원본: https://github.com/google/fonts/tree/main/ofl/gowundodum (SIL OFL 1.1, 예약 글꼴 이름 없음)
@@ -26,7 +26,7 @@ def wanted_chars():
             except UnicodeDecodeError:
                 pass
     chars |= set('·…~–—‘’“”「」『』()[]•○●※→←↑↓℃°%')
-    for p in ('app/lib/l10n/app_ko.arb', 'app/assets/data/facilities.json'):
+    for p in ('app/lib/l10n/app_ko.arb', 'app/assets/data/facilities.json', 'app/assets/data/regions.json'):
         chars |= set((ROOT / p).read_text(encoding='utf-8'))
     return ''.join(sorted(c for c in chars if c.isprintable()))
 

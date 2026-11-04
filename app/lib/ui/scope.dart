@@ -24,4 +24,11 @@ class AppScope extends InheritedNotifier<AppController> {
     assert(scope != null, 'AppScope 가 없음');
     return scope!;
   }
+
+  /// 다시 그리기 구독 없이 읽기 (initState 등).
+  static AppScope read(BuildContext context) {
+    final scope = context.getInheritedWidgetOfExactType<AppScope>();
+    assert(scope != null, 'AppScope 가 없음');
+    return scope!;
+  }
 }

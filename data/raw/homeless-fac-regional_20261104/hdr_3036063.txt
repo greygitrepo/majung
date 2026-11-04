@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Wed, 04 Nov 2026 05:55:29 GMT
+Server: Apache
+Expires: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Set-Cookie: JSESSIONID=X6m5lXb9Qz1qv0ZQ02Ga8mk4yhRt5nU9gak1wnmb.portal21; path=/
+X-XSS-Protection: 1; mode=block
+Pragma: no-cache
+X-Frame-Options: DENY
+Content-Disposition: attachment; filename="전남광주통합특별시_노숙인생활시설_20250930.csv"
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Content-Length: 700
+Content-Type: application/octet-stream; charset=UTF-8
+

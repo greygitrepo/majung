@@ -28,8 +28,8 @@ enum CategoryGroup {
   const CategoryGroup(this.categories);
   final Set<FacilityCategory> categories;
 
-  /// 1차 출시 범위: 밥 + 잠자리 (docs/decisions.md #5).
-  static const enabled = [CategoryGroup.meal, CategoryGroup.sleep];
+  /// 1차 출시 범위: 밥 + 잠자리 + 아플 때 (docs/decisions.md #5, #15).
+  static const enabled = [CategoryGroup.meal, CategoryGroup.sleep, CategoryGroup.clinic];
 
   bool contains(FacilityCategory c) => categories.contains(c);
 }

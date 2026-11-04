@@ -12,6 +12,12 @@ Map<String, dynamic> facilityJson({
   String? requirements,
   String? hoursNote,
   String? holidayPolicy,
+  // 기본은 사람이 확인한 시설(운영시간을 믿음). 공공데이터 원문 시설은 'public_data'.
+  String verifiedBy = 'official',
+  String sido = '서울',
+  String? audience,
+  String? subtype,
+  bool geocoded = false,
 }) =>
     {
       'id': id,
@@ -32,7 +38,11 @@ Map<String, dynamic> facilityJson({
       'cost': 'free',
       'source_id': 'test-source',
       'last_verified': lastVerified,
-      'verified_by': 'public_data',
+      'verified_by': verifiedBy,
+      'sido': sido,
+      'audience': ?audience,
+      'subtype': ?subtype,
+      if (geocoded) 'geocoded': true,
     };
 
 Map<String, dynamic> datasetJson({
@@ -48,3 +58,13 @@ Map<String, dynamic> datasetJson({
       ],
       'facilities': facilities ?? [facilityJson()],
     };
+
+/// 테스트용 시군구 몇 곳 (좌표는 대략값).
+const seoulJunggu = '11140';
+List<Map<String, dynamic>> regionsJson() => [
+      {'code': '11140', 'sido': '서울', 'sigungu': '중구', 'lat': 37.5600, 'lng': 126.9800},
+      {'code': '11170', 'sido': '서울', 'sigungu': '용산구', 'lat': 37.5320, 'lng': 126.9900},
+      {'code': '11560', 'sido': '서울', 'sigungu': '영등포구', 'lat': 37.5260, 'lng': 126.8960},
+      {'code': '26110', 'sido': '부산', 'sigungu': '중구', 'lat': 35.1060, 'lng': 129.0320},
+      {'code': '41111', 'sido': '경기', 'sigungu': '수원시 장안구', 'lat': 37.3040, 'lng': 127.0100},
+    ];
