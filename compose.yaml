@@ -2,6 +2,7 @@
 #   docker compose run --rm dev flutter test                 # 단위·위젯 테스트
 #   docker compose run --rm dev flutter build appbundle      # 릴리스 빌드
 #   docker compose run --rm emulator bash -c "start-emulator && flutter test integration_test"
+#   PC 화면에서 보기: docker compose run --rm emulator-gui   (창이 뜨면 앱 실행, 터미널에서 r=핫 리로드, q=종료)
 #   실제 폰(USB): docker compose run --rm device flutter devices
 services:
   dev:
@@ -36,6 +37,20 @@ services:
       - /dev/kvm:/dev/kvm
     group_add:
       - "${KVM_GID:-109}"  # 호스트 kvm 그룹 GID (getent group kvm)
+
+  # 호스트 X11 화면에 에뮬레이터 창을 띄우고 앱을 실행한다.
+  # 컨테이너 사용자 UID(1000)가 호스트 사용자와 같아 X 서버가 localuser 로 허용한다.
+  emulator-gui:
+    extends: emulator
+    working_dir: /workspace/app
+    environment:
+      - TZ=Asia/Seoul
+      - DISPLAY=${DISPLAY:-:0}
+      - EMULATOR_WINDOW=1
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    command: bash -c "start-emulator && flutter run -d emulator-5554"
 
   device:
     extends: dev

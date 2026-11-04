@@ -61,4 +61,10 @@ FROM dev AS emulator
 ARG ANDROID_PLATFORM=android-36
 RUN sdkmanager "emulator" "system-images;${ANDROID_PLATFORM};google_apis;x86_64" \
     && echo no | avdmanager create avd -n test -k "system-images;${ANDROID_PLATFORM};google_apis;x86_64" -d pixel_5
+# 창 모드(emulator-gui)에서 에뮬레이터 Qt 화면이 쓰는 X11 라이브러리
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libpng16-16t64 libice6 libsm6 libxkbfile1 \
+    && rm -rf /var/lib/apt/lists/*
+USER dev
 COPY --chown=dev:dev docker/start-emulator.sh /usr/local/bin/start-emulator
