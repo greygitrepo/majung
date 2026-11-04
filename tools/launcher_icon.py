@@ -1,86 +1,101 @@
-"""마중 런처 아이콘 PNG 만들기 (Android 7 이하용 mipmap + Play 스토어 512px).
+"""마중 런처 아이콘 PNG 만들기 (Android 적응형·구형 mipmap, Play 스토어 512px, iOS).
 
-Android 8+ 는 벡터 적응형 아이콘(res/drawable/ic_launcher_foreground.xml)을 쓴다.
-도형을 바꾸면 그 XML 과 이 파일을 같이 고친다.
+원본: tools/icon/majung-icon.png (정사각형, 모서리까지 그림이 찬 1254px).
+아이콘을 바꾸려면 이 파일만 바꾸고 다시 실행한다.
 
     python3 -I tools/launcher_icon.py      # Pillow 필요
+
+- Android 8+: 적응형 아이콘. 바탕은 values/ic_launcher_colors.xml 의 크림색,
+  전경은 drawable-*dpi/ic_launcher_foreground.png (원본을 108dp 중 ART_DP 크기로 가운데에).
+  런처는 가운데 72dp 를 원·둥근 사각형 등으로 잘라 보여 주므로, 그림이 72dp 보다 조금 크게 둔다.
+- 테마 아이콘(Android 13+): drawable-*dpi/ic_launcher_monochrome.png 는 "마중" 글자 모양만.
+- Android 7 이하: mipmap-*/ic_launcher.png (둥근 사각형).
+- Play 스토어: docs/store/icon-512.png (정사각형, 모서리는 Play 가 처리).
+- iOS: AppIcon.appiconset (투명 없이 정사각형).
 """
+import json
 from pathlib import Path
-from PIL import Image, ImageDraw
+from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
+SRC = ROOT / 'tools/icon/majung-icon.png'
 RES = ROOT / 'app/android/app/src/main/res'
-BG = (62, 44, 79)        # 밤하늘 보라 #3E2C4F
-AMBER = (246, 178, 74)   # 등불 #F6B24A
-GLOW = (255, 226, 166)   # 안쪽 불빛 #FFE2A6
-CREAM = (243, 217, 177)  # 손잡이·뚜껑 #F3D9B1
-SS = 4  # 슈퍼샘플링 배율
-SCALE, PX0, PY0 = 0.8, 54, 56  # XML 의 <group> 과 같은 축소
+IOS = ROOT / 'app/ios/Runner/Assets.xcassets/AppIcon.appiconset'
+ART_DP = 74      # 108dp 전경 캔버스 안에서 그림이 차지하는 크기 (보이는 영역 72dp 보다 조금 크게)
+MONO_DP = 50     # 테마 아이콘 글자 너비 (안전 영역 66dp 안)
+DENSITY = {'mdpi': 1, 'hdpi': 1.5, 'xhdpi': 2, 'xxhdpi': 3, 'xxxhdpi': 4}
+SS = 4           # 마스크 슈퍼샘플링 배율
 
 
-def full_icon(px):
-    """108dp 적응형 아이콘 전체 캔버스를 px 크기로 그린다 (밤의 등불)."""
-    s = px * SS
-    k = s / 108
-
-    def pt(x, y):
-        return ((PX0 + (x - PX0) * SCALE) * k, (PY0 + (y - PY0) * SCALE) * k)
-
-    def box(x0, y0, x1, y1):
-        a, b = pt(x0, y0), pt(x1, y1)
-        return [a[0], a[1], b[0], b[1]]
-
-    def ln(w):
-        return max(1, round(w * SCALE * k))
-
-    im = Image.new('RGBA', (s, s), BG + (255,))
-    for r, alpha in ((30, 0.18), (22, 0.22)):  # 불빛 번짐
-        layer = Image.new('RGBA', (s, s), (0, 0, 0, 0))
-        ImageDraw.Draw(layer).ellipse(box(54 - r, 58 - r, 54 + r, 58 + r), fill=AMBER + (round(255 * alpha),))
-        im = Image.alpha_composite(im, layer)
-    d = ImageDraw.Draw(im)
-    # 손잡이: 2차 베지어 (46,31)-(54,19)-(62,31)
-    curve = [pt((1 - t) ** 2 * 46 + 2 * (1 - t) * t * 54 + t * t * 62,
-                (1 - t) ** 2 * 31 + 2 * (1 - t) * t * 19 + t * t * 31) for t in [i / 40 for i in range(41)]]
-    d.line(curve, fill=CREAM, width=ln(3), joint='curve')
-    for x, y in (curve[0], curve[-1]):
-        r = ln(3) / 2
-        d.ellipse([x - r, y - r, x + r, y + r], fill=CREAM)
-    d.rounded_rectangle(box(44, 30, 64, 37), radius=3.5 * SCALE * k, fill=CREAM)
-    d.rounded_rectangle(box(36, 36, 72, 78), radius=18 * SCALE * k, fill=AMBER)
-    d.ellipse(box(44, 41, 64, 69), fill=GLOW)
-    d.rounded_rectangle(box(45, 76, 63, 82), radius=3 * SCALE * k, fill=CREAM)
-    d.line([pt(54, 82), pt(54, 89)], fill=CREAM, width=ln(3))
-    x, y = pt(54, 89)
-    r = ln(3) / 2
-    d.ellipse([x - r, y - r, x + r, y + r], fill=CREAM)
-    return im.convert('RGB').resize((px, px), Image.LANCZOS)
+def source():
+    return Image.open(SRC).convert('RGB')
 
 
-def visible(px):
-    """런처가 보여주는 가운데 72dp 영역만 잘라 px 크기로."""
-    big = full_icon(px * 108 // 72 + 1)
-    w = big.size[0]
-    c = w * 18 // 108
-    return big.crop((c, c, w - c, w - c)).resize((px, px), Image.LANCZOS)
-
-
-def round_mask(im):
-    m = Image.new('L', (im.size[0] * SS, im.size[1] * SS), 0)
-    ImageDraw.Draw(m).ellipse([0, 0, m.size[0] - 1, m.size[1] - 1], fill=255)
-    m = m.resize(im.size, Image.LANCZOS)
-    out = Image.new('RGBA', im.size, (0, 0, 0, 0))
-    out.paste(im, (0, 0), m)
+def rounded(im, radius_frac=0.2):
+    """둥근 사각형 밖을 투명하게."""
+    w, h = im.size
+    m = Image.new('L', (w * SS, h * SS), 0)
+    ImageDraw.Draw(m).rounded_rectangle([0, 0, w * SS - 1, h * SS - 1], radius=w * SS * radius_frac, fill=255)
+    out = im.convert('RGBA')
+    out.putalpha(m.resize((w, h), Image.LANCZOS))
     return out
 
 
+def foreground(px):
+    """108dp 전경 캔버스(px×px). 가운데에 원본을 ART_DP 크기로."""
+    art = round(px * ART_DP / 108)
+    canvas = Image.new('RGBA', (px, px), (0, 0, 0, 0))
+    o = (px - art) // 2
+    canvas.paste(source().resize((art, art), Image.LANCZOS).convert('RGBA'), (o, o))
+    return canvas
+
+
+def text_silhouette():
+    """원본에서 짙은 남색 "마중" 글자만 흰색 실루엣으로 (알파 = 어두운 정도)."""
+    im = source()
+    w, h = im.size
+    top = im.crop((0, 0, w, int(h * 0.56)))  # 글자는 위쪽 절반, 아래 그림 그림자는 빼기
+    r, g, b = top.split()
+    gray = top.convert('L')
+    # 남색: 어둡고 파란 기가 있는 픽셀
+    dark = gray.point(lambda v: 255 if v < 70 else (0 if v > 140 else round((140 - v) * 255 / 70)))
+    bluish = ImageChops.subtract(b, r).point(lambda v: 255 if v > 8 else 0).filter(ImageFilter.MaxFilter(5))
+    alpha = ImageChops.multiply(dark, bluish)
+    box = alpha.point(lambda v: 255 if v > 128 else 0).getbbox()
+    alpha = alpha.crop(box)
+    sil = Image.new('RGBA', alpha.size, (255, 255, 255, 0))
+    sil.putalpha(alpha)
+    return sil
+
+
+def monochrome(px):
+    sil = text_silhouette()
+    tw = round(px * MONO_DP / 108)
+    th = round(sil.size[1] * tw / sil.size[0])
+    canvas = Image.new('RGBA', (px, px), (0, 0, 0, 0))
+    canvas.paste(sil.resize((tw, th), Image.LANCZOS), ((px - tw) // 2, (px - th) // 2))
+    return canvas
+
+
 def main():
-    for name, px in {'mdpi': 48, 'hdpi': 72, 'xhdpi': 96, 'xxhdpi': 144, 'xxxhdpi': 192}.items():
-        round_mask(visible(px)).save(RES / f'mipmap-{name}/ic_launcher.png', optimize=True)
-    # Play 스토어: 512x512 정사각형, 모서리는 Play 가 둥글게 처리
-    out = ROOT / 'docs/store/icon-512.png'
-    out.parent.mkdir(parents=True, exist_ok=True)
-    visible(512).save(out, optimize=True)
+    for name, k in DENSITY.items():
+        d = RES / f'drawable-{name}'
+        d.mkdir(exist_ok=True)
+        foreground(round(108 * k)).save(d / 'ic_launcher_foreground.png', optimize=True)
+        monochrome(round(108 * k)).save(d / 'ic_launcher_monochrome.png', optimize=True)
+        legacy = round(48 * k)
+        rounded(source().resize((legacy, legacy), Image.LANCZOS)).save(
+            RES / f'mipmap-{name}/ic_launcher.png', optimize=True)
+
+    store = ROOT / 'docs/store/icon-512.png'
+    store.parent.mkdir(parents=True, exist_ok=True)
+    source().resize((512, 512), Image.LANCZOS).save(store, optimize=True)
+
+    if IOS.exists():
+        for img in json.loads((IOS / 'Contents.json').read_text())['images']:
+            pt = float(img['size'].split('x')[0])
+            px = round(pt * int(img['scale'][0]))
+            source().resize((px, px), Image.LANCZOS).save(IOS / img['filename'], optimize=True)
 
 
 if __name__ == '__main__':

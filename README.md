@@ -20,7 +20,7 @@
 
 지금 당장 도움이 필요한 사람이 쓰는 앱이라, 차갑지 않고 **따뜻하고 편안하게** 보이도록 만들었습니다.
 
-- **아이콘**: 밤에 켜진 등불. '마중'처럼 누군가 불을 들고 기다리고 있다는 뜻
+- **아이콘**: 크림색 바탕에 "마중" 글자, 그 아래 지도 위 하트 핀과 밥·잠자리·진료 말풍선. 원본은 `tools/icon/majung-icon.png`
 - **색**: 크림색 바탕, 테라코타 버튼, 진한 갈색 글자. 밥은 살구색, 잠자리는 연보라, 아플 때는 연초록. 어두운 모드는 따뜻한 짙은 갈색 (`app/lib/ui/theme.dart`)
 - **모양**: 둥근 카드와 알약 모양 버튼, 테두리 선 대신 색을 채운 면
 - **글꼴**: 큰 제목은 고운돋움, 본문은 휴대폰 기본 글꼴
@@ -109,11 +109,11 @@ python3 -I pipeline/geocode.py fetch --today 2026-11-04   # 좌표 없는 공식
 호스트 Python으로 실행합니다 (`tools/launcher_icon.py`는 Pillow, `tools/subset_font.py`는 fontTools 필요).
 
 ```bash
-python3 -I tools/launcher_icon.py                          # 구형 기기용 PNG + docs/store/icon-512.png
+python3 -I tools/launcher_icon.py                          # Android 적응형·구형 아이콘, docs/store/icon-512.png, iOS 아이콘
 python3 -I tools/subset_font.py GowunDodum-Regular.ttf     # 제목 글꼴 줄이기 (7.2MB → 약 1.2MB)
 ```
 
-- 아이콘 모양을 바꾸면 `app/android/app/src/main/res/drawable/ic_launcher_foreground.xml`(안드로이드 8 이상용 벡터)과 `tools/launcher_icon.py`를 함께 고칩니다.
+- 아이콘을 바꾸려면 `tools/icon/majung-icon.png`(모서리까지 그림이 찬 정사각형, 1024px 이상)만 바꾸고 스크립트를 다시 실행합니다. 안드로이드 8 이상은 크림색 바탕(`values/ic_launcher_colors.xml`) 위에 그림을 올리고, 테마 아이콘은 "마중" 글자 모양만 씁니다.
 - 글꼴은 한글 2,350자와 앱 문구·시설 데이터에 나오는 글자만 남깁니다. 시설 데이터에 드문 글자가 새로 들어오면 다시 만듭니다. 원본: [google/fonts](https://github.com/google/fonts/tree/main/ofl/gowundodum)
 
 ## 출시 전에 할 일
