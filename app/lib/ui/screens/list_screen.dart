@@ -31,9 +31,8 @@ class _ListScreenState extends State<ListScreen> {
     final now = c.clock();
     final items = c.ranked(widget.group);
 
-    void openDetail(RankedFacility item) => Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => DetailScreen(facilityId: item.facility.id)),
-        );
+    void openDetail(RankedFacility item) =>
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => DetailScreen(facilityId: item.facility.id)));
 
     return Scaffold(
       appBar: AppBar(
@@ -41,10 +40,12 @@ class _ListScreenState extends State<ListScreen> {
         actions: [
           TextButton.icon(
             key: const Key('toggle-map'),
+            style: TextButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.secondaryContainer),
             onPressed: () => setState(() => _showMap = !_showMap),
             icon: Icon(_showMap ? Icons.list : Icons.map, size: 26),
             label: Text(_showMap ? l.viewList : l.viewMap),
           ),
+          const SizedBox(width: 8),
         ],
       ),
       body: _showMap
@@ -99,16 +100,18 @@ class _Banner extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(color: scheme.tertiaryContainer, borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(color: scheme.tertiaryContainer, borderRadius: BorderRadius.circular(20)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.call, color: scheme.onTertiaryContainer),
+          Icon(Icons.phone_rounded, color: scheme.onTertiaryContainer),
           const SizedBox(width: 10),
           Expanded(
-            child: Text(text,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: scheme.onTertiaryContainer, fontWeight: FontWeight.w600)),
+            child: Text(
+              text,
+              style: Theme.of(context).textTheme.bodyLarge
+                  ?.copyWith(color: scheme.onTertiaryContainer, fontWeight: FontWeight.w600),
+            ),
           ),
         ],
       ),

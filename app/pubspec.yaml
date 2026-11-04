@@ -33,3 +33,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/data/
+    - assets/fonts/GowunDodum-OFL.txt
+  # 제목용 글꼴. 크기를 줄인 버전 (tools/subset_font.py).
+  fonts:
+    - family: GowunDodum
+      fonts:
+        - asset: assets/fonts/GowunDodum-Subset.ttf

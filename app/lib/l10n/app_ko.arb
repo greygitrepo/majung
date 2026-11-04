@@ -2,7 +2,8 @@
   "@@locale": "ko",
 
   "appTitle": "마중",
-  "homeGreeting": "필요한 곳을 눌러 주세요",
+  "homeGreeting": "어디로 갈까요?",
+  "homeGreetingSub": "가까운 곳부터 보여 드릴게요",
 
   "groupMeal": "밥 먹을 곳",
   "groupMealSub": "무료 급식",
@@ -15,7 +16,7 @@
   "groupGroceries": "먹을거리 받기",
   "groupGroceriesSub": "푸드뱅크 · 푸드마켓",
 
-  "openCount": "모두 {total}곳 · 지금 열림 {open}곳",
+  "openCount": "지금 열림 {open}곳 · 모두 {total}곳",
   "@openCount": {"placeholders": {"open": {"type": "int"}, "total": {"type": "int"}}},
 
   "originNone": "가까운 순으로 보려면 위치를 정해 주세요",
@@ -79,13 +80,13 @@
   "viewMap": "지도로 보기",
   "viewList": "목록으로 보기",
 
-  "listCallFirstBanner": "운영 시간은 바뀔 수 있어요. 가기 전에 전화로 꼭 확인하세요.",
+  "listCallFirstBanner": "시간이 바뀔 수 있어요. 가기 전에 전화로 한 번 확인해 주세요.",
   "listEmpty": "아직 등록된 곳이 없어요.",
   "listEmptyHelp": "급하면 아래 번호로 전화하세요.",
 
-  "detailHours": "운영 시간",
+  "detailHours": "언제 가면 되나요",
   "detailNoHours": "운영 시간 정보가 없어요. 전화로 확인하세요.",
-  "detailWho": "누가 이용할 수 있나요",
+  "detailWho": "누가 갈 수 있나요",
   "detailRequirements": "준비할 것 · 조건",
   "detailAddress": "주소",
   "detailCopyAddress": "주소 복사",
@@ -112,6 +113,7 @@
   "closedDay": "쉬어요",
 
   "emergencyButton": "급할 때 전화하기",
+  "emergencyHint": "혼자 힘들 땐 언제든 전화하세요",
   "emergencyTitle": "급할 때 전화하세요",
   "emergencyHomeless": "노숙인 위기대응콜",
   "emergencyHomelessSub": "잘 곳이 없거나 위험할 때 · 서울 · 24시간",
@@ -134,6 +136,7 @@
   "infoDataVersion": "데이터 기준일: {date}",
   "@infoDataVersion": {"placeholders": {"date": {"type": "String"}}},
   "infoMapCredit": "지도: © OpenStreetMap 기여자",
+  "infoFontCredit": "글꼴: 고운돋움 (SIL Open Font License 1.1)",
   "infoContact": "문의 · 오류 신고",
 
   "mapAttribution": "© OpenStreetMap",

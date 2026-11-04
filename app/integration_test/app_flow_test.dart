@@ -79,7 +79,7 @@ void main() {
     await tester.tap(find.descendant(of: firstCard, matching: find.text('자세히')));
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('detail')), findsOneWidget);
-    expect(find.text('운영 시간'), findsOneWidget);
+    expect(find.text('언제 가면 되나요'), findsOneWidget);
 
     await tester.tap(find.byKey(const Key('detail-directions')));
     await tester.pumpAndSettle();

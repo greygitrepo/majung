@@ -13,7 +13,10 @@ class L10nKo extends L10n {
   String get appTitle => '마중';
 
   @override
-  String get homeGreeting => '필요한 곳을 눌러 주세요';
+  String get homeGreeting => '어디로 갈까요?';
+
+  @override
+  String get homeGreetingSub => '가까운 곳부터 보여 드릴게요';
 
   @override
   String get groupMeal => '밥 먹을 곳';
@@ -47,7 +50,7 @@ class L10nKo extends L10n {
 
   @override
   String openCount(int open, int total) {
-    return '모두 $total곳 · 지금 열림 $open곳';
+    return '지금 열림 $open곳 · 모두 $total곳';
   }
 
   @override
@@ -207,7 +210,7 @@ class L10nKo extends L10n {
   String get viewList => '목록으로 보기';
 
   @override
-  String get listCallFirstBanner => '운영 시간은 바뀔 수 있어요. 가기 전에 전화로 꼭 확인하세요.';
+  String get listCallFirstBanner => '시간이 바뀔 수 있어요. 가기 전에 전화로 한 번 확인해 주세요.';
 
   @override
   String get listEmpty => '아직 등록된 곳이 없어요.';
@@ -216,13 +219,13 @@ class L10nKo extends L10n {
   String get listEmptyHelp => '급하면 아래 번호로 전화하세요.';
 
   @override
-  String get detailHours => '운영 시간';
+  String get detailHours => '언제 가면 되나요';
 
   @override
   String get detailNoHours => '운영 시간 정보가 없어요. 전화로 확인하세요.';
 
   @override
-  String get detailWho => '누가 이용할 수 있나요';
+  String get detailWho => '누가 갈 수 있나요';
 
   @override
   String get detailRequirements => '준비할 것 · 조건';
@@ -294,6 +297,9 @@ class L10nKo extends L10n {
   String get emergencyButton => '급할 때 전화하기';
 
   @override
+  String get emergencyHint => '혼자 힘들 땐 언제든 전화하세요';
+
+  @override
   String get emergencyTitle => '급할 때 전화하세요';
 
   @override
@@ -356,6 +362,9 @@ class L10nKo extends L10n {
 
   @override
   String get infoMapCredit => '지도: © OpenStreetMap 기여자';
+
+  @override
+  String get infoFontCredit => '글꼴: 고운돋움 (SIL Open Font License 1.1)';
 
   @override
   String get infoContact => '문의 · 오류 신고';

@@ -13,8 +13,8 @@ void main() {
       expect(find.text('잘 곳'), findsOneWidget);
       expect(find.text('씻을 곳 · 빨래'), findsNothing, reason: '1차 범위 밖');
       // 밥: 열린 급식소 + 오래된 급식소(같은 운영시간) = 2, 잠자리: 1
-      expect(find.text('모두 3곳 · 지금 열림 2곳'), findsOneWidget);
-      expect(find.text('모두 1곳 · 지금 열림 1곳'), findsOneWidget);
+      expect(find.text('지금 열림 2곳 · 모두 3곳'), findsOneWidget);
+      expect(find.text('지금 열림 1곳 · 모두 1곳'), findsOneWidget);
       expect(find.text('급할 때 전화하기'), findsOneWidget);
       expect(find.text('가까운 순으로 보려면 위치를 정해 주세요'), findsOneWidget);
     });
@@ -38,7 +38,7 @@ void main() {
       await tester.tap(find.byKey(const Key('group-meal')));
       await tester.pumpAndSettle();
 
-      expect(find.text('운영 시간은 바뀔 수 있어요. 가기 전에 전화로 꼭 확인하세요.'), findsOneWidget);
+      expect(find.text('시간이 바뀔 수 있어요. 가기 전에 전화로 한 번 확인해 주세요.'), findsOneWidget);
       final openY = tester.getTopLeft(find.byKey(const Key('facility-meal-open'))).dy;
       final closedFinder = find.byKey(const Key('facility-meal-closed'));
       await scrollTo(tester, closedFinder);

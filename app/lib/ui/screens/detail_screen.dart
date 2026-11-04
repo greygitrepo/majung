@@ -23,7 +23,10 @@ class DetailScreen extends StatelessWidget {
     final dataset = c.dataset!;
     final f = dataset.facilities.where((x) => x.id == facilityId).firstOrNull;
     if (f == null) {
-      return Scaffold(appBar: AppBar(), body: Center(child: Text(l.listEmpty)));
+      return Scaffold(
+        appBar: AppBar(),
+        body: Center(child: Text(l.listEmpty)),
+      );
     }
     final ranked = RankedFacility(
       facility: f,
@@ -45,16 +48,23 @@ class DetailScreen extends StatelessWidget {
         key: const Key('detail'),
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
         children: [
-          Text(f.name, style: theme.textTheme.headlineMedium),
-          const SizedBox(height: 12),
           StatusLine(status: ranked.status, now: now, large: true),
+          const SizedBox(height: 12),
+          Text(f.name, style: theme.textTheme.headlineLarge),
           if (ranked.distance != null) ...[
             const SizedBox(height: 8),
-            Row(children: [
-              const Icon(Icons.directions_walk),
-              const SizedBox(width: 8),
-              Expanded(child: Text(walkText(l, ranked.distance!), style: theme.textTheme.titleMedium)),
-            ]),
+            Row(
+              children: [
+                Icon(Icons.directions_walk_rounded, color: theme.colorScheme.onSurfaceVariant),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    walkText(l, ranked.distance!),
+                    style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                  ),
+                ),
+              ],
+            ),
           ],
           const SizedBox(height: 12),
           FreshnessWarning(freshness: ranked.freshness),
@@ -63,7 +73,7 @@ class DetailScreen extends StatelessWidget {
             key: const Key('detail-call'),
             style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(64)),
             onPressed: f.phone == null ? null : () => run(() => scope.launcher.dial(f.phone!)),
-            icon: const Icon(Icons.call, size: 30),
+            icon: const Icon(Icons.phone_rounded, size: 28),
             label: Text(f.phone == null ? l.noPhone : '${l.callLong}  ${f.phone}'),
           ),
           const SizedBox(height: 12),
@@ -71,13 +81,19 @@ class DetailScreen extends StatelessWidget {
             key: const Key('detail-directions'),
             style: OutlinedButton.styleFrom(minimumSize: const Size.fromHeight(64)),
             onPressed: () => run(() => scope.launcher.directions(f.name, f.location)),
-            icon: const Icon(Icons.directions_walk, size: 30),
+            icon: const Icon(Icons.directions_rounded, size: 28),
             label: Text(l.directions),
           ),
-          const SizedBox(height: 28),
-          _Section(title: l.detailHours, child: _HoursTable(facility: f, now: now)),
+          const SizedBox(height: 24),
+          _Section(
+            title: l.detailHours,
+            child: _HoursTable(facility: f, now: now),
+          ),
           if (f.hoursNote != null)
-            _Section(title: l.detailNote, child: Text(f.hoursNote!, style: theme.textTheme.bodyLarge)),
+            _Section(
+              title: l.detailNote,
+              child: Text(f.hoursNote!, style: theme.textTheme.bodyLarge),
+            ),
           _Section(
             title: l.detailWho,
             child: Text(f.eligibility ?? l.detailUnknownField, style: theme.textTheme.bodyLarge),
@@ -103,21 +119,28 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
           ),
-          const Divider(height: 32),
-          Text(l.detailVerified(dateText(f.lastVerified)), style: theme.textTheme.bodyMedium),
+          const SizedBox(height: 4),
+          Text(
+            l.detailVerified(dateText(f.lastVerified)),
+            style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+          ),
           if (source != null)
-            Text(l.detailSource(source.provider == null ? source.name : '${source.provider} · ${source.name}'),
-                style: theme.textTheme.bodyMedium),
+            Text(
+              l.detailSource(source.provider == null ? source.name : '${source.provider} · ${source.name}'),
+              style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+            ),
           if (scope.config.reportEmail != null) ...[
             const SizedBox(height: 16),
             OutlinedButton.icon(
               key: const Key('detail-report'),
-              onPressed: () => run(() => scope.launcher.email(
-                    scope.config.reportEmail!,
-                    subject: '[마중 정보 오류] ${f.name}',
-                    body: '시설: ${f.name} (${f.id})\n틀린 내용:\n\n맞는 내용:\n',
-                  )),
-              icon: const Icon(Icons.flag_outlined),
+              onPressed: () => run(
+                () => scope.launcher.email(
+                  scope.config.reportEmail!,
+                  subject: '[마중 정보 오류] ${f.name}',
+                  body: '시설: ${f.name} (${f.id})\n틀린 내용:\n\n맞는 내용:\n',
+                ),
+              ),
+              icon: const Icon(Icons.flag_rounded),
               label: Text(l.detailReport),
             ),
           ],
@@ -127,23 +150,41 @@ class DetailScreen extends StatelessWidget {
   }
 }
 
+/// 흰 카드 안에 제목 + 내용.
 class _Section extends StatelessWidget {
   const _Section({required this.title, required this.child});
   final String title;
   final Widget child;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: 24),
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerLow,
+          borderRadius: BorderRadius.circular(24),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Semantics(header: true, child: Text(title, style: Theme.of(context).textTheme.titleLarge)),
+            Semantics(
+              header: true,
+              child: Text(
+                title,
+                style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+              ),
+            ),
             const SizedBox(height: 8),
             child,
           ],
         ),
-      );
+      ),
+    );
+  }
 }
 
 /// 요일별 운영 시간. 오늘 줄은 굵게 강조.
@@ -162,27 +203,31 @@ class _HoursTable extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         for (final group in groupHoursByDay(l, facility.hours.rules))
-          Builder(builder: (context) {
-            final isToday = group.days.contains(today);
-            final weight = isToday ? FontWeight.w800 : FontWeight.w400;
-            return Container(
-              margin: const EdgeInsets.only(bottom: 6),
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-              decoration: BoxDecoration(
-                color: isToday ? theme.colorScheme.primaryContainer.withValues(alpha: 0.6) : null,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              // 요일과 시간을 위아래로 두어 글자를 키워도 겹치지 않게 한다.
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(isToday ? '${group.label} (${l.today})' : group.label,
-                      style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800)),
-                  Text(group.text, style: theme.textTheme.bodyLarge?.copyWith(fontWeight: weight)),
-                ],
-              ),
-            );
-          }),
+          Builder(
+            builder: (context) {
+              final isToday = group.days.contains(today);
+              final weight = isToday ? FontWeight.w800 : FontWeight.w400;
+              return Container(
+                margin: const EdgeInsets.only(bottom: 6),
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                decoration: BoxDecoration(
+                  color: isToday ? theme.colorScheme.primaryContainer : null,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                // 요일과 시간을 위아래로 두어 글자를 키워도 겹치지 않게 한다.
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      isToday ? '${group.label} (${l.today})' : group.label,
+                      style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800),
+                    ),
+                    Text(group.text, style: theme.textTheme.bodyLarge?.copyWith(fontWeight: weight)),
+                  ],
+                ),
+              );
+            },
+          ),
       ],
     );
   }

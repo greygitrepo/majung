@@ -54,6 +54,8 @@ class InfoScreen extends StatelessWidget {
                 ),
               ),
             Text(l.infoMapCredit, style: theme.textTheme.bodyMedium),
+            const SizedBox(height: 10),
+            Text(l.infoFontCredit, style: theme.textTheme.bodyMedium),
           ]),
           if (scope.config.reportEmail != null)
             section(l.infoContact, [

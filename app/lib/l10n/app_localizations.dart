@@ -102,8 +102,14 @@ abstract class L10n {
   /// No description provided for @homeGreeting.
   ///
   /// In ko, this message translates to:
-  /// **'필요한 곳을 눌러 주세요'**
+  /// **'어디로 갈까요?'**
   String get homeGreeting;
+
+  /// No description provided for @homeGreetingSub.
+  ///
+  /// In ko, this message translates to:
+  /// **'가까운 곳부터 보여 드릴게요'**
+  String get homeGreetingSub;
 
   /// No description provided for @groupMeal.
   ///
@@ -168,7 +174,7 @@ abstract class L10n {
   /// No description provided for @openCount.
   ///
   /// In ko, this message translates to:
-  /// **'모두 {total}곳 · 지금 열림 {open}곳'**
+  /// **'지금 열림 {open}곳 · 모두 {total}곳'**
   String openCount(int open, int total);
 
   /// No description provided for @originNone.
@@ -456,7 +462,7 @@ abstract class L10n {
   /// No description provided for @listCallFirstBanner.
   ///
   /// In ko, this message translates to:
-  /// **'운영 시간은 바뀔 수 있어요. 가기 전에 전화로 꼭 확인하세요.'**
+  /// **'시간이 바뀔 수 있어요. 가기 전에 전화로 한 번 확인해 주세요.'**
   String get listCallFirstBanner;
 
   /// No description provided for @listEmpty.
@@ -474,7 +480,7 @@ abstract class L10n {
   /// No description provided for @detailHours.
   ///
   /// In ko, this message translates to:
-  /// **'운영 시간'**
+  /// **'언제 가면 되나요'**
   String get detailHours;
 
   /// No description provided for @detailNoHours.
@@ -486,7 +492,7 @@ abstract class L10n {
   /// No description provided for @detailWho.
   ///
   /// In ko, this message translates to:
-  /// **'누가 이용할 수 있나요'**
+  /// **'누가 갈 수 있나요'**
   String get detailWho;
 
   /// No description provided for @detailRequirements.
@@ -615,6 +621,12 @@ abstract class L10n {
   /// **'급할 때 전화하기'**
   String get emergencyButton;
 
+  /// No description provided for @emergencyHint.
+  ///
+  /// In ko, this message translates to:
+  /// **'혼자 힘들 땐 언제든 전화하세요'**
+  String get emergencyHint;
+
   /// No description provided for @emergencyTitle.
   ///
   /// In ko, this message translates to:
@@ -734,6 +746,12 @@ abstract class L10n {
   /// In ko, this message translates to:
   /// **'지도: © OpenStreetMap 기여자'**
   String get infoMapCredit;
+
+  /// No description provided for @infoFontCredit.
+  ///
+  /// In ko, this message translates to:
+  /// **'글꼴: 고운돋움 (SIL Open Font License 1.1)'**
+  String get infoFontCredit;
 
   /// No description provided for @infoContact.
   ///

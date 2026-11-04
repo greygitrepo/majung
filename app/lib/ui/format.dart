@@ -89,8 +89,8 @@ String groupSubtitle(L10n l, CategoryGroup g) => switch (g) {
     };
 
 IconData groupIcon(CategoryGroup g) => switch (g) {
-      CategoryGroup.meal => Icons.restaurant,
-      CategoryGroup.sleep => Icons.bed,
+      CategoryGroup.meal => Icons.rice_bowl_rounded,
+      CategoryGroup.sleep => Icons.bed_rounded,
       CategoryGroup.wash => Icons.shower,
       CategoryGroup.clinic => Icons.local_hospital,
       CategoryGroup.groceries => Icons.shopping_basket,

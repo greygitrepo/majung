@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,6 +14,10 @@ import 'services/location_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  LicenseRegistry.addLicense(() async* {
+    final ofl = await rootBundle.loadString('assets/fonts/GowunDodum-OFL.txt');
+    yield LicenseEntryWithLineBreaks(const ['GowunDodum'], ofl);
+  });
   const config = AppConfig();
   final dir = await getApplicationSupportDirectory();
   final repository = FacilityRepository(
