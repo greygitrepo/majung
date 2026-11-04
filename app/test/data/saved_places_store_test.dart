@@ -17,6 +17,7 @@ SavedPlace place(String id, {String name = '테스트 급식소'}) => SavedPlace
       category: FacilityCategory.meal,
       address: '서울 중구 테스트로 1',
       phone: '02-000-0000',
+      sido: '서울',
       savedAt: DateTime(2026, 11, 1),
     );
 

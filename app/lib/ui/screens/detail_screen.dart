@@ -178,9 +178,8 @@ class _SaveButton extends StatelessWidget {
     }
 
     final style = OutlinedButton.styleFrom(minimumSize: const Size.fromHeight(64));
-    return Semantics(
-      toggled: saved,
-      child: saved
+    // 버튼 글자가 상태를 말해 준다 ("저장하기" / "저장한 곳에서 빼기").
+    return saved
           ? FilledButton.tonalIcon(
               key: const Key('detail-save'),
               style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(64)),
@@ -194,8 +193,7 @@ class _SaveButton extends StatelessWidget {
               onPressed: toggle,
               icon: const Icon(Icons.bookmark_add_outlined, size: 28),
               label: Text(l.detailSave),
-            ),
-    );
+            );
   }
 }
 

@@ -160,8 +160,8 @@ class AppController extends ChangeNotifier {
     } on Object {
       regions = RegionCatalog.empty;
     }
-    final saved = await originStore.loadRegionCode();
-    final region = saved == null ? null : regions.byCode(saved);
+    final regionCode = await originStore.loadRegionCode();
+    final region = regionCode == null ? null : regions.byCode(regionCode);
     if (region != null) origin = Origin.region(region);
     try {
       saved = await savedStore.load();
