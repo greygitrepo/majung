@@ -31,6 +31,7 @@ Future<void> main() async {
     repository: repository,
     location: GeolocatorLocationService(),
     originStore: PrefsOriginStore(),
+    savedStore: PrefsSavedPlacesStore(),
     loadRegions: () async =>
         RegionCatalog.fromJson(jsonDecode(await rootBundle.loadString('assets/data/regions.json'))),
   );

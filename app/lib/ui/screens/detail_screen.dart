@@ -88,6 +88,8 @@ class DetailScreen extends StatelessWidget {
             icon: const Icon(Icons.directions_rounded, size: 28),
             label: Text(l.directions),
           ),
+          const SizedBox(height: 12),
+          _SaveButton(facility: f),
           const SizedBox(height: 24),
           _Section(
             title: l.detailHours,
@@ -156,6 +158,43 @@ class DetailScreen extends StatelessWidget {
           ],
         ],
       ),
+    );
+  }
+}
+
+/// 저장하기 / 저장한 곳에서 빼기. 글자로 상태를 알려 준다 (아이콘만 두지 않음).
+class _SaveButton extends StatelessWidget {
+  const _SaveButton({required this.facility});
+  final Facility facility;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = L10n.of(context);
+    final c = AppScope.of(context).controller;
+    final saved = c.isSaved(facility.id);
+    Future<void> toggle() async {
+      final nowSaved = await c.toggleSaved(facility);
+      if (context.mounted) showSnack(context, nowSaved ? l.savedAdded : l.savedRemoved);
+    }
+
+    final style = OutlinedButton.styleFrom(minimumSize: const Size.fromHeight(64));
+    return Semantics(
+      toggled: saved,
+      child: saved
+          ? FilledButton.tonalIcon(
+              key: const Key('detail-save'),
+              style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(64)),
+              onPressed: toggle,
+              icon: const Icon(Icons.bookmark_remove_rounded, size: 28),
+              label: Text(l.detailUnsave),
+            )
+          : OutlinedButton.icon(
+              key: const Key('detail-save'),
+              style: style,
+              onPressed: toggle,
+              icon: const Icon(Icons.bookmark_add_outlined, size: 28),
+              label: Text(l.detailSave),
+            ),
     );
   }
 }

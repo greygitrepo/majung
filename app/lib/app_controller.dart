@@ -6,10 +6,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'data/facility_repository.dart';
 import 'domain/category.dart';
 import 'domain/dataset.dart';
+import 'domain/facility.dart';
 import 'domain/geo.dart';
 import 'domain/opening_hours.dart';
 import 'domain/ranking.dart';
 import 'domain/region.dart';
+import 'domain/saved_places.dart';
 import 'services/location_service.dart';
 
 enum OriginKind { none, gps, region }
@@ -71,15 +73,56 @@ class MemoryOriginStore implements OriginStore {
   Future<void> saveRegionCode(String? value) async => code = value;
 }
 
+/// 저장한 곳(즐겨찾기). 기기에만 둔다 — 백업·전송하지 않는다 (decisions #19, #20).
+abstract class SavedPlacesStore {
+  Future<List<SavedPlace>> load();
+  Future<void> save(List<SavedPlace> places);
+}
+
+class PrefsSavedPlacesStore implements SavedPlacesStore {
+  static const _key = 'saved_places_v1';
+
+  @override
+  Future<List<SavedPlace>> load() async {
+    final prefs = await SharedPreferences.getInstance();
+    return decodeSavedPlaces(prefs.getString(_key));
+  }
+
+  @override
+  Future<void> save(List<SavedPlace> places) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (places.isEmpty) {
+      await prefs.remove(_key);
+    } else {
+      await prefs.setString(_key, encodeSavedPlaces(places));
+    }
+  }
+}
+
+class MemorySavedPlacesStore implements SavedPlacesStore {
+  MemorySavedPlacesStore([List<SavedPlace> initial = const []]) : places = [...initial];
+  List<SavedPlace> places;
+  int saves = 0;
+  @override
+  Future<List<SavedPlace>> load() async => [...places];
+  @override
+  Future<void> save(List<SavedPlace> value) async {
+    saves++;
+    places = [...value];
+  }
+}
+
 class AppController extends ChangeNotifier {
   AppController({
     required this.repository,
     required this.location,
     required this.originStore,
+    SavedPlacesStore? savedStore,
     Future<RegionCatalog> Function()? loadRegions,
     DateTime Function()? clock,
     Duration? tick = const Duration(minutes: 1),
   })  : clock = clock ?? DateTime.now,
+        savedStore = savedStore ?? MemorySavedPlacesStore(),
         _loadRegions = loadRegions {
     if (tick != null) _ticker = Timer.periodic(tick, (_) => notifyListeners());
   }
@@ -87,6 +130,7 @@ class AppController extends ChangeNotifier {
   final FacilityRepository repository;
   final LocationService location;
   final OriginStore originStore;
+  final SavedPlacesStore savedStore;
   final DateTime Function() clock;
   final Future<RegionCatalog> Function()? _loadRegions;
   Timer? _ticker;
@@ -98,6 +142,9 @@ class AppController extends ChangeNotifier {
   Origin origin = const Origin.none();
   bool locating = false;
   LocationFailure? lastLocationFailure;
+
+  /// 저장한 곳. 최근에 저장한 것이 앞.
+  List<SavedPlace> saved = const [];
 
   bool get ready => dataset != null;
 
@@ -116,6 +163,12 @@ class AppController extends ChangeNotifier {
     final saved = await originStore.loadRegionCode();
     final region = saved == null ? null : regions.byCode(saved);
     if (region != null) origin = Origin.region(region);
+    try {
+      saved = await savedStore.load();
+    } on Object {
+      saved = const [];
+    }
+    await _reconcileSaved();
     notifyListeners();
     unawaited(_refreshInBackground());
   }
@@ -124,6 +177,7 @@ class AppController extends ChangeNotifier {
     final result = await repository.refresh();
     if (result == UpdateResult.updated) {
       dataset = repository.current;
+      await _reconcileSaved();
       notifyListeners();
     }
     return result;
@@ -169,6 +223,58 @@ class AppController extends ChangeNotifier {
       ranked(group).where((r) => r.status.isOpenNow).length;
 
   OpenStatus statusOf(RankedFacility r) => r.status;
+
+  // ---------- 저장한 곳 ----------
+
+  /// 데이터가 바뀌면 저장 목록을 맞춘다 (ID가 바뀐 시설 다시 찾기, 이름·전화 최신으로).
+  Future<void> _reconcileSaved() async {
+    final d = dataset;
+    if (d == null || saved.isEmpty) return;
+    final next = reconcileSavedPlaces(saved, d);
+    if (encodeSavedPlaces(next) != encodeSavedPlaces(saved)) {
+      saved = next;
+      await _persistSaved();
+    }
+  }
+
+  Future<void> _persistSaved() async {
+    try {
+      await savedStore.save(saved);
+    } on Object {
+      // 저장 실패해도 이번 실행 동안은 화면에 남긴다.
+    }
+  }
+
+  bool isSaved(String facilityId) => saved.any((p) => p.id == facilityId);
+
+  /// 저장했으면 빼고, 안 했으면 맨 앞에 넣는다. 결과로 저장된 상태인지 돌려준다.
+  Future<bool> toggleSaved(Facility f) async {
+    final nowSaved = !isSaved(f.id);
+    saved = nowSaved
+        ? [SavedPlace.fromFacility(f, clock()), ...saved]
+        : saved.where((p) => p.id != f.id).toList();
+    notifyListeners();
+    await _persistSaved();
+    return nowSaved;
+  }
+
+  Future<void> removeSaved(String id) async {
+    saved = saved.where((p) => p.id != id).toList();
+    notifyListeners();
+    await _persistSaved();
+  }
+
+  Future<void> clearSaved() async {
+    saved = const [];
+    notifyListeners();
+    await _persistSaved();
+  }
+
+  List<SavedEntry> savedEntriesNow() {
+    final d = dataset;
+    if (d == null) return const [];
+    return savedEntries(saved, d, now: clock(), origin: origin.point);
+  }
 
   @override
   void dispose() {

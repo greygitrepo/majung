@@ -456,4 +456,70 @@ class L10nKo extends L10n {
 
   @override
   String get updated => '새 정보로 바꿨어요';
+
+  @override
+  String get homeSavedTitle => '저장한 곳';
+
+  @override
+  String homeSavedMore(int count) {
+    return '저장한 곳 모두 보기 ($count곳)';
+  }
+
+  @override
+  String get savedEmpty => '아직 저장한 곳이 없어요.\n시설을 열고 \'저장하기\'를 누르면 여기에 모여요.';
+
+  @override
+  String get savedMissing => '정보가 바뀌었거나 목록에서 빠졌어요';
+
+  @override
+  String savedOldPhone(String phone) {
+    return '예전 전화번호 $phone (바뀌었을 수 있어요)';
+  }
+
+  @override
+  String get savedCallOld => '예전 번호로 전화';
+
+  @override
+  String get savedRemove => '지우기';
+
+  @override
+  String savedSimilar(String name) {
+    return '비슷한 곳 보기: $name';
+  }
+
+  @override
+  String get detailSave => '저장하기';
+
+  @override
+  String get detailUnsave => '저장한 곳에서 빼기';
+
+  @override
+  String get savedAdded => '저장했어요. 첫 화면에서 바로 볼 수 있어요';
+
+  @override
+  String get savedRemoved => '저장한 곳에서 뺐어요';
+
+  @override
+  String get infoSaved => '저장한 곳';
+
+  @override
+  String get infoSavedBody => '저장한 곳은 이 휴대폰에만 있어요. 다른 곳으로 보내거나 백업하지 않아서, 휴대폰을 바꾸면 옮겨지지 않아요.';
+
+  @override
+  String get infoClearSaved => '저장한 곳 모두 지우기';
+
+  @override
+  String get clearSavedTitle => '저장한 곳을 모두 지울까요?';
+
+  @override
+  String get clearSavedBody => '지우면 되돌릴 수 없어요.';
+
+  @override
+  String get cancel => '취소';
+
+  @override
+  String get clearSavedConfirm => '모두 지우기';
+
+  @override
+  String get savedCleared => '저장한 곳을 모두 지웠어요';
 }

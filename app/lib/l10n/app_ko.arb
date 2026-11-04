@@ -168,5 +168,29 @@
   "mapUnavailable": "지도를 불러올 수 없어요. 목록으로 보세요.",
 
   "launchFailed": "열 수 있는 앱이 없어요",
-  "updated": "새 정보로 바꿨어요"
+  "updated": "새 정보로 바꿨어요",
+
+  "homeSavedTitle": "저장한 곳",
+  "homeSavedMore": "저장한 곳 모두 보기 ({count}곳)",
+  "@homeSavedMore": {"placeholders": {"count": {"type": "int"}}},
+  "savedEmpty": "아직 저장한 곳이 없어요.\n시설을 열고 '저장하기'를 누르면 여기에 모여요.",
+  "savedMissing": "정보가 바뀌었거나 목록에서 빠졌어요",
+  "savedOldPhone": "예전 전화번호 {phone} (바뀌었을 수 있어요)",
+  "@savedOldPhone": {"placeholders": {"phone": {"type": "String"}}},
+  "savedCallOld": "예전 번호로 전화",
+  "savedRemove": "지우기",
+  "savedSimilar": "비슷한 곳 보기: {name}",
+  "@savedSimilar": {"placeholders": {"name": {"type": "String"}}},
+  "detailSave": "저장하기",
+  "detailUnsave": "저장한 곳에서 빼기",
+  "savedAdded": "저장했어요. 첫 화면에서 바로 볼 수 있어요",
+  "savedRemoved": "저장한 곳에서 뺐어요",
+  "infoSaved": "저장한 곳",
+  "infoSavedBody": "저장한 곳은 이 휴대폰에만 있어요. 다른 곳으로 보내거나 백업하지 않아서, 휴대폰을 바꾸면 옮겨지지 않아요.",
+  "infoClearSaved": "저장한 곳 모두 지우기",
+  "clearSavedTitle": "저장한 곳을 모두 지울까요?",
+  "clearSavedBody": "지우면 되돌릴 수 없어요.",
+  "cancel": "취소",
+  "clearSavedConfirm": "모두 지우기",
+  "savedCleared": "저장한 곳을 모두 지웠어요"
 }

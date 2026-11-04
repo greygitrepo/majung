@@ -5,6 +5,7 @@
 - 대상 지역: 전국 16개 시도 (위치 권한 없이 시·도 → 시·군·구로 골라도 됨)
 - 1차 범위: 밥(무료급식) + 잠자리(노숙인 시설·쉼터) + 아플 때(무료 진료소·보건소)
 - 지도는 열 때 기준 위치와 가장 가까운 3곳이 보이게 맞춥니다. "내 위치로"(GPS를 쓸 때는 위치를 한 번 새로 읽음) 또는 "처음 위치로"(지역을 골랐을 때) 버튼으로 언제든 되돌아옵니다
+- 자주 가는 곳은 상세 화면에서 "저장하기"를 누르면 첫 화면 위쪽 "저장한 곳"에 모여, 카테고리를 거치지 않고 바로 전화할 수 있습니다. 저장한 곳은 휴대폰에만 두고 백업·기기 이전도 하지 않습니다 (`docs/decisions.md` #19, #20)
 - 공공데이터 운영시간은 자주 틀려서, 사람이 확인한 곳만 "지금 열림"을 보여 줍니다 (`docs/decisions.md` #16)
 - Flutter (Dart), 지도는 OpenStreetMap(`flutter_map`)
 
@@ -14,7 +15,7 @@
 | **아플 때** | **부산: 밥 먹을 곳** | **부산: 지도 (처음 위치로)** | **급할 때 전화** |
 | ![아플 때](docs/screenshots/shot-5-clinic.png) | ![부산 밥 먹을 곳](docs/screenshots/shot-6-busan-list.png) | ![부산 지도](docs/screenshots/shot-7-busan-map.png) | ![급할 때 전화](docs/screenshots/shot-8-emergency.png) |
 
-<sub>2026-11-04 평일 낮 12시 20분. 1~5는 서울 중구, 6~8은 부산 중구를 고른 화면. 서울 밥 목록은 사람이 확인한 운영시간이라 "지금 열려 있어요"가 나오고, 부산은 공공데이터뿐이라 "운영 시간 확인 필요"로 나옵니다.</sub>
+<sub>2026-11-04 평일 낮 12시 20분. 1~5는 서울 중구(첫 화면에 저장한 곳 3곳), 6~8은 부산 중구를 고른 화면. 서울 밥 목록은 사람이 확인한 운영시간이라 "지금 열려 있어요"가 나오고, 부산은 공공데이터뿐이라 "운영 시간 확인 필요"로 나옵니다.</sub>
 
 ## 디자인
 
@@ -36,6 +37,7 @@
 - 광고·행동 추적 SDK 없음, 백그라운드 위치 권한 없음
 - 모든 시설 정보에 출처와 마지막 확인일 표시. 확인 안 된 정보는 확정처럼 보여주지 않음
 - 오프라인에서도 목록·지도·전화번호 사용 가능
+- 저장한 곳(즐겨찾기)은 휴대폰에만 저장. Google 백업·새 폰 이전에도 넣지 않음. 정보 화면에서 한 번에 지울 수 있음
 - 긴급 연락처는 항상 한 번에: 전국 공통(129, 109, 1577-0199, 112, 119)과 고른 지역 번호(서울 노숙인 위기대응콜 1600-9582, 경기 031-120 등)
 
 ## 폴더
@@ -83,6 +85,15 @@ docker compose run --rm -w /workspace/app device flutter run
 # 헤드리스 에뮬레이터 (KVM 필요)
 docker compose run --rm -w /workspace/app emulator bash -c "start-emulator && flutter test integration_test -d emulator-5554"
 ```
+
+### README 스크린샷 다시 찍기
+
+```bash
+# 헤드리스 에뮬레이터 (KVM 필요). docs/screenshots/shot-1~8.png 를 덮어씁니다
+docker compose run --rm -w /workspace/app emulator bash -c "start-emulator && flutter drive --driver=test_driver/integration_test.dart --target=integration_test/screenshots_test.dart -d emulator-5554"
+```
+
+시각은 2026-11-04 낮 12시 20분으로 고정하고, 앱에 들어 있는 실제 데이터와 지도 타일을 씁니다 (`integration_test/screenshots_test.dart`).
 
 ## 데이터 다시 만들기
 

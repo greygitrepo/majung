@@ -10,6 +10,7 @@ import 'emergency_screen.dart';
 import 'info_screen.dart';
 import 'list_screen.dart';
 import 'origin_picker.dart';
+import 'saved_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -53,6 +54,8 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 const OriginBar(),
                 const SizedBox(height: 20),
+                // 자주 가는 곳은 카테고리를 거치지 않고 바로 (decisions #20).
+                const HomeSavedSection(),
                 for (final group in CategoryGroup.enabled) ...[
                   BigCategoryButton(
                     key: Key('group-${group.name}'),

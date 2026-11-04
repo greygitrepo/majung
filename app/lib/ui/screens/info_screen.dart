@@ -8,6 +8,29 @@ import '../widgets.dart';
 class InfoScreen extends StatelessWidget {
   const InfoScreen({super.key});
 
+  Future<void> _confirmClear(BuildContext context) async {
+    final l = L10n.of(context);
+    final controller = AppScope.read(context).controller;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l.clearSavedTitle),
+        content: Text(l.clearSavedBody),
+        actions: [
+          TextButton(onPressed: () => Navigator.of(context).pop(false), child: Text(l.cancel)),
+          TextButton(
+            key: const Key('clear-saved-confirm'),
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(l.clearSavedConfirm),
+          ),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    await controller.clearSaved();
+    if (context.mounted) showSnack(context, l.savedCleared);
+  }
+
   @override
   Widget build(BuildContext context) {
     final l = L10n.of(context);
@@ -40,6 +63,16 @@ class InfoScreen extends StatelessWidget {
                 onPressed: () => scope.launcher.openWeb(scope.config.privacyPolicyUrl!),
                 child: Text(l.infoPrivacy),
               ),
+          ]),
+          section(l.infoSaved, [
+            Text(l.infoSavedBody, style: theme.textTheme.bodyLarge),
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              key: const Key('clear-saved'),
+              onPressed: scope.controller.saved.isEmpty ? null : () => _confirmClear(context),
+              icon: const Icon(Icons.delete_outline_rounded),
+              label: Text(l.infoClearSaved),
+            ),
           ]),
           section(l.infoSources, [
             if (dataset != null)

@@ -914,6 +914,126 @@ abstract class L10n {
   /// In ko, this message translates to:
   /// **'새 정보로 바꿨어요'**
   String get updated;
+
+  /// No description provided for @homeSavedTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장한 곳'**
+  String get homeSavedTitle;
+
+  /// No description provided for @homeSavedMore.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장한 곳 모두 보기 ({count}곳)'**
+  String homeSavedMore(int count);
+
+  /// No description provided for @savedEmpty.
+  ///
+  /// In ko, this message translates to:
+  /// **'아직 저장한 곳이 없어요.\n시설을 열고 \'저장하기\'를 누르면 여기에 모여요.'**
+  String get savedEmpty;
+
+  /// No description provided for @savedMissing.
+  ///
+  /// In ko, this message translates to:
+  /// **'정보가 바뀌었거나 목록에서 빠졌어요'**
+  String get savedMissing;
+
+  /// No description provided for @savedOldPhone.
+  ///
+  /// In ko, this message translates to:
+  /// **'예전 전화번호 {phone} (바뀌었을 수 있어요)'**
+  String savedOldPhone(String phone);
+
+  /// No description provided for @savedCallOld.
+  ///
+  /// In ko, this message translates to:
+  /// **'예전 번호로 전화'**
+  String get savedCallOld;
+
+  /// No description provided for @savedRemove.
+  ///
+  /// In ko, this message translates to:
+  /// **'지우기'**
+  String get savedRemove;
+
+  /// No description provided for @savedSimilar.
+  ///
+  /// In ko, this message translates to:
+  /// **'비슷한 곳 보기: {name}'**
+  String savedSimilar(String name);
+
+  /// No description provided for @detailSave.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장하기'**
+  String get detailSave;
+
+  /// No description provided for @detailUnsave.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장한 곳에서 빼기'**
+  String get detailUnsave;
+
+  /// No description provided for @savedAdded.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장했어요. 첫 화면에서 바로 볼 수 있어요'**
+  String get savedAdded;
+
+  /// No description provided for @savedRemoved.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장한 곳에서 뺐어요'**
+  String get savedRemoved;
+
+  /// No description provided for @infoSaved.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장한 곳'**
+  String get infoSaved;
+
+  /// No description provided for @infoSavedBody.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장한 곳은 이 휴대폰에만 있어요. 다른 곳으로 보내거나 백업하지 않아서, 휴대폰을 바꾸면 옮겨지지 않아요.'**
+  String get infoSavedBody;
+
+  /// No description provided for @infoClearSaved.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장한 곳 모두 지우기'**
+  String get infoClearSaved;
+
+  /// No description provided for @clearSavedTitle.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장한 곳을 모두 지울까요?'**
+  String get clearSavedTitle;
+
+  /// No description provided for @clearSavedBody.
+  ///
+  /// In ko, this message translates to:
+  /// **'지우면 되돌릴 수 없어요.'**
+  String get clearSavedBody;
+
+  /// No description provided for @cancel.
+  ///
+  /// In ko, this message translates to:
+  /// **'취소'**
+  String get cancel;
+
+  /// No description provided for @clearSavedConfirm.
+  ///
+  /// In ko, this message translates to:
+  /// **'모두 지우기'**
+  String get clearSavedConfirm;
+
+  /// No description provided for @savedCleared.
+  ///
+  /// In ko, this message translates to:
+  /// **'저장한 곳을 모두 지웠어요'**
+  String get savedCleared;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

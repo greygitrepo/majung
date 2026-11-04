@@ -8,6 +8,7 @@ import 'package:majung/config.dart';
 import 'package:majung/data/facility_repository.dart';
 import 'package:majung/domain/geo.dart';
 import 'package:majung/domain/region.dart';
+import 'package:majung/domain/saved_places.dart';
 import 'package:majung/services/launcher.dart';
 import 'package:majung/services/location_service.dart';
 
@@ -94,15 +95,18 @@ class Harness {
     String? reportEmail,
     // 기본은 서울 중구를 골라 둔 상태. 위치를 안 정한 상태는 savedRegion: null.
     String? savedRegion = seoulJunggu,
+    List<SavedPlace> saved = const [],
   })  : launcher = FakeLauncher(),
         location = FakeLocation(location ?? const LocationResult.failed(LocationFailure.denied)),
         originStore = MemoryOriginStore(savedRegion),
+        savedStore = MemorySavedPlacesStore(saved),
         config = AppConfig(reportEmail: reportEmail, tileUrlTemplate: null) {
     final json = jsonEncode(datasetJson(facilities: facilities ?? [mealOpen, mealClosed, mealStale, shelter]));
     controller = AppController(
       repository: FacilityRepository(loadBundled: () async => json, cache: MemoryDatasetCache()),
       location: this.location,
       originStore: originStore,
+      savedStore: savedStore,
       loadRegions: () async => RegionCatalog.fromJson(regionsJson()),
       clock: () => testNow,
       tick: null,
@@ -112,6 +116,7 @@ class Harness {
   final FakeLauncher launcher;
   final FakeLocation location;
   final MemoryOriginStore originStore;
+  final MemorySavedPlacesStore savedStore;
   final AppConfig config;
   late final AppController controller;
 
