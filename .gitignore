@@ -1,0 +1,22 @@
+# 비밀값 — 절대 커밋 금지
+local.properties
+key.properties
+*.jks
+*.keystore
+.env
+.env.*
+google-services.json
+
+# Flutter / Android 빌드 산출물
+.dart_tool/
+build/
+.gradle/
+*.iml
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+
+# 용량이 큰 원본(1차 출시 범위 밖, 다시 내려받을 수 있음 — data/research/clinic.md 참고)
+data/raw/clinic_20261103/

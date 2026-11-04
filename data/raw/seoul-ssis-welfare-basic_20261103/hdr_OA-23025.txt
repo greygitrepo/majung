@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Date: Tue, 03 Nov 2026 13:35:54 GMT
+Server: Apache
+Content-Disposition: attachment; filename="서울시 사회복지시설 기본정보(한국사회보장정보원).csv"
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/x-msdownload;charset=CP949
+

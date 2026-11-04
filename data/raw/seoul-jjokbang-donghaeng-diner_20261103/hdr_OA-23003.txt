@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Date: Tue, 03 Nov 2026 13:35:19 GMT
+Server: Apache
+Content-Disposition: attachment; filename="서울특별시 쪽방주민 동행식당 현황.csv"
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/x-msdownload;charset=CP949
+

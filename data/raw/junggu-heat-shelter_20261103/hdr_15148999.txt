@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Tue, 03 Nov 2026 13:33:54 GMT
+Server: Apache
+Expires: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Set-Cookie: JSESSIONID=109Ei8lmQfh-zPuxczQ8b--J2X-7cax6Pu5JyF1I.portal11; path=/
+X-XSS-Protection: 1; mode=block
+Pragma: no-cache
+X-Frame-Options: DENY
+Content-Disposition: attachment; filename="x.csv"
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Content-Length: 12535
+Content-Type: application/octet-stream; charset=UTF-8
+

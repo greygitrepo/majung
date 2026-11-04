@@ -1,0 +1,51 @@
+# 사용법
+#   docker compose run --rm dev flutter test                 # 단위·위젯 테스트
+#   docker compose run --rm dev flutter build appbundle      # 릴리스 빌드
+#   docker compose run --rm emulator bash -c "start-emulator && flutter test integration_test"
+#   실제 폰(USB): docker compose run --rm device flutter devices
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: dev
+    image: majung-dev:latest
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - gradle-cache:/home/dev/.gradle
+      - pub-cache:/home/dev/.pub-cache
+      # Gradle 이 받는 NDK·CMake 를 보존 (첫 마운트 때 이미지 내용으로 채워짐)
+      - android-sdk:/opt/android-sdk
+    environment:
+      - TZ=Asia/Seoul
+
+  emulator:
+    extends: dev
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: emulator
+    image: majung-emulator:latest
+    volumes:
+      - ./:/workspace
+      - gradle-cache:/home/dev/.gradle
+      - pub-cache:/home/dev/.pub-cache
+      - android-sdk-emu:/opt/android-sdk
+    devices:
+      - /dev/kvm:/dev/kvm
+    group_add:
+      - "${KVM_GID:-109}"  # 호스트 kvm 그룹 GID (getent group kvm)
+
+  device:
+    extends: dev
+    privileged: true
+    network_mode: host
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+
+volumes:
+  gradle-cache:
+  pub-cache:
+  android-sdk:
+  android-sdk-emu:

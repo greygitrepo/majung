@@ -1,0 +1,49 @@
+[
+  {
+    "id": "national-free-meal-std",
+    "name": "전국무료급식소표준데이터",
+    "provider": "공공데이터포털 (각 지자체)",
+    "url": "https://www.data.go.kr/data/15013107/standard.do",
+    "license": "이용허락범위 제한 없음",
+    "raw": "data/raw/national-free-meal-std_20261103/national_free_meal_std.json"
+  },
+  {
+    "id": "ssis-welfare-basic",
+    "name": "서울시 사회복지시설 목록 정보 (한국사회보장정보원)",
+    "provider": "서울열린데이터광장",
+    "url": "https://data.seoul.go.kr/dataList/OA-23025/S/1/datasetView.do",
+    "license": "이용허락범위 제한 없음",
+    "raw": "data/raw/seoul-ssis-welfare-basic_20261103/OA-23025.csv"
+  },
+  {
+    "id": "seoul-welfare-fac-gu",
+    "name": "서울시 자치구 사회복지시설 목록 (중구·용산구·영등포구)",
+    "provider": "서울열린데이터광장",
+    "url": "https://data.seoul.go.kr/dataList/OA-20395/S/1/datasetView.do",
+    "license": "공공누리 1유형 (출처표시)",
+    "raw": "data/raw/seoul-ydp-welfare-fac_20261103/OA-20395.csv"
+  },
+  {
+    "id": "hira-hospital",
+    "name": "전국 병의원 및 약국 현황 (좌표 참고용)",
+    "provider": "건강보험심사평가원",
+    "url": "https://opendata.hira.or.kr/",
+    "license": "공공누리 1유형 (출처표시)",
+    "raw": "data/raw/clinic_20261103/hira_20260930_extracted/1.병원정보서비스(2026.9.).csv"
+  },
+  {
+    "id": "seoul-heat-shelter",
+    "name": "서울시 무더위쉼터 (좌표 참고용)",
+    "provider": "서울열린데이터광장",
+    "url": "https://data.seoul.go.kr/dataList/OA-21065/S/1/datasetView.do",
+    "license": "공공누리 1유형 (출처표시)",
+    "raw": "data/raw/seoul-heat-shelter_20261103/OA-21065.csv"
+  },
+  {
+    "id": "osm-nominatim",
+    "name": "OpenStreetMap Nominatim (도로 단위 좌표, 근사값)",
+    "provider": "© OpenStreetMap 기여자",
+    "url": "https://nominatim.openstreetmap.org/",
+    "license": "ODbL"
+  }
+]
