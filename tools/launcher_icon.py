@@ -12,6 +12,7 @@
 - Android 7 이하: mipmap-*/ic_launcher.png (둥근 사각형).
 - Play 스토어: docs/store/icon-512.png (정사각형, 모서리는 Play 가 처리).
 - iOS: AppIcon.appiconset (투명 없이 정사각형).
+- 앱 첫 화면 제목 옆 마크: app/assets/icon/app-mark.png (MARK_DP, 1x~4x 해상도별, 둥근 사각형).
 """
 import json
 from pathlib import Path
@@ -25,6 +26,8 @@ ART_DP = 74      # 108dp 전경 캔버스 안에서 그림이 차지하는 크�
 MONO_DP = 50     # 테마 아이콘 글자 너비 (안전 영역 66dp 안)
 DENSITY = {'mdpi': 1, 'hdpi': 1.5, 'xhdpi': 2, 'xxhdpi': 3, 'xxxhdpi': 4}
 SS = 4           # 마스크 슈퍼샘플링 배율
+MARK_DP = 40     # 첫 화면 제목 옆 마크 크기 (app/lib/ui/widgets.dart AppMark 와 같게)
+MARK = ROOT / 'app/assets/icon'
 
 
 def source():
@@ -90,6 +93,13 @@ def main():
     store = ROOT / 'docs/store/icon-512.png'
     store.parent.mkdir(parents=True, exist_ok=True)
     source().resize((512, 512), Image.LANCZOS).save(store, optimize=True)
+
+    # Flutter 해상도별 에셋: app-mark.png(1x), 2.0x/, 3.0x/, 4.0x/ (기기에 맞는 것만 읽는다)
+    for k in (1, 2, 3, 4):
+        d = MARK if k == 1 else MARK / f'{k}.0x'
+        d.mkdir(parents=True, exist_ok=True)
+        px = MARK_DP * k
+        rounded(source().resize((px, px), Image.LANCZOS), radius_frac=0.22).save(d / 'app-mark.png', optimize=True)
 
     if IOS.exists():
         for img in json.loads((IOS / 'Contents.json').read_text())['images']:

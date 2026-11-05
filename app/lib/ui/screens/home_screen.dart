@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const LanternMark(),
+            const AppMark(),
             const SizedBox(width: 10),
             Flexible(child: Text(l.appTitle)),
           ],

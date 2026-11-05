@@ -48,13 +48,13 @@ class DetailScreen extends StatelessWidget {
         key: const Key('detail'),
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
         children: [
-          StatusLine(status: ranked.status, now: now, large: true),
-          const SizedBox(height: 12),
           Text(f.name, style: theme.textTheme.headlineLarge),
           if (clinicTypeLabel(l, f.clinicType) case final kind?) ...[
             const SizedBox(height: 4),
             Text(kind, style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.primary)),
           ],
+          const SizedBox(height: 12),
+          StatusLine(status: ranked.status, now: now, large: true),
           if (ranked.distance != null) ...[
             const SizedBox(height: 8),
             Row(

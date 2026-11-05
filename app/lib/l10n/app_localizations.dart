@@ -921,11 +921,23 @@ abstract class L10n {
   /// **'저장한 곳'**
   String get homeSavedTitle;
 
-  /// No description provided for @homeSavedMore.
+  /// No description provided for @homeSavedSub.
   ///
   /// In ko, this message translates to:
-  /// **'저장한 곳 모두 보기 ({count}곳)'**
-  String homeSavedMore(int count);
+  /// **'자주 가는 곳을 모아 뒀어요'**
+  String get homeSavedSub;
+
+  /// No description provided for @placeCount.
+  ///
+  /// In ko, this message translates to:
+  /// **'{count}곳'**
+  String placeCount(int count);
+
+  /// No description provided for @savedGroupHeader.
+  ///
+  /// In ko, this message translates to:
+  /// **'{group}, 저장한 곳 {count}곳'**
+  String savedGroupHeader(String group, int count);
 
   /// No description provided for @savedEmpty.
   ///

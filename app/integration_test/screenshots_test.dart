@@ -22,7 +22,7 @@ import '../test/ui/harness.dart' show FakeLauncher, FakeLocation;
 ///     --target=integration_test/screenshots_test.dart -d emulator-5554"
 ///
 /// 시각은 README 설명과 같은 2026-11-04(수) 낮 12시 20분으로 고정한다.
-/// 1~5: 서울 중구 (첫 화면에 저장한 곳 3곳), 6~8: 부산 중구.
+/// 1~5: 서울 중구 (저장한 곳 3곳 → 첫 화면에 "저장한 곳" 버튼), 6~8: 부산 중구.
 final shotTime = DateTime(2026, 11, 4, 12, 20);
 const seoulJunggu = '11140';
 const busanJunggu = '26110';
@@ -64,7 +64,7 @@ void main() {
     );
     await controller.start();
 
-    // 첫 화면에 보일 저장한 곳: 밥 2곳 + 잠자리 1곳 (가까운 순 맨 위).
+    // 저장한 곳: 밥 2곳 + 잠자리 1곳 (가까운 순 맨 위). 첫 화면엔 버튼 하나로 보인다.
     for (final r in [
       ...controller.ranked(CategoryGroup.meal).take(2),
       ...controller.ranked(CategoryGroup.sleep).take(1),

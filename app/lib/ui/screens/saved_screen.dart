@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../domain/category.dart';
 import '../../domain/freshness.dart';
 import '../../domain/saved_places.dart';
 import '../../l10n/app_localizations.dart';
@@ -10,42 +11,32 @@ import '../widgets.dart';
 import 'detail_screen.dart';
 import 'emergency_screen.dart';
 
-/// 첫 화면에 보여 줄 저장한 곳 수. 더 있으면 "모두 보기".
-const homeSavedLimit = 3;
-
-/// 첫 화면 위쪽 "저장한 곳" 묶음. 저장한 곳이 없으면 아무것도 그리지 않는다.
+/// 첫 화면의 "저장한 곳" 버튼 하나. 누르면 저장한 곳 전체 화면.
+/// 카드를 첫 화면에 늘어놓으면 카테고리 버튼이 밀려 내려가서 버튼 하나로 묶는다 (decisions #20).
+/// 저장한 곳이 없으면 아무것도 그리지 않는다.
 class HomeSavedSection extends StatelessWidget {
   const HomeSavedSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     final l = L10n.of(context);
-    final entries = AppScope.of(context).controller.savedEntriesNow();
+    final c = AppScope.of(context).controller;
+    final entries = c.savedEntriesNow();
     if (entries.isEmpty) return const SizedBox.shrink();
-    return Column(
-      key: const Key('home-saved'),
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Semantics(
-          header: true,
-          child: Text(l.homeSavedTitle, style: Theme.of(context).textTheme.titleLarge),
-        ),
-        const SizedBox(height: 10),
-        for (final e in entries.take(homeSavedLimit))
-          Padding(padding: const EdgeInsets.only(bottom: 12), child: SavedPlaceCard(entry: e)),
-        if (entries.length > homeSavedLimit)
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TextButton.icon(
-              key: const Key('home-saved-more'),
-              style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SavedScreen())),
-              icon: const Icon(Icons.bookmarks_rounded),
-              label: Text(l.homeSavedMore(entries.length)),
-            ),
-          ),
-        const SizedBox(height: 12),
-      ],
+    final scheme = Theme.of(context).colorScheme;
+    final open = entries.where((e) => e.current?.status.isOpenNow ?? false).length;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: BigButton(
+        key: const Key('home-saved'),
+        bg: scheme.tertiaryContainer,
+        fg: scheme.onTertiaryContainer,
+        icon: Icons.bookmarks_rounded,
+        title: l.homeSavedTitle,
+        subtitle: l.homeSavedSub,
+        footnote: l.openCount(open, entries.length),
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SavedScreen())),
+      ),
     );
   }
 }
@@ -69,8 +60,14 @@ class SavedScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 32),
               child: Text(l.savedEmpty, textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyLarge),
             ),
-          for (final e in entries)
-            Padding(padding: const EdgeInsets.only(bottom: 12), child: SavedPlaceCard(entry: e)),
+          // 많아져도 헷갈리지 않게 첫 화면과 같은 순서·색으로 나눈다 (decisions #20).
+          for (final (group, items) in groupSaved(entries)) ...[
+            SavedGroupHeader(group: group, count: items.length),
+            const SizedBox(height: 12),
+            for (final e in items)
+              Padding(padding: const EdgeInsets.only(bottom: 12), child: SavedPlaceCard(entry: e)),
+            const SizedBox(height: 12),
+          ],
         ],
       ),
       bottomNavigationBar: EmergencyBar(
@@ -80,7 +77,60 @@ class SavedScreen extends StatelessWidget {
   }
 }
 
-/// 저장한 곳 카드 하나. 목록 카드보다 작게: 상태, 이름, 거리, 전화.
+/// 저장한 곳을 첫 화면 버튼 순서(밥 → 잠자리 → 진료 …)로 묶는다. 묶음 안 순서는 그대로.
+List<(CategoryGroup, List<SavedEntry>)> groupSaved(List<SavedEntry> entries) {
+  final order = [...CategoryGroup.enabled, ...CategoryGroup.values.where((g) => !CategoryGroup.enabled.contains(g))];
+  return [
+    for (final g in order)
+      if (entries.where((e) => g.contains(e.saved.category)).toList() case final items when items.isNotEmpty)
+        (g, items),
+  ];
+}
+
+/// 저장한 곳 화면의 묶음 제목: 첫 화면 버튼과 같은 아이콘·색.
+class SavedGroupHeader extends StatelessWidget {
+  const SavedGroupHeader({super.key, required this.group, required this.count});
+  final CategoryGroup group;
+  final int count;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = L10n.of(context);
+    final theme = Theme.of(context);
+    final c = context.groupColors.of(group, theme.colorScheme);
+    return Semantics(
+      header: true,
+      label: l.savedGroupHeader(groupTitle(l, group), count),
+      excludeSemantics: true,
+      child: Container(
+        key: Key('saved-group-${group.name}'),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        decoration: BoxDecoration(color: c.bg, borderRadius: BorderRadius.circular(20)),
+        child: Row(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(color: theme.colorScheme.surface, shape: BoxShape.circle),
+              child: Icon(groupIcon(group), size: 28, color: c.fg),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                groupTitle(l, group),
+                style: theme.textTheme.headlineSmall?.copyWith(color: theme.colorScheme.onSurface),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(l.placeCount(count), style: theme.textTheme.titleMedium?.copyWith(color: c.fg)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// 저장한 곳 카드 하나. 목록 카드보다 작게: 이름, 상태, 거리, 전화.
 /// 지금 데이터에서 못 찾은 곳은 예전 정보라고 분명히 보여 준다.
 class SavedPlaceCard extends StatelessWidget {
   const SavedPlaceCard({super.key, required this.entry});
@@ -112,6 +162,8 @@ class SavedPlaceCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(saved.name, style: placeNameStyle(context)),
+              const SizedBox(height: 6),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -125,8 +177,7 @@ class SavedPlaceCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
-              Text(saved.name, style: theme.textTheme.titleLarge),
+              const SizedBox(height: 6),
               Text(saved.address, style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
               if (saved.phone != null)
                 Padding(
@@ -179,19 +230,9 @@ class SavedPlaceCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              StatusLine(status: current.status, now: now),
+              Text(f.name, style: placeNameStyle(context)),
               const SizedBox(height: 8),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4),
-                    child: Icon(Icons.bookmark_rounded, color: theme.colorScheme.primary),
-                  ),
-                  const SizedBox(width: 6),
-                  Expanded(child: Text(f.name, style: theme.textTheme.titleLarge)),
-                ],
-              ),
+              StatusLine(status: current.status, now: now),
               if (current.distance != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 4),

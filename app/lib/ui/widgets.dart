@@ -94,6 +94,10 @@ class FreshnessWarning extends StatelessWidget {
   }
 }
 
+/// 카드의 장소 이름 글자. 상태 글자(19)보다 확실히 크게.
+TextStyle? placeNameStyle(BuildContext context) =>
+    Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 24, height: 1.3);
+
 /// 목록의 시설 카드 하나. 카드 전체를 누르면 자세히, 전화 버튼은 바로 전화.
 class FacilityCard extends StatelessWidget {
   const FacilityCard({super.key, required this.item, required this.now, required this.onOpen, required this.onCall});
@@ -117,11 +121,12 @@ class FacilityCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              StatusLine(status: item.status, now: now),
-              const SizedBox(height: 10),
-              Text(f.name, style: theme.textTheme.titleLarge),
+              // 사람이 먼저 찾는 건 이름, 그다음 지금 갈 수 있는지 (decisions #21).
+              Text(f.name, style: placeNameStyle(context)),
               if (clinicTypeLabel(l, f.clinicType) case final kind?)
                 Text(kind, style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.primary)),
+              const SizedBox(height: 8),
+              StatusLine(status: item.status, now: now),
               const SizedBox(height: 4),
               if (item.distance != null) _IconText(icon: Icons.directions_walk, text: distanceText(l, item.distance!)),
               _IconText(icon: Icons.person, text: l.whoCanUse(f.eligibility ?? l.detailUnknownField)),
@@ -193,11 +198,46 @@ class BigCategoryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final c = context.groupColors.of(group, Theme.of(context).colorScheme);
+    return BigButton(
+      bg: c.bg,
+      fg: c.fg,
+      icon: icon,
+      title: title,
+      subtitle: subtitle,
+      footnote: footnote,
+      onTap: onTap,
+    );
+  }
+}
+
+/// 첫 화면의 큰 버튼 모양 (카테고리 버튼, 저장한 곳 버튼).
+class BigButton extends StatelessWidget {
+  const BigButton({
+    super.key,
+    required this.bg,
+    required this.fg,
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.footnote,
+    required this.onTap,
+  });
+
+  final Color bg;
+  final Color fg;
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final String? footnote;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final c = context.groupColors.of(group, theme.colorScheme);
     final ink = theme.colorScheme.onSurface;
     return Material(
-      color: c.bg,
+      color: bg,
       borderRadius: BorderRadius.circular(28),
       child: InkWell(
         borderRadius: BorderRadius.circular(28),
@@ -212,7 +252,7 @@ class BigCategoryButton extends StatelessWidget {
                   width: 68,
                   height: 68,
                   decoration: BoxDecoration(color: theme.colorScheme.surface, shape: BoxShape.circle),
-                  child: Icon(icon, size: 40, color: c.fg),
+                  child: Icon(icon, size: 40, color: fg),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -228,12 +268,12 @@ class BigCategoryButton extends StatelessWidget {
                       ),
                       if (footnote != null) ...[
                         const SizedBox(height: 4),
-                        Text(footnote!, style: theme.textTheme.titleMedium?.copyWith(color: c.fg)),
+                        Text(footnote!, style: theme.textTheme.titleMedium?.copyWith(color: fg)),
                       ],
                     ],
                   ),
                 ),
-                Icon(Icons.chevron_right_rounded, size: 36, color: c.fg),
+                Icon(Icons.chevron_right_rounded, size: 36, color: fg),
               ],
             ),
           ),
@@ -243,55 +283,23 @@ class BigCategoryButton extends StatelessWidget {
   }
 }
 
-/// 앱 이름 옆 작은 등불 (런처 아이콘과 같은 모양).
-class LanternMark extends StatelessWidget {
-  const LanternMark({super.key, this.size = 36});
+/// 앱 이름 옆 작은 앱 아이콘 (런처 아이콘과 같은 그림).
+/// 그림은 tools/launcher_icon.py 가 tools/icon/majung-icon.png 에서 만든다 (해상도별 1x~4x).
+class AppMark extends StatelessWidget {
+  const AppMark({super.key, this.size = 40});
   final double size;
 
   @override
   Widget build(BuildContext context) => ExcludeSemantics(
-    child: CustomPaint(size: Size.square(size), painter: const _LanternPainter()),
+    child: Image.asset(
+      'assets/icon/app-mark.png',
+      width: size,
+      height: size,
+      filterQuality: FilterQuality.medium,
+      // 그림을 못 읽어도 제목 줄이 깨지지 않게 빈 자리만 둔다.
+      errorBuilder: (_, _, _) => SizedBox.square(dimension: size),
+    ),
   );
-}
-
-class _LanternPainter extends CustomPainter {
-  const _LanternPainter();
-
-  static const _bg = Color(0xFF3E2C4F);
-  static const _amber = Color(0xFFF6B24A);
-  static const _glow = Color(0xFFFFE2A6);
-  static const _cream = Color(0xFFF3D9B1);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    // 108 단위 좌표계 (res/drawable/ic_launcher_foreground.xml 과 같음)
-    final k = size.width / 108;
-    canvas.scale(k);
-    canvas.drawCircle(const Offset(54, 54), 54, Paint()..color = _bg);
-    canvas.translate(54, 56);
-    canvas.scale(0.8);
-    canvas.translate(-54, -56);
-    canvas.drawCircle(const Offset(54, 58), 30, Paint()..color = _amber.withValues(alpha: 0.18));
-    final cream = Paint()..color = _cream;
-    final handle = Path()
-      ..moveTo(46, 31)
-      ..quadraticBezierTo(54, 19, 62, 31);
-    canvas.drawPath(
-      handle,
-      Paint()
-        ..color = _cream
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 4
-        ..strokeCap = StrokeCap.round,
-    );
-    canvas.drawRRect(RRect.fromLTRBR(44, 30, 64, 37, const Radius.circular(3.5)), cream);
-    canvas.drawRRect(RRect.fromLTRBR(36, 36, 72, 78, const Radius.circular(18)), Paint()..color = _amber);
-    canvas.drawOval(const Rect.fromLTRB(44, 41, 64, 69), Paint()..color = _glow);
-    canvas.drawRRect(RRect.fromLTRBR(45, 76, 63, 82, const Radius.circular(3)), cream);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 /// 화면 아래 고정 "급할 때 전화하기". [showHint] 면 위에 다정한 한 줄을 붙인다.

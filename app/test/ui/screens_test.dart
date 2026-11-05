@@ -411,7 +411,9 @@ void main() {
           savedAt: DateTime(2026, 11, 1),
         );
 
-    testWidgets('저장한 곳이 없으면 첫 화면에 묶음을 그리지 않는다', (tester) async {
+    Future<void> openSaved(WidgetTester tester) => tapVisible(tester, find.byKey(const Key('home-saved')));
+
+    testWidgets('저장한 곳이 없으면 첫 화면에 버튼을 그리지 않는다', (tester) async {
       await Harness().pump(tester);
       expect(find.byKey(const Key('home-saved')), findsNothing);
       expect(find.text('저장한 곳'), findsNothing);
@@ -432,13 +434,17 @@ void main() {
 
       await goBack(tester);
       await goBack(tester);
-      expect(find.byKey(const Key('home-saved')), findsOneWidget);
-      final card = find.byKey(const Key('saved-meal-open'));
-      expect(card, findsOneWidget);
-      expect(find.descendant(of: card, matching: find.textContaining('지금 열려 있어요')), findsOneWidget);
-      // 저장한 곳이 카테고리 버튼보다 위
-      expect(tester.getTopLeft(card).dy, lessThan(tester.getTopLeft(find.byKey(const Key('group-meal'))).dy));
+      final button = find.byKey(const Key('home-saved'));
+      expect(button, findsOneWidget);
+      expect(find.descendant(of: button, matching: find.text('지금 열림 1곳 · 모두 1곳')), findsOneWidget);
+      // 저장한 곳 버튼이 카테고리 버튼보다 위, 첫 화면엔 카드를 늘어놓지 않는다
+      expect(tester.getTopLeft(button).dy, lessThan(tester.getTopLeft(find.byKey(const Key('group-meal'))).dy));
+      expect(find.byKey(const Key('saved-meal-open')), findsNothing);
 
+      // 첫 화면 → 저장한 곳 → 전화 (2번)
+      await openSaved(tester);
+      final card = find.byKey(const Key('saved-meal-open'));
+      expect(find.descendant(of: card, matching: find.textContaining('지금 열려 있어요')), findsOneWidget);
       await tester.tap(find.byKey(const Key('saved-call-meal-open')));
       await tester.pumpAndSettle();
       expect(h.launcher.dialed, ['02-111-1111']);
@@ -447,6 +453,7 @@ void main() {
     testWidgets('상세에서 다시 누르면 빠진다', (tester) async {
       final h = Harness(facilities: [mealOpen], saved: [saved('meal-open')]);
       await h.pump(tester);
+      await openSaved(tester);
       await tester.tap(find.descendant(of: find.byKey(const Key('saved-meal-open')), matching: find.text('자세히')));
       await tester.pumpAndSettle();
       await tapVisible(tester, find.byKey(const Key('detail-save')), within: const Key('detail'));
@@ -454,10 +461,12 @@ void main() {
       expect(find.text('저장하기'), findsOneWidget);
       expect(h.savedStore.places, isEmpty);
       await goBack(tester);
+      expect(find.byKey(const Key('saved-meal-open')), findsNothing);
+      await goBack(tester);
       expect(find.byKey(const Key('home-saved')), findsNothing);
     });
 
-    testWidgets('첫 화면엔 3곳까지, 나머지는 모두 보기', (tester) async {
+    testWidgets('여러 곳을 저장해도 첫 화면엔 버튼 하나, 저장한 곳 화면에 모두', (tester) async {
       final facilities = [
         for (var i = 0; i < 4; i++) facilityJson(id: 'm$i', name: '급식소 $i', lat: 37.555 - i * 0.001),
       ];
@@ -467,11 +476,14 @@ void main() {
       );
       await h.pump(tester);
       expect(find.byKey(const Key('home-saved')), findsOneWidget);
-      await scrollTo(tester, find.byKey(const Key('home-saved-more')));
-      expect(find.text('저장한 곳 모두 보기 (4곳)'), findsOneWidget);
-      // 가까운 순으로 셋만: 가장 먼 m3 는 첫 화면에 없다
-      expect(find.byKey(const Key('saved-m3'), skipOffstage: false), findsNothing);
-      await tapVisible(tester, find.byKey(const Key('home-saved-more')));
+      expect(find.descendant(of: find.byKey(const Key('home-saved')), matching: find.text('지금 열림 4곳 · 모두 4곳')),
+          findsOneWidget);
+      for (var i = 0; i < 4; i++) {
+        expect(find.byKey(Key('saved-m$i'), skipOffstage: false), findsNothing);
+      }
+      // 카테고리 버튼이 밀려 내려가지 않는다: 저장한 곳이 많아도 '밥 먹을 곳'이 첫 화면에 보인다
+      expect(find.byKey(const Key('group-meal')).hitTestable(), findsOneWidget);
+      await openSaved(tester);
       expect(find.text('저장한 곳'), findsWidgets);
       for (var i = 0; i < 4; i++) {
         await scrollTo(tester, find.byKey(Key('saved-m$i')), within: const Key('saved-list'));
@@ -480,9 +492,71 @@ void main() {
       expect(find.byKey(const Key('emergency')), findsOneWidget, reason: '저장한 곳 화면에도 긴급 전화');
     });
 
+    testWidgets('저장한 곳 화면은 밥 → 잘 곳 → 아플 때 순서로 나눠 보여 준다', (tester) async {
+      SavedPlace of(String id, String name, FacilityCategory c) => SavedPlace(
+            id: id, name: name, category: c, address: '서울 중구 테스트로 1', phone: '02-111-1111',
+            sido: '서울', savedAt: DateTime(2026, 11, 1),
+          );
+      final h = Harness(
+        facilities: [
+          facilityJson(id: 'c1', name: '무료 진료소', category: 'clinic'),
+          facilityJson(id: 's1', name: '쉼터', category: 'shelter'),
+          facilityJson(id: 'm1', name: '급식소 가', lat: 37.5551),
+          facilityJson(id: 'm2', name: '급식소 나', lat: 37.5540),
+        ],
+        // 저장한 순서를 섞어 둔다: 화면 순서는 첫 화면 버튼 순서를 따라야 한다.
+        saved: [
+          of('c1', '무료 진료소', FacilityCategory.clinic),
+          of('m2', '급식소 나', FacilityCategory.meal),
+          of('s1', '쉼터', FacilityCategory.shelter),
+          of('m1', '급식소 가', FacilityCategory.meal),
+        ],
+      );
+      await h.pump(tester);
+      await openSaved(tester);
+      // 순서를 한 번에 비교하려고 목록 전체가 들어가는 긴 화면으로 바꾼다.
+      tester.view.physicalSize = const Size(1080, 9000);
+      await tester.pumpAndSettle();
+
+      double top(String key) => tester.getTopLeft(find.byKey(Key(key))).dy;
+      expect(find.descendant(of: find.byKey(const Key('saved-group-meal')), matching: find.text('2곳')), findsOneWidget);
+      final order = ['saved-group-meal', 'saved-m1', 'saved-m2', 'saved-group-sleep', 'saved-s1', 'saved-group-clinic', 'saved-c1'];
+      for (var i = 0; i + 1 < order.length; i++) {
+        expect(top(order[i]), lessThan(top(order[i + 1])), reason: '${order[i]} 다음에 ${order[i + 1]} (묶음 안은 가까운 순)');
+      }
+      expect(find.bySemanticsLabel('아플 때, 저장한 곳 1곳'), findsOneWidget);
+    });
+
+    testWidgets('카드는 장소 이름이 먼저, 그다음 지금 상태', (tester) async {
+      final h = Harness(facilities: [mealOpen], saved: [saved('meal-open')]);
+      await h.pump(tester);
+      await openSaved(tester);
+      final card = find.byKey(const Key('saved-meal-open'));
+      final name = find.descendant(of: card, matching: find.text('열린 급식소'));
+      final status = find.descendant(of: card, matching: find.textContaining('지금 열려 있어요'));
+      expect(tester.getTopLeft(name).dy, lessThan(tester.getTopLeft(status).dy));
+      final nameSize = tester.widget<Text>(name).style!.fontSize!;
+      expect(nameSize, greaterThan(19), reason: '이름이 상태 글자보다 크다');
+
+      await goBack(tester);
+      await tester.tap(find.byKey(const Key('group-meal')));
+      await tester.pumpAndSettle();
+      final listName = find.text('열린 급식소').first;
+      final listStatus = find.textContaining('지금 열려 있어요').first;
+      expect(tester.getTopLeft(listName).dy, lessThan(tester.getTopLeft(listStatus).dy), reason: '목록 카드도 같은 순서');
+
+      await tester.tap(find.text('자세히').first);
+      await tester.pumpAndSettle();
+      final detailName = find.descendant(of: find.byKey(const Key('detail')), matching: find.text('열린 급식소'));
+      final detailStatus = find.descendant(of: find.byKey(const Key('detail')), matching: find.textContaining('지금 열려 있어요'));
+      expect(tester.getTopLeft(detailName).dy, lessThan(tester.getTopLeft(detailStatus).dy), reason: '상세도 같은 순서');
+    });
+
     testWidgets('목록에서 빠진 곳: 예전 정보라고 알리고, 예전 번호 전화·지우기', (tester) async {
       final h = Harness(facilities: [mealOpen], saved: [saved('gone', name: '없어진 급식소', phone: '02-999-9999')]);
       await h.pump(tester);
+      expect(find.textContaining('지금 열림 0곳'), findsOneWidget, reason: '못 찾은 곳은 열림으로 세지 않기');
+      await openSaved(tester);
       final card = find.byKey(const Key('saved-gone'));
       expect(card, findsOneWidget);
       expect(find.text('정보가 바뀌었거나 목록에서 빠졌어요'), findsOneWidget);
@@ -501,6 +575,7 @@ void main() {
     testWidgets('목록에서 빠진 곳: 이름이 같은 시설을 비슷한 곳으로 연다', (tester) async {
       final moved = facilityJson(id: 'moved', name: '열린 급식소', address: '서울 중구 새주소 5');
       await Harness(facilities: [moved], saved: [saved('gone')]).pump(tester);
+      await openSaved(tester);
       await tapVisible(tester, find.byKey(const Key('saved-similar-moved')));
       expect(find.byKey(const Key('detail')), findsOneWidget);
     });
@@ -530,10 +605,19 @@ void main() {
     testWidgets('위치를 안 정해도 저장한 곳은 보이고 전화할 수 있다', (tester) async {
       final h = Harness(facilities: [mealOpen], saved: [saved('meal-open')], savedRegion: null);
       await h.pump(tester);
+      await openSaved(tester);
       expect(find.byKey(const Key('saved-meal-open')), findsOneWidget);
       await tester.tap(find.byKey(const Key('saved-call-meal-open')));
       expect(h.launcher.dialed, ['02-111-1111']);
     });
+  });
+
+  testWidgets('첫 화면 제목 옆에 새 앱 아이콘 (런처 아이콘과 같은 그림)', (tester) async {
+    await Harness().pump(tester);
+    final mark = find.descendant(of: find.byType(AppBar), matching: find.byType(Image));
+    expect(mark, findsOneWidget);
+    final image = tester.widget<Image>(mark).image as AssetImage;
+    expect(image.assetName, 'assets/icon/app-mark.png');
   });
 
   testWidgets('앱 정보: 민간 앱 안내, 개인정보, 출처', (tester) async {
@@ -562,8 +646,11 @@ void main() {
           ],
         );
         await h.pump(tester, textScale: scale);
-        expect(find.byKey(const Key('home-saved')), findsOneWidget);
         // 넘침(overflow)은 테스트 예외로 잡힌다.
+        await tapVisible(tester, find.byKey(const Key('home-saved')));
+        await scrollTo(tester, find.byKey(const Key('saved-gone')), within: const Key('saved-list'));
+        expect(find.byKey(const Key('saved-gone')), findsOneWidget);
+        await goBack(tester);
         await tapVisible(tester, find.byKey(const Key('group-meal')));
         await tapVisible(tester, find.byKey(const Key('facility-meal-open')));
         expect(find.byKey(const Key('detail')), findsOneWidget);
@@ -575,12 +662,13 @@ void main() {
         await goBack(tester);
         await tester.drag(find.byType(Scrollable).hitTestable().first, const Offset(0, 2000));
         await tester.pumpAndSettle();
-        await tester.tap(find.byKey(const Key('origin-bar')));
-        await tester.pumpAndSettle();
-        await tester.tapAt(const Offset(10, 10));
+        await tapVisible(tester, find.byKey(const Key('origin-bar')));
+        // 글자가 크면 시트가 화면을 거의 덮으므로 바깥을 누르는 대신 휴대폰 뒤로 버튼으로 닫는다.
+        await tester.binding.handlePopRoute();
         await tester.pumpAndSettle();
         await tester.tap(find.byKey(const Key('emergency')));
         await tester.pumpAndSettle();
+        expect(find.text('급할 때 전화하세요'), findsOneWidget, reason: '긴급 전화 화면이 실제로 열렸는지');
         expect(tester.takeException(), isNull);
       });
     }
@@ -599,7 +687,7 @@ void main() {
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
     });
 
-    testWidgets('저장한 곳이 있는 첫 화면도 48dp 이상', (tester) async {
+    testWidgets('저장한 곳이 있는 첫 화면·저장한 곳 화면도 48dp 이상', (tester) async {
       await Harness(
         facilities: [mealOpen],
         saved: [
@@ -613,6 +701,12 @@ void main() {
           ),
         ],
       ).pump(tester);
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
+      // 저장한 곳 화면 (카드가 여기로 옮겨 왔다)
+      await tester.tap(find.byKey(const Key('home-saved')));
+      await tester.pumpAndSettle();
       await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
       await expectLater(tester, meetsGuideline(textContrastGuideline));

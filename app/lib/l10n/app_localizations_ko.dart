@@ -461,8 +461,16 @@ class L10nKo extends L10n {
   String get homeSavedTitle => '저장한 곳';
 
   @override
-  String homeSavedMore(int count) {
-    return '저장한 곳 모두 보기 ($count곳)';
+  String get homeSavedSub => '자주 가는 곳을 모아 뒀어요';
+
+  @override
+  String placeCount(int count) {
+    return '$count곳';
+  }
+
+  @override
+  String savedGroupHeader(String group, int count) {
+    return '$group, 저장한 곳 $count곳';
   }
 
   @override
@@ -503,7 +511,8 @@ class L10nKo extends L10n {
   String get infoSaved => '저장한 곳';
 
   @override
-  String get infoSavedBody => '저장한 곳은 이 휴대폰에만 있어요. 다른 곳으로 보내거나 백업하지 않아서, 휴대폰을 바꾸면 옮겨지지 않아요.';
+  String get infoSavedBody =>
+      '저장한 곳은 이 휴대폰에만 있어요. 다른 곳으로 보내거나 백업하지 않아서, 휴대폰을 바꾸면 옮겨지지 않아요.';
 
   @override
   String get infoClearSaved => '저장한 곳 모두 지우기';

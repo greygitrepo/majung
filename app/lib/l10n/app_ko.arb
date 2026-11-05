@@ -171,8 +171,11 @@
   "updated": "새 정보로 바꿨어요",
 
   "homeSavedTitle": "저장한 곳",
-  "homeSavedMore": "저장한 곳 모두 보기 ({count}곳)",
-  "@homeSavedMore": {"placeholders": {"count": {"type": "int"}}},
+  "homeSavedSub": "자주 가는 곳을 모아 뒀어요",
+  "placeCount": "{count}곳",
+  "@placeCount": {"placeholders": {"count": {"type": "int"}}},
+  "savedGroupHeader": "{group}, 저장한 곳 {count}곳",
+  "@savedGroupHeader": {"placeholders": {"group": {"type": "String"}, "count": {"type": "int"}}},
   "savedEmpty": "아직 저장한 곳이 없어요.\n시설을 열고 '저장하기'를 누르면 여기에 모여요.",
   "savedMissing": "정보가 바뀌었거나 목록에서 빠졌어요",
   "savedOldPhone": "예전 전화번호 {phone} (바뀌었을 수 있어요)",
