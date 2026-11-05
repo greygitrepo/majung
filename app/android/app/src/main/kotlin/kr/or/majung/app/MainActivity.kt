@@ -1,4 +1,4 @@
-package kr.majung.majung
+package kr.or.majung.app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -70,10 +70,10 @@ void main() {
   });
 
   test('길찾기 링크: 네이버 → 카카오 → geo → 웹, 출발지 없음', () {
-    final uris = directionUris('명동 급식소', const GeoPoint(37.5, 126.9), appId: 'kr.majung.app.dev');
+    final uris = directionUris('명동 급식소', const GeoPoint(37.5, 126.9), appId: 'kr.or.majung.app');
     expect(uris.map((u) => u.scheme), ['nmap', 'kakaomap', 'geo', 'https']);
     expect(uris.first.queryParameters['dname'], '명동 급식소');
     expect(uris.first.queryParameters.containsKey('slat'), isFalse);
-    expect(uris.first.queryParameters['appname'], 'kr.majung.app.dev');
+    expect(uris.first.queryParameters['appname'], 'kr.or.majung.app');
   });
 }

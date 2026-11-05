@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "kr.majung.majung"
+    namespace = "kr.or.majung.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "kr.majung.app.dev"  // 임시. Play 첫 업로드 전 확정 (docs/decisions.md #3)
+        applicationId = "kr.or.majung.app"  // 확정. Play 첫 업로드 후 바꿀 수 없음 (docs/decisions.md #3)
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
