@@ -1,8 +1,21 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
+
+// 업로드 키 서명 정보. 비밀값이라 저장소 밖에 둔다 (tools/make_upload_key.sh 가 만든다).
+// docker compose 의 release 서비스가 MAJUNG_KEY_PROPERTIES 로 위치를 알려 준다.
+// 없으면 저장소 안 android/key.properties (gitignore 됨) 를 본다.
+val keyPropertiesFile: File = System.getenv("MAJUNG_KEY_PROPERTIES")?.let { file(it) }
+    ?: rootProject.file("key.properties")
+val keyProperties = Properties().apply {
+    if (keyPropertiesFile.isFile) keyPropertiesFile.inputStream().use { load(it) }
+}
+val hasUploadKey = listOf("storeFile", "storePassword", "keyAlias", "keyPassword")
+    .all { !keyProperties.getProperty(it).isNullOrBlank() }
 
 android {
     namespace = "kr.or.majung.app"
@@ -29,11 +42,37 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        if (hasUploadKey) {
+            create("upload") {
+                // storeFile 이 상대 경로면 key.properties 가 있는 폴더 기준
+                storeFile = keyPropertiesFile.parentFile.resolve(keyProperties.getProperty("storeFile"))
+                storePassword = keyProperties.getProperty("storePassword")
+                keyAlias = keyProperties.getProperty("keyAlias")
+                keyPassword = keyProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            // 업로드 키가 없으면 debug 키로 서명해 `flutter run --release` 는 되게 둔다.
+            // 다만 Play 에 올리는 .aab 는 아래 검사로 막는다.
+            signingConfig = if (hasUploadKey) signingConfigs.getByName("upload")
+                else signingConfigs.getByName("debug")
+        }
+    }
+}
+
+// debug 키로 서명된 .aab 를 Play 에 올리는 실수를 막는다.
+tasks.matching { it.name == "bundleRelease" }.configureEach {
+    doFirst {
+        if (!hasUploadKey) {
+            throw GradleException(
+                "업로드 키가 없습니다: ${keyPropertiesFile.path}\n" +
+                    "tools/make_upload_key.sh 로 만든 뒤 " +
+                    "`docker compose run --rm release flutter build appbundle` 로 빌드하세요."
+            )
         }
     }
 }

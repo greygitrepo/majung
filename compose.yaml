@@ -1,6 +1,6 @@
 # 사용법
 #   docker compose run --rm dev flutter test                 # 단위·위젯 테스트
-#   docker compose run --rm dev flutter build appbundle      # 릴리스 빌드
+#   docker compose run --rm release flutter build appbundle  # Play 업로드용 .aab (업로드 키로 서명)
 #   docker compose run --rm emulator bash -c "start-emulator && flutter test integration_test"
 #   PC 화면에서 보기: docker compose run --rm emulator-gui   (창이 뜨면 앱 실행, 터미널에서 r=핫 리로드, q=종료)
 #   실제 폰(USB): docker compose run --rm device flutter devices
@@ -51,6 +51,17 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
     command: bash -c "start-emulator && flutter run -d emulator-5554"
+
+  # Play 에 올릴 .aab 빌드. 업로드 키 폴더(저장소 밖)를 읽기 전용으로 붙인다.
+  # 키 만들기: tools/make_upload_key.sh  (기본 위치 ~/.majung-keys, MAJUNG_KEY_DIR 로 바꿀 수 있음)
+  release:
+    extends: dev
+    working_dir: /workspace/app
+    volumes:
+      - ${MAJUNG_KEY_DIR:-~/.majung-keys}:/keys:ro
+    environment:
+      - TZ=Asia/Seoul
+      - MAJUNG_KEY_PROPERTIES=/keys/key.properties
 
   device:
     extends: dev

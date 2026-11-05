@@ -7,6 +7,7 @@
 
 - 2026-11-05 작업은 모두 커밋해서 **`main`에 병합하고 푸시했다** (`feature/favorites`를 빨리 감기로 병합, 두 브랜치가 같은 커밋).
 - 다음 작업은 `main`에서 새 브랜치를 만들어 시작한다.
+- 2026-11-05 이후 작업: `feature/release-signing` 브랜치(릴리스 서명, 아직 커밋 안 함).
 - 테스트: 앱 `flutter test` 175개 통과, `pipeline` 단위 테스트 통과 (2026-11-05). `flutter analyze`는 예전부터 있던 info 3개뿐.
 - 커밋·병합·푸시는 사용자가 요청할 때만 한다.
 
@@ -32,15 +33,16 @@
 ## 2. 남은 일
 
 ### 사용자(개발자)가 직접 할 일
-- [ ] **Play 개발자 계정 만들기** (개인)
+- [ ] **Play 개발자 계정 만들기** (개인) — 2026-11-05 가입 완료, **승인 대기 중**
 - [ ] **비공개 테스터 12명 모집** — 14일 연속 참여 필요라 일정상 가장 오래 걸린다. 지원기관 실무자·쪽방상담소·자원봉사자 권장
-- [ ] **업로드 키스토어 만들고 저장소 밖에 보관·백업** (Claude가 방법 안내)
+- [x] **업로드 키 만들고 백업** — 2026-11-05 생성 완료(백업은 사용자가 확인). 내 터미널에서 `tools/make_upload_key.sh` 실행(비밀번호 입력). `~/.majung-keys/`에 `upload-keystore.jks`와 `key.properties`가 생긴다. 이 폴더와 비밀번호를 다른 곳(USB·클라우드)에 백업
 - [ ] **GitHub Pages 켜기** — 개인정보처리방침 페이지와 시설 데이터 JSON 호스팅 (decisions #9)
 - [ ] 스토어 설명 초안 검토 (과장 표현·정부 앱처럼 보이는 표현 없는지)
 - [ ] 개인정보처리방침 **시행일** 정하기 (출시일)
 
 ### Claude가 할 수 있는 일 (권장 순서)
-1. [ ] **릴리스 서명 설정** — 지금 release 빌드가 debug 키로 서명됨(`app/android/app/build.gradle.kts`). `key.properties`(커밋 금지)로 읽게 하고 `.aab` 빌드 확인. 비공개 테스트를 열려면 서명된 앱을 한 번 올려야 하므로 **다음 작업 1순위**
+1. [x] **릴리스 서명 설정** (2026-11-05, 브랜치 `feature/release-signing`) — Gradle이 저장소 밖 `key.properties`를 읽어 업로드 키로 서명. 키가 없으면 `bundleRelease`가 멈춘다(debug 서명 .aab 업로드 방지). 시험용 키로 `.aab` 빌드·서명자 확인함. 빌드: `docker compose run --rm release flutter build appbundle`
+   - 참고: 지금 `.aab`가 53.9MB로 크다 → 2번에서 함께 줄일 것
 2. [ ] R8 코드 축소, 릴리스 디버그 로그 제거
 3. [ ] targetSdk 36, 16KB 페이지 크기, 병합 매니페스트 권한 확인 (`docs/policy/play-store.md` 5절 체크리스트)
 4. [ ] `lib/config.dart`에 `dataUrl`, `privacyPolicyUrl` 넣기 (GitHub Pages 주소가 정해지면)
@@ -61,5 +63,7 @@
 docker compose run --rm -w /workspace/app dev flutter test        # 앱 테스트
 python3 -I -m unittest discover -s pipeline/tests                  # 파이프라인 테스트
 docker compose run --rm emulator-gui                               # PC 화면 에뮬레이터 (r/R/q)
+docker compose run --rm release flutter build appbundle          # Play 업로드용 .aab (업로드 키 필요)
+tools/make_upload_key.sh                                           # 업로드 키 만들기 (한 번만, 내 터미널에서)
 python3 -I tools/launcher_icon.py                                  # 아이콘 다시 만들기 (런처 PNG 바이트가 바뀌면 되돌릴 것)
 ```
