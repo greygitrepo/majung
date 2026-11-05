@@ -58,8 +58,11 @@ services:
     network_mode: host
     volumes:
       - /dev/bus/usb:/dev/bus/usb
+      # adb 인증 키 보존: 없으면 실행할 때마다 키가 바뀌어 휴대폰에서 매번 다시 허용해야 한다
+      - adb-keys:/home/dev/.android
 
 volumes:
+  adb-keys:
   gradle-cache:
   pub-cache:
   android-sdk:
