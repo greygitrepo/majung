@@ -1,6 +1,6 @@
 # 사용법
 #   docker compose run --rm dev flutter test                 # 단위·위젯 테스트
-#   docker compose run --rm release flutter build appbundle  # Play 업로드용 .aab (업로드 키로 서명)
+#   docker compose run --rm release                          # Play 업로드용 .aab (업로드 키로 서명)
 #   docker compose run --rm emulator bash -c "start-emulator && flutter test integration_test"
 #   PC 화면에서 보기: docker compose run --rm emulator-gui   (창이 뜨면 앱 실행, 터미널에서 r=핫 리로드, q=종료)
 #   실제 폰(USB): docker compose run --rm device flutter devices
@@ -62,6 +62,9 @@ services:
     environment:
       - TZ=Asia/Seoul
       - MAJUNG_KEY_PROPERTIES=/keys/key.properties
+    # --split-debug-info: Dart 디버그 정보를 앱에서 빼서 설치 크기를 약 1MB 줄인다.
+    # 빠진 정보는 build/symbols 에 남는다 (오류 기록을 읽을 때만 필요, 비밀 아님).
+    command: flutter build appbundle --split-debug-info=build/symbols
 
   device:
     extends: dev

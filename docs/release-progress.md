@@ -41,9 +41,11 @@
 - [ ] 개인정보처리방침 **시행일** 정하기 (출시일)
 
 ### Claude가 할 수 있는 일 (권장 순서)
-1. [x] **릴리스 서명 설정** (2026-11-05, 브랜치 `feature/release-signing`) — Gradle이 저장소 밖 `key.properties`를 읽어 업로드 키로 서명. 키가 없으면 `bundleRelease`가 멈춘다(debug 서명 .aab 업로드 방지). 시험용 키로 `.aab` 빌드·서명자 확인함. 빌드: `docker compose run --rm release flutter build appbundle`
-   - 참고: 지금 `.aab`가 53.9MB로 크다 → 2번에서 함께 줄일 것
-2. [ ] R8 코드 축소, 릴리스 디버그 로그 제거
+1. [x] **릴리스 서명 설정** (2026-11-05, 브랜치 `feature/release-signing`) — Gradle이 저장소 밖 `key.properties`를 읽어 업로드 키로 서명. 키가 없으면 `bundleRelease`가 멈춘다(debug 서명 .aab 업로드 방지). 시험용 키로 `.aab` 빌드·서명자 확인함. 빌드: `docker compose run --rm release`
+2. [x] **크기 확인·줄이기** (2026-11-05) — `.aab` 51MB는 모든 휴대폰 종류용 파일과 디버그 기록을 합친 크기다. Play가 휴대폰별로 나눠 보내므로 실제 **다운로드 약 9MB, 설치 약 19MB**(arm64). 대부분 Flutter 엔진(11.7MB, 줄일 수 없음).
+   - R8은 Flutter 기본값으로 이미 켜져 있음(classes.dex 484KB). Dart 쪽 `print`·로그 호출 없음.
+   - `--split-debug-info`를 release 빌드 기본값으로 넣음: libapp 6.1→5.2MB. 빠진 정보는 `app/build/symbols/`(오류 기록 해석용, 비밀 아님).
+   - `--obfuscate`는 0.1MB밖에 안 줄어 넣지 않음. 남은 후보: 제목 글꼴(압축 후 313KB), 시설 데이터(압축 후 170KB) — 지금은 손대지 않음
 3. [ ] targetSdk 36, 16KB 페이지 크기, 병합 매니페스트 권한 확인 (`docs/policy/play-store.md` 5절 체크리스트)
 4. [ ] `lib/config.dart`에 `dataUrl`, `privacyPolicyUrl` 넣기 (GitHub Pages 주소가 정해지면)
 5. [ ] 예비 지도 타일 제공자 조사·결정 (decisions #12), 지도 내장 캐시 1GB 한도를 저사양 폰에 맞게 낮추기
@@ -63,7 +65,7 @@
 docker compose run --rm -w /workspace/app dev flutter test        # 앱 테스트
 python3 -I -m unittest discover -s pipeline/tests                  # 파이프라인 테스트
 docker compose run --rm emulator-gui                               # PC 화면 에뮬레이터 (r/R/q)
-docker compose run --rm release flutter build appbundle          # Play 업로드용 .aab (업로드 키 필요)
+docker compose run --rm release          # Play 업로드용 .aab (업로드 키 필요)
 tools/make_upload_key.sh                                           # 업로드 키 만들기 (한 번만, 내 터미널에서)
 python3 -I tools/launcher_icon.py                                  # 아이콘 다시 만들기 (런처 PNG 바이트가 바뀌면 되돌릴 것)
 ```

@@ -71,7 +71,7 @@ tasks.matching { it.name == "bundleRelease" }.configureEach {
             throw GradleException(
                 "업로드 키가 없습니다: ${keyPropertiesFile.path}\n" +
                     "tools/make_upload_key.sh 로 만든 뒤 " +
-                    "`docker compose run --rm release flutter build appbundle` 로 빌드하세요."
+                    "`docker compose run --rm release` 로 빌드하세요."
             )
         }
     }

@@ -8,7 +8,7 @@
 - **targetSdk**: Play는 매년 8월 31일 기준으로 신규 앱·업데이트가 "최신 Android 버전 출시 후 1년 이내" API 레벨을 타깃하도록 요구한다. 2026-11 기준으로는 **API 36(Android 16)**. 빌드 설정을 건드릴 때마다 현재 요건을 확인한다.
 - **minSdk**: 저사양·구형 폰 사용자가 많으므로 가능한 낮게 잡는다(기본 목표 API 24, Android 7.0). 지도 SDK가 요구하는 최소 버전을 넘지 않게.
 - **16KB 메모리 페이지 크기 지원**: Android 15 이상을 타깃하는 앱은 네이티브 라이브러리(.so)가 16KB 페이지에 맞게 정렬돼 있어야 한다. **2027-02-01부터는 16KB를 지원하지 않는 업데이트는 출시할 수 없다** (data/research/map-osm.md). 현재 지도는 순수 Dart(flutter_map)라 네이티브 지도 SDK는 없지만, Flutter 엔진·플러그인(geolocator 등) 버전을 확인한다.
-- **앱 서명**: Play App Signing 사용. 업로드 키스토어는 저장소 밖에 보관하고, 분실 대비 백업 위치를 사용자에게 알린다. 키는 `tools/make_upload_key.sh`로 `~/.majung-keys/`에 만들고, `.aab`는 그 폴더를 읽기 전용으로 붙이는 `docker compose run --rm release flutter build appbundle`로 만든다. 키가 없으면 Gradle이 `bundleRelease`를 멈춘다.
+- **앱 서명**: Play App Signing 사용. 업로드 키스토어는 저장소 밖에 보관하고, 분실 대비 백업 위치를 사용자에게 알린다. 키는 `tools/make_upload_key.sh`로 `~/.majung-keys/`에 만들고, `.aab`는 그 폴더를 읽기 전용으로 붙이는 `docker compose run --rm release`로 만든다(Dart 디버그 정보는 `--split-debug-info`로 빼서 `app/build/symbols/`에 둔다). 키가 없으면 Gradle이 `bundleRelease`를 멈춘다.
 - **앱 크기**: 데이터 요금 부담이 있는 사용자를 위해 작게 유지한다. 목표 설치 크기 20MB 이하. 큰 리소스(지도 타일 등)를 번들에 넣지 않는다.
 - 릴리스 빌드는 코드 축소·난독화(R8) 켜기. 디버그 로그는 릴리스에서 제거.
 
