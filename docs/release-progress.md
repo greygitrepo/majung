@@ -3,13 +3,12 @@
 > 마지막 갱신: **2026-11-05**. 다음 세션은 이 문서부터 읽고 시작한다.
 > 결정의 근거는 `docs/decisions.md`, Play 요건은 `docs/policy/play-store.md`에 있다.
 
-## 0. 지금 저장소 상태 (중요)
+## 0. 지금 저장소 상태
 
-- 브랜치: **`feature/favorites`** (`origin/feature/favorites`를 따라감)
-- **2026-11-05 작업은 아직 커밋하지 않았다.** 22개 파일 수정 + 새 파일(`app/assets/icon/`, `app/test/config_test.dart`, `data/research/location-law-20261105.md`, 이 문서).
-- `compose.yaml` 변경(adb 키 보존 볼륨)은 이 브랜치 작업 전부터 있던 별도 변경이다. 커밋할 때 따로 묶을지 정한다.
+- 2026-11-05 작업은 모두 커밋해서 **`main`에 병합하고 푸시했다** (`feature/favorites`를 빨리 감기로 병합, 두 브랜치가 같은 커밋).
+- 다음 작업은 `main`에서 새 브랜치를 만들어 시작한다.
 - 테스트: 앱 `flutter test` 175개 통과, `pipeline` 단위 테스트 통과 (2026-11-05). `flutter analyze`는 예전부터 있던 info 3개뿐.
-- 커밋·main 병합·푸시는 사용자가 요청할 때만 한다.
+- 커밋·병합·푸시는 사용자가 요청할 때만 한다.
 
 ## 1. 2026-11-05에 한 일
 
