@@ -41,7 +41,7 @@
 - [x] **업로드 키 만들고 백업** — 2026-11-05 생성 완료(백업은 사용자가 확인). 내 터미널에서 `tools/make_upload_key.sh` 실행(비밀번호 입력). `~/.majung-keys/`에 `upload-keystore.jks`와 `key.properties`가 생긴다. 이 폴더와 비밀번호를 다른 곳(USB·클라우드)에 백업
 - [x] **GitHub Pages 켜기** — 2026-11-06 공개. `https://greygitrepo.github.io/majung/privacy.html`, `.../data/facilities.json` 200 확인, 데이터가 저장소와 같음, gzip 전송 약 176KB, `If-None-Match`(강·약 ETag 모두) → 304 확인. Pages 설정은 greygitrepo 계정에서만 바꿀 수 있다(이 PC의 gh는 Navifra-Grey, 쓰기 권한만)
 - [ ] **Play Console 개인정보처리방침**에 `https://greygitrepo.github.io/majung/privacy.html` 입력
-- [ ] 스토어 설명 초안 검토 (과장 표현·정부 앱처럼 보이는 표현 없는지)
+- [x] 스토어 설명 초안 검토 — 2026-11-06 사용자 확인(`docs/store/listing-ko.md`)
 - [x] 개인정보처리방침 **시행일** — 2026-11-06(사이트를 처음 공개한 날)로 넣음
 
 ### Claude가 할 수 있는 일 (권장 순서)
@@ -63,7 +63,10 @@
    - 앱 버전 `0.1.1+2` (다음 업로드용)
 5. [ ] 예비 지도 타일 제공자 조사·결정 (decisions #12), 지도 내장 캐시 1GB 한도를 저사양 폰에 맞게 낮추기
 6. [x] **데이터 보안 양식 답안** (2026-11-06) — `docs/policy/data-safety-checklist.md`. 지도 타일 때문에 "대략적인 위치" 수집으로 선언(decisions #22). Play Console 입력은 사용자가 함
-7. [ ] 스토어 설명 초안, README 스크린샷 다시 찍기 (shot-1이 예전 저장한 곳 카드 화면)
+7. [x] **스토어 등록정보 준비** (2026-11-06)
+   - 설명: `docs/store/listing-ko.md` (검사 `tools/check_listing.py`: 글자 수·과장/정부 표현)
+   - 그래픽 이미지: `docs/store/feature-graphic.png` (`tools/feature_graphic.py`, 1024×500)
+   - 스크린샷: 9:16(1080×1920)으로 다시 찍음 → `docs/store/screenshots/phone-1~7` (`tools/store_screenshots.py`). 예전 1080×2340은 Play가 받지 않음(2배 초과). shot-2(지역 고르기)는 창이 열리는 중에 찍혀 예전 사진 유지 — 고치려면 촬영 스크립트에서 창이 다 열릴 때까지 기다리게 할 것
 8. [ ] 통합 테스트(`integration_test/`) 에뮬레이터에서 실행
 9. [ ] 출시 직전 Play 정책(targetSdk, 테스터 조건) 공식 문서로 다시 확인하고 날짜 갱신
 

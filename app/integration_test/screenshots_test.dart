@@ -15,9 +15,11 @@ import 'package:path_provider/path_provider.dart';
 
 import '../test/ui/harness.dart' show FakeLauncher, FakeLocation;
 
-/// README 스크린샷(docs/screenshots/shot-*.png)을 다시 찍는다. 실제 앱 데이터·실제 지도 타일을 쓴다.
+/// README 스크린샷(docs/screenshots/shot-*.png)을 다시 찍는다. 스토어용은 이걸로 tools/store_screenshots.py.
+/// 화면을 9:16(1080×1920)으로 바꿔 찍는다 — Play는 긴 쪽이 2배를 넘으면 받지 않는다. 실제 앱 데이터·실제 지도 타일을 쓴다.
 ///
 ///   docker compose run --rm -w /workspace/app emulator bash -c "start-emulator && \
+///     adb shell wm size 1080x1920 && sleep 5 && \
 ///     flutter drive --driver=test_driver/integration_test.dart \
 ///     --target=integration_test/screenshots_test.dart -d emulator-5554"
 ///
@@ -40,6 +42,16 @@ void main() {
     for (var i = 0; i < 10; i++) {
       await tester.pump(const Duration(milliseconds: 500));
     }
+  }
+
+  /// 첫 화면의 카테고리 버튼을 연다. 화면이 짧으면(9:16) 버튼이 아래 "급할 때 전화하기" 띠에
+  /// 가려질 수 있어서, 버튼을 화면 위쪽으로 끌어올린 뒤 누른다.
+  Future<void> openGroup(WidgetTester tester, String key) async {
+    final button = find.byKey(Key(key));
+    await tester.scrollUntilVisible(button, 300, scrollable: find.byType(Scrollable).first);
+    await Scrollable.ensureVisible(tester.element(button), alignment: 0.1);
+    await tester.pumpAndSettle();
+    await tester.tap(button);
   }
 
   testWidgets('README 스크린샷', (tester) async {
@@ -89,12 +101,12 @@ void main() {
 
     await tester.tap(find.byKey(const Key('origin-bar')));
     await shot(tester, 'shot-2-picker');
-    await tester.tapAt(const Offset(10, 10));
+    // 창 바깥을 눌러 닫으면 화면이 짧을 때(9:16 스토어 스크린샷) 창이 화면을 거의 덮어 닫히지 않는다.
+    // 뒤로 가기와 같게 창을 닫는다.
+    Navigator.of(tester.element(find.byKey(const Key('origin-bar')))).pop();
     await tester.pumpAndSettle();
 
-    await tester.scrollUntilVisible(find.byKey(const Key('group-meal')), 300,
-        scrollable: find.byType(Scrollable).first);
-    await tester.tap(find.byKey(const Key('group-meal')));
+    await openGroup(tester, 'group-meal');
     await shot(tester, 'shot-3-meal-list');
 
     await tester.tap(find.text('자세히').first);
@@ -102,9 +114,7 @@ void main() {
     await back();
     await back();
 
-    await tester.scrollUntilVisible(find.byKey(const Key('group-clinic')), 300,
-        scrollable: find.byType(Scrollable).first);
-    await tester.tap(find.byKey(const Key('group-clinic')));
+    await openGroup(tester, 'group-clinic');
     await shot(tester, 'shot-5-clinic');
     await back();
 
@@ -112,9 +122,7 @@ void main() {
     expect(busan, isNotNull, reason: 'regions.json 에 부산 중구가 있어야 함');
     await controller.useRegion(busan!);
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(find.byKey(const Key('group-meal')), 300,
-        scrollable: find.byType(Scrollable).first);
-    await tester.tap(find.byKey(const Key('group-meal')));
+    await openGroup(tester, 'group-meal');
     await shot(tester, 'shot-6-busan-list');
 
     await tester.tap(find.byKey(const Key('toggle-map')));
