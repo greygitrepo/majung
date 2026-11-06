@@ -626,6 +626,9 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.textContaining('정부나 구청이 만든 앱이 아니고'), findsOneWidget);
     expect(find.textContaining('위치는 가까운 순서를 계산할 때 휴대폰 안에서만'), findsOneWidget);
+    // Play 데이터 보안에 '대략적인 위치'로 선언한 지도 타일 요청을 앱 안에서도 알린다 (decisions #22).
+    expect(find.textContaining('보고 있는 동네가 지도 서버에 전해져요'), findsOneWidget);
+    await tester.scrollUntilVisible(find.textContaining('공공누리 1유형'), 200, scrollable: find.byType(Scrollable).first);
     expect(find.textContaining('공공누리 1유형'), findsOneWidget);
   });
 

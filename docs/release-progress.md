@@ -8,6 +8,7 @@
 - 2026-11-05 작업은 모두 커밋해서 **`main`에 병합하고 푸시했다** (`feature/favorites`를 빨리 감기로 병합, 두 브랜치가 같은 커밋).
 - 다음 작업은 `main`에서 새 브랜치를 만들어 시작한다.
 - 이어서 한 릴리스 서명·크기 작업(`feature/release-signing`)도 커밋해 `main`에 병합·푸시했다 (2026-11-05).
+- GitHub Pages 작업(`feature/github-pages`)을 `main`에 병합·푸시하고 배포했다 (2026-11-06, `ec28fc0`). 앱 버전 `0.1.1+2`는 아직 Play에 안 올림.
 - 테스트: 앱 `flutter test` 175개 통과, `pipeline` 단위 테스트 통과 (2026-11-05). `flutter analyze`는 예전부터 있던 info 3개뿐.
 - 커밋·병합·푸시는 사용자가 요청할 때만 한다.
 
@@ -38,7 +39,8 @@
 - [ ] **앱 설정 완료**(Play Console 대시보드) — 쉬운 항목(로그인·광고·정부 앱·금융·건강·타깃층 18+·콘텐츠 등급·카테고리)은 사용자가 입력. 개인정보처리방침 주소·데이터 보안·스토어 등록정보가 남음. 이걸 끝내야 비공개 테스트가 열린다
 - [ ] **비공개 테스터 12명 모집** — 14일 연속 참여 필요라 일정상 가장 오래 걸린다. 지원기관 실무자·쪽방상담소·자원봉사자 권장
 - [x] **업로드 키 만들고 백업** — 2026-11-05 생성 완료(백업은 사용자가 확인). 내 터미널에서 `tools/make_upload_key.sh` 실행(비밀번호 입력). `~/.majung-keys/`에 `upload-keystore.jks`와 `key.properties`가 생긴다. 이 폴더와 비밀번호를 다른 곳(USB·클라우드)에 백업
-- [ ] **GitHub Pages 켜기** — 주소 `https://greygitrepo.github.io/majung/` 확정(2026-11-06). 사이트·배포 설정은 브랜치 `feature/github-pages`에 준비됨. 남은 것: Pages 켜기(원본 "GitHub Actions") → `main` 병합·푸시 → 주소 열어 확인 → Play Console 개인정보처리방침에 `.../privacy.html` 입력
+- [x] **GitHub Pages 켜기** — 2026-11-06 공개. `https://greygitrepo.github.io/majung/privacy.html`, `.../data/facilities.json` 200 확인, 데이터가 저장소와 같음, gzip 전송 약 176KB, `If-None-Match`(강·약 ETag 모두) → 304 확인. Pages 설정은 greygitrepo 계정에서만 바꿀 수 있다(이 PC의 gh는 Navifra-Grey, 쓰기 권한만)
+- [ ] **Play Console 개인정보처리방침**에 `https://greygitrepo.github.io/majung/privacy.html` 입력
 - [ ] 스토어 설명 초안 검토 (과장 표현·정부 앱처럼 보이는 표현 없는지)
 - [x] 개인정보처리방침 **시행일** — 2026-11-06(사이트를 처음 공개한 날)로 넣음
 
@@ -60,7 +62,7 @@
    - `.github/workflows/pages.yml`: `main`에 개인정보처리방침·시설 데이터가 바뀌면 자동 배포
    - 앱 버전 `0.1.1+2` (다음 업로드용)
 5. [ ] 예비 지도 타일 제공자 조사·결정 (decisions #12), 지도 내장 캐시 1GB 한도를 저사양 폰에 맞게 낮추기
-6. [ ] 데이터 보안 양식 답안 정리 (`docs/policy/data-safety-checklist.md` 새로 작성)
+6. [x] **데이터 보안 양식 답안** (2026-11-06) — `docs/policy/data-safety-checklist.md`. 지도 타일 때문에 "대략적인 위치" 수집으로 선언(decisions #22). Play Console 입력은 사용자가 함
 7. [ ] 스토어 설명 초안, README 스크린샷 다시 찍기 (shot-1이 예전 저장한 곳 카드 화면)
 8. [ ] 통합 테스트(`integration_test/`) 에뮬레이터에서 실행
 9. [ ] 출시 직전 Play 정책(targetSdk, 테스터 조건) 공식 문서로 다시 확인하고 날짜 갱신

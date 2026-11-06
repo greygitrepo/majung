@@ -834,7 +834,7 @@ abstract class L10n {
   /// No description provided for @infoPrivacyBody.
   ///
   /// In ko, this message translates to:
-  /// **'가입이 없고, 이름·전화번호를 받지 않아요. 위치는 가까운 순서를 계산할 때 휴대폰 안에서만 쓰고 저장하거나 보내지 않아요.'**
+  /// **'가입이 없고, 이름·전화번호를 받지 않아요. 위치는 가까운 순서를 계산할 때 휴대폰 안에서만 쓰고 저장하거나 보내지 않아요. 다만 지도를 볼 때는 지도 그림을 받으려고, 보고 있는 동네가 지도 서버에 전해져요.'**
   String get infoPrivacyBody;
 
   /// No description provided for @infoSources.
