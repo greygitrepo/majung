@@ -25,7 +25,7 @@ Future<void> main() async {
   final repository = FacilityRepository(
     loadBundled: () => rootBundle.loadString('assets/data/facilities.json'),
     cache: FileDatasetCache(File('${dir.path}/facilities.json')),
-    remoteUrl: config.dataUrl,
+    remoteUrl: config.dataUri,
   );
   final controller = AppController(
     repository: repository,

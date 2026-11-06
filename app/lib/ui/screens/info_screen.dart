@@ -58,9 +58,9 @@ class InfoScreen extends StatelessWidget {
           section(l.appTitle, [Text(l.infoAbout, style: theme.textTheme.bodyLarge)]),
           section(l.infoPrivacy, [
             Text(l.infoPrivacyBody, style: theme.textTheme.bodyLarge),
-            if (scope.config.privacyPolicyUrl != null)
+            if (scope.config.privacyPolicyUri != null)
               TextButton(
-                onPressed: () => scope.launcher.openWeb(scope.config.privacyPolicyUrl!),
+                onPressed: () => scope.launcher.openWeb(scope.config.privacyPolicyUri!),
                 child: Text(l.infoPrivacy),
               ),
           ]),

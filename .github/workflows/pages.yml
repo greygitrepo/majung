@@ -1,0 +1,43 @@
+# GitHub Pages: 개인정보처리방침과 앱이 받아가는 시설 데이터를 배포한다.
+# 주소: https://greygitrepo.github.io/majung/  (privacy.html, data/facilities.json)
+# 사이트 내용은 tools/build_site.py 가 docs/privacy-policy.md 와 app/assets/data/facilities.json 으로 만든다.
+name: pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/privacy-policy.md
+      - app/assets/data/facilities.json
+      - tools/build_site.py
+      - tools/tests/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: 사이트 만들기 테스트
+        run: python3 -I -m unittest discover -s tools/tests
+      - name: 사이트 만들기
+        run: python3 -I tools/build_site.py --out _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -119,6 +119,84 @@ void main() {
       expect(requested!.query, isEmpty);
     });
 
+    group('바뀐 게 없으면 다시 받지 않는다 (ETag)', () {
+      test('처음엔 표시 없이 요청하고, 받은 표시를 저장한다', () async {
+        final cache = MemoryDatasetCache();
+        final headers = <Map<String, String>>[];
+        final r = repo(
+          cache: cache,
+          client: MockClient((req) async {
+            headers.add(req.headers);
+            return http.Response.bytes(utf8.encode(ds('2026-11-02T00:00:00Z', id: 'new')), 200,
+                headers: {'etag': '"v2"'});
+          }),
+        );
+        await r.load();
+        expect(await r.refresh(), UpdateResult.updated);
+        expect(headers.single.containsKey('If-None-Match'), isFalse);
+        expect(cache.etag, '"v2"');
+      });
+
+      test('저장된 표시를 보내고, 304면 기존 데이터 그대로', () async {
+        final cache = MemoryDatasetCache(ds('2026-11-02T00:00:00Z', id: 'cached'), '"v2"');
+        String? sent;
+        final r = repo(
+          cache: cache,
+          client: MockClient((req) async {
+            sent = req.headers['If-None-Match'];
+            return http.Response('', 304);
+          }),
+        );
+        await r.load();
+        expect(await r.refresh(), UpdateResult.alreadyLatest);
+        expect(sent, '"v2"');
+        expect(r.current!.facilities.single.id, 'cached');
+        expect(cache.value, contains('cached'));
+      });
+
+      test('기본본과 같은 버전을 받아도 표시와 함께 저장한다 (다음부터 304)', () async {
+        final cache = MemoryDatasetCache();
+        final r = repo(
+          cache: cache,
+          client: MockClient((_) async =>
+              http.Response.bytes(utf8.encode(ds('2026-10-01T00:00:00Z', id: 'same')), 200, headers: {'etag': '"v1"'})),
+        );
+        await r.load();
+        expect(await r.refresh(), UpdateResult.alreadyLatest);
+        expect(r.current!.facilities.single.id, 'bundled');
+        expect(cache.etag, '"v1"');
+        expect(cache.value, contains('same'));
+      });
+
+      test('더 오래된 버전은 저장하지 않는다', () async {
+        final cache = MemoryDatasetCache(ds('2026-11-02T00:00:00Z', id: 'cached'), '"v2"');
+        final r = repo(
+          cache: cache,
+          client: MockClient((_) async =>
+              http.Response.bytes(utf8.encode(ds('2026-09-01T00:00:00Z', id: 'old')), 200, headers: {'etag': '"v0"'})),
+        );
+        await r.load();
+        expect(await r.refresh(), UpdateResult.alreadyLatest);
+        expect(cache.value, contains('cached'));
+        expect(cache.etag, '"v2"');
+      });
+
+      test('저장본이 없으면 표시도 보내지 않는다', () async {
+        final cache = MemoryDatasetCache(null, '"stale"');
+        Map<String, String>? sent;
+        final r = repo(
+          cache: cache,
+          client: MockClient((req) async {
+            sent = req.headers;
+            return http.Response('', 500);
+          }),
+        );
+        await r.load();
+        await r.refresh();
+        expect(sent!.containsKey('If-None-Match'), isFalse);
+      });
+    });
+
     test('원격 주소가 없으면 disabled', () async {
       final r = FacilityRepository(
         loadBundled: () async => ds('2026-10-01T00:00:00Z'),
@@ -136,6 +214,11 @@ void main() {
     expect(await cache.read(), isNull);
     await cache.write('{"a":1}');
     expect(await cache.read(), '{"a":1}');
+    expect(await cache.readEtag(), isNull);
+    await cache.write('{"a":2}', etag: '"x"');
+    expect(await cache.readEtag(), '"x"');
+    await cache.write('{"a":3}');
+    expect(await cache.readEtag(), isNull, reason: '표시 없이 새로 쓰면 옛 표시를 지운다');
     expect(File('${dir.path}/data.json.tmp').existsSync(), isFalse);
   });
 }
